@@ -12,7 +12,7 @@
 $ wget -qO- https://get.docker.com/ | sh
 $ usermod -aG docker <username>
 
-<-------- run docker in as a daemon ------------->
+<-------- run docker as a daemon ------------->
 $ docker run -d -p 4000:22 -i -t <image-name> /usr/sbin/sshd -D
 
 <--------- remove all images by force -------------->
@@ -21,7 +21,7 @@ $ docker rmi -f $(docker images -q)
 <--------- remove all containers ---------->
 $ docker rm -f $(docker ps -a -q)
 
-< ------------------------ run the image ----------------------------------------->
+< ------------------------ run an image ----------------------------------------->
 $ docker run -p 49160:8080 -d <image-name>
 // -d runs the container in detached mode, leaving the container running in the background
 // -p flag redirects a public port to a private port in the container
@@ -30,7 +30,7 @@ $ docker run -p 49160:8080 -d <image-name>
 $ docker ps
 $ docker ps -l // exited docker container
 
-<------------------------- print app output ----------------------------------------->
+<------------------------- print logs of container ----------------------------------------->
 $ docker logs <container ID>
 
 < ------------------------- calling app using 'curl' --------------------------------->

@@ -1,0 +1,250 @@
+<---------- docker install ------------>
+$ wget -qO- https://get.docker.com/ | sh
+$ usermod -aG docker <username>
+
+<-------- run docker in as a daemon ------------->
+docker run -d -p 4000:22 -i -t <image-name> /usr/sbin/sshd -D
+
+<--------- remove all images by force -------------->
+$ docker rmi -f $(docker images -q)
+
+<--------- remove all containers ---------->
+$ docker rm -f $(docker ps -a -q)
+
+< ------------------------ run the image ----------------------------------------->
+$ docker run -p 49160:8080 -d <image-name>
+// -d runs the container in detached mode, leaving the container running in the background
+// -p flag redirects a public port to a private port in the container
+
+< ----------------------- get container ID ------------------------------------------>
+$ docker ps
+$ docker ps -l // exited docker container
+
+<------------------------- print app output ----------------------------------------->
+$ docker logs <container ID>
+
+< ------------------------- calling app using 'curl' --------------------------------->
+$ curl -i localhost:<binding port>
+
+< ------------------------- specify a repository and tag ----------------------------->
+$ docker build -t sajib/<image-name> .
+
+<-------------------------- ecec a container ------------------------------------------>
+$ docker exec -it e5f272d20a82 /bin/bash
+
+< ------------------------- Run and bind port image ----------------------------------------->
+$ docker run --rm -p 8080:8080 -t <image-name>
+
+<-------------------- run docker in as a daemon -------------------->
+$ docker run -d -p 4000:22 -i -t <image-name> /usr/sbin/sshd -D
+
+< ------------------------ ENTRYPOINT for jenkins ------------------------------------------>
+$ ENTRYPOINT ["/usr/bin/java", "-Djava.awt.headless=true", "-jar", "/usr/share/jenkins/jenkins.war", "--httpPort=8080", "--ajp13Port=-1"]
+
+<------------------------- install a specifiq version of docker --------------------------------->
+$ sudo apt-get install lxc-docker-1.6.0
+
+<--------------------- edit docker config file  --------------------->
+export DOCKER_HOST=tcp://$HOST:2376 DOCKER_TLS_VERIFY=1
+
+<--------------------    ---------------------->
+'-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock'
+
+<-------------------- different operation in docker ---------------------->
+echo $id
+id=$(docker ps -l | sed -n '2p' | awk {'print substr($1,3)'})
+docker stop $id
+echo $id
+
+$id=$(hostname)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<----------------------------------- accepted docker.conf of docker 1.6 version ---------->
+description "Docker daemon"
+
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on runlevel [!2345]
+limit nofile 524288 1048576
+limit nproc 524288 1048576
+
+respawn
+
+pre-start script
+        # see also https://github.com/tianon/cgroupfs-mount/blob/master/cgroupfs-mount
+        if grep -v '^#' /etc/fstab | grep -q cgroup \
+                || [ ! -e /proc/cgroups ] \
+                || [ ! -d /sys/fs/cgroup ]; then
+                exit 0
+        fi
+        if ! mountpoint -q /sys/fs/cgroup; then
+                mount -t tmpfs -o uid=0,gid=0,mode=0755 cgroup /sys/fs/cgroup
+        fi
+        (
+                cd /sys/fs/cgroup
+                for sys in $(awk '!/^#/ { if ($4 == 1) print $1 }' /proc/cgroups); do
+                        mkdir -p $sys
+                        if ! mountpoint -q $sys; then
+                                if ! mount -n -t cgroup -o $sys cgroup $sys; then
+                                        rmdir $sys || true
+                                fi
+                        fi
+                done
+        )
+end script
+
+script
+        # modify these in /etc/default/$UPSTART_JOB (/etc/default/docker)
+        DOCKER=/usr/bin/$UPSTART_JOB
+        DOCKER_OPTS='-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock'
+        if [ -f /etc/default/$UPSTART_JOB ]; then
+                . /etc/default/$UPSTART_JOB
+        fi
+        exec "$DOCKER" -d $DOCKER_OPTS
+end script
+
+<...................end.................................>
+
+< ...................... docker 1.6 .... docker.conf........... >
+description "Docker daemon"
+
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on runlevel [!2345]
+limit nofile 524288 1048576
+limit nproc 524288 1048576
+
+respawn
+
+pre-start script
+        # see also https://github.com/tianon/cgroupfs-mount/blob/master/cgroupfs-mount
+        if grep -v '^#' /etc/fstab | grep -q cgroup \
+                || [ ! -e /proc/cgroups ] \
+                || [ ! -d /sys/fs/cgroup ]; then
+                exit 0
+        fi
+        if ! mountpoint -q /sys/fs/cgroup; then
+                mount -t tmpfs -o uid=0,gid=0,mode=0755 cgroup /sys/fs/cgroup
+        fi
+        (
+                cd /sys/fs/cgroup
+                for sys in $(awk '!/^#/ { if ($4 == 1) print $1 }' /proc/cgroups); do
+                        mkdir -p $sys
+                        if ! mountpoint -q $sys; then
+                                if ! mount -n -t cgroup -o $sys cgroup $sys; then
+                                        rmdir $sys || true
+                                fi
+                        fi
+                done
+        )
+end script
+
+script
+        # modify these in /etc/default/$UPSTART_JOB (/etc/default/docker)
+        DOCKER=/usr/bin/$UPSTART_JOB
+        DOCKER_OPTS=
+        if [ -f /etc/default/$UPSTART_JOB ]; then
+                . /etc/default/$UPSTART_JOB
+        fi
+        exec "$DOCKER" -d $DOCKER_OPTS
+end script
+# Don't emit "started" event until docker.sock is ready.
+# See https://github.com/docker/docker/issues/6647
+post-start script
+        DOCKER_OPTS=
+        if [ -f /etc/default/$UPSTART_JOB ]; then
+                . /etc/default/$UPSTART_JOB
+        fi
+        if ! printf "%s" "$DOCKER_OPTS" | grep -qE -e '-H|--host'; then
+                while ! [ -e /var/run/docker.sock ]; do
+                        initctl status $UPSTART_JOB | grep -qE "(stop|respawn)/" && exit 1
+                        echo "Waiting for /var/run/docker.sock"
+                        sleep 0.1
+                done
+                echo "/var/run/docker.sock is up"
+        fi
+        DOCKER_OPTS='-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock'
+end script
+<-------------------------- The End --------------------------->
+
+
+
+
+
+
+
+
+< --------------------------------------  jenkins Dockerfile ----------------------------------------------->
+ RUN \
+  mkdir $JENKINS_HOME/jobs && \
+  mkdir $JENKINS_HOME/jobs/kube_plugins_settings && \
+  mkdir $JENKINS_HOME/jobs/kube_plugins_settings/builds && \
+  mkdir $JENKINS_HOME/jobs/kube_plugins_settings && \
+  touch $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "<?xml version='1.0' encoding='UTF-8'?>" > $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "<project>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "<actions/>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "<description></description>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "<keepDependencies>false</keepDependencies>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "<properties>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo " <hudson.model.ParametersDefinitionProperty>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "    <parameterDefinitions>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "      <hudson.model.StringParameterDefinition>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "        <name>PHID</name>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "        <description></description>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "         <defaultValue>$target.phid</defaultValue>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "      </hudson.model.StringParameterDefinition>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "    </parameterDefinitions>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "  </hudson.model.ParametersDefinitionProperty>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "</properties>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "<scm class="hudson.scm.NullSCM"/>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "<canRoam>true</canRoam>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "<disabled>false</disabled>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "<blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo " <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo " <triggers/>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo " <concurrentBuild>false</concurrentBuild>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo " <builders/>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo " <publishers>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "   <jenkins.plugins.hipchat.HipChatNotifier plugin="hipchat@0.1.9">" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "    <token>16672bd927731c8d656edca2e97e55</token>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "    <room>p:jenkins</room>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "    <startNotification>true</startNotification>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "    <notifySuccess>true</notifySuccess>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "    <notifyAborted>false</notifyAborted>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "    <notifyNotBuilt>false</notifyNotBuilt>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "    <notifyUnstable>false</notifyUnstable>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "    <notifyFailure>false</notifyFailure>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "    <notifyBackToNormal>false</notifyBackToNormal>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "    <startJobMessage>$JOB_NAME #$BUILD_NUMBER started</startJobMessage>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "    <completeJobMessage>$JOB_NAME #$BUILD_NUMBER $STATUS after $DURATION ($CHANGES_OR_CAUSE)</completeJobMessage>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "  </jenkins.plugins.hipchat.HipChatNotifier>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo " </publishers>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "<buildWrappers/>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
+  echo "</project>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml
+
+  EXPOSE 8080 5000
+  ENTRYPOINT ["/usr/bin/java", "-Djava.awt.headless=true", "-jar", "/usr/share/jenkins/jenkins.war", "--httpPort=8080", "--ajp13Port=-1"]
+
+< --------------------------------------------------------------------------------------------------->

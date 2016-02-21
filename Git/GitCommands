@@ -11,6 +11,22 @@ $ git config --local user.email <your-email@thetigerworks.com>
 // we can see full configuration 
 $ git config --list  // write this in a repo
 
+$ git config --global color.ui true // better visualization
+
+<---- Auto correct Line Feed ---->
+$ git config --global core.autocrlf input // On unix line systems (Linux, OSX, etc)
+$ git config --global core.autocrlf true  // On windows system
+$ git config --global core.autocrlf false // for Windows only project
+
+// set alias
+$ git config --global alias.st status //git st -> git status
+$ git config --global alias.co checkout //git co -> git checkout
+$ git config --global alias.br branch // git br -> git branch
+
+// ...
+$ git config --global core.editor emacs //use emacs for interactive commands
+$ git config --global merge.tool opendiff //use opendiff for merging conflicts
+$ git config --list //see all the config
 
 Branching:
 $ git branch -D <branchName>
@@ -41,8 +57,22 @@ $ git stash clear                                                       // clean
 $ git stash branch <branchname> stash@{0}                               // checkout a new branch with popping stash@{0}
 $ git stash save --keep-index 
 
+Log:
+$ git log --oneline --decorate --all --graph  // see all commits with better visualization
+$ git log --pretty=oneline
+$ git log --oneline -p
+$ git log --oneline --stat
+$ git log --oneline --graph
+$ git log --until=1.minute.ago //until
+$ git log --since=1.day.ago //since (days)
+$ git log --since=1.hour.ago //since(hours)
+$ git log --since1.month.ago --until=2.weeks.ago // since & until (relative)
+$ git log --since=2000-01-01 --until=2012-12-21 // since & until (absolute)
+$ git blame index.html --date short
+$ git rm --cached development.log //what it you're already tracking log files?
+
 Recovery/Reset:
-$ git log  // see all the commit 
+$ git log  // see all the commits
 $ git show <commit hash>  // to see what I have in a specific commit
 $ git reset --soft <commit hash>  // back to a specifiq commit and exits the change
 $ git diff HEAD  // see the commit we reset & also see the diff with head
@@ -108,8 +138,6 @@ SubModules: (always push to two repo, first to submodules then parent repo)
 
 
 ======================== mastering on github =======================================
-
-$ git log --oneline --decorate --all --graph
 
 
 ********************* Tags and Releases *****************************
@@ -207,7 +235,7 @@ $ git rebase --skip
 $ git rebase --abort
 
 // Level 7 
-$ git config --global color.ui true
+
 $ git log --pretty=format:"%h $ad- %s [%an]" 
   /* %ad=author date, %an=author name
      %h=SHA hash, %s=subject, %d=ref names 
@@ -221,34 +249,6 @@ $ write 'edit' for stopping a commit that is already committed, then 'git reset 
 // HEAD^ means the first parent of the tip of the current branch, HEAD^2 = second parent of current branch, HEAD~1 / HEAD~2 means always first parent (http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
 $ git rebase --continue // finish the rebase
 
-
-
-<---- Auto correct Line Feed ---->
-$ git config --global core.autocrlf input // On unix line systems (Linux, OSX, etc)
-$ git config --global core.autocrlf true  // On windows system
-$ git config --global core.autocrlf false // for Windows only project
-
-
-$ git log --pretty=oneline   
-$ git log --oneline -p
-$ git log --oneline --stat
-$ git log --oneline --graph
-$ git log --until=1.minute.ago //until
-$ git log --since=1.day.ago //since (days)
-$ git log --since=1.hour.ago //since(hours)
-$ git log --since1.month.ago --until=2.weeks.ago // since & until (relative)
-$ git log --since=2000-01-01 --until=2012-12-21 // since & until (absolute)
-$ git blame index.html --date short
-$ git rm --cached development.log //what it you're already tracking log files?
-$ git config --global core.editor emacs //use emacs for interactive commands
-$ git config --global merge.tool opendiff //use opendiff for merging conflicts
-$ git config --list //see all the config
-$ 
-
-// set alias
-$ git config --global alias.st status //git st -> git status
-$ git config --global alias.co checkout //git co -> git checkout
-$ git config --global alias.br branch // git br -> git branch
 
 // track local to remote banch
 $ 

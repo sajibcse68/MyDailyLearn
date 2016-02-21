@@ -1,9 +1,19 @@
+<--------- What is Docker ?? ------------------->
+- Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run:
+  code, runtime, system tools, system libraries – anything you can install on a server. This guarantees that
+  it will always run the same, regardless of the environment it is running in.
+  // see more https://www.docker.com/what-docker
+
+<--------  Why Docker ?? ----------->
+- Docker provides an integrated technology suite that enables development and
+  IT operations teams to build, ship, and run distributed applications anywhere.
+
 <---------- docker install ------------>
 $ wget -qO- https://get.docker.com/ | sh
 $ usermod -aG docker <username>
 
 <-------- run docker in as a daemon ------------->
-docker run -d -p 4000:22 -i -t <image-name> /usr/sbin/sshd -D
+$ docker run -d -p 4000:22 -i -t <image-name> /usr/sbin/sshd -D
 
 <--------- remove all images by force -------------->
 $ docker rmi -f $(docker images -q)
@@ -51,35 +61,12 @@ export DOCKER_HOST=tcp://$HOST:2376 DOCKER_TLS_VERIFY=1
 '-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock'
 
 <-------------------- different operation in docker ---------------------->
-echo $id
-id=$(docker ps -l | sed -n '2p' | awk {'print substr($1,3)'})
-docker stop $id
-echo $id
+$ echo $id
+$ id=$(docker ps -l | sed -n '2p' | awk {'print substr($1,3)'})
+$ docker stop $id
+$ echo $id
 
-$id=$(hostname)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$ id=$(hostname)
 
 
 <----------------------------------- accepted docker.conf of docker 1.6 version ---------->
@@ -186,65 +173,4 @@ post-start script
         fi
         DOCKER_OPTS='-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock'
 end script
-<-------------------------- The End --------------------------->
-
-
-
-
-
-
-
-
-< --------------------------------------  jenkins Dockerfile ----------------------------------------------->
- RUN \
-  mkdir $JENKINS_HOME/jobs && \
-  mkdir $JENKINS_HOME/jobs/kube_plugins_settings && \
-  mkdir $JENKINS_HOME/jobs/kube_plugins_settings/builds && \
-  mkdir $JENKINS_HOME/jobs/kube_plugins_settings && \
-  touch $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "<?xml version='1.0' encoding='UTF-8'?>" > $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "<project>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "<actions/>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "<description></description>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "<keepDependencies>false</keepDependencies>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "<properties>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo " <hudson.model.ParametersDefinitionProperty>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "    <parameterDefinitions>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "      <hudson.model.StringParameterDefinition>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "        <name>PHID</name>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "        <description></description>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "         <defaultValue>$target.phid</defaultValue>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "      </hudson.model.StringParameterDefinition>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "    </parameterDefinitions>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "  </hudson.model.ParametersDefinitionProperty>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "</properties>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "<scm class="hudson.scm.NullSCM"/>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "<canRoam>true</canRoam>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "<disabled>false</disabled>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "<blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo " <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo " <triggers/>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo " <concurrentBuild>false</concurrentBuild>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo " <builders/>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo " <publishers>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "   <jenkins.plugins.hipchat.HipChatNotifier plugin="hipchat@0.1.9">" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "    <token>16672bd927731c8d656edca2e97e55</token>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "    <room>p:jenkins</room>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "    <startNotification>true</startNotification>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "    <notifySuccess>true</notifySuccess>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "    <notifyAborted>false</notifyAborted>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "    <notifyNotBuilt>false</notifyNotBuilt>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "    <notifyUnstable>false</notifyUnstable>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "    <notifyFailure>false</notifyFailure>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "    <notifyBackToNormal>false</notifyBackToNormal>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "    <startJobMessage>$JOB_NAME #$BUILD_NUMBER started</startJobMessage>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "    <completeJobMessage>$JOB_NAME #$BUILD_NUMBER $STATUS after $DURATION ($CHANGES_OR_CAUSE)</completeJobMessage>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "  </jenkins.plugins.hipchat.HipChatNotifier>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo " </publishers>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "<buildWrappers/>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml && \
-  echo "</project>" >> $JENKINS_HOME/jobs/kube_plugins_settings/config.xml
-
-  EXPOSE 8080 5000
-  ENTRYPOINT ["/usr/bin/java", "-Djava.awt.headless=true", "-jar", "/usr/share/jenkins/jenkins.war", "--httpPort=8080", "--ajp13Port=-1"]
-
-< --------------------------------------------------------------------------------------------------->
+<-------------------------- The End ------------------------------------------------->

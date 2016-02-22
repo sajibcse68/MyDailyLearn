@@ -29,17 +29,20 @@ $ git config --global merge.tool opendiff                       //use opendiff f
 $ git config --list //see all the config
 
 Branching:
+----------
 $ git branch -D <branchName>
 $ git push origin <branchame>
 $ git checkout -b <newBranchName>
 $ git push -u origin <branchname>
 
 Merging:
+--------
 $ git mergetool
 $ git merge --squash <privateFeatureBranch>
 $ git cherry-pick <sh1>
 
 Workflow:
+---------
 $ git add .
 $ git add --all
 $ git commit -am 'commit message'                     // add & commit
@@ -58,6 +61,7 @@ $ git stash branch <branchname> stash@{0}             // checkout a new branch w
 $ git stash save --keep-index
 
 Log:
+----
 $ git log --oneline --decorate --all --graph           // see all commits with better visualization
 $ git log --pretty=oneline
 $ git log --oneline -p
@@ -72,6 +76,7 @@ $ git blame index.html --date short
 $ git rm --cached development.log                     //what it you're already tracking log files?
 
 Recovery/Reset:
+---------------
 $ git log                                             // see all the commits
 $ git show <commit hash>                              // to see what I have in a specific commit
 $ git reset --soft <commit hash>                      // back to a specifiq commit and exits the change
@@ -84,6 +89,7 @@ $ git rm --cached -r .
 $ git checkout master
 
 Reflog:
+-------
 $ git reflog                                          // see all the task step by step
 $ git reset <HEAD no.> e.g. HEAD@{8}                  // return to present after a hard reset, then give the next command
 $ git reset --hard                                    // we moved to HAED@{8} completely
@@ -92,33 +98,40 @@ $ git branch <branceName> HEAD@{1}                    // create a new branch wit
 $
 
 Amend:
+------
 $ git add task2.txt
 $ git commit --amend                                  // merge current change to previous commit and also change the commit hash
 
 Push & Pull:
+------------
 $ git remote add origin git@github.com....
 $ git remote show                                     // can have multiple remote
 $ git remote show origin                              // show url of remote
 
 go forward/backward:
+--------------------
 $ git checkout <commit hash>                          // go to a specific commit hash
 $ git checkout <branchName>                           // return to present state
 $ git checkout <commit hash> <fileName>               // only file will go back to specific commit
 $ git checkout <branchName> -f                        // return to persent state
 
 Squash:
+-------
 $ git rebase -i HEAD~3                                // merge last 3 commit in one, see https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/
 
 Conflicts:
+----------
 - fix manually
 
 Prune Empty Commits:
+--------------------
 - git <brance-name> -f --prune-empty -- --all                 // delete all empty commits in a branch
 - git <branch-name> --tree-filter 'rm -f password.txt'        // remove password.txt file
 - git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt'
 // faster for large code base, workded on stagin area, --ignore-nmatch: commands run successfully even if the file is not present.
 
 Cherry-pick:
+------------
 - git cherry-pick <commit-hash>                               // copy a single commit to current branch
 - git cherry-pick --edit <commit-hash>                        // pop-up a editor, then change the commit message.
 - git cherry-pick --no-commit <commit-hash> <commit-hash>     // --no-commit pulls in changes and stages them, but doesn't commit
@@ -126,6 +139,7 @@ Cherry-pick:
 - git cherry-pick --signoff <commit-hash>                     // --signoff add current users name to commit message
  
 SubModules: (always push to two repo, first to submodules then parent repo)
+---------------------------------------------------------------------------
 - git submodule add git@example.com:css.git                      // add a submodule in a git project, also create a .gitmodules file
 - git submodule init // initialize submodules.
 - git submodule update // update the submodules
@@ -173,6 +187,7 @@ $ git branch -d <hot-branch>                  // delete the release branch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Other:
+------
 $ git status
 $ git log
 $ git init

@@ -2,30 +2,30 @@ Configure Git:
 
 // global config
 $ git config --global user.name <your-name>
-$ git config --global user.email <your-email@thetigerworks.com>
+$ git config --global user.email <your-email>
 
 // local config (in a repo/project)
 $ git config --local user.name <your-name>
-$ git config --local user.email <your-email@thetigerworks.com>
+$ git config --local user.email <your-email>
 
 // we can see full configuration 
-$ git config --list  // write this in a repo
+$ git config --list                                             // write this in a repo
 
-$ git config --global color.ui true // better visualization
+$ git config --global color.ui true                             // better visualization
 
 <---- Auto correct Line Feed ---->
-$ git config --global core.autocrlf input // On unix line systems (Linux, OSX, etc)
-$ git config --global core.autocrlf true  // On windows system
-$ git config --global core.autocrlf false // for Windows only project
+$ git config --global core.autocrlf input                       // On unix line systems (Linux, OSX, etc)
+$ git config --global core.autocrlf true                        // On windows system
+$ git config --global core.autocrlf false                       // for Windows only project
 
 // set alias
-$ git config --global alias.st status //git st -> git status
-$ git config --global alias.co checkout //git co -> git checkout
-$ git config --global alias.br branch // git br -> git branch
+$ git config --global alias.st status                           //git st -> git status
+$ git config --global alias.co checkout                         //git co -> git checkout
+$ git config --global alias.br branch                           // git br -> git branch
 
 // ...
-$ git config --global core.editor emacs //use emacs for interactive commands
-$ git config --global merge.tool opendiff //use opendiff for merging conflicts
+$ git config --global core.editor emacs                         //use emacs for interactive commands
+$ git config --global merge.tool opendiff                       //use opendiff for merging conflicts
 $ git config --list //see all the config
 
 Branching:
@@ -42,97 +42,96 @@ $ git cherry-pick <sh1>
 Workflow:
 $ git add .
 $ git add --all
-$ git commit -am 'commit message'                                       // add & commit
-$ git stash = git stash save                                            // save the changes in temp box 
-$ git stash save "provide a stash message"                              // we can provide a stash message when stashing. 
-$ git stash apply = git stash apply stash@{0}                           // return the codes I cleaned before
-$ git stash apply stash@{2}                                             // get back the #3 stash codes. 
-$ git stash list                                                        // see how many stash we have
-$ git stash list --stash                                                // show all stash lists with changes file
-$ git stash show stash@{1}                                              // show only a specific stash with commits
-$ git stash show --patch                                                // shows file diffs 
-$ git stash drop = git stash drop stash@{0}                             // pop = apply + drop
-$ git stash pop = git stash apply + git stash drop                      // temporary delete or clean    
-$ git stash clear                                                       // clean all the stash
-$ git stash branch <branchname> stash@{0}                               // checkout a new branch with popping stash@{0}
-$ git stash save --keep-index 
+$ git commit -am 'commit message'                     // add & commit
+$ git stash = git stash save                          // save the changes in temp box
+$ git stash save "provide a stash message"            // we can provide a stash message when stashing.
+$ git stash apply = git stash apply stash@{0}         // return the codes I cleaned before
+$ git stash apply stash@{2}                           // get back the #3 stash codes.
+$ git stash list                                      // see how many stash we have
+$ git stash list --stash                              // show all stash lists with changes file
+$ git stash show stash@{1}                            // show only a specific stash with commits
+$ git stash show --patch                              // shows file diffs
+$ git stash drop = git stash drop stash@{0}           // pop = apply + drop
+$ git stash pop = git stash apply + git stash drop    // temporary delete or clean
+$ git stash clear                                     // clean all the stash
+$ git stash branch <branchname> stash@{0}             // checkout a new branch with popping stash@{0}
+$ git stash save --keep-index
 
 Log:
-$ git log --oneline --decorate --all --graph  // see all commits with better visualization
+$ git log --oneline --decorate --all --graph           // see all commits with better visualization
 $ git log --pretty=oneline
 $ git log --oneline -p
 $ git log --oneline --stat
 $ git log --oneline --graph
-$ git log --until=1.minute.ago //until
-$ git log --since=1.day.ago //since (days)
-$ git log --since=1.hour.ago //since(hours)
-$ git log --since1.month.ago --until=2.weeks.ago // since & until (relative)
-$ git log --since=2000-01-01 --until=2012-12-21 // since & until (absolute)
+$ git log --until=1.minute.ago                        //until
+$ git log --since=1.day.ago                           //since (days)
+$ git log --since=1.hour.ago                          //since(hours)
+$ git log --since1.month.ago --until=2.weeks.ago      // since & until (relative)
+$ git log --since=2000-01-01 --until=2012-12-21       // since & until (absolute)
 $ git blame index.html --date short
-$ git rm --cached development.log //what it you're already tracking log files?
+$ git rm --cached development.log                     //what it you're already tracking log files?
 
 Recovery/Reset:
-$ git log  // see all the commits
-$ git show <commit hash>  // to see what I have in a specific commit
-$ git reset --soft <commit hash>  // back to a specifiq commit and exits the change
-$ git diff HEAD  // see the commit we reset & also see the diff with head
+$ git log                                             // see all the commits
+$ git show <commit hash>                              // to see what I have in a specific commit
+$ git reset --soft <commit hash>                      // back to a specifiq commit and exits the change
+$ git diff HEAD                                       // see the commit we reset & also see the diff with head
 
-$ git clean -f -n // clean untract file (dry run)
+$ git clean -f -n                                     // clean untract file (dry run)
 $ git clean -dxf
 $ git commit --amend -m 'new commit message'
 $ git rm --cached -r .
 $ git checkout master
 
 Reflog:
-$ git reflog / see all the task step by step 
-$ git reset <HEAD no.> e.g. HEAD@{8}// return to present after a hard reset, then give the next command
-$ git reset --hard // we moved to HAED@{8} completely
-$ git log --walk-reflogs // more details
-$ git branch <branceName> HEAD@{1} // create a new branch with a commit (the branch is deleted where this commit was given)
-$ 
+$ git reflog                                          // see all the task step by step
+$ git reset <HEAD no.> e.g. HEAD@{8}                  // return to present after a hard reset, then give the next command
+$ git reset --hard                                    // we moved to HAED@{8} completely
+$ git log --walk-reflogs                              // more details
+$ git branch <branceName> HEAD@{1}                    // create a new branch with a commit (the branch is deleted where this commit was given)
+$
 
 Amend:
 $ git add task2.txt
-$ git commit --amend  // merge current change to previous commit and also change the commit hash 
+$ git commit --amend                                  // merge current change to previous commit and also change the commit hash
 
 Push & Pull:
 $ git remote add origin git@github.com....
-$ git remote show // can have multiple remote 
-$ git remote show origin // show url of remote
+$ git remote show                                     // can have multiple remote
+$ git remote show origin                              // show url of remote
 
 go forward/backward:
-$ git checkout <commit hash> // go to a specific commit hash
-$ git checkout <branchName>  // return to present state
-$ git checkout <commit hash> <fileName>  // only file will go back to specific commit
-$ git checkout <branchName> -f  // return to persent state
+$ git checkout <commit hash>                          // go to a specific commit hash
+$ git checkout <branchName>                           // return to present state
+$ git checkout <commit hash> <fileName>               // only file will go back to specific commit
+$ git checkout <branchName> -f                        // return to persent state
 
 Squash:
-$ git rebase -i HEAD~3 // merge last 3 commit in one, see https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/
+$ git rebase -i HEAD~3                                // merge last 3 commit in one, see https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/
 
 Conflicts:
 - fix manually
 
 Prune Empty Commits:
-- git <brance-name> -f --prune-empty -- --all // delete all empty commits in a branch
-- git <branch-name> --tree-filter 'rm -f password.txt' // remove password.txt file
-- git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt' // faster for lafge code base, workded on stagin area, --ignore-nmatch: 
-  commands run successfully even if the file is not present.
-- 
+- git <brance-name> -f --prune-empty -- --all                 // delete all empty commits in a branch
+- git <branch-name> --tree-filter 'rm -f password.txt'        // remove password.txt file
+- git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt'
+// faster for large code base, workded on stagin area, --ignore-nmatch: commands run successfully even if the file is not present.
 
 Cherry-pick:
-- git cherry-pick <commit-hash> // copy a single commit to current branch
-- git cherry-pick --edit <commit-hash> // pop-up a editor, then change the commit message.
-- git cherry-pick --no-commit <commit-hash> <commit-hash> // --no-commit pulls in changes and stages them, but doesn't commit
-- git cherry-pick -x <commit-hash> // -x: keep track where the commit came from
-- git cherry-pick --signoff <commit-hash> // --signoff add current users name to commit message
+- git cherry-pick <commit-hash>                               // copy a single commit to current branch
+- git cherry-pick --edit <commit-hash>                        // pop-up a editor, then change the commit message.
+- git cherry-pick --no-commit <commit-hash> <commit-hash>     // --no-commit pulls in changes and stages them, but doesn't commit
+- git cherry-pick -x <commit-hash>                            // -x: keep track where the commit came from
+- git cherry-pick --signoff <commit-hash>                     // --signoff add current users name to commit message
  
 SubModules: (always push to two repo, first to submodules then parent repo)
-- git submodule add git@example.com:css.git // add a submodule in a git project, also create a .gitmodules file
+- git submodule add git@example.com:css.git                      // add a submodule in a git project, also create a .gitmodules file
 - git submodule init // initialize submodules.
 - git submodule update // update the submodules
-- git branch temp_changes a7eded4 // after 'git submodule update' command, codes get checked out in a HEADLESS state. 
-- git push --recurse-submodules=check // will abort a push it we haven't pushed a submodule. (run in parent dir )
-- git push --recurse-submodules=on-demand // push to parent repo, then it'll push to submodule automatically.
+- git branch temp_changes a7eded4                                // after 'git submodule update' command, codes get checked out in a HEADLESS state.
+- git push --recurse-submodules=check                            // will abort a push it we haven't pushed a submodule. (run in parent dir )
+- git push --recurse-submodules=on-demand                        // push to parent repo, then it'll push to submodule automatically.
 - git config alias.pushall "push --recurse-submodules=on-demand" // alias   
 
 
@@ -149,40 +148,40 @@ SubModules: (always push to two repo, first to submodules then parent repo)
 	- Long running releases
 	- On demand hot fixed
 
-$ git checkout <commit-hash> // checkout to a commit to give a tag
-$ git tag -a v1.0.0 -m "message" // give a tag to this commit
-$ git push --tags // push the tags to origin
+$ git checkout <commit-hash>                  // checkout to a commit to give a tag
+$ git tag -a v1.0.0 -m "message"              // give a tag to this commit
+$ git push --tags                             // push the tags to origin
 
 <----- release branches ------->
-$ git checkout v1.1 // checkout to a tag
-$ git checkout -b <hot-branch> // checkout a new branch from present commit 
+$ git checkout v1.1                           // checkout to a tag
+$ git checkout -b <hot-branch>                // checkout a new branch from present commit
 <hotfix>
 $ git commit -m "Hotfix"
 $ git tag v1.1.1 -m "hotfix"
 $ git checkout master
 $ git merge <hot-branch> -m "Merge hotfix"
-$ git branch -d <hot-branch> // delete the release branch
+$ git branch -d <hot-branch>                  // delete the release branch
 
 <----- release in github ------->
 
 
 <------ github pages ----------->
-- for a username github page url will be '<username>.github.io' // sajibcse68.github.io
-- for a project github page url will be '<username.githun.io/<projectname>' // sajibcse68.github.io/dojo_rules
+- for a username github page url will be '<username>.github.io'               // sajibcse68.github.io
+- for a project github page url will be '<username.githun.io/<projectname>'   // sajibcse68.github.io/dojo_rules
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Other:
-git status
-git log
-git init
-git gui
-git difftool
-git gc
+$ git status
+$ git log
+$ git init
+$ git gui
+$ git difftool
+$ git gc
 
-$ git diff b1..b2 //compare two brances, show you what is in b2 that is not in b1 
-$ git push -f origin HEAD^:master   // "undo" the push from remote and keep the local intact
+$ git diff b1..b2                                      //compare two brances, show you what is in b2 that is not in b1
+$ git push -f origin HEAD^:master                      // "undo" the push from remote and keep the local intact
 
 
 
@@ -201,32 +200,32 @@ If master branch
 
 
 <------- Git in CodeSchool ----->
-$ git reset --soft HEAD^  //move to commit before `HEAD`
-$ git commit --amend -m 'new commit message' //add to the last commit
-$ git reset --hard HEAD^^ //undo last commit and all changes
-$ git remote add <name> <address/url> // to add new remote
-$ git remote rm <name> // to remove a remote
+$ git reset --soft HEAD^                             //move to commit before `HEAD`
+$ git commit --amend -m 'new commit message'         //add to the last commit
+$ git reset --hard HEAD^^                            //undo last commit and all changes
+$ git remote add <name> <address/url>                // to add new remote
+$ git remote rm <name>                               // to remove a remote
 $ git push -u remote <name> <mybranch>
-$ git checkout -- <filename1> <filename2> //discard all changes of file1 and file2
+$ git checkout -- <filename1> <filename2>            //discard all changes of file1 and file2
 
 // Level 3
-$ git remote -v //see all the remotes
+$ git remote -v                                      //see all the remotes
 
 // Level 5
-$ git branch -r //see all the remote branch
-$ git push origin :<branchname> //delete the remote branch
-$ git branch -d <branchname> //delete the loacal branch, show a warning
-$ git branch -D <branhcname> //force to delete branch
-$ git remote prune origin //cleanup remote deleted branch
+$ git branch -r                                      //see all the remote branch
+$ git push origin :<branchname>                      //delete the remote branch
+$ git branch -d <branchname>                         //delete the loacal branch, show a warning
+$ git branch -D <branhcname>                         //force to delete branch
+$ git remote prune origin                            //cleanup remote deleted branch
 
-$ git tag //show list of tag
-$ git checkout <tagname> //checkout to a tag
+$ git tag                                            //show list of tag
+$ git checkout <tagname>                             //checkout to a tag
 $ git tag -a v0.0.3 -m "version 0.0.3"
-$ git push --tag // send tag to remote
+$ git push --tag                                     // send tag to remote
 
 // Lavel 6
 $ git checkout admin_branch
-$ git rebase master // 
+$ git rebase master
 $ git checkout master
 $ git merge admin_branch
 
@@ -250,17 +249,7 @@ $ write 'edit' for stopping a commit that is already committed, then 'git reset 
 $ git rebase --continue // finish the rebase
 
 
-// track local to remote banch
-$ 
-
 git commit --allow-empty -m k3; git push origin outbound
-
-
-
-
-
-
-
 
 
 .

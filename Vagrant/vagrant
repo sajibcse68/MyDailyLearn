@@ -1,0 +1,32 @@
+<-------- see all the vagrant box ------>
+$ vagrant box list
+
+<-------- initialize a vagrant box ------>
+$ vagrant init <name of vagrantbox>
+
+<-------- machine on --->
+$ vagrant up
+
+<------ login vagrant machine ------->
+$ vagrant ssh
+
+<------ exit/logout from vagrant machine ---->
+$ exit
+
+<------ sleep/suspend the vagrant machine --->
+$ vagrant suspend
+
+<---- machine shutdown ---->
+$ vagrant halt
+
+<----- see the status of machine ---->
+$ vagrat status
+
+<----- reload configuration file ---->
+$ vagrant reload
+
+<----- fullscreen guest window, mount etc ----->
+$ sudo apt-get install virtualbox-guest-dkms
+// then restart
+
+<-----

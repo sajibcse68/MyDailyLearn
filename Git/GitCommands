@@ -84,7 +84,6 @@ $ git diff HEAD                                       // see the commit we reset
 
 $ git clean -f -n                                     // clean untract file (dry run)
 $ git clean -dxf
-$ git commit --amend -m 'new commit message'
 $ git rm --cached -r .
 $ git checkout master
 
@@ -95,29 +94,38 @@ $ git reset <HEAD no.> e.g. HEAD@{8}                  // return to present after
 $ git reset --hard                                    // we moved to HAED@{8} completely
 $ git log --walk-reflogs                              // more details
 $ git branch <branceName> HEAD@{1}                    // create a new branch with a commit (the branch is deleted where this commit was given)
-$
 
 Amend:
 ------
-$ git add task2.txt
-$ git commit --amend                                  // merge current change to previous commit and also change the commit hash
+$ git add task2.txt                                   // add any file
+$ git commit --amend -m 'new message'                 // merge current change to previous commit and will also change the commit hash
 
 Push & Pull:
-------------
+$ git push -r origin <branch-name> // by force overwrite the remote branch
+
 $ git remote add origin git@github.com....
 $ git remote show                                     // can have multiple remote
 $ git remote show origin                              // show url of remote
 
-go forward/backward:
+Go forward/backward:
 --------------------
 $ git checkout <commit hash>                          // go to a specific commit hash
 $ git checkout <branchName>                           // return to present state
 $ git checkout <commit hash> <fileName>               // only file will go back to specific commit
 $ git checkout <branchName> -f                        // return to persent state
 
+Go forward/backward:
+$ git checkout <commit hash> // go to a specific commit hash
+$ git checkout <branchName>  // return to present state
+$ git checkout <commit hash> <fileName>  // only file will go back to specific commit
+$ git checkout <branchName> -f  // return to persent state
+
 Squash:
--------
-$ git rebase -i HEAD~3                                // merge last 3 commit in one, see https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/
+$ git rebase -i HEAD~3                                 // merge last 3 commit in one, see https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/
+// in general I do
+$ git reset --soft HEAD~3                              // undo last 3 commits, remains all the changes in local
+$ git add --all; git commit -m 'new squash message'    // commit the 3 previous commits in one
+$ git push -f origin <branch-name>                     // by force overwrite the remote branch and also commits
 
 Conflicts:
 ----------
@@ -125,11 +133,10 @@ Conflicts:
 
 Prune Empty Commits:
 --------------------
-- git <brance-name> -f --prune-empty -- --all                 // delete all empty commits in a branch
-- git <branch-name> --tree-filter 'rm -f password.txt'        // remove password.txt file
-- git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt'
-// faster for large code base, workded on stagin area, --ignore-nmatch: commands run successfully even if the file is not present.
-
+- git <brance-name> -f --prune-empty -- --all                                             // delete all empty commits in a branch
+- git <branch-name> --tree-filter 'rm -f password.txt'                                    // remove password.txt file
+- git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt' // faster for large code base, workded on stagin area, --ignore-nmatch:
+                                                                                             commands run successfully even if the file is not present.
 Cherry-pick:
 ------------
 - git cherry-pick <commit-hash>                               // copy a single commit to current branch
@@ -147,7 +154,6 @@ SubModules: (always push to two repo, first to submodules then parent repo)
 - git push --recurse-submodules=check                            // will abort a push it we haven't pushed a submodule. (run in parent dir )
 - git push --recurse-submodules=on-demand                        // push to parent repo, then it'll push to submodule automatically.
 - git config alias.pushall "push --recurse-submodules=on-demand" // alias   
-
 
 
 ======================== mastering on github =======================================
@@ -240,8 +246,9 @@ $ git push --tag                                     // send tag to remote
 
 // Lavel 6
 $ git checkout admin_branch
-$ git rebase master
+$ git rebase master // merge all commits of admin_branch after master's commits
 $ git checkout master
+$ git checkout -b <history_master>  // backup master branch if necessary
 $ git merge admin_branch
 
 $ git rebase --continue
@@ -263,10 +270,32 @@ $ write 'edit' for stopping a commit that is already committed, then 'git reset 
 // HEAD^ means the first parent of the tip of the current branch, HEAD^2 = second parent of current branch, HEAD~1 / HEAD~2 means always first parent (http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
 $ git rebase --continue // finish the rebase
 
-
 git commit --allow-empty -m k3; git push origin outbound
 
-
 .
+
+<------ Difference between HEAD~ and HEAD^ ----------->
+- ~2 means up two levels in the hierarchy, via the first parent if a commit has more than one parent                                                                                             -
+- ^2 means the second parent where a commit has more than one parent (i.e. because it's a merge)
+- These can be combined, so HEAD~2^3 means HEAD's grandparent commit's third parent commit.
+
+G   H   I   J               A =      = A^0
+ \ /     \ /                B = A^   = A^1     = A~1
+  D   E   F                 C = A^2  = A^2
+   \  |  / \                D = A^^  = A^1^1   = A~2
+    \ | /   |               E = B^2  = A^^2
+     \|/    |               F = B^3  = A^^3
+      B     C               G = A^^^ = A^1^1^1 = A~3
+       \   /                H = D^2  = B^^2    = A^^^2  = A~2^2
+        \ /                 I = F^   = B^3^    = A^^3^
+         A                  J = F^2  = B^3^2   = A^^3^2
+
+//
+HEAD~2   : 2 commits older than HEAD
+HEAD^2   : the second parent of HEAD, if HEAD was a merge, otherwise illegal
+HEAD@{2} : refers to the 3rd listing in the overview of git reflog
+HEAD~~   : 2 commits older than HEAD
+HEAD^^   : 2 commits older than HEAD
+
 
 

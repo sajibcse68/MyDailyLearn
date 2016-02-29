@@ -18,12 +18,18 @@ jenkins ALL=(ALL:ALL) ALL
 <--------- get SSH RSA Fingerprints ------------->
 $ ssh-keygen -lf ~/.ssh/id_rsa.pub
 
+<---------- remove keys from known_hosts -------------->
+$ ssh-keygen -R <ip_address / host_name>
+
 <-------- Forwarding SSH Agent -------->
 $ ssh-add ~/.ssh/id_rsa              // add ssh key to the list of agent identites
 $ ssh-add -l                         // you can see the agent just added
 $ sudo nano /etc/ssh/ssh_config      // open ssh_config file and add two lines down
 Host <my-servers.com>
     ForwardAgent yes
+
+//
+echo "$SSH_AUTH_SOCK"
 
 <--------- add a Public Key ---------->
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys < add keys here >

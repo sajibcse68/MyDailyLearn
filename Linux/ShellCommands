@@ -33,7 +33,7 @@ du -sh
 du -h                 // show all sub directory size
 
 <---------- change ownership of a file / directory -------------->
-sudo chown -R username:group directory
+sudo chown -R <username>:<group> <directory>
 
 <------------------------- see ip address of ubuntu 15.04 -------------------------------->
 $ ip addr
@@ -141,4 +141,4 @@ kill 123                         // kill the process
 echo 'Hello' | sudo -S apt-get update
 
 <------------------------------------ show all users ------------------------------------------------------------------------>
-compgen -u
+$ compgen -u

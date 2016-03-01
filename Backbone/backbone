@@ -1,0 +1,282 @@
+
+**************** Backbone.js (jeremy Ashkenas)**********************
+- "Get your truth out of the DOM" ___ Jermy Ashkenas
+- Backbone:
+  - Provides client-side app structure
+  - Models to represent data
+  - Views to hook up models to the DOM
+  - Synchorizes data to/from server
+
+
+<-------------------------------- Model------------------------------>
+- var TodoItem = Backbone.Model.extend({});                                          //  create a model class
+- var todoItem = new TodoItem({ description: 'pick up milk', status: 'incomplete'}); // create a model instance
+- todoItem.get('description');                                                       // to get an attribute
+- todoItem.set(status: 'complete');                                                  // set an attribute
+
+<------------------------------ View ----------------------------------->
+- var TodoView = Backbone.View.extend({});                                           // create a view class
+- var todoView = new TodoVeiw({ model: todoItem });                                  // create a view instance
+-
+
+<---------------------- Fetching data from server --------------------->
+- todoItem.url = '/todo';                                                            // URL to get JSON data for model
+- var TodoItem = Backbone.Model.extend({urlRoot: '/todos'});                         // RESTful web service (Rails flavor)
+- var todoItem = new TodoItem({ id: 1 });
+- todoItem.fetch();                                                                  // to load model from server
+- todoItem.save();                                                                   // POST /todos with JSON params
+- todoItem.destroy();                                                                // DELETE /todos/1
+-
+
+<------------------------- Event ----------------------------->
+- todoItem.on('event-name', function(){
+  alert('event-name happend!');
+});  // to listen an event on a model
+
+- todoItem.trigger('event-name');                                     // run the event
+- todoItem.on('change', doThing);                                     // backbone build in event, call donothing when any change in model
+- todoItem.set({description: 'demo description'}, {silent: true});    // set without triggering change event
+- todoItem.off('change', doThing);                                    // remove an event
+- events: {
+  "<event> <selector>": "<method>"
+};                                                                    // format of an event
+
+<-------------------------------- remove view on model destroy ---------------------------------->
+- var TodoView = Backbone.View.extend({
+  initialize: function(){
+    this.model.on('change', this.render, this);          // without third args render context will be 'window' not will be bound to 'todoView'
+    this.model.on('destroy', this.remove, this);
+  }
+});
+
+
+<---------------------------------------- history save ---------------------------------------->
+- Backhone.history.start();                     // pushState off (#todos/1)
+- Backhone.history.start({ pushState: true });  // pushState on (/todos/1)
+-
+
+<----- view theke collect k listen kora, jodi collection_a kono 'model' add hoi tahole view call hobe & oi view oi 'model' dia ekta 'view' create korbe and
+DOM e add kore dibe @codeSchool--->
+
+var AppointmentListView = Backbone.View.extend({
+  initialize: function(){
+	this.collection.on('add', this.addOne, this);  // collection k listen kortece.
+  },
+  render: function(){
+    this.collection.forEach(this.addOne, this);
+  },
+  addOne: function(model){                                       // 'model' dia new ekta view create kore DOM e add kore dicce
+    var appointmentView = new AppointmentView({model: model});
+    appointmentView.render();
+    this.$el.append(appointmentView.el);
+  }
+});
+
+<--------------------------------- organised router @codeSchool ------------------------------------------>
+var TodoApp = new (Backbone.Router.extend({
+	routes: {
+		"": "index",
+		"/todos/:id": "show"
+	},
+	initialize: function() {
+		this.todoList = new TodoList();
+		this.todosVeiw = new TodoListView({collection: this.todolist});
+		$('#app').append(this.todosView.el);
+	},
+	start: function(){
+		Backbone.history.start({pushState: true});
+	}
+	index: function(){
+		this.todoList.fetch();
+	}
+	show: function(){
+		this.todoList.focusOnTodoItem(id);
+	}
+}));
+
+<------ You'll want to create an instance of the AppointmentView, render it, and replace the contents of #app with its top-level element.
+
+Lastly, don't forget to fetch data from the server for the appointment.---->
+
+var AppRouter = Backbone.Router.extend({
+  routes: { "appointments/:id": "show" },
+  show: function(id){
+    var appointment = new Appointment({id: id});
+    var appointmentView = new AppointmentView({model: appointment});
+    appointmentView.render();
+    $('#app').html(appointmentView.el);
+    appointment.fetch();
+  }
+});
+<---- First, instead of assigning a Router class to AppRouter, just create the Router instance.
+
+Next, instead of passing in the appointmentList collection in initialize, create an instance of AppointmentList and assign it to this.appointmentList.
+
+Add a start function to the router to start our Backbone history with pushState on.
+
+Finally, call the router's start function from inside a jQuery ready function to ensure we don't start updating the DOM before it's ready. ------>
+
+
+var AppRouter = new (Backbone.Router.extend({
+  routes: { "appointments/:id": "show", "": "index" },
+
+  initialize: function(options){
+    this.appointmentList = new AppointmentList();
+  },
+
+  start: function(){
+    Backbone.history.start({pushState: true});
+  },
+
+  index: function(){
+    var appointmentsView = new AppointmentListView({collection: this.appointmentList});
+    appointmentsView.render();
+    $('#app').html(appointmentsView.el);
+    this.appointmentList.fetch();
+  },
+
+  show: function(id){
+    var appointment = new Appointment({id: id});
+    var appointmentView = new AppointmentView({model: appointment});
+    appointmentView.render();
+    $('#app').html(appointmentView.el);
+    appointment.fetch();
+  }
+}));
+
+
+$(function(){ AppRouter.start() });
+
+<------- ------>
+
+****************** Anatomy of Backbone.js Part 2 ************************
+
+<--------------------------- Reviewing how model data is fetched from server ---------------------------->
+
+<------------------------------ Customizing Collections ----------------------------->
+- var TodoItems = Backbone.Collection.extend({
+    comparator: function(todo1, todo2){
+      return todo1.get('status') < todo2.get('status');  // sort by status in reverse order
+    }
+});
+- var TodoItems = Backbone.Collection.extend({
+    comletedCount: function(){
+      return this.where({status: 'complete'}).length;   // returns filtered( only return completed lists) array of models
+    }
+});
+
+<------------------- Real Routes ------------------------>
+- var TodoRouter = new (Backbone.Router.extend({
+  routes: {
+    'search/:query': 'search',
+    'search/:query/p:page': 'search'
+    // 'search/:query(/p:page)': 'search'                  // (/p:page)  is optional route
+    '*path': 'notFound' // catch all routes
+  },
+- search: function(query, page){
+    page = page || 0;
+    query = decoradeURIComponent(query)                   // ../Hello%20World/ ->../Hello World,
+    console.log(query);
+    console.log(page);
+
+  }
+}))
+- TodoRouter.route(/^todos\/(\d+)$/. 'show')             // Each regex ((\d+)) capture group becomes a param
+- Advanced Regex Routes // need to know
+
+<---------- varying views ------------>
+- var TodoView = Backbone.View.extend({
+    initialize: function() {
+      this.listenTo(this.model, 'change', this.render); // View "listen to" a model
+    }
+})
+- todoView.stopListening();                             // stop all listeners for this view
+- todoView.remove();
+
+- var TodoForm = Backbone.View.extend({
+  template: _.template('<form>' +
+  '<input name=description value="<%= description  %>" />' +
+  '<button>Save</button></form>'),
+  events: {
+    'click button': 'save'
+    'submit': 'save' // will call 'save' method  on either click or pressing Enter/Return
+  },
+  save: function(e) {
+    e.preventDefault(); // prevent the defautl behavior of the form
+    var newDescription = this.$('input[name=description]').val(); // take the input field value.
+    this.model.save({description: newDescription}); // save() -> POST /todos {descriiption: 'Pickup Kids.'}
+  }
+})
+
+<--------- App organization ---------------->
+<---- skip links using events------>
+<ul>
+<li><a href="/completed" data-internal="true">Show Completed</a></li>
+<li><a href="/completed"</a></li>
+</ul>
+
+events: {
+  'click a[data-internal]': fucntion(e) {
+
+  }
+}
+
+<---------- Make read only model ---------->
+- method = "read", "create", "update", or "delete"
+- todoItem.fetch();
+- todoItem.save();
+
+- var TodoItem = Backbone.Model.extend({
+  sync: function(method, model, options){
+    if(method === "read"){
+      Backbone.sync(method, model, options);
+    } else {
+        console.error("You can not " + method + " the TodoItem model");
+    }
+  }
+})
+
+- How would we replace a server with localStorage?
+  - It's a browser site storage that most browser have
+  - localStorage.setItem(<key>, <value>)                  // set an item
+  - localStorage.getItem("aniaml")                        // get an item
+  - localStorage.remove()                                 // remove an item
+  - lovslStorage["animal"]                                // returns "cat"  object syntax
+
+- <script src="backbone-localstorage.js"/>
+
+
+<------------------- run project ----------------------->
+$ gulp
+<---------------------- show gulp command error details ------------->
+$ gulp prod
+$ debugger          // js debugger
+
+
+<------- get the current url ----------->
+- Backbone.history.getFragment();  // return the current url
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

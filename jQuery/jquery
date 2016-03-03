@@ -1,0 +1,116 @@
+************** CodeSchool ****************
+
+<----- Elaboration ------->
+- DOM (Document Object Model)
+
+
+<--------- Why should we use jQuery? ---------->
+- find: elements in an HTML document
+- change: HTML content
+- listen: to what a user does and react accordingly.
+- animate: content on the page
+- talk: over the network to fetch new content.
+
+<---------- Various ---------------->
+- jQuery("h1") = $("h1") // short and sweet syntax
+- $("h1").text("updating the text") // text() is a method offered by jQuery
+- $(document).ready(function(){
+	<code>
+}); // will only run this code once the DOM is "ready"
+
+<---------- Searching in the DOM --------------->
+- $("#id > li") // only select direct descendants
+- $(".class1, #id1") // comma allows to select multiple items
+- $("#id li:first") // select first item of the list
+- $("#id li:last") // select last item of the list
+- $("#id li:even") // select only even list (index start from 0)
+- $("#id li:odd") // select only odd list
+
+<---------- Traversing -------------->
+// traversal takes a bit more code, but it's faster
+$("#id").find("li") // here, $("#id") is selection and find("li") is traversal
+$("li").fast() // same as li:first
+$("li").last() // same as li:last
+$("li").first().next() // select the 2nd list item, it's method chaining
+$("li").first().parent() // select the parent of unordered list, walking up the DOM
+$("#id").children("li") // children(), unlike find(), only selects direct children, walking down the DOM
+
+<----------- manupulating the DOM ------------------->
+- var price = $('<p>Demo text</p>');
+- $(this).closest('.className').append(price);
+- $('.className').before(price) // puts the price node before .className
+- $('.className').after(price) // puts the price node down .className
+- $('.className').prepend(price) // puts the price node top (as a first child) of .className
+- $('.className').append(price) // puts the price node bottom (as a last child) .className
+
+# same as before, reference point comes at the end, some people think this is more readable
+$ price.insertBefore($('.className'));
+$ price.insertAfter($('.className'));
+$ price.prependTo($('.className'));
+$ price.appendTo($('.className'));
+
+<--------- Traversing and Filtering --------------->
+$('.className').on('click', 'button', function(){}); // Only target a 'button' if it inside a '.className', here function() is our event handler function
+$('.vacation').filter('.onsale') // finds elements with a call of .vacation and .onsale
+$('.vacation').filter('.onsale').addClass('newClass') // addClass() adding a .newClass
+
+******** retrieve data from html by jQuery *************
+<------ jQuery Object Method ------------>
+Mouse Event: click, focusin, mousedown, mousemove, mouseover, mouseenter, dbclick, focusout, mouseup, mouseout, mouseleave
+Keyboard Events: keypress, keydown, keyup
+FormEvents: blur, select, change, focus, submit
+
+.data(<name>) // get the value  (in html data-price)
+.data(<name>, <value>) // set the value of an attribute
+.slideDown() // show it
+.slideUp() // hide it
+.slideToggle // toggle between show and hide
+.val() // to get the input value
+.val(<new value>) // to set the input value
+.fadeIn()
+.fadeOut()
+.fadeToggle()
+.animate(<object>) // takes in a javaScript object similar to the .css() method
+.hasClass(<className>) // checks if a class exist or not
+
+
+
+<li class="vacation onsale" data-price='399.99'>
+</li>
+$('.vacation').first().data('price') // read from the 'data-price' attribute, we can retrieve data by data('price')
+
+$(this).closest('.confirmation').find('.ticket').slideDown() // closest() searches up through ancestors, find() searches down through children
+***********************
+
+<-------- Refactor using traversing --------------->
+$(this).closest('.vacation').append(price) //
+
+<-------- On DOM Load ------------>
+
+<-------- Expanding on on() --------->
+var price = $(this).closest('.vacation').data('price'); // price = '399.99'
+var price = +$(this).closest('.vacation').data('price'); // price = 399.99, convert the string into number
+
+<-------- link Layover ----------->
+event.stopPropagation() // the browser will still handle the click event but will prevent it from "bubbling up" to each parent node
+event.preventDefault() // the click event will "bubble up" but the browser won't handle it
+
+<-------- Taming CSS -------->
+$(this).css({'background-color': '#24839',
+			 'border-color': '1px solid #967'}) // passing in a js Object as an argument is a common jQuery pattern
+$(this).find('.price').show(); // same as display: block
+$(this).find('.price').hide()  // same as display: none
+$(this).toggleClass('classname') // add the class if $(this) doesn't have it
+
+<------ Animation ----------->
+$(this).animate({'top': '-10px'}) // default 400
+$(this).animate({'top': '-10px'}, 'fast') // speed 200
+$(this).animate({'top': '-10px', '200'})
+
+in css:  // make sure browser supports transition
+.vacation {
+transition: -10px;
+}
+.highlighted {
+	top: -10px;
+}

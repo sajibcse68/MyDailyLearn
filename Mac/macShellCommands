@@ -33,7 +33,9 @@ $ killall Finder
    	- Cmd + I, Cmd + option + I (to see single window)
 - Close window:
    	- Cmd + W
-- Show / hide the dock:
+- Enter/Exit full screen
+    - Cmd + ctrl + F
+- Show/hide the dock:
 	- Cmd + option + D
 - scrernshots:
     - Cmd + Shift + 3

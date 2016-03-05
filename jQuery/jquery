@@ -19,25 +19,29 @@
 }); // will only run this code once the DOM is "ready"
 
 <---------- Searching in the DOM --------------->
-- $("#id > li") // only select direct descendants
-- $(".class1, #id1") // comma allows to select multiple items
-- $("#id li:first") // select first item of the list
-- $("#id li:last") // select last item of the list
-- $("#id li:even") // select only even list (index start from 0)
-- $("#id li:odd") // select only odd list
+- $("#id > li")                        // only select direct descendants
+- $(".class1, #id1")                   // comma allows to select multiple items
+- $("#id li:first")                    // select first item of the list
+- $("#id li:last")                     // select last item of the list
+- $("#id li:even")                     // select only even list (index start from 0)
+- $("#id li:odd")                      // select only odd list
 
 <---------- Traversing -------------->
 // traversal takes a bit more code, but it's faster
-$("#id").find("li") // here, $("#id") is selection and find("li") is traversal
-$("li").fast() // same as li:first
-$("li").last() // same as li:last
-$("li").first().next() // select the 2nd list item, it's method chaining
-$("li").first().parent() // select the parent of unordered list, walking up the DOM
-$("#id").children("li") // children(), unlike find(), only selects direct children, walking down the DOM
+$("#id").find("li")                    // here, $("#id") is selection and find("li") is traversal
+$("li").fast()                         // same as li:first
+$("li").last()                         // same as li:last
+$("li").first().next()                 // select the 2nd list item, it's method chaining
+$("li").first().parent()               // select the parent of unordered list, walking up the DOM
+$("#id").children("li")                // children(), unlike find(), only selects direct children, walking down the DOM
 
 <----------- manupulating the DOM ------------------->
 - var price = $('<p>Demo text</p>');
 - $(this).closest('.className').append(price);
+- $('.className').before(price)          // puts the price node before .className
+- $('.className').after(price)           // puts the price node down .className
+- $('.className').prepend(price)         // puts the price node top (as a first child) of .className
+- $('.className').append(price)          // puts the price node bottom (as a last child) .className
 - $('.className').before(price) // puts the price node before .className
 - $('.className').after(price) // puts the price node down .className
 - $('.className').prepend(price) // puts the price node top (as a first child) of .className

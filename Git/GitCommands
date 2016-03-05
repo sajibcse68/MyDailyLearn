@@ -1,5 +1,5 @@
 Configure Git:
-
+--------------
 // global config
 $ git config --global user.name <your-name>
 $ git config --global user.email <your-email>
@@ -8,9 +8,9 @@ $ git config --global user.email <your-email>
 $ git config --local user.name <your-name>
 $ git config --local user.email <your-email>
 
-// we can see full configuration 
-$ git config --list                                             // write this in a repo
-
+$ git config --list                                             // see full configuration of git
+$ git config --global core.editor emacs                         //use emacs for interactive commands
+$ git config --global merge.tool opendiff                       //use opendiff for merging conflicts
 $ git config --global color.ui true                             // better visualization
 
 <---- Auto correct Line Feed ---->
@@ -23,10 +23,8 @@ $ git config --global alias.st status                           //git st -> git 
 $ git config --global alias.co checkout                         //git co -> git checkout
 $ git config --global alias.br branch                           // git br -> git branch
 
-// ...
-$ git config --global core.editor emacs                         //use emacs for interactive commands
-$ git config --global merge.tool opendiff                       //use opendiff for merging conflicts
-$ git config --list //see all the config
+
+
 
 Branching:
 ----------

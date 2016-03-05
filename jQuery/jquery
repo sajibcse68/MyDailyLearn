@@ -42,6 +42,10 @@ $("#id").children("li")                // children(), unlike find(), only select
 - $('.className').after(price)           // puts the price node down .className
 - $('.className').prepend(price)         // puts the price node top (as a first child) of .className
 - $('.className').append(price)          // puts the price node bottom (as a last child) .className
+- $('.className').before(price) // puts the price node before .className
+- $('.className').after(price) // puts the price node down .className
+- $('.className').prepend(price) // puts the price node top (as a first child) of .className
+- $('.className').append(price) // puts the price node bottom (as a last child) .className
 
 # same as before, reference point comes at the end, some people think this is more readable
 $ price.insertBefore($('.className'));

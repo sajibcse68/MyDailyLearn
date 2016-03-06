@@ -4,9 +4,15 @@
 
 
 *********************************** for ubutnu **********************************************
+
 <-------- Finding a File Containing a Particular Text String -------------->
 $ grep -R --color "sampleWord" <directory>   // see http://www.cyberciti.biz/faq/howto-search-find-file-for-text-string/
 // Pass the --color option to the grep command display matched text/words in color on the terminal
+
+$ sudo find / -type f -name jenkins.xml           // find a file
+$ sudo find / -type d -name jenkins               // find a directory
+$ sudo find / -type d -name plugins -ls
+
 
 <-------- add sudo permission for a user ----------->
 $ sudo visudo
@@ -14,7 +20,7 @@ $ sudo visudo
 root    ALL=(ALL:ALL) ALL
 jenkins ALL=(ALL:ALL) ALL
 
-<-------------- ----------------------->
+############################## SSH #########################################
 <--------- get SSH RSA Fingerprints ------------->
 $ ssh-keygen -lf ~/.ssh/id_rsa.pub
 
@@ -31,6 +37,43 @@ Host <my-servers.com>
 //
 echo "$SSH_AUTH_SOCK"
 
+<----------------- Multiple Accounts and SSH Keys -------------------->
+** Bitbucket does not allow us to use the same SSH key with more than one
+   Bitbucket account.
+
+1. Generate SSH Key:
+$ ssh-keygen -t rsa -C <email@example.com>
+
+2. For multiple Bitbucket accounts (and I assume GitHub too) we need multiple SSH Keys.
+   Generate another ssh key with a different name 'accountB':
+$ ssh-keygen -t rsa -f ~/.ssh/accountB -C "email@example.com"
+
+3. Create config file '~/.ssh/config' with contains similar to:
+$ nano ~/.ssh/config
+// paste this
+Host bitbucket.org
+  User git
+  Hostname bitbucket.org
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_rsa
+
+Host bitbucket-accountB
+  User git
+  Hostname bitbucket.org
+  PreferredAuthentications publickey
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/accountB
+
+4. Now clone from default account
+$ git clone git@bitbucket.org:username/project.git
+
+5. Clone from accountB account
+$ git clone git@bitbucket-accountB:username/project.git
+
+// see http://dbushell.com/2013/01/27/multiple-accounts-and-ssh-keys/
+
+############################### END SSH ################################
+
 <--------- add a Public Key ---------->
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys < add keys here >
 
@@ -45,34 +88,17 @@ sudo chown -R username:group directory
 $ ip addr
 
 <------------------------- java/jdk --------------------------------->
-ls -l 'which java'
+$ ls -l 'which java'
 /usr/libexec/java_home  // where is java home directory
 
 
 <------------------------ give access permission of a file ---------------------------------------------------------->
-chmod 777 /var/run/docker.sock
+$ chmod 777 /var/run/docker.sock
 
 <------------------------ list of user ---------------------------------------->
-cat /etc/passwd
+$ cat /etc/passwd
 <------------------------- add a user ----------------------------------------->
-sudo adduser <username>
-
-
-<-------- cursor movement -------->
-C + a:  Move to the start of the line.
-C + e:  Move to the end of the line.
-C + l:  Clear the screen, reprinting the current line at the top.
-M + f:  Move forward a word, where a word is composed of letters and digits.
-M + b:  Move backward a word.
-
-<--------  cut, kill and yank --->
-C-k Kill the text from the current cursor position to the end of the line.
-M-d Kill from the cursor to the end of the current word, or, if between words, to the end of the next word. Word boundaries are the same as those used by M-f.
-M-[DEL] Kill from the cursor the start of the current word, or, if between words, to the start of the previous word. Word boundaries are the same as those used by M-b.
-C-w Kill from the cursor to the previous whitespace. This is different than M- because the word boundaries differ.
-C-y Yank the most recently killed text back into the buffer at the cursor.
-M-y Rotate the kill-ring, and yank the new top. You can only do this if the prior command is C-y or M-y.
-
+$ sudo adduser <username>
 
 <----------------------- different color file or directoru means in ubuntu ---------------------------------------------->
 Blue color - Directory
@@ -86,7 +112,7 @@ Red - Archive file
 
 <------------------ Search inside text file ------------------------------>
 // search in 'gradle run' command
-gradle run | less
+$ gradle run | less
 
 // search from first
 /searchWord
@@ -96,11 +122,6 @@ gradle run | less
 
 // quite search
 :q
-
-<----------------------- find a file or directory -------------------------------------->
-sudo find / -type f -name jenkins.xml
-sudo find / -type d -name jenkins
-sudo find / -type d -name plugins -ls
 
 <----------------------- get PID ------------------------------------------------------->
 ps wwaux | grep jenkins
@@ -148,3 +169,18 @@ echo 'Hello' | sudo -S apt-get update
 
 <------------------------------------ show all users ------------------------------------------------------------------------>
 compgen -u
+
+<-------- cursor movement -------->
+C + a:  Move to the start of the line.
+C + e:  Move to the end of the line.
+C + l:  Clear the screen, reprinting the current line at the top.
+M + f:  Move forward a word, where a word is composed of letters and digits.
+M + b:  Move backward a word.
+
+<--------  cut, kill and yank --->
+C-k Kill the text from the current cursor position to the end of the line.
+M-d Kill from the cursor to the end of the current word, or, if between words, to the end of the next word. Word boundaries are the same as those used by M-f.
+M-[DEL] Kill from the cursor the start of the current word, or, if between words, to the start of the previous word. Word boundaries are the same as those used by M-b.
+C-w Kill from the cursor to the previous whitespace. This is different than M- because the word boundaries differ.
+C-y Yank the most recently killed text back into the buffer at the cursor.
+M-y Rotate the kill-ring, and yank the new top. You can only do this if the prior command is C-y or M-y.

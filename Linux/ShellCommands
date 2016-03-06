@@ -82,7 +82,7 @@ du -sh
 du -h                 // show all sub directory size
 
 <---------- change ownership of a file / directory -------------->
-sudo chown -R username:group directory
+sudo chown -R <username>:<group> <directory>
 
 <------------------------- see ip address of ubuntu 15.04 -------------------------------->
 $ ip addr

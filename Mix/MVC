@@ -1,0 +1,32 @@
+<-------- What is MVC (Mode View Controller) ------------>
+// defination
+- A design pattern that separates an app into distinct layers of functionality.
+// Brief History
+- First descrived by Trygve Reenskaug, 1979
+
+# Model:
+- Represents data
+- Interact with object of db
+- Naming conventon is db table name // e.g. posts.exten
+
+# Controller:
+- Gathers and processes data.
+- Naming conventions is 'model name' followed by 'underscore' then 'controller' // e.g. posts_controller.exten
+
+# View
+- Display output to the users
+
+
+                                    -----------
+                                    | Browser |
+                                    -----------
+                                         |
+                                         v
+                --------          --------------           --------
+                | Model | --->    | Controller |   ---->   | Model |
+                --------  <---    --------------   <----   --------
+                                                              | ^
+                                                              v |
+                                                            -------
+                                                            |  DB |
+                                                            -------

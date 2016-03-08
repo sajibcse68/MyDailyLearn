@@ -61,6 +61,7 @@ $ git stash save --keep-index
 Log:
 ----
 $ git log --oneline --decorate --all --graph           // see all commits with better visualization
+$ git log -p <file/directory>                          // Show change history for file/directory including diffs
 $ git log --pretty=oneline
 $ git log --oneline -p
 $ git log --oneline --stat
@@ -75,10 +76,10 @@ $ git rm --cached development.log                     //what it you're already t
 
 Recovery/Reset:
 ---------------
-$ git log                                             // see all the commits
+$ git log                                             // Show  all the change/commit history
 $ git show <commit hash>                              // to see what I have in a specific commit
 $ git reset --soft <commit hash>                      // back to a specifiq commit and exits the change
-$ git diff HEAD                                       // see the commit we reset & also see the diff with head
+$ git diff HEAD                                       // Show the changes to files not yet staged
 
 $ git clean -f -n                                     // clean untract file (dry run)
 $ git clean -dxf
@@ -127,6 +128,11 @@ $ git push -f origin <branch-name>                     // by force overwrite the
 
 Conflicts:
 ----------
+- Life being the pain in the proverbial that it is, our merge might have a conflict that we have to solve!
+  The git status command will help you understand where the conflict exists. If you open the file,
+  you’ll notice some markers: <<<<<<<, >>>>>>>, and =======, that surround the lines that conflict,
+  including the changes that each branch is trying achieve.
+
 - fix manually
 
 Prune Empty Commits:
@@ -192,17 +198,22 @@ $ git branch -d <hot-branch>                  // delete the release branch
 
 Other:
 ------
-$ git status
-$ git log
-$ git init
+$ git status            // List new or modified files not yet committed
+$ git fetch             // Get the latest changes from origin (no merge)
+$ git pull              // Fetch the latest changes from origin and merge
+$ git pull --rebase     // Fetch the latest changes from origin and rebase
+$ git init              // from scratch -- create a new local repository
+$ git diff --cached     // Show all staged and unstaged file changes
 $ git gui
 $ git difftool
 $ git gc
+$ git command --help    // When in doubt, use git help
 
 $ git diff b1..b2                                      //compare two brances, show you what is in b2 that is not in b1
+$ git diff <commit1> <commit2>                         // Show changes between two commits id
 $ git push -f origin HEAD^:master                      // "undo" the push from remote and keep the local intact
-
-
+$ git blame <file>                                     // List the change dates and authors for a file
+$ git show <commit>:<file>                             // Show the file changes for a commit id and/or file
 
 *********************************
 $ git push origin +1234^:master
@@ -231,13 +242,17 @@ $ git checkout -- <filename1> <filename2>            //discard all changes of fi
 $ git remote -v                                      //see all the remotes
 
 // Level 5
+$ git branch                                         // Show all local branches
 $ git branch -r                                      //see all the remote branch
+$ git branch -av                                     // list all local and remote branches
+$ git branch <branch-name>                           // Create a new branch
 $ git push origin :<branchname>                      //delete the remote branch
 $ git branch -d <branchname>                         //delete the loacal branch, show a warning
 $ git branch -D <branhcname>                         //force to delete branch
 $ git remote prune origin                            //cleanup remote deleted branch
 
 $ git tag                                            //show list of tag
+$ git tag <new-tag>                                  // tag the current commit
 $ git checkout <tagname>                             //checkout to a tag
 $ git tag -a v0.0.3 -m "version 0.0.3"
 $ git push --tag                                     // send tag to remote

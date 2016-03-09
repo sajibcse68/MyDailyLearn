@@ -4,6 +4,9 @@ defaults write com.apple.notificationcenterui bannerTime <SECONDS>
 <------- Details of network interface cards ------------->
 ip addr
 
+<------- Show details of mac system profile ------------------->
+$ system_profiler SPSoftwareDataType
+
 <--------- statistics of network interfaces -------------->
 ip link
 ip -s link

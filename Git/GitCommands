@@ -28,10 +28,26 @@ $ git config --global alias.br branch                           // git br -> git
 
 Branching:
 ----------
-$ git branch -D <branchName>
+- master -> default devel branch
+- origin -> default upstream branch
+- HEAD -> current branch
+- HEAD^ -> parent of HEAD
+- HEAD-4 -> great-great grandparent of HEAD
+- foo..bar -> from branch foo to branch bar
+
+$ git branch                                         // Show all local branches
+$ git branch -r                                      //see all the remote branch
+$ git branch -av                                     // list all local and remote branches
+$ git branch <branch-name>                           // Create a new branch
+$ git push origin :<branchname>                      //delete the remote branch
+$ git branch -d <branchname>                         //delete the loacal branch, show a warning
+$ git branch -D <branhcname>                         //force to delete branch
+$ git remote prune origin                            //cleanup remote deleted branch
+
 $ git push origin <branchame>
 $ git checkout -b <newBranchName>
 $ git push -u origin <branchname>
+
 
 Merging:
 --------
@@ -241,15 +257,6 @@ $ git checkout -- <filename1> <filename2>            //discard all changes of fi
 // Level 3
 $ git remote -v                                      //see all the remotes
 
-// Level 5
-$ git branch                                         // Show all local branches
-$ git branch -r                                      //see all the remote branch
-$ git branch -av                                     // list all local and remote branches
-$ git branch <branch-name>                           // Create a new branch
-$ git push origin :<branchname>                      //delete the remote branch
-$ git branch -d <branchname>                         //delete the loacal branch, show a warning
-$ git branch -D <branhcname>                         //force to delete branch
-$ git remote prune origin                            //cleanup remote deleted branch
 
 $ git tag                                            //show list of tag
 $ git tag <new-tag>                                  // tag the current commit

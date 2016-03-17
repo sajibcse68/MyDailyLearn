@@ -9,6 +9,7 @@ $ git config --local user.name <your-name>
 $ git config --local user.email <your-email>
 
 $ git config --list                                             // see full configuration of git
+$ git remote set-url origin <remote-url>                        // set remote url
 $ git config --global core.editor emacs                         //use emacs for interactive commands
 $ git config --global merge.tool opendiff                       //use opendiff for merging conflicts
 $ git config --global color.ui true                             // better visualization

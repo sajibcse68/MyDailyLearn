@@ -184,3 +184,11 @@ M-[DEL] Kill from the cursor the start of the current word, or, if between words
 C-w Kill from the cursor to the previous whitespace. This is different than M- because the word boundaries differ.
 C-y Yank the most recently killed text back into the buffer at the cursor.
 M-y Rotate the kill-ring, and yank the new top. You can only do this if the prior command is C-y or M-y.
+
+<----------- The Linux five basic commands a programmer should know about ---------->
+   ls, cd, mv, mkdir, rm
+// Additional basic commands:
+   echo, cat, man, pwd, cp, ln, less, grep, tail, ssh, reboot, poweroff
+// Bonus
+   vim
+But really, a programmer needs more than that.

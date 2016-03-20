@@ -13,6 +13,29 @@ $ sudo find / -type f -name jenkins.xml           // find a file
 $ sudo find / -type d -name jenkins               // find a directory
 $ sudo find / -type d -name plugins -ls
 
+<-------- Chmod permissions (flags) explained: 600, 0600, 700, 777, 100 etc.. ------------->
+Permissions:
+    1 - can execute
+    2 - can write
+    4 - can read
+
+The octal number is the sum of those free permissions:
+    3(1+2) - can execute and write
+    6(2+4) - can write and read
+
+Position of th digit in value:
+    1 - what owner can
+    2 - what users in the file group(class) can
+    3 - what users not in the file group(class) can
+
+Examples:
+    chmod 600 file - owner can read and write
+    chmod 700 file - owner can read, write and execute
+    chmod 666 file - all can read and write
+    chmod 777 file - all can read, write and execute
+
+Ref:
+1. http://www.zz9.co.za/chmod-permissions-flags-explained-600-0600-700-777-100-etc/
 
 <-------- add sudo permission for a user ----------->
 $ sudo visudo

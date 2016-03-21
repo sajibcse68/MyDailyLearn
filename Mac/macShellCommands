@@ -48,6 +48,8 @@ $ killall Finder
 	- Cmd + option + H (all application)
 - Application switcher:
 	- Cmd + Tab
+- Spotlight Search:
+    - cmd + space
 - Zoom in/out:
 	- Cmd + option + +/-
 - Force Quit:

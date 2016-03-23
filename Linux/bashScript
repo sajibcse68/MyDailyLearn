@@ -1,0 +1,9 @@
+<-------- Shell Types -------->
+- sh or Bourne Shell
+- bash or Bourne Again shell
+- csh or C shell
+- tcsh or TENEX C shell
+- ksh or the Korn shell
+
+** /etc/shells gives an overview of known shells
+

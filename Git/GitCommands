@@ -318,5 +318,7 @@ HEAD@{2} : refers to the 3rd listing in the overview of git reflog
 HEAD~~   : 2 commits older than HEAD
 HEAD^^   : 2 commits older than HEAD
 
-
+$ git branch --set-upstream master_upstream origin/master_upstream
+The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to
+Branch master_upstream set up to track remote branch master_upstream from origin.
 

@@ -215,12 +215,14 @@ $ git branch -d <hot-branch>                  // delete the release branch
 
 Other:
 ------
-$ git status            // List new or modified files not yet committed
-$ git fetch             // Get the latest changes from origin (no merge)
-$ git pull              // Fetch the latest changes from origin and merge
-$ git pull --rebase     // Fetch the latest changes from origin and rebase
-$ git init              // from scratch -- create a new local repository
-$ git diff --cached     // Show all staged and unstaged file changes
+$ git status                             // List new or modified files not yet committed
+$ git fetch                              // Get the latest changes from origin (no merge)
+$ git pull                               // Fetch the latest changes from origin and merge
+$ git pull --rebase                      // Fetch the latest changes from origin and rebase
+$ git pull origin <branch-name> --theirs // while pulling if conflicts accepts theirs
+$ git pull origin <branch-name> --ours   // while pulling if conflicts accepts ours (HEAD)
+$ git init                               // from scratch -- create a new local repository
+$ git diff --cached                      // Show all staged and unstaged file changes
 $ git gui
 $ git difftool
 $ git gc
@@ -318,5 +320,7 @@ HEAD@{2} : refers to the 3rd listing in the overview of git reflog
 HEAD~~   : 2 commits older than HEAD
 HEAD^^   : 2 commits older than HEAD
 
-
+$ git branch --set-upstream master_upstream origin/master_upstream
+The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to
+Branch master_upstream set up to track remote branch master_upstream from origin.
 

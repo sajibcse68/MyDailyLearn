@@ -7,3 +7,15 @@
 
 ** /etc/shells gives an overview of known shells
 
+<-------- Bash searches for commands as follows ------------>
+- Check whether the command contains slashes. If not, first check with the function list
+  to see if it contains a command by the name we are looking for.
+- If command is not a function, check for it in the build-in list.
+- If command is neither a function nor a build-in, look for it analyzing the directions listed in PATH.
+  Bash users a 'hash table' (data storage area in memory) to remember the full path names of executables so extensive
+  PATH searches can be avoided.
+- If the search is unsuccessfull, bash prints an error message and returns an exit status of 127.
+- If the search was seccessfull or if the command contains slashes, the shell executes the command in a
+  separate execution environment.
+- If execution fails because the file is not executable and not a directory, it is assumed to be a shell script.
+- If the command was not begun asynchronously, the shell waits for the command to  complete and collects its exit status.

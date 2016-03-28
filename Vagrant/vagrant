@@ -29,4 +29,6 @@ $ vagrant reload
 $ sudo apt-get install virtualbox-guest-dkms
 // then restart
 
-<-----
+<----- Install the correct version of virtualbox-guest-additions-iso inside the GUEST ------------>
+$ vagrant plugin install vagrant-vbguest
+

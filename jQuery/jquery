@@ -78,7 +78,27 @@ FormEvents: blur, select, change, focus, submit
 .animate(<object>)                               // takes in a javaScript object similar to the .css() method
 .hasClass(<className>)                           // checks if a class exist or not
 
+***** HTML5 allows us to create our own custom attributes to store data********
+// We need to be prepended with the word 'data', and words are separated by dashes.
+// html code
+<p id="para" data-foo="bar" data-foo-bar="true">
+    This is dummy text, dummy.
+</p>
+// Fetch data with js
+<script type=="text/javascript">
+  var para = document.getElementById('para');
+  para.getAttribute('data-foo');                        // Expect "bar"
+  para.dataset.bar);                                    // Grabs "data-bar", expect "baz"
+  para.dataset.fooBar);                                 // Grabs "data-foo-bar" (Magic!!), expect "true"
 
+// jQuery's data() can read also HTML% attributes but it also does something that getAttribute() doesn't.
+ $('#para').data('foo')                                 // Expect "bar"
+ $('#para').data('fooBar')                              // Grabs "data-foo-bar" (Magic!!), expect "true"
+
+// set a value
+$('#para').data('foo',"sajib");                         // foo = "sajib" (setter)
+</script>
+*************************** End ***************************************************
 
 <li class="vacation onsale" data-price='399.99'>
 </li>

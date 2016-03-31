@@ -1,0 +1,6 @@
+<----- assign a class running/stop by if-else checking a variable 'status' value -------->
+{{ 'running' if status == 'READY' else 'stop' }}
+{% if status=='READY' %} ready {% elif status=='bound' %} bound {% else %} creating {% endif %}
+
+<---------------- Rendering a template ------------->
+- this.$el.append(global.nunjucksEnv.render(<template-name>));

@@ -20,17 +20,23 @@
 
 - Ubuntu is a south african word means 'humanity to others'.
 
+- Unity desktop of ubuntu, KDE desktop of kubuntu, LXDE desktop of LUBUNTU.
+- different ubuntu:
+    - KDE   + UBUNTU => KUBUNTU
+    - XFCE  + UBUNTU => XUMUNTU
+    - LXDE  + UBUTNU => LUBUNTU
 
+********* Terminal *************
+- username@computer-name:~$  // $ means, terminal is ready for taking out commands.
+- sudo => Super-user-Do  // requires password
+- Keep the sudo password in memory for 15 minutes
 
+<---- The 10-character code of death ----------->
+- sudo rm -rf /
 
-
-
-
-
-
-
-
-
-
-
-
+<----- some fancy commands -------->
+- firefox, vlc, data, cal, df, uptime, whoami, uname, uname -a // show details all
+- Linux is case-sensitive.
+- man <any-command>               // show all possible command details
+- ifconfig                        // show different ports, ip , mac address etc.
+- whois <domain-name>             // e.g. whois www.google.com, show domain details

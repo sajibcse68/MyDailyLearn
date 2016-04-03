@@ -1,0 +1,198 @@
+Inventor: Guido Van Rosssum, 1991
+Framework: django
+Nokia: PyS60
+Game: PyGame
+naming: comedy show python, England
+
+- Python is a interprate language
+
+
+********** 1.1 Numbers and variables **************
+<--- Mathematical Operations ------->
+- exponent: 2 ** 3   // result: 8, double multiplication
+- negation: -2 + -3  // result: -5
+
+<----- Order of operations ------->
+PEMDAS: Parentheses Exponent Multiplication Division Addition Subtraction.
+
+<----- What should I name my variable ------>
+- no spaces in the name
+- no digits or special characters in front
+- lowercase, use underscores for spaces ( Pep 8 style guide recommends)
+- camel case, later words are capitalized (Pep 8 style guide does not recommend)
+
+// Pep 8 style guide: http://go.codeschool.com/pep8-styleguide
+
+<---- Importing modules - extra functionality --------->
+import math
+num_macaws = 4.8
+math.ceil(num_macaws)       // results: 5, ceil() is short for ceiling, which rounds up
+
+*********************** 1.2 Spam and Strings *************************
+- String: a sequence of characters that can store letters, numbers, or a combination -- anything!
+- Single and double qoutes work just be consistent    // input: "SPAM83", output: 'SPAM83'
+
+<---- script1.py -------->
+first_name = 'sajib'
+last_name = 'khan'
+full_name = first_name + ' ' + last_name;
+print(full_name)
+----- end script1.py ------
+
+<---- script2.py -------->
+# slice formula: variable[start:end+1]
+
+name = 'python'
+parse_name = name[2:5]      # boundary starts before index 2 and ends before index 5
+print(parse_name)           # output: tho
+
+a = name[0:2];              # shortcut: a = name[:2]
+print(a)                    # outout: py
+
+a = name[4:6];              # shortcut: a = name[4:]
+print(a)                    # outout: on
+
+#calculate the halfway index
+word1 = 'Good'
+half1 = len(word1)//2       # // means integer division, outoput: 2
+
+word2 = 'Evening'
+half2 = len(word2)//2       # // also rounds down to the nearest integer, 3.5 -> 3, output: 3
+----- end script2.py ------
+
+****************** Conditions and Input **************
+# there are 6 comparators in Python
+- less than (<)
+- less than equal to (<=)
+- equal to (==)
+- greater than (>)
+- greater than equal to (>=)
+- not equal to (!=)
+
+# Rules for whitespace in Python
+- indent with 4 spaces. howeve, anything will work as long as we're consistent.
+
+<----- script1.py -------->
+if num_knights == 1:
+    # Block start
+  print('Do this')                # 2 spaces
+  # irregular spacing is a no-no!
+    print('And this'              # 4 spaces
+print('Always this')
+
+# indentationError: unexpected indent
+# The PEP 8 style guide recommends 4 spaces
+<------end script1.py ---->
+
+<----- script2.py -------->
+# User input -- With the input() function
+# Ask the user to input the day of the week
+
+day = input('Enter the day of the week')    # prints out this statement and waits for user input
+print('You entered', day)
+
+# In python 2, raw_input() is used instead of input()
+<------end script2.py ---->
+
+******************* Flying through python ********************
+- List: is a container that can store anything we want
+- A python list is called an array in other languages, like JavaScript
+
+<---- script1.py ------->
+empty = []                               # an empty list
+nums = [10, 20.5, 30]                    # list of numbers
+words = ['cheerio', 'cheers']            # list of strings
+anything = [10, "hello", 123.45]         # list of mixed items
+
+slang = ['cheerio', 'ptp pip']
+print(slang)
+slang.append('cheeky')                   # append() adds a new items to the end of out list
+slang.remove('cheeky')                   # remove 'cheeky' from the list
+del slang[3]                             # need to know exact index
+del slang[:2]                            # delete first two items ( also deletes a slice )
+------ end script1.py ---
+
+<------- Dictionaries --------->
+
+#Trying to access a key that doesn't exist will cause an error
+slang['bloody']              # KeyError: 'bloody'
+
+# If we want to check if a word is in the map, use get()
+# Using get() is a best practice because if won't crash your program
+result = slang.get('bloody')        # get a value that might not be there!
+print(result)                       # output: None
+# None is a type that represents the absence of a value
+
+
+<------- For Loops and range --------->
+<----- script.py ------->
+# for loop
+total = 0
+prices = [2.50, 3.50, 4.50]
+
+for price in prices:
+    print('Price is', price)
+    total = total + price
+    print('total is', total)
+----- end script.py ----------
+
+<----- script1.py ------->
+#generate a random number
+import random
+r1 = random.random()            # number from [0.0, 1.0]
+r2 = random.choice([1,2,3,4,5]) # number from choice list
+r3 = random.randint(1, 1000)    # number in this range
+----- end script1.py ----------
+
+<----- script2.py ------->
+# specific with range()
+import random
+for i in range(10)            # range value 0 to 9 here
+    ticket = random.randint(1, 1000)
+
+for i in range(2010, 2016, 2)      # range(start, stop, step)
+    print(i)
+# output: 10 12 14 16
+
+manu_prices = {'knackered Span': 0.50, 'Pip pip Spam': 1.50,
+               'Squidgy Spam': 2.50, 'Smashing Spam': 3.50}
+
+# print defaults to having a space to separate each word. We can override this by
+# setting sep = empty string
+for name, price in menu_prices.items():
+    print(name, ': $', price, sep='')
+----- end script2.py ----------
+
+
+
+--------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

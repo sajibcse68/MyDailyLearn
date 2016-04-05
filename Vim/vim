@@ -1,0 +1,5 @@
+:q to quit (short for :quit)
+:q! to quit without saving (short for :quit!)
+:wq to write and quit (think write and quit)
+:x to write and quit (shorter than :wq)
+:qa to quit all (short for :quitall)

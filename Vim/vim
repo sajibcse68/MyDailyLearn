@@ -1,5 +1,59 @@
-:q to quit (short for :quit)
-:q! to quit without saving (short for :quit!)
-:wq to write and quit (think write and quit)
-:x to write and quit (shorter than :wq)
+:q -> to quit (short for :quit)
+:q! -> to quit without saving (short for :quit!)
+:w -> save changes to file
+:wq or :x -> to write and quit (think write and quit)
 :qa to quit all (short for :quitall)
+x -> delete character at cursor
+I -> insert at beginning of file
+a -> append at cursor
+A -> append at end of line
+excape -> exit insert mode
+
+<------- Modes ------------->
+- vim has two modes:
+    - insert (i)
+    - normal (Esc)
+<------- Basic movement ------->
+h: Move cursor left
+j: Move cursor down
+k: Move cursor up
+l: Move cursor right
+
+<-------- ----------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

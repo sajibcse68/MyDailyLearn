@@ -248,6 +248,14 @@ $ git push origin -f
 If master branch
 */
 
+<------ Recover a branch after deletion --------------->
+$ git reflog                                          // see all commits and select the last commit (SHA1) of deleted branch
+$ git checkout <sha>                                  // checkout that commit
+$ git checkout -b <deleted-branch-name>               // recover that branch after creating a new branch with same name
+// shortcut
+$ git checkout -b <branch> <sha>
+
+Ref: http://stackoverflow.com/questions/3640764/can-i-recover-branch-after-its-deletion-in-git
 
 <------- Git in CodeSchool ----->
 $ git reset --soft HEAD^                             //move to commit before `HEAD`

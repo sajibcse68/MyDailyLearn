@@ -10,14 +10,16 @@ $ git config --local user.email <your-email>
 
 $ git config --list                                             // see full configuration of git
 $ git remote set-url origin <remote-url>                        // set remote url
-$ git config --global core.editor emacs                         //use emacs for interactive commands
-$ git config --global merge.tool opendiff                       //use opendiff for merging conflicts
+$ git config --global core.editor emacs                         // use emacs for interactive commands
+$ git config --global merge.tool opendiff                       // use opendiff for merging conflicts
 $ git config --global color.ui true                             // better visualization
+$ git config core.ignorecase false                              // if we want case sensitive git
 
 <---- Auto correct Line Feed ---->
 $ git config --global core.autocrlf input                       // On unix line systems (Linux, OSX, etc)
 $ git config --global core.autocrlf true                        // On windows system
 $ git config --global core.autocrlf false                       // for Windows only project
+
 
 // set alias
 $ git config --global alias.st status                           //git st -> git status

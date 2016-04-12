@@ -132,12 +132,6 @@ $ git checkout <branchName>                           // return to present state
 $ git checkout <commit hash> <fileName>               // only file will go back to specific commit
 $ git checkout <branchName> -f                        // return to persent state
 
-Go forward/backward:
-$ git checkout <commit hash> // go to a specific commit hash
-$ git checkout <branchName>  // return to present state
-$ git checkout <commit hash> <fileName>  // only file will go back to specific commit
-$ git checkout <branchName> -f  // return to persent state
-
 Squash:
 $ git rebase -i HEAD~3                                 // merge last 3 commit in one, see https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/
 // in general I do
@@ -237,19 +231,6 @@ $ git push -f origin HEAD^:master                      // "undo" the push from r
 $ git blame <file>                                     // List the change dates and authors for a file
 $ git show <commit>:<file>                             // Show the file changes for a commit id and/or file
 
-*********************************
-$ git push origin +1234^:master
-/* want to remove the top commit. We want to force the master branch of the origin remote repository to the parent of 1234.
-
-Here git interprets x^ as the parent of x and + as a forced non-fastforward push.
-*/
-*********************************
-$ git reset HEAD^ --hard
-$ git push origin -f
-/*
-If master branch
-*/
-
 <------ Recover a branch after deletion --------------->
 $ git reflog                                          // see all commits and select the last commit (SHA1) of deleted branch
 $ git checkout <sha>                                  // checkout that commit
@@ -270,7 +251,6 @@ $ git checkout -- <filename1> <filename2>            //discard all changes of fi
 
 // Level 3
 $ git remote -v                                      //see all the remotes
-
 
 $ git tag                                            //show list of tag
 $ git tag <new-tag>                                  // tag the current commit
@@ -294,8 +274,7 @@ $ git rebase --abort
 $ git log --pretty=format:"%h $ad- %s [%an]" 
   /* %ad=author date, %an=author name
      %h=SHA hash, %s=subject, %d=ref names 
-   */ 
-
+   */
 
 <------ Git Real 2 -------->
 $ git rebase -i HEAD~3 // i-> interactive rebase, will popup the window and we can rearrange the window.
@@ -312,7 +291,6 @@ git commit --allow-empty -m k3; git push origin outbound
 - ~2 means up two levels in the hierarchy, via the first parent if a commit has more than one parent                                                                                             -
 - ^2 means the second parent where a commit has more than one parent (i.e. because it's a merge)
 - These can be combined, so HEAD~2^3 means HEAD's grandparent commit's third parent commit.
-
 G   H   I   J               A =      = A^0
  \ /     \ /                B = A^   = A^1     = A~1
   D   E   F                 C = A^2  = A^2
@@ -324,7 +302,6 @@ G   H   I   J               A =      = A^0
         \ /                 I = F^   = B^3^    = A^^3^
          A                  J = F^2  = B^3^2   = A^^3^2
 
-//
 HEAD~2   : 2 commits older than HEAD
 HEAD^2   : the second parent of HEAD, if HEAD was a merge, otherwise illegal
 HEAD@{2} : refers to the 3rd listing in the overview of git reflog

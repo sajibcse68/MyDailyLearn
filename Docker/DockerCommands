@@ -15,6 +15,9 @@ $ usermod -aG docker <username>
 <-------- run docker as a daemon ------------->
 $ docker run -d -p 4000:22 -i -t <image-name> /usr/sbin/sshd -D
 
+< ------------------------- Run and bind port image ----------------------------------------->
+$ docker run --rm -p 8080:8080 -t <image-name>
+
 <--------- remove all images by force -------------->
 $ docker rmi -f $(docker images -q)
 
@@ -42,12 +45,6 @@ $ docker build -t sajib/<image-name> .
 <-------------------------- ecec a container ------------------------------------------>
 $ docker exec -it e5f272d20a82 /bin/bash
 
-< ------------------------- Run and bind port image ----------------------------------------->
-$ docker run --rm -p 8080:8080 -t <image-name>
-
-<-------------------- run docker in as a daemon -------------------->
-$ docker run -d -p 4000:22 -i -t <image-name> /usr/sbin/sshd -D
-
 < ------------------------ ENTRYPOINT for jenkins ------------------------------------------>
 $ ENTRYPOINT ["/usr/bin/java", "-Djava.awt.headless=true", "-jar", "/usr/share/jenkins/jenkins.war", "--httpPort=8080", "--ajp13Port=-1"]
 
@@ -65,9 +62,7 @@ $ echo $id
 $ id=$(docker ps -l | sed -n '2p' | awk {'print substr($1,3)'})
 $ docker stop $id
 $ echo $id
-
 $ id=$(hostname)
-
 
 <----------------------------------- accepted docker.conf of docker 1.6 version ---------->
 description "Docker daemon"

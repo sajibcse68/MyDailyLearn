@@ -256,7 +256,14 @@ $ debugger          // js debugger
 <------- get the current url ----------->
 - Backbone.history.getFragment();  // return the current url
 
-
+<----------- The issues with React is that ------------------>
+- It is very new and most existing libraries are not ready.
+- React only handles the View part of MVC. You have to use you own components for M and C.
+- React is all JS, even CSS is changed via JS ( that will make it very difficult to work with for anyone not programmer)
+- I think JSX syntax is just ugly. React is like hand written GWT.
+- React has some good ideas but I don't like how it works. Also, it makes it hard to use other libraries like Jquery.
+  The thing I like about backbone is it is simple and stable. We can just any existing jquery library with it.
+.....
 
 
 

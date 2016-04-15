@@ -1,3 +1,5 @@
+- The tilde (~) lines indicate lines not in the file
+
 :q -> to quit (short for :quit)
 :q! -> to quit without saving (short for :quit!)
 :w -> save changes to file

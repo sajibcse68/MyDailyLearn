@@ -10,6 +10,7 @@ $ git config --local user.email <your-email>
 
 $ git config --list                                             // see full configuration of git
 $ git remote set-url origin <remote-url>                        // set remote url
+$ $ git remote -v                                               //see all the remotes
 $ git config --global core.editor emacs                         // use emacs for interactive commands
 $ git config --global merge.tool opendiff                       // use opendiff for merging conflicts
 $ git config --global color.ui true                             // better visualization
@@ -21,7 +22,7 @@ $ git config --global core.autocrlf true                        // On windows sy
 $ git config --global core.autocrlf false                       // for Windows only project
 
 
-// set alias
+<-------- set alias ---------------->
 $ git config --global alias.st status                           //git st -> git status
 $ git config --global alias.co checkout                         //git co -> git checkout
 $ git config --global alias.br branch                           // git br -> git branch
@@ -248,9 +249,6 @@ $ git remote add <name> <address/url>                // to add new remote
 $ git remote rm <name>                               // to remove a remote
 $ git push -u remote <name> <mybranch>
 $ git checkout -- <filename1> <filename2>            //discard all changes of file1 and file2
-
-// Level 3
-$ git remote -v                                      //see all the remotes
 
 $ git tag                                            //show list of tag
 $ git tag <new-tag>                                  // tag the current commit

@@ -1,8 +1,15 @@
-<-------- What is this! ---------->
+************** What is this! *********************
 - A modern approach to copy text to clipboard
 - No Flash. No dependencies. Just 3kb gzipped
 
-<---------- Copy content from html element ------------->
+
+********* We can just include a `data-clipboard-text` attribute in our trigger element ********
+<!-- Trigger -->
+<button class="btn" data-clipboard-text="Me used">
+    Copy to clipboard
+</button>
+
+************* Copy content from html element ************************
 <!-- Target -->
 <input id="foo" value="https://github.com/zenorocha/clipboard.js.git">
 
@@ -11,7 +18,7 @@
     <img src="assets/clippy.svg" alt="Copy to clipboard">
 </button>
 
-<---------- Cut content from html element ------------>
+************ Cut content from html element ***************************
 <!-- Target -->
 <input id="foo" value="https://github.com/zenorocha/clipboard.js.git">
 
@@ -20,7 +27,7 @@
     <img src="assets/clippy.svg" alt="Copy to clipboard">
 </button>
 
-<----------- Success/Error events -------->
+******************* Success/Error events **************************
 var clipboard = new Clipboard('.btn');
 
 clipboard.on('success', function(e) {
@@ -36,6 +43,6 @@ clipboard.on('error', function(e) {
     console.error('Trigger:', e.trigger);
 });
 
-<-------- Reference ---------->
+************************* Reference ***********************
 1. https://clipboardjs.com/#example-target
 2. https://github.com/zenorocha/clipboard.js (github)

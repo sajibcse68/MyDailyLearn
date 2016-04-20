@@ -1,0 +1,28 @@
+/******** Add a tooltip with js when button is clicked *************/
+// html part
+  <a class="btn" data-toogle="tooltip" data-placement="top">Click me</span></a>
+/*
+  N.B. `title` attributes missing,
+ `title` is adding dynamically by js,
+ `title` originally converted to `data-original-title`
+*/
+
+// Trigger this code for `click` event
+  const html = e.target.closest('.tooltip-show');
+  $(html).attr('data-original-title', 'Copied');
+  $(html).tooltip('show');
+
+// Trigger this code for `mouseleave` event
+  $('.tooltip-show').removeAttr('data-original-title');
+/************** End *********************/
+
+/**** check if specific html portion is visible or not ***********/
+  var html = $(this).closest('.box');
+  html.find('.file-data').toggle();
+  const btnTake = html.find('.show-hide-btn');
+  if(html.find('.file-data').is(':visible')) {
+     btnTake.text('Hide');
+  } else {
+     btnTake.text('Show');
+  }
+/******************** End ********************/

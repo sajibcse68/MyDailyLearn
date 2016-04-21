@@ -5,3 +5,9 @@
     - Manipulating & testing values
     - Creating composite function
 
+<------- _.each iteration -------------->
+  const selectTag = that.$('#namespace');
+  $(selectTag).html('');
+  _.each(namespaces, (it) =>  {
+    $(selectTag).append('<option>' + it + '</option>');
+  });

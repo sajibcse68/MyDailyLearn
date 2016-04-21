@@ -4,3 +4,22 @@
 
 <---------------- Rendering a template ------------->
 - this.$el.append(global.nunjucksEnv.render(<template-name>));
+
+<--------- iterate loop in html template, items is an array ------------->
+{% for item in items %}
+  <li>{{ item.title }}</li>
+{% else %}
+  <li>This would display if the 'item' collection were empty</li>
+{% endfor %}
+
+<------- iterate loop through object/map ----------------------->
+{% for key, value in ob %}
+   The value of {{ key }} is {{ value }}
+{% endfor %}
+
+
+
+
+
+
+

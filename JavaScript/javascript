@@ -1,19 +1,18 @@
-/******** Add a tooltip with js when button is clicked *************/
+/******** Change the tooltip value with js when button is clicked *************/
 // html part
-  <a class="btn" data-toogle="tooltip" data-placement="top">Click me</span></a>
+  <a class="btn" data-toogle="tooltip" data-placement="top" data-original-title="Copy">Click me</span></a>
 /*
-  N.B. `title` attributes missing,
- `title` is adding dynamically by js,
- `title` originally converted to `data-original-title`
+  N.B. `data-original-title` is changing(Copy/Copied) dynamically by js,
+ can also use `title`, `title` originally converted to `data-original-title`
 */
 
 // Trigger this code for `click` event
   const html = e.target.closest('.tooltip-show');
-  $(html).attr('data-original-title', 'Copied');
+  $(html).removeAttr('data-original-title').attr('data-original-title', 'Copied');
   $(html).tooltip('show');
 
 // Trigger this code for `mouseleave` event
-  $('.tooltip-show').removeAttr('data-original-title');
+  $(('.tooltip-show')).removeAttr('data-original-title').attr('data-original-title', 'Copy');
 /************** End *********************/
 
 /**** check if specific html portion is visible or not ***********/

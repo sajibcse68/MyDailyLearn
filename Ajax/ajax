@@ -18,6 +18,7 @@ Status:
 
 <---- sample ajax call ---------->
 $('.confirmation').on('click', 'button', function() {
+  const that = this;
   $.ajax('confirmation.html', {
     success: function(resp) {
       ...
@@ -25,12 +26,25 @@ $('.confirmation').on('click', 'button', function() {
     error: function(req, errorType, errorMessage) {
       ...
     },
+    data: $('form').serialize(),                        // Used to merge all form field as submission
     timeout: 3000,
-    beforeSend: function() {       <!-- Runs before the ajax call -->
+    context: that,                                      // Allows us to set the value of `this` inside our callbacks
+    dataType: 'json',                                   // Parse the response as json
+    beforeSend: function() {                            // Runs before the ajax call
       $(.confirmation').addClass('is-loading');
     },
-    complete: function() {         <!-- Runs after both success and error -->
+    complete: function() {                              // Runs after both success and error
       $('confirmation').removeClass('is-loading');
     }
   }
 }
+
+<-------- jquery advanced events ------------->
+$('button').on('click', function() { ... })        // create an event
+$('button').off('click')                           // destroy all events on button click
+$('button'.trigger('click');                       // similar to if the user clicked the button
+
+
+<---------------- note -------------------->
+- Sometimes jQuery change the value of `this`
+- Inside AJAX callbacks `this` is set to the AJAX settings

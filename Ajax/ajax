@@ -15,3 +15,22 @@ Status:
 -------
     200 -> OK
     404 -> Page not found
+
+<---- sample ajax call ---------->
+$('.confirmation').on('click', 'button', function() {
+  $.ajax('confirmation.html', {
+    success: function(resp) {
+      ...
+    },
+    error: function(req, errorType, errorMessage) {
+      ...
+    },
+    timeout: 3000,
+    beforeSend: function() {       <!-- Runs before the ajax call -->
+      $(.confirmation').addClass('is-loading');
+    },
+    complete: function() {         <!-- Runs after both success and error -->
+      $('confirmation').removeClass('is-loading');
+    }
+  }
+}

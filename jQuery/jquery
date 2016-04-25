@@ -139,3 +139,15 @@ transition: -10px;
 .highlighted {
 	top: -10px;
 }
+
+<--------------- Promise (Pretty advanced)-------------------->
+var promise = $.Deferred();            // jQuery method for creating a promise object
+
+promise.resolve(value);                // Calls the done callback
+promise.done(function(value){});       // Similar to AJAX success callback
+
+promise.reject(value);                 // Calls the fail callback
+promise.fail(function(value){});       // Similar to AJAX error callback
+
+$.when(<promise1>, <promise2>...)      // Here parameter can't be array, only promises separated by comas
+.then(function(p1Data, p2Data){});     // Callback data is in the same order as the promises

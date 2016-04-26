@@ -151,3 +151,54 @@ promise.fail(function(value){});       // Similar to AJAX error callback
 
 $.when(<promise1>, <promise2>...)      // Here parameter can't be array, only promises separated by comas
 .then(function(p1Data, p2Data){});     // Callback data is in the same order as the promises
+
+- Rejections heppen when a promise is explicitly rejected, but also implicitly if an error is thrown in theconstructor callback.
+
+    a1().then(fucntion() {                      |      a1 ---> success --> a2
+        return a2();                            |      a1 ---> Fail    --> aRecovery1
+    }).then (function() {                       |
+        return a3();                            |      a2 ---> success --> a3
+    }).catch(function(err) {                    |      a2 ---> Fail    --> aRecovery1
+        return aRecovery1();                    |
+    }).then(function() {                        |      a3 ---> success --> a4
+        return a4();                            |      a1 ---> Fail    --> aRecovery1
+    }, function(function(err) {                 |
+        return aRecovery2();                    |      aRecovery1 ---> success --> a4
+    }).catch(function(err) {                    |      aRecovery1 ---> Fail    --> aRecovery2
+       console.log('Don't worry about it!);     |
+    }).then(function() {                        |      a4 ---> success --> All's done
+       console.log('All's done');               |      a4 ---> Fail    --> Don't worry about it
+    }                                           |
+                                                |      aRecovery2 ---> success --> All's done
+                                                |      aRecovery2 ---> Fail    --> Don't worry about it
+                                                |
+                                                |      Don't worry about it ---> success --> All's done
+                                                |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -54,6 +54,9 @@ $ sudo apt-get install lxc-docker-1.6.0
 <--------------------- edit docker config file  --------------------->
 export DOCKER_HOST=tcp://$HOST:2376 DOCKER_TLS_VERIFY=1
 
+<------------ push an image ---------------------->
+$ docker push <username>/<image_name>:<tag>
+
 <--------------------    ---------------------->
 '-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock'
 

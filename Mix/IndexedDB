@@ -1,0 +1,13 @@
+<------------------- What is IndexedDB ---------------------->
+- IndexedDB is a way for you to persistently store data inside a user's browser.
+Because it lets you create web applications with rich query abilities regardless of network availability,
+your applications can work both online and offline.
+
+<------------------- Basic Pattern ---------------->
+The basic pattern that IndexedDB encourages is the following:
+
+- Open a database.
+- Create an object store in the database.
+- Start a transaction and make a request to do some database operation, like adding or retrieving data.
+- Wait for the operation to complete by listening to the right kind of DOM event.
+- Do something with the results (which can be found on the request object).

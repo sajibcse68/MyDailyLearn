@@ -134,7 +134,6 @@ $ git checkout <commit hash> <fileName>               // only file will go back 
 $ git checkout <branchName> -f                        // return to persent state
 
 Squash:
-$ git rebase -i HEAD~3                                 // merge last 3 commit in one, see https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/
 // in general I do
 $ git reset --soft HEAD~3                              // undo last 3 commits, remains all the changes in local
 $ git add --all; git commit -m 'new squash message'    // commit the 3 previous commits in one
@@ -162,7 +161,27 @@ Cherry-pick:
 - git cherry-pick --no-commit <commit-hash> <commit-hash>     // --no-commit pulls in changes and stages them, but doesn't commit
 - git cherry-pick -x <commit-hash>                            // -x: keep track where the commit came from
 - git cherry-pick --signoff <commit-hash>                     // --signoff add current users name to commit message
- 
+
+Rebase :
+--------
+$ git checkout admin_branch
+$ git rebase master // merge all commits of admin_branch after master's commits
+$ git checkout master
+$ git checkout -b <history_master>  // backup master branch if necessary
+$ git merge admin_branch
+
+$ git rebase --continue
+$ git rebase --skip
+$ git rebase --abort
+
+$ git rebase -i HEAD~3 // i-> interactive rebase, will popup the window and we can rearrange the window.
+$ write 'reword' replacing 'pick' // change the commit message
+$ write 'edit' for stopping a commit that is already committed, then 'git reset HEAD^' (--soft), then do two commits.
+$ git rebase --continue // finish the rebase
+
+$ git rebase -i HEAD~3                                 // merge last 3 commit in one, see https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/
+
+
 SubModules: (always push to two repo, first to submodules then parent repo)
 ---------------------------------------------------------------------------
 - git submodule add git@example.com:css.git                      // add a submodule in a git project, also create a .gitmodules file
@@ -172,7 +191,6 @@ SubModules: (always push to two repo, first to submodules then parent repo)
 - git push --recurse-submodules=check                            // will abort a push it we haven't pushed a submodule. (run in parent dir )
 - git push --recurse-submodules=on-demand                        // push to parent repo, then it'll push to submodule automatically.
 - git config alias.pushall "push --recurse-submodules=on-demand" // alias   
-
 
 ======================== mastering on github =======================================
 
@@ -256,18 +274,6 @@ $ git checkout <tagname>                             //checkout to a tag
 $ git tag -a v0.0.3 -m "version 0.0.3"
 $ git push --tag                                     // send tag to remote
 
-// Lavel 6
-$ git checkout admin_branch
-$ git rebase master // merge all commits of admin_branch after master's commits
-$ git checkout master
-$ git checkout -b <history_master>  // backup master branch if necessary
-$ git merge admin_branch
-
-$ git rebase --continue
-$ git rebase --skip
-$ git rebase --abort
-
-// Level 7 
 
 $ git log --pretty=format:"%h $ad- %s [%an]" 
   /* %ad=author date, %an=author name
@@ -275,11 +281,8 @@ $ git log --pretty=format:"%h $ad- %s [%an]"
    */
 
 <------ Git Real 2 -------->
-$ git rebase -i HEAD~3 // i-> interactive rebase, will popup the window and we can rearrange the window.
-$ write 'reword' replacing 'pick' // change the commit message
-$ write 'edit' for stopping a commit that is already committed, then 'git reset HEAD^' (--soft), then do two commits.
 // HEAD^ means the first parent of the tip of the current branch, HEAD^2 = second parent of current branch, HEAD~1 / HEAD~2 means always first parent (http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
-$ git rebase --continue // finish the rebase
+
 
 git commit --allow-empty -m k3; git push origin outbound
 

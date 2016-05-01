@@ -132,6 +132,13 @@ $(this).animate({'top': '-10px'})                              // default 400
 $(this).animate({'top': '-10px'}, 'fast')                      // speed 200
 $(this).animate({'top': '-10px', '200'})
 
+<------- write a jQuery Plugin --------->
+$.fn.validation = function() {
+// validation is the name of our plugin.
+// using .fn makes this plugin in all jQuery object.
+}
+
+
 in css:                                                        // make sure browser supports transition
 .vacation {
 transition: -10px;

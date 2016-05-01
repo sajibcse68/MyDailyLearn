@@ -25,3 +25,11 @@
      btnTake.text('Show');
   }
 /******************** End ********************/
+
+
+
+<------------------ JavaScript: The Good Parts ------------------>
+- 100 and 1e2 are the same number
+- `NaN` is not equal to any value, including itself. Detect `NaN` with the `isNaN(number)` function.
+- `Infinity` is any value greater that 1.79769313486231570e+308.
+-

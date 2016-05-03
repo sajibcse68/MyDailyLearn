@@ -1,0 +1,10 @@
+<---------------- docker install in Mac OS X directly ------------------->
+- Install docker toolbox from here .. https://docs.docker.com/mac/step_one/
+
+ // After installation, the Docker Quickstart Terminal on my Mac failed to start as it is instructed on the
+ // installation instructions. However, if you have the same problem, you don’t need to panic. It’s not necessary
+ // to use the Docker Quickstart Terminal and it’s straightforward to simply run the commands from any terminal. I use iTerm 2.
+
+$ docker-machine start default                          // Start docker-machine
+$ eval $(docker-machine env default)                    // Set up environment as instructed
+$ docker run hello-world                                // Test docker is working

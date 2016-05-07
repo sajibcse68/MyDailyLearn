@@ -265,6 +265,7 @@ $ git commit --amend -m 'new commit message'         //add to the last commit
 $ git reset --hard HEAD^^                            //undo last commit and all changes
 $ git remote add <name> <address/url>                // to add new remote
 $ git remote rm <name>                               // to remove a remote
+$ git remote rename <present-name> <new-name>        // to rename a remote
 $ git push -u remote <name> <mybranch>
 $ git checkout -- <filename1> <filename2>            //discard all changes of file1 and file2
 

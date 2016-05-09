@@ -1,6 +1,9 @@
 <-------- see all the vagrant box ------>
 $ vagrant box list
 
+<--------- add a vagrant box ------------->
+$ vagrant box add <box-name>                            // e.g. box-name = laravel/homestead
+
 <-------- initialize a vagrant box ------>
 $ vagrant init <name of vagrantbox>
 

@@ -59,6 +59,12 @@ $('.className').on('click', 'button', function(){});        // Only target a 'bu
 $('.vacation').filter('.onsale')                            // finds elements with a call of .vacation and .onsale
 $('.vacation').filter('.onsale').addClass('newClass')       // addClass() adding a .newClass
 
+<---------- Redirect url onclick ------------------>
+$('.go-signup').on('click', function(e) {
+  e.preventDefault();
+  window.location.href = '/signup';
+});
+
 ******** retrieve data from html by jQuery *************
 <------ jQuery Object Method ------------>
 Mouse Event: click, focusin, mousedown, mousemove, mouseover, mouseenter, dbclick, focusout, mouseup, mouseout, mouseleave

@@ -1,0 +1,14 @@
+<---------- Backbone url parse in router.js ------------->
+// in routes
+'abc?*queryString': 'configmapsDescribe'
+
+// in `configmapsDescribe` function
+configmapsDescribe(cluster) {
+  $.urlParam = (name) => {
+    const results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    return results[1] || 0;
+  };
+
+  const name = $.urlParam('name');
+  const namespace = $.urlParam('namespace');
+}

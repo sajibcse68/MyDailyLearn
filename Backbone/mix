@@ -12,3 +12,6 @@ configmapsDescribe(cluster) {
   const name = $.urlParam('name');
   const namespace = $.urlParam('namespace');
 }
+
+<------- get the current url/route ----------->
+- Backbone.history.getFragment();  // return the current url

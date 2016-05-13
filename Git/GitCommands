@@ -21,14 +21,10 @@ $ git config --global core.autocrlf input                       // On unix line 
 $ git config --global core.autocrlf true                        // On windows system
 $ git config --global core.autocrlf false                       // for Windows only project
 
-
 <-------- set alias ---------------->
 $ git config --global alias.st status                           //git st -> git status
 $ git config --global alias.co checkout                         //git co -> git checkout
 $ git config --global alias.br branch                           // git br -> git branch
-
-
-
 
 Branching:
 ----------
@@ -181,7 +177,6 @@ $ git rebase --continue // finish the rebase
 
 $ git rebase -i HEAD~3                                 // merge last 3 commit in one, see https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/
 
-
 SubModules: (always push to two repo, first to submodules then parent repo)
 ---------------------------------------------------------------------------
 - git submodule add git@example.com:css.git                      // add a submodule in a git project, also create a .gitmodules file
@@ -193,7 +188,6 @@ SubModules: (always push to two repo, first to submodules then parent repo)
 - git config alias.pushall "push --recurse-submodules=on-demand" // alias   
 
 ======================== mastering on github =======================================
-
 
 ********************* Tags and Releases *****************************
 
@@ -218,16 +212,11 @@ $ git checkout master
 $ git merge <hot-branch> -m "Merge hotfix"
 $ git branch -d <hot-branch>                  // delete the release branch
 
-<----- release in github ------->
-
-
 <------ github pages ----------->
 - for a username github page url will be '<username>.github.io'               // sajibcse68.github.io
 - for a project github page url will be '<username.githun.io/<projectname>'   // sajibcse68.github.io/dojo_rules
 
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 Other:
 ------
 $ git status                                   // List new or modified files not yet committed
@@ -275,7 +264,6 @@ $ git checkout <tagname>                             //checkout to a tag
 $ git tag -a v0.0.3 -m "version 0.0.3"
 $ git push --tag                                     // send tag to remote
 
-
 $ git log --pretty=format:"%h $ad- %s [%an]" 
   /* %ad=author date, %an=author name
      %h=SHA hash, %s=subject, %d=ref names 
@@ -284,10 +272,7 @@ $ git log --pretty=format:"%h $ad- %s [%an]"
 <------ Git Real 2 -------->
 // HEAD^ means the first parent of the tip of the current branch, HEAD^2 = second parent of current branch, HEAD~1 / HEAD~2 means always first parent (http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
 
-
 git commit --allow-empty -m k3; git push origin outbound
-
-.
 
 <------ Difference between HEAD~ and HEAD^ ----------->
 - ~2 means up two levels in the hierarchy, via the first parent if a commit has more than one parent                                                                                             -
@@ -313,4 +298,3 @@ HEAD^^   : 2 commits older than HEAD
 $ git branch --set-upstream master_upstream origin/master_upstream
 The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to
 Branch master_upstream set up to track remote branch master_upstream from origin.
-

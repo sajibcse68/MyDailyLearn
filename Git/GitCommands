@@ -1,6 +1,6 @@
 Configure Git:
 --------------
-// global config
+// global config (~/.gitconfig)
 $ git config --global user.name <your-name>
 $ git config --global user.email <your-email>
 
@@ -46,7 +46,6 @@ $ git remote prune origin                            //cleanup remote deleted br
 
 $ git push origin <branchame>
 $ git checkout -b <newBranchName>
-$ git push -u origin <branchname>
 
 
 Merging:
@@ -60,6 +59,7 @@ Workflow:
 $ git add .
 $ git add --all
 $ git commit -am 'commit message'                     // add & commit
+$ git commit --allow-empty -m k3;                     // commit empty change
 $ git stash = git stash save                          // save the changes in temp box
 $ git stash save "provide a stash message"            // we can provide a stash message when stashing.
 $ git stash apply = git stash apply stash@{0}         // return the codes I cleaned before
@@ -269,12 +269,8 @@ $ git log --pretty=format:"%h $ad- %s [%an]"
      %h=SHA hash, %s=subject, %d=ref names 
    */
 
-<------ Git Real 2 -------->
-// HEAD^ means the first parent of the tip of the current branch, HEAD^2 = second parent of current branch, HEAD~1 / HEAD~2 means always first parent (http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
-
-git commit --allow-empty -m k3; git push origin outbound
-
 <------ Difference between HEAD~ and HEAD^ ----------->
+- HEAD^ means the first parent of the tip of the current branch, HEAD^2 = second parent of current branch, HEAD~1 / HEAD~2 means always first parent (http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
 - ~2 means up two levels in the hierarchy, via the first parent if a commit has more than one parent                                                                                             -
 - ^2 means the second parent where a commit has more than one parent (i.e. because it's a merge)
 - These can be combined, so HEAD~2^3 means HEAD's grandparent commit's third parent commit.

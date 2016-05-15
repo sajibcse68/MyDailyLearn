@@ -1,0 +1,128 @@
+
+
+
+
+<---------- Laravel follows at least 8-10 design pattern --------------->
+- Adaptive   pattern
+- Ripository Pattern
+- Facade     Pattern
+- Factory    Pattern
+
+<-------- Laravel has two entry points ------->
+// two entry point. So, it has two karnel file.
+
+- Http
+- Console
+
+<------------- Laravel folder structure ------------------>
+Laravel5/
+├── app/
+│    ├── Commands/
+│    │    └── Command.php
+│    ├── Console/
+│ │
+│ ├── Events/
+│    │    └── Event.php
+│    ├── Exceptions/
+├── Commands/
+│    └── Inspire.php
+└── Kernel.php
+│    │    └── Handler.php
+│    ├── Handlers/
+│    │    ├── Commands/
+│    │    └── Events/
+│ ├── Http/
+│    │    ├── Controllers/
+│ │  │
+│ │  │    ├── Middlewares/
+│ │  │    │    ├── Authenticate.php
+│ │  │    │    └── RedirectIfAuthenticated.php
+│ │  │    ├── Requests/
+│ │  └── Request.php
+│    │    ├── Kernel.php
+│    │    └── routes.php
+│    ├── Providers/
+│    ├── Services/
+│    │    └── Registrar.php
+│    └── User.php
+├── AppServiceProvider.php
+├── BusServiceProvider.php
+├── ConfigServiceProvider.php
+├── EventServiceProvider.php
+└── RouteServiceProvider.php
+├── bootstrap/
+│ ├── app.php
+│    └── autoload.php
+├── config/
+│ ├── app.php
+│    ├── auth.php
+│    ├── cache.php
+│    ├── compile.php
+│    ├── database.php
+│    ├── filesystems.php
+│    ├── mail.php
+│    ├── queue.php
+│    ├── services.php
+│    ├── session.php
+│    └── view.php
+├── database/
+│    ├── migrations/
+│    │    ├── create_users_table.php
+│    │    └── create_password_resets_table.php
+│ └── seeds/
+│ └── DatabaseSeeder.php ├── public/
+│ ├── css/
+│    │    └── app.css
+│    ├── index.php
+│    ├── .htaccess
+│    ├── favicon.ico
+│    └── robots.txt
+├── resources/
+│ ├── assets/
+│ ├── lang/
+│ └── views/
+│ ├── auth/
+└── en/
+     ├── pagination.php
+├── password.php
+└── validation.php
+│ ├── emails/
+│         │    └── password.blade.php
+│ ├── errors/
+│    └── logs/
+├── tests/
+├── login.blade.php
+├── password.blade.php
+├── register.blade.php
+└── reset.blade.php
+│         │    └── 503.blade.php
+│         ├── app.blade.php
+│         ├── home.blade.php
+│         └── welcome.blade.php
+├── storage/
+│ ├── app/
+│    ├── framework/
+├── cache/
+├── sessions/
+├── views/
+├── compiled.php
+└── services.json
+│    ├── ExampleTest.php
+│    └── TestCase.php
+├── vendor/
+│ ├── bin/
+│ ├── ...
+│    └── autoload.php
+├── .env
+├── .env.example
+├── .gitattributes
+├── .gitignore
+├── artisan
+├── composer.json
+├── composer.lock
+├── Gulpfile.js
+├── package.json
+├── phpspec.yml
+├── phpunit.xml
+├── readme.md
+└── server.php

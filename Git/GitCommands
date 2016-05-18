@@ -44,9 +44,7 @@ $ git branch -d <branchname>                         //delete the loacal branch,
 $ git branch -D <branhcname>                         //force to delete branch
 $ git remote prune origin                            //cleanup remote deleted branch
 
-$ git push origin <branchame>
 $ git checkout -b <newBranchName>
-
 
 Merging:
 --------
@@ -116,7 +114,9 @@ $ git add task2.txt                                   // add any file
 $ git commit --amend -m 'new message'                 // merge current change to previous commit and will also change the commit hash
 
 Push & Pull:
-$ git push -r origin <branch-name> // by force overwrite the remote branch
+------------
+$ git push origin <branchame>                         // push a branch
+$ git push -r origin <branch-name>                    // by force overwrite the remote branch
 
 $ git remote add origin git@github.com....
 $ git remote show                                     // can have multiple remote
@@ -130,10 +130,31 @@ $ git checkout <commit hash> <fileName>               // only file will go back 
 $ git checkout <branchName> -f                        // return to persent state
 
 Squash:
+-------
 // in general I do
 $ git reset --soft HEAD~3                              // undo last 3 commits, remains all the changes in local
 $ git add --all; git commit -m 'new squash message'    // commit the 3 previous commits in one
 $ git push -f origin <branch-name>                     // by force overwrite the remote branch and also commits
+
+Rebase :
+--------
+$ git checkout admin_branch
+$ git rebase master                                    // merge all commits of admin_branch after master's commits
+$ git checkout master
+$ git checkout -b <history_master>                     // backup master branch if necessary
+$ git merge admin_branch
+
+$ git rebase --continue
+$ git rebase --skip
+$ git rebase --abort
+
+$ git rebase -i HEAD~3                                 // i-> interactive rebase, will popup the window and we can rearrange the window.
+$ write 'reword' replacing 'pick'                      // change the commit message
+$ write 'edit' for stopping a commit that is already committed, then 'git reset HEAD^' (--soft), then do two commits.
+$ git rebase --continue                                // finish the rebase
+
+$ git rebase -i HEAD~3                                 // merge last 3 commit in one, see https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/
+
 
 Conflicts:
 ----------
@@ -158,24 +179,6 @@ Cherry-pick:
 - git cherry-pick -x <commit-hash>                            // -x: keep track where the commit came from
 - git cherry-pick --signoff <commit-hash>                     // --signoff add current users name to commit message
 
-Rebase :
---------
-$ git checkout admin_branch
-$ git rebase master // merge all commits of admin_branch after master's commits
-$ git checkout master
-$ git checkout -b <history_master>  // backup master branch if necessary
-$ git merge admin_branch
-
-$ git rebase --continue
-$ git rebase --skip
-$ git rebase --abort
-
-$ git rebase -i HEAD~3 // i-> interactive rebase, will popup the window and we can rearrange the window.
-$ write 'reword' replacing 'pick' // change the commit message
-$ write 'edit' for stopping a commit that is already committed, then 'git reset HEAD^' (--soft), then do two commits.
-$ git rebase --continue // finish the rebase
-
-$ git rebase -i HEAD~3                                 // merge last 3 commit in one, see https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/
 
 SubModules: (always push to two repo, first to submodules then parent repo)
 ---------------------------------------------------------------------------

@@ -1,20 +1,22 @@
 # MyDailyLearn
-Here is some important commands on different topics that I am learning in my developing life.
+Here is some important `commands` or `code snippets` on different topics that I am learning in my developing life.
 
 ## Topics
-### Git
-* global / local config
-* Branching, pull, push, checkout, reflog,
-* Merging, amend
-* Stashing
-* Squash
-* Recovery / Reset
+#### Git
+---
+* Global/local config, set alias
+* Branching, commit, pull, push, reflog, log (decorate)
+* Merging, amend, conflicts
+* Squash, stash
+* Rebase
+* Recovery/Reset
 * Prune Empty Commits
 * Cherry-pick
 * Sub-modules
 * Tags and Releases
 
-### Docker
+#### Docker
+---
 * Docker Install (latest or a specific version)
 * Run docker as daemon
 * Remove all containers

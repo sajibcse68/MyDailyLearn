@@ -255,6 +255,7 @@ The --set-upstream flag is deprecated and will be removed. Consider using --trac
 	- Manual QA
 	- Long running releases
 	- On demand hot fixed
+
 ```
 $ git checkout <commit-hash>                  # checkout to a commit to give a tag
 $ git tag -a v1.0.0 -m "message"              # give a tag to this commit
@@ -282,12 +283,10 @@ $ git branch -d <hot-branch>                  // delete the release branch
 - For a username github page url will be '<username>.github.io'   # sajibcse68.github.io
 - For a project github page url will be '<username.githun.io/<projectname>'  # sajibcse68.github.io/dojo_rules
 
-`$ git log --pretty=format:"%h $ad- %s [%an]"`
+``` 
 
-```  
-   %ad=author date, %an=author name
-     %h=SHA hash, %s=subject, %d=ref names 
-```  
+`$ git log --pretty=format:"%h $ad- %s [%an]" `
+
 
 #### Difference between HEAD~ and HEAD^
 - `HEAD^` means the `first parent` of the tip of the current branch, `HEAD^2` means `second parent of current branch`, `HEAD~1 / HEAD~2` means always `first parent`. [see this](http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)

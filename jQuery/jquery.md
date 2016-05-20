@@ -1,24 +1,23 @@
-************** CodeSchool ****************
+* Elaboration
+  - DOM (Document Object Model)
 
-<----- Elaboration ------->
-- DOM (Document Object Model)
-
-
-<--------- Why should we use jQuery? ---------->
+##### Why should we use jQuery?
 - find: elements in an HTML document
 - change: HTML content
 - listen: to what a user does and react accordingly.
 - animate: content on the page
 - talk: over the network to fetch new content.
 
-<---------- Various ---------------->
-- jQuery("h1") = $("h1")                         // short and sweet syntax
-- $("h1").text("updating the text")              // text() is a method offered by jQuery
+##### Miscellaneous
+```
+- jQuery("h1") = $("h1")                    // short and sweet syntax
+- $("h1").text("updating the text")         // text() is a method offered by jQuery
 - $(document).ready(function(){
 	<code>
-});                                              // will only run this code once the DOM is "ready"
-
-<---------- Searching in the DOM --------------->
+});                                         // will only run this code once the DOM is "ready"
+```
+##### Searching in the DOM
+```
 - $("#id > li")                                  // only select direct descendants
 - $(".class1, #id1")                             // comma allows to select multiple items
 - $("#id li:first")                              // select first item of the list
@@ -26,8 +25,9 @@
 - $("#id li:even")                               // select only even list (index start from 0)
 - $("#id li:odd")                                // select only odd list
 - $(tr).children('td:eq(1)').text()              // select second 'td' from 'tr' in a table
-
-<---------- Traversing -------------->
+```
+##### Traversing
+```
 // traversal takes a bit more code, but it's faster
 $("#id").find("li")                              // here, $("#id") is selection and find("li") is traversal
 $("li").fast()                                   // same as li:first
@@ -35,8 +35,9 @@ $("li").last()                                   // same as li:last
 $("li").first().next()                           // select the 2nd list item, it's method chaining
 $("li").first().parent()                         // select the parent of unordered list, walking up the DOM
 $("#id").children("li")                          // children(), unlike find(), only selects direct children, walking down the DOM
-
-<----------- manupulating the DOM ------------------->
+```
+##### Manupulating the DOM
+```
 - var price = $('<p>Demo text</p>');
 - $(this).closest('.className').append(price);
 - $('.className').before(price)                  // puts the price node before .className
@@ -48,29 +49,34 @@ $("#id").children("li")                          // children(), unlike find(), o
 - $('.className').prepend(price)                 // puts the price node top (as a first child) of .className
 - $('.className').append(price)                  // puts the price node bottom (as a last child) .className
 
-# same as before, reference point comes at the end, some people think this is more readable
+// same as before, reference point comes at the end, some people think this is more readable
 $ price.insertBefore($('.className'));
 $ price.insertAfter($('.className'));
 $ price.prependTo($('.className'));
 $ price.appendTo($('.className'));
+```
 
-<--------- Traversing and Filtering --------------->
+##### Traversing and Filtering
+```
 $('.className').on('click', 'button', function(){});        // Only target a 'button' if it inside a '.className', here function() is our event handler function
 $('.vacation').filter('.onsale')                            // finds elements with a call of .vacation and .onsale
 $('.vacation').filter('.onsale').addClass('newClass')       // addClass() adding a .newClass
-
-<---------- Redirect url onclick ------------------>
+```
+##### Redirect url onclick
+```
 $('.go-signup').on('click', function(e) {
   e.preventDefault();
   window.location.href = '/signup';
 });
-
-******** retrieve data from html by jQuery *************
-<------ jQuery Object Method ------------>
+```
+##### Retrieve data from html by jQuery
+```
+// jQuery Object Method
+/*
 Mouse Event: click, focusin, mousedown, mousemove, mouseover, mouseenter, dbclick, focusout, mouseup, mouseout, mouseleave
 Keyboard Events: keypress, keydown, keyup
 FormEvents: blur, select, change, focus, submit
-
+*/
 .data(<name>)                                    // get the value  (in html data-price)
 .data(<name>, <value>)                           // set the value of an attribute
 .slideDown()                                     // show it
@@ -83,20 +89,22 @@ FormEvents: blur, select, change, focus, submit
 .fadeToggle()
 .animate(<object>)                               // takes in a javaScript object similar to the .css() method
 .hasClass(<className>)                           // checks if a class exist or not
-
-***** HTML5 allows us to create our own custom attributes to store data********
+```
+##### HTML5 allows us to create our own **custom attributes** to store data
 // We need to be prepended with the word 'data', and words are separated by dashes.
+```
 // html code
 <p id="para" data-foo="bar" data-foo-bar="true">
     This is dummy text, dummy.
 </p>
+```
+```javascript
 // Fetch data with js
 <script type=="text/javascript">
   var para = document.getElementById('para');
   para.getAttribute('data-foo');                        // Expect "bar"
   para.dataset.bar);                                    // Grabs "data-bar", expect "baz"
   para.dataset.fooBar);                                 // Grabs "data-foo-bar" (Magic!!), expect "true"
-
 // jQuery's data() can read also HTML% attributes but it also does something that getAttribute() doesn't.
  $('#para').data('foo')                                 // Expect "bar"
  $('#para').data('fooBar')                              // Grabs "data-foo-bar" (Magic!!), expect "true"
@@ -104,56 +112,52 @@ FormEvents: blur, select, change, focus, submit
 // set a value
 $('#para').data('foo',"sajib");                         // foo = "sajib" (setter)
 </script>
-*************************** End ***************************************************
+```
 
+`
 <li class="vacation onsale" data-price='399.99'>
 </li>
-$('.vacation').first().data('price')                           // read from the 'data-price' attribute, we can retrieve data by data('price')
+$('.vacation').first().data('price')`                   // read from the 'data-price' attribute, we can retrieve data by data('price')
 
-$(this).closest('.confirmation').find('.ticket').slideDown()   // closest() searches up through ancestors, find() searches down through children
-***********************
+`$(this).closest('.confirmation').find('.ticket').slideDown()`  // closest() searches up through ancestors, find() searches down through children
 
-<-------- Refactor using traversing --------------->
-$(this).closest('.vacation').append(price)
+##### Refactor using traversing --------------->
+`$(this).closest('.vacation').append(price)`
 
-<-------- On DOM Load ------------>
-
-<-------- Expanding on on() --------->
+##### Expanding on on()
+`
 var price = $(this).closest('.vacation').data('price');        // price = '399.99'
 var price = +$(this).closest('.vacation').data('price');       // price = 399.99, convert the string into number
-
-<-------- link Layover ----------->
+`
+##### Link Layover
+```
 event.stopPropagation()                                        // the browser will still handle the click event but will prevent it from "bubbling up" to each parent node
 event.preventDefault()                                         // the click event will "bubble up" but the browser won't handle it
-
-<-------- Taming CSS -------->
+```
+##### Taming CSS
+```
 $(this).css({'background-color': '#24839',
 			 'border-color': '1px solid #967'})                // passing in a js Object as an argument is a common jQuery pattern
 $(this).find('.price').show();                                 // same as display: block
 $(this).find('.price').hide()                                  // same as display: none
 $(this).toggleClass('classname')                               // add the class if $(this) doesn't have it
-
-<------ Animation ----------->
+```
+##### Animation
+```
 $(this).animate({'top': '-10px'})                              // default 400
 $(this).animate({'top': '-10px'}, 'fast')                      // speed 200
 $(this).animate({'top': '-10px', '200'})
-
-<------- write a jQuery Plugin --------->
+```
+##### write a jQuery Plugin
+```
 $.fn.validation = function() {
 // validation is the name of our plugin.
 // using .fn makes this plugin in all jQuery object.
 }
+```
 
-
-in css:                                                        // make sure browser supports transition
-.vacation {
-transition: -10px;
-}
-.highlighted {
-	top: -10px;
-}
-
-<--------------- Promise (Pretty advanced)-------------------->
+##### Promise (Pretty advanced)
+```
 var promise = $.Deferred();            // jQuery method for creating a promise object
 
 promise.resolve(value);                // Calls the done callback
@@ -165,7 +169,7 @@ promise.fail(function(value){});       // Similar to AJAX error callback
 $.when(<promise1>, <promise2>...)      // Here parameter can't be array, only promises separated by comas
 .then(function(p1Data, p2Data){});     // Callback data is in the same order as the promises
 
-- Rejections heppen when a promise is explicitly rejected, but also implicitly if an error is thrown in theconstructor callback.
+// Rejections heppen when a promise is explicitly rejected, but also implicitly if an error is thrown in theconstructor callback.
 
     a1().then(fucntion() {                      |      a1 ---> success --> a2
         return a2();                            |      a1 ---> Fail    --> aRecovery1
@@ -187,31 +191,14 @@ $.when(<promise1>, <promise2>...)      // Here parameter can't be array, only pr
                                                 |
                                                 |      Don't worry about it ---> success --> All's done
                                                 |
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
+in css:                                            // make sure browser supports transition
+.vacation {
+transition: -10px;
+}
+.highlighted {
+	top: -10px;
+}
+```

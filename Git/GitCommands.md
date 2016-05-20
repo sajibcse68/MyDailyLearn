@@ -287,6 +287,7 @@ $ git branch -d <hot-branch>                  // delete the release branch
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
 
+
 #### Difference between HEAD~ and HEAD^
 - `HEAD^` means the `first parent` of the tip of the current branch, `HEAD^2` means `second parent of current branch`, `HEAD~1 / HEAD~2` means always `first parent`. [see this](http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
 - ~2 means up two levels in the hierarchy, via the first parent if a commit has more than one parent.
@@ -308,8 +309,8 @@ G   H   I   J               A =      = A^0
 ```
 
 
-`HEAD~2`   : 2 commits older than HEAD  
-`HEAD^2`   : the second parent of HEAD, if HEAD was a merge, otherwise illegal  
-`HEAD@{2}` : refers to the 3rd listing in the overview of git reflog  
-`HEAD~~`   : 2 commits older than HEAD  
-`HEAD^^`   : 2 commits older than HEAD  
+`HEAD~2`     :   2 commits older than HEAD  
+`HEAD^2`     :   the second parent of HEAD, if HEAD was a merge, otherwise illegal  
+`HEAD@{2}`   :   refers to the 3rd listing in the overview of git reflog  
+`HEAD~~`     :   2 commits older than HEAD  
+`HEAD^^`     :   2 commits older than HEAD  

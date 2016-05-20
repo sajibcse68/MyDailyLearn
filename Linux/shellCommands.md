@@ -1,4 +1,3 @@
-
 ### Search 
 ```  
 # Search inside text file
@@ -23,15 +22,10 @@ $ wc -l science.txt                // Count lines
 
 #### Explanation of Chmod permissions (flags): 600, 0600, 700, 777, 100 etc..
 * Permissions:  
-|     Value  |   Meaning           |
-|------------|---------------------|
-|       1    |   can execute       |
-|------------|---------------------|
-|       2    |   can write         |
-|------------|---------------------|
-|       3    |   can read          |
-|            |                     |  
-
+  1 -- can execute  
+  2 -- can write  
+  3 -- can read  
+  
 *  The octal number is the sum of those free permissions:
     3(1+2) - can execute and write
     6(2+4) - can write and read
@@ -120,12 +114,12 @@ User git
 ##### java/jdk  
 ``` 
 $ ls -l 'which java'
-/usr/libexec/java_home    // where is java home directory
+/usr/libexec/java_home     # where is java home directory
 ```
 ##### Manage user  
 ``` 
 $ cat /etc/passwd
-$ sudo adduser <username>  // add a user
+$ sudo adduser <username>  # add a user
 ```
 ##### Different color file or directory means in ubuntu
 **Blue** color -- **Directory**  
@@ -145,12 +139,12 @@ $ ls <dir> --sort=size -la
 
 # See the total size of directory
 $ du -sh
-$ du -h                           // show all sub directory size
+$ du -h                                # show all sub directory size
 
 # Free a port process
 sudo kill 'sudo lsof -t -i:9090'
-sudo lsof -t -i:24007            // get the pid of 24007 port, say 123
-kill 123                         // kill the process
+sudo lsof -t -i:24007                  # get the pid of 24007 port, say 123
+kill 123                               # kill the process
 
 # Give a access permission of a file
 $ chmod 777 /var/run/docker.sock

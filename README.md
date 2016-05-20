@@ -2,7 +2,7 @@
 Here is some important `commands` or `code snippets` on different topics that I am learning in my developing life.
 
 ## Topics
-#### Git [see this](https://github.com/sajibcse68/MyDailyLearn/blob/master/Git/GitCommands.md)
+#### Git ([see this](https://github.com/sajibcse68/MyDailyLearn/blob/master/Git/GitCommands.md))
 ---
 * Global/local config, set alias
 * Branching, commit, pull, push, reflog, log (decorate)

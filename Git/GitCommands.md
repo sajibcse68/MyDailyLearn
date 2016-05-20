@@ -282,9 +282,8 @@ $ git branch -d <hot-branch>                  // delete the release branch
 - For a username github page url will be '<username>.github.io'   # sajibcse68.github.io
 - For a project github page url will be '<username.githun.io/<projectname>'  # sajibcse68.github.io/dojo_rules
 
-```
 `$ git log --pretty=format:"%h $ad- %s [%an]"`
-```
+
 ```  
    %ad=author date, %an=author name
      %h=SHA hash, %s=subject, %d=ref names 
@@ -295,6 +294,8 @@ $ git branch -d <hot-branch>                  // delete the release branch
 - ~2 means up two levels in the hierarchy, via the first parent if a commit has more than one parent.
 - ^2 means the second parent where a commit has more than one parent (i.e. because it's a merge)
 - These can be combined, so HEAD~2^3 means HEAD's grandparent commit's third parent commit.
+
+
 ```
 G   H   I   J               A =      = A^0
  \ /     \ /                B = A^   = A^1     = A~1
@@ -307,6 +308,8 @@ G   H   I   J               A =      = A^0
         \ /                 I = F^   = B^3^    = A^^3^
          A                  J = F^2  = B^3^2   = A^^3^2
 ```
+
+
 `HEAD~2`   : 2 commits older than HEAD  
 `HEAD^2`   : the second parent of HEAD, if HEAD was a merge, otherwise illegal  
 `HEAD@{2}` : refers to the 3rd listing in the overview of git reflog  

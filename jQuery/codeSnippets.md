@@ -1,9 +1,11 @@
-<-------------- serialize all form data to JSON ----------------->
+##### Serialize all form data to JSON
+```html
 // html
 <form id='form-submit'>
   ...
 </form>
-
+```
+```javascript
 // jQuery
 $.fn.serializeFormJSON = function () {
     var o = {};
@@ -23,6 +25,10 @@ $.fn.serializeFormJSON = function () {
 
   const dataJson = $('#form-submit').serializeFormJSON();         // serialize all data to JSON
   console.log('dataJson: ', dataJson);                            // output
-
-
-
+```
+##### Use multiple events listener
+```javascript
+$('.cpu-val').on('keypress keyup', function () {
+           // Code here
+});
+```

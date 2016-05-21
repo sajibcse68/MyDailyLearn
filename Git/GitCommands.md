@@ -313,3 +313,4 @@ G   H   I   J               A =      = A^0
 `HEAD@{2}`  &nbsp;                       : &nbsp;&nbsp  refers to the 3rd listing in the overview of git reflog  
 `HEAD~~`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp  2 commits older than HEAD  
 `HEAD^^`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp  2 commits older than HEAD  
+

@@ -121,7 +121,7 @@ $('.vacation').first().data('price')`                   // read from the 'data-p
 
 `$(this).closest('.confirmation').find('.ticket').slideDown()`  // closest() searches up through ancestors, find() searches down through children
 
-##### Refactor using traversing --------------->
+##### Refactor using traversing
 `$(this).closest('.vacation').append(price)`
 
 ##### Expanding on on()
@@ -157,20 +157,21 @@ $.fn.validation = function() {
 ```
 
 ##### Promise (Pretty advanced)
-```
+```javascript
 var promise = $.Deferred();            // jQuery method for creating a promise object
-
+                                       //
 promise.resolve(value);                // Calls the done callback
 promise.done(function(value){});       // Similar to AJAX success callback
-
+                                       //
 promise.reject(value);                 // Calls the fail callback
 promise.fail(function(value){});       // Similar to AJAX error callback
 
-$.when(<promise1>, <promise2>...)      // Here parameter can't be array, only promises separated by comas
-.then(function(p1Data, p2Data){});     // Callback data is in the same order as the promises
-
-// Rejections heppen when a promise is explicitly rejected, but also implicitly if an error is thrown in theconstructor callback.
-
+# Here parameter can't be array, only promises separated by comas. Callback data is in the same order as the promises
+$.when(<promise1>, <promise2>...)      
+.then(function(p1Data, p2Data){});      
+```
+`Rejections` heppen when a promise is explicitly rejected, but also implicitly if an error is thrown in the constructor callback.
+```
     a1().then(fucntion() {                      |      a1 ---> success --> a2
         return a2();                            |      a1 ---> Fail    --> aRecovery1
     }).then (function() {                       |
@@ -192,9 +193,62 @@ $.when(<promise1>, <promise2>...)      // Here parameter can't be array, only pr
                                                 |      Don't worry about it ---> success --> All's done
                                                 |
 ```
+Sample `example of promise`
+```javascript
+// vacation.js
+var Vacation = {
+  getPrice: function(location){
+    var promise = $.Deferred();
+    $.ajax('/vacation/prices', {
+      data: {q: location},
+      success: function(result){
+        promise.resolve(result.price);
+      }
+    });
+    return promise;
+  }
+}
+```
+```javascript
+// photo.js
+var Photo = {
+  getPhoto: function(location){
+    var promise = $.Deferred();
+    $.ajax('/vacation/photos', {
+      data: {q: location},
+      success: function(result){
+        promise.resolve(result.url);
+      }
+    });
+    return promise;
+  }
+}
+```
+Now call using `$.when()` and `then()`
+
+```javascript
+// application.js
+$(document).ready(function() {
+  $('button').on('click', function(){
+    var tour = $(this).parent();
+    var location = tour.data('location');
+    var resultDiv = tour.find('.results').empty();
+    
+    $.when(
+    	Vacation.getPrice(location),
+      Photo.getPhoto(location)
+    ).then(function(priceResult, photoResult) {
+    	$('<p>$'+priceResult+'</p>').appendTo(resultDiv);
+    	$('<img />').attr('src', photoResult).appendTo(resultDiv);
+    });
+  });
+});
 
 ```
-in css:                                            // make sure browser supports transition
+
+#### Animation using CSS
+```
+in css:                                 // make sure browser supports transition
 .vacation {
 transition: -10px;
 }

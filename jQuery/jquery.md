@@ -166,7 +166,7 @@ promise.done(function(value){});       // Similar to AJAX success callback
 promise.reject(value);                 // Calls the fail callback
 promise.fail(function(value){});       // Similar to AJAX error callback
 
-# Here parameter can't be array, only promises separated by comas. Callback data is in the same order as the promises
+# Here parameter can not be array, only promises `separated by commas`. Callback data is in the same order as the promises
 $.when(<promise1>, <promise2>...)      
 .then(function(p1Data, p2Data){});      
 ```
@@ -235,11 +235,11 @@ $(document).ready(function() {
     var resultDiv = tour.find('.results').empty();
     
     $.when(
-    	Vacation.getPrice(location),
+      Vacation.getPrice(location),
       Photo.getPhoto(location)
     ).then(function(priceResult, photoResult) {
-    	$('<p>$'+priceResult+'</p>').appendTo(resultDiv);
-    	$('<img />').attr('src', photoResult).appendTo(resultDiv);
+      $('<p>$'+priceResult+'</p>').appendTo(resultDiv);
+      $('<img />').attr('src', photoResult).appendTo(resultDiv);
     });
   });
 });

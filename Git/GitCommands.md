@@ -215,6 +215,9 @@ $ git push --recurse-submodules=on-demand                        # Push to paren
 $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias   
 ```
 #### Fancy commands
+Compare changes of two tags in github: `<url><tag-1>...<tag-2>`
+[Example](https://github.com/jenkinsci/jenkins/compare/jenkins-1.651...jenkins-1.651.2)
+
 ```
 $ git status                                   # List new or modified files not yet committed
 $ git fetch                                    # Get the latest changes from origin (no merge)

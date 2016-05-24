@@ -3,7 +3,7 @@
 {{ 'running' if status == 'READY' else 'stop' }}
 {% if status=='READY' %} ready {% elif status=='bound' %} bound {% else %} creating {% endif %}
 ```
-##### Rendering a template ------------->
+##### Rendering a template
 `this.$el.append(global.nunjucksEnv.render(<template-name>));`
 
 ##### Iterate loop in html template, items is an array
@@ -14,8 +14,6 @@
   <li>This would display if the 'item' collection were empty</li>
 {% endfor %}
 ```
-
-##### Iterate loop through object/map
 
 ##### Fancy codes
 ```

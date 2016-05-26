@@ -145,6 +145,7 @@ $ du -h                                # show all sub directory size
 sudo kill 'sudo lsof -t -i:9090'
 sudo lsof -t -i:24007                  # get the pid of 24007 port, say 123
 kill 123                               # kill the process
+kill -9 <pid>                          # kill the process
 
 # Give a access permission of a file
 $ chmod 777 /var/run/docker.sock

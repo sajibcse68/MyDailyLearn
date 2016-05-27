@@ -30,11 +30,10 @@ $ git config --global alias.co checkout      # git co -> git checkout
 $ git config --global alias.br branch        # git br -> git branch
 ```
 #### Branching:
-* master    ->  default devel branch
+* master    ->  default develop branch
 * origin    ->  default upstream branch
 * HEAD      ->  current branch
 * HEAD^     ->  parent of HEAD
-* HEAD-4    ->  great-great grandparent of HEAD
 * foo..bar  ->  from branch foo to branch bar
 
 ```sh
@@ -55,11 +54,48 @@ $ git branch -d <branchname>                 # Delete the local branch, show a w
 $ git branch -D <branhcname>                 # Force to delete branch
 $ git remote prune origin                    # Cleanup remote deleted branch
 ```
-#### Merging:
-```
+####  Add, Commit, Amend, Push, Pull & Merge
+```sh
+# Add
+$ git add .                                                               
+$ git add --all                                     # Add all changes     
+     
+# Commit                                                                          
+$ git commit -am 'commit message'                   # Add & commit        
+$ git commit --allow-empty -m k3;                   # Commit empty change
+$ git cherry-pick <commit-hash>                     # Take a commit change of another branch 
+
+# Amend
+$ git add task2.txt                                 # Add any file
+$ git commit --amend -m 'new message'               # Merge current change to previous commit and will also change the commit hash
+
+# Pull
+$ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch 
+
+# Push
+$ git push origin <branchame>                       # Push a branch
+$ git push -f origin <branch-name>                  # Overwrite remote branch (by force)
+
+# Merge
+$ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch
 $ git mergetool
 $ git merge --squash <privateFeatureBranch>
-$ git cherry-pick <sh1>
+```
+#### Checkout (go forward/backward)
+```
+$ git checkout <commit-hash>               # Go to a specific commit
+$ git checkout <branch-name>               # Return to present state
+$ git checkout <commit-hash> <file-name>   # Only a file will go back to specific commit
+$ git checkout <branch-name> -f            # Return to persent state by force
+$ git checkout -- <filename1> <filename2>  # Discard all changes of file1 and file2
+```
+#### Cherry-pick
+```
+$ git cherry-pick <commit-hash>                             # Copy a single commit to current branch
+$ git cherry-pick --edit <commit-hash>                      # Pop-up a editor, then change the commit message.
+$ git cherry-pick --no-commit <commit-hash> <commit-hash>   # --no-commit pulls in changes and stages them, but doesn't commit
+$ git cherry-pick -x <commit-hash>                          # -x: keep track where the commit came from
+$ git cherry-pick --signoff <commit-hash>                   # --signoff add current users name to commit message
 ```
 #### Stashing
 ```sh
@@ -96,20 +132,20 @@ $ git rm --cached development.log                  # What it you're already trac
 ```
 #### Recovery/Reset:                                    
 ```sh
-$ git log                               # Show all the change/commit history
-$ git show <commit hash>                # See what changes in a specific commit
-$ git reset --soft <commit hash>        # Back to a specific commit and exits the change
-$ git diff HEAD                         # Show the changes to files not yet staged
-                                                   
-$ git clean -f -n                       # clean untract file (dry run)
+$ git log                                 # Show all the change/commit history
+$ git show <commit hash>                  # See what changes in a specific commit
+$ git reset --soft <commit hash>          # Back to a specific commit and exits the change
+$ git diff HEAD                           # Show the changes to files not yet staged
+                                                     
+$ git clean -f -n                         # clean untract file (dry run)
 $ git clean -dxf
 $ git rm --cached -r .
 $ git checkout master
 
 # Recover a branch after deletion
-$ git reflog                                 # see all commits and select the last commit (SHA1) of deleted branch
-$ git checkout <sha>                         # checkout that commit
-$ git checkout -b <deleted-branch-name>      # recover that branch after creating a new branch with same name
+$ git reflog                              # see all commits and select the last commit (SHA1) of deleted branch
+$ git checkout <sha>                      # checkout that commit
+$ git checkout -b <deleted-branch-name>   # recover that branch after creating a new branch with same name
 # shortcut
 $ git checkout -b <branch> <sha>
 ```
@@ -120,33 +156,6 @@ $ git reset <HEAD no.>                 # Return to present after a hard reset, e
 $ git reset --hard                     # We moved to HAED@{8} completely
 $ git log --walk-reflogs               # More details
 $ git branch <branceName> HEAD@{1}     # Create a new branch with a commit (the branch is deleted where this commit was given)
-```
-####  Add, Commit, Amend, Push & Pull
-```sh
-# Add
-$ git add .                                                               
-$ git add --all                                     # Add all changes     
-     
-# Commit                                                                          
-$ git commit -am 'commit message'                   # Add & commit        
-$ git commit --allow-empty -m k3;                   # Commit empty change 
-
-# Amend
-$ git add task2.txt                                 # add any file
-$ git commit --amend -m 'new message'               # merge current change to previous commit and will also change the commit hash
-
-# Push
-$ git push origin <branchame>                       # push a branch
-$ git push -r origin <branch-name>                  # by force overwrite the remote branch
-```
-#### Checkout (go forward/backward)
-```
-$ git checkout <commit-hash>               # Go to a specific commit
-$ git checkout <branch-name>               # Return to present state
-$ git checkout <commit-hash> <file-name>   # Only a file will go back to specific commit
-$ git checkout <branch-name> -f            # Return to persent state by force
-$ git checkout -- <filename1> <filename2>  # Discard all changes of file1 and file2
-
 ```
 #### Squash
 ```
@@ -182,14 +191,7 @@ $ git rebase -i HEAD~3                   # merge last 3 commit in one, see
 * You’ll notice some markers: <<<<, >>>>, and ====, that surround the lines that conflict,
 * Including the changes that each branch is trying achieve.
 * Fix manually.
-#### Cherry-pick
-```
-$ git cherry-pick <commit-hash>                             # Copy a single commit to current branch
-$ git cherry-pick --edit <commit-hash>                      # Pop-up a editor, then change the commit message.
-$ git cherry-pick --no-commit <commit-hash> <commit-hash>   # --no-commit pulls in changes and stages them, but doesn't commit
-$ git cherry-pick -x <commit-hash>                          # -x: keep track where the commit came from
-$ git cherry-pick --signoff <commit-hash>                   # --signoff add current users name to commit message
-```
+
 #### Prune Empty Commits
 ```
 $ git <brance-name> -f --prune-empty -- --all           # Delete all empty commits in a branch
@@ -213,6 +215,9 @@ $ git push --recurse-submodules=on-demand                        # Push to paren
 $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias   
 ```
 #### Fancy commands
+Compare changes of two tags in github: `<url><tag-1>...<tag-2>`
+[Example](https://github.com/jenkinsci/jenkins/compare/jenkins-1.651...jenkins-1.651.2)
+
 ```
 $ git status                                   # List new or modified files not yet committed
 $ git fetch                                    # Get the latest changes from origin (no merge)
@@ -287,13 +292,11 @@ $ git branch -d <hot-branch>                  // delete the release branch
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
 
-
 #### Difference between HEAD~ and HEAD^
 - `HEAD^` means the `first parent` of the tip of the current branch, `HEAD^2` means `second parent of current branch`, `HEAD~1 / HEAD~2` means always `first parent`. [see this](http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
 - ~2 means up two levels in the hierarchy, via the first parent if a commit has more than one parent.
 - ^2 means the second parent where a commit has more than one parent (i.e. because it's a merge)
 - These can be combined, so HEAD~2^3 means HEAD's grandparent commit's third parent commit.
-
 
 ```
 G   H   I   J               A =      = A^0
@@ -308,9 +311,10 @@ G   H   I   J               A =      = A^0
          A                  J = F^2  = B^3^2   = A^^3^2
 ```
 
+`HEAD~2`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  2 commits older than HEAD  
+`HEAD^2`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  the second parent of HEAD, if HEAD was a merge, otherwise illegal  
+`HEAD@{2}`  &nbsp;                       : &nbsp;&nbsp;  refers to the 3rd listing in the overview of git reflog  
+`HEAD~~`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  2 commits older than HEAD  
+`HEAD^^`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  2 commits older than HEAD  
 
-`HEAD~2`     :   2 commits older than HEAD  
-`HEAD^2`     :   the second parent of HEAD, if HEAD was a merge, otherwise illegal  
-`HEAD@{2}`   :   refers to the 3rd listing in the overview of git reflog  
-`HEAD~~`     :   2 commits older than HEAD  
-`HEAD^^`     :   2 commits older than HEAD  
+

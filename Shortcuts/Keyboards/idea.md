@@ -2,7 +2,7 @@
 * `Control + Shift + /`    -- Comment/uncomment line
 * ` /** + Enter `          -- Comment documentation block
 * `Cmd + y`                -- Delete line
-* `Option + Cmd + L`       -- Reformat code
+* `Cmd + Option + L`       -- Reformat code
 * `Cmd + Shift + Backspace`-- Cycle through the history of most recent changes
 * `Cmd  + Shift + V`       -- Paste from five previous copies
 * `Cmd + N`                -- Find classes

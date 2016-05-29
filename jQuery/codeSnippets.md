@@ -32,3 +32,9 @@ $('.cpu-val').on('keypress keyup', function () {
            // Code here
 });
 ```
+
+#### Miscellaneous
+```
+// Get the value of checkbox
+const check = $('#id').prop('checked');
+```

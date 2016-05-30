@@ -1,3 +1,17 @@
+#### Sort folders by size
+```
+
+$ du -k <path>
+
+# limit the size
+$ du -k <path> | awk '$1 > 500000'
+
+# Sort the results by largest folder size, add another pipe with sort command
+$ du -k <path> | awk '$1 > 500000' | sort -nr
+
+# see all folders
+$ ls | sort -k 2 -t "_"
+```
 <------- Set the time of showing notification banner ----->
 defaults write com.apple.notificationcenterui bannerTime <SECONDS>
 

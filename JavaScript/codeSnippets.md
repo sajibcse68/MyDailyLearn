@@ -11,4 +11,8 @@ console.log('document.location.pathname : ', document.location.pathname);
 ```js
 // Create a new object (server response)
 const o = Object.create(null);
+
+// set the context for a function by .call() or .apply()
+myfunc.call(this);
+myfunc.apply(this);
 ```

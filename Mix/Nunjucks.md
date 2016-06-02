@@ -24,6 +24,8 @@
 
 // String concatenation and set a variable
 {% set gid = "o.Specs." + o.type + "group_id" %}
+// Set multiple at once
+{% set x, y, z = 5 %}
 
 // commnets syntex -> {# and #}. Comments are completely stripped out when rendering.
 {# Loop through all the users #}

@@ -30,7 +30,11 @@ list.appendChild(fragment);
 - The `tripple-equla (===)` comparator compares both `type and contents`. `===` seeks a `strict` equality.
 - The `instanceof` operator helps identity objects.
 - `Exceptions`: are run time errors.
-- 
+- JavaScript `with` keyword is somewhat unreliable and often expensive.
+```
+
+```
+
 
 
 /******** Change the tooltip value with js when button is clicked *************/

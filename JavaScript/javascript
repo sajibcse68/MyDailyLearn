@@ -1,3 +1,42 @@
+#### Notes
+- When browser find the `<script>` tag to download, all other parallel downloading halts. (6 files can be downloaded by modern browser)
+- if we add `async` in <script> tag then it would be downloaded asynchronously
+    - e.g. <script type="text/javascript" src="http://www.abc.com/test.js" async></script
+- Efficient choices for `string concatenation` is `+=`
+    - e.g. const a = ''; a += 'b'; a += 'c';
+- Use a document fragment to insert additions all at once. Fragments are invisible containers that hold multiple DOM elements without
+  being a node itself.
+```javascript
+var list = document.getElementById('kotwList');
+var kotw = ["Jenna Rangespike", "Neric Farthing", "Darkin Stonefield"];
+
+var fragment = document.createDocumentFragment();
+// First we create a fragment, which will function as a staging area to hold all of our new `li` elements
+
+
+for (var i=0, len = kotw.length; i<len; i++) {
+    var element = document.createElement('li');
+    element.appendChild(document.createTextNode(kotw[i]));
+    fragment.appendChild(element);
+// now we add each new `li` element to the staging fragment, instead of to the document itself
+}
+list.appendChild(fragment);
+// Finally, we append all of our new text nodes in one fell swoop, using only one DOM touch!
+```
+- Every `var` keywords adds a look-up for the JavaScript parser that can be avoided with comma extensions.
+- For concatenation over an array's contents,`join()` method is faster (inherited from the Array prototype)
+- `console.time('start a timer')` and consoel.timeEnd)('start a timer') // to unite timer boundaries into one timer, their parameter labels must match
+    - e.g. start a timer: 0.036 ms // `console.time` automatically prefaces the time measurement with the label we passed in a `parameter, plus a colon`.
+- The `tripple-equla (===)` comparator compares both `type and contents`. `===` seeks a `strict` equality.
+- The `instanceof` operator helps identity objects.
+- `Exceptions`: are run time errors.
+- JavaScript `with` keyword is somewhat unreliable and often expensive.
+```
+
+```
+
+
+
 /******** Change the tooltip value with js when button is clicked *************/
 // html part
   <a class="btn" data-toogle="tooltip" data-placement="top" data-original-title="Copy">Click me</span></a>

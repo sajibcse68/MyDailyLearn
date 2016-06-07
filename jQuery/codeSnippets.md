@@ -35,6 +35,11 @@ $('.cpu-val').on('keypress keyup', function () {
 
 #### Miscellaneous
 ```
+// manually trigger an element
+$('.class-name').on('click', function() {
+    $('.class-name').trigger('triggerWord');          // now backbone grab the event listener, backbone  
+} 
+
 // Get the value of checkbox
 const check = $('#id').prop('checked');
 ```

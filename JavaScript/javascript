@@ -31,10 +31,8 @@ list.appendChild(fragment);
 - The `instanceof` operator helps identity objects.
 - `Exceptions`: are run time errors.
 - JavaScript `with` keyword is somewhat unreliable and often expensive.
-```
-
-```
-
+- Keyword `with` tries and technically does limit redundancy, but makes us rather unsure about scope.
+-
 
 
 /******** Change the tooltip value with js when button is clicked *************/

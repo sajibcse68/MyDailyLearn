@@ -88,8 +88,33 @@ eval('regiment' + number).motto = motto;
 - Use `JOSN,parse()` to ensure only json is accepted. JOSN.parse or a parser library that recognizes JSON, helps to avoid both th security
   and performance issues posed by `eval`
 - Leaving of {}. Please use {} even when we have only one statement of `if` or `for`.
-  
 
+- Decimals number in js is `wacky`
+    - js uses binary floating point values to handle all of its decimal based operations. e.g. console.log(0.1 + 0.2), output: 0.30000000000000004 
+    - Method `toFixed()` allow us to select the exact amount of decimal places to display. 
+    ```js
+    var num = 0.1 + 0.2 + 0.3;
+    console.log(num.toFixed(1))  // output: 0.6;
+    console.log(num.toFixed(4))  // output: 0.6000;
+    ```
+    - `parseFloat()` Turns Strings with Decimals into Numbers.
+    - `parseInt()` also converts numerical strings. But it seeks the first available integer at the front of a string.
+    ```
+    parseInt("88 keys on a piano"); // output: 88
+    parseFloat("1.234 keys on a bag"); // output: 1.234
+    parseInt("There are 88 keys on a piano"); // NaN, cause string does not begin with a acceptable value
+    parseInt("7.89") // output: 7, trim up descimals without `rounding` 
+    parseInt("1.23", 10) // parseInt(string, radix), it allows any `radix` value from `2 to 36`. 
+    ```
+    - typeof(NaN) // output: number
+        - console.log(NaN === NaN) // output: false
+        - isNaN("34") // output: false
+    - If unsure about `data type`, but highly reliant on a `Number` use `typeof` and `isNaN()` as a best practice
+        - function checkNumber(data) { return typeof data === "number" && !isNaN(data); }
+        - checkNumber(640) // output: true
+        - checkNumber("640") // output: false, false by typeof data === "number"
+        - checkNumber("NaN") // output: false, false by !isNaN()
+      
 #### JavaScript: The Good Parts
 - 100 and 1e2 are the same number
 - `NaN` is not equal to any value, including itself. Detect `NaN` with the `isNaN(number)` function.

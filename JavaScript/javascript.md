@@ -114,7 +114,24 @@ eval('regiment' + number).motto = motto;
         - checkNumber(640) // output: true
         - checkNumber("640") // output: false, false by typeof data === "number"
         - checkNumber("NaN") // output: false, false by !isNaN()
-      
+    - An object that groups and protects related data and methods in JavaScript files is called a `Namespace`.
+    - If built well, `namespaces` remain `agnostic` of other namespaces.
+    - `Namespaces` reduce global `footprint` while also keeping data grouped around their intended functionality.
+    - `Closure` of js is used to cause some properties to be private, bound only to a surrounding function's local scope,
+       and some properties to be public, accessible by all holders of the namespace.
+    - `Private` properties are `created` in the local scope of the `function expression`. `public` properties are built withtin
+       the `object` which is then `returned` to become the `namespace`. Access to `private` data is thus prossible only
+       because of `closure` within the larger `module`.
+    - If a module reference globally-scoped variable, it's a best practice to bring them into the scope of anonymous closure
+      through the use of a `imports` technique.
+    - Our `imports` ensures clarity of `scope` within a `module`. By using a `parameter`, we protect the `global` data 
+      that might have been `overwritten`. All imported data becomes `locally` scoped to the `anonymous function`, to be used in
+      `closure`. Thus, when compared with `searching` the entire `scopre chain`, `imports` are both clearer and faster.
+    
+    - `Augmentation` provides extra properties for existing modules.
+    - In simple `augmentation`, the `module` file and the augmentation file `module` share their `private state`.
+      Augmentation module `properties` may only `access` the `private` data from their file's `closure`. `Private` data
+      from the `original` closure `will not` be lost, and `will` be accessible to all original `properties`.
 #### JavaScript: The Good Parts
 - 100 and 1e2 are the same number
 - `NaN` is not equal to any value, including itself. Detect `NaN` with the `isNaN(number)` function.

@@ -17,4 +17,5 @@
 * `Cmd + W`                 -- Incremental selection
 * `Cmd + P`                 -- Argument documentation for method call
 * `Cmd + G`                 -- Go to line
-* `Cmd + Shift + 8`         -- Select/unselect column selection mode 
+* `Cmd + Shift + 8`         -- Select/unselect column selection mode
+* `Shift + Options + click` -- Bind cursor in multiple place

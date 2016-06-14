@@ -1,15 +1,3 @@
-#### `Memorize, Memorize, Memorize` - It will make life easier
-```
-$ pwd                 : Print working directory
-$ mkdir               : Make directory
-$ ls                  : List directory
-$ rmdir               : Remove directory
-$ cp                  : Copy file or directory
-$ pushd               : push directory
-$ grep                : Find things inside files
-$ cat                 : Print the whole file
-$ 
-```
 
 #### Set the time of showing notification banner
 `$ defaults write com.apple.notificationcenterui bannerTime <SECONDS>`

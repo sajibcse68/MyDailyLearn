@@ -1,3 +1,31 @@
+#### `Memorize, Memorize, Memorize` - It will make life easier
+```
+$ pwd                 : Print working directory
+$ hostname            : Computer's network name
+$ mkdir               : Make directory
+$ cd                  : Change directory
+$ ls                  : List directory
+$ find                : Find files
+$ rmdir               : Remove directory
+$ less                : Page through file
+$ cp                  : Copy file or directory
+$ mv                  : Move file or directory
+$ pushd               : push directory
+$ popd                : Pop directory
+$ grep                : Find things inside files
+$ xargs               : Execute arguments
+$ cat                 : Print the whole file
+$ env                 : Look at environment
+$ export              : Export/set a new environment variable
+$ echo                : Print some arguments
+$ man                 : Read a manual page
+$ apropos             : Find what man page is appropriate
+$ chown               : Change ownweship
+$ chmod               : Change permission modifiers
+$ exit                : Exit shell
+$ sudo                : Dnager! Become super user root
+```
+
 #### Sort folders by size
 ```
 

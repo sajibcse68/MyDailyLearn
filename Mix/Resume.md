@@ -128,6 +128,100 @@ most impressive accomplishments.
 you’ve `misrepresented` some or all of your qualifications, suspicious employers will either ignore your resume altogether or 
 investigate your claims. Your `credibility and reputation suffer when you misrepresent yourself`.
  
+## Best Practices
+#### Keep It One page
+Mid- and late-career professionals can exceed one page. Everyone else should `keep it brief`. You can keep your resume to one 
+page by removing unnecessary language, experimenting with typefaces, and using `active verbs`.
+
+#### Keep It Relevant
+Because your `resume is a summary`, you should `emphasize different things` for the various jobs you apply for. Save different 
+versions of your resume for easier customizing later on.
+
+#### Keep It Searchable
+The first person to read your resume may not be a person at all. Many organizations use `computerized searches to sort` through 
+resumes, so make sure to clearly state your `relevant skills` and `experiences`.
+
+#### Keep It Three Formats
+Saving your resume as a `PDF` preserves formatting for those who will read it on different devices. Saving it as a `Microsoft Word` 
+document ensures that you have it in the most common file format. Saving it as a `plain text` document prevents the clutter of format-specific 
+information when uploading to a computerized applicant tracking system. it’s always handy to have different versions saved just in case
+
+#### Keep It Clean
+One typo can undermine all of the hard work you’ve put into creating a professional resume. Check your spelling and ask your 
+friends and family to review it. This may sound tedious, but you need to make sure it’s perfect before you hand it to a potential employer.
+
+## Why Cover Letter Necessary
+- if my resume contains my most important work-related information, why bother writing a cover letter? The answer is simple: taking 
+the time to write a thoughtful, personalized cover letter shows that you’ve put more than a few seconds’ thought into applying for a job. 
+When done right, cover letters help your application stand out.
+- Resumes should be clear and factual but still engaging. Your cover letter, on the other hand, can reveal a little more about 
+who you are and why the position interests you. Avoid repeating what is on your resume. Instead, use the cover letter as an 
+opportunity to share information that couldn’t fit on your resume. Be explicit about what you’ve done in the past and what you plan 
+to do in the future. If the organization’s work or mission is particularly appealing to you, use the cover letter to highlight your passion.
+- Cover letters are a vehicle for showcasing your understanding of an organization and how your passions and strengths intersect 
+with its goals and needs. Review the organization’s website to get a feel for its language. Mirroring its tone is an effective 
+way to show that you’ve done your research and know how to fit in. For example, the cover letter you write for an offbeat startup 
+would be different than one you would write for a traditional consulting firm or a faith-based nonprofit. Your cover letter 
+is important because it serves as professional proof that you are actually interested in the organization and that you 
+can properly engage with it.
+- Finally, some employers ask for a cover letter simply to see which applicants read—and follow!—directions. They may ask you to 
+address something specific, such as compensation, in your cover letter and immediately dismiss any applicants who ignore this request.  
+
+## Cover Letter Format and Content
+- Make sure `your name and current contact information` appear at the `top`, along with the `date`. Address your letter to the 
+person who will receive your application. If the `hiring manager’s name isn’t included` in the job description, `do some research`: 
+the company website, social media profiles, and simple Internet searches are all good places to begin. If, after a lot of 
+searching, you still aren’t able to find the name of the hiring manager or make an educated guess, address your letter using 
+the traditional `To Whom It May Concern,` the contemporary `Dear Hiring Manager,` or the title of the hiring manager or committee.
+
+- Like resumes, cover letters `vary in structure`. Once you are in the right mindset, follow this standard guide for the bulk of your letter’s content:
+
+## Cover Letter Best Practices
+
+#### Avoid Filler
+Imagine that anyone who reads your cover letter already values what you have to offer. Try not to think of your letter as a 
+direct sales pitch. Approach your letter with `honesty and humility`, but don’t `shy` away from `including relevant achievements`.
+
+#### Include Referrals
+If someone who works for the `organization referred you to the position`, include that information. Most organizations give 
+`special consideration to applicants referred by a current employee`. Current employees understand the culture and demands 
+of their workplace; they know if a friend or acquaintance has what it takes to succeed there.
+
+#### Clarify Career Gaps
+If your resume shows periods during which you weren’t working (or studying, in the case of full-time students), use your cover 
+letter to explain those gaps. If you `moved to a different city`, took time off to care for a sick relative, or were 
+otherwise occupied during that time, mention it.
+
+#### Avoid Apologies
+You may not have every qualification the employer has listed in the job description. This is okay.  Employers tend to list 
+every single thing they `would like their ideal candidates` to have, and they realize that they may `need to compromise` when 
+choosing applicants to interview (and eventually hire). You don’t have to justify why you can do the job even though you 
+don’t possess all of the necessary qualifications. Apologizing for experience or skills you lack isn’t necessary or 
+attractive, and you don’t want to `sound defensive or unconfident`. Instead, write about why you’d be good at the job in a humble way.
+
+#### Be Nice
+Something that `holds true in your cover letter` and during your interview is to `never say anything bad about your current or former employer`. 
+`No matter how difficult the situation is or was`, you should be as `diplomatic as possible`, `demonstrating an understanding` 
+of the challenges your employer faces or once faced. Saying `negative things makes you look angry and unprofessional`, and the 
+people you’re interviewing with may wonder what `you will say about them one day`. Keep negative comments out of the job-hunting process.
+
+#### 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

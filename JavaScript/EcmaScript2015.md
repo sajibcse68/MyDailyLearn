@@ -34,12 +34,10 @@ for (let i in userNames) {
     console.log('i: ', i);      
   });
 }
-
-output: i: 0
-        i: 1
-        i: 2
-        i: 3
+output: i: 0,  i: 1,  i: 2,  i: 3
 ```
+
+
 - Variables declared with `let` can be reassigned, but `can't be redeclared` within the same scope.
 
 #### Declarations with `const`
@@ -88,14 +86,57 @@ getRequest('/topics/17/tags', function(data) {
 - `Arrow functions` bind to the scope of where they are `defined`, not where they are used.
    It is also known as `lexical binding`
    
+ ## Object and Strings
+#### Removing repetition From Creating Objects
+- We can remove `duplicate` variable names from object properties when those properties have the `same name` as the
+  variables being assigned to them (properties and value are the same name).
+
+```js
+return {first: first, last: last, fullName: fullName}
+// similar to 
+return {first, last, fullName} // way cleaner
+
+```
+
+- Object Destructuring: We can shorthand to `assign properties` from objects to `local variables` with the `same name`
+```js
+let user = buildUser("Sam", "Williams")
+let first = user.first;
+let last = user.last;
+let fullName = user.fullName;
+// shorthand
+let {first, last, fullName} = buildUser("Sam", "Williams")
+```   
+
+- Not all properties have to be `destructured` all the time. We can `explicitly select` the ones we need
+```js
+// only grabbing `fullName` from the return Object
+let { fullName } = buildUser("Sam", "Williams" );
+
+// grabbing `last` and `fullName` from the return object 
+let {last, fullName } = buildUser("Sam", "Williams")
+
+```
+
+#### Adding a Function to an Object
+- In previous versions of JS, adding a function to an object required specifying the `property name` and then the `full function definition` (including the `function` keyword)
+- In `ES6` a new shorthand notation is available a method to an object where the keyword `function` is no longer necessary. 
+
+```js
+function buildUser (first, last, postCount) {
+  let fullName = first + " " + last;
+  const ACTIVE_POST_COUNT = 10;
   
-
-
-
-
-
-
-
+  return {
+    first,
+    last,
+    fullName, 
+    isActive() {  // isActive: function() // older version 
+      return postCOunt >= ACTIVE_POST_COUNT
+    }
+  }
+}
+```
 
 
 

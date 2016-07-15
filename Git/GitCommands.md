@@ -18,6 +18,15 @@ $ git config --global core.editor emacs      # Use emacs for interactive command
 $ git config --global merge.tool opendiff    # Use opendiff for merging conflicts
 $ git config --global color.ui true          # Better visualization            
 $ git config core.ignorecase false           # If we want case sensitive git     
+ 
+# (git-credentials store) Reduce the number of times we must type our username or password
+$ git config credential.helper store
+$ git push http://example.com/repo.git
+Username: <type your username>
+Password: <type your password>
+# several days later
+$ git push http://example.com/repo.git
+[your credentials are used automatically]
 
 # Auto correct Line Feed
 $ git config --global core.autocrlf input    # On unix line systems (Linux, OSX, etc)

@@ -25,8 +25,8 @@ list.appendChild(fragment);
 ```
 - Every `var` keywords adds a look-up for the JavaScript parser that can be avoided with comma extensions.
 - For concatenation over an array's contents,`join()` method is faster (inherited from the Array prototype)
-- `console.time('start a timer')` and `console.timeEnd)('start a timer')`                      -> (to unite timer boundaries into one timer, their parameter labels must match)
-    - e.g. start a timer: 0.036 ms   
+- `console.time('start a timer')` and `console.timeEnd)('start a timer')` -> (to unite timer boundaries into one timer, their parameter labels must match)
+    - output start a timer: 0.036 ms   
     // `console.time` automatically prefaces the time measurement with the label we passed in a `parameter, plus a colon`.
 - The `tripple-equla (===)` comparator compares both `type and contents`. `===` seeks a `strict` equality.
 - The `instanceof` operator helps identity objects.

@@ -12,7 +12,7 @@
 - `/\w+@\w+.\w+` matches `sajib@example.com` but it also matches `sajib@example!com`!
     - The `.` is a wildcard metacharacter that matches any character except newline.
 - `/\w+@\w+\.(com|net|org|edu)/i` more specific about the Top-level domain (TLD)
-- `^/\w+@\w+\.(com|net|org|edu)$/i` 
+- `/^\w+@\w+\.(com|net|org|edu)$/i` 
 
 #### In Short 
 - `.` matches any character except newline
@@ -43,6 +43,39 @@
     - `/[a-z]{2}/` matches any character from a-z exactly 2 times
     - `/[a-z]{1,3}/` matches the character a minimum of 1 time and maximum of 3 times
     - 
+
+
+## Examples
+- Rule: `/^(job\/\w+((\/job\/\w+)*)?)$/`
+    - Start with `job/<name1>`, followed by `/job/<name2>/job/<name3>...` unlimited time
+    - matches: job/n1/job/n2/job/n3/job/n4
+        - passing two values `a` and `b` (let).
+        - a = job/n1/job/n2/job/n3/job/n4
+        - b = /job/n2/job/n3/job/n4
+        
+- Rule: `/^job\/\w+\/((job\/\w+\/)*)?(\d*)$/`
+    - start with `job/<name1>`, followed by `/job/<name2>/job/<name3>...` and end with and integer value.
+    - matches `job/n1/job/n2/job/n3/job/n4/123`
+        - passing 4 values `a`, `b`, `c`, `d` (let)
+        - a = job/n1/job/n2/job/n3/job/n4/123
+        - b = job/n2/job/n3/job/n4/
+        - c = job/n4/
+        - d = 123
+
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

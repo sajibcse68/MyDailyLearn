@@ -101,6 +101,7 @@ $ git checkout -- <filename1> <filename2>  # Discard all changes of file1 and fi
 #### Cherry-pick
 ```
 $ git cherry-pick <commit-hash>                             # Copy a single commit to current branch
+$ git cherry-pick <commit-hash> -X theirs                   # If conflicts occurs then accepts theirs
 $ git cherry-pick --edit <commit-hash>                      # Pop-up a editor, then change the commit message.
 $ git cherry-pick --no-commit <commit-hash> <commit-hash>   # --no-commit pulls in changes and stages them, but doesn't commit
 $ git cherry-pick -x <commit-hash>                          # -x: keep track where the commit came from

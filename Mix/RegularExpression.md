@@ -5,7 +5,7 @@
 - TLD can be com or net or org or edu
 
 #### Explain
-- `/\w@\w/` matches only b@e
+- `/\w@\w/` matches only `b@e`
    - `\w` only searches for 1 word-like character.
 - `/\w+@\w+/` matches `sajib@example`
     - Because the '.' is not a word.
@@ -29,7 +29,8 @@
     - `\b` is boundary metacharacter that matches whole words only
 - Marking a Group of Characters as Optional
     - Group characters followed by `?` to make them all optional
-    - `/pirate\s(ship)?/` matches both `pirate ship` or `pirate boat`
+    - 
+    - `/pirate(\sship)?/` matches both `pirate ship` or `pirate boat`
 - Writing a Shorter Pattern With the `NOT` operator
     - `/[a-z\s,]+/i` and `/[^\d]+/i`
     - `\d` means any number
@@ -43,7 +44,22 @@
     - `/[a-z]{2}/` matches any character from a-z exactly 2 times
     - `/[a-z]{1,3}/` matches the character a minimum of 1 time and maximum of 3 times
     - 
+#### Multiline Strings:
+```
+King penguin
+Emperor penguin
+```
+Rule: /penguin/igm
 
+- i - case ignore
+- g - global modifier, Match 'penguin' as many times as possible with global modifier
+- m - Treat string as multiple lines. That is, change `^` and `$` from matching the start or end of line 
+  only at the left and right ends of the string to matching them anywhere within the string.
+
+#### Capture Groups:
+- (regex) - Parentheses group the regex between them and return the value.
+- (?:regex) - Non-capturing parentheses group the regex between them.
+- 
 
 ## Examples
 - Rule: `/^(job\/\w+((\/job\/\w+)*)?)$/`
@@ -54,7 +70,7 @@
         - b = /job/n2/job/n3/job/n4
         
 - Rule: `/^job\/\w+\/((job\/\w+\/)*)?(\d*)$/`
-    - start with `job/<name1>`, followed by `/job/<name2>/job/<name3>...` and end with and integer value.
+    - Start with `job/<name1>`, followed by `/job/<name2>/job/<name3>...` and end with and integer value.
     - matches `job/n1/job/n2/job/n3/job/n4/123`
         - passing 4 values `a`, `b`, `c`, `d` (let)
         - a = job/n1/job/n2/job/n3/job/n4/123
@@ -63,6 +79,15 @@
         - d = 123
 
                             
+
+
+
+
+
+
+
+
+
 
 
 

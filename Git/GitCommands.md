@@ -297,8 +297,17 @@ $ git branch -d <hot-branch>                  // delete the release branch
 # Github pages
 - For a username github page url will be '<username>.github.io'   # sajibcse68.github.io
 - For a project github page url will be '<username.githun.io/<projectname>'  # sajibcse68.github.io/dojo_rules
-
 ``` 
+
+#### Stage vs Track file
+- Tracked files are files that were in the last snapshot; they can be unmodified, modified, or staged.
+- Untracked files are everything else — any files in your working directory that were not in your last snapshot and are not in your staging area (index)
+
+```
+$ touch index.html                // unstaged, untracked
+$ git add index.html              // staged, untracked
+$ git commit -m 'be tracked'      // staged, tracked
+```
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
 
@@ -326,5 +335,4 @@ G   H   I   J               A =      = A^0
 `HEAD@{2}`  &nbsp;                       : &nbsp;&nbsp;  refers to the 3rd listing in the overview of git reflog  
 `HEAD~~`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  2 commits older than HEAD  
 `HEAD^^`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  2 commits older than HEAD  
-
 

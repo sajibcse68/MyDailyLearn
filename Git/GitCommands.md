@@ -11,9 +11,7 @@ $ git config --local user.email <your-email>
 ```
 #### Some other necessary ``config`` commands
 ```sh
-$ git config --list                          # See full configuration of git 
-$ git remote set-url origin <remote-url>     # Set remote url                
-$ git remote -v                              # See all the remotes           
+$ git config --list                          # See full configuration of git                           
 $ git config --global core.editor emacs      # Use emacs for interactive commands
 $ git config --global merge.tool opendiff    # Use opendiff for merging conflicts
 $ git config --global color.ui true          # Better visualization            
@@ -200,8 +198,10 @@ $ git rebase -i HEAD~3                   # merge last 3 commit in one, see
 $ git remote add <name> <address/url>          # Add new remote/repositories
 $ git remote rm <name>                         # Remove a remote
 $ git remote rename <present-name> <new-name>  # Rename a remote
+$ git remote set-url origin <remote-url>       # Set remote url 
 $ git remote show                              # Can have multiple remote
 $ git remote show origin                       # Show remote url
+$ git remote -v                                # See all the remotes
 $ git fetch <remote-name>                      # Fetching/pulling from remote
 ```
 

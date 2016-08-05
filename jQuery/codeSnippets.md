@@ -33,6 +33,13 @@ $('.cpu-val').on('keypress keyup', function () {
 });
 ```
 
+#### Remove/hide page fade-in due to modal call
+`<div class="modal-backdrop fade in" style="display: none;"></div>` is responsible for page fade in. Sometimes modal window gone but
+page fade-in remains.
+```js
+$('.modal-backdrop').hide();
+```
+
 #### Miscellaneous
 ```
 // manually trigger an element

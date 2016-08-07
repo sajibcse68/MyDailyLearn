@@ -499,9 +499,124 @@ To create a `linear gradient`, we need to specify the starting point, the ending
 
 
 - Radial gradients
+A `radial gradient`, unlike a `linear gradient`, creates a gradient that extends from an origin, the center of the element,
+extending outward in a circular or elliptical shape. It consists of `3` parts:
+- The center
+- The ending shape contour position
+- Color stops
 
+```
+<!-- This creates a two-color elliptical `gradient` that radiates from the `center` by default -->
+.element { 
+    background:
+        radial-gradient(aqua, blue);
+}
+```
+- radial-gradient(<shape> <size> at <position>, <color-stops>)
+    - <shape>: circle or ellipsis. The default is ellipsis
+    - <size>: closest-side, closest-corner, farthest-side, farthest-corner (default value). Size can also be `length` or `percentage`
+    - <position>: Same as `background-position`. Default is `center`
+    - <color-stops>: The `color-stop`s consists of a color and an optional `stop position`, which can be either a `percentage` or `length`
+```
+.element {
+    background: radial-gradient(circle at top left, aqua, blue)
+} 
+```
 
+## Fonts and Interactions
+
+#### Font Face
+Using `@font-face`, we have the ability to provide online fonts for use on our websites.
+```
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url('OpenSansRegular-webfont.eot');
+    font-style: normal;
+    font-weight: normal;
+},
+h1 {
+    font-family: 'OpenSansRegular, Helvetica, Arial, sans-serif';
+    <!-- Provide fallback fonts here, as we normally would -->
+}
  
+```
+#### Transforms
+Using the `transform` property in CSS3, we can translate, rotate, scale and skew elements in CSS.
+- `translate(<tx>, <ty>)`
+    - A <transition-value> for the <tx> or <ty> can be either a `length` or `percentage`. If not specified, the value is 0.
+- `Rotate`: we can rotate an element `clockwise` around its origin by the specified angle.
+    
+     ```
+    .element {
+        transform: rotate(45deg);
+    }
+    ```
+- 'Scale': With `scale` we can do a 2D scale by a specified unitless number.
+    
+    ```
+    .element {
+        transform: scale(1.2);
+    }
+    ```
+- `Skew`: With `skew`, an element is skewed around the x or y axis by the angle specified. 
+    
+    ```
+    .element {
+        transform: skewX(25deg);
+        transform: skewY(-85deg);
+    }
+    ```
+#### Transitions
+CSS3 privides `transitions`, which allow us to `transsition between two states of a specified element`.
+
+```
+.element {
+    background-color: black;
+    transition: background-color 0.2s ease-in-out;
+},
+
+.element:hover {
+    background-color: blue;
+},
+
+```
+
+- `transition: <property> <duration> <timing-function> <delay>`
+    - <property>: CSS property we want to `transition`
+    - <duration>: `duration` of the `transition`. The default value is `0s`. (optional)
+    - <timing-function>: The timing of the `transition` itself.
+        - ease
+        - ease-in
+        - ease-in-out
+        - linear
+        - cubic-bezier
+        - step-start
+        - step-end
+        - steps()
+    - <delay>: The amount of time to wait between the change that is being requested on a specific property, and the start of the `transition`    
+    
+    ```
+    .element {
+        transition-property: background-color;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0.1s;
+    }
+    ```
+#### Prigressive Enhancement
+
+The term `progressive enhancement` refers to the use of newer features that add to the experience in modern browsers that 
+support those features, but doesn't detract from the experience in order browsers.
+
+```
+.element {
+    background: #ccc;
+    border-radius: 10px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0, 0.75);
+}
+```
+- In above css if the `border-radius` and `box-shadow` properties aren't supported, we still get a usable design.
+
   
   
   

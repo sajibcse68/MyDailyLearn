@@ -48,7 +48,7 @@ e.g. <p><i>I hope this works</i>, he thought.</p>. Text in <i> tag and `alternat
 - Actionable words in interactive text-driven software
 - Article lead
 
-e.g. <p><b class="lead">The event takes place this upcoming Saturday, and over 3,000 people have already registered</p>.
+e.g. <p class="lead">The event takes place this upcoming Saturday, and over 3,000 people have already registered</p>.
 Article lead that will be `stylistically offset`.
 
 #### in HTML5, the `em` and `strong` tags have new meanings:

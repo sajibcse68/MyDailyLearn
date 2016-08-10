@@ -109,6 +109,7 @@ let {first, last, fullName} = buildUser("Sam", "Williams")
 ```   
 
 - Not all properties have to be `destructured` all the time. We can `explicitly select` the ones we need
+
 ```js
 // only grabbing `fullName` from the return Object
 let { fullName } = buildUser("Sam", "Williams" );
@@ -136,6 +137,27 @@ function buildUser (first, last, postCount) {
     }
   }
 }
+```
+#### Promise
+- Example 1:-
+
+```
+var timer = function(length) {
+    
+    return new Promise(function (resolve, reject) {
+    
+        console.log('Init Promise');
+        
+        setTimeout(function () {
+            console.log('Timeout done.');
+            
+            resolve();
+        }, length);
+    });
+}
+
+
+timer(4000).then(() => alert('All done!'));
 ```
 
 

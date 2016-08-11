@@ -1,6 +1,6 @@
 ##### Notes
 - When browser find the `<script>` tag to download, all other parallel downloading halts. (6 files can be downloaded by modern browser)
-- if we add `async` in <script> tag then it would be downloaded asynchronously
+- if we add `async` in `<script>` tag then it would be downloaded asynchronously
     - e.g. <script type="text/javascript" src="http://www.abc.com/test.js" async></script
 - Efficient choices for `string concatenation` is `+=`
     - e.g. const a = ''; a += 'b'; a += 'c';

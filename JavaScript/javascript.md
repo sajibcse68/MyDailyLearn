@@ -1,7 +1,7 @@
 ##### Notes
 - When browser find the `<script>` tag to download, all other parallel downloading halts. (6 files can be downloaded by modern browser)
 - if we add `async` in `<script>` tag then it would be downloaded asynchronously
-    - e.g. <script type="text/javascript" src="http://www.abc.com/test.js" async></script
+    - e.g. `<script type="text/javascript" src="http://www.abc.com/test.js" async></script`
 - Efficient choices for `string concatenation` is `+=`
     - e.g. const a = ''; a += 'b'; a += 'c';
 - Use a document fragment to insert additions all at once. Fragments are invisible containers that hold multiple DOM elements without

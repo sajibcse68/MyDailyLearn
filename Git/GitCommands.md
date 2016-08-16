@@ -300,7 +300,7 @@ $ git branch -d <hot-branch>                  // delete the release branch
 
 # Github pages
 - For a username github page url will be '<username>.github.io'   # sajibcse68.github.io
-- For a project github page url will be '<username.githun.io/<projectname>'  # sajibcse68.github.io/dojo_rules
+- For a project github page url will be '<username.github.io/<projectname>'  # sajibcse68.github.io/dojo_rules
 ``` 
 
 #### Stage vs Track file

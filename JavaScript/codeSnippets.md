@@ -80,7 +80,7 @@ function whatIsIt(object) {
     }
 }
 ```
- 
+[ref](http://stackoverflow.com/questions/11182924/how-to-check-if-javascript-object-is-json)
  
 ### Fancy Codes
 ```js

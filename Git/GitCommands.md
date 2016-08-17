@@ -52,6 +52,7 @@ $ git branch -av                             # Show all local and remote branche
 # Create
 $ git branch <branch-name>                   # Create a new branch
 $ git checkout -b <branch-name>              # Create & checkout to new branch
+$ git checkout --orphan <branch-name>        # Create a branch with no commit list
 
 # Push
 $ git push origin <branchname>               # Push to remote branch
@@ -179,8 +180,7 @@ $ git rebase master                      # Merge all commits of admin_branch aft
 $ git checkout master                   
 $ git checkout -b <history_master>       # Backup master branch if necessary
 $ git merge <admin_branch>               
-                                         
-$ git rebase --continue                  
+                                                         
 $ git rebase --skip                      
 $ git rebase --abort                     
                                          

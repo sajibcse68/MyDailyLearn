@@ -20,6 +20,7 @@ this.swords.splice(this.swords.indexOf(val), 1)
 #### jQuery `.clone()` method
 - Create a deep copy of the set of matched elements.
 - `clone()` vs `append()`
+
 ```js
 // html 
 <div class="container">
@@ -50,6 +51,36 @@ $( ".hello" ).clone().appendTo( ".goodbye" );
   </div>
 </div>
 ```
+
+#### Check if JavaScript object is JSON
+
+```
+var objectConstructor = "test".constructor;
+var arrayConstructor = [].constructor;
+var objectConstructor = {}.constructor;
+
+function whatIsIt(object) {
+    if (object === null) {
+        return "null";
+    }
+    else if (object === undefined) {
+        return "undefined";
+    }
+    else if (object.constructor === stringConstructor) {
+        return "String";
+    }
+    else if (object.constructor === arrayConstructor) {
+        return "Array";
+    }
+    else if (object.constructor === objectConstructor) {
+        return "Object";
+    }
+    else {
+        return "don't know";
+    }
+}
+```
+[ref](http://stackoverflow.com/questions/11182924/how-to-check-if-javascript-object-is-json)
  
 ### Fancy Codes
 ```js

@@ -92,8 +92,11 @@ myfunc.call(this);
 myfunc.apply(this);
 
 // add DOM element and `class` inside that element
-
 const li = document.createElement('li');
 li.className = '<class-name>';
+
+// UTC to human readable date
+const date = new Date();
+const humanReadableDate = date.toDateString(<utc-time>);
 ```
 

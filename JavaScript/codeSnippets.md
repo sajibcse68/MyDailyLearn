@@ -91,5 +91,9 @@ const o = Object.create(null);
 myfunc.call(this);
 myfunc.apply(this);
 
+// add DOM element and `class` inside that element
+
+const li = document.createElement('li');
+li.className = '<class-name>';
 ```
 

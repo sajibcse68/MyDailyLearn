@@ -98,5 +98,8 @@ li.className = '<class-name>';
 // UTC to human readable date
 const date = new Date();
 const humanReadableDate = date.toDateString(<utc-time>);
+
+// Get the full url
+const fullUrl = window.location.href();
 ```
 

@@ -14,7 +14,7 @@
 #### @import of SCSS vs .scss
 - The SCSS `@import` rule has been avoided: prevents parallel downloading
 - `@import` with .scss or .sass happens `during compile` rather than client-side
-- File extension is optional.
+- File extension is optional
 
 #### Partials
 - Adding an underscore creates a `partial`. Partials can be imported, but will not compile to .css.
@@ -43,7 +43,6 @@
     margin: 15px 0;
   }
 }
-
 
 // application.css (converted from application.scss)
 .content {

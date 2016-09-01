@@ -96,8 +96,7 @@ const li = document.createElement('li');
 li.className = '<class-name>';
 
 // UTC to human readable date
-const date = new Date();
-const humanReadableDate = date.toDateString(<utc-time>);
+const date = new Date(<timestamp> * 1000);
 
 // Get the full url
 const fullUrl = window.location.href();

@@ -53,7 +53,6 @@ $( ".hello" ).clone().appendTo( ".goodbye" );
 ```
 
 #### Check if JavaScript object is JSON
-
 ```
 var objectConstructor = "test".constructor;
 var arrayConstructor = [].constructor;
@@ -81,6 +80,9 @@ function whatIsIt(object) {
 }
 ```
 [ref](http://stackoverflow.com/questions/11182924/how-to-check-if-javascript-object-is-json)
+ 
+####  
+ 
  
 ### Fancy Codes
 ```js

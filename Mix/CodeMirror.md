@@ -58,3 +58,27 @@ CodeMirror.fromTextArea(document.getElementById(id), {
         ... 
     }).setValue("code here");
 ```
+
+#### Use of `various events` of CodeMirror
+```
+const cm = CodeMirror.fromTextArea(document.getElementById(id), {
+                mode: "javascript",
+                theme: "default",
+                readOnly: false,
+                lineNumbers: true,
+            });
+// change: Fires when the line's text content is changed in any way             
+cm.on("change", function(cmInstance, change) {
+  
+  // Get the current editor content
+  cmInstance.getValue();
+}            
+
+// Set the current editor content
+  cmInstance.setValue();
+  
+// focus: Fires whenever the editor is focused.             
+cm.on("focus", function(cmInstance) {
+  ...
+}  
+```

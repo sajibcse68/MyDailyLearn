@@ -51,3 +51,10 @@
     }
 </style>
 ```
+
+#### Set the `value of CodeMirror` editor
+```
+CodeMirror.fromTextArea(document.getElementById(id), {
+        ... 
+    }).setValue("code here");
+```

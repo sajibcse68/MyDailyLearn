@@ -200,7 +200,8 @@ $ git remote rm <name>                         # Remove a remote
 $ git remote rename <present-name> <new-name>  # Rename a remote
 $ git remote set-url origin <remote-url>       # Set remote url 
 $ git remote show                              # Can have multiple remote
-$ git remote show origin                       # Show remote url
+$ git ls-remote --get-url origin               # Show only the url of origin
+$ git remote show origin                       # Show remote url and branches of origin 
 $ git remote -v                                # See all the remotes
 $ git fetch <remote-name>                      # Fetching/pulling from remote
 ```

@@ -82,3 +82,13 @@ cm.on("focus", function(cmInstance) {
   ...
 }  
 ```
+
+#### Dynamically change 'clipboard-text'
+```
+var clipboardDemos = new Clipboard('#copy-btn', {
+    text: function(trigger) {
+        var clipboardText = $(trigger).data('clipboard-text');
+        return clipboardText;
+    }
+});
+```

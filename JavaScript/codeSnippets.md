@@ -53,7 +53,6 @@ $( ".hello" ).clone().appendTo( ".goodbye" );
 ```
 
 #### Check if JavaScript object is JSON
-
 ```
 var objectConstructor = "test".constructor;
 var arrayConstructor = [].constructor;
@@ -82,6 +81,9 @@ function whatIsIt(object) {
 ```
 [ref](http://stackoverflow.com/questions/11182924/how-to-check-if-javascript-object-is-json)
  
+####  
+ 
+ 
 ### Fancy Codes
 ```js
 // Create a new object (server response)
@@ -96,8 +98,7 @@ const li = document.createElement('li');
 li.className = '<class-name>';
 
 // UTC to human readable date
-const date = new Date();
-const humanReadableDate = date.toDateString(<utc-time>);
+const date = new Date(<timestamp> * 1000);
 
 // Get the full url
 const fullUrl = window.location.href();

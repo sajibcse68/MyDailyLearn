@@ -617,6 +617,24 @@ support those features, but doesn't detract from the experience in order browser
 ```
 - In above css if the `border-radius` and `box-shadow` properties aren't supported, we still get a usable design.
 
+#### Block-Level Vs Inline Elements
+- Block-level Elements
+    - Render to begin on a new line (by default)
+    - May contain inline or other block-level elements
+    - Roughly flow content (HTML5 category)
+- Inline Elements
+    - Render on the same line (by default)
+    - May only contain other inline elements
+    - Roughly Phrasing content (HTML5 category)
+#### Characters we `should always escape`
+- `&it` instead of `<`
+- `&gt` instead of `>`
+- `&amp` instead of `&`
+- `&quit;` instead of `"`
+- `&copy;` for `copyright`
+- `&nmsp;` for no-breakable space
+
+
   
   
   

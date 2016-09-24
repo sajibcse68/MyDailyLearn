@@ -134,7 +134,55 @@ eval('regiment' + number).motto = motto;
     - In simple `augmentation`, the `module` file and the augmentation file `module` share their `private state`.
       Augmentation module `properties` may only `access` the `private` data from their file's `closure`. `Private` data
       from the `original` closure `will not` be lost, and `will` be accessible to all original `properties`.
+
+#### Scope Chain (how js works!)
+- Everything is executed in an Execution Context
+- Function invocation creates a new Execution Context
+- Each Execution Context has: 
+    - Its own Variable Environment
+    - Special `this` object
+    - Reference to its Outer Environment
+- Global scope does not have an Outer Environment as it's the most outer there is.
+- Execute flows -
+```
+Referenced (not defined) variable will be searched for in its current scope first.
+If not found, then Outer Reference will be searched.
+If not found, the Outer Reference's Outer Reference will be searched, etc.
+This will keep going until the Global scope.
+If not keep going scope, the variable is undefined.
+```
+
 #### JavaScript: The Good Parts
 - 100 and 1e2 are the same number
 - `NaN` is not equal to any value, including itself. Detect `NaN` with the `isNaN(number)` function.
 - `Infinity` is any value greater that 1.79769313486231570e+308.
+- JS does not have an integer type
+    - integers are a subset of doubles instead of a separate data type
+- JS defines `7` built-in types
+    - `Object` and `6 Primitives`
+- Object type is a collection of name/value pairs
+- Primitive type can contain a `single, immutable` value
+- Undefined means variable memory has been allocated but no value has ever been explicitly set yet.
+- What is `False` to JS ?
+    - `false`, `null`, `undefined`, `""`, `0`, `NaN`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

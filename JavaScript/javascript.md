@@ -165,9 +165,51 @@ If not keep going scope, the variable is undefined.
 - Undefined means variable memory has been allocated but no value has ever been explicitly set yet.
 - What is `False` to JS ?
     - `false`, `null`, `undefined`, `""`, `0`, `NaN`
+- In JS, primitives are passed by value, `objects` are `passed by referenece`
 
+```
+var a = { x: 7 };
+var b = a;
+console.log(a);   // output: 7
+console.log(b);   // output: 7
 
+b.x = 5;
+console.log('After b.x update:');
+console.log(a);   // output: 5  (a is also changed!)
+console.log(b);   // output: 5
 
+```
+- When we have an `inner function` within another function,
+  this keyword starts pointing to the `global object (window)`.
+
+```
+
+// Object literals and `this`
+var literalCircle = {
+  radius: 10,
+
+  getArea: function() {
+    console.log(this);       // Object {radius: 10}
+
+    var increaseRadius = function () {
+      this.radius = 20;
+      // Here, this is referring to global object `window` because of inner function [getArea() -> increaseArea()]
+    };
+    increaseRadius();
+    console.log(this.radius);
+
+    return Math.PI * Math.pow(this.radius, 2);
+  }
+};
+console.log(literalCircle.getArea());
+```
+
+- Immediately Invoked Function Expression (`IIFE`)
+```
+(function () {
+  console.log('This function will be invoked immediately');
+})();
+```
 
 
 

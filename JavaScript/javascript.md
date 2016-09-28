@@ -211,7 +211,26 @@ console.log(literalCircle.getArea());
 })();
 ```
 
+- `Function.prototype.call()` - The `call()` method calls a function with a `given this` value and arguments provided individually.
+    - A different `this object` can be assigned when calling an existing function. this refers to the current object, the calling object.
+    With `call`, you can write a method once and then inherit it in another object, without having to rewrite the method for the new object.
+- With `call() or apply()` we can set the value of `this`, and invoke a function as a new method of an existing object.
+- Using call to invoke a function and specifying the `context` for `this`. In below example, when we will call great the value of this
+ will be bind to boject `i`.
 
+```
+function greet() {
+    var reply = [this.person, 'Is An Awesome', this.role].join(' ');
+    console.log(reoly);
+}
+
+var i = {
+    person: 'Douglas Crockford',
+    role: 'Javascript Developer'
+}
+
+greet.call(i); // output: Douglas Crockford Is An Awesome Javascript Developer
+```
 
 
 

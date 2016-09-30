@@ -85,9 +85,13 @@ function whatIsIt(object) {
  
  
 ### Fancy Codes
+
 ```js
 // Create a new object (server response)
 const o = Object.create(null);
+
+// Convert browser into an Editor
+document.body.contentEditable=true
 
 // set the context for a function by .call() or .apply()
 myfunc.call(this);

@@ -165,11 +165,72 @@ If not keep going scope, the variable is undefined.
 - Undefined means variable memory has been allocated but no value has ever been explicitly set yet.
 - What is `False` to JS ?
     - `false`, `null`, `undefined`, `""`, `0`, `NaN`
+- In JS, primitives are passed by value, `objects` are `passed by referenece`
 
+```
+var a = { x: 7 };
+var b = a;
+console.log(a);   // output: 7
+console.log(b);   // output: 7
 
+b.x = 5;
+console.log('After b.x update:');
+console.log(a);   // output: 5  (a is also changed!)
+console.log(b);   // output: 5
 
+```
+- When we have an `inner function` within another function,
+  this keyword starts pointing to the `global object (window)`.
 
+```
 
+// Object literals and `this`
+var literalCircle = {
+  radius: 10,
+
+  getArea: function() {
+    console.log(this);       // Object {radius: 10}
+
+    var increaseRadius = function () {
+      this.radius = 20;
+      // Here, this is referring to global object `window` because of inner function [getArea() -> increaseArea()]
+    };
+    increaseRadius();
+    console.log(this.radius);
+
+    return Math.PI * Math.pow(this.radius, 2);
+  }
+};
+console.log(literalCircle.getArea());
+```
+
+- Immediately Invoked Function Expression (`IIFE`)
+```
+(function () {
+  console.log('This function will be invoked immediately');
+})();
+```
+
+- `Function.prototype.call()` - The `call()` method calls a function with a `given this` value and arguments provided individually.
+    - A different `this object` can be assigned when calling an existing function. this refers to the current object, the calling object.
+    With `call`, you can write a method once and then inherit it in another object, without having to rewrite the method for the new object.
+- With `call() or apply()` we can set the value of `this`, and invoke a function as a new method of an existing object.
+- Using call to invoke a function and specifying the `context` for `this`. In below example, when we will call great the value of this
+ will be bind to boject `i`.
+
+```
+function greet() {
+    var reply = [this.person, 'Is An Awesome', this.role].join(' ');
+    console.log(reoly);
+}
+
+var i = {
+    person: 'Douglas Crockford',
+    role: 'Javascript Developer'
+}
+
+greet.call(i); // output: Douglas Crockford Is An Awesome Javascript Developer
+```
 
 
 

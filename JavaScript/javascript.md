@@ -232,8 +232,18 @@ var i = {
 greet.call(i); // output: Douglas Crockford Is An Awesome Javascript Developer
 ```
 
-
-
+#### Common Misconception about JSON
+- JSON is a lightweight data representation
+- Great format for passing data from server to client & back
+- Syntax is based on JS object literal
+    - But JSON is NOT JS object literal
+    - JSON is just a string
+- Need to convert JSON into a JS object
+- Converting JSON to String & Back to JSON
+    - var obj = JSON.parse(jsonString);    // converts from json string to object
+    - var str = JSON.stringigy(obj);       // converts from object to JSON 
+    
+ 
 
 
 

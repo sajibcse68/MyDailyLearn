@@ -42,6 +42,10 @@ $('.modal-backdrop').hide();
 
 #### Miscellaneous
 ```
+// jQuery's data() does not update the attributes, it sets an internal data object, but uses the data attribute as the default value only.
+// use .attr()
+.attr('data-name')        
+
 // Manually trigger an element
 $('.class-name').on('click', function() {
     $('.class-name').trigger('triggerWord');          // now backbone grab the event listener, backbone  

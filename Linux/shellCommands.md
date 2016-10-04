@@ -24,11 +24,11 @@ $ wc -l science.txt                // Count lines
 * Permissions:  
   1 -- can execute  
   2 -- can write  
-  3 -- can read  
+  4 -- can read  
   
 *  The octal number is the sum of those free permissions:
-    3(1+2) - can execute and write
-    6(2+4) - can write and read
+   -  3(1+2) - can execute and write
+   -  6(2+4) - can write and read
 
 * Position of th digit in value:  
   1 - what owner can   

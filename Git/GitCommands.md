@@ -52,6 +52,7 @@ $ git branch -av                             # Show all local and remote branche
 # Create
 $ git branch <branch-name>                   # Create a new branch
 $ git checkout -b <branch-name>              # Create & checkout to new branch
+$ git checkout --orphan <branch-name>        # Create a branch with no commit list
 
 # Push
 $ git push origin <branchname>               # Push to remote branch
@@ -179,8 +180,7 @@ $ git rebase master                      # Merge all commits of admin_branch aft
 $ git checkout master                   
 $ git checkout -b <history_master>       # Backup master branch if necessary
 $ git merge <admin_branch>               
-                                         
-$ git rebase --continue                  
+                                                         
 $ git rebase --skip                      
 $ git rebase --abort                     
                                          
@@ -200,7 +200,8 @@ $ git remote rm <name>                         # Remove a remote
 $ git remote rename <present-name> <new-name>  # Rename a remote
 $ git remote set-url origin <remote-url>       # Set remote url 
 $ git remote show                              # Can have multiple remote
-$ git remote show origin                       # Show remote url
+$ git ls-remote --get-url origin               # Show only the url of origin
+$ git remote show origin                       # Show remote url and branches of origin 
 $ git remote -v                                # See all the remotes
 $ git fetch <remote-name>                      # Fetching/pulling from remote
 ```
@@ -300,7 +301,7 @@ $ git branch -d <hot-branch>                  // delete the release branch
 
 # Github pages
 - For a username github page url will be '<username>.github.io'   # sajibcse68.github.io
-- For a project github page url will be '<username.githun.io/<projectname>'  # sajibcse68.github.io/dojo_rules
+- For a project github page url will be '<username.github.io/<projectname>'  # sajibcse68.github.io/dojo_rules
 ``` 
 
 #### Stage vs Track file

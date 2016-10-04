@@ -4,3 +4,4 @@
 * `Cmd + Shift + 8`           -- Toggling between line and column selection modes
 * `ctrl + Alt + L`            -- Reformat code
 * `Shift + Options + click`   -- Bind cursor in multiple place
+* `Cmd + D`                   -- Duplicate a line row or a section

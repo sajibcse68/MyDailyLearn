@@ -55,7 +55,8 @@ $ git checkout -b <branch-name>              # Create & checkout to new branch
 $ git checkout --orphan <branch-name>        # Create a branch with no commit list
 
 # Push
-$ git push origin <branchname>               # Push to remote branch
+$ git push origin <branch-name>              # Push to remote branch
+$ git push -u origin <branch-name>           # -u tells Git to remember the parameters, so that next time we can simply run `git push`
 
 # Delete
 $ git branch -d <branchname>                 # Delete the local branch, show a warning
@@ -145,7 +146,8 @@ $ git log                                 # Show all the change/commit history
 $ git show <commit hash>                  # See what changes in a specific commit
 $ git reset --soft <commit hash>          # Back to a specific commit and exits the change
 $ git diff HEAD                           # Show the changes to files not yet staged
-                                                     
+
+$ git checkout -- <file-name>             # Replaces the changes with the last content in HEAD 
 $ git clean -f -n                         # clean untract file (dry run)
 $ git clean -dxf
 $ git rm --cached -r .
@@ -286,10 +288,7 @@ $ git push origin :refs/tags/<tag-name>       # delete a tag from remote
 # More
 $ git tag                                       # show list of tag
 $ git tag <new-tag>                             # tag the current commit
-$ git checkout <tagname>                        # checkout to a tag
-$ git tag -a v0.0.3 -m "version 0.0.3"          
-$ git push --tag                                # send tag to remote
-
+$ git checkout <tagname>
 
 # Release branches
 $ git checkout v1.1                           # checkout to a tag

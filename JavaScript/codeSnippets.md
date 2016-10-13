@@ -1,11 +1,11 @@
 ### Get details of DNS
 ```js
-console.log('document.URL : ', document.URL);
-console.log('document.location.href : ', document.location.href);
-console.log('document.location.origin : ', document.location.origin);
-console.log('document.location.hostname : ', document.location.hostname);
-console.log('document.location.host : ', document.location.host);
-console.log('document.location.pathname : ', document.location.pathname);
+console.log('document.URL : ', document.URL);                             // http://sub.mydomain.com:1234/a/b/c/d
+console.log('document.location.href : ', document.location.href);         // http://sub.mydomain.com:1234/a/b/c/d 
+console.log('document.location.origin : ', document.location.origin);     // http://sub.mydomain.com:1234  
+console.log('document.location.hostname : ', document.location.hostname); // sub.mydomain.com
+console.log('document.location.host : ', document.location.host);         // sub.mydomain.com:9999
+console.log('document.location.pathname : ', document.location.pathname); // /a/b/c/d
 ```
 
 #### indexOf() and splice() method

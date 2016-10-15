@@ -575,4 +575,36 @@ $authors: nick aimee dan drew;
 }
 
 ```
-  
+
+#### Math + Color
+- Saas defaults to returning (up to) five digits after a decimal point.
+- Triggering Division
+    - variable involved - $size / 10
+    - Parenthesis - (100px / 20)
+    - Another arithmetic operation - 20px * 5 / 2
+- Pre-Defined Math Utilities
+    - round ($number) - round to closes whole number
+    - ceil ($number) - round up
+    - floor ($number) - round down
+    - abs ($number) - absolute value
+    - min ($list) - minimum list value
+    - max ($number) - convert to percentage
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

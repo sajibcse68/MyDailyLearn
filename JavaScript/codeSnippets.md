@@ -92,6 +92,28 @@ const o = Object.create(null);
 
 // Convert browser into an Editor
 document.body.contentEditable=true
+// Find events associated with an element in the DOM
+const allEvents = getEventListeners($('selector'));
+
+// Monitor Events, monitor all the events associated with the element
+const monitorEvents = monitorEvents($('selector'));
+
+// Arrange the values of a variable into a table
+console.table('variableName');
+
+// Inspect an element in the DOM
+inspect($('selector'));
+
+// List the properties of an element, returns an object with all of the properties associated with its DOM element
+dir($('selector'));
+
+// Retrieve the value of last result
+$_
+
+// Clear the console and Memory
+clear()
+
+// 
 
 // set the context for a function by .call() or .apply()
 myfunc.call(this);
@@ -107,4 +129,42 @@ const date = new Date(<timestamp> * 1000);
 // Get the full url
 const fullUrl = window.location.href();
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -42,10 +42,17 @@ $('.modal-backdrop').hide();
 
 #### Miscellaneous
 ```
-// manually trigger an element
+// jQuery's data() does not update the attributes, it sets an internal data object, but uses the data attribute as the default value only.
+// use .attr()
+.attr('data-name')        
+
+// Manually trigger an element
 $('.class-name').on('click', function() {
     $('.class-name').trigger('triggerWord');          // now backbone grab the event listener, backbone  
 } 
+
+// Get the `type` of an `input field` by searching `name` attribute
+$("input[name='field-name']").attr('type'); 
 
 // Get the value of checkbox
 const check = $('#id').prop('checked');

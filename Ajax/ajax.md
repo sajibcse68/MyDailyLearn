@@ -7,11 +7,11 @@
 #### URN -> URI -> URL
 - URN (Uniform Resource Name)
     - Uniquely identifies resources or name of resource
-    - Does not tell us hot to get the resource
+    - Does not tell us how to get the resource
     - e.g. "HTML/CSS/Javascript/Web_Developers/Yaakov/Chaikin"
 
 - URI (Uniform Resource Identifier)
-    - Uniquely identifies resource or location or resource
+    - Uniquely identifies resource or location
     - Does not necessarily tell us how to get the resource (much more `directory type` structure looking thing)
     - e.g. "/official_web_site/index.html" (unable to get that resource cause don't know where to go to get it)
 

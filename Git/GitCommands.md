@@ -55,7 +55,8 @@ $ git checkout -b <branch-name>              # Create & checkout to new branch
 $ git checkout --orphan <branch-name>        # Create a branch with no commit list
 
 # Push
-$ git push origin <branchname>               # Push to remote branch
+$ git push origin <branch-name>              # Push to remote branch
+$ git push -u origin <branch-name>           # -u tells Git to remember the parameters, so that next time we can simply run `git push`
 
 # Delete
 $ git branch -d <branchname>                 # Delete the local branch, show a warning
@@ -108,9 +109,9 @@ $ git cherry-pick --signoff <commit-hash>                   # --signoff add curr
 ```
 #### Stashing
 ```sh
-$ git stash  ($ git stash save)                     # Save the changes in temporary box
+$ git stash save                                    # Save the changes in temporary box
 $ git stash save "provide a stash message"          # We can provide a stash message when stashing.
-$ git stash apply ($ git stash apply stash@{0})     # Return the codes that I cleaned before
+$ git stash apply stash@{0}                         # Return the codes that I cleaned before
 $ git stash apply stash@{2}                         # get back the #3 stash codes.
 $ git stash list                                    # Show how many stash we have
 $ git stash list --stash                            # Show all stash lists with changes file
@@ -145,7 +146,8 @@ $ git log                                 # Show all the change/commit history
 $ git show <commit hash>                  # See what changes in a specific commit
 $ git reset --soft <commit hash>          # Back to a specific commit and exits the change
 $ git diff HEAD                           # Show the changes to files not yet staged
-                                                     
+
+$ git checkout -- <file-name>             # Replaces the changes with the last content in HEAD 
 $ git clean -f -n                         # clean untract file (dry run)
 $ git clean -dxf
 $ git rm --cached -r .
@@ -184,12 +186,10 @@ $ git merge <admin_branch>
 $ git rebase --skip                      
 $ git rebase --abort                     
                                          
-$ git rebase -i HEAD~3                   # i-> interactive rebase, will popup the window and we can rearrange the window.
+$ git rebase -i HEAD~3                   # i-> interactive rebase, will popup the window and we can rearrange the commits.
 # write 'reword' replacing 'pick'        # change the commit message
-# $ write 'edit' for stopping a commit that is already committed, then 'git reset HEAD^' (--soft), then do two commits.
+# write 'edit' for stopping a commit that is already committed, then 'git reset HEAD^' (--soft), then do two commits.
 $ git rebase --continue                  # finish the rebase
-                                         
-$ git rebase -i HEAD~3                   # merge last 3 commit in one, see 
 ```
 [See this](https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/)
 
@@ -205,7 +205,6 @@ $ git remote show origin                       # Show remote url and branches of
 $ git remote -v                                # See all the remotes
 $ git fetch <remote-name>                      # Fetching/pulling from remote
 ```
-
 
 #### Conflicts:
 * Life being the pain in the proverbial that it is, our merge might have a `conflict`.
@@ -225,7 +224,6 @@ $ git <branch-name> --tree-filter 'rm -f password.txt'  # Remove password.txt fi
 $ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt' 
 ```
 
-
 #### SubModules: (always push to two repo, first to submodules then parent repo)
 ```
 $ git submodule add git@example.com:css.git                      # Add a submodule in a git project, also create a .gitmodules file
@@ -236,9 +234,8 @@ $ git push --recurse-submodules=check                            # Will abort a 
 $ git push --recurse-submodules=on-demand                        # Push to parent repo, then it'll push to submodule automatically.
 $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias   
 ```
+
 #### Fancy commands
-Compare changes of two tags in github: `<url><tag-1>...<tag-2>`
-[Example](https://github.com/jenkinsci/jenkins/compare/jenkins-1.651...jenkins-1.651.2)
 
 ```
 $ git status                                   # List new or modified files not yet committed
@@ -258,6 +255,8 @@ $ git command --help                           # When in doubt, use git help
 # Show diff
 $ git diff b1..b2                              # Compare two brances, show you what is in b2 that is not in b1
 $ git diff <commit1> <commit2>                 # Show changes between two commits id
+$ <url><tag-1>...<tag-2>                       # Compare changes of two tags in github 
+# [Example](https://github.com/jenkinsci/jenkins/compare/jenkins-1.651...jenkins-1.651.2)
 
 $ git push -f origin HEAD^:master              # "undo" the push from remote and keep the local intact
 $ git blame <file>                             # List the change dates and authors for a file
@@ -266,9 +265,7 @@ $ git show <commit>:<file>                     # Show the file changes for a com
 `$ git branch --set-upstream master_upstream origin/master_upstream`.  
 The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
 
-
 #### Tags and Releases
-
 - Realese tag point to a single commit
 - Semantic versioning should be followed for tags (major.minor.patch)
 - Three key reasons for creating a relese branch:
@@ -286,10 +283,7 @@ $ git push origin :refs/tags/<tag-name>       # delete a tag from remote
 # More
 $ git tag                                       # show list of tag
 $ git tag <new-tag>                             # tag the current commit
-$ git checkout <tagname>                        # checkout to a tag
-$ git tag -a v0.0.3 -m "version 0.0.3"          
-$ git push --tag                                # send tag to remote
-
+$ git checkout <tagname>
 
 # Release branches
 $ git checkout v1.1                           # checkout to a tag

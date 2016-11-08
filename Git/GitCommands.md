@@ -259,6 +259,10 @@ $ git diff <commit1> <commit2>                 # Show changes between two commit
 $ <url><tag-1>...<tag-2>                       # Compare changes of two tags in github 
 # [Example](https://github.com/jenkinsci/jenkins/compare/jenkins-1.651...jenkins-1.651.2)
 
+# Set git diff to a default value (if git diff not works)
+$ git config --global --unset diff;            # this two commands reset git diff to default
+$ git config --global --unset diff.external   
+
 $ git push -f origin HEAD^:master              # "undo" the push from remote and keep the local intact
 $ git blame <file>                             # List the change dates and authors for a file
 $ git show <commit>:<file>                     # Show the file changes for a commit id and/or file

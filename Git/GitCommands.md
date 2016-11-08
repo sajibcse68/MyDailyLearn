@@ -59,9 +59,10 @@ $ git push origin <branch-name>              # Push to remote branch
 $ git push -u origin <branch-name>           # -u tells Git to remember the parameters, so that next time we can simply run `git push`
 
 # Delete
-$ git branch -d <branchname>                 # Delete the local branch, show a warning
-$ git branch -D <branhcname>                 # Force to delete branch
-$ git remote prune origin                    # Cleanup remote deleted branch
+$ git branch -d <branch-name>                 # Delete the local branch, show a warning
+$ git branch -D <branhc-name>                 # Force to delete branch
+$ git push origin :<branch-name>              # Delete remote branch
+$ git remote prune origin                     # Cleanup remote deleted branch
 ```
 ####  Add, Commit, Amend, Push, Pull & Merge
 ```sh

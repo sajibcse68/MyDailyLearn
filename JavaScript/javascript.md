@@ -134,7 +134,126 @@ eval('regiment' + number).motto = motto;
     - In simple `augmentation`, the `module` file and the augmentation file `module` share their `private state`.
       Augmentation module `properties` may only `access` the `private` data from their file's `closure`. `Private` data
       from the `original` closure `will not` be lost, and `will` be accessible to all original `properties`.
+
+#### Scope Chain (how js works!)
+- Everything is executed in an Execution Context
+- Function invocation creates a new Execution Context
+- Each Execution Context has: 
+    - Its own Variable Environment
+    - Special `this` object
+    - Reference to its Outer Environment
+- Global scope does not have an Outer Environment as it's the most outer there is.
+- Execute flows -
+```
+Referenced (not defined) variable will be searched for in its current scope first.
+If not found, then Outer Reference will be searched.
+If not found, the Outer Reference's Outer Reference will be searched, etc.
+This will keep going until the Global scope.
+If not keep going scope, the variable is undefined.
+```
+
 #### JavaScript: The Good Parts
 - 100 and 1e2 are the same number
 - `NaN` is not equal to any value, including itself. Detect `NaN` with the `isNaN(number)` function.
 - `Infinity` is any value greater that 1.79769313486231570e+308.
+- JS does not have an integer type
+    - integers are a subset of doubles instead of a separate data type
+- JS defines `7` built-in types
+    - `Object` and `6 Primitives`
+- Object type is a collection of name/value pairs
+- Primitive type can contain a `single, immutable` value
+- Undefined means variable memory has been allocated but no value has ever been explicitly set yet.
+- What is `False` to JS ?
+    - `false`, `null`, `undefined`, `""`, `0`, `NaN`
+- In JS, primitives are passed by value, `objects` are `passed by referenece`
+
+```
+var a = { x: 7 };
+var b = a;
+console.log(a);   // output: 7
+console.log(b);   // output: 7
+
+b.x = 5;
+console.log('After b.x update:');
+console.log(a);   // output: 5  (a is also changed!)
+console.log(b);   // output: 5
+
+```
+- When we have an `inner function` within another function,
+  this keyword starts pointing to the `global object (window)`.
+
+```
+
+// Object literals and `this`
+var literalCircle = {
+  radius: 10,
+
+  getArea: function() {
+    console.log(this);       // Object {radius: 10}
+
+    var increaseRadius = function () {
+      this.radius = 20;
+      // Here, this is referring to global object `window` because of inner function [getArea() -> increaseArea()]
+    };
+    increaseRadius();
+    console.log(this.radius);
+
+    return Math.PI * Math.pow(this.radius, 2);
+  }
+};
+console.log(literalCircle.getArea());
+```
+
+- Immediately Invoked Function Expression (`IIFE`)
+```
+(function () {
+  console.log('This function will be invoked immediately');
+})();
+```
+
+- `Function.prototype.call()` - The `call()` method calls a function with a `given this` value and arguments provided individually.
+    - A different `this object` can be assigned when calling an existing function. this refers to the current object, the calling object.
+    With `call`, you can write a method once and then inherit it in another object, without having to rewrite the method for the new object.
+- With `call() or apply()` we can set the value of `this`, and invoke a function as a new method of an existing object.
+- Using call to invoke a function and specifying the `context` for `this`. In below example, when we will call great the value of this
+ will be bind to boject `i`.
+
+```
+function greet() {
+    var reply = [this.person, 'Is An Awesome', this.role].join(' ');
+    console.log(reoly);
+}
+
+var i = {
+    person: 'Douglas Crockford',
+    role: 'Javascript Developer'
+}
+
+greet.call(i); // output: Douglas Crockford Is An Awesome Javascript Developer
+```
+
+#### Common Misconception about JSON
+- JSON is a lightweight data representation
+- Great format for passing data from server to client & back
+- Syntax is based on JS object literal
+    - But JSON is NOT JS object literal
+    - JSON is just a string
+- Need to convert JSON into a JS object
+- Converting JSON to String & Back to JSON
+    - var obj = JSON.parse(jsonString);    // converts from json string to object
+    - var str = JSON.stringigy(obj);       // converts from object to JSON 
+    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+

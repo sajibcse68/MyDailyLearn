@@ -162,13 +162,15 @@ var promise = $.Deferred();            // jQuery method for creating a promise o
                                        //
 promise.resolve(value);                // Calls the done callback
 promise.done(function(value){});       // Similar to AJAX success callback
-                                       //
+                                       
 promise.reject(value);                 // Calls the fail callback
 promise.fail(function(value){});       // Similar to AJAX error callback
 
-# Here parameter can not be array, only promises `separated by commas`. Callback data is in the same order as the promises
-$.when(<promise1>, <promise2>...)      
-.then(function(p1Data, p2Data){});      
+// calling two/more promises in parallel
+$.when(<promise1>, <promise2>, <promise3>...)      
+.then(function(p1Data, p2Data), p3Data{});
+// Here parameter can not be array, only promises `separated by commas`. Callback data is in the same order as the promises
+
 ```
 `Rejections` heppen when a promise is explicitly rejected, but also implicitly if an error is thrown in the constructor callback.
 ```
@@ -179,8 +181,8 @@ $.when(<promise1>, <promise2>...)
     }).catch(function(err) {                    |      a2 ---> Fail    --> aRecovery1
         return aRecovery1();                    |
     }).then(function() {                        |      a3 ---> success --> a4
-        return a4();                            |      a1 ---> Fail    --> aRecovery1
-    }, function(function(err) {                 |
+        return a4();                            |      a3 ---> Fail    --> aRecovery1
+    }, catch(function(err) {                 |
         return aRecovery2();                    |      aRecovery1 ---> success --> a4
     }).catch(function(err) {                    |      aRecovery1 ---> Fail    --> aRecovery2
        console.log('Don't worry about it!);     |

@@ -46,8 +46,10 @@ $ git config --global alias.br branch        # git br -> git branch
 ```sh
 # Show
 $ git branch                                 # Show all local branches
-$ git branch -r                              # Show all the remote branch
-$ git branch -av                             # Show all local and remote branches
+$ git branch -r                              # Show all the remote branched
+$ git branch -a                              # Show all local and remote branches
+$ git branch -v                              # Show all local branches with last commits
+$ git branch -av                             # Show all local and remote branches with last commits
 
 # Create
 $ git branch <branch-name>                   # Create a new branch
@@ -68,7 +70,8 @@ $ git remote prune origin                     # Cleanup remote deleted branch
 ```sh
 # Add
 $ git add .                                                               
-$ git add --all                                     # Add all changes     
+$ git add --all                                     # Add all changes
+$ git add -p                                        # Stage a particular change
      
 # Commit                                                                          
 $ git commit -am 'commit message'                   # Add & commit        
@@ -129,6 +132,7 @@ $ git stash save --keep-index
 $ git log                                          # Show  all the change/commit history
 $ git log --oneline --decorate --all --graph       # See all commits with better visualization
 $ git log -p <file/directory>                      # Show change history for file/directory including diffs
+$ git log --pretty=format:"%h - %an, %ar : %s"     # commit hash-tag -> name -> data -> commit-message
 $ git log --pretty=oneline
 $ git log --oneline -p
 $ git log --oneline --stat
@@ -136,6 +140,7 @@ $ git log --oneline --graph
 $ git log --until=1.minute.ago                     # Until a specific time
 $ git log --since=1.day.ago                        # Since (days)
 $ git log --since=1.hour.ago                       # Since(hours)
+$ git log --since=2.weeks                          # Since two weeks
 $ git log --since1.month.ago --until=2.weeks.ago   # Since & until (relative)
 $ git log --since=2000-01-01 --until=2012-12-21    # Since & until (absolute)
 $ git blame index.html --date short                
@@ -251,6 +256,7 @@ $ git diff --cached                            # Show all staged and unstaged fi
 $ git gui
 $ git difftool
 $ git gc
+$ git help <verb>                              # Find out more
 $ git command --help                           # When in doubt, use git help
 
 # Show diff
@@ -259,42 +265,38 @@ $ git diff <commit1> <commit2>                 # Show changes between two commit
 $ <url><tag-1>...<tag-2>                       # Compare changes of two tags in github 
 # [Example](https://github.com/jenkinsci/jenkins/compare/jenkins-1.651...jenkins-1.651.2)
 
+# Set git diff to a default value (if git diff not works)
+$ git config --global --unset diff;            # this two commands reset git diff to default
+$ git config --global --unset diff.external   
+
 $ git push -f origin HEAD^:master              # "undo" the push from remote and keep the local intact
 $ git blame <file>                             # List the change dates and authors for a file
 $ git show <commit>:<file>                     # Show the file changes for a commit id and/or file
 ```
-`$ git branch --set-upstream master_upstream origin/master_upstream`.  
+`$ git branch --set-upstream master_upstream origin/master_upstream`.
 The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
 
 #### Tags and Releases
-- Realese tag point to a single commit
+- Release tag point to a single commit
 - Semantic versioning should be followed for tags (major.minor.patch)
-- Three key reasons for creating a relese branch:
+- Three key reasons for creating a release branch:
 	- Manual QA
 	- Long running releases
 	- On demand hot fixed
 
 ```
 $ git checkout <commit-hash>                  # checkout to a commit to give a tag
+$ git tag                                     # show list of tag
 $ git tag -a v1.0.0 -m "message"              # give a tag to this commit
 $ git push --tags                             # push the tags to origin
 $ git tag -d <tag-name>                       # delete a tag locally
 $ git push origin :refs/tags/<tag-name>       # delete a tag from remote
 
-# More
-$ git tag                                       # show list of tag
-$ git tag <new-tag>                             # tag the current commit
-$ git checkout <tagname>
-
-# Release branches
-$ git checkout v1.1                           # checkout to a tag
+$ git checkout <tag-name>
 $ git checkout -b <hot-branch>                # checkout a new branch from present commit
-<hotfix>
-$ git commit -m "Hotfix"
-$ git tag v1.1.1 -m "hotfix"
 $ git checkout master
 $ git merge <hot-branch> -m "Merge hotfix"
-$ git branch -d <hot-branch>                  // delete the release branch
+$ git branch -d <hot-branch>                  # delete the release branch
 
 # Github pages
 - For a username github page url will be '<username>.github.io'   # sajibcse68.github.io

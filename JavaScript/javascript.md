@@ -39,6 +39,82 @@ list.appendChild(fragment);
 - Use variables to cache objects (it is more clear than `with` and also no lengthy nested object names!)
 - JavaScript's `eval` keyword may not be evil, but it can affect legibility, an ability to debug and performance.
 
+#### `Closures` and `References`
+- One of the JS most powerful features is closures.
+- With `closures`, scopes `always` keep access to the outer scope, in which they were defined.
+```js
+// Emulating private variables
+function Counter(start) {
+  var count = start;
+   return {
+    increment: function() {
+      count++;
+    },
+    get: function() {
+      return count;
+    }
+   }
+}
+var foo = Counter(4);
+foo.increment();
+foo.get(); // 5
+```
+- Here, `Counter` returns `two closures`: `increment` & `get` functions.
+- Both of these functions keep a `reference` to the scope of `Counter` and, therefore, always keep access to the `Count`
+  variable that was defined in that scope.
+```js
+// Closures Inside Loops
+for(var i = 0; i < 10; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, 1000);
+}
+```
+- The above will not output the numbers `0 to 9`, but the number `10 ten times`
+- The anonymous function keeps a reference to i. At the time 'console.log' gets called, the `for loop` has already finished, and
+ the value of `i` has been set to `10`
+- In order to get the desired behavior, it is necessary to create a `copy` of the value of `i`
+```js
+// 1. Avoiding the Reference Problem
+for(var i = 0; i < 10; i++) {
+  (function(e) {
+    setTimeout(function() {
+      console.log(e);
+    }, 1000)
+  })(i);
+}
+```
+- The anonymous outer function gets called immediately with `i` as its first argument and will receive a copy of the value of `i` as it's parameter `e`
+- The anonymous function that gets passed to `setTimeout` now has a reference to `e`, whose value does not get changed by the loop.
+
+```js
+// 2. Avoiding the Reference Problem
+for(var i = 0; i < 10; i++) {
+  setTimeout((function(e) {
+    return function() {
+      console.log(e);
+    }
+    })(i), 1000)
+}
+```
+- There is another possible way of achieving this, which is to return a function from the `anonymous wrapper` that will then
+  have the same behavior as the code above.
+```js
+// 3. Avoiding the Reference Problem
+for(var i = 0; i < 10; i++) {
+  setTimeout(function(e) {
+    console.log(e);
+  }, 1000, i)
+}
+```
+- The other popular way to achieve this is to add an additional argument to the `setTimeout` function, which passes these arguments to the callback
+```js
+// 4. Avoiding the Reference Problem
+for(var i = 0; i < 10; i++) {
+  setTimeout(console.log.bind(console, i), 1000);
+}
+```
+- There's yet another way to accomplish this by using `.bind`, which can bind a `this` context and arguments to function.
 
 #### Change the `tooltip` value with js when button is clicked
 ```
@@ -241,7 +317,7 @@ greet.call(i); // output: Douglas Crockford Is An Awesome Javascript Developer
 - Need to convert JSON into a JS object
 - Converting JSON to String & Back to JSON
     - var obj = JSON.parse(jsonString);    // converts from json string to object
-    - var str = JSON.stringigy(obj);       // converts from object to JSON 
+    - var str = JSON.stringify(obj);       // converts from object to JSON 
     
  
 

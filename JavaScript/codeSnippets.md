@@ -112,7 +112,7 @@ Foo.method = function() {
   test();
 }
 ```
- 
+
  
 ### Fancy Codes
 

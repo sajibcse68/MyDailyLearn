@@ -188,14 +188,21 @@ $ git rebase master                      # Merge all commits of admin_branch aft
 $ git checkout master                   
 $ git checkout -b <history_master>       # Backup master branch if necessary
 $ git merge <admin_branch>               
-                                                         
+
+# Change the `author` of a earlier commit
+$ git rebase -i <commit-hash>                                               # go to last good commit
+# Editor will open, write `edit` before the commit we want to change author
+$ git commit --amend --author="author name <author@email.com>"              # change the author name & email
+# Editor will open, save and exit                                           # we can change 'commit-message' here
+$ git rebase --continue                                                     # finish the rebase
+
+# Reordering commits using rebase
+$ git rebase -i <commit-hash>                                               # go to last good commit
+# then reorder the commits, be careful it shows the commit in reverse
+  way as we see `git log` commands, shows old to new (top to bottom)
+
 $ git rebase --skip                      
-$ git rebase --abort                     
-                                         
-$ git rebase -i HEAD~3                   # i-> interactive rebase, will popup the window and we can rearrange the commits.
-# write 'reword' replacing 'pick'        # change the commit message
-# write 'edit' for stopping a commit that is already committed, then 'git reset HEAD^' (--soft), then do two commits.
-$ git rebase --continue                  # finish the rebase
+$ git rebase --abort
 ```
 [See this](https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/)
 

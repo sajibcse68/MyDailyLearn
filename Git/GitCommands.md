@@ -190,6 +190,14 @@ $ git checkout -b <history_master>       # Backup master branch if necessary
 $ git merge <admin_branch>               
 
 # Change the `author` of a earlier commit
+$ git checkout <coomit-hash>                                             # checkout the commit we're trying to modify
+$ git commit --amend --author "New-author-name <new-author@mail.com>"    # change the author name and mail
+$ git replace <old-commit-hash> <new-commit-hash>                        # replace the old commit by new one
+$ git filter-branch -- --all                                             # rewrite all futures commits based on the replacement                   
+$ git replace -d <old-commit-hash>                                       # remove the replacement for cleanliness 
+$ git push -f origin HEAD                                                # push forcely
+
+# Alternate way (May occur conflicts and more complex)
 $ git rebase -i <commit-hash>                                               # go to last good commit
 # Editor will open, write `edit` before the commit we want to change author
 $ git commit --amend --author="author name <author@email.com>"              # change the author name & email

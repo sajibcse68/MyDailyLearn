@@ -209,6 +209,12 @@ $ git rebase -i <commit-hash>                                               # go
 # then reorder the commits, be careful it shows the commit in reverse
   way as we see `git log` commands, shows old to new (top to bottom)
 
+# Change very first commit msg + squash the 2nd commit with first commit
+$ git rebase -i --root                                   # checkout to very first commit
+# Editor will open, write `edit` before the first-commit, `squash` before the 2nd commit
+$ git commit --amend -am 'New commit message'
+$ git rebase --continue
+
 $ git rebase --skip                      
 $ git rebase --abort
 ```

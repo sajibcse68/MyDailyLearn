@@ -107,7 +107,7 @@ $ git checkout -- <filename1> <filename2>  # Discard all changes of file1 and fi
 $ git cherry-pick <commit-hash>                             # Copy a single commit to current branch
 $ git cherry-pick <commit-hash> -X theirs                   # If conflicts occurs then accepts theirs
 $ git cherry-pick --edit <commit-hash>                      # Pop-up a editor, then change the commit message.
-$ git cherry-pick --no-commit <commit-hash> <commit-hash>   # --no-commit pulls in changes and stages them, but doesn't commit
+$ git cherry-pick --no-commit <commit-hash> <commit-hash>   # --no-commit pulls in changes and stages them, but doesn't make any  commit
 $ git cherry-pick -x <commit-hash>                          # -x: keep track where the commit came from
 $ git cherry-pick --signoff <commit-hash>                   # --signoff add current users name to commit message
 ```
@@ -118,15 +118,35 @@ $ git stash save "provide a stash message"          # We can provide a stash mes
 $ git stash apply stash@{0}                         # Return the codes that I cleaned before
 $ git stash apply stash@{2}                         # get back the #3 stash codes.
 $ git stash list                                    # Show how many stash we have
-$ git stash list --stash                            # Show all stash lists with changes file
+$ git stash list --stat                             # Show all stash lists with changes file
 $ git stash show stash@{1}                          # Show only a specific stash with commits
 $ git stash show --patch                            # Shows file diffs
 $ git stash drop = git stash drop stash@{0}         # Pop = apply + drop
 $ git stash pop = git stash apply + git stash drop  # Temporary delete or clean
 $ git stash clear                                   # Clean all the stash
 $ git stash branch <branchname> stash@{0}           # Checkout a new branch with popping stash@{0}
-$ git stash save --keep-index
+$ git stash save --keep-index                       # --keep-index option causes the staging area not to be stashed, only unstaging changes will be stashed.
+$ git stash save --include-untracked                # --include-untracked causes untracked files to be stashed too  
 ```
+#### Filter
+```sh
+# tree filter
+$ git filter-branch --tree-filter <any-shell-command> -- --all                      # goes through all branches commits and run the shell command    
+$ git filter-branch --tree-filter <any-shell-command> -- --HEAD                     # filter only current branch    
+                                                                                    
+# e.g git filter-branch --tree-filter 'rm -f  master_password.txt' -- --all         # checkout every commit and delete `master_password.txt` file
+                                                                                    
+# index filter                                                                      
+$ git filter-branch --index-filter <shell-command>                                  # goes through staging area
+                                                                                    
+# git remove                                                                        
+$ git filter-branch --index-filter 'git rm --cached --ignore-unmatch <file>'        # operates on staging area, --ignore-unmatch for running commands successfully even file does not found
+$ git filter-branch -f --index-filter 'git rm -f --cached --ignore-unmatch <file>'  # by force
+
+$ git filter-branch -f --prune-empty -- --all                                       # prune all commits that are not alter anything    
+```
+
+
 #### Log:
 ```sh
 $ git log                                          # Show  all the change/commit history
@@ -135,7 +155,7 @@ $ git log -p <file/directory>                      # Show change history for fil
 $ git log --pretty=format:"%h - %an, %ar : %s"     # commit hash-tag -> name -> data -> commit-message
 $ git log --pretty=oneline
 $ git log --oneline -p
-$ git log --oneline --stat
+$ git log --oneline --stat                         # shows how many insert ion and deletion is made for each file & each commit             
 $ git log --oneline --graph
 $ git log --until=1.minute.ago                     # Until a specific time
 $ git log --since=1.day.ago                        # Since (days)
@@ -171,7 +191,7 @@ $ git checkout -b <branch> <sha>
 $ git reflog                           # See all the task step by step
 $ git reset <HEAD no.>                 # Return to present after a hard reset, e.g. HEAD@{8}
 $ git reset --hard                     # We moved to HAED@{8} completely
-$ git log --walk-reflogs               # More details
+$ git log --walk-reflogs               # More details, walk through reflogs
 $ git branch <branceName> HEAD@{1}     # Create a new branch with a commit (the branch is deleted where this commit was given)
 ```
 #### Squash
@@ -182,6 +202,7 @@ $ git add --all; git commit -m 'new squash message'    # commit the 3 previous c
 $ git push -f origin <branch-name>                     # by force overwrite the remote branch and also commits
 ```
 #### Rebase
+- `git rebase -i`, here `-i` means interactive (alters every commit AFTER the one we specify) 
 ```sh
 $ git checkout <admin_branch>
 $ git rebase master                      # Merge all commits of admin_branch after master's commits
@@ -251,13 +272,13 @@ $ git <branch-name> --tree-filter 'rm -f password.txt'  # Remove password.txt fi
 $ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt' 
 ```
 
-#### SubModules: (always push to two repo, first to submodules then parent repo)
+#### SubModules: (For changing submodules, always push to two repo, first to submodules then parent repo)
 ```
 $ git submodule add git@example.com:css.git                      # Add a submodule in a git project, also create a .gitmodules file
-$ git submodule init                                             # Initialize submodules.                   
-$ git submodule update                                           # Update the submodules                  
+$ git submodule init                                             # Read .gitmodules file and automatically adds an entry to config for each module                 
+$ git submodule update                                           # Clone/pull down the submodules into local repo                  
 $ git branch temp_changes a7eded4                                # After 'git submodule update' command, codes get checked out in a HEADLESS state.
-$ git push --recurse-submodules=check                            # Will abort a push it we haven't pushed a submodule. (run in parent dir )
+$ git push --recurse-submodules=check                            # Will abort a push if we haven't pushed a submodule. (run in parent dir )
 $ git push --recurse-submodules=on-demand                        # Push to parent repo, then it'll push to submodule automatically.
 $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias   
 ```
@@ -265,6 +286,7 @@ $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias
 #### Fancy commands
 
 ```
+$ git filter-branch --tree-filter <command>    # Checkout every branch and run this shell command
 $ git status                                   # List new or modified files not yet committed
 $ git fetch                                    # Get the latest changes from origin (no merge)
 $ git pull                                     # Fetch the latest changes from origin and merge
@@ -282,7 +304,10 @@ $ git command --help                           # When in doubt, use git help
 
 # Show diff
 $ git diff b1..b2                              # Compare two brances, show you what is in b2 that is not in b1
+$ git diff b1 b2                               # this also compare two brances     
+$ git diff HEAD^..HEAD                         # Show the diff betn second most recent with most recent
 $ git diff <commit1> <commit2>                 # Show changes between two commits id
+$ git diff <file.name> --date short            # Show all shorted changes of file, commit-hash-author-date-line#-content 
 $ <url><tag-1>...<tag-2>                       # Compare changes of two tags in github 
 # [Example](https://github.com/jenkinsci/jenkins/compare/jenkins-1.651...jenkins-1.651.2)
 
@@ -308,12 +333,12 @@ The --set-upstream flag is deprecated and will be removed. Consider using --trac
 ```
 $ git checkout <commit-hash>                  # checkout to a commit to give a tag
 $ git tag                                     # show list of tag
-$ git tag -a v1.0.0 -m "message"              # give a tag to this commit
+$ git tag -a v1.0.0 -m "message"              # `-a` tells git that the tag has an annotation
 $ git push --tags                             # push the tags to origin
 $ git tag -d <tag-name>                       # delete a tag locally
 $ git push origin :refs/tags/<tag-name>       # delete a tag from remote
 
-$ git checkout <tag-name>
+$ git checkout <tag-name>                     # checkout to a specific tag
 $ git checkout -b <hot-branch>                # checkout a new branch from present commit
 $ git checkout master
 $ git merge <hot-branch> -m "Merge hotfix"
@@ -335,6 +360,11 @@ $ git commit -m 'be tracked'      // staged, tracked
 ```
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
+    - %ad = author date
+    - %an = author name
+    - %h = SHA hash
+    - %s = subject
+    - %d = ref names
 
 #### Difference between HEAD~ and HEAD^
 - `HEAD^` means the `first parent` of the tip of the current branch, `HEAD^2` means `second parent of current branch`, `HEAD~1 / HEAD~2` means always `first parent`. [see this](http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)

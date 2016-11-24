@@ -84,8 +84,8 @@ FormEvents: blur, select, change, focus, submit
 .slideToggle                                     // toggle between show and hide
 .val()                                           // to get the input value
 .val(<new value>)                                // to set the input value
-.fadeIn()
-.fadeOut()
+.fadeIn()                                        // Display the matched elements by fading them to opaque  
+.fadeOut()                                       // Hide the matched elements by fading them to transparent                       
 .fadeToggle()
 .animate(<object>)                               // takes in a javaScript object similar to the .css() method
 .hasClass(<className>)                           // checks if a class exist or not
@@ -152,7 +152,7 @@ $(this).animate({'top': '-10px', '200'})
 ```
 $.fn.validation = function() {
 // validation is the name of our plugin.
-// using .fn makes this plugin in all jQuery object.
+// using .fn makes this plugin available in all jQuery object.
 }
 ```
 

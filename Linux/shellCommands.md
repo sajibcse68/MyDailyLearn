@@ -133,6 +133,12 @@ $ sudo adduser <username>  # add a user
 
 ### Fancy Commands:  
 ```
+$ date                                 # show today's date
+$ cal                                  # show calendar
+$ uname                                # print operating system name
+$ uname -a                             # print hardware, nodename, processor architecture, os release, os name + version
+$ arch                                 # print architecture type
+
 # Short files by size (human readable output)
 $ du <dir> --human-readable | sort --human-numeric-sort
 $ ls <dir> --sort=size -la

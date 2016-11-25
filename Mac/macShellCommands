@@ -27,8 +27,8 @@ $ sudo                : Dnager! Become super user root
 ```
 
 #### Sort folders by size
-```
-
+```sh
+$ du -sh *          // show all folders sizes of current location
 $ du -k <path>
 
 # limit the size

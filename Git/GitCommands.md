@@ -65,7 +65,12 @@ $ git branch -d <branch-name>                 # Delete the local branch, show a 
 $ git branch -D <branhc-name>                 # Force to delete branch
 $ git push origin :<branch-name>              # Delete remote branch
 $ git remote prune origin                     # Cleanup remote deleted branch
+
+# Rename
+$ git branch -m <old-name> <new-name>         # Rename a local branch
+$ git branch -m <new-name>                    # Rename current branch
 ```
+
 ####  Add, Commit, Amend, Push, Pull & Merge
 ```sh
 # Add
@@ -146,7 +151,6 @@ $ git filter-branch -f --index-filter 'git rm -f --cached --ignore-unmatch <file
 $ git filter-branch -f --prune-empty -- --all                                       # prune all commits that are not alter anything    
 ```
 
-
 #### Log:
 ```sh
 $ git log                                          # Show  all the change/commit history
@@ -174,9 +178,9 @@ $ git reset --soft <commit hash>          # Back to a specific commit and exits 
 $ git diff HEAD                           # Show the changes to files not yet staged
 
 $ git checkout -- <file-name>             # Replaces the changes with the last content in HEAD 
-$ git clean -f -n                         # clean untract file (dry run)
+$ git clean -f -n                         # Clean untract file (dry run)
 $ git clean -dxf
-$ git rm --cached -r .
+$ git rm --cached -r .                    # Removes any changed files from the index(staging area) 
 $ git checkout master
 
 # Recover a branch after deletion
@@ -286,17 +290,18 @@ $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias
 #### Fancy commands
 
 ```
+$ git reflog --date=iso                        # Replace `head number` with `Date` 
 $ git filter-branch --tree-filter <command>    # Checkout every branch and run this shell command
-$ git status                                   # List new or modified files not yet committed
+$ git init                                     # From scratch -- create a new local repository
+$ git ls-files                                 # Show information about files in the index and the working tree
+$ git ls-files --others                        # Show untracked files in the output  
 $ git fetch                                    # Get the latest changes from origin (no merge)
-$ git pull                                     # Fetch the latest changes from origin and merge
 $ git pull --rebase                            # Fetch the latest changes from origin and rebase
 $ git pull origin <bn> -s recursive -X theirs  # While pulling if conflicts accepts theirs
 $ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts accepts ours (HEAD)
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
-$ git init                                     # From scratch -- create a new local repository
 $ git diff --cached                            # Show all staged and unstaged file changes
-$ git gui
+$ git gui                                      # GUI to see the changes, add, commit etc.
 $ git difftool
 $ git gc
 $ git help <verb>                              # Find out more

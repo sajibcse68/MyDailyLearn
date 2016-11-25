@@ -327,6 +327,25 @@ $ git show <commit>:<file>                     # Show the file changes for a com
 `$ git branch --set-upstream master_upstream origin/master_upstream`.
 The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
 
+#### Ignore all files/folders except the inner files and folder of b folder
+```
+Working tree:
+└── a
+│   ├── a.txt
+│   └── aa.txt
+└── b
+    └── b.txt
+└── .gitignore
+```
+> An optional prefix `!` which negates the pattern; any matching file excluded by a previous pattern will become included again. If a negated pattern matches, this will override lower precedence patterns sources.
+
+Write these lines inside .gitignore file :
+```
+/*
+!b
+!.gitignore
+```
+
 #### Tags and Releases
 - Release tag point to a single commit
 - Semantic versioning should be followed for tags (major.minor.patch)

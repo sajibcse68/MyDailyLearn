@@ -157,11 +157,11 @@ $ git filter-branch -f --prune-empty -- --all                                   
 $ git log                                          # Show  all the change/commit history
 $ git log --author=<user>                          # Show the commits of a specific user                 
 $ git log --oneline --decorate --all --graph       # See all commits with better visualization
+$ git log --oneline --stat                         # shows how many insertion and deletion is made for each file & each commit             
 $ git log -p <file/directory>                      # Show change history for file/directory including diffs
 $ git log --pretty=format:"%h - %an, %ar : %s"     # commit hash-tag -> name -> data -> commit-message
 $ git log --pretty=oneline
 $ git log --oneline -p
-$ git log --oneline --stat                         # shows how many insert ion and deletion is made for each file & each commit             
 $ git log --oneline --graph
 $ git log --until=1.minute.ago                     # Until a specific time
 $ git log --since=1.day.ago                        # Since (days)

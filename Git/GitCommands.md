@@ -50,6 +50,7 @@ $ git branch -r                              # Show all the remote branched
 $ git branch -a                              # Show all local and remote branches
 $ git branch -v                              # Show all local branches with last commits
 $ git branch -av                             # Show all local and remote branches with last commits
+$ git branch --contains <commit-sha>         # Show the list of branch(es) containing the commit
 
 # Create
 $ git branch <branch-name>                   # Create a new branch
@@ -154,18 +155,19 @@ $ git filter-branch -f --prune-empty -- --all                                   
 #### Log:
 ```sh
 $ git log                                          # Show  all the change/commit history
+$ git log --author=<user>                          # Show the commits of a specific user                 
 $ git log --oneline --decorate --all --graph       # See all commits with better visualization
+$ git log --oneline --stat                         # shows how many insertion and deletion is made for each file & each commit             
 $ git log -p <file/directory>                      # Show change history for file/directory including diffs
 $ git log --pretty=format:"%h - %an, %ar : %s"     # commit hash-tag -> name -> data -> commit-message
 $ git log --pretty=oneline
 $ git log --oneline -p
-$ git log --oneline --stat                         # shows how many insert ion and deletion is made for each file & each commit             
 $ git log --oneline --graph
 $ git log --until=1.minute.ago                     # Until a specific time
 $ git log --since=1.day.ago                        # Since (days)
 $ git log --since=1.hour.ago                       # Since(hours)
 $ git log --since=2.weeks                          # Since two weeks
-$ git log --since1.month.ago --until=2.weeks.ago   # Since & until (relative)
+$ git log --since=1.month.ago --until=2.weeks.ago   # Since & until (relative)
 $ git log --since=2000-01-01 --until=2012-12-21    # Since & until (absolute)
 $ git blame index.html --date short                
 $ git rm --cached development.log                  # What it you're already tracking log files?
@@ -253,7 +255,7 @@ $ git remote rename <present-name> <new-name>  # Rename a remote
 $ git remote set-url origin <remote-url>       # Set remote url 
 $ git remote show                              # Can have multiple remote
 $ git ls-remote --get-url origin               # Show only the url of origin
-$ git remote show origin                       # Show remote url and branches of origin 
+$ git remote show origin           log            # Show remote url and branches of origin 
 $ git remote -v                                # See all the remotes
 $ git fetch <remote-name>                      # Fetching/pulling from remote
 ```

@@ -90,6 +90,10 @@ $ git commit --amend -m 'new message'               # Merge current change to pr
 
 # Pull
 $ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch 
+$ git pull --rebase                                 # Take the latest remote changes then add local changes on top in git log
+$ git pull origin <bn> -s recursive -X theirs       # While pulling if conflicts accepts theirs
+$ git pull origin <bn> -s recursive -X ours         # While pulling if conflicts accepts ours (HEAD)
+
 
 # Push
 $ git push origin <branchame>                       # Push a branch
@@ -298,9 +302,6 @@ $ git init                                     # From scratch -- create a new lo
 $ git ls-files                                 # Show information about files in the index and the working tree
 $ git ls-files --others                        # Show untracked files in the output  
 $ git fetch                                    # Get the latest changes from origin (no merge)
-$ git pull --rebase                            # Fetch the latest changes from origin and rebase
-$ git pull origin <bn> -s recursive -X theirs  # While pulling if conflicts accepts theirs
-$ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts accepts ours (HEAD)
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
 $ git diff --cached                            # Show all staged and unstaged file changes
 $ git gui                                      # GUI to see the changes, add, commit etc.

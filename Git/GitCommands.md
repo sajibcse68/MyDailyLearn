@@ -161,6 +161,7 @@ $ git filter-branch -f --prune-empty -- --all                                   
 #### Log:
 ```sh
 $ git log                                          # Show  all the change/commit history
+$ git log -2                                       # Show last two commits
 $ git log --author=<user>                          # Show the commits of a specific user                 
 $ git log --oneline --decorate --all --graph       # See all commits with better visualization
 $ git log --oneline --stat                         # shows how many insertion and deletion is made for each file & each commit             
@@ -318,8 +319,9 @@ $ git diff b1 b2                               # this also compare two brances
 $ git diff HEAD^..HEAD                         # Show the diff betn second most recent with most recent
 $ git diff <commit1> <commit2>                 # Show changes between two commits id
 $ git diff <file.name> --date short            # Show all shorted changes of file, commit-hash-author-date-line#-content 
-$ <url><tag-1>...<tag-2>                       # Compare changes of two tags in github 
+$ <url><tag-1>...<tag-2>                       # Compare changes of two tags in github
 # [Example](https://github.com/jenkinsci/jenkins/compare/jenkins-1.651...jenkins-1.651.2)
+$ git diff 4b825dc642cb6eb9a060e54bf8d69288fbee4904 HEAD   # Here this commit-sha is the id of the `empty tree`, see the first commit changes
 
 # Set git diff to a default value (if git diff not works)
 $ git config --global --unset diff;            # this two commands reset git diff to default

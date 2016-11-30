@@ -51,6 +51,8 @@ $ git branch -a                              # Show all local and remote branche
 $ git branch -v                              # Show all local branches with last commits
 $ git branch -av                             # Show all local and remote branches with last commits
 $ git branch --contains <commit-sha>         # Show the list of branch(es) containing the commit
+$ git branch --merged                        # Show the branch lists that have been merged into current branch
+$ git branch --no-merged                     # Show the branch lists that have not been merged into current branch
 
 # Create
 $ git branch <branch-name>                   # Create a new branch

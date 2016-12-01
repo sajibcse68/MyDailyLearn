@@ -51,6 +51,8 @@ $ git branch -a                              # Show all local and remote branche
 $ git branch -v                              # Show all local branches with last commits
 $ git branch -av                             # Show all local and remote branches with last commits
 $ git branch --contains <commit-sha>         # Show the list of branch(es) containing the commit
+$ git branch --merged                        # Show the branch lists that have been merged into current branch
+$ git branch --no-merged                     # Show the branch lists that have not been merged into current branch
 
 # Create
 $ git branch <branch-name>                   # Create a new branch
@@ -90,6 +92,10 @@ $ git commit --amend -m 'new message'               # Merge current change to pr
 
 # Pull
 $ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch 
+$ git pull --rebase                                 # Take the latest remote changes then add local changes on top in git log
+$ git pull origin <bn> -s recursive -X theirs       # While pulling if conflicts accepts theirs
+$ git pull origin <bn> -s recursive -X ours         # While pulling if conflicts accepts ours (HEAD)
+
 
 # Push
 $ git push origin <branchame>                       # Push a branch
@@ -155,6 +161,7 @@ $ git filter-branch -f --prune-empty -- --all                                   
 #### Log:
 ```sh
 $ git log                                          # Show  all the change/commit history
+$ git log -2                                       # Show last two commits
 $ git log --author=<user>                          # Show the commits of a specific user                 
 $ git log --oneline --decorate --all --graph       # See all commits with better visualization
 $ git log --oneline --stat                         # shows how many insertion and deletion is made for each file & each commit             
@@ -298,9 +305,6 @@ $ git init                                     # From scratch -- create a new lo
 $ git ls-files                                 # Show information about files in the index and the working tree
 $ git ls-files --others                        # Show untracked files in the output  
 $ git fetch                                    # Get the latest changes from origin (no merge)
-$ git pull --rebase                            # Fetch the latest changes from origin and rebase
-$ git pull origin <bn> -s recursive -X theirs  # While pulling if conflicts accepts theirs
-$ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts accepts ours (HEAD)
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
 $ git diff --cached                            # Show all staged and unstaged file changes
 $ git gui                                      # GUI to see the changes, add, commit etc.
@@ -315,8 +319,9 @@ $ git diff b1 b2                               # this also compare two brances
 $ git diff HEAD^..HEAD                         # Show the diff betn second most recent with most recent
 $ git diff <commit1> <commit2>                 # Show changes between two commits id
 $ git diff <file.name> --date short            # Show all shorted changes of file, commit-hash-author-date-line#-content 
-$ <url><tag-1>...<tag-2>                       # Compare changes of two tags in github 
+$ <url><tag-1>...<tag-2>                       # Compare changes of two tags in github
 # [Example](https://github.com/jenkinsci/jenkins/compare/jenkins-1.651...jenkins-1.651.2)
+$ git diff 4b825dc642cb6eb9a060e54bf8d69288fbee4904 HEAD   # Here this commit-sha is the id of the `empty tree`, see the first commit changes
 
 # Set git diff to a default value (if git diff not works)
 $ git config --global --unset diff;            # this two commands reset git diff to default

@@ -151,7 +151,9 @@ $ git filter-branch --tree-filter <any-shell-command> -- --HEAD                 
 # index filter                                                                      
 $ git filter-branch --index-filter <shell-command>                                  # goes through staging area
                                                                                     
-# git remove                                                                        
+# git remove
+$ git rm -r --cached <file> .; $git add .                                           # when .gitignore don't ignore a file, clean chache
+$ git rm --cached <file>                                                            # clean git cache for a <file>
 $ git filter-branch --index-filter 'git rm --cached --ignore-unmatch <file>'        # operates on staging area, --ignore-unmatch for running commands successfully even file does not found
 $ git filter-branch -f --index-filter 'git rm -f --cached --ignore-unmatch <file>'  # by force
 

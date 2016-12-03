@@ -151,7 +151,9 @@ $ git filter-branch --tree-filter <any-shell-command> -- --HEAD                 
 # index filter                                                                      
 $ git filter-branch --index-filter <shell-command>                                  # goes through staging area
                                                                                     
-# git remove                                                                        
+# git remove
+$ git rm -r --cached <file> .; $git add .                                           # when .gitignore don't ignore a file, clean chache
+$ git rm --cached <file>                                                            # clean git cache for a <file>
 $ git filter-branch --index-filter 'git rm --cached --ignore-unmatch <file>'        # operates on staging area, --ignore-unmatch for running commands successfully even file does not found
 $ git filter-branch -f --index-filter 'git rm -f --cached --ignore-unmatch <file>'  # by force
 
@@ -221,7 +223,9 @@ $ git checkout <admin_branch>
 $ git rebase master                      # Merge all commits of admin_branch after master's commits
 $ git checkout master                   
 $ git checkout -b <history_master>       # Backup master branch if necessary
-$ git merge <admin_branch>               
+$ git merge <admin_branch>
+
+$ git pull --rebase origin master        # take master's commits then local commits
 
 # Change the `author` of a earlier commit
 $ git checkout <coomit-hash>                                             # checkout the commit we're trying to modify
@@ -268,6 +272,11 @@ $ git fetch <remote-name>                      # Fetching/pulling from remote
 ```
 
 #### Conflicts:
+```js
+$ git checkout --ours <file-path>              # accept HEAD/own changes
+$ git checkout --theirs <file-path>            # accept theirs/remote changes
+```
+
 * Life being the pain in the proverbial that it is, our merge might have a `conflict`.
 * The git status command will help you understand where the conflict exists. If you open the file,
 * You’ll notice some markers: <<<<, >>>>, and ====, that surround the lines that conflict,
@@ -290,6 +299,8 @@ $ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_pass
 $ git submodule add git@example.com:css.git                      # Add a submodule in a git project, also create a .gitmodules file
 $ git submodule init                                             # Read .gitmodules file and automatically adds an entry to config for each module                 
 $ git submodule update                                           # Clone/pull down the submodules into local repo                  
+$ git submodule update --recursive                               # update submodules recursively
+$ git pull --recurse-submodules                                  # update submodules, similar to `git submodule update --recursive`
 $ git branch temp_changes a7eded4                                # After 'git submodule update' command, codes get checked out in a HEADLESS state.
 $ git push --recurse-submodules=check                            # Will abort a push if we haven't pushed a submodule. (run in parent dir )
 $ git push --recurse-submodules=on-demand                        # Push to parent repo, then it'll push to submodule automatically.

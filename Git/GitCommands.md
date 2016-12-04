@@ -344,7 +344,14 @@ $ git blame <file>                             # List the change dates and autho
 $ git show <commit>:<file>                     # Show the file changes for a commit id and/or file
 ```
 
-#### q.
+#### Show all local and remote branches with latest tag
+```
+$ git branch -a | while read branch; do
+        echo "$branch"; git describe --tags --abbrev=0 $branch
+done
+```
+
+#### See `last modification time of a file` with `commit-sha`, `user` etc
 ```
 git ls-tree -r --name-only HEAD | while read filename; do
  echo "$(git log -1 --format="%h %ad- %s [%an]" -- $filename) $filename"
@@ -389,6 +396,7 @@ Write these lines inside .gitignore file :
 ```
 $ git checkout <commit-hash>                  # checkout to a commit to give a tag
 $ git tag                                     # show list of tag
+$ git describe --abbrev=0                     # show the latest tag of a branch
 $ git tag -a v1.0.0 -m "message"              # `-a` tells git that the tag has an annotation
 $ git push --tags                             # push the tags to origin
 $ git tag -d <tag-name>                       # delete a tag locally

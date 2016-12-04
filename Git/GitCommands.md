@@ -310,6 +310,7 @@ $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias
 #### Fancy commands
 
 ```
+$ git notes add <commit-hash>                  # Add any notes on a commit (shown in git log)  
 $ git reflog --date=iso                        # Replace `head number` with `Date` 
 $ git filter-branch --tree-filter <command>    # Checkout every branch and run this shell command
 $ git init                                     # From scratch -- create a new local repository

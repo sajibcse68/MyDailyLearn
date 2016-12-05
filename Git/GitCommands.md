@@ -426,7 +426,8 @@ $ git commit -m 'be tracked'      // staged, tracked
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
     - %ad = author date
     - %an = author name
-    - %h = SHA hash
+    - %h = commit hash (short)
+    - %H = commit hash (full)
     - %s = subject
     - %d = ref names
 

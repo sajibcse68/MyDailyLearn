@@ -351,6 +351,22 @@ $ git branch -a | while read branch; do
 done
 ```
 
+#### Find the most frequent committer to a specific file
+```
+$ git shortlog -sen <file/path>
+
+e.g. $ git shortlog -sen .gitignore    # for .gitignore file
+$ git shortlog -sen --                 # for all files
+
+Here,
+-s for commit summary
+-e for email
+-n short by number instead of alphabetic order  
+
+// more info
+$ git shortlog --help
+```
+
 #### See `last modification time of a file` with `commit-sha`, `user` etc
 ```
 git ls-tree -r --name-only HEAD | while read filename; do

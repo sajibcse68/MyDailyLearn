@@ -308,9 +308,10 @@ $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias
 ```
 
 #### Fancy commands
-
 ```
-$ git reflog --date=iso                        # Replace `head number` with `Date` 
+$ git notes add <commit-hash>                  # Add any notes on a commit (shown in git log)  
+$ git reflog --date=iso                        # Replace `head number` with `Date`
+$ git whatchanged --since="1 day ago" -p
 $ git filter-branch --tree-filter <command>    # Checkout every branch and run this shell command
 $ git init                                     # From scratch -- create a new local repository
 $ git ls-files                                 # Show information about files in the index and the working tree
@@ -342,6 +343,26 @@ $ git push -f origin HEAD^:master              # "undo" the push from remote and
 $ git blame <file>                             # List the change dates and authors for a file
 $ git show <commit>:<file>                     # Show the file changes for a commit id and/or file
 ```
+
+#### Show all local and remote branches with latest tag
+```
+$ git branch -a | while read branch; do
+        echo "$branch"; git describe --tags --abbrev=0 $branch
+done
+```
+
+#### See `last modification time of a file` with `commit-sha`, `user` etc
+```
+git ls-tree -r --name-only HEAD | while read filename; do
+ echo "$(git log -1 --format="%h %ad- %s [%an]" -- $filename) $filename"
+done
+
+Sample output:
+6ea69fa Sun Nov 20 04:29:08 2016 +0600- commit-message-1 [user-1] c.txt
+f83fad2 Thu Oct 27 00:14:37 2016 +0600- commit-message-10 [user-4] b.txt
+b5356e3 Mon Oct 31 14:55:43 2016 +0600- commit-message-7 [user-2] a.txt
+```
+
 `$ git branch --set-upstream master_upstream origin/master_upstream`.
 The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
 
@@ -375,6 +396,7 @@ Write these lines inside .gitignore file :
 ```
 $ git checkout <commit-hash>                  # checkout to a commit to give a tag
 $ git tag                                     # show list of tag
+$ git describe --abbrev=0                     # show the latest tag of a branch
 $ git tag -a v1.0.0 -m "message"              # `-a` tells git that the tag has an annotation
 $ git push --tags                             # push the tags to origin
 $ git tag -d <tag-name>                       # delete a tag locally
@@ -404,7 +426,8 @@ $ git commit -m 'be tracked'      // staged, tracked
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
     - %ad = author date
     - %an = author name
-    - %h = SHA hash
+    - %h = commit hash (short)
+    - %H = commit hash (full)
     - %s = subject
     - %d = ref names
 

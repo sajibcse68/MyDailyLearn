@@ -84,8 +84,8 @@ FormEvents: blur, select, change, focus, submit
 .slideToggle                                     // toggle between show and hide
 .val()                                           // to get the input value
 .val(<new value>)                                // to set the input value
-.fadeIn()
-.fadeOut()
+.fadeIn()                                        // Display the matched elements by fading them to opaque  
+.fadeOut()                                       // Hide the matched elements by fading them to transparent                       
 .fadeToggle()
 .animate(<object>)                               // takes in a javaScript object similar to the .css() method
 .hasClass(<className>)                           // checks if a class exist or not
@@ -152,7 +152,7 @@ $(this).animate({'top': '-10px', '200'})
 ```
 $.fn.validation = function() {
 // validation is the name of our plugin.
-// using .fn makes this plugin in all jQuery object.
+// using .fn makes this plugin available in all jQuery object.
 }
 ```
 
@@ -162,13 +162,15 @@ var promise = $.Deferred();            // jQuery method for creating a promise o
                                        //
 promise.resolve(value);                // Calls the done callback
 promise.done(function(value){});       // Similar to AJAX success callback
-                                       //
+                                       
 promise.reject(value);                 // Calls the fail callback
 promise.fail(function(value){});       // Similar to AJAX error callback
 
-# Here parameter can not be array, only promises `separated by commas`. Callback data is in the same order as the promises
-$.when(<promise1>, <promise2>...)      
-.then(function(p1Data, p2Data){});      
+// calling two/more promises in parallel
+$.when(<promise1>, <promise2>, <promise3>...)      
+.then(function(p1Data, p2Data), p3Data{});
+// Here parameter can not be array, only promises `separated by commas`. Callback data is in the same order as the promises
+
 ```
 `Rejections` heppen when a promise is explicitly rejected, but also implicitly if an error is thrown in the constructor callback.
 ```
@@ -179,8 +181,8 @@ $.when(<promise1>, <promise2>...)
     }).catch(function(err) {                    |      a2 ---> Fail    --> aRecovery1
         return aRecovery1();                    |
     }).then(function() {                        |      a3 ---> success --> a4
-        return a4();                            |      a1 ---> Fail    --> aRecovery1
-    }, function(function(err) {                 |
+        return a4();                            |      a3 ---> Fail    --> aRecovery1
+    }, catch(function(err) {                 |
         return aRecovery2();                    |      aRecovery1 ---> success --> a4
     }).catch(function(err) {                    |      aRecovery1 ---> Fail    --> aRecovery2
        console.log('Don't worry about it!);     |

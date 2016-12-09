@@ -24,11 +24,11 @@ $ wc -l science.txt                // Count lines
 * Permissions:  
   1 -- can execute  
   2 -- can write  
-  3 -- can read  
+  4 -- can read  
   
 *  The octal number is the sum of those free permissions:
-    3(1+2) - can execute and write
-    6(2+4) - can write and read
+   -  3(1+2) - can execute and write
+   -  6(2+4) - can write and read
 
 * Position of th digit in value:  
   1 - what owner can   
@@ -133,6 +133,12 @@ $ sudo adduser <username>  # add a user
 
 ### Fancy Commands:  
 ```
+$ date                                 # show today's date
+$ cal                                  # show calendar
+$ uname                                # print operating system name
+$ uname -a                             # print hardware, nodename, processor architecture, os release, os name + version
+$ arch                                 # print architecture type
+
 # Short files by size (human readable output)
 $ du <dir> --human-readable | sort --human-numeric-sort
 $ ls <dir> --sort=size -la

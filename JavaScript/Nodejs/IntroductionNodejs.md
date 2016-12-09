@@ -43,3 +43,8 @@ http.createServer(function(request, response) {
 
 console.log(Listening on port 8080);
 ```
+
+#### Browser Sync
+```
+browser-sync start --server --directory --files "*"
+```

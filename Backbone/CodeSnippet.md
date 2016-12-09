@@ -1,4 +1,5 @@
 - Backbone url parse in router.js
+
 ```js
 // in routes
 'abc?*queryString': 'configmapsDescribe'
@@ -32,10 +33,10 @@ render() {
   this.$el.html(this.template(this.model.toJSON()));
   return this;
 }
+```
 
-```
+```js
 - Event listener 'enter'
-```
 events: {
   'keypress .topsearch': 'topsearchOnEnter'
 },

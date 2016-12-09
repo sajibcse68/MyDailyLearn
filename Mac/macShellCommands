@@ -27,9 +27,9 @@ $ sudo                : Dnager! Become super user root
 ```
 
 #### Sort folders by size
-```
-
-$ du -k <path>
+```sh
+$ du -sh *          // show all folders sizes of current location
+$ du -k <path>      // show all the files/folders
 
 # limit the size
 $ du -k <path> | awk '$1 > 500000'

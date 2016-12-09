@@ -65,6 +65,9 @@ I think you should use an `<addr>` element here instead.
 - [x] this is a complete item
 - [ ] this is an incomplete item    
 
+# keyboard
+<kbd>Pull Requests</kbd>
+
 # Tables
 ---
 First Header | Second Header

@@ -235,6 +235,10 @@ $ git filter-branch -- --all                                             # rewri
 $ git replace -d <old-commit-hash>                                       # remove the replacement for cleanliness 
 $ git push -f origin HEAD                                                # push forcely
 
+# Change the `date` of a previous commit
+$ git checkout <commit-hash>
+$ git commit --amend --date "Fri Dec  9 14:31:57 BDT 2016"                  # change the date
+
 # Alternate way (May occur conflicts and more complex)
 $ git rebase -i <commit-hash>                                               # go to last good commit
 # Editor will open, write `edit` before the commit we want to change author

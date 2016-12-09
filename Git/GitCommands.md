@@ -312,6 +312,7 @@ $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias
 $ git notes add <commit-hash>                  # Add any notes on a commit (shown in git log)  
 $ git reflog --date=iso                        # Replace `head number` with `Date`
 $ git whatchanged --since="1 day ago" -p
+$ git config --global http.postBuffer 2M       # Increase git buffer size
 $ git filter-branch --tree-filter <command>    # Checkout every branch and run this shell command
 $ git init                                     # From scratch -- create a new local repository
 $ git ls-files                                 # Show information about files in the index and the working tree

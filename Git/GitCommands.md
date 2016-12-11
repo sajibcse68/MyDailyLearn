@@ -66,6 +66,7 @@ $ git push -u origin <branch-name>           # -u tells Git to remember the para
 # Delete
 $ git branch -d <branch-name>                 # Delete the local branch, show a warning
 $ git branch -D <branhc-name>                 # Force to delete branch
+$ git push origin --delete <branch-name>      # Delete remote branch
 $ git push origin :<branch-name>              # Delete remote branch
 $ git remote prune origin                     # Cleanup remote deleted branch
 

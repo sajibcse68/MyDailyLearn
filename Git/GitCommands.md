@@ -101,6 +101,7 @@ $ git pull origin <bn> -s recursive -X ours         # While pulling if conflicts
 # Push
 $ git push origin <branchame>                       # Push a branch
 $ git push -f origin <branch-name>                  # Overwrite remote branch (by force)
+$ git push origin <local-branch>:<remote-branch>    # Push to another remote branch (not the same name with local)
 
 # Merge
 $ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch

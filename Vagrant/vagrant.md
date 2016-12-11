@@ -1,33 +1,26 @@
 ### Some Important commands of vagrant
 ```sh
-# See all the vagrant box lists
-$ vagrant box list
+                       
+$ vagrant box list                            # See all the vagrant box lists
 
-# Add a vagrant box
-$ vagrant box add <box-name>  # e.g. box-name = laravel/homestead
+$ vagrant box add <box-name>                  # Add a vagrant box, e.g. box-name = laravel/homestead
 
-# Initialize a vagrant box
-$ vagrant init <name of vagrantbox>
+$ vagrant init <name of vagrantbox>           # Initialize a vagrant box 
 
-# On the vagrant machine
-$ vagrant up
+$ vagrant up                                  # Start/On the vagrant machine
 
-# Login into vagrant machine
-$ vagrant ssh
-# Logout/exit from vagrant machine
-$ exit
-# Suspend/sleep the vagrant machine
-$ vagrant suspend
+$ vagrant ssh                                 # Login into vagrant machine  
 
-# Shutdown the vagrant machine
-$ vagrant halt
+$ exit                                        # Logout/exit from vagrant machine
 
-# See the status of machine
-$ vagrat status
+$ vagrant suspend                             # Suspend/sleep the vagrant machine
 
-# Reload configuration file
-$ vagrant reload
+$ vagrant halt                                # Shutdown the vagrant machine
 
+$ vagrat status                               # See the status of machine  
+
+$ vagrant reload                              # Reload configuration file
+ 
 # Fullscreen guest window, mount etc
 $ sudo apt-get install virtualbox-guest-dkms
 # then restart

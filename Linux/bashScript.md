@@ -1,4 +1,4 @@
-<-------- Shell Types -------->
+#### Shell Types
 - sh or Bourne Shell
 - bash or Bourne Again shell
 - csh or C shell
@@ -7,7 +7,7 @@
 
 ** /etc/shells gives an overview of known shells
 
-<-------- Bash searches for commands as follows ------------>
+#### Bash searches for commands as follows
 - Check whether the command contains slashes. If not, first check with the function list
   to see if it contains a command by the name we are looking for.
 - If command is not a function, check for it in the build-in list.
@@ -21,8 +21,9 @@
 - If the command was not begun asynchronously, the shell waits for the command to  complete and collects its exit status.
 
 
-<---------- Fancy commands -------------------->
-$ w | cut -d " " -f 1 - | grep -v USER | sort -u                          // show the currently connected users
-$ uname -s                                                                // show the os name
-$ uname -m                                                                // show the os processor bit version
+#### Fancy commands
+$ man bash | wc -l                                                        
+$ w | cut -d " " -f 1 - | grep -v USER | sort -u               # show the currently connected users
+$ uname -s                                                     # show the os name
+$ uname -m                                                     # show the os processor bit version
 $

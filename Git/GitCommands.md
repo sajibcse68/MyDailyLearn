@@ -66,6 +66,7 @@ $ git push -u origin <branch-name>           # -u tells Git to remember the para
 # Delete
 $ git branch -d <branch-name>                 # Delete the local branch, show a warning
 $ git branch -D <branhc-name>                 # Force to delete branch
+$ git push origin --delete <branch-name>      # Delete remote branch
 $ git push origin :<branch-name>              # Delete remote branch
 $ git remote prune origin                     # Cleanup remote deleted branch
 
@@ -100,6 +101,7 @@ $ git pull origin <bn> -s recursive -X ours         # While pulling if conflicts
 # Push
 $ git push origin <branchame>                       # Push a branch
 $ git push -f origin <branch-name>                  # Overwrite remote branch (by force)
+$ git push origin <local-branch>:<remote-branch>    # Push to another remote branch (not the same name with local)
 
 # Merge
 $ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch
@@ -235,6 +237,10 @@ $ git filter-branch -- --all                                             # rewri
 $ git replace -d <old-commit-hash>                                       # remove the replacement for cleanliness 
 $ git push -f origin HEAD                                                # push forcely
 
+# Change the `date` of a previous commit
+$ git checkout <commit-hash>
+$ git commit --amend --date "Fri Dec  9 14:31:57 BDT 2016"                  # change the date
+
 # Alternate way (May occur conflicts and more complex)
 $ git rebase -i <commit-hash>                                               # go to last good commit
 # Editor will open, write `edit` before the commit we want to change author
@@ -312,6 +318,7 @@ $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias
 $ git notes add <commit-hash>                  # Add any notes on a commit (shown in git log)  
 $ git reflog --date=iso                        # Replace `head number` with `Date`
 $ git whatchanged --since="1 day ago" -p
+$ git config --global http.postBuffer 2M       # Increase git buffer size
 $ git filter-branch --tree-filter <command>    # Checkout every branch and run this shell command
 $ git init                                     # From scratch -- create a new local repository
 $ git ls-files                                 # Show information about files in the index and the working tree
@@ -351,6 +358,22 @@ $ git branch -a | while read branch; do
 done
 ```
 
+#### Find the most frequent committer to a specific file
+```
+$ git shortlog -sen <file/path>
+
+e.g. $ git shortlog -sen .gitignore    # for .gitignore file
+$ git shortlog -sen --                 # for all files
+
+Here,
+-s for commit summary
+-e for email
+-n short by number instead of alphabetic order  
+
+// more info
+$ git shortlog --help
+```
+
 #### See `last modification time of a file` with `commit-sha`, `user` etc
 ```
 git ls-tree -r --name-only HEAD | while read filename; do
@@ -384,6 +407,17 @@ Write these lines inside .gitignore file :
 !b
 !.gitignore
 ```
+
+#### Change the timestamp of an old commit (not tested)
+```
+git filter-branch --env-filter \
+    'if [ $GIT_COMMIT = 119f9ecf58069b265ab22f1f97d2b648faf932e0 ]
+     then
+         export GIT_AUTHOR_DATE="Fri Jan 2 21:38:53 2009 -0800"
+         export GIT_COMMITTER_DATE="Sat May 19 01:01:01 2007 -0700"
+     fi'
+```
+
 
 #### Tags and Releases
 - Release tag point to a single commit

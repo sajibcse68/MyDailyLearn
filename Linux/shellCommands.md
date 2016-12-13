@@ -9,9 +9,10 @@ $ gradle run | less        // search in 'gradle run' command
 # Finding a File Containing a Particular Text String
 # Pass --color to grep command, displays matched text/words in color on terminal
 $ grep -R --color "sampleWord" <directory> 
-$ sudo find / -type f -name jenkins.xml        // find a file
-$ sudo find / -type d -name jenkins            // find a directory
+$ sudo find / -type f -name jenkins.xml        # find a file
+$ sudo find / -type d -name jenkins            # find a directory
 $ sudo find / -type d -name plugins -ls
+$ sudo time <command>                          # return the time 
 
 # Search 'science(ignore lower/upper)' in science.txt file
 $ grep -i science science.txt 

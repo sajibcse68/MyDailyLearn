@@ -9,9 +9,10 @@ $ gradle run | less        // search in 'gradle run' command
 # Finding a File Containing a Particular Text String
 # Pass --color to grep command, displays matched text/words in color on terminal
 $ grep -R --color "sampleWord" <directory> 
-$ sudo find / -type f -name jenkins.xml        // find a file
-$ sudo find / -type d -name jenkins            // find a directory
+$ sudo find / -type f -name jenkins.xml        # find a file
+$ sudo find / -type d -name jenkins            # find a directory
 $ sudo find / -type d -name plugins -ls
+$ sudo time <command>                          # return the time 
 
 # Search 'science(ignore lower/upper)' in science.txt file
 $ grep -i science science.txt 
@@ -142,6 +143,7 @@ $ arch                                 # print architecture type
 # Short files by size (human readable output)
 $ du <dir> --human-readable | sort --human-numeric-sort
 $ ls <dir> --sort=size -la
+$ du -ma | sort -nr | head -n 20    # show 20 largest files/folders under the current directory
 
 # See the total size of directory
 $ du -sh

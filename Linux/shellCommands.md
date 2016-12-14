@@ -143,6 +143,7 @@ $ arch                                 # print architecture type
 # Short files by size (human readable output)
 $ du <dir> --human-readable | sort --human-numeric-sort
 $ ls <dir> --sort=size -la
+$ du -ma | sort -nr | head -n 20    # show 20 largest files/folders under the current directory
 
 # See the total size of directory
 $ du -sh

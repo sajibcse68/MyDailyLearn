@@ -271,6 +271,7 @@ $ git pull                                     # Fetch the latest changes from o
 $ git pull --rebase                            # Fetch the latest changes from origin and rebase
 $ git pull origin <bn> -s recursive -X theirs  # While pulling if conflicts accepts theirs
 $ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts accepts ours (HEAD)
+$ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
 $ git init                                     # From scratch -- create a new local repository
 $ git diff --cached                            # Show all staged and unstaged file changes

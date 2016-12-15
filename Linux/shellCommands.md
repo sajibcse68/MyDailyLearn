@@ -206,3 +206,9 @@ M + b:  Move backward a word.
 // Bonus  
    vim  
 But really, a programmer needs more than that.  
+
+#### Different problem solve
+```sh
+WARNING: The following packages cannot be authenticated!
+Solutions: $ apt-get install debian-archive-keyring
+```

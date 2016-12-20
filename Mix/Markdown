@@ -65,16 +65,29 @@ I think you should use an `<addr>` element here instead.
 - [x] this is a complete item
 - [ ] this is an incomplete item    
 
+# keyboard
+<kbd>Pull Requests</kbd>
+
 # Tables
 ---
 First Header | Second Header
 ------------ | -------------
 Content from cell 1 | Content from cell 2
 Content in the first column | Content in the second column
-        
+
+#### Use `Links` inside `Code`
+```
+<pre><code>git <a href="https://www.kernel.org/pub/software/scm/git/docs/git-format-patch.html">format-patch</a> -1 &lt;sha&gt;
+</code></pre>
+
+Or,
+ > - Test 123
+ > - Follow  [testing artifacts](http://2.bp.blogspot.com) (more Unit )
+```
 ### Stuff used to make this:
 ---
  * [markdown-it](https://github.com/markdown-it/markdown-it) for Markdown parsing
  * [CodeMirror](http://codemirror.net/) for the awesome syntax-highlighted editor
  * [highlight.js](http://softwaremaniacs.org/soft/highlight/en/) for syntax highlighting in output code blocks
  * [js-deflate](https://github.com/dankogai/js-deflate) for gzipping of data to make it fit in URLs
+

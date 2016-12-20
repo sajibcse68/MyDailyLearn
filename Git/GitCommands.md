@@ -141,7 +141,7 @@ $ git log --until=1.minute.ago                     # Until a specific time
 $ git log --since=1.day.ago                        # Since (days)
 $ git log --since=1.hour.ago                       # Since(hours)
 $ git log --since=2.weeks                          # Since two weeks
-$ git log --since1.month.ago --until=2.weeks.ago   # Since & until (relative)
+$ git log --since=1.month.ago --until=2.weeks.ago  # Since & until (relative)
 $ git log --since=2000-01-01 --until=2012-12-21    # Since & until (absolute)
 $ git blame index.html --date short                
 $ git rm --cached development.log                  # What it you're already tracking log files?
@@ -190,13 +190,13 @@ $ git checkout -b <history_master>       # Backup master branch if necessary
 $ git merge <admin_branch>               
 
 # Change the `author` of a earlier commit
-$ git checkout <coomit-hash>                                             # checkout the commit we're trying to modify
+$ git checkout <commit-hash>                                             # checkout the commit we're trying to modify
 $ git commit --amend --author "New-author-name <new-author@mail.com>"    # change the author name and mail
 $ git replace <old-commit-hash> <new-commit-hash>                        # replace the old commit by new one
 $ git filter-branch -- --all                                             # rewrite all futures commits based on the replacement                   
 $ git replace -d <old-commit-hash>                                       # remove the replacement for cleanliness 
-$ git push -f origin HEAD                                                # push forcely
-
+$ git push -f origin HEAD                                                # force push 
+ 
 # Alternate way (May occur conflicts and more complex)
 $ git rebase -i <commit-hash>                                               # go to last good commit
 # Editor will open, write `edit` before the commit we want to change author
@@ -271,6 +271,7 @@ $ git pull                                     # Fetch the latest changes from o
 $ git pull --rebase                            # Fetch the latest changes from origin and rebase
 $ git pull origin <bn> -s recursive -X theirs  # While pulling if conflicts accepts theirs
 $ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts accepts ours (HEAD)
+$ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
 $ git init                                     # From scratch -- create a new local repository
 $ git diff --cached                            # Show all staged and unstaged file changes

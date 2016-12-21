@@ -64,6 +64,7 @@ $ git push -u origin <branch-name>           # -u tells Git to remember the para
 $ git branch -d <branch-name>                 # Delete the local branch, show a warning
 $ git branch -D <branhc-name>                 # Force to delete branch
 $ git push origin :<branch-name>              # Delete remote branch
+$ git push origin --delete <branch-name>      # Delete remote branch
 $ git remote prune origin                     # Cleanup remote deleted branch
 ```
 ####  Add, Commit, Amend, Push, Pull & Merge
@@ -262,8 +263,15 @@ $ git push --recurse-submodules=on-demand                        # Push to paren
 $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias   
 ```
 
-#### Fancy commands
+#### Cleanup garbase in remote repo
+```sh
+$ git reflog expire --expire="1 hour" --all
+$ git reflog expire --expire-unreachable="1 hour" --all
+$ git prune --expire="1 hour" -v
+$ git gc --aggressive --prune="1 hour"
+``
 
+#### Fancy commands
 ```
 $ git status                                   # List new or modified files not yet committed
 $ git fetch                                    # Get the latest changes from origin (no merge)
@@ -277,6 +285,9 @@ $ git init                                     # From scratch -- create a new lo
 $ git diff                                     # workspace vs index
 $ git diff --cached                            # index vs repo, show all staged and unstaged file changes
 $ git diff HEAD                                # workspace vs repo 
+$ git clone <url> --branch <branch-name>       # clone a specific branch
+$ git clone <url> -b <branch>                  # clone into a new local branch instead of master
+$ git clone <url> --single-branch              # clone only single branch  
 $ git gui
 $ git difftool
 $ git gc

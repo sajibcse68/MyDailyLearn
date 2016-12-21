@@ -274,7 +274,9 @@ $ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts acce
 $ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
 $ git init                                     # From scratch -- create a new local repository
-$ git diff --cached                            # Show all staged and unstaged file changes
+$ git diff                                     # workspace vs index
+$ git diff --cached                            # index vs repo, show all staged and unstaged file changes
+$ git diff HEAD                                # workspace vs repo 
 $ git gui
 $ git difftool
 $ git gc

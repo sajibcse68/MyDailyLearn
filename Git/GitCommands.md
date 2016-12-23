@@ -84,6 +84,7 @@ $ git cherry-pick <commit-hash>                     # Take a commit change of an
 # Amend
 $ git add task2.txt                                 # Add any file
 $ git commit --amend -m 'new message'               # Merge current change to previous commit and will also change the commit hash
+$ git commit --amend --date="<date>"                # Override the date
 
 # Pull
 $ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch 
@@ -190,10 +191,11 @@ $ git push -f origin <branch-name>                     # by force overwrite the 
 #### Rebase
 ```sh
 $ git checkout <admin_branch>
-$ git rebase master                      # Merge all commits of admin_branch after master's commits
-$ git checkout master                   
-$ git checkout -b <history_master>       # Backup master branch if necessary
-$ git merge <admin_branch>               
+$ git rebase master                                    # Merge all commits of admin_branch after master's commits
+$ git checkout master                                  
+$ git checkout -b <history_master>                     # Backup master branch if necessary
+$ git merge <admin_branch>
+$ git commit --amend --committer-date-is-author-date   # keep the date same as committer date when amending
 
 # Change the `author` of a earlier commit
 $ git checkout <commit-hash>                                             # checkout the commit we're trying to modify

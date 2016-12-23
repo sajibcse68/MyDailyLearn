@@ -130,6 +130,13 @@ $ git stash pop = git stash apply + git stash drop  # Temporary delete or clean
 $ git stash clear                                   # Clean all the stash
 $ git stash branch <branchname> stash@{0}           # Checkout a new branch with popping stash@{0}
 $ git stash save --keep-index
+
+# resolve conflicts when doing stash pop
+$ git checkout stash -- .                           # replace all the files with the stashed version
+
+Or, 
+$ git stash apply                                   # apply the stashed changes, conflicts occure here
+$ git checkout --theirs -- .                        # accept stashed changes 
 ```
 #### Log:
 ```sh

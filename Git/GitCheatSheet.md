@@ -281,6 +281,7 @@ $ git gc --aggressive --prune="1 hour"
 #### Fancy commands
 
 ```sh
+$ git mv <src-file> <new-file-name>            # Rename a file and keeps all the previous history
 $ git status                                   # Difference between working directory and the index
 $ git fetch                                    # Get the latest changes from origin (no merge)
 $ git fetch -p                                 # -p = --prune, after fetching remove any remove-tracking references that no longer exist on the remote 

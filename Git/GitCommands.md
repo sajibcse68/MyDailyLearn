@@ -72,7 +72,7 @@ $ git remote prune origin                     # Cleanup remote deleted branch
 ####  Add, Commit, Amend, Push, Pull & Merge
 ```sh
 # Add
-$ git add .                                                               
+$ git add .                                         # Adds file changes to the index                      
 $ git add --all                                     # Add all changes
 $ git add -p                                        # Stage a particular change
      
@@ -136,6 +136,8 @@ $ git log                                          # Show  all the change/commit
 $ git log --oneline --decorate --all --graph       # See all commits with better visualization
 $ git log -p <file/directory>                      # Show change history for file/directory including diffs
 $ git log --pretty=format:"%h - %an, %ar : %s"     # commit hash-tag -> name -> data -> commit-message
+# see commit-hash, branch-name, commit-message, time, committer-name and changes of the commits 
+$ git log -p --all -G pattern --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --branches
 $ git log --pretty=oneline
 $ git log --oneline -p
 $ git log --oneline --stat
@@ -146,8 +148,9 @@ $ git log --since=1.hour.ago                       # Since(hours)
 $ git log --since=2.weeks                          # Since two weeks
 $ git log --since=1.month.ago --until=2.weeks.ago  # Since & until (relative)
 $ git log --since=2000-01-01 --until=2012-12-21    # Since & until (absolute)
-$ git blame index.html --date short                
-$ git rm --cached development.log                  # What it you're already tracking log files?
+$ git blame index.html --date short
+$ git rm                                           # Remove the file from the staging area and also from the disk                         
+$ git rm --cached development.log                  # What if you're already tracking log files?
 ```
 #### Recovery/Reset:                                    
 ```sh
@@ -271,12 +274,14 @@ $ git reflog expire --expire="1 hour" --all
 $ git reflog expire --expire-unreachable="1 hour" --all
 $ git prune --expire="1 hour" -v
 $ git gc --aggressive --prune="1 hour"
-``
+```
 
 #### Fancy commands
-```
-$ git status                                   # List new or modified files not yet committed
+
+```sh
+$ git status                                   # Difference between working directory and the index
 $ git fetch                                    # Get the latest changes from origin (no merge)
+$ git fetch -p                                 # -p = --prune, after fetching remove any remove-tracking references that no longer exist on the remote 
 $ git pull                                     # Fetch the latest changes from origin and merge
 $ git pull --rebase                            # Fetch the latest changes from origin and rebase
 $ git pull origin <bn> -s recursive -X theirs  # While pulling if conflicts accepts theirs
@@ -291,6 +296,7 @@ $ git clone <url> --branch <branch-name>       # clone a specific branch
 $ git clone <url> -b <branch>                  # clone into a new local branch instead of master
 $ git clone <url> --single-branch              # clone only single branch  
 $ git gui
+$ git ls-tree -d HEAD                          # Tree object including the mode and the name of each item and the SHA value
 $ git difftool
 $ git gc
 $ git help <verb>                              # Find out more
@@ -322,7 +328,6 @@ The --set-upstream flag is deprecated and will be removed. Consider using --trac
 	- Manual QA
 	- Long running releases
 	- On demand hot fixed
-
 ```
 $ git checkout <commit-hash>                  # checkout to a commit to give a tag
 $ git tag                                     # show list of tag

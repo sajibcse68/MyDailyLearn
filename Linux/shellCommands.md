@@ -138,6 +138,7 @@ $ date                                 # show today's date
 $ cal                                  # show calendar
 $ uname                                # print operating system name
 $ uname -a                             # print hardware, nodename, processor architecture, os release, os name + version
+$ lsb_release -a                       # see ubuntu version
 $ arch                                 # print architecture type
 
 # Short files by size (human readable output)

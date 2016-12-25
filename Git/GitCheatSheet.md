@@ -52,16 +52,16 @@ $ git branch -v                              # Show all local branches with last
 $ git branch -av                             # Show all local and remote branches with last commits
 $ git branch --merged                        # Show lists of branch merged with current branch
 $ git branch --no-merged                     # Show lists of branch not-merged with current branch
-
+.
 # Create
 $ git branch <branch-name>                   # Create a new branch
 $ git checkout -b <branch-name>              # Create & checkout to new branch
 $ git checkout --orphan <branch-name>        # Create a branch with no commit list
-
+.
 # Push
 $ git push origin <branch-name>              # Push to remote branch
 $ git push -u origin <branch-name>           # -u tells Git to remember the parameters, so that next time we can simply run `git push`
-
+.
 # Delete
 $ git branch -d <branch-name>                 # Delete the local branch, show a warning
 $ git branch -D <branhc-name>                 # Force to delete branch
@@ -69,30 +69,31 @@ $ git push origin :<branch-name>              # Delete remote branch
 $ git push origin --delete <branch-name>      # Delete remote branch
 $ git remote prune origin                     # Cleanup remote deleted branch
 ```
+
 ####  Add, Commit, Amend, Push, Pull & Merge
 ```sh
 # Add
 $ git add .                                         # Adds file changes to the index                      
 $ git add --all                                     # Add all changes
 $ git add -p                                        # Stage a particular change
-     
+.     
 # Commit                                                                          
 $ git commit -am 'commit message'                   # Add & commit        
 $ git commit --allow-empty -m k3;                   # Commit empty change
 $ git cherry-pick <commit-hash>                     # Take a commit change of another branch 
-
+.
 # Amend
 $ git add task2.txt                                 # Add any file
 $ git commit --amend -m 'new message'               # Merge current change to previous commit and will also change the commit hash
 $ git commit --amend --date="<date>"                # Override the date
-
+.
 # Pull
 $ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch 
-
+.
 # Push
 $ git push origin <branchame>                       # Push a branch
 $ git push -f origin <branch-name>                  # Overwrite remote branch (by force)
-
+.
 # Merge
 $ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch
 $ git mergetool
@@ -115,6 +116,7 @@ $ git cherry-pick --no-commit <commit-hash> <commit-hash>   # --no-commit pulls 
 $ git cherry-pick -x <commit-hash>                          # -x: keep track where the commit came from
 $ git cherry-pick --signoff <commit-hash>                   # --signoff add current users name to commit message
 ```
+
 #### Stashing
 ```sh
 $ git stash save                                    # Save the changes in temporary box
@@ -130,14 +132,15 @@ $ git stash pop = git stash apply + git stash drop  # Temporary delete or clean
 $ git stash clear                                   # Clean all the stash
 $ git stash branch <branchname> stash@{0}           # Checkout a new branch with popping stash@{0}
 $ git stash save --keep-index
-
+.
 # resolve conflicts when doing stash pop
 $ git checkout stash -- .                           # replace all the files with the stashed version
-
+.
 Or, 
 $ git stash apply                                   # apply the stashed changes, conflicts occure here
 $ git checkout --theirs -- .                        # accept stashed changes 
 ```
+
 #### Log:
 ```sh
 $ git log                                          # Show  all the change/commit history
@@ -160,19 +163,20 @@ $ git blame index.html --date short
 $ git rm                                           # Remove the file from the staging area and also from the disk                         
 $ git rm --cached development.log                  # What if you're already tracking log files?
 ```
+
 #### Recovery/Reset:                                    
 ```sh
 $ git log                                 # Show all the change/commit history
 $ git show <commit hash>                  # See what changes in a specific commit
 $ git reset --soft <commit hash>          # Back to a specific commit and exits the change
 $ git diff HEAD                           # Show the changes to files not yet staged
-
+.
 $ git checkout -- <file-name>             # Replaces the changes with the last content in HEAD 
 $ git clean -f -n                         # clean untract file (dry run)
 $ git clean -dxf
 $ git rm --cached -r .
 $ git checkout master
-
+.
 # Recover a branch after deletion
 $ git reflog                              # see all commits and select the last commit (SHA1) of deleted branch
 $ git checkout <sha>                      # checkout that commit
@@ -180,6 +184,7 @@ $ git checkout -b <deleted-branch-name>   # recover that branch after creating a
 # shortcut
 $ git checkout -b <branch> <sha>
 ```
+
 #### Reset Using **reflog**
 ```sh
 $ git reflog                           # See all the task step by step
@@ -188,6 +193,7 @@ $ git reset --hard                     # We moved to HAED@{8} completely
 $ git log --walk-reflogs               # More details
 $ git branch <branceName> HEAD@{1}     # Create a new branch with a commit (the branch is deleted where this commit was given)
 ```
+
 #### Squash
 ```
 # in general I do

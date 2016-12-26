@@ -221,6 +221,13 @@ $ git push -f origin HEAD                                                # force
 # Alternate way (May occur conflicts and more complex)
 $ git rebase -i <commit-hash>                                               # go to last good commit
 # Editor will open, write `edit` before the commit we want to change author
+
+$ git rebase -i HEAD-{N}
+# Upon running this command, an editor will open with a list of these N commit message, one per line. Each of these lines
+will begin with `pick`. Replacing `pick` with `squash` or `s` will tell Git to combine the commit with the commit before it.
+To combine N commits into one, set every commit in the list to be squash except the first one. Upon exiting the editor, and if
+no conflict arises, git rebase will allow you to create a new commit message for the new combined commit.
+
 $ git commit --amend --author="author name <author@email.com>"              # change the author name & email
 # Editor will open, save and exit                                           # we can change 'commit-message' here
 $ git rebase --continue                                                     # finish the rebase

@@ -52,6 +52,7 @@ $ git branch -v                              # Show all local branches with last
 $ git branch -av                             # Show all local and remote branches with last commits
 $ git branch --merged                        # Show lists of branch merged with current branch
 $ git branch --no-merged                     # Show lists of branch not-merged with current branch
+$ git branch -a --contains <commit-hash>     # Show list(s) of branch exits the commit
 .
 # Create
 $ git branch <branch-name>                   # Create a new branch

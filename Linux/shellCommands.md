@@ -9,9 +9,10 @@ $ gradle run | less        // search in 'gradle run' command
 # Finding a File Containing a Particular Text String
 # Pass --color to grep command, displays matched text/words in color on terminal
 $ grep -R --color "sampleWord" <directory> 
-$ sudo find / -type f -name jenkins.xml        // find a file
-$ sudo find / -type d -name jenkins            // find a directory
+$ sudo find / -type f -name jenkins.xml        # find a file
+$ sudo find / -type d -name jenkins            # find a directory
 $ sudo find / -type d -name plugins -ls
+$ sudo time <command>                          # return the time 
 
 # Search 'science(ignore lower/upper)' in science.txt file
 $ grep -i science science.txt 
@@ -137,11 +138,13 @@ $ date                                 # show today's date
 $ cal                                  # show calendar
 $ uname                                # print operating system name
 $ uname -a                             # print hardware, nodename, processor architecture, os release, os name + version
+$ lsb_release -a                       # see ubuntu version
 $ arch                                 # print architecture type
 
 # Short files by size (human readable output)
 $ du <dir> --human-readable | sort --human-numeric-sort
 $ ls <dir> --sort=size -la
+$ du -ma | sort -nr | head -n 20    # show 20 largest files/folders under the current directory
 
 # See the total size of directory
 $ du -sh
@@ -151,7 +154,7 @@ $ du -h                                # show all sub directory size
 sudo kill 'sudo lsof -t -i:9090'
 sudo lsof -t -i:24007                  # get the pid of 24007 port, say 123
 kill 123                               # kill the process
-kill -9 <pid>                          # kill the process
+kill -9 <pid>                          # kill the process (go)
 
 # Give a access permission of a file
 $ chmod 777 /var/run/docker.sock
@@ -204,3 +207,9 @@ M + b:  Move backward a word.
 // Bonus  
    vim  
 But really, a programmer needs more than that.  
+
+#### Different problem solve
+```sh
+WARNING: The following packages cannot be authenticated!
+Solutions: $ apt-get install debian-archive-keyring
+```

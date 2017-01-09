@@ -18,6 +18,12 @@ $ heroku open
 // Rename remote repo, edit url, then update git remote locally
 $ git remote rm heroku
 $ heroku git:remote -a <new-name>
+
+$ heroku apps                                # Shows list of heroky apps
+$ heroku apps:info --app <app-name>          # Details of one specific heroky app
+$ heroku logs                                # Show logs what exactly going on
+$ heroku addons:list                         # Show list of heroku addons
+$ heroku labs:list                           # Show some experimental featuresgits
 ```
 
 #### Some reasons we might want to push a new version to `staging` frist instead of going straight to production.

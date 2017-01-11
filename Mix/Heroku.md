@@ -1,21 +1,21 @@
 #### Various Heroku commands
 ```
-// Login to heroku account
+# Login to heroku account
 $ heroku login
 
-// Create a new remote repo named `heroku` where the code will be pushed to 
+# Create a new remote repo named `heroku` where the code will be pushed to 
 $ heroku create
 
-// Two remotes listed, `origin` and `heroku`
+# Two remotes listed, `origin` and `heroku`
 $ git remote -v 
 
-// Push the latest code to heroku for deployment
+# Push the latest code to heroku for deployment
 $ git push heroku master
 
-// Open up a browser window and navigate to the deployed application URL
+# Open up a browser window and navigate to the deployed application URL
 $ heroku open
 
-// Rename remote repo, edit url, then update git remote locally
+# Rename remote repo, edit url, then update git remote locally
 $ git remote rm heroku
 $ heroku git:remote -a <new-name>
 

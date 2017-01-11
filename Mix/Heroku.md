@@ -23,8 +23,8 @@ $ heroku apps                                # Shows list of heroky apps
 $ heroku apps:info --app <app-name>          # Details of one specific heroky app
 $ heroku logs                                # Show logs what exactly going on
 $ heroku addons:list                         # Show list of heroku addons
-
- ```
+$ heroku labs:list                           # Show some experimental featuresgits
+```
 
 #### Some reasons we might want to push a new version to `staging` frist instead of going straight to production.
 - If our app crashes on launch (or on the first query), we don't want all our users to be inconvenienced.

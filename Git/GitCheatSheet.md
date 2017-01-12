@@ -175,6 +175,8 @@ $ git diff HEAD                           # Show the changes to files not yet st
 .
 $ git checkout -- <file-name>             # Replaces the changes with the last content in HEAD 
 $ git clean -f -n                         # clean untract file (dry run)
+$ git clean -df                           # -d remove untracked directories in addition to untracked files, -f (force)
+$ git checkout -- .
 $ git clean -dxf
 $ git rm --cached -r .
 $ git checkout master

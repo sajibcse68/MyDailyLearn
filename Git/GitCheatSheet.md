@@ -205,6 +205,7 @@ $ git reset --soft HEAD~3                              # undo last 3 commits, re
 $ git add --all; git commit -m 'new squash message'    # commit the 3 previous commits in one
 $ git push -f origin <branch-name>                     # by force overwrite the remote branch and also commits
 ```
+
 #### Rebase
 ```sh
 $ git checkout <admin_branch>
@@ -325,6 +326,7 @@ $ git clone <url> --single-branch              # clone only single branch
 $ git gui
 $ git ls-tree -d HEAD                          # Tree object including the mode and the name of each item and the SHA value
 $ git difftool
+$ git reflog                                   # keeps a record of all commits that are or were referenced in your repo at any time
 $ git gc
 $ git help <verb>                              # Find out more
 $ git command --help                           # When in doubt, use git help

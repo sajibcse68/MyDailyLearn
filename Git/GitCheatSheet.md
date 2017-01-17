@@ -35,6 +35,9 @@ $ sudo find / -type f -name credentials
 
 # for `windows` credential.helper = manager
 $ git config --global credential.helper manager  
+$ git credential-manager delete <url>                   # delete credential-manager
+e.g. git credential-manager delete https://github.com
+
 
 
 # Auto correct Line Feed

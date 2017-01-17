@@ -26,6 +26,17 @@ Password: <type your password>
 $ git push http://example.com/repo.git
 [your credentials are used automatically]
 
+# unset git credentials
+$ git config --global --unset credential.helper
+
+# `~/.git-credentials` or `~/.config/git/credentials` save the credentials
+$ sudo find / -type f -name .git-credentials
+$ sudo find / -type f -name credentials
+
+# for `windows` credential.helper = manager
+$ git config --global credential.helper manager  
+
+
 # Auto correct Line Feed
 $ git config --global core.autocrlf input    # On unix line systems (Linux, OSX, etc)
 $ git config --global core.autocrlf true     # On windows system

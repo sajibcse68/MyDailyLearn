@@ -331,7 +331,8 @@ $ git pull origin <bn> -s recursive -X theirs  # While pulling if conflicts acce
 $ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts accepts ours (HEAD)
 $ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
-$ git show --pretty=%H 1a3fge7                 # short commit hash -> full commit hash 
+$ git show --pretty=%H 1a3fge7                 # short commit hash -> full commit hash
+$ git rev-parse 3cdd5d                         # short commit hash -> full commit hash 
 $ git init                                     # From scratch -- create a new local repository
 $ git diff                                     # workspace vs index
 $ git diff --cached                            # index vs repo, show all staged and unstaged file changes

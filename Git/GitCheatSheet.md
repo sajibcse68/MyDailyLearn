@@ -26,6 +26,20 @@ Password: <type your password>
 $ git push http://example.com/repo.git
 [your credentials are used automatically]
 
+# unset git credentials
+$ git config --global --unset credential.helper
+
+# `~/.git-credentials` or `~/.config/git/credentials` save the credentials
+$ sudo find / -type f -name .git-credentials
+$ sudo find / -type f -name credentials
+
+# for `windows` credential.helper = manager
+$ git config --global credential.helper manager  
+$ git credential-manager delete <url>                   # delete credential-manager
+e.g. git credential-manager delete https://github.com
+
+
+
 # Auto correct Line Feed
 $ git config --global core.autocrlf input    # On unix line systems (Linux, OSX, etc)
 $ git config --global core.autocrlf true     # On windows system
@@ -64,11 +78,12 @@ $ git push origin <branch-name>              # Push to remote branch
 $ git push -u origin <branch-name>           # -u tells Git to remember the parameters, so that next time we can simply run `git push`
 .
 # Delete
-$ git branch -d <branch-name>                 # Delete the local branch, show a warning
-$ git branch -D <branhc-name>                 # Force to delete branch
-$ git push origin :<branch-name>              # Delete remote branch
-$ git push origin --delete <branch-name>      # Delete remote branch
-$ git remote prune origin                     # Cleanup remote deleted branch
+$ git branch -d <branch-name>                              # Delete the local branch, show a warning
+$ git branch -D <branhc-name>                              # Force to delete branch
+$ git push origin :<branch-name>                           # Delete remote branch
+$ git push origin --delete <branch-name>                   # Delete remote branch
+$ git remote prune origin                                  # Cleanup remote deleted branch
+$ git branch --merged | grep -v '*' | xargs git branch -d  # delete merged branches
 ```
 
 ####  Add, Commit, Amend, Push, Pull & Merge

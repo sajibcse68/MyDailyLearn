@@ -193,7 +193,7 @@ $ git clean -f -n                         # clean untract file (dry run)
 $ git clean -df                           # -d remove untracked directories in addition to untracked files, -f (force)
 $ git checkout -- .
 $ git clean -dxf
-$ git rm --cached -r .
+$ git rm --cached -r .                    # remove git cached (e.g. add a file in .gitignore that already added in git)
 $ git checkout master
 .
 # Recover a branch after deletion
@@ -336,7 +336,10 @@ $ git rev-parse 3cdd5d                         # short commit hash -> full commi
 $ git init                                     # From scratch -- create a new local repository
 $ git diff                                     # workspace vs index
 $ git diff --cached                            # index vs repo, show all staged and unstaged file changes
-$ git diff HEAD                                # workspace vs repo 
+$ git diff HEAD                                # workspace vs repo
+$ git whatchanged --since="3 day ago"          # see the changed file lists name since 3 days
+$ git whatchanged --since="1 day ago" -p       # see the changes with file lists
+$ git whatchanged --since="1 day ago" <file>   # see the changes of a specific file
 $ git clone <url> --branch <branch-name>       # clone a specific branch
 $ git clone <url> -b <branch>                  # clone into a new local branch instead of master
 $ git clone <url> --single-branch              # clone only single branch  

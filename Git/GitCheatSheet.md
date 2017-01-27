@@ -74,8 +74,9 @@ $ git checkout -b <branch-name>              # Create & checkout to new branch
 $ git checkout --orphan <branch-name>        # Create a branch with no commit list
 .
 # Push
-$ git push origin <branch-name>              # Push to remote branch
-$ git push -u origin <branch-name>           # -u tells Git to remember the parameters, so that next time we can simply run `git push`
+$ git push origin <branch-name>                   # Push to remote branch
+$ git push -u origin <branch-name>                # -u tells Git to remember the parameters, so that next time we can simply run `git push`
+$ git subtree push --prefix dist origin gh-pages  # push only a specific folder to remote branch
 .
 # Delete
 $ git branch -d <branch-name>                              # Delete the local branch, show a warning
@@ -332,7 +333,11 @@ $ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts acce
 $ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
 $ git show --pretty=%H 1a3fge7                 # short commit hash -> full commit hash
-$ git rev-parse 3cdd5d                         # short commit hash -> full commit hash 
+$ git rev-parse 3cdd5d                         # short commit hash -> full commit hash
+$ git diff-tree -r <commit-hash>               # show list of files that were changed or added in the commit
+$ git diff-tree -r <hash> -p                   # show list of files with changes that were changed or added in the commit
+$ git diff-tree --name-only -r <hash>          # show only the file name of changed files
+$ git diff-tree --no-commit-id -r <hash>       # show only the file name of changed files
 $ git init                                     # From scratch -- create a new local repository
 $ git diff                                     # workspace vs index
 $ git diff --cached                            # index vs repo, show all staged and unstaged file changes

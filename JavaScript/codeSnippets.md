@@ -135,6 +135,7 @@ const monitorEvents = monitorEvents($('selector'));
 
 // Arrange the values of a variable into a table
 console.table('variableName');
+console.table();                      // see all the data of curent state
 
 // Inspect an element in the DOM
 inspect($('selector'));

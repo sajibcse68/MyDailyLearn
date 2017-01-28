@@ -67,6 +67,7 @@ $ git branch -av                             # Show all local and remote branche
 $ git branch --merged                        # Show lists of branch merged with current branch
 $ git branch --no-merged                     # Show lists of branch not-merged with current branch
 $ git branch -a --contains <commit-hash>     # Show list of branch(s) exits the commit
+$ git branch -m <old-name> <new-name>        # Rename a branch
 .
 # Create
 $ git branch <branch-name>                   # Create a new branch

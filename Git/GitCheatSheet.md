@@ -196,7 +196,7 @@ $ git clean -df                           # -d remove untracked directories in a
 $ git checkout -- .
 $ git clean -dxf
 $ git rm --cached -r .                    # remove git cached (e.g. add a file in .gitignore that already added in git)
-$ git checkout master
+$ git revert -p <fromCommit>..<toCommit>  # revert a range of commit, need to commit after the commit 
 .
 # Recover a branch after deletion
 $ git reflog                              # see all commits and select the last commit (SHA1) of deleted branch

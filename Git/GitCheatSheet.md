@@ -67,15 +67,18 @@ $ git branch -av                             # Show all local and remote branche
 $ git branch --merged                        # Show lists of branch merged with current branch
 $ git branch --no-merged                     # Show lists of branch not-merged with current branch
 $ git branch -a --contains <commit-hash>     # Show list of branch(s) exits the commit
+$ git branch -m <old-name> <new-name>        # Rename a branch
 .
 # Create
 $ git branch <branch-name>                   # Create a new branch
 $ git checkout -b <branch-name>              # Create & checkout to new branch
 $ git checkout --orphan <branch-name>        # Create a branch with no commit list
+$ git checkout -b <branch> <remote/branch>   # Create a new branch from a remote branch history
 .
 # Push
-$ git push origin <branch-name>              # Push to remote branch
-$ git push -u origin <branch-name>           # -u tells Git to remember the parameters, so that next time we can simply run `git push`
+$ git push origin <branch-name>                   # Push to remote branch
+$ git push -u origin <branch-name>                # -u tells Git to remember the parameters, so that next time we can simply run `git push`
+$ git subtree push --prefix dist origin gh-pages  # push only a specific folder to remote branch
 .
 # Delete
 $ git branch -d <branch-name>                              # Delete the local branch, show a warning
@@ -140,7 +143,7 @@ $ git stash save "provide a stash message"          # We can provide a stash mes
 $ git stash apply stash@{0}                         # Return the codes that I cleaned before
 $ git stash apply stash@{2}                         # get back the #3 stash codes.
 $ git stash list                                    # Show how many stash we have
-$ git stash list --stash                            # Show all stash lists with changes file
+$ git stash list --stash              ktu               # Show all stash lists with changes file
 $ git stash show stash@{1}                          # Show only a specific stash with commits
 $ git stash show --patch                            # Shows file diffs
 $ git stash drop = git stash drop stash@{0}         # Pop = apply + drop
@@ -194,7 +197,7 @@ $ git clean -df                           # -d remove untracked directories in a
 $ git checkout -- .
 $ git clean -dxf
 $ git rm --cached -r .                    # remove git cached (e.g. add a file in .gitignore that already added in git)
-$ git checkout master
+$ git revert -p <fromCommit>..<toCommit>  # revert a range of commit, need to commit after the commit 
 .
 # Recover a branch after deletion
 $ git reflog                              # see all commits and select the last commit (SHA1) of deleted branch
@@ -332,7 +335,11 @@ $ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts acce
 $ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
 $ git show --pretty=%H 1a3fge7                 # short commit hash -> full commit hash
-$ git rev-parse 3cdd5d                         # short commit hash -> full commit hash 
+$ git rev-parse 3cdd5d                         # short commit hash -> full commit hash
+$ git diff-tree -r <commit-hash>               # show list of files that were changed or added in the commit
+$ git diff-tree -r <hash> -p                   # show list of files with changes that were changed or added in the commit
+$ git diff-tree --name-only -r <hash>          # show only the file name of changed files
+$ git diff-tree --no-commit-id -r <hash>       # show only the file name of changed files
 $ git init                                     # From scratch -- create a new local repository
 $ git diff                                     # workspace vs index
 $ git diff --cached                            # index vs repo, show all staged and unstaged file changes

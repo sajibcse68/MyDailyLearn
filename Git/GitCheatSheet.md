@@ -26,6 +26,20 @@ Password: <type your password>
 $ git push http://example.com/repo.git
 [your credentials are used automatically]
 
+# unset git credentials
+$ git config --global --unset credential.helper
+
+# `~/.git-credentials` or `~/.config/git/credentials` save the credentials
+$ sudo find / -type f -name .git-credentials
+$ sudo find / -type f -name credentials
+
+# for `windows` credential.helper = manager
+$ git config --global credential.helper manager  
+$ git credential-manager delete <url>                   # delete credential-manager
+e.g. git credential-manager delete https://github.com
+
+
+
 # Auto correct Line Feed
 $ git config --global core.autocrlf input    # On unix line systems (Linux, OSX, etc)
 $ git config --global core.autocrlf true     # On windows system
@@ -50,45 +64,55 @@ $ git branch -r                              # Show all the remote branched
 $ git branch -a                              # Show all local and remote branches
 $ git branch -v                              # Show all local branches with last commits
 $ git branch -av                             # Show all local and remote branches with last commits
-
+$ git branch --merged                        # Show lists of branch merged with current branch
+$ git branch --no-merged                     # Show lists of branch not-merged with current branch
+$ git branch -a --contains <commit-hash>     # Show list of branch(s) exits the commit
+$ git branch -m <old-name> <new-name>        # Rename a branch
+.
 # Create
 $ git branch <branch-name>                   # Create a new branch
 $ git checkout -b <branch-name>              # Create & checkout to new branch
 $ git checkout --orphan <branch-name>        # Create a branch with no commit list
-
+$ git checkout -b <branch> <remote/branch>   # Create a new branch from a remote branch history
+.
 # Push
-$ git push origin <branch-name>              # Push to remote branch
-$ git push -u origin <branch-name>           # -u tells Git to remember the parameters, so that next time we can simply run `git push`
-
+$ git push origin <branch-name>                   # Push to remote branch
+$ git push -u origin <branch-name>                # -u tells Git to remember the parameters, so that next time we can simply run `git push`
+$ git subtree push --prefix dist origin gh-pages  # push only a specific folder to remote branch
+.
 # Delete
-$ git branch -d <branch-name>                 # Delete the local branch, show a warning
-$ git branch -D <branhc-name>                 # Force to delete branch
-$ git push origin :<branch-name>              # Delete remote branch
-$ git remote prune origin                     # Cleanup remote deleted branch
+$ git branch -d <branch-name>                              # Delete the local branch, show a warning
+$ git branch -D <branhc-name>                              # Force to delete branch
+$ git push origin :<branch-name>                           # Delete remote branch
+$ git push origin --delete <branch-name>                   # Delete remote branch
+$ git remote prune origin                                  # Cleanup remote deleted branch
+$ git branch --merged | grep -v '*' | xargs git branch -d  # delete merged branches
 ```
+
 ####  Add, Commit, Amend, Push, Pull & Merge
 ```sh
 # Add
-$ git add .                                                               
+$ git add .                                         # Adds file changes to the index                      
 $ git add --all                                     # Add all changes
 $ git add -p                                        # Stage a particular change
-     
+.     
 # Commit                                                                          
 $ git commit -am 'commit message'                   # Add & commit        
 $ git commit --allow-empty -m k3;                   # Commit empty change
 $ git cherry-pick <commit-hash>                     # Take a commit change of another branch 
-
+.
 # Amend
 $ git add task2.txt                                 # Add any file
 $ git commit --amend -m 'new message'               # Merge current change to previous commit and will also change the commit hash
-
+$ git commit --amend --date="<date>"                # Override the date
+.
 # Pull
 $ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch 
-
+.
 # Push
 $ git push origin <branchame>                       # Push a branch
 $ git push -f origin <branch-name>                  # Overwrite remote branch (by force)
-
+.
 # Merge
 $ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch
 $ git mergetool
@@ -111,6 +135,7 @@ $ git cherry-pick --no-commit <commit-hash> <commit-hash>   # --no-commit pulls 
 $ git cherry-pick -x <commit-hash>                          # -x: keep track where the commit came from
 $ git cherry-pick --signoff <commit-hash>                   # --signoff add current users name to commit message
 ```
+
 #### Stashing
 ```sh
 $ git stash save                                    # Save the changes in temporary box
@@ -118,7 +143,7 @@ $ git stash save "provide a stash message"          # We can provide a stash mes
 $ git stash apply stash@{0}                         # Return the codes that I cleaned before
 $ git stash apply stash@{2}                         # get back the #3 stash codes.
 $ git stash list                                    # Show how many stash we have
-$ git stash list --stash                            # Show all stash lists with changes file
+$ git stash list --stash              ktu               # Show all stash lists with changes file
 $ git stash show stash@{1}                          # Show only a specific stash with commits
 $ git stash show --patch                            # Shows file diffs
 $ git stash drop = git stash drop stash@{0}         # Pop = apply + drop
@@ -126,14 +151,25 @@ $ git stash pop = git stash apply + git stash drop  # Temporary delete or clean
 $ git stash clear                                   # Clean all the stash
 $ git stash branch <branchname> stash@{0}           # Checkout a new branch with popping stash@{0}
 $ git stash save --keep-index
+.
+# resolve conflicts when doing stash pop
+$ git checkout stash -- .                           # replace all the files with the stashed version
+.
+Or, 
+$ git stash apply                                   # apply the stashed changes, conflicts occure here
+$ git checkout --theirs -- .                        # accept stashed changes 
 ```
+
 #### Log:
 ```sh
 $ git log                                          # Show  all the change/commit history
 $ git log --oneline --decorate --all --graph       # See all commits with better visualization
 $ git log -p <file/directory>                      # Show change history for file/directory including diffs
 $ git log --pretty=format:"%h - %an, %ar : %s"     # commit hash-tag -> name -> data -> commit-message
+# see commit-hash, branch-name, commit-message, time, committer-name and changes of the commits 
+$ git log -p --all -G pattern --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --branches
 $ git log --pretty=oneline
+$ git log -1 --pretty=format:'%an'                 # Print last commit's Author Name  
 $ git log --oneline -p
 $ git log --oneline --stat
 $ git log --oneline --graph
@@ -143,22 +179,26 @@ $ git log --since=1.hour.ago                       # Since(hours)
 $ git log --since=2.weeks                          # Since two weeks
 $ git log --since=1.month.ago --until=2.weeks.ago  # Since & until (relative)
 $ git log --since=2000-01-01 --until=2012-12-21    # Since & until (absolute)
-$ git blame index.html --date short                
-$ git rm --cached development.log                  # What it you're already tracking log files?
+$ git blame index.html --date short
+$ git rm                                           # Remove the file from the staging area and also from the disk                         
+$ git rm --cached development.log                  # What if you're already tracking log files?
 ```
+
 #### Recovery/Reset:                                    
 ```sh
 $ git log                                 # Show all the change/commit history
 $ git show <commit hash>                  # See what changes in a specific commit
 $ git reset --soft <commit hash>          # Back to a specific commit and exits the change
 $ git diff HEAD                           # Show the changes to files not yet staged
-
+.
 $ git checkout -- <file-name>             # Replaces the changes with the last content in HEAD 
 $ git clean -f -n                         # clean untract file (dry run)
+$ git clean -df                           # -d remove untracked directories in addition to untracked files, -f (force)
+$ git checkout -- .
 $ git clean -dxf
-$ git rm --cached -r .
-$ git checkout master
-
+$ git rm --cached -r .                    # remove git cached (e.g. add a file in .gitignore that already added in git)
+$ git revert -p <fromCommit>..<toCommit>  # revert a range of commit, need to commit after the commit 
+.
 # Recover a branch after deletion
 $ git reflog                              # see all commits and select the last commit (SHA1) of deleted branch
 $ git checkout <sha>                      # checkout that commit
@@ -166,6 +206,7 @@ $ git checkout -b <deleted-branch-name>   # recover that branch after creating a
 # shortcut
 $ git checkout -b <branch> <sha>
 ```
+
 #### Reset Using **reflog**
 ```sh
 $ git reflog                           # See all the task step by step
@@ -174,6 +215,7 @@ $ git reset --hard                     # We moved to HAED@{8} completely
 $ git log --walk-reflogs               # More details
 $ git branch <branceName> HEAD@{1}     # Create a new branch with a commit (the branch is deleted where this commit was given)
 ```
+
 #### Squash
 ```
 # in general I do
@@ -181,13 +223,15 @@ $ git reset --soft HEAD~3                              # undo last 3 commits, re
 $ git add --all; git commit -m 'new squash message'    # commit the 3 previous commits in one
 $ git push -f origin <branch-name>                     # by force overwrite the remote branch and also commits
 ```
+
 #### Rebase
 ```sh
 $ git checkout <admin_branch>
-$ git rebase master                      # Merge all commits of admin_branch after master's commits
-$ git checkout master                   
-$ git checkout -b <history_master>       # Backup master branch if necessary
-$ git merge <admin_branch>               
+$ git rebase master                                    # Merge all commits of admin_branch after master's commits
+$ git checkout master                                  
+$ git checkout -b <history_master>                     # Backup master branch if necessary
+$ git merge <admin_branch>
+$ git commit --amend --committer-date-is-author-date   # keep the date same as committer date when amending
 
 # Change the `author` of a earlier commit
 $ git checkout <commit-hash>                                             # checkout the commit we're trying to modify
@@ -200,6 +244,13 @@ $ git push -f origin HEAD                                                # force
 # Alternate way (May occur conflicts and more complex)
 $ git rebase -i <commit-hash>                                               # go to last good commit
 # Editor will open, write `edit` before the commit we want to change author
+
+$ git rebase -i HEAD-{N}
+# Upon running this command, an editor will open with a list of these N commit message, one per line. Each of these lines
+will begin with `pick`. Replacing `pick` with `squash` or `s` will tell Git to combine the commit with the commit before it.
+To combine N commits into one, set every commit in the list to be squash except the first one. Upon exiting the editor, and if
+no conflict arises, git rebase will allow you to create a new commit message for the new combined commit.
+
 $ git commit --amend --author="author name <author@email.com>"              # change the author name & email
 # Editor will open, save and exit                                           # we can change 'commit-message' here
 $ git rebase --continue                                                     # finish the rebase
@@ -262,24 +313,52 @@ $ git push --recurse-submodules=on-demand                        # Push to paren
 $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias   
 ```
 
+#### Cleanup garbase in remote repo
+```sh
+$ git reflog expire --expire="1 hour" --all
+$ git reflog expire --expire-unreachable="1 hour" --all
+$ git prune --expire="1 hour" -v
+$ git gc --aggressive --prune="1 hour"
+```
+
 #### Fancy commands
 
-```
-$ git status                                   # List new or modified files not yet committed
+```sh
+$ git mv <src-file> <new-file-name>            # Rename a file and keeps all the previous history
+$ git status                                   # Difference between working directory and the index
 $ git fetch                                    # Get the latest changes from origin (no merge)
+$ git fetch -p                                 # -p = --prune, after fetching remove any remove-tracking references that no longer exist on the remote 
 $ git pull                                     # Fetch the latest changes from origin and merge
 $ git pull --rebase                            # Fetch the latest changes from origin and rebase
 $ git pull origin <bn> -s recursive -X theirs  # While pulling if conflicts accepts theirs
 $ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts accepts ours (HEAD)
 $ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
+$ git show --pretty=%H 1a3fge7                 # short commit hash -> full commit hash
+$ git rev-parse 3cdd5d                         # short commit hash -> full commit hash
+$ git diff-tree -r <commit-hash>               # show list of files that were changed or added in the commit
+$ git diff-tree -r <hash> -p                   # show list of files with changes that were changed or added in the commit
+$ git diff-tree --name-only -r <hash>          # show only the file name of changed files
+$ git diff-tree --no-commit-id -r <hash>       # show only the file name of changed files
 $ git init                                     # From scratch -- create a new local repository
-$ git diff --cached                            # Show all staged and unstaged file changes
+$ git diff                                     # workspace vs index
+$ git diff --cached                            # index vs repo, show all staged and unstaged file changes
+$ git diff HEAD                                # workspace vs repo
+$ git whatchanged --since="3 day ago"          # see the changed file lists name since 3 days
+$ git whatchanged --since="1 day ago" -p       # see the changes with file lists
+$ git whatchanged --since="1 day ago" <file>   # see the changes of a specific file
+$ git clone <url> --branch <branch-name>       # clone a specific branch
+$ git clone <url> -b <branch>                  # clone into a new local branch instead of master
+$ git clone <url> --single-branch              # clone only single branch  
 $ git gui
+$ git ls-tree -d HEAD                          # Tree object including the mode and the name of each item and the SHA value
 $ git difftool
+$ git reflog                                   # keeps a record of all commits that are or were referenced in your repo at any time
 $ git gc
 $ git help <verb>                              # Find out more
 $ git command --help                           # When in doubt, use git help
+
+$ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request
 
 # Show diff
 $ git diff b1..b2                              # Compare two brances, show you what is in b2 that is not in b1
@@ -305,7 +384,6 @@ The --set-upstream flag is deprecated and will be removed. Consider using --trac
 	- Manual QA
 	- Long running releases
 	- On demand hot fixed
-
 ```
 $ git checkout <commit-hash>                  # checkout to a commit to give a tag
 $ git tag                                     # show list of tag

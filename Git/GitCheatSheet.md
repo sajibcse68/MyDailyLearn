@@ -78,7 +78,8 @@ $ git checkout -b <branch> <remote/branch>   # Create a new branch from a remote
 # Push
 $ git push origin <branch-name>                   # Push to remote branch
 $ git push -u origin <branch-name>                # -u tells Git to remember the parameters, so that next time we can simply run `git push`
-$ git subtree push --prefix dist origin gh-pages  # push only a specific folder to remote branch
+$ git push origin HEAD:<branch-name>              # Push the current branch without thinking about its local name.
+$ git subtree push --prefix dist origin gh-pages  # Push only a specific folder to remote branch
 $ git subtree push --prefix src origin gh-pages   # Deploy source directory
 .
 # Delete

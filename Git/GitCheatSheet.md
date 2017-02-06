@@ -111,6 +111,7 @@ $ git commit --amend --date="<date>"                # Override the date
 .
 # Pull
 $ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch 
+$ git subtree add --prefix=other/ <repo-url> master # Pull master branch of a repo into a subdirectory named 'other/'
 .
 # Push
 $ git push origin <branchame>                       # Push a branch

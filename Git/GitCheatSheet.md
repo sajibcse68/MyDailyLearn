@@ -129,6 +129,7 @@ $ git checkout <branch-name>               # Return to present state
 $ git checkout <commit-hash> <file-name>   # Only a file will go back to specific commit
 $ git checkout <branch-name> -f            # Return to persent state by force
 $ git checkout -- <filename1> <filename2>  # Discard all changes of file1 and file2
+$ git checkout origin/master <file-name>   # Reset a file with origin/master
 ```
 #### Cherry-pick
 ```

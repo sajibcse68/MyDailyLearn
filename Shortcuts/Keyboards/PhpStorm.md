@@ -5,3 +5,4 @@
 * `Cmd + Alt + L`             -- Reformat code
 * `Options + click`           -- Bind cursor in multiple place
 * `Cmd + D`                   -- Duplicate a line row or a section
+* `Ctrl + Up`                 -- Select increasingly expansive scopes

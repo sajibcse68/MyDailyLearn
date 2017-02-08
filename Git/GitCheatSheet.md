@@ -124,6 +124,7 @@ $ git merge --squash <privateFeatureBranch>
 ```
 #### Checkout (go forward/backward)
 ```
+$ git checkout -                           # Switch to the last branch you are
 $ git checkout <commit-hash>               # Go to a specific commit
 $ git checkout <branch-name>               # Return to present state
 $ git checkout <commit-hash> <file-name>   # Only a file will go back to specific commit

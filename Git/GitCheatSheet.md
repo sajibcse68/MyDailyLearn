@@ -367,6 +367,10 @@ $ git command --help                           # When in doubt, use git help
 
 $ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request
 
+### Create a remote branch using REST API
+$ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -vv -u '$USERNAME:$PASS' "https://bitbucket.org/branch/create" -s -d 'repository=$TEAMORUSER%2F$REPO&from_branch=master&branch_name=feature'
+
+
 # Show diff
 $ git diff b1..b2                              # Compare two brances, show you what is in b2 that is not in b1
 $ git diff <commit1> <commit2>                 # Show changes between two commits id

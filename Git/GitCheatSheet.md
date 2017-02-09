@@ -434,6 +434,8 @@ $ git commit -m 'be tracked'      // staged, tracked
 5. Use the Imperative mood in the subject line
 6. Wrap the body at 72 characters
 7. Use the body to explain `what and why vs. how
+
+[See details](http://chris.beams.io/posts/git-commit/)
  
 #### Difference between HEAD~ and HEAD^
 - `HEAD^` means the `first parent` of the tip of the current branch, `HEAD^2` means `second parent of current branch`, `HEAD~1 / HEAD~2` means always `first parent`. [see this](http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)

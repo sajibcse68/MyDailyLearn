@@ -102,7 +102,8 @@ $ git add -p                                        # Stage a particular change
 # Commit                                                                          
 $ git commit -am 'commit message'                   # Add & commit        
 $ git commit --allow-empty -m k3;                   # Commit empty change
-$ git cherry-pick <commit-hash>                     # Take a commit change of another branch 
+$ git cherry-pick <commit-hash>                     # Take a commit change of another branch
+$ git commit -m 'msg' --include file1.txt file2.txt # Commit specific files
 .
 # Amend
 $ git add task2.txt                                 # Add any file
@@ -111,6 +112,7 @@ $ git commit --amend --date="<date>"                # Override the date
 .
 # Pull
 $ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch 
+$ git subtree add --prefix=other/ <repo-url> master # Pull master branch of a repo into a subdirectory named 'other/'
 .
 # Push
 $ git push origin <branchame>                       # Push a branch
@@ -123,11 +125,13 @@ $ git merge --squash <privateFeatureBranch>
 ```
 #### Checkout (go forward/backward)
 ```
+$ git checkout -                           # Switch to the last branch you are
 $ git checkout <commit-hash>               # Go to a specific commit
 $ git checkout <branch-name>               # Return to present state
 $ git checkout <commit-hash> <file-name>   # Only a file will go back to specific commit
 $ git checkout <branch-name> -f            # Return to persent state by force
 $ git checkout -- <filename1> <filename2>  # Discard all changes of file1 and file2
+$ git checkout origin/master <file-name>   # Reset a file with origin/master
 ```
 #### Cherry-pick
 ```

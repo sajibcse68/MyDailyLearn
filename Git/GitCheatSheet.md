@@ -102,7 +102,8 @@ $ git add -p                                        # Stage a particular change
 # Commit                                                                          
 $ git commit -am 'commit message'                   # Add & commit        
 $ git commit --allow-empty -m k3;                   # Commit empty change
-$ git cherry-pick <commit-hash>                     # Take a commit change of another branch 
+$ git cherry-pick <commit-hash>                     # Take a commit change of another branch
+$ git commit -m 'msg' --include file1.txt file2.txt # Commit specific files
 .
 # Amend
 $ git add task2.txt                                 # Add any file

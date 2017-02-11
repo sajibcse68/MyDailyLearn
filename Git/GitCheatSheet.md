@@ -141,6 +141,7 @@ $ git cherry-pick --edit <commit-hash>                      # Pop-up a editor, t
 $ git cherry-pick --no-commit <commit-hash> <commit-hash>   # --no-commit pulls in changes and stages them, but doesn't commit
 $ git cherry-pick -x <commit-hash>                          # -x: keep track where the commit came from
 $ git cherry-pick --signoff <commit-hash>                   # --signoff add current users name to commit message
+$ git cherry-pick A..B                                      # take a range of commit, A < B and A is not included
 ```
 
 #### Stashing

@@ -326,6 +326,7 @@ $ git reflog expire --expire="1 hour" --all
 $ git reflog expire --expire-unreachable="1 hour" --all
 $ git prune --expire="1 hour" -v
 $ git gc --aggressive --prune="1 hour"
+$ git rc                               # cleanup unnecessary files and optimize local repo
 ```
 
 #### Fancy commands

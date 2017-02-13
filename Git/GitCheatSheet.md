@@ -141,6 +141,7 @@ $ git cherry-pick --edit <commit-hash>                      # Pop-up a editor, t
 $ git cherry-pick --no-commit <commit-hash> <commit-hash>   # --no-commit pulls in changes and stages them, but doesn't commit
 $ git cherry-pick -x <commit-hash>                          # -x: keep track where the commit came from
 $ git cherry-pick --signoff <commit-hash>                   # --signoff add current users name to commit message
+$ git cherry-pick A..B                                      # take a range of commit, A < B and A is not included
 ```
 
 #### Stashing
@@ -326,6 +327,7 @@ $ git reflog expire --expire="1 hour" --all
 $ git reflog expire --expire-unreachable="1 hour" --all
 $ git prune --expire="1 hour" -v
 $ git gc --aggressive --prune="1 hour"
+$ git rc                               # cleanup unnecessary files and optimize local repo
 ```
 
 #### Fancy commands
@@ -426,6 +428,17 @@ $ git commit -m 'be tracked'      // staged, tracked
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
 
+#### The Seven Rules of a Great Git Commit Message
+1. Separate subject from body with a blank line
+2. Limit the subject line to 50 characters
+3. Capitalize the subject line
+4. Do not end the subject line with a period
+5. Use the Imperative mood in the subject line
+6. Wrap the body at 72 characters
+7. Use the body to explain `what and why vs. how
+
+[See details](http://chris.beams.io/posts/git-commit/)
+ 
 #### Difference between HEAD~ and HEAD^
 - `HEAD^` means the `first parent` of the tip of the current branch, `HEAD^2` means `second parent of current branch`, `HEAD~1 / HEAD~2` means always `first parent`. [see this](http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
 - ~2 means up two levels in the hierarchy, via the first parent if a commit has more than one parent.

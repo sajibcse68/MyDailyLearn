@@ -365,6 +365,7 @@ $ git difftool
 $ git reflog                                   # keeps a record of all commits that are or were referenced in your repo at any time
 $ git gc
 $ git help <verb>                              # Find out more
+$ git fsck --lost-found                        # Verifies the connectivity and validity of the objects in the database
 $ git command --help                           # When in doubt, use git help
 
 $ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request

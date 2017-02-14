@@ -36,5 +36,41 @@ Just put parentheses:      // JS interpretate everything what is in parentheses 
   }
   ```
 #### Explain `hoisting`
+
+
+#### Difference between a variable that is: null, undefined, or undeclared
+- Undeclared: never used/defined before
+  const bar = foo + 1;
+  
+  console.log(typeof bar); // undeclared, but also returns "undefined"
+  
+- Undefined:
+    - variable declared but no defined value (not initialized)
+    - object/array exists but nothing at that key/index
+    - function exists but doesn't return anything
+    - falsy
+  
+    let foo;
+    const bar = foo;  // foo is undefined
+
+    
+    console.log(typeof foo); // "undefined" as a string
+    console.log(foo === undefined) // true boolean
+     
+    const baz = 'undefined';
+     console.log(baz === undefined); // false. Hooray, I guess
+    
+  
+- null:
+  - null has a value. It's value is null
+  - null is a "nothing" value
+  - not zero, not an empty string/object/array
+  - falsy
+  
+  let foo = null;
+  console.log(foo === null)  // true boolean
+  
+  
+  
   
   

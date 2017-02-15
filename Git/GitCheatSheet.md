@@ -241,17 +241,23 @@ $ git checkout -b <history_master>                     # Backup master branch if
 $ git merge <admin_branch>
 $ git commit --amend --committer-date-is-author-date   # keep the date same as committer date when amending
 
-# Change the `author` of a earlier commit
+# Change the `author` of an earlier commit
 $ git checkout <commit-hash>                                             # checkout the commit we're trying to modify
 $ git commit --amend --author "New-author-name <new-author@mail.com>"    # change the author name and mail
 $ git replace <old-commit-hash> <new-commit-hash>                        # replace the old commit by new one
-$ git filter-branch -- --all                                             # rewrite all futures commits based on the replacement                   
+$ git filter-branch -- --all ^<new-commit-hash>                          # note '^' before hash, rewrite all futures commits based on the replacement                   
 $ git replace -d <old-commit-hash>                                       # remove the replacement for cleanliness 
 $ git push -f origin HEAD                                                # force push 
  
 # Alternate way (May occur conflicts and more complex)
 $ git rebase -i <commit-hash>                                               # go to last good commit
 # Editor will open, write `edit` before the commit we want to change author
+
+# Change the `commit message` of an earlier commit
+$ git filter-branch -f --msg-filter 'sed "s/<old-msg>/<new-msg>/g"' -- --all # Replace the old message with new message
+e.g. git filter-branch -f --msg-filter \
+     'sed "s/release\/Version-[0-9].[0-9].[0-9]/develop/g"' \
+     --tag-name-filter cat -- --all
 
 $ git rebase -i HEAD-{N}
 # Upon running this command, an editor will open with a list of these N commit message, one per line. Each of these lines

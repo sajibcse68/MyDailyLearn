@@ -15,8 +15,15 @@
 {% endfor %}
 ```
 
+{% set items = ["a", 1, { b : true}] %}
+{{ items | dump }}
+
 ##### Fancy codes
 ```
+// dump: (debug friendly) Call `JSON.stringify` on an object and `dump` the result into the template. Useful for debugging: {{ items | dump }}
+{% set items = ["a", 1, {b : true}]%}
+{{item | dump}}     // output: ["a",1,{"b":true}]
+
 // Iterate loop through object/map
 {% for key, value in ob %}
    The value of {{ key }} is {{ value }}

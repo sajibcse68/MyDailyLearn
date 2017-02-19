@@ -11,11 +11,17 @@ $ git config --local user.email <your-email>
 ```
 #### Some other necessary ``config`` commands
 ```sh
-$ git config --list                          # See full configuration of git                           
-$ git config --global core.editor emacs      # Use emacs for interactive commands
-$ git config --global merge.tool opendiff    # Use opendiff for merging conflicts
-$ git config --global color.ui true          # Better visualization            
-$ git config core.ignorecase false           # If we want case sensitive git     
+$ git config --list                              # See full configuration of git                           
+$ git config --global core.editor emacs          # Use emacs for interactive commands
+$ git config --global merge.tool opendiff        # Use opendiff for merging conflicts
+$ git config --global color.ui true              # Better visualization            
+$ git config core.ignorecase false               # If we want case sensitive git
+                                                 
+$ git config --global --remove-section alias     # Remove the global alias section
+$ git config - --remove-section alias            # Remove the global alias section
+$ git config --global --unset alias.<name>       # Unset an alias
+$ git config --global --unset core.<name>        # Unset an core
+
  
 # (git-credentials store) Reduce the number of times we must type our username or password
 $ git config credential.helper store
@@ -241,17 +247,23 @@ $ git checkout -b <history_master>                     # Backup master branch if
 $ git merge <admin_branch>
 $ git commit --amend --committer-date-is-author-date   # keep the date same as committer date when amending
 
-# Change the `author` of a earlier commit
+# Change the `author` of an earlier commit
 $ git checkout <commit-hash>                                             # checkout the commit we're trying to modify
 $ git commit --amend --author "New-author-name <new-author@mail.com>"    # change the author name and mail
 $ git replace <old-commit-hash> <new-commit-hash>                        # replace the old commit by new one
-$ git filter-branch -- --all                                             # rewrite all futures commits based on the replacement                   
+$ git filter-branch -- --all ^<new-commit-hash>                          # note '^' before hash, rewrite all futures commits based on the replacement                   
 $ git replace -d <old-commit-hash>                                       # remove the replacement for cleanliness 
 $ git push -f origin HEAD                                                # force push 
  
 # Alternate way (May occur conflicts and more complex)
 $ git rebase -i <commit-hash>                                               # go to last good commit
 # Editor will open, write `edit` before the commit we want to change author
+
+# Change the `commit message` of an earlier commit
+$ git filter-branch -f --msg-filter 'sed "s/<old-msg>/<new-msg>/g"' -- --all # Replace the old message with new message
+e.g. git filter-branch -f --msg-filter \
+     'sed "s/release\/Version-[0-9].[0-9].[0-9]/develop/g"' \
+     --tag-name-filter cat -- --all
 
 $ git rebase -i HEAD-{N}
 # Upon running this command, an editor will open with a list of these N commit message, one per line. Each of these lines
@@ -343,6 +355,7 @@ $ git pull origin <bn> -s recursive -X theirs  # While pulling if conflicts acce
 $ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts accepts ours (HEAD)
 $ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
+$ git show --decorate <commit-hash>            # see 'Author', 'Date' and 'diff'                        
 $ git show --pretty=%H 1a3fge7                 # short commit hash -> full commit hash
 $ git rev-parse 3cdd5d                         # short commit hash -> full commit hash
 $ git diff-tree -r <commit-hash>               # show list of files that were changed or added in the commit
@@ -365,6 +378,7 @@ $ git difftool
 $ git reflog                                   # keeps a record of all commits that are or were referenced in your repo at any time
 $ git gc
 $ git help <verb>                              # Find out more
+$ git fsck --lost-found                        # Verifies the connectivity and validity of the objects in the database
 $ git command --help                           # When in doubt, use git help
 
 $ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request

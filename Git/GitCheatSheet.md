@@ -18,7 +18,7 @@ $ git config --global color.ui true              # Better visualization
 $ git config core.ignorecase false               # If we want case sensitive git
                                                  
 $ git config --global --remove-section alias     # Remove the global alias section
-$ git config - --remove-section alias            # Remove the global alias section
+$ git config --remove-section alias            # Remove the global alias section
 $ git config --global --unset alias.<name>       # Unset an alias
 $ git config --global --unset core.<name>        # Unset an core
 
@@ -127,6 +127,7 @@ $ git push -f origin <branch-name>                  # Overwrite remote branch (b
 # Merge
 $ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch
 $ git mergetool
+$ git merge <from-commit> <to-commit>               # Merge a range of commit (including two given commits)
 $ git merge --squash <privateFeatureBranch>
 ```
 #### Checkout (go forward/backward)
@@ -177,6 +178,7 @@ $ git checkout --theirs -- .                        # accept stashed changes
 #### Log:
 ```sh
 $ git log                                          # Show  all the change/commit history
+$ git log <branch-name>                            # Show the commits of a specific branch
 $ git log --oneline --decorate --all --graph       # See all commits with better visualization
 $ git log -p <file/directory>                      # Show change history for file/directory including diffs
 $ git log --pretty=format:"%h - %an, %ar : %s"     # commit hash-tag -> name -> data -> commit-message

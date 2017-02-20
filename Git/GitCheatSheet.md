@@ -96,6 +96,8 @@ $ git push origin :<branch-name>                           # Delete remote branc
 $ git push origin --delete <branch-name>                   # Delete remote branch
 $ git remote prune origin                                  # Cleanup remote deleted branch
 $ git branch --merged | grep -v '*' | xargs git branch -d  # delete merged branches
+
+$ git branch --merged | grep -v "\*" | grep -Ev "(\*|master)" | xargs -n 1 git branch -d      # delete merged branches Except 'master'
 ```
 
 ####  Add, Commit, Amend, Push, Pull & Merge

@@ -383,6 +383,7 @@ $ git help <verb>                              # Find out more
 $ git fsck --lost-found                        # Verifies the connectivity and validity of the objects in the database
 $ git command --help                           # When in doubt, use git help
 
+$ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>    # find renamed file (previous name of a file) 
 $ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request
 
 ### Create a remote branch using REST API

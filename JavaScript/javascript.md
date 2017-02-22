@@ -186,6 +186,7 @@ eval('regiment' + number).motto = motto;
     ```
     - typeof(NaN) // output: number
         - console.log(NaN === NaN) // output: false
+        - js function isNaN() is used to check if a value is NaN. 
         - isNaN("34") // output: false
     - If unsure about `data type`, but highly reliant on a `Number` use `typeof` and `isNaN()` as a best practice
         - function checkNumber(data) { return typeof data === "number" && !isNaN(data); }

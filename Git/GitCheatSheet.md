@@ -96,8 +96,6 @@ $ git push origin :<branch-name>                           # Delete remote branc
 $ git push origin --delete <branch-name>                   # Delete remote branch
 $ git remote prune origin                                  # Cleanup remote deleted branch
 $ git branch --merged | grep -v '*' | xargs git branch -d  # delete merged branches
-
-$ git branch --merged | grep -v "\*" | grep -Ev "(\*|master)" | xargs -n 1 git branch -d      # delete merged branches Except 'master'
 ```
 
 ####  Add, Commit, Amend, Push, Pull & Merge
@@ -134,7 +132,7 @@ $ git merge --squash <privateFeatureBranch>
 ```
 #### Checkout (go forward/backward)
 ```
-$ git checkout -                           # Switch back to the last branch/commit whatever it was last checkout
+$ git checkout -                           # Switch to the last branch you are
 $ git checkout <commit-hash>               # Go to a specific commit
 $ git checkout <branch-name>               # Return to present state
 $ git checkout <commit-hash> <file-name>   # Only a file will go back to specific commit
@@ -385,6 +383,8 @@ $ git help <verb>                              # Find out more
 $ git fsck --lost-found                        # Verifies the connectivity and validity of the objects in the database
 $ git command --help                           # When in doubt, use git help
 
+$ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>  # find renamed file (previous name of a file)
+$ git archive --format zip --output src.zip <commit>   # save/archive a speciftc commit   
 $ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request
 
 ### Create a remote branch using REST API

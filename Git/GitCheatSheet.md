@@ -195,6 +195,7 @@ $ git log --since=1.hour.ago                       # Since(hours)
 $ git log --since=2.weeks                          # Since two weeks
 $ git log --since=1.month.ago --until=2.weeks.ago  # Since & until (relative)
 $ git log --since=2000-01-01 --until=2012-12-21    # Since & until (absolute)
+$ git log --diff-filter=D --summary | grep delete  # See the deleted files
 $ git blame index.html --date short
 $ git rm                                           # Remove the file from the staging area and also from the disk                         
 $ git rm --cached development.log                  # What if you're already tracking log files?
@@ -368,6 +369,7 @@ $ git init                                     # From scratch -- create a new lo
 $ git diff                                     # workspace vs index
 $ git diff --cached                            # index vs repo, show all staged and unstaged file changes
 $ git diff HEAD                                # workspace vs repo
+$ git diff -- file_delete                      # see the deleted files, use '--' to separate paths from revisions
 $ git whatchanged --since="3 day ago"          # see the changed file lists name since 3 days
 $ git whatchanged --since="1 day ago" -p       # see the changes with file lists
 $ git whatchanged --since="1 day ago" <file>   # see the changes of a specific file

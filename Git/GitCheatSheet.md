@@ -449,6 +449,14 @@ $ git commit -m 'be tracked'      // staged, tracked
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
 
+#### Different types of HEAD
+```
+HEAD - the current sha-1 of the current commit in the current branch
+FETCH_HEAD - a short-lived ref, to keep track of what has been fetched from the remote repository
+ORIG_HEAD - previous state of HEAD
+MERGE_HEAD - records the commit(s) which you are merging into your branch when you run git merge.
+CHERRY_PICK_HEAD - records the commit which you are cherry-picking when you run git cherry-pick.
+```
 #### The Seven Rules of a Great Git Commit Message
 1. Separate subject from body with a blank line
 2. Limit the subject line to 50 characters

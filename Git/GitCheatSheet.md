@@ -86,6 +86,7 @@ $ git checkout -b <branch> <remote/branch>   # Create a new branch from a remote
 $ git push origin <branch-name>                   # Push to remote branch
 $ git push -u origin <branch-name>                # -u tells Git to remember the parameters, so that next time we can simply run `git push`
 $ git push origin HEAD:<branch-name>              # Push the current branch without thinking about its local name.
+$ git push --all origin                           # Push all branches and tags
 $ git subtree push --prefix dist origin gh-pages  # Push only a specific folder to remote branch
 $ git subtree push --prefix src origin gh-pages   # Deploy source directory
 .
@@ -195,6 +196,7 @@ $ git log --since=1.hour.ago                       # Since(hours)
 $ git log --since=2.weeks                          # Since two weeks
 $ git log --since=1.month.ago --until=2.weeks.ago  # Since & until (relative)
 $ git log --since=2000-01-01 --until=2012-12-21    # Since & until (absolute)
+$ git log --diff-filter=D --summary | grep delete  # See the deleted files
 $ git blame index.html --date short
 $ git rm                                           # Remove the file from the staging area and also from the disk                         
 $ git rm --cached development.log                  # What if you're already tracking log files?
@@ -368,6 +370,7 @@ $ git init                                     # From scratch -- create a new lo
 $ git diff                                     # workspace vs index
 $ git diff --cached                            # index vs repo, show all staged and unstaged file changes
 $ git diff HEAD                                # workspace vs repo
+$ git diff -- file_delete                      # see the deleted files, use '--' to separate paths from revisions
 $ git whatchanged --since="3 day ago"          # see the changed file lists name since 3 days
 $ git whatchanged --since="1 day ago" -p       # see the changes with file lists
 $ git whatchanged --since="1 day ago" <file>   # see the changes of a specific file
@@ -383,6 +386,8 @@ $ git help <verb>                              # Find out more
 $ git fsck --lost-found                        # Verifies the connectivity and validity of the objects in the database
 $ git command --help                           # When in doubt, use git help
 
+$ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>  # find renamed file (previous name of a file)
+$ git archive --format zip --output src.zip <commit>   # save/archive a speciftc commit   
 $ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request
 
 ### Create a remote branch using REST API

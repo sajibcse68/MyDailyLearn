@@ -456,6 +456,9 @@ FETCH_HEAD - a short-lived ref, to keep track of what has been fetched from the 
 ORIG_HEAD - previous state of HEAD
 MERGE_HEAD - records the commit(s) which you are merging into your branch when you run git merge.
 CHERRY_PICK_HEAD - records the commit which you are cherry-picking when you run git cherry-pick.
+
+$ git rev-parse <any-head>                  # see the commit hash of the HEAD
+$ cat .git/HEAD                             # open the HEAD file
 ```
 #### The Seven Rules of a Great Git Commit Message
 1. Separate subject from body with a blank line

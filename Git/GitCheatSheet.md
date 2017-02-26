@@ -86,7 +86,7 @@ $ git checkout -b <branch> <remote/branch>   # Create a new branch from a remote
 $ git push origin <branch-name>                   # Push to remote branch
 $ git push -u origin <branch-name>                # -u tells Git to remember the parameters, so that next time we can simply run `git push`
 $ git push origin HEAD:<branch-name>              # Push the current branch without thinking about its local name.
-$ git push --all origin                           # Push all branches and tags
+$ git push --all --tags origin                    # Push all branches and tags
 $ git subtree push --prefix dist origin gh-pages  # Push only a specific folder to remote branch
 $ git subtree push --prefix src origin gh-pages   # Deploy source directory
 .
@@ -354,7 +354,7 @@ $ git status                                   # Difference between working dire
 $ git fetch                                    # Get the latest changes from origin (no merge)
 $ git fetch -p                                 # -p = --prune, after fetching remove any remove-tracking references that no longer exist on the remote 
 $ git pull                                     # Fetch the latest changes from origin and merge
-$ git pull --rebase                            # Fetch the latest changes from origin and rebase
+$ git pull --rebase                            # = fetch + rebase, fetch the latest changes from origin and rebase
 $ git pull origin <bn> -s recursive -X theirs  # While pulling if conflicts accepts theirs
 $ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts accepts ours (HEAD)
 $ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file

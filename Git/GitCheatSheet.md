@@ -140,6 +140,7 @@ $ git checkout <commit-hash> <file-name>   # Only a file will go back to specifi
 $ git checkout <branch-name> -f            # Return to persent state by force
 $ git checkout -- <filename1> <filename2>  # Discard all changes of file1 and file2
 $ git checkout origin/master <file-name>   # Reset a file with origin/master
+$ git checkout remote/branch -- <dir>      # Take only a folder changes of a specific branch
 ```
 #### Cherry-pick
 ```
@@ -366,6 +367,7 @@ $ git diff-tree -r <commit-hash>               # show list of files that were ch
 $ git diff-tree -r <hash> -p                   # show list of files with changes that were changed or added in the commit
 $ git diff-tree --name-only -r <hash>          # show only the file name of changed files
 $ git diff-tree --no-commit-id -r <hash>       # show only the file name of changed files
+$ git check-ignore -v -- <file-name>           # see what .gitignore rule applies for a given file             
 $ git init                                     # From scratch -- create a new local repository
 $ git diff                                     # workspace vs index
 $ git diff --cached                            # index vs repo, show all staged and unstaged file changes
@@ -383,6 +385,7 @@ $ git difftool
 $ git reflog                                   # keeps a record of all commits that are or were referenced in your repo at any time
 $ git gc
 $ git help <verb>                              # Find out more
+$ git fsck --full                              # = File System Check, verify al object files and data
 $ git fsck --lost-found                        # Verifies the connectivity and validity of the objects in the database
 $ git command --help                           # When in doubt, use git help
 

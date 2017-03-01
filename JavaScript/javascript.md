@@ -319,7 +319,46 @@ greet.call(i); // output: Douglas Crockford Is An Awesome Javascript Developer
     - var obj = JSON.parse(jsonString);    // converts from json string to object
     - var str = JSON.stringify(obj);       // converts from object to JSON 
     
+---
  
+## Closures and Event Listeners
+#### The Problem:
+
+```js
+var nums = [1, 2, 3];
+var len = nums.length;
+
+for (var i = 0; i < len; i++ ) {
+  var nowNum = nums[i];
+  
+  // Creating a DOM element for the number                  // Specifically, we're alerting the `nowNum` variable that's defined
+  var div = document.createElement('div');                  // outside of this inner function. Each of these inner functions are
+  div.textContent = nowNum;                                 // pointing to the same `nowNum` variable... the one that changes on
+                                                            // each iteration, and which equals 3 at the end of the loop.
+  // when click, alert the value of `num`                   // Whenever the anonymous function is called on the click event, the
+  div.addEventListener('click', function(){                 // function will reference the same `nowNum` (which now equals 3)
+    alert(nowNum);                                          
+  });                                                       
+                                                            
+  // finally add the `div` element to the document          
+  document.body.appendChild(div);                           
+}
+#### Solve the problem:                                     // function(numCopy) is outer function and invoking immediately
+Output: 3 3 3       (when we click on 1, 2, 3 !!)           // by wrapping it in parentheses and calling it right away, passing
+                                                            // in `nowNum`. Inside the outer function the value is known as `numCopy` 
+elem.addEventListener('click', (function(numCopy) {         // Now, if doesn't matter that `nowNum` changes later down the line.
+```                                                         // We stored the value of `nowNum` in `numCopy` inside our outer function.
+    return function() {                                     // Lastly, the outer function returns the inner function to the event listener.
+      alert(numCopy);                                       // Because of the way JavaScript scope works, that inner function has access to
+    };                                                      // `numCopy` which will never change.
+})(nowNum));                                                
+
+
+ 
+
+
+
+
 
 
 

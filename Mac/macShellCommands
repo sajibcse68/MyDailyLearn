@@ -186,3 +186,9 @@ Cmd + M: Minimize Window
 
 ------------------- Help --------------------
 Cmd + ?: Mac Help
+
+# Mac read the files in the following order
+- /etc/profile
+- ~/.bash_profile
+- ~/.bash_login
+- ~/.profile

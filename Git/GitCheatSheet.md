@@ -161,8 +161,9 @@ $ git stash save "provide a stash message"          # We can provide a stash mes
 $ git stash apply stash@{0}                         # Return the codes that I cleaned before
 $ git stash apply stash@{2}                         # get back the #3 stash codes.
 $ git stash list                                    # Show how many stash we have
-$ git stash list --stash              ktu               # Show all stash lists with changes file
+$ git stash list --stash                            # Show all stash lists with changes file
 $ git stash show stash@{1}                          # Show only a specific stash with commits
+$ git stash show -p stash@{1} | grep 'sajib'        # Search through git stash changes
 $ git stash show --patch                            # Shows file diffs
 $ git stash drop = git stash drop stash@{0}         # Pop = apply + drop
 $ git stash pop = git stash apply + git stash drop  # Temporary delete or clean

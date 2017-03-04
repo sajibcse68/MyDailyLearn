@@ -119,7 +119,12 @@ $ git commit --amend -m 'new message'               # Merge current change to pr
 $ git commit --amend --date="<date>"                # Override the date
 .
 # Pull
-$ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch 
+$ git pull                                          # Fetch the latest changes from origin and merge
+$ git pull --rebase                                 # = fetch + rebase, fetch the latest changes from origin and rebase
+$ git pull origin <bn> -s recursive -X theirs       # While pulling if conflicts accepts theirs
+$ git pull origin <bn> -s recursive -X ours         # While pulling if conflicts accepts ours (HEAD)
+$ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch
+$ git pull <repo url>                               # pull a repo with https/ssh URL 
 $ git subtree add --prefix=other/ <repo-url> master # Pull master branch of a repo into a subdirectory named 'other/'
 .
 # Push
@@ -358,10 +363,6 @@ $ git mv <src-file> <new-file-name>            # Rename a file and keeps all the
 $ git status                                   # Difference between working directory and the index
 $ git fetch                                    # Get the latest changes from origin (no merge)
 $ git fetch -p                                 # -p = --prune, after fetching remove any remove-tracking references that no longer exist on the remote 
-$ git pull                                     # Fetch the latest changes from origin and merge
-$ git pull --rebase                            # = fetch + rebase, fetch the latest changes from origin and rebase
-$ git pull origin <bn> -s recursive -X theirs  # While pulling if conflicts accepts theirs
-$ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts accepts ours (HEAD)
 $ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
 $ git show --decorate <commit-hash>            # see 'Author', 'Date' and 'diff'                        

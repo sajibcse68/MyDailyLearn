@@ -75,6 +75,7 @@ $ git branch --merged                        # Show lists of branch merged with 
 $ git branch --no-merged                     # Show lists of branch not-merged with current branch
 $ git branch -a --contains <commit-hash>     # Show list of branch(s) exits the commit
 $ git branch -m <old-name> <new-name>        # Rename a branch
+$ git branch -u <remote/branch>              # Track a remote branch
 .
 # Create
 $ git branch <branch-name>                   # Create a new branch
@@ -86,6 +87,7 @@ $ git checkout -b <branch> <remote/branch>   # Create a new branch from a remote
 $ git push origin <branch-name>                   # Push to remote branch
 $ git push -u origin <branch-name>                # -u tells Git to remember the parameters, so that next time we can simply run `git push`
 $ git push origin HEAD:<branch-name>              # Push the current branch without thinking about its local name.
+$ git push --all --tags origin                    # Push all branches and tags
 $ git subtree push --prefix dist origin gh-pages  # Push only a specific folder to remote branch
 $ git subtree push --prefix src origin gh-pages   # Deploy source directory
 .
@@ -117,7 +119,12 @@ $ git commit --amend -m 'new message'               # Merge current change to pr
 $ git commit --amend --date="<date>"                # Override the date
 .
 # Pull
-$ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch 
+$ git pull                                          # Fetch the latest changes from origin and merge
+$ git pull --rebase                                 # = fetch + rebase, fetch the latest changes from origin and rebase
+$ git pull origin <bn> -s recursive -X theirs       # While pulling if conflicts accepts theirs
+$ git pull origin <bn> -s recursive -X ours         # While pulling if conflicts accepts ours (HEAD)
+$ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch
+$ git pull <repo url>                               # pull a repo with https/ssh URL 
 $ git subtree add --prefix=other/ <repo-url> master # Pull master branch of a repo into a subdirectory named 'other/'
 .
 # Push
@@ -139,6 +146,7 @@ $ git checkout <commit-hash> <file-name>   # Only a file will go back to specifi
 $ git checkout <branch-name> -f            # Return to persent state by force
 $ git checkout -- <filename1> <filename2>  # Discard all changes of file1 and file2
 $ git checkout origin/master <file-name>   # Reset a file with origin/master
+$ git checkout remote/branch -- <dir>      # Take only a folder changes of a specific branch
 ```
 #### Cherry-pick
 ```
@@ -158,8 +166,9 @@ $ git stash save "provide a stash message"          # We can provide a stash mes
 $ git stash apply stash@{0}                         # Return the codes that I cleaned before
 $ git stash apply stash@{2}                         # get back the #3 stash codes.
 $ git stash list                                    # Show how many stash we have
-$ git stash list --stash              ktu               # Show all stash lists with changes file
+$ git stash list --stash                            # Show all stash lists with changes file
 $ git stash show stash@{1}                          # Show only a specific stash with commits
+$ git stash show -p stash@{1} | grep 'sajib'        # Search through git stash changes
 $ git stash show --patch                            # Shows file diffs
 $ git stash drop = git stash drop stash@{0}         # Pop = apply + drop
 $ git stash pop = git stash apply + git stash drop  # Temporary delete or clean
@@ -195,9 +204,12 @@ $ git log --since=1.hour.ago                       # Since(hours)
 $ git log --since=2.weeks                          # Since two weeks
 $ git log --since=1.month.ago --until=2.weeks.ago  # Since & until (relative)
 $ git log --since=2000-01-01 --until=2012-12-21    # Since & until (absolute)
+$ git log --diff-filter=D --summary | grep delete  # See the deleted files
 $ git blame index.html --date short
 $ git rm                                           # Remove the file from the staging area and also from the disk                         
 $ git rm --cached development.log                  # What if you're already tracking log files?
+$ git log --format="%h" <file-name> | xargs git show --name-only # get list of modified files where a specific file is modified 
+$ git show --name-only $(git rev-list HEAD -- gulpfile.js)       # get list of modified files where a specific file is modified (duplicate above)
 ```
 
 #### Recovery/Reset:                                    
@@ -351,10 +363,6 @@ $ git mv <src-file> <new-file-name>            # Rename a file and keeps all the
 $ git status                                   # Difference between working directory and the index
 $ git fetch                                    # Get the latest changes from origin (no merge)
 $ git fetch -p                                 # -p = --prune, after fetching remove any remove-tracking references that no longer exist on the remote 
-$ git pull                                     # Fetch the latest changes from origin and merge
-$ git pull --rebase                            # Fetch the latest changes from origin and rebase
-$ git pull origin <bn> -s recursive -X theirs  # While pulling if conflicts accepts theirs
-$ git pull origin <bn> -s recursive -X ours    # While pulling if conflicts accepts ours (HEAD)
 $ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
 $ git show --decorate <commit-hash>            # see 'Author', 'Date' and 'diff'                        
@@ -364,10 +372,12 @@ $ git diff-tree -r <commit-hash>               # show list of files that were ch
 $ git diff-tree -r <hash> -p                   # show list of files with changes that were changed or added in the commit
 $ git diff-tree --name-only -r <hash>          # show only the file name of changed files
 $ git diff-tree --no-commit-id -r <hash>       # show only the file name of changed files
+$ git check-ignore -v -- <file-name>           # see what .gitignore rule applies for a given file             
 $ git init                                     # From scratch -- create a new local repository
 $ git diff                                     # workspace vs index
 $ git diff --cached                            # index vs repo, show all staged and unstaged file changes
 $ git diff HEAD                                # workspace vs repo
+$ git diff -- file_delete                      # see the deleted files, use '--' to separate paths from revisions
 $ git whatchanged --since="3 day ago"          # see the changed file lists name since 3 days
 $ git whatchanged --since="1 day ago" -p       # see the changes with file lists
 $ git whatchanged --since="1 day ago" <file>   # see the changes of a specific file
@@ -380,10 +390,13 @@ $ git difftool
 $ git reflog                                   # keeps a record of all commits that are or were referenced in your repo at any time
 $ git gc
 $ git help <verb>                              # Find out more
+$ git fsck --full                              # = File System Check, verify al object files and data
 $ git fsck --lost-found                        # Verifies the connectivity and validity of the objects in the database
 $ git command --help                           # When in doubt, use git help
 
-$ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>    # find renamed file (previous name of a file) 
+$ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>  # find renamed file (previous name of a file)
+$ git archive --format zip --output src.zip <commit>   # save/archive a speciftc commit   
+
 $ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request
 
 ### Create a remote branch using REST API
@@ -445,6 +458,17 @@ $ git commit -m 'be tracked'      // staged, tracked
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
 
+#### Different types of HEAD
+```
+HEAD - the current sha-1 of the current commit in the current branch
+FETCH_HEAD - a short-lived ref, to keep track of what has been fetched from the remote repository
+ORIG_HEAD - previous state of HEAD
+MERGE_HEAD - records the commit(s) which you are merging into your branch when you run git merge.
+CHERRY_PICK_HEAD - records the commit which you are cherry-picking when you run git cherry-pick.
+
+$ git rev-parse <any-head>                  # see the commit hash of the HEAD
+$ cat .git/HEAD                             # open the HEAD file
+```
 #### The Seven Rules of a Great Git Commit Message
 1. Separate subject from body with a blank line
 2. Limit the subject line to 50 characters

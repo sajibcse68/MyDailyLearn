@@ -396,6 +396,7 @@ $ git command --help                           # When in doubt, use git help
 
 $ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>  # find renamed file (previous name of a file)
 $ git archive --format zip --output src.zip <commit>   # save/archive a speciftc commit   
+
 $ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request
 
 ### Create a remote branch using REST API

@@ -11,16 +11,17 @@ $ git config --local user.email <your-email>
 ```
 #### Some other necessary ``config`` commands
 ```sh
-$ git config --list                              # See full configuration of git                           
-$ git config --global core.editor emacs          # Use emacs for interactive commands
-$ git config --global merge.tool opendiff        # Use opendiff for merging conflicts
-$ git config --global color.ui true              # Better visualization            
-$ git config core.ignorecase false               # If we want case sensitive git
-                                                 
-$ git config --global --remove-section alias     # Remove the global alias section
-$ git config --remove-section alias            # Remove the global alias section
-$ git config --global --unset alias.<name>       # Unset an alias
-$ git config --global --unset core.<name>        # Unset an core
+$ git config --list                                 # See full configuration of git                           
+$ git config --global core.editor emacs             # Use emacs for interactive commands
+$ git config --global merge.tool opendiff           # Use opendiff for merging conflicts
+$ git config --global color.ui true                 # Better visualization            
+$ git config core.ignorecase false                  # If we want case sensitive git
+$ git config --global core.mergeoptions --no-edit   # While merging/pulling stop opening the editor for commit message 
+                                                    
+$ git config --global --remove-section alias        # Remove the global alias section
+$ git config --remove-section alias                 # Remove the global alias section
+$ git config --global --unset alias.<name>          # Unset an alias
+$ git config --global --unset core.<name>           # Unset an core
 
  
 # (git-credentials store) Reduce the number of times we must type our username or password

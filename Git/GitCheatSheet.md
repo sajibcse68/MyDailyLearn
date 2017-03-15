@@ -11,16 +11,17 @@ $ git config --local user.email <your-email>
 ```
 #### Some other necessary ``config`` commands
 ```sh
-$ git config --list                              # See full configuration of git                           
-$ git config --global core.editor emacs          # Use emacs for interactive commands
-$ git config --global merge.tool opendiff        # Use opendiff for merging conflicts
-$ git config --global color.ui true              # Better visualization            
-$ git config core.ignorecase false               # If we want case sensitive git
-                                                 
-$ git config --global --remove-section alias     # Remove the global alias section
-$ git config --remove-section alias            # Remove the global alias section
-$ git config --global --unset alias.<name>       # Unset an alias
-$ git config --global --unset core.<name>        # Unset an core
+$ git config --list                                 # See full configuration of git                           
+$ git config --global core.editor emacs             # Use emacs for interactive commands
+$ git config --global merge.tool opendiff           # Use opendiff for merging conflicts
+$ git config --global color.ui true                 # Better visualization            
+$ git config core.ignorecase false                  # If we want case sensitive git
+$ git config --global core.mergeoptions --no-edit   # While merging/pulling stop opening the editor for commit message 
+                                                    
+$ git config --global --remove-section alias        # Remove the global alias section
+$ git config --remove-section alias                 # Remove the global alias section
+$ git config --global --unset alias.<name>          # Unset an alias
+$ git config --global --unset core.<name>           # Unset an core
 
  
 # (git-credentials store) Reduce the number of times we must type our username or password
@@ -63,7 +64,19 @@ $ git config --global alias.br branch        # git br -> git branch
 * HEAD^     ->  parent of HEAD
 * foo..bar  ->  from branch foo to branch bar
 
+####  Add, Commit, Show, Amend, Pull, Push, Merge & Delete
 ```sh
+# Add
+$ git add .                                         # Adds file changes to the index                      
+$ git add --all                                     # Add all changes
+$ git add -p                                        # Stage a particular change
+.     
+# Commit                                                                          
+$ git commit -am 'commit message'                   # Add & commit        
+$ git commit --allow-empty -m k3;                   # Commit empty change
+$ git cherry-pick <commit-hash>                     # Take a commit change of another branch
+$ git commit -m 'msg' --include file1.txt file2.txt # Commit specific files
+.
 # Show
 $ git branch                                 # Show all local branches
 $ git branch -r                              # Show all the remote branched
@@ -77,42 +90,6 @@ $ git branch -a --contains <commit-hash>     # Show list of branch(s) exits the 
 $ git branch -m <old-name> <new-name>        # Rename a branch
 $ git branch -u <remote/branch>              # Track a remote branch
 .
-# Create
-$ git branch <branch-name>                   # Create a new branch
-$ git checkout -b <branch-name>              # Create & checkout to new branch
-$ git checkout --orphan <branch-name>        # Create a branch with no commit list
-$ git checkout -b <branch> <remote/branch>   # Create a new branch from a remote branch history
-.
-# Push
-$ git push origin <branch-name>                   # Push to remote branch
-$ git push -u origin <branch-name>                # -u tells Git to remember the parameters, so that next time we can simply run `git push`
-$ git push origin HEAD:<branch-name>              # Push the current branch without thinking about its local name.
-$ git push --all --tags origin                    # Push all branches and tags
-$ git subtree push --prefix dist origin gh-pages  # Push only a specific folder to remote branch
-$ git subtree push --prefix src origin gh-pages   # Deploy source directory
-.
-# Delete
-$ git branch -d <branch-name>                              # Delete the local branch, show a warning
-$ git branch -D <branhc-name>                              # Force to delete branch
-$ git push origin :<branch-name>                           # Delete remote branch
-$ git push origin --delete <branch-name>                   # Delete remote branch
-$ git remote prune origin                                  # Cleanup remote deleted branch
-$ git branch --merged | grep -v '*' | xargs git branch -d  # delete merged branches
-```
-
-####  Add, Commit, Amend, Push, Pull & Merge
-```sh
-# Add
-$ git add .                                         # Adds file changes to the index                      
-$ git add --all                                     # Add all changes
-$ git add -p                                        # Stage a particular change
-.     
-# Commit                                                                          
-$ git commit -am 'commit message'                   # Add & commit        
-$ git commit --allow-empty -m k3;                   # Commit empty change
-$ git cherry-pick <commit-hash>                     # Take a commit change of another branch
-$ git commit -m 'msg' --include file1.txt file2.txt # Commit specific files
-.
 # Amend
 $ git add task2.txt                                 # Add any file
 $ git commit --amend -m 'new message'               # Merge current change to previous commit and will also change the commit hash
@@ -124,11 +101,18 @@ $ git pull --rebase                                 # = fetch + rebase, fetch th
 $ git pull origin <bn> -s recursive -X theirs       # While pulling if conflicts accepts theirs
 $ git pull origin <bn> -s recursive -X ours         # While pulling if conflicts accepts ours (HEAD)
 $ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch
+$ git pull origin HEAD --quiet                      # --quiet = -q, run git command silently (without showing any output)
 $ git pull <repo url>                               # pull a repo with https/ssh URL 
 $ git subtree add --prefix=other/ <repo-url> master # Pull master branch of a repo into a subdirectory named 'other/'
 .
 # Push
-$ git push origin <branchame>                       # Push a branch
+$ git push origin <branch-name>                   # Push to remote branch
+$ git push -u origin <branch-name>                # -u tells Git to remember the parameters, so that next time we can simply run `git push`
+$ git push origin HEAD:<branch-name>              # Push the current branch without thinking about its local name.
+$ git push --all --tags origin                    # Push all branches and tags
+$ git push origin HEAD --quiet                    # --quiet = -q, run git command silently (without showing any output)
+$ git subtree push --prefix dist origin gh-pages  # Push only a specific folder to remote branch
+$ git subtree push --prefix src origin gh-pages   # Deploy source directory
 $ git push -f origin <branch-name>                  # Overwrite remote branch (by force)
 .
 # Merge
@@ -136,6 +120,20 @@ $ git merge origin <branch-1>                       # Merge remote 'branch-1' wi
 $ git mergetool
 $ git merge <from-commit> <to-commit>               # Merge a range of commit (including two given commits)
 $ git merge --squash <privateFeatureBranch>
+.
+# Create
+$ git branch <branch-name>                   # Create a new branch
+$ git checkout -b <branch-name>              # Create & checkout to new branch
+$ git checkout --orphan <branch-name>        # Create a branch with no commit list
+$ git checkout -b <branch> <remote/branch>   # Create a new branch from a remote branch history
+.
+# Delete
+$ git branch -d <branch-name>                              # Delete the local branch, show a warning
+$ git branch -D <branhc-name>                              # Force to delete branch
+$ git push origin :<branch-name>                           # Delete remote branch
+$ git push origin --delete <branch-name>                   # Delete remote branch
+$ git remote prune origin                                  # Cleanup remote deleted branch
+$ git branch --merged | grep -v '*' | xargs git branch -d  # delete merged branches
 ```
 #### Checkout (go forward/backward)
 ```
@@ -393,9 +391,12 @@ $ git help <verb>                              # Find out more
 $ git fsck --full                              # = File System Check, verify al object files and data
 $ git fsck --lost-found                        # Verifies the connectivity and validity of the objects in the database
 $ git command --help                           # When in doubt, use git help
+$ git config --global core.editor "subl -n -w" # '-n' will open a new instance of Sublime & '-w' will make the git wait for you to close Sublime before proceeding
 
 $ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>  # find renamed file (previous name of a file)
-$ git archive --format zip --output src.zip <commit>   # save/archive a speciftc commit   
+$ git archive --format zip --output src.zip <commit>   # save/archive a speciftc commit
+$ for branch in `git branch | grep -v HEAD`;do echo `git show --format="%ci %cr %H" $branch | head -n 1` $branch;done
+  output: <date-time> <commit-sha> <branch-name> (for every branch) 
 
 $ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request
 

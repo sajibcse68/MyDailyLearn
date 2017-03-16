@@ -57,7 +57,7 @@ $ git config --global alias.st status        # git st -> git status
 $ git config --global alias.co checkout      # git co -> git checkout
 $ git config --global alias.br branch        # git br -> git branch
 ```
-#### Branching:
+#### Branching
 * master    ->  default develop branch
 * origin    ->  default upstream branch
 * HEAD      ->  current branch

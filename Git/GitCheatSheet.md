@@ -194,6 +194,7 @@ $ git log -p --all -G pattern --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cres
 $ git log --pretty=oneline
 $ git log -1 --pretty=format:'%an'                 # Print last commit's Author Name  
 $ git log --oneline -p
+$ git log --numstat --oneline <file>               # get statistics of a file changed commit lists
 $ git log --oneline --stat
 $ git log --oneline --graph
 $ git log --until=1.minute.ago                     # Until a specific time
@@ -380,6 +381,7 @@ $ git diff-tree --no-commit-id -r <hash>       # show only the file name of chan
 $ git check-ignore -v -- <file-name>           # see what .gitignore rule applies for a given file             
 $ git init                                     # From scratch -- create a new local repository
 $ git diff                                     # workspace vs index
+$ git diff --shortstat                         # # files changed, # insertions(+), # deletions(-)
 $ git diff --cached                            # index vs repo, show all staged and unstaged file changes
 $ git diff HEAD                                # workspace vs repo
 $ git diff -- file_delete                      # see the deleted files, use '--' to separate paths from revisions

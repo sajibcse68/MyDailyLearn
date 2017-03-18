@@ -23,7 +23,7 @@ $ git config --remove-section alias                 # Remove the global alias se
 $ git config --global --unset alias.<name>          # Unset an alias
 $ git config --global --unset core.<name>           # Unset an core
 
- 
+ rune
 # (git-credentials store) Reduce the number of times we must type our username or password
 $ git config credential.helper store
 $ git push http://example.com/repo.git
@@ -98,7 +98,7 @@ $ git commit --amend --date="<date>"                # Override the date
 # Pull
 $ git pull                                          # Fetch the latest changes from origin and merge
 $ git pull --rebase                                 # = fetch + rebase, fetch the latest changes from origin and rebase
-$ git pull origin <bn> -s recursive -X theirs       # While pulling if conflicts accepts theirs
+$ git pull origin <bn> -s recursive -X theirs       # -s=--strategy, -X=--strategy-option, While pulling if conflicts accepts theirs, 
 $ git pull origin <bn> -s recursive -X ours         # While pulling if conflicts accepts ours (HEAD)
 $ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch
 $ git pull origin HEAD --quiet                      # --quiet = -q, run git command silently (without showing any output)
@@ -194,6 +194,7 @@ $ git log -p --all -G pattern --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cres
 $ git log --pretty=oneline
 $ git log -1 --pretty=format:'%an'                 # Print last commit's Author Name  
 $ git log --oneline -p
+$ git log --numstat --oneline <file>               # get statistics of a file changed commit lists
 $ git log --oneline --stat
 $ git log --oneline --graph
 $ git log --until=1.minute.ago                     # Until a specific time
@@ -323,6 +324,13 @@ $ git fetch <remote-name>                      # Fetching/pulling from remote
 * Including the changes that each branch is trying achieve.
 * Fix manually.
 
+$ grep -lr '<<<<<<<' . | xargs git checkout --ours
+```
+- grep will search through every file in the current directory (the .) and subdirectories recursively (the -r flag) looking for conflict markers (the string '<<<<<<<')
+- the -l or --files-with-matches flag causes grep to output only the filename where the string was found. Scanning stops after first match, so each matched file is only output once.
+- the matched file names are then piped to xargs, a utility that breaks up the piped input stream into individual arguments for git checkout --ours or --theirs
+```
+
 #### Prune Empty Commits
 ```
 $ git <brance-name> -f --prune-empty -- --all           # Delete all empty commits in a branch
@@ -373,6 +381,7 @@ $ git diff-tree --no-commit-id -r <hash>       # show only the file name of chan
 $ git check-ignore -v -- <file-name>           # see what .gitignore rule applies for a given file             
 $ git init                                     # From scratch -- create a new local repository
 $ git diff                                     # workspace vs index
+$ git diff --shortstat                         # # files changed, # insertions(+), # deletions(-)
 $ git diff --cached                            # index vs repo, show all staged and unstaged file changes
 $ git diff HEAD                                # workspace vs repo
 $ git diff -- file_delete                      # see the deleted files, use '--' to separate paths from revisions

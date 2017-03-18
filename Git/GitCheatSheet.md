@@ -87,7 +87,8 @@ $ git branch -av                             # Show all local and remote branche
 $ git branch --merged                        # Show lists of branch merged with current branch
 $ git branch --no-merged                     # Show lists of branch not-merged with current branch
 $ git branch -a --contains <commit-hash>     # Show list of branch(s) exits the commit
-$ git branch -m <old-name> <new-name>        # Rename a branch
+$ git branch -m <new-name>                   # Rename a branch if we are on the branch
+$ git branch -m <old-name> <new-name>        # Rename a branch if we are on different branch
 $ git branch -u <remote/branch>              # Track a remote branch
 .
 # Amend
@@ -132,6 +133,7 @@ $ git branch -d <branch-name>                              # Delete the local br
 $ git branch -D <branhc-name>                              # Force to delete branch
 $ git push origin :<branch-name>                           # Delete remote branch
 $ git push origin --delete <branch-name>                   # Delete remote branch
+$ git push origin :<old-name> <new-name>                   # Delete the remote old-branch and push new-name local branch         
 $ git remote prune origin                                  # Cleanup remote deleted branch
 $ git branch --merged | grep -v '*' | xargs git branch -d  # delete merged branches
 ```

@@ -213,13 +213,14 @@ $ git log --format="%h" <file-name> | xargs git show --name-only # get list of m
 $ git show --name-only $(git rev-list HEAD -- gulpfile.js)       # get list of modified files where a specific file is modified (duplicate above)
 ```
 
-#### Recovery/Reset:                                    
+#### Recovery/Reset:
+                                    
 ```sh
 $ git log                                 # Show all the change/commit history
 $ git show <commit hash>                  # See what changes in a specific commit
 $ git reset --soft <commit hash>          # Back to a specific commit and exits the change
 $ git diff HEAD                           # Show the changes to files not yet staged
-.
+
 $ git checkout -- <file-name>             # Replaces the changes with the last content in HEAD 
 $ git clean -f -n                         # clean untract file (dry run)
 $ git clean -df                           # -d remove untracked directories in addition to untracked files, -f (force)
@@ -227,7 +228,7 @@ $ git checkout -- .
 $ git clean -dxf
 $ git rm --cached -r .                    # remove git cached (e.g. add a file in .gitignore that already added in git)
 $ git revert -p <fromCommit>..<toCommit>  # revert a range of commit, need to commit after the commit 
-.
+
 # Recover a branch after deletion
 $ git reflog                              # see all commits and select the last commit (SHA1) of deleted branch
 $ git checkout <sha>                      # checkout that commit
@@ -271,7 +272,7 @@ $ git replace -d <old-commit-hash>                                       # remov
 $ git push -f origin HEAD                                                # force push 
  
 # Alternate way (May occur conflicts and more complex)
-$ git rebase -i <commit-hash>                                               # go to last good commit
+$ git rebase -i <commit-hash>                                                # go to last good commit
 # Editor will open, write `edit` before the commit we want to change author
 
 # Change the `commit message` of an earlier commit

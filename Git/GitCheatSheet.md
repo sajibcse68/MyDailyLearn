@@ -334,6 +334,8 @@ $ grep -lr '<<<<<<<' . | xargs git checkout --ours
 - the matched file names are then piped to xargs, a utility that breaks up the piped input stream into individual arguments for git checkout --ours or --theirs
 ```
 
+$ git checkout --conflict=merge -- <file>   # get the file back with conflicts
+
 #### Prune Empty Commits
 ```
 $ git <brance-name> -f --prune-empty -- --all           # Delete all empty commits in a branch

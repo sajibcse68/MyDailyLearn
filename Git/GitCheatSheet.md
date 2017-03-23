@@ -23,7 +23,6 @@ $ git config --remove-section alias                 # Remove the global alias se
 $ git config --global --unset alias.<name>          # Unset an alias
 $ git config --global --unset core.<name>           # Unset an core
 
- rune
 # (git-credentials store) Reduce the number of times we must type our username or password
 $ git config credential.helper store
 $ git push http://example.com/repo.git
@@ -45,8 +44,6 @@ $ git config --global credential.helper manager
 $ git credential-manager delete <url>                   # delete credential-manager
 e.g. git credential-manager delete https://github.com
 
-
-
 # Auto correct Line Feed
 $ git config --global core.autocrlf input    # On unix line systems (Linux, OSX, etc)
 $ git config --global core.autocrlf true     # On windows system
@@ -56,6 +53,12 @@ $ git config --global core.autocrlf false    # For Windows only project
 $ git config --global alias.st status        # git st -> git status
 $ git config --global alias.co checkout      # git co -> git checkout
 $ git config --global alias.br branch        # git br -> git branch
+
+# Git searches 4 places for config file
+1. Your machine's system .gitconfig file. (/usr/local/etc/gitconfig)
+2. Your user .gitconfig file located at ~/.gitconfig.
+3. A second user-specific configuration file located at $XDG_CONFIG_HOME/git/config or $HOME/.config/git/config.
+4. The local repo's config file .git/config.
 ```
 #### Branching:
 * master    ->  default develop branch

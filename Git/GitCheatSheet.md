@@ -160,6 +160,7 @@ $ git cherry-pick --no-commit <commit-hash> <commit-hash>   # --no-commit pulls 
 $ git cherry-pick -x <commit-hash>                          # -x: keep track where the commit came from
 $ git cherry-pick --signoff <commit-hash>                   # --signoff add current users name to commit message
 $ git cherry-pick A..B                                      # take a range of commit, A < B and A is not included
+$ git cherry-pick A^..B                                     # take a range of commit, A < B and A is included
 ```
 
 #### Stashing

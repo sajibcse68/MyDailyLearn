@@ -127,9 +127,6 @@ $ git merge --squash <privateFeatureBranch>
 .
 # Create
 $ git branch <branch-name>                   # Create a new branch
-$ git checkout -b <branch-name>              # Create & checkout to new branch
-$ git checkout --orphan <branch-name>        # Create a branch with no commit list
-$ git checkout -b <branch> <remote/branch>   # Create a new branch from a remote branch history
 .
 # Delete
 $ git branch -d <branch-name>                              # Delete the local branch, show a warning
@@ -143,6 +140,9 @@ $ git branch --merged | grep -v '*' | xargs git branch -d  # delete merged branc
 #### Checkout (go forward/backward)
 ```
 $ git checkout -                           # Switch to the last branch you are
+$ git checkout --orphan <branch-name>      # Create a branch with no commit list
+$ git checkout -b <branch-name>            # Create & checkout to new branch
+$ git checkout -b <branch> <remote/branch> # Create a new branch from a remote branch history
 $ git checkout <commit-hash>               # Go to a specific commit
 $ git checkout <branch-name>               # Return to present state
 $ git checkout <commit-hash> <file-name>   # Only a file will go back to specific commit

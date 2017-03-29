@@ -418,7 +418,13 @@ $ for branch in `git branch | grep -v HEAD`;do echo `git show --format="%ci %cr 
 
 $ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request
 
-### Create a remote branch using REST API
+#### Create new local branches with the name of remote branches
+$ for branch in `git branch -r | sed 's@origin/@ @'`;do `git branch  $branch`;done
+**git branch -r** shows all the remote branches  
+**sed 's@origin/@ @'** split the *origin/* from the begining of branch name  
+**git branch  $branch origin/$branch** create a new branch with the history of origin/<branch>
+
+#### Create a remote branch using REST API
 $ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -vv -u '$USERNAME:$PASS' "https://bitbucket.org/branch/create" -s -d 'repository=$TEAMORUSER%2F$REPO&from_branch=master&branch_name=feature'
 
 

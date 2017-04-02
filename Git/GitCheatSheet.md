@@ -73,13 +73,13 @@ $ git config --global alias.br branch        # git br -> git branch
 $ git add .                                         # Adds file changes to the index                      
 $ git add --all                                     # Add all changes
 $ git add -p                                        # Stage a particular change
-.     
+
 # Commit                                                                          
 $ git commit -am 'commit message'                   # Add & commit        
 $ git commit --allow-empty -m k3;                   # Commit empty change
 $ git cherry-pick <commit-hash>                     # Take a commit change of another branch
 $ git commit -m 'msg' --include file1.txt file2.txt # Commit specific files
-.
+
 # Show
 $ git branch                                 # Show all local branches
 $ git branch -r                              # Show all the remote branched
@@ -93,12 +93,12 @@ $ git branch -a --contains <commit-hash>     # Show list of branch(s) exits the 
 $ git branch -m <new-name>                   # Rename a branch if we are on the branch
 $ git branch -m <old-name> <new-name>        # Rename a branch if we are on different branch
 $ git branch -u <remote/branch>              # Track a remote branch
-.
+
 # Amend
 $ git add task2.txt                                 # Add any file
 $ git commit --amend -m 'new message'               # Merge current change to previous commit and will also change the commit hash
 $ git commit --amend --date="<date>"                # Override the date
-.
+
 # Pull
 $ git pull                                          # Fetch the latest changes from origin and merge
 $ git pull --rebase                                 # = fetch + rebase, fetch the latest changes from origin and rebase
@@ -108,7 +108,7 @@ $ git pull origin <branch-1>                        # Pull the change of 'branhc
 $ git pull origin HEAD --quiet                      # --quiet = -q, run git command silently (without showing any output)
 $ git pull <repo url>                               # pull a repo with https/ssh URL 
 $ git subtree add --prefix=other/ <repo-url> master # Pull master branch of a repo into a subdirectory named 'other/'
-.
+
 # Push
 $ git push origin <branch-name>                   # Push to remote branch
 $ git push -u origin <branch-name>                # -u tells Git to remember the parameters, so that next time we can simply run `git push`
@@ -117,17 +117,17 @@ $ git push --all --tags origin                    # Push all branches and tags
 $ git push origin HEAD --quiet                    # --quiet = -q, run git command silently (without showing any output)
 $ git subtree push --prefix dist origin gh-pages  # Push only a specific folder to remote branch
 $ git subtree push --prefix src origin gh-pages   # Deploy source directory
-$ git push -f origin <branch-name>                  # Overwrite remote branch (by force)
-.
+$ git push -f origin <branch-name>                # Overwrite remote branch (by force)
+
 # Merge
 $ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch
 $ git mergetool
 $ git merge <from-commit> <to-commit>               # Merge a range of commit (including two given commits)
 $ git merge --squash <privateFeatureBranch>
-.
+
 # Create
-$ git branch <branch-name>                   # Create a new branch
-.
+$ git branch <branch-name>                          # Create a new branch
+
 # Delete
 $ git branch -d <branch-name>                              # Delete the local branch, show a warning
 $ git branch -D <branhc-name>                              # Force to delete branch
@@ -179,10 +179,10 @@ $ git stash pop = git stash apply + git stash drop  # Temporary delete or clean
 $ git stash clear                                   # Clean all the stash
 $ git stash branch <branchname> stash@{0}           # Checkout a new branch with popping stash@{0}
 $ git stash save --keep-index
-.
+
 # resolve conflicts when doing stash pop
 $ git checkout stash -- .                           # replace all the files with the stashed version
-.
+
 Or, 
 $ git stash apply                                   # apply the stashed changes, conflicts occure here
 $ git checkout --theirs -- .                        # accept stashed changes 

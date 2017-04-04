@@ -195,8 +195,10 @@ $ git log <branch-name>                            # Show the commits of a speci
 $ git log --oneline --decorate --all --graph       # See all commits with better visualization
 $ git log -p <file/directory>                      # Show change history for file/directory including diffs
 $ git log --pretty=format:"%h - %an, %ar : %s"     # commit hash-tag -> name -> data -> commit-message
-# see commit-hash, branch-name, commit-message, time, committer-name and changes of the commits 
+
+# see commit-hash, branch-name, commit-message, time, committer-name and changes of the commits
 $ git log -p --all -G pattern --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --branches
+
 $ git log --pretty=oneline
 $ git log -1 --pretty=format:'%an'                 # Print last commit's Author Name  
 $ git log --oneline -p
@@ -347,7 +349,7 @@ $ git <branch-name> --tree-filter 'rm -f password.txt'  # Remove password.txt fi
 ```
 
 ``Faster for large code base``, workded on stagin area, --ignore-nmatch
-```
+
 $ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt' 
 ```
 
@@ -413,20 +415,20 @@ $ git config --global core.editor "subl -n -w" # '-n' will open a new instance o
 
 $ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>  # find renamed file (previous name of a file)
 $ git archive --format zip --output src.zip <commit>   # save/archive a speciftc commit
+
 $ for branch in `git branch | grep -v HEAD`;do echo `git show --format="%ci %cr %H" $branch | head -n 1` $branch;done
   output: <date-time> <commit-sha> <branch-name> (for every branch) 
 
 $ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request
 
 #### Create new local branches with the name of remote branches
-$ for branch in `git branch -r | sed 's@origin/@ @'`;do `git branch  $branch`;done
+$ for branch in `git branch -r | sed 's@origin/@ @'`;do `git branch  $branch origin/$branch`;done
 **git branch -r** shows all the remote branches  
 **sed 's@origin/@ @'** split the *origin/* from the begining of branch name  
 **git branch  $branch origin/$branch** create a new branch with the history of origin/<branch>
 
 #### Create a remote branch using REST API
 $ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -vv -u '$USERNAME:$PASS' "https://bitbucket.org/branch/create" -s -d 'repository=$TEAMORUSER%2F$REPO&from_branch=master&branch_name=feature'
-
 
 # Show diff
 $ git diff b1..b2                              # Compare two brances, show you what is in b2 that is not in b1
@@ -442,7 +444,7 @@ $ git push -f origin HEAD^:master              # "undo" the push from remote and
 $ git blame <file>                             # List the change dates and authors for a file
 $ git show <commit>:<file>                     # Show the file changes for a commit id and/or file
 ```
-`$ git branch --set-upstream master_upstream origin/master_upstream`.
+$ git branch --set-upstream master_upstream origin/master_upstream
 The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
 
 #### Tags and Releases
@@ -485,10 +487,10 @@ $ git commit -m 'be tracked'      // staged, tracked
 
 #### Different types of HEAD
 ```
-HEAD - the current sha-1 of the current commit in the current branch
-FETCH_HEAD - a short-lived ref, to keep track of what has been fetched from the remote repository
-ORIG_HEAD - previous state of HEAD
-MERGE_HEAD - records the commit(s) which you are merging into your branch when you run git merge.
+HEAD             - the current sha-1 of the current commit in the current branch
+FETCH_HEAD       - a short-lived ref, to keep track of what has been fetched from the remote repository
+ORIG_HEAD        - previous state of HEAD
+MERGE_HEAD       - records the commit(s) which you are merging into your branch when you run git merge.
 CHERRY_PICK_HEAD - records the commit which you are cherry-picking when you run git cherry-pick.
 
 $ git rev-parse <any-head>                  # see the commit hash of the HEAD
@@ -529,4 +531,3 @@ G   H   I   J               A =      = A^0
 `HEAD@{2}`  &nbsp;                       : &nbsp;&nbsp;  refers to the 3rd listing in the overview of git reflog  
 `HEAD~~`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  2 commits older than HEAD  
 `HEAD^^`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  2 commits older than HEAD  
-

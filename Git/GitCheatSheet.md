@@ -16,7 +16,8 @@ $ git config --global core.editor emacs             # Use emacs for interactive 
 $ git config --global merge.tool opendiff           # Use opendiff for merging conflicts
 $ git config --global color.ui true                 # Better visualization            
 $ git config core.ignorecase false                  # If we want case sensitive git
-$ git config --global core.mergeoptions --no-edit   # While merging/pulling stop opening the editor for commit message 
+$ git config --global core.mergeoptions --no-edit   # While merging/pulling stop opening the editor for commit message
+$ git config --global merge.log true                # Add list of changed files in commit message
                                                     
 $ git config --global --remove-section alias        # Remove the global alias section
 $ git config --remove-section alias                 # Remove the global alias section
@@ -401,7 +402,8 @@ $ git whatchanged --since="1 day ago" -p       # see the changes with file lists
 $ git whatchanged --since="1 day ago" <file>   # see the changes of a specific file
 $ git clone <url> --branch <branch-name>       # clone a specific branch
 $ git clone <url> -b <branch>                  # clone into a new local branch instead of master
-$ git clone <url> --single-branch              # clone only single branch  
+$ git clone <url> --single-branch              # clone only single branch
+$ git clone <url> --depth=1                    # Create a shallow clone with a history truncated to the specified number of commits
 $ git gui
 $ git ls-tree -d HEAD                          # Tree object including the mode and the name of each item and the SHA value
 $ git difftool

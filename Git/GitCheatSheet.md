@@ -374,6 +374,12 @@ $ git gc --aggressive --prune="1 hour"
 $ git rc                               # cleanup unnecessary files and optimize local repo
 ```
 
+#### Create a new **(WorkTree)[https://git-scm.com/docs/git-worktree#_synopsis]** and work paralley in the same repo (diffeent branch)
+```sh
+$ git worktree add <path>
+$ git checkout <branch>          # checkout a different branch
+```
+
 #### Fancy commands
 
 ```sh

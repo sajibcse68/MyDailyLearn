@@ -351,7 +351,7 @@ $ git <branch-name> --tree-filter 'rm -f password.txt'  # Remove password.txt fi
 
 ``Faster for large code base``, workded on stagin area, --ignore-nmatch
 
-    $ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt'
+$ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt'
 
 
 #### SubModules: (always push to two repo, first to submodules then parent repo)
@@ -451,9 +451,11 @@ $ git config --global --unset diff.external
 $ git push -f origin HEAD^:master              # "undo" the push from remote and keep the local intact
 $ git blame <file>                             # List the change dates and authors for a file
 $ git show <commit>:<file>                     # Show the file changes for a commit id and/or file
-```
-$ git branch --set-upstream master_upstream origin/master_upstream
+
+$ git branch --set-upstream master_upstream origin/master_upstream  
+
 The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
+```
 
 #### Tags and Releases
 - Release tag point to a single commit

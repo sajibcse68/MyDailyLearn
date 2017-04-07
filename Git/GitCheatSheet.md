@@ -351,8 +351,8 @@ $ git <branch-name> --tree-filter 'rm -f password.txt'  # Remove password.txt fi
 
 ``Faster for large code base``, workded on stagin area, --ignore-nmatch
 
-$ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt' 
-```
+$ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt'
+
 
 #### SubModules: (always push to two repo, first to submodules then parent repo)
 ```
@@ -372,6 +372,12 @@ $ git reflog expire --expire-unreachable="1 hour" --all
 $ git prune --expire="1 hour" -v
 $ git gc --aggressive --prune="1 hour"
 $ git rc                               # cleanup unnecessary files and optimize local repo
+```
+
+#### Create a new **[WorkTree](https://git-scm.com/docs/git-worktree#_synopsis)** and work paralley in the same repo (diffeent branch)
+```sh
+$ git worktree add <second-path>
+$ git checkout <branch>          # checkout a different branch
 ```
 
 #### Fancy commands
@@ -445,9 +451,10 @@ $ git config --global --unset diff.external
 $ git push -f origin HEAD^:master              # "undo" the push from remote and keep the local intact
 $ git blame <file>                             # List the change dates and authors for a file
 $ git show <commit>:<file>                     # Show the file changes for a commit id and/or file
-```
+
 $ git branch --set-upstream master_upstream origin/master_upstream
-The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
+# The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
+```
 
 #### Tags and Releases
 - Release tag point to a single commit
@@ -509,7 +516,7 @@ $ cat .git/HEAD                             # open the HEAD file
 
 [See details](http://chris.beams.io/posts/git-commit/)
  
-#### Difference between HEAD~ and HEAD^
+## Difference between HEAD~ and HEAD^
 - `HEAD^` means the `first parent` of the tip of the current branch, `HEAD^2` means `second parent of current branch`, `HEAD~1 / HEAD~2` means always `first parent`. [see this](http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
 - ~2 means up two levels in the hierarchy, via the first parent if a commit has more than one parent.
 - ^2 means the second parent where a commit has more than one parent (i.e. because it's a merge)

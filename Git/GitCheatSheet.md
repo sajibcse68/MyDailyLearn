@@ -452,9 +452,8 @@ $ git push -f origin HEAD^:master              # "undo" the push from remote and
 $ git blame <file>                             # List the change dates and authors for a file
 $ git show <commit>:<file>                     # Show the file changes for a commit id and/or file
 
-$ git branch --set-upstream master_upstream origin/master_upstream  
-
-The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
+$ git branch --set-upstream master_upstream origin/master_upstream
+# The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
 ```
 
 #### Tags and Releases
@@ -517,7 +516,7 @@ $ cat .git/HEAD                             # open the HEAD file
 
 [See details](http://chris.beams.io/posts/git-commit/)
  
-#### Difference between HEAD~ and HEAD^
+## Difference between HEAD~ and HEAD^
 - `HEAD^` means the `first parent` of the tip of the current branch, `HEAD^2` means `second parent of current branch`, `HEAD~1 / HEAD~2` means always `first parent`. [see this](http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
 - ~2 means up two levels in the hierarchy, via the first parent if a commit has more than one parent.
 - ^2 means the second parent where a commit has more than one parent (i.e. because it's a merge)

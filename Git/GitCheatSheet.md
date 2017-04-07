@@ -351,8 +351,8 @@ $ git <branch-name> --tree-filter 'rm -f password.txt'  # Remove password.txt fi
 
 ``Faster for large code base``, workded on stagin area, --ignore-nmatch
 
-$ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt' 
-```
+    $ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt'
+
 
 #### SubModules: (always push to two repo, first to submodules then parent repo)
 ```

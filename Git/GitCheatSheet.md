@@ -68,7 +68,7 @@ $ git config --global alias.br branch        # git br -> git branch
 * HEAD^     ->  parent of HEAD
 * foo..bar  ->  from branch foo to branch bar
 
-####  Add, Commit, Show, Amend, Pull, Push, Merge & Delete
+####  Add, Commit, Show, Amend, Pull, Push, Merge & Delete:
 ```sh
 # Add
 $ git add .                                         # Adds file changes to the index                      
@@ -138,7 +138,7 @@ $ git push origin :<old-name> <new-name>                   # Delete the remote o
 $ git remote prune origin                                  # Cleanup remote deleted branch
 $ git branch --merged | grep -v '*' | xargs git branch -d  # delete merged branches
 ```
-#### Checkout (go forward/backward)
+#### Checkout (go forward/backward):
 ```
 $ git checkout -                           # Switch to the last branch you are
 $ git checkout --orphan <branch-name>      # Create a branch with no commit list
@@ -152,7 +152,7 @@ $ git checkout -- <filename1> <filename2>  # Discard all changes of file1 and fi
 $ git checkout origin/master <file-name>   # Reset a file with origin/master
 $ git checkout remote/branch -- <dir>      # Take only a folder changes of a specific branch
 ```
-#### Cherry-pick
+#### Cherry-pick:
 ```
 $ git cherry-pick <commit-hash>                             # Copy a single commit to current branch
 $ git cherry-pick <commit-hash> -X theirs                   # If conflicts occurs then accepts theirs
@@ -164,7 +164,7 @@ $ git cherry-pick A..B                                      # take a range of co
 $ git cherry-pick A^..B                                     # take a range of commit, A < B and A is included
 ```
 
-#### Stashing
+#### Stashing:
 ```sh
 $ git stash save                                    # Save the changes in temporary box
 $ git stash save "provide a stash message"          # We can provide a stash message when stashing.
@@ -189,7 +189,7 @@ $ git stash apply                                   # apply the stashed changes,
 $ git checkout --theirs -- .                        # accept stashed changes 
 ```
 
-#### Log:
+#### Logging:
 ```sh
 $ git log                                          # Show  all the change/commit history
 $ git log <branch-name>                            # Show the commits of a specific branch
@@ -244,7 +244,7 @@ $ git checkout -b <deleted-branch-name>   # recover that branch after creating a
 $ git checkout -b <branch> <sha>
 ```
 
-#### Reset Using **reflog**
+#### Reset Using **reflog**:
 ```sh
 $ git reflog                           # See all the task step by step
 $ git reset <HEAD no.>                 # Return to present after a hard reset, e.g. HEAD@{8}
@@ -253,7 +253,7 @@ $ git log --walk-reflogs               # More details
 $ git branch <branceName> HEAD@{1}     # Create a new branch with a commit (the branch is deleted where this commit was given)
 ```
 
-#### Squash
+#### Squash:
 ```
 # in general I do
 $ git reset --soft HEAD~3                              # undo last 3 commits, remains all the changes in local
@@ -261,7 +261,7 @@ $ git add --all; git commit -m 'new squash message'    # commit the 3 previous c
 $ git push -f origin <branch-name>                     # by force overwrite the remote branch and also commits
 ```
 
-#### Rebase
+#### Rebase:
 ```sh
 $ git checkout <admin_branch>
 $ git rebase master                                    # Merge all commits of admin_branch after master's commits
@@ -314,7 +314,7 @@ $ git rebase --abort
 ```
 [See this](https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/)
 
-#### Working with Remotes
+#### Working with Remotes:
 ```
 $ git remote add <name> <address/url>          # Add new remote/repositories
 $ git remote rm <name>                         # Remove a remote
@@ -343,7 +343,7 @@ $ grep -lr '<<<<<<<' . | xargs git checkout --ours
 
 $ git checkout --conflict=merge -- <file>   # get the file back with conflicts
 
-#### Prune Empty Commits
+#### Prune Empty Commits:
 ```
 $ git <brance-name> -f --prune-empty -- --all           # Delete all empty commits in a branch
 $ git <branch-name> --tree-filter 'rm -f password.txt'  # Remove password.txt file
@@ -365,7 +365,7 @@ $ git push --recurse-submodules=on-demand                        # Push to paren
 $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias   
 ```
 
-#### Cleanup garbase in remote repo
+#### Cleanup garbase in remote repo:
 ```sh
 $ git reflog expire --expire="1 hour" --all
 $ git reflog expire --expire-unreachable="1 hour" --all
@@ -380,7 +380,7 @@ $ git worktree add <second-path>
 $ git checkout <branch>          # checkout a different branch
 ```
 
-#### Fancy commands
+#### Fancy commands:
 
 ```sh
 $ git mv <src-file> <new-file-name>            # Rename a file and keeps all the previous history
@@ -429,13 +429,13 @@ $ for branch in `git branch | grep -v HEAD`;do echo `git show --format="%ci %cr 
 
 $ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request
 
-#### Create new local branches with the name of remote branches
+#### Create new local branches with the name of remote branches:
 $ for branch in `git branch -r | sed 's@origin/@ @'`;do `git branch  $branch origin/$branch`;done
 **git branch -r** shows all the remote branches  
 **sed 's@origin/@ @'** split the *origin/* from the begining of branch name  
 **git branch  $branch origin/$branch** create a new branch with the history of origin/<branch>
 
-#### Create a remote branch using REST API
+#### Create a remote branch using REST API:
 $ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -vv -u '$USERNAME:$PASS' "https://bitbucket.org/branch/create" -s -d 'repository=$TEAMORUSER%2F$REPO&from_branch=master&branch_name=feature'
 
 # Show diff
@@ -456,7 +456,7 @@ $ git branch --set-upstream master_upstream origin/master_upstream
 # The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
 ```
 
-#### Tags and Releases
+#### Tags and Releases:
 - Release tag point to a single commit
 - Semantic versioning should be followed for tags (major.minor.patch)
 - Three key reasons for creating a release branch:
@@ -482,7 +482,7 @@ $ git branch -d <hot-branch>                  # delete the release branch
 - For a project github page url will be '<username.github.io/<projectname>'  # sajibcse68.github.io/dojo_rules
 ``` 
 
-#### Stage vs Track file
+#### Stage vs Track file:
 - Tracked files are files that were in the last snapshot; they can be unmodified, modified, or staged.
 - Untracked files are everything else — any files in your working directory that were not in your last snapshot and are not in your staging area (index)
 
@@ -494,7 +494,7 @@ $ git commit -m 'be tracked'      // staged, tracked
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
 
-#### Different types of HEAD
+#### Different types of HEAD:
 ```
 HEAD             - the current sha-1 of the current commit in the current branch
 FETCH_HEAD       - a short-lived ref, to keep track of what has been fetched from the remote repository
@@ -505,7 +505,7 @@ CHERRY_PICK_HEAD - records the commit which you are cherry-picking when you run 
 $ git rev-parse <any-head>                  # see the commit hash of the HEAD
 $ cat .git/HEAD                             # open the HEAD file
 ```
-#### The Seven Rules of a Great Git Commit Message
+#### The Seven Rules of a Great Git Commit Message:
 1. Separate subject from body with a blank line
 2. Limit the subject line to 50 characters
 3. Capitalize the subject line

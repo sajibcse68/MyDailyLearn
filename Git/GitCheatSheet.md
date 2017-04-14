@@ -11,18 +11,19 @@ $ git config --local user.email <your-email>
 ```
 #### Some other necessary ``config`` commands
 ```sh
-$ git config --list                              # See full configuration of git                           
-$ git config --global core.editor emacs          # Use emacs for interactive commands
-$ git config --global merge.tool opendiff        # Use opendiff for merging conflicts
-$ git config --global color.ui true              # Better visualization            
-$ git config core.ignorecase false               # If we want case sensitive git
-                                                 
-$ git config --global --remove-section alias     # Remove the global alias section
-$ git config --remove-section alias            # Remove the global alias section
-$ git config --global --unset alias.<name>       # Unset an alias
-$ git config --global --unset core.<name>        # Unset an core
+$ git config --list                                 # See full configuration of git                           
+$ git config --global core.editor emacs             # Use emacs for interactive commands
+$ git config --global merge.tool opendiff           # Use opendiff for merging conflicts
+$ git config --global color.ui true                 # Better visualization            
+$ git config core.ignorecase false                  # If we want case sensitive git
+$ git config --global core.mergeoptions --no-edit   # While merging/pulling stop opening the editor for commit message
+$ git config --global merge.log true                # Add list of changed files in commit message
+                                                    
+$ git config --global --remove-section alias        # Remove the global alias section
+$ git config --remove-section alias                 # Remove the global alias section
+$ git config --global --unset alias.<name>          # Unset an alias
+$ git config --global --unset core.<name>           # Unset an core
 
- 
 # (git-credentials store) Reduce the number of times we must type our username or password
 $ git config credential.helper store
 $ git push http://example.com/repo.git
@@ -44,8 +45,6 @@ $ git config --global credential.helper manager
 $ git credential-manager delete <url>                   # delete credential-manager
 e.g. git credential-manager delete https://github.com
 
-
-
 # Auto correct Line Feed
 $ git config --global core.autocrlf input    # On unix line systems (Linux, OSX, etc)
 $ git config --global core.autocrlf true     # On windows system
@@ -55,6 +54,12 @@ $ git config --global core.autocrlf false    # For Windows only project
 $ git config --global alias.st status        # git st -> git status
 $ git config --global alias.co checkout      # git co -> git checkout
 $ git config --global alias.br branch        # git br -> git branch
+
+# Git searches 4 places for config file
+1. Your machine's system .gitconfig file. (/usr/local/etc/gitconfig)
+2. Your user .gitconfig file located at ~/.gitconfig.
+3. A second user-specific configuration file located at $XDG_CONFIG_HOME/git/config or $HOME/.config/git/config.
+4. The local repo's config file .git/config.
 ```
 #### Branching:
 * master    ->  default develop branch
@@ -63,7 +68,19 @@ $ git config --global alias.br branch        # git br -> git branch
 * HEAD^     ->  parent of HEAD
 * foo..bar  ->  from branch foo to branch bar
 
+####  Add, Commit, Show, Amend, Pull, Push, Merge & Delete:
 ```sh
+# Add
+$ git add .                                         # Adds file changes to the index                      
+$ git add --all                                     # Add all changes
+$ git add -p                                        # Stage a particular change
+
+# Commit                                                                          
+$ git commit -am 'commit message'                   # Add & commit        
+$ git commit --allow-empty -m k3;                   # Commit empty change
+$ git cherry-pick <commit-hash>                     # Take a commit change of another branch
+$ git commit -m 'msg' --include file1.txt file2.txt # Commit specific files
+
 # Show
 $ git branch                                 # Show all local branches
 $ git branch -r                              # Show all the remote branched
@@ -74,72 +91,59 @@ $ git branch -av                             # Show all local and remote branche
 $ git branch --merged                        # Show lists of branch merged with current branch
 $ git branch --no-merged                     # Show lists of branch not-merged with current branch
 $ git branch -a --contains <commit-hash>     # Show list of branch(s) exits the commit
-$ git branch -m <old-name> <new-name>        # Rename a branch
+$ git branch -m <new-name>                   # Rename a branch if we are on the branch
+$ git branch -m <old-name> <new-name>        # Rename a branch if we are on different branch
 $ git branch -u <remote/branch>              # Track a remote branch
-.
-# Create
-$ git branch <branch-name>                   # Create a new branch
-$ git checkout -b <branch-name>              # Create & checkout to new branch
-$ git checkout --orphan <branch-name>        # Create a branch with no commit list
-$ git checkout -b <branch> <remote/branch>   # Create a new branch from a remote branch history
-.
+
+# Amend
+$ git add task2.txt                                 # Add any file
+$ git commit --amend -m 'new message'               # Merge current change to previous commit and will also change the commit hash
+$ git commit --amend --date="<date>"                # Override the date
+
+# Pull
+$ git pull                                          # Fetch the latest changes from origin and merge
+$ git pull --rebase                                 # = fetch + rebase, fetch the latest changes from origin and rebase
+$ git pull origin <bn> -s recursive -X theirs       # -s=--strategy, -X=--strategy-option, While pulling if conflicts accepts theirs, 
+$ git pull origin <bn> -s recursive -X ours         # While pulling if conflicts accepts ours (HEAD)
+$ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch
+$ git pull origin HEAD --quiet                      # --quiet = -q, run git command silently (without showing any output)
+$ git pull <repo url>                               # pull a repo with https/ssh URL 
+$ git subtree add --prefix=other/ <repo-url> master # Pull master branch of a repo into a subdirectory named 'other/'
+
 # Push
 $ git push origin <branch-name>                   # Push to remote branch
 $ git push -u origin <branch-name>                # -u tells Git to remember the parameters, so that next time we can simply run `git push`
 $ git push origin HEAD:<branch-name>              # Push the current branch without thinking about its local name.
 $ git push --all --tags origin                    # Push all branches and tags
+$ git push origin HEAD --quiet                    # --quiet = -q, run git command silently (without showing any output)
 $ git subtree push --prefix dist origin gh-pages  # Push only a specific folder to remote branch
 $ git subtree push --prefix src origin gh-pages   # Deploy source directory
-.
-# Delete
-$ git branch -d <branch-name>                              # Delete the local branch, show a warning
-$ git branch -D <branhc-name>                              # Force to delete branch
-$ git push origin :<branch-name>                           # Delete remote branch
-$ git push origin --delete <branch-name>                   # Delete remote branch
-$ git remote prune origin                                  # Cleanup remote deleted branch
-$ git branch --merged | grep -v '*' | xargs git branch -d  # delete merged branches
-```
+$ git push -f origin <branch-name>                # Overwrite remote branch (by force)
 
-####  Add, Commit, Amend, Push, Pull & Merge
-```sh
-# Add
-$ git add .                                         # Adds file changes to the index                      
-$ git add --all                                     # Add all changes
-$ git add -p                                        # Stage a particular change
-.     
-# Commit                                                                          
-$ git commit -am 'commit message'                   # Add & commit        
-$ git commit --allow-empty -m k3;                   # Commit empty change
-$ git cherry-pick <commit-hash>                     # Take a commit change of another branch
-$ git commit -m 'msg' --include file1.txt file2.txt # Commit specific files
-.
-# Amend
-$ git add task2.txt                                 # Add any file
-$ git commit --amend -m 'new message'               # Merge current change to previous commit and will also change the commit hash
-$ git commit --amend --date="<date>"                # Override the date
-.
-# Pull
-$ git pull                                          # Fetch the latest changes from origin and merge
-$ git pull --rebase                                 # = fetch + rebase, fetch the latest changes from origin and rebase
-$ git pull origin <bn> -s recursive -X theirs       # While pulling if conflicts accepts theirs
-$ git pull origin <bn> -s recursive -X ours         # While pulling if conflicts accepts ours (HEAD)
-$ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch
-$ git pull <repo url>                               # pull a repo with https/ssh URL 
-$ git subtree add --prefix=other/ <repo-url> master # Pull master branch of a repo into a subdirectory named 'other/'
-.
-# Push
-$ git push origin <branchame>                       # Push a branch
-$ git push -f origin <branch-name>                  # Overwrite remote branch (by force)
-.
 # Merge
 $ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch
 $ git mergetool
 $ git merge <from-commit> <to-commit>               # Merge a range of commit (including two given commits)
 $ git merge --squash <privateFeatureBranch>
+
+# Create
+$ git branch <branch-name>                          # Create a new branch
+
+# Delete
+$ git branch -d <branch-name>                              # Delete the local branch, show a warning
+$ git branch -D <branhc-name>                              # Force to delete branch
+$ git push origin :<branch-name>                           # Delete remote branch
+$ git push origin --delete <branch-name>                   # Delete remote branch
+$ git push origin :<old-name> <new-name>                   # Delete the remote old-branch and push new-name local branch         
+$ git remote prune origin                                  # Cleanup remote deleted branch
+$ git branch --merged | grep -v '*' | xargs git branch -d  # delete merged branches
 ```
-#### Checkout (go forward/backward)
+#### Checkout (go forward/backward):
 ```
 $ git checkout -                           # Switch to the last branch you are
+$ git checkout --orphan <branch-name>      # Create a branch with no commit list
+$ git checkout -b <branch-name>            # Create & checkout to new branch
+$ git checkout -b <branch> <remote/branch> # Create a new branch from a remote branch history
 $ git checkout <commit-hash>               # Go to a specific commit
 $ git checkout <branch-name>               # Return to present state
 $ git checkout <commit-hash> <file-name>   # Only a file will go back to specific commit
@@ -148,7 +152,7 @@ $ git checkout -- <filename1> <filename2>  # Discard all changes of file1 and fi
 $ git checkout origin/master <file-name>   # Reset a file with origin/master
 $ git checkout remote/branch -- <dir>      # Take only a folder changes of a specific branch
 ```
-#### Cherry-pick
+#### Cherry-pick:
 ```
 $ git cherry-pick <commit-hash>                             # Copy a single commit to current branch
 $ git cherry-pick <commit-hash> -X theirs                   # If conflicts occurs then accepts theirs
@@ -157,9 +161,10 @@ $ git cherry-pick --no-commit <commit-hash> <commit-hash>   # --no-commit pulls 
 $ git cherry-pick -x <commit-hash>                          # -x: keep track where the commit came from
 $ git cherry-pick --signoff <commit-hash>                   # --signoff add current users name to commit message
 $ git cherry-pick A..B                                      # take a range of commit, A < B and A is not included
+$ git cherry-pick A^..B                                     # take a range of commit, A < B and A is included
 ```
 
-#### Stashing
+#### Stashing:
 ```sh
 $ git stash save                                    # Save the changes in temporary box
 $ git stash save "provide a stash message"          # We can provide a stash message when stashing.
@@ -175,27 +180,33 @@ $ git stash pop = git stash apply + git stash drop  # Temporary delete or clean
 $ git stash clear                                   # Clean all the stash
 $ git stash branch <branchname> stash@{0}           # Checkout a new branch with popping stash@{0}
 $ git stash save --keep-index
-.
+
 # resolve conflicts when doing stash pop
 $ git checkout stash -- .                           # replace all the files with the stashed version
-.
+
 Or, 
 $ git stash apply                                   # apply the stashed changes, conflicts occure here
 $ git checkout --theirs -- .                        # accept stashed changes 
 ```
 
-#### Log:
+#### Logging:
 ```sh
 $ git log                                          # Show  all the change/commit history
 $ git log <branch-name>                            # Show the commits of a specific branch
 $ git log --oneline --decorate --all --graph       # See all commits with better visualization
+$ git log --name-only                              # only file name
+$ git log --name-status                            # file name + status
+$ git log --stat                                   # file name, status, insert/delete lines info
 $ git log -p <file/directory>                      # Show change history for file/directory including diffs
 $ git log --pretty=format:"%h - %an, %ar : %s"     # commit hash-tag -> name -> data -> commit-message
-# see commit-hash, branch-name, commit-message, time, committer-name and changes of the commits 
+
+# see commit-hash, branch-name, commit-message, time, committer-name and changes of the commits
 $ git log -p --all -G pattern --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --branches
+
 $ git log --pretty=oneline
 $ git log -1 --pretty=format:'%an'                 # Print last commit's Author Name  
 $ git log --oneline -p
+$ git log --numstat --oneline <file>               # get statistics of a file changed commit lists
 $ git log --oneline --stat
 $ git log --oneline --graph
 $ git log --until=1.minute.ago                     # Until a specific time
@@ -212,13 +223,14 @@ $ git log --format="%h" <file-name> | xargs git show --name-only # get list of m
 $ git show --name-only $(git rev-list HEAD -- gulpfile.js)       # get list of modified files where a specific file is modified (duplicate above)
 ```
 
-#### Recovery/Reset:                                    
+#### Recovery/Reset:
+                                    
 ```sh
 $ git log                                 # Show all the change/commit history
 $ git show <commit hash>                  # See what changes in a specific commit
 $ git reset --soft <commit hash>          # Back to a specific commit and exits the change
 $ git diff HEAD                           # Show the changes to files not yet staged
-.
+
 $ git checkout -- <file-name>             # Replaces the changes with the last content in HEAD 
 $ git clean -f -n                         # clean untract file (dry run)
 $ git clean -df                           # -d remove untracked directories in addition to untracked files, -f (force)
@@ -226,7 +238,7 @@ $ git checkout -- .
 $ git clean -dxf
 $ git rm --cached -r .                    # remove git cached (e.g. add a file in .gitignore that already added in git)
 $ git revert -p <fromCommit>..<toCommit>  # revert a range of commit, need to commit after the commit 
-.
+
 # Recover a branch after deletion
 $ git reflog                              # see all commits and select the last commit (SHA1) of deleted branch
 $ git checkout <sha>                      # checkout that commit
@@ -235,7 +247,7 @@ $ git checkout -b <deleted-branch-name>   # recover that branch after creating a
 $ git checkout -b <branch> <sha>
 ```
 
-#### Reset Using **reflog**
+#### Reset Using **reflog**:
 ```sh
 $ git reflog                           # See all the task step by step
 $ git reset <HEAD no.>                 # Return to present after a hard reset, e.g. HEAD@{8}
@@ -244,7 +256,7 @@ $ git log --walk-reflogs               # More details
 $ git branch <branceName> HEAD@{1}     # Create a new branch with a commit (the branch is deleted where this commit was given)
 ```
 
-#### Squash
+#### Squash:
 ```
 # in general I do
 $ git reset --soft HEAD~3                              # undo last 3 commits, remains all the changes in local
@@ -252,7 +264,7 @@ $ git add --all; git commit -m 'new squash message'    # commit the 3 previous c
 $ git push -f origin <branch-name>                     # by force overwrite the remote branch and also commits
 ```
 
-#### Rebase
+#### Rebase:
 ```sh
 $ git checkout <admin_branch>
 $ git rebase master                                    # Merge all commits of admin_branch after master's commits
@@ -270,7 +282,7 @@ $ git replace -d <old-commit-hash>                                       # remov
 $ git push -f origin HEAD                                                # force push 
  
 # Alternate way (May occur conflicts and more complex)
-$ git rebase -i <commit-hash>                                               # go to last good commit
+$ git rebase -i <commit-hash>                                                # go to last good commit
 # Editor will open, write `edit` before the commit we want to change author
 
 # Change the `commit message` of an earlier commit
@@ -305,7 +317,7 @@ $ git rebase --abort
 ```
 [See this](https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/)
 
-#### Working with Remotes
+#### Working with Remotes:
 ```
 $ git remote add <name> <address/url>          # Add new remote/repositories
 $ git remote rm <name>                         # Remove a remote
@@ -325,16 +337,25 @@ $ git fetch <remote-name>                      # Fetching/pulling from remote
 * Including the changes that each branch is trying achieve.
 * Fix manually.
 
-#### Prune Empty Commits
+$ grep -lr '<<<<<<<' . | xargs git checkout --ours
+```
+- grep will search through every file in the current directory (the .) and subdirectories recursively (the -r flag) looking for conflict markers (the string '<<<<<<<')
+- the -l or --files-with-matches flag causes grep to output only the filename where the string was found. Scanning stops after first match, so each matched file is only output once.
+- the matched file names are then piped to xargs, a utility that breaks up the piped input stream into individual arguments for git checkout --ours or --theirs
+```
+
+$ git checkout --conflict=merge -- <file>   # get the file back with conflicts
+
+#### Prune Empty Commits:
 ```
 $ git <brance-name> -f --prune-empty -- --all           # Delete all empty commits in a branch
 $ git <branch-name> --tree-filter 'rm -f password.txt'  # Remove password.txt file
 ```
 
 ``Faster for large code base``, workded on stagin area, --ignore-nmatch
-```
-$ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt' 
-```
+
+$ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt'
+
 
 #### SubModules: (always push to two repo, first to submodules then parent repo)
 ```
@@ -347,7 +368,7 @@ $ git push --recurse-submodules=on-demand                        # Push to paren
 $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias   
 ```
 
-#### Cleanup garbase in remote repo
+#### Cleanup garbase in remote repo:
 ```sh
 $ git reflog expire --expire="1 hour" --all
 $ git reflog expire --expire-unreachable="1 hour" --all
@@ -356,7 +377,13 @@ $ git gc --aggressive --prune="1 hour"
 $ git rc                               # cleanup unnecessary files and optimize local repo
 ```
 
-#### Fancy commands
+#### Create a new **[WorkTree](https://git-scm.com/docs/git-worktree#_synopsis)** and work paralley in the same repo (diffeent branch)
+```sh
+$ git worktree add <second-path>
+$ git checkout <branch>          # checkout a different branch
+```
+
+#### Fancy commands:
 
 ```sh
 $ git mv <src-file> <new-file-name>            # Rename a file and keeps all the previous history
@@ -375,6 +402,7 @@ $ git diff-tree --no-commit-id -r <hash>       # show only the file name of chan
 $ git check-ignore -v -- <file-name>           # see what .gitignore rule applies for a given file             
 $ git init                                     # From scratch -- create a new local repository
 $ git diff                                     # workspace vs index
+$ git diff --shortstat                         # # files changed, # insertions(+), # deletions(-)
 $ git diff --cached                            # index vs repo, show all staged and unstaged file changes
 $ git diff HEAD                                # workspace vs repo
 $ git diff -- file_delete                      # see the deleted files, use '--' to separate paths from revisions
@@ -383,7 +411,8 @@ $ git whatchanged --since="1 day ago" -p       # see the changes with file lists
 $ git whatchanged --since="1 day ago" <file>   # see the changes of a specific file
 $ git clone <url> --branch <branch-name>       # clone a specific branch
 $ git clone <url> -b <branch>                  # clone into a new local branch instead of master
-$ git clone <url> --single-branch              # clone only single branch  
+$ git clone <url> --single-branch              # clone only single branch
+$ git clone <url> --depth=1                    # Create a shallow clone with a history truncated to the specified number of commits
 $ git gui
 $ git ls-tree -d HEAD                          # Tree object including the mode and the name of each item and the SHA value
 $ git difftool
@@ -393,15 +422,24 @@ $ git help <verb>                              # Find out more
 $ git fsck --full                              # = File System Check, verify al object files and data
 $ git fsck --lost-found                        # Verifies the connectivity and validity of the objects in the database
 $ git command --help                           # When in doubt, use git help
+$ git config --global core.editor "subl -n -w" # '-n' will open a new instance of Sublime & '-w' will make the git wait for you to close Sublime before proceeding
 
 $ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>  # find renamed file (previous name of a file)
-$ git archive --format zip --output src.zip <commit>   # save/archive a speciftc commit   
+$ git archive --format zip --output src.zip <commit>   # save/archive a speciftc commit
+
+$ for branch in `git branch | grep -v HEAD`;do echo `git show --format="%ci %cr %H" $branch | head -n 1` $branch;done
+  output: <date-time> <commit-sha> <branch-name> (for every branch) 
 
 $ curl -s -L https://github.com/git/git/pull/309.patch | git apply --stat -  # see modified files of a pull request
 
-### Create a remote branch using REST API
-$ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -vv -u '$USERNAME:$PASS' "https://bitbucket.org/branch/create" -s -d 'repository=$TEAMORUSER%2F$REPO&from_branch=master&branch_name=feature'
+#### Create new local branches with the name of remote branches:
+$ for branch in `git branch -r | sed 's@origin/@ @'`;do `git branch  $branch origin/$branch`;done
+**git branch -r** shows all the remote branches  
+**sed 's@origin/@ @'** split the *origin/* from the begining of branch name  
+**git branch  $branch origin/$branch** create a new branch with the history of origin/<branch>
 
+#### Create a remote branch using REST API:
+$ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -vv -u '$USERNAME:$PASS' "https://bitbucket.org/branch/create" -s -d 'repository=$TEAMORUSER%2F$REPO&from_branch=master&branch_name=feature'
 
 # Show diff
 $ git diff b1..b2                              # Compare two brances, show you what is in b2 that is not in b1
@@ -416,11 +454,12 @@ $ git config --global --unset diff.external
 $ git push -f origin HEAD^:master              # "undo" the push from remote and keep the local intact
 $ git blame <file>                             # List the change dates and authors for a file
 $ git show <commit>:<file>                     # Show the file changes for a commit id and/or file
-```
-`$ git branch --set-upstream master_upstream origin/master_upstream`.
-The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
 
-#### Tags and Releases
+$ git branch --set-upstream master_upstream origin/master_upstream
+# The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
+```
+
+#### Tags and Releases:
 - Release tag point to a single commit
 - Semantic versioning should be followed for tags (major.minor.patch)
 - Three key reasons for creating a release branch:
@@ -446,7 +485,7 @@ $ git branch -d <hot-branch>                  # delete the release branch
 - For a project github page url will be '<username.github.io/<projectname>'  # sajibcse68.github.io/dojo_rules
 ``` 
 
-#### Stage vs Track file
+#### Stage vs Track file:
 - Tracked files are files that were in the last snapshot; they can be unmodified, modified, or staged.
 - Untracked files are everything else — any files in your working directory that were not in your last snapshot and are not in your staging area (index)
 
@@ -458,18 +497,18 @@ $ git commit -m 'be tracked'      // staged, tracked
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
 
-#### Different types of HEAD
+#### Different types of HEAD:
 ```
-HEAD - the current sha-1 of the current commit in the current branch
-FETCH_HEAD - a short-lived ref, to keep track of what has been fetched from the remote repository
-ORIG_HEAD - previous state of HEAD
-MERGE_HEAD - records the commit(s) which you are merging into your branch when you run git merge.
+HEAD             - the current sha-1 of the current commit in the current branch
+FETCH_HEAD       - a short-lived ref, to keep track of what has been fetched from the remote repository
+ORIG_HEAD        - previous state of HEAD
+MERGE_HEAD       - records the commit(s) which you are merging into your branch when you run git merge.
 CHERRY_PICK_HEAD - records the commit which you are cherry-picking when you run git cherry-pick.
 
 $ git rev-parse <any-head>                  # see the commit hash of the HEAD
 $ cat .git/HEAD                             # open the HEAD file
 ```
-#### The Seven Rules of a Great Git Commit Message
+#### The Seven Rules of a Great Git Commit Message:
 1. Separate subject from body with a blank line
 2. Limit the subject line to 50 characters
 3. Capitalize the subject line
@@ -480,7 +519,7 @@ $ cat .git/HEAD                             # open the HEAD file
 
 [See details](http://chris.beams.io/posts/git-commit/)
  
-#### Difference between HEAD~ and HEAD^
+## Difference between HEAD~ and HEAD^
 - `HEAD^` means the `first parent` of the tip of the current branch, `HEAD^2` means `second parent of current branch`, `HEAD~1 / HEAD~2` means always `first parent`. [see this](http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
 - ~2 means up two levels in the hierarchy, via the first parent if a commit has more than one parent.
 - ^2 means the second parent where a commit has more than one parent (i.e. because it's a merge)
@@ -504,4 +543,3 @@ G   H   I   J               A =      = A^0
 `HEAD@{2}`  &nbsp;                       : &nbsp;&nbsp;  refers to the 3rd listing in the overview of git reflog  
 `HEAD~~`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  2 commits older than HEAD  
 `HEAD^^`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  2 commits older than HEAD  
-

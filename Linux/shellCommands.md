@@ -121,6 +121,7 @@ $ ls -l 'which java'
 ``` 
 $ cat /etc/passwd
 $ sudo adduser <username>  # add a user
+$ passwd <username>        # change password for a user
 ```
 ##### Different color file or directory means in ubuntu
 **Blue** color -- **Directory**  

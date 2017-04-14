@@ -86,7 +86,7 @@ getRequest('/topics/17/tags', function(data) {
 - `Arrow functions` bind to the scope of where they are `defined`, not where they are used.
    It is also known as `lexical binding`
    
- ## Object and Strings
+## Object and Strings
 #### Removing repetition From Creating Objects
 - We can remove `duplicate` variable names from object properties when those properties have the `same name` as the
   variables being assigned to them (properties and value are the same name).
@@ -138,6 +138,150 @@ function buildUser (first, last, postCount) {
   }
 }
 ```
+
+#### Removing Repetitiion From Creating Objects
+- We can remove **duplicate** variable names from object properties when those properties
+have the **same name** as the variables being assigned to them.
+
+```js
+function buildUser(first, last) {
+  let fullName = first + " " + last;
+
+  return { first, last, fullName }    // variable to object properties
+  // instead, return { first: first, last: first, fullName: first }
+}
+```
+
+- Object Destructuring: We can use shorthand to assign **properties** from objects to **local variables** with the **same name**
+
+```js
+let user = buildUser("Sajib, "Khan");
+
+let first = user.first;
+let last = user.last;
+let fullName = user.fullName;
+
+// simpified
+let {first, last, fullName } = buildUser("Sajib", "Khan");   // assigning from object properties to variables
+```
+
+#### Writing Multi-line Strings
+Template strings offer a new and *much better* way to write **multi-line strings**.
+
+```js
+let userName = "Sajib"
+let admin = { fullName: "Sajib Khan"};
+let veryLongText = `Hi ${userName},
+
+this is a very
+very
+
+veeery
+long text.
+
+Regards,
+  ${admin.fullName}
+
+`;
+
+## Object Assign
+#### Using object.assign
+```js
+function countdownTimer(target, timeLeftm options = {}) {
+  defaults = {
+    // ...
+  };
+  let settings = Object.assign({}, defaults, options);
+  // settings: Merged properties from defaults and options
+  // {}: Target object is modified and used as return value
+  // defauts/options: Source objects remain unchanged
+
+  // let settings = Object.assign({}, defaults, options, options2, options2);
+  defaults = options = optopns2 = options3 (execute right to left)
+}
+
+```
+#### Object.assign in Practice
+```js
+// let's run countdownTimer() passing the value for container as argument
+countdownTimer($('.btn-undo'), 60, { container: '.new-post-options'});
+
+...and using the default value for everything else.
+function countdownTimer(target, timeLeft, options = {}){
+  let defaults = {
+    container: '.timer-display',
+    timeUnit: 'seconds',
+    // ...
+  }
+};
+
+let settings = Object.assing({}, defaults, options);
+
+console.log( settings.container );
+console.log( settins.timeUnit );
+```
+
+## Arrays, Maps, and Sets
+## Reading Values With Array Destructuring
+- We can use destructuring to assign **multiple values** from an array to local variables.
+
+```js
+  let users = ["Sam", "Tyler", "Brook"];
+  let [a, b, c] = users;
+  console.log(a, b, c);      // Output: Sam Tyler Brook
+
+  // values can be discarded
+  let [a, ,b] = users;
+      // ^ notice the blank space between the commans
+  console.log(a, b);         // Output: Sam Brook (Tyler is discarded)
+```
+#### Combining Destructuring With Rest Params
+- We can **combine** destructuring with rest parameters to **group values** into other arrays
+```js
+  let users = ["Sam", "Tyler", "Brook"];
+  let [ first, ...rest] = users
+            // ^ Groups remaining arguments in an array
+  console.log(first, rest);   // Output: Sam ["Tyler", "Brook"];
+```
+
+#### Destructive Arrays From Return Values
+- When returning arrays from **functions**, we can assign to **multiple variables** at once.
+```
+function activeUsers() {
+  let users = ["Sam", "Alex", "Brook"];
+  return users;
+
+  // returns an array, as expected...
+  let active = activeUsers();
+  console.log( active );     // Output: ["Sam", "Alex", "Brook"]
+  return active;
+
+  // ...or assigns to **individula variables**. Handy!
+  let [a, b, c] = activeUsers();
+  console.log( a, b, c);      // Output: Sam Alex Brook
+}
+```
+#### Using for..or to Loop Over Arrays
+The **for..of** statements iterates over **property values**, and it's better way to loop over arrays
+and other **iterable objects**.
+
+```js
+let names = ["Sam", "Tyler", "Brook"];
+
+for (let index in names) {
+  console.log( names[index] );
+  // two steps first: assign index value to index value, second: use index variable to get actual element
+};
+
+for(let name of names) {
+  console.log( name );
+  // only one step: Reads element directly and with less code involved
+}
+```
+
+
+
+
 #### Promise
 - Example 1:-
 

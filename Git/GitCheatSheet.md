@@ -194,6 +194,9 @@ $ git checkout --theirs -- .                        # accept stashed changes
 $ git log                                          # Show  all the change/commit history
 $ git log <branch-name>                            # Show the commits of a specific branch
 $ git log --oneline --decorate --all --graph       # See all commits with better visualization
+$ git log --name-only                              # only file name
+$ git log --name-status                            # file name + status
+$ git log --stat                                   # file name, status, insert/delete lines info
 $ git log -p <file/directory>                      # Show change history for file/directory including diffs
 $ git log --pretty=format:"%h - %an, %ar : %s"     # commit hash-tag -> name -> data -> commit-message
 

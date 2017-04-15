@@ -221,7 +221,7 @@ console.log( settings.container );
 console.log( settins.timeUnit );
 ```
 
-## Arrays, Maps, and Sets
+## Arrays
 ## Reading Values With Array Destructuring
 - We can use destructuring to assign **multiple values** from an array to local variables.
 
@@ -279,10 +279,354 @@ for(let name of names) {
 }
 ```
 
+#### Limitations of for..of and Objects
+- The for..of statement **cannot** be used to iterate over properties in plain javascript objects out-of-the-box.
+```js
+  let post = {
+    title: "New Features in JS"
+    replies: 19,
+    lastTeplyFrom: "Sam"
+  };
 
+  for (let property of post) {
+    console.log("Value: ", property) // TypeError: post[Symbol.iterator] is not a function
+  }
 
+  console.log( typeof names[Symbol.iterator] ); // Output: undefined
+  // Nothing is assigned to Symbol.iterate. so the post object will not work with for..of
+```
+- In order to work with **for..of**, objects need a special function assigned to the **Symbol.iterator**
+property. The presence of this property allows us to know whether an object is **iterable**.
 
-#### Promise
+```js
+let names = ["Sam", "Tyler", "Brook"];
+
+console.log( typeof names[Symbol.iterator] );
+
+for(let name of names) {
+  console.log(name);
+}
+```
+
+#### Finding an Element in an Array
+- Array.find returns the **first element** in the array that satisfies a provided a testing function.
+
+```js
+let users = [
+  { login: 'Sam', admin: false},
+  { login: 'Brook', admin: true},
+  { login: 'Tyler', admin: true}
+];
+
+let admin = users.find((user) => {  // Returns first object for which
+  return user.admin;                // user.admin is true
+});
+console.log(admin);   // Output: {"login": "Brook", "admin": true};
+
+Or, one-liner arrow function
+let admin = users.find(user => user.admin );
+console.log(admin);   // Output: {"login": "Brook", "admin": true};
+
+```
+## Maps
+#### Issues With Using Objects as Maps
+- **Maps** are a **data structure** composed of a collection of **key/value** pairs. They are very useful to store simple
+data, such as property values.
+- When using **Objects** as maps, its *keys* are always converted to strings
+
+```js
+  let user1 = { name: "Sam"};
+  let user2 = { name: "Tyler"};
+
+  let totalReplies = {};
+  totalReplies[user1] = 5;     // Both objects are converted to
+  totalReplies[user2] = 42;    // the string "[object Object]"
+
+  console.log( totalReplies[user1]);   // Output: 42
+  console.log( totalReplies[user2]);   // Output: 42
+
+  console.log( Object.keys(totalReplies) );    // Output: ["[object object]"]
+```
+
+#### Storing Key/Values With Map
+- The **Map** object is a simple **key/value** data structure. **Any value** may be used as either a key or a value, and
+objects are **not converted** to strings.
+
+```js
+  let user1 = {name: 'Sam'};
+  let user2 = {name: 'Tyler'};
+
+  let totalReplies = new Map();
+  totalReplies.set( user1, 5);   // we use the get() and set() methods
+  totalReplies.set( user2, 42);  // to access values in Maps
+
+  console.log(totalReplies.get(user1));   // Output: 5
+  console.log(totalReplies.get(user2));   // Output: 42
+```
+
+#### Iterating Maps With for..of
+**Maps** are iterable, so they can be used in a **for..of** loop. Each run of the loop returns a **[key, value]**
+pair for an entry in the **Map**
+
+```js
+let mapSettings = new Map();
+
+mapSettings.set('user', 'Sam');
+mapSettings.set('topic', 'ES2015');
+mapSettings.set('replies', ['Can't wait!', 'So Cool'] );
+
+for (let [key, value] of mapSettins){
+  console.log(`${key} = ${value}`);    // Output: user = Sam \n topic = ES2015 \n replies = Can't wait!, So Cool
+}
+```
+
+#### WeakMap
+- The WeakMap is a type of **Map** where **only objects** can be passed as keys. Primitive data types -- such as strings,
+numbers, booleans, etc. -- are **not allowd**.
+
+```js
+let user = {};
+let comment = {};
+
+let mapSettings = new WeakMap();
+mapSettins.set( user, "user");
+mapSettins.set( user, "comment");
+
+mapSettins.set( "title", "ES2015"); // error: invalid value used as weak map key
+               // ^ premitive data types are not allowed
+```
+
+#### Map vs WeakMap
+- All available methods on a **WeakMap** require access to an **object used as a key**.
+
+```js
+let user = {};
+let mapSettings = new WeakMap();
+mapSettings.set( user, "ES2015");
+
+console.log( mapSettins.get(user));    // Output: ES2015
+console.log( mapSettins.has(user));    // Output: true
+console.log( mapSettins.delete(user)); // Output: true
+```
+
+- **WeakMap** are **not iterable**, therefore they cann't be used with **for..of**
+
+```js
+for (let [key, value] of mapSettings) {
+  console.log(`${key} = ${value}`);     // error: mapSettings[Symbol.iterator] is not a function
+}
+```
+
+- **WeakMap** are better with memory. Individual entries in a **WeakMap** can be **garbase collected** while the Weakmap
+itself still exists.
+
+- **WeakMap** don't prevent the garbage collector from collecting objects currently used as keys, but that are no longer
+referenced anywhere else in the system
+
+```js
+let user = {};                     // all objects occupy memory space
+
+let userStatus = new WeakMap();
+userStatus.set( user, "logged");
+              // ^ Object reference passed as key to the WeakMap
+//...
+someOtherFunction( user );  // Once it returns, user can be garbage collected
+```
+#### Sets
+- The **Set** object stores **unique** values of **any type**, whether primitive values or object references.
+- **Set** objects are **iterable**, which means they can be useed with **for..of** and destructuring.
+
+```js
+let tags = new Set();
+tags.add("JavaScript");
+tags.add("Programming");
+tags.add({ varsion: "2015" });
+tags.add("Web");
+
+for(let tag of tags) {
+  console.log(tag);     // Output: JavaScript \n Programming \n {version: "2015"} \n Web
+}
+
+let [a, b, c, d ] = tags;
+console.log(a, b, c, d);  // Output: JavaScript \n Programming \n {version: "2015"} \n Web
+```
+
+#### WeakSet
+- Similar as WeakMap
+- The **WeakSet** is a type of `Set` where only objects are allowed to be stored
+
+```js
+  let weakTags = new WeakSet();
+  weakTags.add("JavaScript");       // Typerror: Invalid value used in weal set
+  weakTags.add("JavaScript");
+
+  // two necessary methods
+  weakTags.has(iOS);       // returns true/fales whether the object is added in the WeakSet
+  weakTags.delete(iOS);    // returns true/fales after deleting the object if exist
+```
+
+- WeakSet **cannot** be used with **for..of** and they offer **no methods** for reading values from it.
+```js
+  for (let wt of weakTags) {
+    console.log(wt);         // TypeError: weakTags[Symbol.iterator] is not a function
+  }
+```
+
+#### Showing Unread Posts With WeakSets
+- We can use `WeakSets` to create special groups from existing objects **without mutating them**. Favoring **immutable**
+objects allows for much **simpler** code with **no unexpected side effects**.
+
+```js
+  let readPosts = new WeakSet();
+
+  //... when post is clicked on
+  postList.addEventListener('click', (event) => {
+    //...
+    readPosts.add(post);   // adds object to a group of read posts
+  })
+
+  //...rendering posts
+  for (let post of postArray) {
+    if (!readPosts.has(post)) {
+      _addNewPostClass(post.element);
+    }
+  }
+```
+
+## Classes
+#### Adding a Sponsor to the Sidebar
+- First: Using a Function Approach
+```js
+function SponsorWidget(name, description, url) {   // Constructor functions are invoked with
+  this.name        = name;                         // the 'new' operator
+  this.description = description;                  
+  this.url         = ulr;                          
+}
+
+SponsorWidget.prototype.render = function() {
+  //...
+}
+
+// Invoking the SponsorWidget function looks like this:
+let sponsorWidget = new SponsorWidget(name, description, url);
+sponsorWidget.render();
+```
+
+- Second: Using the New Class Syntax (Object Oriented Flavour like oher OOP language)
+- To define a class, we use the **class** keyword followed by the name of the class. The body of a class is the part
+between curly braces.
+
+```js
+class SponsorWidget {
+  constructor(name, description, url) {
+   //...
+   this.description = description;    // don't forget to use 'this' to access instance poperties and methods
+   this.url = url;
+  }
+
+  render() {
+    let link = this._buildLink(this.url);
+    //...                     // ^ can access previously assigned instance variables
+  }
+
+  _buildLink(url) {     // Prefixing a method with an underscore is a convention for indicating that it should not be
+    //...               // invoked from the public API (Private Method)
+  }
+}
+```
+#### Creating an Instance From a Class
+- The class syntax in not introduceing a new object model to JavaScript. It's just **syntactical sugar** over the
+existing **prototype-based** inheritance.
+
+```js
+// syntactic Sugar              |  // Prototype Object Model
+class SponsorWidget {           |  function SponsorWidget(name, description, url) {
+  //...                         |    //...
+}                               |  }
+
+// Instances are created the same way
+let sponsorWidget = new SponsorWidget(name, description, url);
+sponsoorWidget.render();
+```
+
+#### Class Inheritance
+- We can use class inheritance to reduce code repetitiion. Child classes **inherit** and **specialize** behavior
+defined in parent classes.
+- The **extends keyword is used to create a class that inherits methods and properties** from another class. The
+**super** method runs the constructor function from parent class.
+```js
+// parent class                         | // child class
+class Widget {                          | class SponsorWidget extends Widget {
+  constructor() {                       |  constructor(name, description, url) {
+    this.baseCSS = "site-widget";       |    super();
+  }                                     |    //...
+  parse(value) {                        |  }
+    //...                               |  render(){
+  }                                     |   let parseName = this.parse(this.name);   // this.parse is inherited method
+}                                       |   let css = this._buildCSS(this.baseCSS);  // this.baseCSS is ingerited properties
+```                                     |  }
+                                        | }
+#### Overriding Inherited Methods
+- Child classes can invoke methods from their **parent** classes via the **super** object
+```js
+// parent class                         | // child class
+class Widget {                          | class SponsorWidget extends Widget {
+  constructor(){                        |   constructor() {
+    this.baseCSS = "site-eidget";       |     super()
+  }                                     |     //...
+}                                       |   }
+  parse() {                             |
+  //...                                 |  parse(){  // method overriding
+  }                                     |    let parsedName = super.parse(this.name);
+}                                       |                     // ^ calls the parent version of the parse() method
+                                        |    return `Spnsor: ${parsedName}`;
+                                        |  }
+                                        |
+                                        | render() {
+                                        |   //...
+                                        | }
+
+```
+## Module
+#### importing Named Exports
+- Functions from **named** exports must be assigned to variables with **the same name** enclosed in cruly braces
+```js
+// flash-message.js                           | // app.js
+export function alertMessage(message) {       | import {alertMessage, logMessage} from './flash-message'
+  alert(message);                             | 
+}                                             | alertMessage('Hello from alert');
+export function logMessage(message) {         | logMessage('Hello from log');
+  console.log(message);                       |
+}                                             |
+```
+
+#### Importing a Module as an Object
+- We can **import the entire module** as an object and call each function as a **property** from this object.
+
+```js
+// flash-message.js                           | // app.js
+function alertMessage(message) {              | import * as flash from './flash-message'
+  alert(message);                             |
+function logMessage(message) {                | flash.logMessage('Hello from log');         // functions become object properties
+}                                             | flash.alertMessage('Hello from alert');
+  console.log(message);                       |
+}
+
+export {alertMessage, logMessage};
+```
+#### Exporting Constants
+- Placing constants on their own module allows them to be reused across other modules and **hdies implementation details** (a.k.a., encapsulation)
+
+```js                            | // load-profiles.js
+// constants.js                  | import { MAX_REPLIES, MAX_REPLIES} from './constants.js';
+const MAX_USERS = 3;             | function loadProfiles(userNames){
+const MAX_REPLIES = 3;           |   if (userNames.length ? MAX_USERS) {  //... }
+                                 |
+export                           |   if (someElement > MAX_REPLIES) { //... }
+{ MAX_USERS, MAX_REPLIES }       | }
+```
+
+## Promises
 - Example 1:-
 
 ```
@@ -304,6 +648,130 @@ var timer = function(length) {
 timer(4000).then(() => alert('All done!'));
 ```
 
+## Iterators
+#### What We Know about Iterables So Far
+- Arrays are **iterable** objects, which means we can use them with **for..of**.
+```js
+let names = ['Sams' 'Tyler', 'Brook'];
+
+for (let name of names) {
+  console.log( name );
+}
+
+- Plain JavaScript objects are **not iterable**, so they **do not work** with for..of out-of-the-box
+
+```js
+let post = {
+  title: 'New Features in JS',
+  replies: 19
+};
+
+for (let p of post) {
+  console.log(p);     // TypeError: post[Symbol.iterator] is not a function
+}
+ ```
+
+- Iterables Return an **Iterator** object. This object knows how to **access items from a collection** 1 at a time,
+while **keeping track of its current position** within the sequence.
+
+```js                                     | // Whats really happening behind the scenes
+let names = ['Sams', 'Tyler', 'Brook'];   | let iterator = names[Symbon.iterator]();
+                                          |
+for (let name of names ) {                | let firstRun = iterator.next();  // {done: false, value: 'Sam'}
+  console.log(name);                      | let name = firstRun.value;
+}                                         |
+                                          | let secondRun = iterator.next(); // {done: false, value: 'Tyler'}
+                                          | let name = iterator.value;
+                                          |
+                                          | let thirdRun = iterator.next();  // {done: false, value: 'Brook'}
+                                          | let name = thirdRun.value;
+                                          |
+                                          | let fourthRun = iterator.next(); // {done: true, value: undefined}
+                                          | let name = fourthRun.value;      // breaks out the loop when done is true
+                                          |
+                                          | // done: will be faluse if the iterator is able to return a value from the collection
+                                          | // value: any value returned by the iterator. When done is true, this returns undefined
+                                          |
+                                          |
+```
+
+#### Returning Custom Iterator, returning done and value
+- We use `count` to keep track of the sequence and also to fetch values from the `properties` array.
+
+```js
+let post = {title: 'New Features in JS', replies: 19};
+
+post[Symbol.iterator] = function(){
+  let properties = Object.keys(this); // returns an array with property names
+  let count = 0;
+  let isDone = false;
+
+  let next = () => {
+    if (count >= properties.length) {
+      isDone = true;
+    }
+    return {done: isDone, value: this[properties[count++]] };
+                                // ^ refers to the post object
+  }
+  return { next };
+}
+
+ for (let p of post) {
+   console.log(p);      //  New Features in JS \n 19
+ }
+```
+
+## Generators
+- The function * decleration defines **generator functions**. These are special functions from which we can use the
+**yield** keyword to return **iterator** objects.
+
+```js
+function *nameList(){
+  yield 'Sam';           // {done: false, value: 'Sam'}
+  yield 'Tyler';         // {done: false, value: 'Tyler'}
+}
+```
+
+#### Generator Objects and for..of
+- Generator functions return objects that provide the same **next** method expected by **for..of**, the **spread operator**
+and the **destructuring assignment**.
+
+```js
+function *nameList(){
+  yield 'Sam';           // {done: false, value: 'Sam'}
+  yield 'Tyler';         // {done: false, value: 'Tyler'}
+}
+
+// calling the function returns a generator object
+for (let name of nameList()) {
+  console.log(name);            // Sam \n Tyler
+}
+
+let names = [...nameList()];
+console.log(names);            // ["Sam", "Tyler"]
+
+let [first, second] = nameList();
+console.log(first, second);      // Sam Tyler
+
+```
+
+#### Refactoring Custom Iterator with Generator
+
+```js
+let post = {title: 'New Features in JS', replies: 19};
+
+post[Symbol.iterator] = function *(){
+  let properties = Object.keys(this); // returns an array with property names
+
+  for (let p of properties) {     | // same as manually returning each property value
+    yield this[p];                | post[Symbol.iterator] = function *() {
+  }                               |   yield this.title;
+}                                 |   yield this.replies;
+                                    }
+ for (let p of post) {
+   console.log(p);      //  New Features in JS \n 19
+ }
+```
 
 
 

@@ -355,7 +355,31 @@ elem.addEventListener('click', (function(numCopy) {         // Now, if doesn't m
 })(nowNum));                                                
 
 
- 
+
+## Object Oriented JavaScript (Udacity)
+#### Extend vs Object.create(): Property Lookup of Delegated Objects
+
+```js
+const gold = {a: 1};
+console.log(gold.a);                           // 1
+console.log(gold.z);                           // undefined
+
+const blue = extend({}, gold);                 // copy one time
+blue.b = 2;
+console.log(blue.b);                           // 2
+console.log(blue.z);                           // undefined
+
+var rose = Object.create(gold);                // ongoing lookup time delegation
+console.log(rose.a);                           // 1
+console.log(rose.b);                           // undefined, no `b` in both rose or gold
+rose.b = 3;
+console.log(rose.b);                           // 3
+console.log(rose.z);                           // undefined, no `z` in both rose or gold
+
+gold.z = 3;
+console.log(blue.z);                           // undefined, no 'z' in blue, here 'extend' was one time copy from 'gold'
+console.log(rose.z);                           // 3, since there is no 'z' in rose, delegation goes through to gold, which does have gold.z
+```
 
 
 

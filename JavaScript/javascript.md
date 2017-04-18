@@ -381,7 +381,16 @@ console.log(blue.z);                           // undefined, no 'z' in blue, her
 console.log(rose.z);                           // 3, since there is no 'z' in rose, delegation goes through to gold, which does have gold.z
 ```
 
-
+#### Object Decorator Pattern
+```js                                       | var amy = carlike({}, 1);
+var carlike = function(obj, loc){           | amy.move();
+  obj.loc = loc;                            |
+  obj.move = function(){                    | var ben = carlike({}, 9);
+    obj.loc++;                              | ben.loc++;
+  }                                         |
+  return obj;                               |
+}
+```
 
 
 

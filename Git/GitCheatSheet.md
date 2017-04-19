@@ -219,6 +219,7 @@ $ git log --diff-filter=D --summary | grep delete  # See the deleted files
 $ git blame index.html --date short
 $ git rm                                           # Remove the file from the staging area and also from the disk                         
 $ git rm --cached development.log                  # What if you're already tracking log files?
+$ git rm -r --cached <dir-name>                    # Remove the cache for a directory from .idea
 $ git log --format="%h" <file-name> | xargs git show --name-only # get list of modified files where a specific file is modified 
 $ git show --name-only $(git rev-list HEAD -- gulpfile.js)       # get list of modified files where a specific file is modified (duplicate above)
 ```

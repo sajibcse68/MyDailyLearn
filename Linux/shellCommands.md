@@ -141,6 +141,7 @@ $ top                                  # show all the process, CPU/Memory usage 
 $ man <command-name>                   # get the details of a command (help)
 $ ifconfig                             # show the ip address
 $ ip addr show eth0                    # show the details of 'eth0' (ethernet 0)
+$ cat <file> | pbcopy                  # copy the contant of the file in clipboard
 $ uname                                # print operating system name
 $ uname -a                             # print hardware, nodename, processor architecture, os release, os name + version
 $ uname -v                             # karnel version

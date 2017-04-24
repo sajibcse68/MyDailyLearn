@@ -112,7 +112,7 @@ $ git subtree add --prefix=other/ <repo-url> master # Pull master branch of a re
 
 # Push
 $ git push origin <branch-name>                   # Push to remote branch
-$ git push -u origin <branch-name>                # -u tells Git to remember the parameters, so that next time we can simply run `git push`
+$ git push -u origin <branch-name>                # -u = --set-upstream tells Git to remember the parameters, so that next time we can simply run `git push`
 $ git push origin HEAD:<branch-name>              # Push the current branch without thinking about its local name.
 $ git push --all --tags origin                    # Push all branches and tags
 $ git push origin HEAD --quiet                    # --quiet = -q, run git command silently (without showing any output)

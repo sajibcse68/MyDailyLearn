@@ -137,9 +137,17 @@ $ passwd <username>        # change password for a user
 ```
 $ date                                 # show today's date
 $ cal                                  # show calendar
+$ top                                  # show all the process, CPU/Memory usage etc.
+$ man <command-name>                   # get the details of a command (help)
+$ ifconfig                             # show the ip address
+$ ip addr show eth0                    # show the details of 'eth0' (ethernet 0)
+$ cat <file> | pbcopy                  # copy the contant of the file in clipboard
 $ uname                                # print operating system name
 $ uname -a                             # print hardware, nodename, processor architecture, os release, os name + version
+$ uname -v                             # karnel version
+$ uname -r                             # karnel release
 $ lsb_release -a                       # see ubuntu version
+$ df -ah                               # show the disk free (df), all human readable (-ah)
 $ arch                                 # print architecture type
 
 # Short files by size (human readable output)
@@ -148,7 +156,7 @@ $ ls <dir> --sort=size -la
 $ du -ma | sort -nr | head -n 20    # show 20 largest files/folders under the current directory
 
 # See the total size of directory
-$ du -sh
+$ du -sh <path>                        # check the size (du -> disk use) of a directory's content on disk
 $ du -h                                # show all sub directory size
 
 # Free a port process

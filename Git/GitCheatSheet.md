@@ -107,7 +107,8 @@ $ git pull origin <bn> -s recursive -X theirs       # -s=--strategy, -X=--strate
 $ git pull origin <bn> -s recursive -X ours         # While pulling if conflicts accepts ours (HEAD)
 $ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch
 $ git pull origin HEAD --quiet                      # --quiet = -q, run git command silently (without showing any output)
-$ git pull <repo url>                               # pull a repo with https/ssh URL 
+$ git pull <repo url>                               # pull a repo with https/ssh URL
+$ git pull origin <bn> --allow-unrelated-histories  # resolve error in case when pulling branch has no common point with current branch
 $ git subtree add --prefix=other/ <repo-url> master # Pull master branch of a repo into a subdirectory named 'other/'
 
 # Push

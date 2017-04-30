@@ -117,6 +117,73 @@ for(var i = 0; i < 10; i++) {
 ```
 - There's yet another way to accomplish this by using `.bind`, which can bind a `this` context and arguments to function.
 
+#### Closures Help in Function "Construction Zones"
+- A closure wraps up an entire environment, binding necessary variables from other scopes.
+- A closure can make the creation of very similar functions untra-efficient.
+
+```js
+function buildCoveTicketMaker(transport) {
+  return function (name) {
+    alert ('Here transport is ', + transport + 'and name is ' + name);
+  }
+
+var getSubmarineTicket = buildCoveTicketMaker('Submarine');       | return same, function (name) {
+var getSubmarineTicket = buildCoveTicketMaker('Battaleship');     |   alert ('Here transport is ', + transport + 'and name is ' + name);
+var getSubmarineTicket = buildCoveTicketMaker('Gaint Seagull');   | }
+                                                                  | but every time each function has a closure 'buildCoveTicketMaker' function
+                                                                  | with transport = Submarine/Battaleship/Gaint Seagull
+}
+```
+
+#### Loops with Closure: A Cautionary Tale (Be A Closure Master!)
+```js
+function assignTorpedo (name, passengerArray) {
+  var torpedoAssignment;
+  for (var i = 0; i < passengerArray.length; i++) {
+    if (passengerArray[i] == name {
+      torpedoAssignment = function () {
+        alert("Ahoy, " + name + "!\n" +
+        " Man your post at Torpedo # " + (i+1) + "!");
+      }
+    }
+  }
+  return torpedoAssignment;
+}
+
+var subPassengers = ["Luke", "Leia", "Han", "Chewie", "Yoda", "Boba"];
+var giveAssignment = assignTorpedo("Chewie", subPassengers);
+
+gitveAssignment();   // it shows "... Torpedo #6!" instead of "... Torpedo #4!"
+```
+```js
+// solutions #1:
+function assignTorpedo (name, passengerArray) {
+  for (var i = 0; i < passengerArray.length; i++) {
+    if (passengerArray[i] == name {
+      return function () {                                // immediately return the function
+        alert("Ahoy, " + name + "!\n" +                   // so that i variable don't get the
+        " Man your post at Torpedo # " + (i+1) + "!");    // chance of increment
+      }
+    }
+  }
+}
+```
+
+```js
+// solutions #2:
+function assignTorpedo (passengerArray) {
+  return function(name) {
+    for (var i = 0; i < passengerArray.length; i++) {       // since we've put the loop inside the returned function,
+        if (passengerArray[i] == name {                     // i variable will come directly from that local scope
+          alert("Ahoy, " + name + "!\n" +
+          " Man your post at Torpedo # " + (i+1) + "!");   
+        }
+      }
+  }
+}
+``
+
+
 #### Change the `tooltip` value with js when button is clicked
 ```
 // html part
@@ -394,6 +461,20 @@ var carlike = function(obj, loc){           | amy.move();
 ```
 
 #### Functional Classes
+- Building functions within code execution rather than at program load time
+
+```js
+function funcName(a, b) {
+ // this is declared function
+ // this function is loaded in memory when the program/code is run and help there until we use it
+}
+
+var funcName = function(a, b) {
+   // ^ the function keyword will now assign the following function to the variable
+   // loads only when the program reaches the line of code
+   // Note the semicolon, it assigns the entire function to a variable
+};
+
 
 
 

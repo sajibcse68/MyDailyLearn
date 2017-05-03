@@ -141,17 +141,18 @@ $ git branch --merged | grep -v '*' | xargs git branch -d  # delete merged branc
 ```
 #### Checkout (go forward/backward):
 ```
-$ git checkout -                           # Switch to the last branch you are
-$ git checkout --orphan <branch-name>      # Create a branch with no commit list
-$ git checkout -b <branch-name>            # Create & checkout to new branch
-$ git checkout -b <branch> <remote/branch> # Create a new branch from a remote branch history
-$ git checkout <commit-hash>               # Go to a specific commit
-$ git checkout <branch-name>               # Return to present state
-$ git checkout <commit-hash> <file-name>   # Only a file will go back to specific commit
-$ git checkout <branch-name> -f            # Return to persent state by force
-$ git checkout -- <filename1> <filename2>  # Discard all changes of file1 and file2
-$ git checkout origin/master <file-name>   # Reset a file with origin/master
-$ git checkout remote/branch -- <dir>      # Take only a folder changes of a specific branch
+$ git checkout -                                 # Switch to the last branch you are
+$ git checkout --orphan <branch-name>            # Create a branch with no commit list
+$ git checkout -b <branch-name>                  # Create & checkout to new branch
+$ git checkout -b <branch> <remote/branch>       # Create a new branch from a remote branch history
+$ git checkout <commit-hash>                     # Go to a specific commit
+$ git checkout <branch-name>                     # Return to present state
+$ git checkout <commit-hash> <file-name>         # Only a file will go back to specific commit
+$ git checkout <branch-name> -f                  # Return to persent state by force
+$ git checkout -- <filename1> <filename2>        # Discard all changes of file1 and file2
+$ git checkout origin/master <file-name>         # Reset a file with origin/master
+$ git checkout remote/branch -- <dir>            # Take only a folder changes of a specific branch
+$ git checkout stash@{0} -- <file1> <file2>      # Checkout the files to stash@{0} version
 ```
 #### Cherry-pick:
 ```

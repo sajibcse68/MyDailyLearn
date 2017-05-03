@@ -1,4 +1,5 @@
-##### Notes
+#### Notes
+
 - When browser find the `<script>` tag to download, all other parallel downloading halts. (6 files can be downloaded by modern browser)
 - if we add `async` in `<script>` tag then it would be downloaded asynchronously
     - e.g. `<script type="text/javascript" src="http://www.abc.com/test.js" async></script`
@@ -381,8 +382,18 @@ console.log(blue.z);                           // undefined, no 'z' in blue, her
 console.log(rose.z);                           // 3, since there is no 'z' in rose, delegation goes through to gold, which does have gold.z
 ```
 
+#### Object Decorator Pattern
+```js                                       | var amy = carlike({}, 1);
+var carlike = function(obj, loc){           | amy.move();
+  obj.loc = loc;                            |
+  obj.move = function(){                    | var ben = carlike({}, 9);
+    obj.loc++;                              | ben.loc++;
+  }                                         |
+  return obj;                               |
+}
+```
 
-
+#### Functional Classes
 
 
 

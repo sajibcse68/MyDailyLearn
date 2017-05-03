@@ -123,9 +123,10 @@ const o = Object.create(null);
 // Convert browser into an Editor
 document.body.contentEditable=true
 
-// console.log vs console.dir
+// console.log, console.dir, console.table
 - console.log prints the element in an HTML-like tree
 - console.dir prints the element in an JSON-like tree
+- console.table prints the values into a table
 
 // Find events associated with an element in the DOM
 const allEvents = getEventListeners($('selector'));

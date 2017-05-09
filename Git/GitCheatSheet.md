@@ -407,6 +407,7 @@ $ git init                                     # From scratch -- create a new lo
 $ git diff                                     # workspace vs index
 $ git diff --shortstat                         # # files changed, # insertions(+), # deletions(-)
 $ git diff --cached                            # index vs repo, show all staged and unstaged file changes
+$ git diff --staged                            # synonym of --cached, index vs repo, show all staged and unstaged file changes
 $ git diff HEAD                                # workspace vs repo
 $ git diff -- file_delete                      # see the deleted files, use '--' to separate paths from revisions
 $ git whatchanged --since="3 day ago"          # see the changed file lists name since 3 days

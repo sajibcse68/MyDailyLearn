@@ -66,10 +66,19 @@ checking and object-oriented features.
 - When we use th **ngModel** syntax, we can only set it equal to a data bound property.
   - Ok: [(ngModal)]="user.age", [(ngModal)]="firsName"
   - Not Ok: [(ngModal)]="fullName()"
-#### Services and HTTP
+#### Services
 - Services are used to organise and share code accross our app, and they'are usually where we create
   our data access methods.
--
+- When we run an Angular 2 application, it creates a dependency injector. An injector is in charge of knowing how to
+  create and send things.
+- We use dependency injection to create and send services to the classes that need them.
+- We give our dependency injector providers so that it knows what classes it can create and send for us.
+- We ask for dependencies by specifying them in our class constructor.
+
+#### HTTP
+- Angular apps usually load data using classes after the Angular app is initialized and running.
+- We can use HTTP library through dependency injection.
+- Our http calls return an observable, not a promise, which behaves more like an array.
 
 
 

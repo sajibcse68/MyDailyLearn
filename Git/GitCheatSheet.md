@@ -102,7 +102,8 @@ $ git commit --amend --date="<date>"                # Override the date
 
 # Pull
 $ git pull                                          # Fetch the latest changes from origin and merge
-$ git pull --rebase                                 # = fetch + rebase, fetch the latest changes from origin and rebase
+$ git pull --rebase                                 # = fetch + rebase, fetch changes from the branch that the current branch is tracking
+$ git pull -p origin/master                         # -p = --preserve-merges, unlike git pull –rebase, this doesn’t have a sensible default to work from. So, need to git branch name (origin/master)
 $ git pull origin <bn> -s recursive -X theirs       # -s=--strategy, -X=--strategy-option, While pulling if conflicts accepts theirs, 
 $ git pull origin <bn> -s recursive -X ours         # While pulling if conflicts accepts ours (HEAD)
 $ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch

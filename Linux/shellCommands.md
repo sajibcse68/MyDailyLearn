@@ -194,6 +194,9 @@ $ scp remote_user@remote_host:/path/to/remote/file /path/to/local/file
 $ scp /home/sajib/TigerWorks/Source/dockerfiles/jenkins/jenkins_global_config/ root@45.55.247.59:/root/dockerfiles/jenkins/globalConfig/
 ```
 
+#### Run a local server
+$ sudo python3 -m http.server 80
+
 ##### Cursor movement
 C + a:  Move to the start of the line.  
 C + e:  Move to the end of the line.  

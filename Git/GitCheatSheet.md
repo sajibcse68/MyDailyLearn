@@ -225,6 +225,11 @@ $ git rm --cached development.log                  # What if you're already trac
 $ git rm -r --cached <dir-name>                    # Remove the cache for a directory from .idea
 $ git log --format="%h" <file-name> | xargs git show --name-only # get list of modified files where a specific file is modified 
 $ git show --name-only $(git rev-list HEAD -- gulpfile.js)       # get list of modified files where a specific file is modified (duplicate above)
+
+# Go to next commit
+$ git log --reverse --pretty=%H | grep -A 1 $(git rev-parse HEAD) | tail -n1 | xargs git checkout
+# --reverse output the commits chosen to be shown in reverse order.
+# e.g. git log -10 --reverse would get last 10 commits then reverse it
 ```
 
 #### Recovery/Reset:

@@ -61,6 +61,7 @@ jenkins ALL=(ALL:ALL) ALL
 
 ##### Forwarding SSH Agent  
 ```
+$ eval "$(ssh-agent)"
 $ ssh-add ~/.ssh/id_rsa          # add ssh key to list of agent identites
 $ ssh-add -l                     # you can see the agent just added
 $ sudo nano /etc/ssh/ssh_config  # open ssh_config file and add two lines down

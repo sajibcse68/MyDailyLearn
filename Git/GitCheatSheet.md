@@ -422,6 +422,7 @@ $ git whatchanged --since="1 day ago" <file>   # see the changes of a specific f
 $ git clone <url> --branch <branch-name>       # clone a specific branch
 $ git clone <url> -b <branch>                  # clone into a new local branch instead of master
 $ git clone <url> --single-branch              # clone only single branch
+$ git clone user@<private-ip>:<repo-path>      # clone from other machine over ssh (machines connected in local network)
 $ git clone <url> --depth=1                    # Create a shallow clone with a history truncated to the specified number of commits
 $ git gui
 $ git ls-tree -d HEAD                          # Tree object including the mode and the name of each item and the SHA value

@@ -11,7 +11,8 @@ $ git config --local user.email <your-email>
 ```
 #### Some other necessary ``config`` commands
 ```sh
-$ git config --list                                 # See full configuration of git                           
+$ git config --list                                 # See full configuration of git
+$ git config --list --show-origin                   # See full configuration with config file path
 $ git config --global core.editor emacs             # Use emacs for interactive commands
 $ git config --global merge.tool opendiff           # Use opendiff for merging conflicts
 $ git config --global color.ui true                 # Better visualization            

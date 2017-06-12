@@ -11,7 +11,8 @@ $ git config --local user.email <your-email>
 ```
 #### Some other necessary ``config`` commands
 ```sh
-$ git config --list                                 # See full configuration of git                           
+$ git config --list                                 # See full configuration of git
+$ git config --list --show-origin                   # See full configuration with config file path
 $ git config --global core.editor emacs             # Use emacs for interactive commands
 $ git config --global merge.tool opendiff           # Use opendiff for merging conflicts
 $ git config --global color.ui true                 # Better visualization            
@@ -124,6 +125,7 @@ $ git push -f origin <branch-name>                # Overwrite remote branch (by 
 
 # Merge
 $ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch
+$ git merge-base HEAD origin/master                 # Find the base commit between two branches
 $ git mergetool
 $ git merge <from-commit> <to-commit>               # Merge a range of commit (including two given commits)
 $ git merge --squash <privateFeatureBranch>

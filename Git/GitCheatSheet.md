@@ -125,6 +125,7 @@ $ git push -f origin <branch-name>                # Overwrite remote branch (by 
 
 # Merge
 $ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch
+$ git merge-base HEAD origin/master                 # Find the base commit between two branches
 $ git mergetool
 $ git merge <from-commit> <to-commit>               # Merge a range of commit (including two given commits)
 $ git merge --squash <privateFeatureBranch>

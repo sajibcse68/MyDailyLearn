@@ -72,8 +72,8 @@ $ git config --global alias.br branch        # git br -> git branch
 ####  Add, Commit, Show, Amend, Pull, Push, Merge & Delete:
 ```sh
 # Add
-$ git add .                                         # Adds file changes to the index                      
-$ git add --all                                     # Add all changes
+$ git add .                                         # Stage Modified and New files
+$ git add -A                                        # -A = --all, Stage Modified, New and Deleted files
 $ git add -p                                        # Stage a particular change
 
 # Commit                                                                          

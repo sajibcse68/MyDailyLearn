@@ -5,6 +5,12 @@
     - Server sends HTTP response to the client (w/resource)
     - Client closes connection to server
 #### URN -> URI -> URL
+**https://a.bcd.com/wiki/fish** here:
+
+- *https* is the scheme/protocol. (e.g. http/https/file)
+- *a.bcd.com* is the hostname.
+- */wiki/fish* is the path.
+
 - URN (Uniform Resource Name)
     - Uniquely identifies resources or name of resource
     - Does not tell us how to get the resource

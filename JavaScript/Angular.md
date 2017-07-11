@@ -16,13 +16,12 @@
 #### Use `TypeScript` as Transpiler
 TypeScript is Microsoft's extension of JavaScript that allows the use of all ES2015 features and adds powerful type
 checking and object-oriented features.
-
 - We are coding Angular using TypeScript, a language that transpiles into JavaScipt.
 - We use custom HTML tag (aka, selector) to show where we want our component to load inside out HTML.
 - Our component decorator is what truns plain Typescript class into a component.
 
 #### Structural Directives
-- A directive (within Angular) is how we add dynamic behavior to HTML.
+- A directive (within Angular) is how we add dynamic begavior to HTML.
 - There are three kinks of directives:
   - Component
     - Has a template
@@ -32,8 +31,16 @@ checking and object-oriented features.
 
 #### Pipes and Methods
 - A pipe takes in data as input and tranforms it to a desired output.
-
+- e.g.
+    - lowecase: Well, lowecase
+    - date: Formats dates how we like them
+    - number: Formats numbers
+    - decimal: Formats decimals
+    - replace: Creates a new string, replacing specified characters
+    - slice: Creates a new list or string containing a subset of the elements
+    - json: Transforms any input to a JSON.formatted string
 #### spliting to Two Components
+- Our `main.ts` is where we import our first component and bootstrap it.
 - In order to import a class, we must give it the `export` keyword.
 - We use `directives` metadata to list the directives our component class.
 - Components are the building blocks of our application.
@@ -51,7 +58,7 @@ checking and object-oriented features.
 
 #### Data Binding
 - Property binding allows us to bind component properties to any DOM element properties.
-- Any update to the component property value will update the DOM property, but not vice versa--that's why it's `one-way binding`.
+- Any update to the component property value will update the DOM property, but not vice verssa--that's why ti's `one-way binding`.
 - Class binding allows us to specify a CSS class to add to a DOM element if a component property is true.
 
 #### Event Binding
@@ -61,14 +68,14 @@ checking and object-oriented features.
 
 #### Two Way Binding
 - Two-way binding means that if the component property is modified inside the component (JavaScript) or inside our
-  web page (HTML), it will stay in sync.
+  web page (HTML), if will stay in sync.
 - The [(ngModel)], allows us to have one command to express two-way data binding.
 - [()] syntax is sometimes called **banana in a box**.
-- When we use the **ngModel** syntax, we can only set it equal to a data bound property.
+- When we use th **ngModel** syntax, we can only set it equal to a data bound property.
   - Ok: [(ngModal)]="user.age", [(ngModal)]="firsName"
   - Not Ok: [(ngModal)]="fullName()"
 #### Services
-- Services are used to organise and share code accross our app, and they'are usually where we create.
+- Services are used to organise and share code accross our app, and they'are usually where we create
   our data access methods.
 - When we run an Angular 2 application, it creates a dependency injector. An injector is in charge of knowing how to
   create and send things.

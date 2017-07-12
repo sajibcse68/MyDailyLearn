@@ -418,6 +418,7 @@ $ git diff --cached                            # index vs repo, show all staged 
 $ git diff --staged                            # synonym of --cached, index vs repo, show all staged and unstaged file changes
 $ git diff HEAD                                # workspace vs repo
 $ git diff -- file_delete                      # see the deleted files, use '--' to separate paths from revisions
+$ git shortlog -sen --format="[%s]" --         # see all the users with name, email & total commit numbers
 $ git whatchanged --since="3 day ago"          # see the changed file lists name since 3 days
 $ git whatchanged --since="1 day ago" -p       # see the changes with file lists
 $ git whatchanged --since="1 day ago" <file>   # see the changes of a specific file

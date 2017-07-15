@@ -75,6 +75,7 @@ $ git config --global alias.br branch        # git br -> git branch
 $ git add .                                         # Stage Modified and New files
 $ git add -A                                        # -A = --all, Stage Modified, New and Deleted files
 $ git add -p                                        # Stage a particular change
+$ git add -N                                        # --intend-to-add, An entry for the path is placed in the index with no content
 
 # Commit                                                                          
 $ git commit -am 'commit message'                   # Add & commit        

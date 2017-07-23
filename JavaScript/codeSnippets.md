@@ -113,6 +113,17 @@ Foo.method = function() {
 }
 ```
 
+### Get user's current longitude and latitude
+Every browser has an built in navigator that can give us user's langitude and latitude.
+Browser will show a promt to allow/block this site from knowing user's current location.
+
+```js
+if( navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(pos) {
+    $('#data').html("latitude: " + pos.coords.latitude + "<br>longitude: " + pos.coords.longitude);
+  });
+}
+```
  
 ### Fancy Codes
 

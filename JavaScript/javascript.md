@@ -214,6 +214,18 @@ function assignTorpedo (passengerArray) {
   }
 ```
 
+#### Check if an object has a key
+```js
+if (Object.prototype.hasOwnProperty.call('myObject', 'key') {
+  return true;
+}
+
+Or,
+
+if ('key' in 'myObject') {
+  return true;
+}
+```
 #### Why `Eval` should be avoided!
 ```
 function regimentmotto(number, motto) {

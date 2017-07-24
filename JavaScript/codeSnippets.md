@@ -124,6 +124,41 @@ if( navigator.geolocation) {
   });
 }
 ```
+
+### Convert Integer value to Roman numerical string.
+
+The Rules-
+- When the symbol appears `after a larger` symbol it is `added`.
+  - e.g. VI = V + I = 5 + 1 = 6
+- But if the number appears `before a larger` symbol it is `subtracted`.
+  - e.g. IX = X - I = 10 - 1 = 9
+- Don't use the same symbol more than three times in a row.
+
+
+```js
+function convertToRoman(num) {
+  var huns = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
+  var tens = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"];
+  var ones = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+
+  console.log('>num', num);
+  var res = "";
+  while (num >= 1000) {
+    res += "M";
+    num -= 1000;
+  }
+
+  res += huns[Math.floor(num/100)]; num %= 100;
+
+  res += tens[Math.floor(num/10)]; num %= 10;
+
+  res += ones[num];
+
+  return res;
+}
+
+convertToRoman(36);
+```
  
 ### Fancy Codes
 

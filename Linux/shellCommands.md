@@ -127,33 +127,26 @@ User git
 [see](http://dbushell.com/2013/01/27/multiple-accounts-and-ssh-keys/)
 
 ##### Add a Public Key
-    ```
     $sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys < add keys here >
-    ```
 
 ##### Change ownership of a file / directory
-    ```
     $sudo chown -R <username>:<group> <directory>
-    ```
 
 ##### java/jdk  
-``` 
-$ ls -l 'which java'
-/usr/libexec/java_home     # where is java home directory
-```
-##### Manage user  
-``` 
-$ cat /etc/passwd
-$ sudo adduser <username>  # add a user
-$ passwd <username>        # change password for a user
-```
+    $ ls -l 'which java'
+    /usr/libexec/java_home     # where is java home directory
+
+##### Manage user
+    $ cat /etc/passwd
+    $ sudo adduser <username>  # add a user
+    $ passwd <username>        # change password for a user
 ##### Different color file or directory means in ubuntu
-**Blue** color -- **Directory**  
-**Green** color -- **Executable** or **recognized data** file  
-**Sky Blue** Color -- **Linked** file  
-**yellow with black** background -- **device**  
-**Pink** colour -- **graphic image** file  
-**Red** -- **Archive** file  
+    **Blue** color -- **Directory**
+    **Green** color -- **Executable** or **recognized data** file
+    **Sky Blue** Color -- **Linked** file
+    **yellow with black** background -- **device**
+    **Pink** colour -- **graphic image** file
+    **Red** -- **Archive** file
 
 `For more informations type 'man dir_colors' in terminal.`
 

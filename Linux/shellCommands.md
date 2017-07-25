@@ -141,12 +141,12 @@ User git
     $ sudo adduser <username>  # add a user
     $ passwd <username>        # change password for a user
 ##### Different color file or directory means in ubuntu
-    **Blue** color -- **Directory**
-    **Green** color -- **Executable** or **recognized data** file
-    **Sky Blue** Color -- **Linked** file
-    **yellow with black** background -- **device**
-    **Pink** colour -- **graphic image** file
-    **Red** -- **Archive** file
+**Blue** color -- **Directory**
+**Green** color -- **Executable** or **recognized data** file
+**Sky Blue** Color -- **Linked** file
+**yellow with black** background -- **device**
+**Pink** colour -- **graphic image** file
+**Red** -- **Archive** file
 
 `For more informations type 'man dir_colors' in terminal.`
 

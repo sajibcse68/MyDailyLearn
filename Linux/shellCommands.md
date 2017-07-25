@@ -142,13 +142,12 @@ User git
     $ passwd <username>        # change password for a user
 
 ##### Different color file or directory means in ubuntu
-
-**Blue** color -- **Directory**
-**Green** color -- **Executable** or **recognized data** file
-**Sky Blue** Color -- **Linked** file
-**yellow with black** background -- **device**
-**Pink** colour -- **graphic image** file
-**Red** -- **Archive** file
+**Blue** color -- **Directory**  
+**Green** color -- **Executable** or **recognized data** file  
+**Sky Blue** Color -- **Linked** file  
+**yellow with black** background -- **device**  
+**Pink** colour -- **graphic image** file  
+**Red** -- **Archive** file  
 
 `For more informations type 'man dir_colors' in terminal.`
 
@@ -232,35 +231,15 @@ M + b:  Move backward a word.
 * C-y Yank the most recently killed text back into the buffer at the cursor.
 * M-y Rotate the kill-ring, and yank the new top. You can only do this if the prior command    is C-y or M-y.
 
-#### Intros to shell variables
-
-- Assign a variable.
-    ```
-    a=3          # assign a variable (no space before/after "=" sign)
-    echo $a      # see the value of a
-    ```
-- unset/clear a variable.
-    ```
-    unset a      # clear the variable
-    ```
-- Difference between '' and "".
-    ```
-    a=5
-    b='a is $a'      # echo $a is: a is $a  ($a is not interpolate)
-    b="a is $a"      # echo $a is: a is 5  ($a is interpolating the $ variable to the value)
-
-    Note: "" interpolate the $ sign variable syntax into the variable's value, but '' does not do that
-    ```
-
-##### The Linux five basic commands a programmer should know about:
-   ls, cd, mv, mkdir, rm
+##### The Linux five basic commands a programmer should know about
+   ls, cd, mv, mkdir, rm  
 // Additional basic commands:
   pwd - Print Working Directory
   cd - Change Directory
   ls - LiSt directory contents
-   echo, cat, man, pwd, cp, ln, less, grep, tail, ssh, reboot, poweroff
-// Bonus
-   vim
+   echo, cat, man, pwd, cp, ln, less, grep, tail, ssh, reboot, poweroff  
+// Bonus  
+   vim  
 But really, a programmer needs more than that.  
 
 #### Different problem solve

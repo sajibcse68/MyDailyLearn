@@ -213,6 +213,21 @@ M + b:  Move backward a word.
 * C-y Yank the most recently killed text back into the buffer at the cursor.
 * M-y Rotate the kill-ring, and yank the new top. You can only do this if the prior command    is C-y or M-y.
 
+#### Intros to shell variables
+
+- Assign a variable-
+    - a=3        # assign a variable (no space before/after "=" sign)
+    - echo $a    # see the value of a
+    
+- unset/clear a variable
+    - unset a     # clear the variable
+- Difference between '' and ""
+    - a=5
+    - b='a is $a'    # echo $a is: a is $a  ($a is not interpolate)
+    - b="a is $a"    # echo $a is: a is 5  ($a is interpolating the $ variable to the value)
+    - Note: "" interpolate the $ sign variable syntax into the variable's value, but '' does not do that
+
+
 ##### The Linux five basic commands a programmer should know about
    ls, cd, mv, mkdir, rm  
 // Additional basic commands:

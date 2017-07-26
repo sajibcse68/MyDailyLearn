@@ -48,3 +48,10 @@ console.log(Listening on port 8080);
 ```
 browser-sync start --server --directory --files "*"
 ```
+
+#### Reinstall npm using nvm
+
+    $ nvm install v<newversion> --reinstall-packages-from=<oldversion>
+    # e.g. nvm install v7.1.0 --reinstall-packages-from=4.3.2
+
+    $ nvm use 4.3.2            # Use a specific version

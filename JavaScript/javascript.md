@@ -359,6 +359,37 @@ elem.addEventListener('click', (function(numCopy) {         // Now, if doesn't m
 
 
 
+<<<<<<< Updated upstream
+
+=======
+```js
+function theBridgeOfHoistingDoom() { |
+                                     | Alrighty, here’s the hoisted version. The function looks for any variables to
+                                     | create space for, finds ring and power, and sets them both to undefined. The
+  function balrog() {                | order of declared functions is balrog, elf, balrog, wizard, and elf. When older
+    return "fire";                   | versions of the loaded functions are replaced, we are left with balrog, wizard,
+  }                                  | and then elf. The only executable code that actually ever runs are the lines
+  var ring;                          | that precede and include the return of the call to wizard
+  function elf() {                   |
+    return "pointy ears";            |
+  }                                  | function theBridgeOfHoistingDoom() {
+  ring = wizard;                     |   var ring = undefined;
+  wizard = balrog;                   |   var power = undefined;
+  return wizard();                   |   function balrog() {
+  function balrog() {                |     return "whip";
+    return "whip";                   |   }
+  }                                  |   function wizard() {
+  function wizard() {                |     return "white";
+    return "white";                  |   }
+  }                                  |   function elf() {
+  var power = ring();                |     return "immortal";
+  return elf();                      |   }
+  function elf() {                   |   ring = wizard;
+    return "immortal";               |   wizard = balrog;
+  }                                  |   return wizard();
+}                                    | }
+```
+>>>>>>> Stashed changes
 
 
 
@@ -367,9 +398,63 @@ elem.addEventListener('click', (function(numCopy) {         // Now, if doesn't m
 
 
 
+<<<<<<< Updated upstream
+
+=======
+```js
+function theBridgeOfHoistingDoom() { | Alrighty, here’s the hoisted version. The function looks for any variables to
+  function fellowship() {            | create space for, finds sword, dwarf, fall, and ring, and sets them all to
+    return "friends";                | undefined. There’s only one declared function, fellowship, so that comes next.
+  }                                  | In this case, there are no replacement declared functions. The executable code
+  var sword = "sting";               | that assigns new values or functions to variable has all var keywords popped off.
+  var dwarf = function() {           | Any executable code after the first return of sword is excluded from the answer.
+    return "axe";                    |
+  };                                 | function theBridgeOfHoistingDoom() {
+  var fall = "Fly you fools!";       |   var sword = undefined;
+  fellowship = function() {          |   var dwarf = undefined;
+    return "broken";                 |   var fall = undefined;
+  };                                 |   var ring = undefined;
+  ring();                            |   function fellowship() {
+  return sword;                      |     return "friends";
+  fellowship = function() {          |   }
+    return "mines"                   |   sword = "sting";
+  };                                 |   dwarf = function() {
+  sword = function() {               |     return "axe";
+    return "glamdring";              |   };
+  };                                 |   fall = "Fly you fools!";
+  var ring = function() {            |   fellowship = function() {
+    return "precious";               |     return "broken";
+  };                                 |   };
+}                                    |   ring();
+                                     |    return sword;
+                                     |  }
+```
+>>>>>>> Stashed changes
 
 
 
 
-
-
+<<<<<<< Updated upstream
+=======
+```js
+function theBridgeOfHoistingDoom() {   | Answer: console.log("ERROR");
+  var sword = undefined;               | // cause ring() is not a function, it's a string. ("undefined").
+  var dwarf = undefined;               |
+  var fall = undefined;                |
+  var ring = undefined;                |
+  function fellowship() {              |
+    return "friends";                  |
+  }                                    |
+  sword = "sting";                     |
+  dwarf = function() {                 |
+    return "axe";                      |
+  }                                    |
+  fall = "Fly you fools!";             |
+  fellowship = function() {            |
+    return "broken";                   |
+  }                                    |
+  ring();                              |
+  return sword;                        |
+}                                      |
+```                                    |
+>>>>>>> Stashed changes

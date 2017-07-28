@@ -1,4 +1,8 @@
-#### Configure Git:
+## [Configuration files](#configuration-files):
+
+
+
+## [Configure Git](#config):
 We can configure git globally. We can see out global git configure file ``(~/.gitconfig)``.
 ```
 $ git config --global user.name <your-name>
@@ -45,8 +49,6 @@ $ git config --global credential.helper manager
 $ git credential-manager delete <url>                   # delete credential-manager
 e.g. git credential-manager delete https://github.com
 
-
-
 # Auto correct Line Feed
 $ git config --global core.autocrlf input    # On unix line systems (Linux, OSX, etc)
 $ git config --global core.autocrlf true     # On windows system
@@ -59,7 +61,7 @@ $ git config --global alias.br branch        # git br -> git branch
 ```
 #### Branching:
 * master    ->  default develop branch
-* origin    ->  default upstream branch
+* origin    ->  default remote address/url
 * HEAD      ->  current branch
 * HEAD^     ->  parent of HEAD
 * foo..bar  ->  from branch foo to branch bar

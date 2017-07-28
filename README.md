@@ -1,11 +1,21 @@
 # MyDailyLearn
 Here is some important `commands` or `code snippets` on different topics that I am learning in my developing life.
 
-## Topics
-#### Git ([see here](https://github.com/sajibcse68/MyDailyLearn/blob/master/Git/GitCommands.md))
----
-* Global/local config, set alias
-* Branching, commit, pull, push, reflog, log (decorate)
+## Table of Contents
+1. [Git](#git)
+1. [JavaScript](#javascript)
+1. [Linux](#linux)
+1. [Docker](#docker)
+
+
+## [Git](https://github.com/sajibcse68/MyDailyLearn/blob/master/Git/GitCheatSheet.md)
+
+- [Configure git](#configure-git)
+- [Branching](#branching)
+- 
+
+sdfjl k
+
 * Merging, amend, conflicts
 * Squash, stash
 * Rebase

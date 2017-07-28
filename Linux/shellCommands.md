@@ -1,3 +1,7 @@
+
+
+
+
 ### Search 
 ```  
 # Search inside text file
@@ -21,43 +25,54 @@ $ wc -l science.txt                // Count lines
 ```
 [see this](http://www.cyberciti.biz/faq/howto-search-find-file-for-text-string/) 
 
-#### Explanation of Chmod permissions (flags): 600, 0600, 700, 777, 100 etc..
+#### Explanation of Chmod permissions (flags): 600, 0600, 700, 777, 100 etc.
 * Permissions:  
-  1 -- can execute  
-  2 -- can write  
-  4 -- can read  
-  
+    ```
+    1 -- can execute
+    2 -- can write
+    4 -- can read
+    ```
 *  The octal number is the sum of those free permissions:
-   -  3(1+2) - can execute and write
-   -  6(2+4) - can write and read
-
-* Position of th digit in value:  
-  1 - what owner can   
-  2 - what users in the file group(class) can  
-  3 - what users not in the file group(class) can  
-
-- Examples:  
-  chmod 600 file - owner can read and write  
-  chmod 700 file - owner can read, write and execute  
-  chmod 666 file - all can read and write  
-  chmod 777 file - all can read, write and execute  
-
+    ```
+    - 3(1+2) - can execute and write
+    - 6(2+4) - can write and read
+    ```
+* Position of the digit in value:
+    ```
+    1 - what owner can
+    2 - what users in the file group(class) can
+    3 - what users not in the file group(class) can
+    ```
+- Examples:
+    ```
+    chmod 600 file - owner can read and write
+    chmod 700 file - owner can read, write and execute
+    chmod 666 file - all can read and write
+    chmod 777 file - all can read, write and execute
+    ```
 [See this](http://www.zz9.co.za/chmod-permissions-flags-explained-600-0600-700-777-100-etc/)
 
 #### Add sudo permission for a user
 
-```$ sudo visudo```
+```
+$ sudo visudo
+```
 #### User privilege specification
-root    ALL=(ALL:ALL) ALL  
+```
+root    ALL=(ALL:ALL) ALL
 jenkins ALL=(ALL:ALL) ALL
-
+```
 #### SSH
 ---
 ##### Get SSH RSA Fingerprints
-```$ ssh-keygen -lf ~/.ssh/id_rsa.pub```
+```
+$ ssh-keygen -lf ~/.ssh/id_rsa.pub
+```
 
 ##### Remove keys from known_hosts
-```$ ssh-keygen -R <ip_address / host_name>```
+```
+$ ssh-keygen -R <ip_address / host_name>
+```
 
 ##### Forwarding SSH Agent  
 ```
@@ -71,18 +86,24 @@ Host <my-servers.com>
 ```echo "$SSH_AUTH_SOCK"```
 
 ##### Manage SSH Keys For Multiple Accounts
-* Bitbucket does not allow us to use the same SSH key with more than one
+* Bitbucket/GitHub does not allow us to use the same SSH key with more than one
    Bitbucket account.
 
 1. Generate SSH Key:  
-```$ ssh-keygen -t rsa -C <email@example.com>```
+    ```
+    $ ssh-keygen -t rsa -C <email@example.com>
+    ```
 
-2. For multiple Bitbucket accounts (and I assume GitHub too) we need multiple SSH Keys.
+2. For multiple Bitbucket accounts (or GitHub) we need multiple SSH Keys.
    Generate another ssh key with a different name 'accountB':  
-```$ ssh-keygen -t rsa -f ~/.ssh/accountB -C "email@example.com"```
+    ```
+    $ ssh-keygen -t rsa -f ~/.ssh/accountB -C "email@example.com"
+    ```
 
 3. Create config file '~/.ssh/config' with contains similar to:  
-```$ nano ~/.ssh/config``` 
+    ```
+    $ nano ~/.ssh/config
+    ```
 
 //  paste this  
 > Host bitbucket.org  
@@ -98,32 +119,32 @@ User git
   IdentitiesOnly yes  
   IdentityFile ~/.ssh/accountB  
 
-4. Now clone from default account  
-```$ git clone git@bitbucket.org:username/project.git```
+4. Now clone from *default* account  
+    ```
+    $ git clone git@bitbucket.org:username/project.git
+    ```
 
-5. Clone from accountB account  
-```$ git clone git@bitbucket-accountB:username/project.git```
-
-[see](http://dbushell.com/2013/01/27/multiple-accounts-and-ssh-keys/)
-
+5. Clone from *accountB* account
+    ```
+    $ git clone git@bitbucket-accountB:username/project.git
+    ```
+[See More](http://dbushell.com/2013/01/27/multiple-accounts-and-ssh-keys/)
 
 ##### Add a Public Key
-``` $sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys < add keys here >```
+    $sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys < add keys here >
 
 ##### Change ownership of a file / directory
-``` $sudo chown -R <username>:<group> <directory> ```
+    $sudo chown -R <username>:<group> <directory>
 
 ##### java/jdk  
-``` 
-$ ls -l 'which java'
-/usr/libexec/java_home     # where is java home directory
-```
-##### Manage user  
-``` 
-$ cat /etc/passwd
-$ sudo adduser <username>  # add a user
-$ passwd <username>        # change password for a user
-```
+    $ ls -l 'which java'
+    /usr/libexec/java_home     # where is java home directory
+
+##### Manage user
+    $ cat /etc/passwd
+    $ sudo adduser <username>  # add a user
+    $ passwd <username>        # change password for a user
+
 ##### Different color file or directory means in ubuntu
 **Blue** color -- **Directory**  
 **Green** color -- **Executable** or **recognized data** file  
@@ -196,8 +217,9 @@ $ scp /home/sajib/TigerWorks/Source/dockerfiles/jenkins/jenkins_global_config/ r
 ```
 
 #### Run a local server
+```
 $ sudo python3 -m http.server 80
-
+```
 ##### Cursor movement
 C + a:  Move to the start of the line.  
 C + e:  Move to the end of the line.  

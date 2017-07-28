@@ -486,9 +486,10 @@ var funcName = function(a, b) {
    // loads only when the program reaches the line of code
    // Note the semicolon, it assigns the entire function to a variable
 };
+```
 
 ## Hoisting
-- First, memory is set aside for all necessary variables and `declared functions`.
+##### First, memory is set aside for all necessary variables and `declared functions`.
 
 ```js
 functions getMysterNumber () { |    // loads like this
@@ -504,7 +505,7 @@ functions getMysterNumber () { |    // loads like this
 }                              |   }
 ```
 
-- Function Expressions are never hoisted! They are treated as assignments.
+##### Function Expressions are never hoisted! They are treated as assignments.
 
 ```js                                 | // loads look like
 function getMysteryNumber() {         | function getMysteryNumber() {
@@ -519,7 +520,8 @@ function getMysteryNumber() {         | function getMysteryNumber() {
 }                                     |   }                             |
                                         }
 ```
-// check if 'return' statement is at the top
+
+##### Check if 'return' statement is at the top
 ```js                                 | // loads look like
 function getMysteryNumber() {         | function getMysteryNumber() {
   return chooseMystery();             |
@@ -537,7 +539,7 @@ function getMysteryNumber() {         | function getMysteryNumber() {
                                         }
 ```
 
-#### Analyzing Hoisting Load Order
+##### Analyzing Hoisting Load Order
 
 
 ```js
@@ -568,7 +570,7 @@ function theBridgeOfHoistingDoom() { |
 }                                    | }
 ```
 
-- Analyzing load order II
+###### Analyzing load order II
 
 1. For all variable declarations, put the corresponding declarations at the top of the function. Assign them a value
    of undefined and maintain their order.
@@ -607,11 +609,13 @@ function theBridgeOfHoistingDoom() { | Alrighty, here’s the hoisted version. T
     return "precious";               |     return "broken";
   };                                 |   };
 }                                    |   ring();
-```                                  |    return sword;
+                                     |    return sword;
                                      |  }
-                                     |
 
-- Analyze Load Order III
+```
+
+
+###### Analyze Load Order III
 Q. What is the output of theBridgeOfHoistingDoom()?
 
 1. If the result is undefined, log an "undefined" string to the console.

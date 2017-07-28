@@ -115,12 +115,12 @@ User git
   IdentitiesOnly yes  
   IdentityFile ~/.ssh/accountB  
 
-4. Now clone from default account  
+4. Now clone from *default* account  
     ```
     $ git clone git@bitbucket.org:username/project.git
     ```
 
-5. Clone from accountB account
+5. Clone from *accountB* account
     ```
     $ git clone git@bitbucket-accountB:username/project.git
     ```

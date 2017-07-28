@@ -82,7 +82,7 @@ Host <my-servers.com>
 ```echo "$SSH_AUTH_SOCK"```
 
 ##### Manage SSH Keys For Multiple Accounts
-* Bitbucket does not allow us to use the same SSH key with more than one
+* Bitbucket/GitHub does not allow us to use the same SSH key with more than one
    Bitbucket account.
 
 1. Generate SSH Key:  
@@ -90,7 +90,7 @@ Host <my-servers.com>
     $ ssh-keygen -t rsa -C <email@example.com>
     ```
 
-2. For multiple Bitbucket accounts (and I assume GitHub too) we need multiple SSH Keys.
+2. For multiple Bitbucket accounts (or GitHub) we need multiple SSH Keys.
    Generate another ssh key with a different name 'accountB':  
     ```
     $ ssh-keygen -t rsa -f ~/.ssh/accountB -C "email@example.com"
@@ -102,17 +102,17 @@ Host <my-servers.com>
     ```
 
 //  paste this  
-> Host bitbucket.org  
-> User git  
-> Hostname bitbucket.org  
-> PreferredAuthentications publickey  
-> IdentityFile ~/.ssh/id_rsa  
->  
-> Host bitbucket-accountB  
-User git  
-  Hostname bitbucket.org  
-  PreferredAuthentications publickey  
-  IdentitiesOnly yes  
+> Host bitbucket.org
+  User git
+  Hostname bitbucket.org
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_rsa  
+   
+> Host bitbucket-accountB
+  User git
+  Hostname bitbucket.org
+  PreferredAuthentications publickey
+  IdentitiesOnly yes
   IdentityFile ~/.ssh/accountB  
 
 4. Now clone from default account  
@@ -124,7 +124,7 @@ User git
     ```
     $ git clone git@bitbucket-accountB:username/project.git
     ```
-[see](http://dbushell.com/2013/01/27/multiple-accounts-and-ssh-keys/)
+[See More](http://dbushell.com/2013/01/27/multiple-accounts-and-ssh-keys/)
 
 ##### Add a Public Key
     $sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys < add keys here >

@@ -1,3 +1,7 @@
+
+
+
+
 ### Search 
 ```  
 # Search inside text file
@@ -21,7 +25,7 @@ $ wc -l science.txt                // Count lines
 ```
 [see this](http://www.cyberciti.biz/faq/howto-search-find-file-for-text-string/) 
 
-#### Explanation of Chmod permissions (flags): 600, 0600, 700, 777, 100 etc..
+#### Explanation of Chmod permissions (flags): 600, 0600, 700, 777, 100 etc.
 * Permissions:  
     ```
     1 -- can execute
@@ -33,7 +37,7 @@ $ wc -l science.txt                // Count lines
     - 3(1+2) - can execute and write
     - 6(2+4) - can write and read
     ```
-* Position of th digit in value:
+* Position of the digit in value:
     ```
     1 - what owner can
     2 - what users in the file group(class) can

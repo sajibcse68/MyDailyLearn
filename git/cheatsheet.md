@@ -1,5 +1,7 @@
 ## Configure Git:
-#### We have mainly three types of config file (system's, user's, repo's)
+#### Git config file locations
+
+We have mainly three types of config file (system's, user's, repo's)
 
     /etc/gitconfig        # (--system), system's config file
     ~/.gitconfig          # (--global), user's config file
@@ -11,13 +13,17 @@
     3. A second user-specific configuration file located at $XDG_CONFIG_HOME/git/config or $HOME/.config/git/config.
     4. The local repo's config file .git/config.
 
-#### Configure user's *name* and *email* globally ( save in `(~/.gitconfig)` file).
+#### Configure user's *name* and *email* 
+
+Configure globally ( save in `(~/.gitconfig)` file).
 ```
 $ git config --global user.name <your-name>
 $ git config --global user.email <your-email>
 ```
 
-#### Configure user's *name* and *email* locally ( save in `(<repo>/.git/config)` file). It **overwrites the global configuration**. This config is only for the specific repository.
+Configure locally ( save in `(<repo>/.git/config)` file). It **overwrites** the global configuration.
+This config is only for the specific repository.
+
 ```
 $ git config --local user.name <your-name>
 $ git config --local user.email <your-email>

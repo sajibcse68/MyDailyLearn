@@ -1,3 +1,11 @@
+<<<<<<< HEAD:Git/GitCheatSheet.md
+## [Configuration files](#configuration-files):
+
+
+
+## [Configure Git](#config):
+We can configure git globally. We can see out global git configure file ``(~/.gitconfig)``.
+=======
 ## Configure Git:
 #### Git config file locations
 
@@ -16,6 +24,7 @@ We have mainly three types of config file (system's, user's, repo's)
 #### Configure user's *name* and *email* 
 
 Configure globally ( save in `(~/.gitconfig)` file).
+>>>>>>> f2c81028cad2950f5d21ebad0fcc87e02f2f65e9:git/cheatsheet.md
 ```
 $ git config --global user.name <your-name>
 $ git config --global user.email <your-email>
@@ -80,7 +89,7 @@ $ git config --global alias.br branch        # git br -> git branch
 
 ## Branching
 * master    ->  default develop branch
-* origin    ->  default upstream branch
+* origin    ->  default remote address/url
 * HEAD      ->  current branch
 * HEAD^     ->  parent of HEAD
 * foo..bar  ->  from branch foo to branch bar

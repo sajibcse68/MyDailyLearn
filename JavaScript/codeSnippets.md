@@ -113,6 +113,52 @@ Foo.method = function() {
 }
 ```
 
+### Get user's current longitude and latitude
+Every browser has an built in navigator that can give us user's langitude and latitude.
+Browser will show a promt to allow/block this site from knowing user's current location.
+
+```js
+if( navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(pos) {
+    $('#data').html("latitude: " + pos.coords.latitude + "<br>longitude: " + pos.coords.longitude);
+  });
+}
+```
+
+### Convert Integer value to Roman numerical string.
+
+The Rules-
+- When the symbol appears `after a larger` symbol it is `added`.
+  - e.g. VI = V + I = 5 + 1 = 6
+- But if the number appears `before a larger` symbol it is `subtracted`.
+  - e.g. IX = X - I = 10 - 1 = 9
+- Don't use the same symbol more than three times in a row.
+
+
+```js
+function convertToRoman(num) {
+  var huns = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
+  var tens = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"];
+  var ones = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+
+  console.log('>num', num);
+  var res = "";
+  while (num >= 1000) {
+    res += "M";
+    num -= 1000;
+  }
+
+  res += huns[Math.floor(num/100)]; num %= 100;
+
+  res += tens[Math.floor(num/10)]; num %= 10;
+
+  res += ones[num];
+
+  return res;
+}
+
+convertToRoman(36);
+```
  
 ### Fancy Codes
 
@@ -123,9 +169,10 @@ const o = Object.create(null);
 // Convert browser into an Editor
 document.body.contentEditable=true
 
-// console.log vs console.dir
+// console.log, console.dir, console.table
 - console.log prints the element in an HTML-like tree
 - console.dir prints the element in an JSON-like tree
+- console.table prints the values into a table
 
 // Find events associated with an element in the DOM
 const allEvents = getEventListeners($('selector'));

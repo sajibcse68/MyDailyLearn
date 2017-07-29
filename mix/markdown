@@ -84,6 +84,12 @@ Or,
  > - Test 123
  > - Follow  [testing artifacts](http://2.bp.blogspot.com) (more Unit )
 ```
+
+# Checkbox
+[x] checked checkbox
+[]  unchecked checkbox
+
+
 ### Stuff used to make this:
 ---
  * [markdown-it](https://github.com/markdown-it/markdown-it) for Markdown parsing

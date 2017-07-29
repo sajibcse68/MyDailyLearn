@@ -10,11 +10,9 @@ Here is some important `commands` or `code snippets` on different topics that I 
 
 ## [Git](https://github.com/sajibcse68/MyDailyLearn/blob/master/Git/GitCheatSheet.md)
 
-- [Configure git](#configure-git)
-- [Branching](#branching)
+- [Configure git](https://github.com/sajibcse68/MyDailyLearn/blob/git/git/cheatsheet.md#configure-git)
+- [Branching](https://github.com/sajibcse68/MyDailyLearn/blob/git/git/cheatsheet.md#branching)
 - 
-
-sdfjl k
 
 * Merging, amend, conflicts
 * Squash, stash

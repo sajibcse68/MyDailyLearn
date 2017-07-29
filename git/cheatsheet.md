@@ -1,15 +1,35 @@
-#### Configure Git:
-We can configure git globally. We can see out global git configure file ``(~/.gitconfig)``.
+## Configure Git:
+#### Git config file locations
+
+We have mainly three types of config file (system's, user's, repo's)
+
+    /etc/gitconfig        # (--system), system's config file
+    ~/.gitconfig          # (--global), user's config file
+    <repo>/.git/config    # (--local), repo's config file
+    
+    # git searches 4 places for config file
+    1. Your machine's system .gitconfig file. (/usr/local/etc/gitconfig)
+    2. Your user .gitconfig file located at ~/.gitconfig.
+    3. A second user-specific configuration file located at $XDG_CONFIG_HOME/git/config or $HOME/.config/git/config.
+    4. The local repo's config file .git/config.
+
+#### Configure user's *name* and *email* 
+
+Configure globally ( save in `(~/.gitconfig)` file).
 ```
 $ git config --global user.name <your-name>
 $ git config --global user.email <your-email>
 ```
-We can also configure git ``locally``. May be for each local repository if necessary. It ``overwrites the global configuration``.
+
+Configure locally ( save in `(<repo>/.git/config)` file). It **overwrites** the global configuration.
+This config is only for the specific repository.
+
 ```
 $ git config --local user.name <your-name>
 $ git config --local user.email <your-email>
 ```
-#### Some other necessary ``config`` commands
+
+#### Other `config` commands.
 ```sh
 $ git config --list                                 # See full configuration of git
 $ git config --list --show-origin                   # See full configuration with config file path
@@ -56,13 +76,9 @@ $ git config --global alias.st status        # git st -> git status
 $ git config --global alias.co checkout      # git co -> git checkout
 $ git config --global alias.br branch        # git br -> git branch
 
-# Git searches 4 places for config file
-1. Your machine's system .gitconfig file. (/usr/local/etc/gitconfig)
-2. Your user .gitconfig file located at ~/.gitconfig.
-3. A second user-specific configuration file located at $XDG_CONFIG_HOME/git/config or $HOME/.config/git/config.
-4. The local repo's config file .git/config.
 ```
-#### Branching:
+
+## Branching
 * master    ->  default develop branch
 * origin    ->  default upstream branch
 * HEAD      ->  current branch

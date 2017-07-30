@@ -1,11 +1,3 @@
-<<<<<<< HEAD:Git/GitCheatSheet.md
-## [Configuration files](#configuration-files):
-
-
-
-## [Configure Git](#config):
-We can configure git globally. We can see out global git configure file ``(~/.gitconfig)``.
-=======
 ## Configure Git:
 #### Git config file locations
 
@@ -24,7 +16,7 @@ We have mainly three types of config file (system's, user's, repo's)
 #### Configure user's *name* and *email* 
 
 Configure globally ( save in `(~/.gitconfig)` file).
->>>>>>> f2c81028cad2950f5d21ebad0fcc87e02f2f65e9:git/cheatsheet.md
+
 ```
 $ git config --global user.name <your-name>
 $ git config --global user.email <your-email>
@@ -93,6 +85,54 @@ $ git config --global alias.br branch        # git br -> git branch
 * HEAD      ->  current branch
 * HEAD^     ->  parent of HEAD
 * foo..bar  ->  from branch foo to branch bar
+
+#### Create new branch
+
+    $ git branch <name>                  # create a new branch
+    $ git checkout <branch-name>         # switch to a branch
+
+    $ git checkout -b <branch-name>      # create & switch to a branch by a command
+
+Create a branch at a point instead of the last commit of the current branch (also known as `HEAD`).
+
+    $ git checkout -b <name> <start-point>
+
+The <start-point> can be any [revision](https://git-scm.com/docs/revisions) known to git (e.g. branch name, commit SHA, symbolic reference HEAD or tag-name etc.). 
+
+    $ git checkout -b <name> <some-other-branch>
+    $ git checkout -b <name> <commit-sha>
+    $ git checkout -b <name> <tag-name>
+    $ git checkout -b <name> HEAD~2
+
+Create a local branch from a remote branch.
+
+    $ git checkout -b <name> <remote>/<branch-name>
+
+Create a local branch (say, 'feature') tracking with remote branch (say, `origin/feature`).
+
+     $ git fetch
+     $ git checkout feature      # create a local branch 'feature' branch tracking with origin/feature branch
+
+#### Delete a branch
+
+Delete a local branch.
+
+      $ git branch -d <branch-name>
+
+      # shortcut of
+      $ git branch --delete <branch-name>
+
+This will not delete the branch if the branch has any unmerged changes with  *upstream-branch*, or in *HEAD* if no
+upstream was set with --track or --set-upstream.
+
+Force to delete a local branch (even if it has unmerged changes).
+
+    $ git branch -D <branch-name>
+
+    # shortcut of
+    $ git branch --delete --force <branch-name>
+
+
 
 ####  Add, Commit, Show, Amend, Pull, Push, Merge & Delete:
 ```sh

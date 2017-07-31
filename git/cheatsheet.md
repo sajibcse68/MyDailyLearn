@@ -163,9 +163,58 @@ Cleanup/delete remote (say, *origin*) deleted branch in local.
 
     $ git remote prune origin
 
+#### Quick switch to a previous branch (or, commit SHA, symbolic references, etc.)
 
+    $ git checkout -
 
+#### Branch listing.
 
+See all local branches.
+
+    $ git branch
+
+See all remote branches.
+
+    $ git branch -r
+
+See local and remote branches.
+
+    $ git branch -a
+
+See all local branches with last commits.
+
+    $ git branch -v
+    $ git branch -av        # local and remote branches with last commit
+
+See all local branches with last commits and remote tracking branch name.
+
+    $ git remote -vv
+
+See list of local and remote branches that are merged with current branch.
+
+    $ git branch --merged
+
+    $ git branch --merged master    # branches that are merged with 'master' branch
+
+See list of local and remote branches that are not merged with current branch.
+
+    $ git branch --no-merged
+
+    $ git branch --no-merged master    # branches that are not merged with 'master' branch
+
+See list of local and remote branches that contains a specific commit.
+
+    $ git branch -a --contains <commit-sha>
+
+#### Rename a branch name.
+
+    $ git branch -m <new-name>              # rename the current branch
+
+    $ git branch <old-name> <new-name>      # rename without checking out that branch
+
+#### Track a new branch.
+
+    $ git bracnh -u <remote/branch>
 
 
 ####  Add, Commit, Show, Amend, Pull, Push, Merge & Delete:
@@ -181,20 +230,6 @@ $ git commit -am 'commit message'                   # Add & commit
 $ git commit --allow-empty -m k3;                   # Commit empty change
 $ git cherry-pick <commit-hash>                     # Take a commit change of another branch
 $ git commit -m 'msg' --include file1.txt file2.txt # Commit specific files
-
-# Show
-$ git branch                                 # Show all local branches
-$ git branch -r                              # Show all the remote branched
-$ git branch -a                              # Show all local and remote branches
-$ git branch -v                              # Show all local branches with last commits
-$ git branch -vv                             # Show all local branches with last commits and remote tracking branch
-$ git branch -av                             # Show all local and remote branches with last commits
-$ git branch --merged                        # Show lists of branch merged with current branch
-$ git branch --no-merged                     # Show lists of branch not-merged with current branch
-$ git branch -a --contains <commit-hash>     # Show list of branch(s) exits the commit
-$ git branch -m <new-name>                   # Rename a branch if we are on the branch
-$ git branch -m <old-name> <new-name>        # Rename a branch if we are on different branch
-$ git branch -u <remote/branch>              # Track a remote branch
 
 # Amend
 $ git add task2.txt                                 # Add any file

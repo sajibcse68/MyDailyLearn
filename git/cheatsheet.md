@@ -110,17 +110,22 @@ Create a local branch from a remote branch.
 
 Create a local branch (say, 'feature') tracking with remote branch (say, `origin/feature`).
 
-     $ git fetch
-     $ git checkout feature      # create a local branch 'feature' branch tracking with origin/feature branch
+    $ git fetch
+    $ git checkout feature      # create a local branch 'feature' branch tracking with origin/feature branch
 
-#### Delete a branch
+Create a new branch with no parent (having empty commit lists).
+
+    $ git checkout --orphan <branch-name>
+
+
+#### Delete branch
 
 Delete a local branch.
 
-      $ git branch -d <branch-name>
+    $ git branch -d <branch-name>
 
-      # shortcut of
-      $ git branch --delete <branch-name>
+    # shortcut of
+    $ git branch --delete <branch-name>
 
 This will not delete the branch if the branch has any unmerged changes with  *upstream-branch*, or in *HEAD* if no
 upstream was set with --track or --set-upstream.
@@ -132,6 +137,84 @@ Force to delete a local branch (even if it has unmerged changes).
     # shortcut of
     $ git branch --delete --force <branch-name>
 
+Delete a remote branch.
+
+    $ git branch origin:<branch-name>
+
+    # alternatives
+    $ git push origin --delete <branch-name>
+
+Delete a remote branch (say, *old-name*) and push a new local branch (*new-branch*).
+
+    $ git push origin :<old-name> <new-name>
+
+Delete all the branches that are merged with `master` already.
+
+    $ git checkout master
+    $ git branch --merged master | grep -v '^\*'  | xargs -n 1 git branch -d
+
+Here, `-v` flag invert the matches.
+
+Delete all the branches except *master* that are already *merged* with current branch.
+
+    $ git branch --merged | grep -E '^\*|master$' | xargs -n 1 branch -d
+
+Cleanup/delete remote (say, *origin*) deleted branch in local.
+
+    $ git remote prune origin
+
+#### Quick switch to a previous branch (or, commit SHA, symbolic references, etc.)
+
+    $ git checkout -
+
+#### Branch listing.
+
+See all local branches.
+
+    $ git branch
+
+See all remote branches.
+
+    $ git branch -r
+
+See local and remote branches.
+
+    $ git branch -a
+
+See all local branches with last commits.
+
+    $ git branch -v
+    $ git branch -av        # local and remote branches with last commit
+
+See all local branches with last commits and remote tracking branch name.
+
+    $ git remote -vv
+
+See list of local and remote branches that are merged with current branch.
+
+    $ git branch --merged
+
+    $ git branch --merged master    # branches that are merged with 'master' branch
+
+See list of local and remote branches that are not merged with current branch.
+
+    $ git branch --no-merged
+
+    $ git branch --no-merged master    # branches that are not merged with 'master' branch
+
+See list of local and remote branches that contains a specific commit.
+
+    $ git branch -a --contains <commit-sha>
+
+#### Rename a branch name.
+
+    $ git branch -m <new-name>              # rename the current branch
+
+    $ git branch <old-name> <new-name>      # rename without checking out that branch
+
+#### Track a new branch.
+
+    $ git bracnh -u <remote/branch>
 
 
 ####  Add, Commit, Show, Amend, Pull, Push, Merge & Delete:
@@ -147,20 +230,6 @@ $ git commit -am 'commit message'                   # Add & commit
 $ git commit --allow-empty -m k3;                   # Commit empty change
 $ git cherry-pick <commit-hash>                     # Take a commit change of another branch
 $ git commit -m 'msg' --include file1.txt file2.txt # Commit specific files
-
-# Show
-$ git branch                                 # Show all local branches
-$ git branch -r                              # Show all the remote branched
-$ git branch -a                              # Show all local and remote branches
-$ git branch -v                              # Show all local branches with last commits
-$ git branch -vv                             # Show all local branches with last commits and remote tracking branch
-$ git branch -av                             # Show all local and remote branches with last commits
-$ git branch --merged                        # Show lists of branch merged with current branch
-$ git branch --no-merged                     # Show lists of branch not-merged with current branch
-$ git branch -a --contains <commit-hash>     # Show list of branch(s) exits the commit
-$ git branch -m <new-name>                   # Rename a branch if we are on the branch
-$ git branch -m <old-name> <new-name>        # Rename a branch if we are on different branch
-$ git branch -u <remote/branch>              # Track a remote branch
 
 # Amend
 $ git add task2.txt                                 # Add any file
@@ -199,14 +268,6 @@ $ git merge --squash <privateFeatureBranch>
 # Create
 $ git branch <branch-name>                          # Create a new branch
 
-# Delete
-$ git branch -d <branch-name>                              # Delete the local branch, show a warning
-$ git branch -D <branhc-name>                              # Force to delete branch
-$ git push origin :<branch-name>                           # Delete remote branch
-$ git push origin --delete <branch-name>                   # Delete remote branch
-$ git push origin :<old-name> <new-name>                   # Delete the remote old-branch and push new-name local branch         
-$ git remote prune origin                                  # Cleanup remote deleted branch
-$ git branch --merged | grep -v '*' | xargs git branch -d  # delete merged branches
 ```
 #### Checkout (go forward/backward):
 ```

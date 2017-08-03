@@ -217,7 +217,7 @@ See list of local and remote branches that contains a specific commit.
     $ git bracnh -u <remote/branch>
 
 
-####  Add, Commit, Show, Amend, Pull, Push, Merge & Delete:
+####  Add, Commit, Amend, Pull, Push, Merge & Delete:
 ```sh
 # Add
 $ git add .                                         # Stage Modified and New files
@@ -520,6 +520,20 @@ $ git rc                               # cleanup unnecessary files and optimize 
 $ git worktree add <second-path>
 $ git checkout <branch>          # checkout a different branch
 ```
+
+#### Add a signed-off-by field in a commit
+
+```
+$ git commit -s -m <commit-message>
+// short form of
+$ git commit --signoff -m <commit-message>
+$ git commit -s --amend <commit-message>
+
+e.g. ouput
+Signed-off-by: <name> <email>
+
+```
+
 
 #### Fancy commands:
 

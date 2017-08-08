@@ -139,7 +139,7 @@ Force to delete a local branch (even if it has unmerged changes).
 
 Delete a remote branch.
 
-    $ git branch origin:<branch-name>
+    $ git branch origin :<branch-name>
 
     # alternatives
     $ git push origin --delete <branch-name>

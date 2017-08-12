@@ -97,7 +97,7 @@ Create a branch at a point instead of the last commit of the current branch (als
 
     $ git checkout -b <name> <start-point>
 
-The <start-point> can be any [revision](https://git-scm.com/docs/revisions) known to git (e.g. branch name, commit SHA, symbolic reference HEAD or tag-name etc.). 
+The `<start-point>` can be any [revision](https://git-scm.com/docs/revisions) known to git (e.g. branch name, commit SHA, symbolic reference HEAD or tag-name etc.). 
 
     $ git checkout -b <name> <some-other-branch>
     $ git checkout -b <name> <commit-sha>
@@ -106,7 +106,7 @@ The <start-point> can be any [revision](https://git-scm.com/docs/revisions) know
 
 Create a local branch from a remote branch.
 
-    $ git checkout -b <name> <remote>/<branch-name>
+    $ git checkout -b <branch-name> <remote>/<branch-name>
 
 Create a local branch (say, 'feature') tracking with remote branch (say, `origin/feature`).
 

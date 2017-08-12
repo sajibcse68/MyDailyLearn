@@ -80,11 +80,11 @@ $ git config --global alias.br branch        # git br -> git branch
 ```
 
 ## Branching
->master   ->  default develop branch
-origin    ->  default remote address/url
-HEAD      ->  current branch
-HEAD^     ->  parent of HEAD
-foo..bar  ->  from branch foo to branch bar
+>* master   ->  default develop branch
+>* origin   ->  default remote address/url
+>* HEAD     ->  current branch
+>* HEAD^    ->  parent of HEAD
+>* foo..bar ->  from branch foo to branch bar
 
 #### Create new branch
 

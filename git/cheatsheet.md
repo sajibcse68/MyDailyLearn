@@ -15,14 +15,14 @@ We have mainly three types of config file (system's, user's, repo's)
 
 #### Configure user's *name* and *email* 
 
-Configure globally ( save in `(~/.gitconfig)` file).
+Configure globally (save in `(~/.gitconfig)` file).
 
 ```
 $ git config --global user.name <your-name>
 $ git config --global user.email <your-email>
 ```
 
-Configure locally ( save in `(<repo>/.git/config)` file). It **overwrites** the global configuration.
+Configure locally ( save in `<repo>/.git/config` file). It **overwrites** the global configuration.
 This config is only for the specific repository.
 
 ```
@@ -80,11 +80,11 @@ $ git config --global alias.br branch        # git br -> git branch
 ```
 
 ## Branching
-* master    ->  default develop branch
-* origin    ->  default remote address/url
-* HEAD      ->  current branch
-* HEAD^     ->  parent of HEAD
-* foo..bar  ->  from branch foo to branch bar
+>* master   ->  default develop branch
+>* origin   ->  default remote address/url
+>* HEAD     ->  current branch
+>* HEAD^    ->  parent of HEAD
+>* foo..bar ->  from branch foo to branch bar
 
 #### Create new branch
 
@@ -97,7 +97,7 @@ Create a branch at a point instead of the last commit of the current branch (als
 
     $ git checkout -b <name> <start-point>
 
-The <start-point> can be any [revision](https://git-scm.com/docs/revisions) known to git (e.g. branch name, commit SHA, symbolic reference HEAD or tag-name etc.). 
+The `<start-point>` can be any [revision](https://git-scm.com/docs/revisions) known to git (e.g. branch name, commit SHA, symbolic reference HEAD or tag-name etc.). 
 
     $ git checkout -b <name> <some-other-branch>
     $ git checkout -b <name> <commit-sha>
@@ -106,7 +106,7 @@ The <start-point> can be any [revision](https://git-scm.com/docs/revisions) know
 
 Create a local branch from a remote branch.
 
-    $ git checkout -b <name> <remote>/<branch-name>
+    $ git checkout -b <branch-name> <remote>/<branch-name>
 
 Create a local branch (say, 'feature') tracking with remote branch (say, `origin/feature`).
 

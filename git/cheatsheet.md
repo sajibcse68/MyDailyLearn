@@ -568,6 +568,7 @@ $ git clone <url> -b <branch>                  # clone into a new local branch i
 $ git clone <url> --single-branch              # clone only single branch
 $ git clone user@<private-ip>:<repo-path>      # clone from other machine over ssh (machines connected in local network)
 $ git clone <url> --depth=1                    # Create a shallow clone with a history truncated to the specified number of commits
+$ git clone .git my-repo                       # Restore a repo from .git folder
 $ git gui
 $ git ls-tree -d HEAD                          # Tree object including the mode and the name of each item and the SHA value
 $ git difftool

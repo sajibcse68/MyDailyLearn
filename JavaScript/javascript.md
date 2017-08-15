@@ -461,10 +461,6 @@ console.log(blue.z);                           // undefined, no 'z' in blue, her
 console.log(rose.z);                           // 3, since there is no 'z' in rose, delegation goes through to gold, which does have gold.z
 ```
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-
-=======
 ```js
 function theBridgeOfHoistingDoom() { |
                                      | Alrighty, here’s the hoisted version. The function looks for any variables to
@@ -492,9 +488,8 @@ function theBridgeOfHoistingDoom() { |
   }                                  |   return wizard();
 }                                    | }
 ```
->>>>>>> Stashed changes
-=======
 #### Object Decorator Pattern
+
 ```js                                       | var amy = carlike({}, 1);
 var carlike = function(obj, loc){           | amy.move();
   obj.loc = loc;                            |
@@ -507,7 +502,6 @@ var carlike = function(obj, loc){           | amy.move();
 
 #### Functional Classes
 - Building functions within code execution rather than at program load time
->>>>>>> f2c81028cad2950f5d21ebad0fcc87e02f2f65e9
 
 ```js
 function funcName(a, b) {
@@ -575,10 +569,6 @@ function getMysteryNumber() {         | function getMysteryNumber() {
 
 ##### Analyzing Hoisting Load Order
 
-<<<<<<< Updated upstream
-
-<<<<<<< HEAD
-=======
 ```js
 function theBridgeOfHoistingDoom() { | Alrighty, here’s the hoisted version. The function looks for any variables to
   function fellowship() {            | create space for, finds sword, dwarf, fall, and ring, and sets them all to
@@ -607,8 +597,6 @@ function theBridgeOfHoistingDoom() { | Alrighty, here’s the hoisted version. T
                                      |    return sword;
                                      |  }
 ```
->>>>>>> Stashed changes
-=======
 ```js
 function theBridgeOfHoistingDoom() { |
   var ring = undefined;              | Alrighty, here’s the hoisted version. The function looks for any variables to
@@ -647,7 +635,6 @@ function theBridgeOfHoistingDoom() { |
 3. Then, hoist all function declarations to immediately after your variable declarations, maintaining their order as well.
 
 4. Any function expression assignment is treated here as executable code, and does not change the load order.
->>>>>>> f2c81028cad2950f5d21ebad0fcc87e02f2f65e9
 
 5. Remove any unreachable statements after the first return statement.
 
@@ -682,14 +669,6 @@ function theBridgeOfHoistingDoom() { | Alrighty, here’s the hoisted version. T
 
 ```
 
-
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-```js
-function theBridgeOfHoistingDoom() {   | Answer: console.log("ERROR");
-  var sword = undefined;               | // cause ring() is not a function, it's a string. ("undefined").
-=======
 ###### Analyze Load Order III
 Q. What is the output of theBridgeOfHoistingDoom()?
 
@@ -699,7 +678,6 @@ Q. What is the output of theBridgeOfHoistingDoom()?
 ```js
 function theBridgeOfHoistingDoom() {   | Answer: console.log("ERROR");
   var sword = undefined;               | // cause ring() is not a function, it's a string.
->>>>>>> f2c81028cad2950f5d21ebad0fcc87e02f2f65e9
   var dwarf = undefined;               |
   var fall = undefined;                |
   var ring = undefined;                |
@@ -717,9 +695,4 @@ function theBridgeOfHoistingDoom() {   | Answer: console.log("ERROR");
   ring();                              |
   return sword;                        |
 }                                      |
-<<<<<<< HEAD
 ```                                    |
->>>>>>> Stashed changes
-=======
-```                                    |
->>>>>>> f2c81028cad2950f5d21ebad0fcc87e02f2f65e9

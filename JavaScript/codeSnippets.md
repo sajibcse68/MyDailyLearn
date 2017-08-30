@@ -208,7 +208,7 @@ li.className = '<class-name>';
 const date = new Date(<timestamp> * 1000);
 
 // Get the full url
-const fullUrl = window.location.href();
+const fullUrl = window.location.href;
 ```
 
 

@@ -18,9 +18,6 @@ Just put parentheses:      // JS interpretate everything what is in parentheses 
       //code               // So, it will run immediately
     } )();                 
  
-  
-  
-  
 #### Explain the difference on the usage of following -
   
   ```

@@ -20,11 +20,33 @@ checking and object-oriented features.
 - We use custom HTML tag (aka, selector) to show where we want our component to load inside out HTML.
 - Our component decorator is what truns plain Typescript class into a component.
 
+#### Angular CLI Commands
+- Create a component
+    $ ng g c <name>
+- Create a service
+    $ ng g s <name>
+
 #### Structural Directives
-- A directive (within Angular) is how we add dynamic begavior to HTML.
-- There are three kinks of directives:
+- A directive (within Angular) is how we add dynamic behavior to HTML.
+- There are three kinds of directives:
   - Component
     - Has a template
+    - import { Component } from '@angular/core';
+      @Component({
+        selector: 'courses'
+        template: `
+            <h2>{{ title }}</h2>
+            <ul>
+                <li *ngFor="let course of courses">
+                    {{ course }}
+                </li>
+            </ul>
+        `
+      })
+      export class CoursesComponent {
+        title = "List of courses"
+        courses = ["course1", "course2", "course3"];
+      }
   - Structural
     - e.g. *ngFor and *ngIf are the examples of Structural Directives.
   - Attribute
@@ -32,7 +54,7 @@ checking and object-oriented features.
 #### Pipes and Methods
 - A pipe takes in data as input and tranforms it to a desired output.
 - e.g.
-    - lowecase: Well, lowecase
+    - lowercase: Well, lowercase
     - date: Formats dates how we like them
     - number: Formats numbers
     - decimal: Formats decimals
@@ -74,11 +96,13 @@ checking and object-oriented features.
 - When we use th **ngModel** syntax, we can only set it equal to a data bound property.
   - Ok: [(ngModal)]="user.age", [(ngModal)]="firsName"
   - Not Ok: [(ngModal)]="fullName()"
+
 #### Services
-- Services are used to organise and share code accross our app, and they'are usually where we create
+- Services are used to organise and share code across our app, and they'are usually where we create
   our data access methods.
 - When we run an Angular 2 application, it creates a dependency injector. An injector is in charge of knowing how to
   create and send things.
+- Dependency Injector: Injecting or Providing dependencies of a class into its constructor.
 - We use dependency injection to create and send services to the classes that need them.
 - We give our dependency injector providers so that it knows what classes it can create and send for us.
 - We ask for dependencies by specifying them in our class constructor.

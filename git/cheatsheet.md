@@ -239,7 +239,7 @@ $ git commit --amend --date="<date>"                # Override the date
 # Pull
 $ git pull                                          # Fetch the latest changes from origin and merge
 $ git pull --rebase                                 # = fetch + rebase, fetch changes from the branch that the current branch is tracking
-$ git pull -p origin/master                         # -p = --preserve-merges, unlike git pull –rebase, this doesn’t have a sensible default to work from. So, need to git branch name (origin/master)
+$ git pull -p origin/master                         # -p = --preserve-merges, unlike git pull ?rebase, this doesn?t have a sensible default to work from. So, need to git branch name (origin/master)
 $ git pull origin <bn> -s recursive -X theirs       # -s=--strategy, -X=--strategy-option, While pulling if conflicts accepts theirs, 
 $ git pull origin <bn> -s recursive -X ours         # While pulling if conflicts accepts ours (HEAD)
 $ git pull origin <branch-1>                        # Pull the change of 'branhc-1' in current branch
@@ -372,8 +372,12 @@ $ git diff HEAD                           # Show the changes to files not yet st
 $ git checkout -- <file-name>             # Replaces the changes with the last content in HEAD 
 $ git clean -f -n                         # clean untract file (dry run)
 $ git clean -df                           # -d remove untracked directories in addition to untracked files, -f (force)
-$ git checkout -- .
 $ git clean -dxf
+# -f force git to delete the files
+# -d delete untracked directories in addition to untracked files
+# -x delete files that are ignored by git
+
+$ git checkout -- .
 $ git rm --cached -r .                    # remove git cached (e.g. add a file in .gitignore that already added in git)
 $ git revert -p <fromCommit>..<toCommit>  # revert a range of commit, need to commit after the commit 
 
@@ -471,7 +475,7 @@ $ git fetch <remote-name>                      # Fetching/pulling from remote
 #### Conflicts:
 * Life being the pain in the proverbial that it is, our merge might have a `conflict`.
 * The git status command will help you understand where the conflict exists. If you open the file,
-* You’ll notice some markers: <<<<, >>>>, and ====, that surround the lines that conflict,
+* You?ll notice some markers: <<<<, >>>>, and ====, that surround the lines that conflict,
 * Including the changes that each branch is trying achieve.
 * Fix manually.
 
@@ -643,7 +647,7 @@ $ git branch -d <hot-branch>                  # delete the release branch
 
 #### Stage vs Track file:
 - Tracked files are files that were in the last snapshot; they can be unmodified, modified, or staged.
-- Untracked files are everything else — any files in your working directory that were not in your last snapshot and are not in your staging area (index)
+- Untracked files are everything else ? any files in your working directory that were not in your last snapshot and are not in your staging area (index)
 
 ```
 $ touch index.html                // unstaged, untracked

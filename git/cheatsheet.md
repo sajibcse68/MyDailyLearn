@@ -294,6 +294,7 @@ $ git cherry-pick -x <commit-hash>                          # -x: keep track whe
 $ git cherry-pick --signoff <commit-hash>                   # --signoff add current users name to commit message
 $ git cherry-pick A..B                                      # take a range of commit, A < B and A is not included
 $ git cherry-pick A^..B                                     # take a range of commit, A < B and A is included
+$ git cherry-pick <hash> <hash>                             # pick multiple commits
 ```
 
 #### Stashing:

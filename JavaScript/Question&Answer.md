@@ -33,7 +33,8 @@ Just put parentheses:      // JS interpretate everything what is in parentheses 
   }
   ```
 #### Explain `hoisting`
-
+When you declare a variable in JavaScript (using "var"), that variable declaration is "hoisted" to the top of the
+current scope: meaning the top of the current function or the top of the script if the variable isn't in a function.
 
 #### Difference between a variable that is: null, undefined, or undeclared
 - Undeclared: never used/defined before
@@ -67,7 +68,25 @@ Just put parentheses:      // JS interpretate everything what is in parentheses 
   let foo = null;
   console.log(foo === null)  // true boolean
   
-  
-  
-  
-  
+#### What is the output?
+
+```js
+var text = 'outside';
+function logIt(){
+    console.log(text);
+    var text = 'inside';
+};
+logIt();
+```
+Answer: `undefined`
+Explanation: variable declarations are "hoisted" to the top of the current scope. Variable assignments, however, are not.
+- The code gets interpreted as though it were
+```js                     | So, we have a new variable text inside of logIt() that is initialized to undefined,
+  var text = 'outside';   | which is what it holds when we hit our log statement
+function logIt(){         |
+    var text;             |
+    console.log(text);    |
+    text = 'inside';      |
+};                        |
+logIt();                  |
+```

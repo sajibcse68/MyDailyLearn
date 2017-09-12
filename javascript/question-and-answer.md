@@ -91,11 +91,119 @@ function logIt(){         |
 logIt();                  |
 ```
 
+#### How does `this` keyword change in different context?
+
+`this` is a keyword whose value changes depending on how a function gets called. There `six` different ways where
+`this` can take take new values. They are:
+
+1. `this` in global context
+2. `this` in object construction
+3. `this` in an object method
+4. `this` in a simple function
+5. `this` in an arrow function
+6. `this` in an event listener
 
 
+1. **`This` In a Global Context**
+When `this` is called outside of any function, in a global context, this defaults to the `window` object in the browser.
+
+2. **`This` In Object Constructor**
+When we create a new instance of an object with the `new` keyword, `this` refers to the instance.
+
+```js
+function Human(age) {
+    this.age = age;
+}
+
+const alice = new Human(10);
+const bob = new Human(20);
+
+console.log(alice); // this.age = 10
+console.log(bob); // this.age = 20
+```
+
+3. **`This` In An Object Method**
+Methods are fancy words for functions that are associated with an object. e.g.
+
+```js
+const ob = {
+    // A method
+    sayThis() {
+        console.log(this);
+    }
+}
+ob.sayThis(); // o
+```
+
+4. `This` In A Simple Function
+Inside simple functions `this` refers to `Window`. Simple functions are functions we know extremely well. Anonymous functions written in the same form are also considered
+simple functions.
+
+```js
+function simpleFunc() {
+    console.log(this);  // Window
+}
+
+const o = {
+    sayThis() {
+        simpleFunc()
+    }
+}
+
+simpleFunc();  // Window
+o.sayThis();   // Window
+```
+
+Consider the following code.
+
+```js
+const o = {
+    doSomethingLater() {
+        setTimeout(function(){
+           this.speakLeet();    // error
+        }, 1000)
+    }
+    speakLeet() {
+        console.log('Method of 'o' not Window');
+    }
+}
+```
+
+Unfortunately, the code above results in an error. The error occurs because `this` is set to `Window` in the `setTimeout`
+methods. `Window` does not have a `speakLeet` method.
+
+5. `This` is in Arrow Functions
+In a arrow functions `this` is always the same as `this` around it (in its immediate scope, also called lexical scope).
+So, the `this` context stays as the object, not `Window`.
+
+With arrow functions, the `speakLeet` example above could be written:
+
+```js
+const o = {
+    doSomethingLater() {
+        setTimeout(() => this.speakLeet(), 1000);
+    }
+    speakLeet() {
+        console.log('Method of 'o' not Window');
+    }
+}
+```
+
+**N.B:** We can also set `this` inside a method using `bind`, `call`, `apply`.
+
+5. **This** In Event Listeners
+`this`  is set the element that fired the event in an event listener.
+
+```js
+let button = document.querySelector('button');
+
+button.addEventListener('click', function() {
+    console.log(this)     // button
+})
+```
 
 
-
+======================================================
 
 Some questions to check:
 

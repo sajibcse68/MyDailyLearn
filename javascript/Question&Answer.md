@@ -90,3 +90,41 @@ function logIt(){         |
 };                        |
 logIt();                  |
 ```
+
+
+
+
+
+
+
+Some questions to check:
+
+OOP
+How does this changes in different context? How many contexts are there?
+What is a prototype in JavaScript?
+How do you create objects in JavaScript?
+What is the module pattern? When do you use it?
+What is the factory pattern? When do you use it?
+FP
+What is immutability?
+What array methods are immutable?
+How do you change JavaScript properties while not mutating the object?
+What is a pure function?
+How many kinds of actions should a function contain?
+What are side effects?
+How do you handle side effects when you write pure functions?
+AJAX
+What are JavaScript promises?
+How do you chain promises?
+How do you catch errors when using promises?
+How do you use the Fetch API?
+What does CRUD stand for?
+How do you query Github’s API to get a list of your own repositories?
+Best practices
+Why do you avoid global variables?
+Why use strict equality (===) instead of normal equality (==)?
+How do you use ternary operators to help you write terser code?
+What ES6 features help you write terser code?
+What is event bubbling and capturing?
+How do you delegate events?
+How do you remove event listeners? When should you remove them?

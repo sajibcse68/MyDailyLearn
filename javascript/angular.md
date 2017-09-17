@@ -25,6 +25,8 @@ checking and object-oriented features.
     $ ng g c <name>
 - Create a service
     $ ng g s <name>
+- Create a custom pipe
+    $ ng g p <name>
 
 #### Structural Directives
 - A directive (within Angular) is how we add dynamic behavior to HTML.

@@ -24,6 +24,31 @@
 {% set items = ["a", 1, {b : true}]%}
 {{item | dump}}     // output: ["a",1,{"b":true}]
 
+#### loop
+
+`for` itterates over arrays or object.
+
+var food = {
+  'ketchup': '5 tbsp',
+  'mustard': '1 tbsp',
+  'pickle': '0 tbsp'
+};
+
+{% for ingredient, amount in food %}
+  Use {{ amount }} of {{ ingredient }}
+{% endfor %}
+
+Inside loops we can access some variables:
+
+`loop.index`: the current iteration of the loop (1 indexed)
+`loop.index0`: the current iteration of the loop (0 indexed)
+`loop.revindex`: number of iterations until the end (1 indexed)
+`loop.revindex0`: number of iterations until the end (0 based)
+`loop.first`: boolean indicating the first iteration
+`loop.last`: boolean indicating the last iteration
+`loop.length`: total number of items
+
+
 // Iterate loop through object/map
 {% for key, value in ob %}
    The value of {{ key }} is {{ value }}

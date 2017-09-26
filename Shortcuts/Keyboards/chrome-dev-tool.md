@@ -12,3 +12,7 @@
 * `Double click on attribute`        -- Edit attribute
 * `Opt + Double-click on arrow icon` -- Expand/collapse node and all its children
 * `Cmd + \`                          -- pause/resume script execution
+
+
+### Reference:
+1. https://developers.google.com/web/tools/chrome-devtools/

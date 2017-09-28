@@ -412,9 +412,11 @@ $ git push -f origin <branch-name>                     # by force overwrite the 
 $ git checkout <admin_branch>
 $ git rebase master                                    # Merge all commits of admin_branch after master's commits
 $ git checkout master                                  
-$ git checkout -b <history_master>                     # Backup master branch if necessary
+$ git branch master.bac                                # Backup master branch if necessary
 $ git merge <admin_branch>
 $ git commit --amend --committer-date-is-author-date   # keep the date same as committer date when amending
+
+$ git rebase --onto master branch1 branch2             # take all the commits after branch1 up to branch2
 
 # Change the `author` of an earlier commit
 $ git checkout <commit-hash>                                             # checkout the commit we're trying to modify

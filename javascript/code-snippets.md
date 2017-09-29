@@ -1,4 +1,4 @@
-### Get details of DNS
+#### :eight_spoked_asterisk: Get details of DNS
 ```js
 console.log('document.URL : ', document.URL);                             // http://sub.mydomain.com:1234/a/b/c/d
 console.log('document.location.href : ', document.location.href);         // http://sub.mydomain.com:1234/a/b/c/d 
@@ -8,7 +8,7 @@ console.log('document.location.host : ', document.location.host);         // sub
 console.log('document.location.pathname : ', document.location.pathname); // /a/b/c/d
 ```
 
-#### indexOf() and splice() method
+#### :eight_spoked_asterisk: indexOf() and splice() method
 this.swords.indexOf(val) >== 0  
 - swords is an array. The indexOf() will return the first found index of a value, or -1 if it's not found. 
 

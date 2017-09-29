@@ -557,7 +557,7 @@ $ git rev-parse 3cdd5d                         # short commit hash -> full commi
 $ git diff-tree -r <commit-hash>               # show list of files that were changed or added in the commit
 $ git diff-tree -r <hash> -p                   # show list of files with changes that were changed or added in the commit
 $ git diff-tree --name-only -r <hash>          # show only the file name of changed files
-$ git diff-tree --no-commit-id -r <hash>       # show only the file name of changed files
+$ git diff-tree --no-commit-id -r <hash>       # show only the file name of changed files, don't print the commit hash
 $ git check-ignore -v -- <file-name>           # see what .gitignore rule applies for a given file             
 $ git init                                     # From scratch -- create a new local repository
 $ git diff                                     # workspace vs index

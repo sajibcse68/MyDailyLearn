@@ -17,7 +17,7 @@ this.swords.splice(this.swords.indexOf(val), 1)
 - const soldiers = ["Knights", "Pikemen", "Archers"];
 - soldiers.splice(1, 2); will delete "Pekemen" and "Archers" and returns ["Pekemen" , "Archers"]
  
-#### jQuery `.clone()` method
+#### :eight_spoked_asterisk: jQuery `.clone()` method
 - Create a deep copy of the set of matched elements.
 - `clone()` vs `append()`
 
@@ -52,7 +52,7 @@ $( ".hello" ).clone().appendTo( ".goodbye" );
 </div>
 ```
 
-#### Check if JavaScript object is JSON
+#### :eight_spoked_asterisk: Check if JavaScript object is JSON
 ```
 var objectConstructor = "test".constructor;
 var arrayConstructor = [].constructor;
@@ -81,7 +81,7 @@ function whatIsIt(object) {
 ```
 [ref](http://stackoverflow.com/questions/11182924/how-to-check-if-javascript-object-is-json)
  
-### A Common `Misconception`
+#### :eight_spoked_asterisk: A Common `Misconception`
 ```js
 Foo.method = function() {
   function test() {
@@ -113,7 +113,7 @@ Foo.method = function() {
 }
 ```
 
-### Get user's current longitude and latitude
+#### :eight_spoked_asterisk: Get user's current longitude and latitude
 Every browser has an built in navigator that can give us user's langitude and latitude.
 Browser will show a promt to allow/block this site from knowing user's current location.
 
@@ -125,7 +125,7 @@ if( navigator.geolocation) {
 }
 ```
 
-### Convert Integer value to Roman numerical string.
+#### :eight_spoked_asterisk: Convert Integer value to Roman numerical string.
 
 The Rules-
 - When the symbol appears `after a larger` symbol it is `added`.
@@ -160,7 +160,7 @@ function convertToRoman(num) {
 convertToRoman(36);
 ```
  
-### Fancy Codes
+#### :eight_spoked_asterisk: Fancy Codes
 
 ```js
 // Create a new object (server response)

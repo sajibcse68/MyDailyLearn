@@ -159,7 +159,7 @@ gitveAssignment();   // it shows "... Torpedo #6!" instead of "... Torpedo #4!"
 // solutions #1:
 function assignTorpedo (name, passengerArray) {
   for (var i = 0; i < passengerArray.length; i++) {
-    if (passengerArray[i] == name {
+    if (passengerArray[i] == name) {
       return function () {                                // immediately return the function
         alert("Ahoy, " + name + "!\n" +                   // so that i variable don't get the
         " Man your post at Torpedo # " + (i+1) + "!");    // chance of increment
@@ -174,14 +174,14 @@ function assignTorpedo (name, passengerArray) {
 function assignTorpedo (passengerArray) {
   return function(name) {
     for (var i = 0; i < passengerArray.length; i++) {       // since we've put the loop inside the returned function,
-        if (passengerArray[i] == name {                     // i variable will come directly from that local scope
+        if (passengerArray[i] == name) {                     // i variable will come directly from that local scope
           alert("Ahoy, " + name + "!\n" +
           " Man your post at Torpedo # " + (i+1) + "!");   
         }
       }
   }
 }
-``
+```
 
 
 #### Change the `tooltip` value with js when button is clicked

@@ -79,7 +79,22 @@ function whatIsIt(object) {
     }
 }
 ```
-[ref](http://stackoverflow.com/questions/11182924/how-to-check-if-javascript-object-is-json)
+[reference here](http://stackoverflow.com/questions/11182924/how-to-check-if-javascript-object-is-json)
+
+
+#### :eight_spoked_asterisk: Compare two distinct objects properties if properties are same
+
+```js
+const arr1 = ['Hello', 'World!'];
+const arr2 = ['Hello', 'World!'];
+
+console.log(arr1 === arr2); // false
+
+const arr1Str = JSON.stringify(arr1);
+const arr2Str = JSON.stringify(arr2);
+
+console.log(arr1Str === arr2Str);    // true
+```
  
 #### :eight_spoked_asterisk: A Common `Misconception`
 ```js

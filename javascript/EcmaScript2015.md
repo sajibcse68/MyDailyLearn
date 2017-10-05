@@ -1,11 +1,35 @@
 ## The new things of `ES-2015` or `ES6`
 
-#### `var` vs `let` 
+#### `var` vs `let` vs `const` 
 - JS was first publibshed in 1997
 - One thing that JS does `before executing codes` is `move all the var declarations up to the top of the nearest elclosing
-  function`, what is known as `hoisting`.
+  function`, what is known as **`hoisting`**.
 - `let` variables are scoped to the nearest `block` and are `not hoisted` (a block is any code selection within curly brances).
 - `Unlike var`, variables declared with `let`, are not hoisted (Similar to other programming languages).
+
+```js
+if (true) {
+  let a = 2;
+  let b = 3;
+  
+  if(true) {
+    let a = 4;
+    var c = 5;
+    let d = 6;
+    console.log(a);  // 4
+    console.log(b);  // 3
+  }
+  console.log(a);  // 2, not 4
+  console.log(c);  // 5, cause var
+  console.log(d);  // undefined, cause let
+}
+```
+- `const` is used to assign a constant value to the variable. So, the value can't be changed. Its fixed.
+
+```js
+
+```
+
 
 #### `Var` and the `for` loops
 - `var` is the reason behind a popular `gotcha` in `for` loops.

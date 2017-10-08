@@ -132,7 +132,7 @@ const ob = {
         console.log(this);
     }
 }
-ob.sayThis(); // o
+ob.sayThis(); // ob
 ```
 
 4. `This` In A Simple Function
@@ -169,8 +169,23 @@ const o = {
 }
 ```
 
-Unfortunately, the code above results in an error. The error occurs because `this` is set to `Window` in the `setTimeout`
-methods. `Window` does not have a `speakLeet` method.
+**Unfortunately**, the code above results in an error. The error occurs because `this` is set to `Window` in the `setTimeout`
+methods. **`Window` does not have a `speakLeet` method**.
+
+**Exception:** In strict mode, rules are different. Context remains as whatever it was set to. e.g.
+
+```js
+function f2 () {
+  'use strict';
+  
+  return this;
+}
+
+console.log(f2() === window);     // False 
+console.log(f2() === undefined);  // True
+```
+
+`this` was not defined, so it's remained **`undefined`**.
 
 5. `This` is in Arrow Functions
 In a arrow functions `this` is always the same as `this` around it (in its immediate scope, also called lexical scope).
@@ -190,6 +205,31 @@ const o = {
 ```
 
 **N.B:** We can also set `this` inside a method using `bind`, `call`, `apply`.
+
+```js
+var bar = 'bar of global';
+
+var foo = {
+  bar: 'bar of foo';
+};
+  
+function f2() {
+  return this.bar;
+}
+  
+console.log(f2());             // bar of global
+console.log(f2.call(foo));     // bar of foo
+console.log(f2.apply());       // bar of foo
+
+
+var bound = f2.bind(document)
+var bound2 = f2.bind({ a: 15 });
+
+console.log(bound());            // undefined, there is no variable in document object
+console.log(bound.call(window)); // undefined, no variable in document object. In this situation, call can't change the context
+console.log(bound2());           // 15, created a new object { a: 15 } and called f2() in this context        
+```
+
 
 5. **This** In Event Listeners
 `this`  is set the element that fired the event in an event listener.

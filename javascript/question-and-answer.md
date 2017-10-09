@@ -216,8 +216,7 @@ var b = new Counter();
 // ...
 ```
 The original `this` binding created by the `Counter` constructor function is preserved. Inside the `setInterval` function,
-`this` is still bound to our newly created `b` object!
- 
+`this` is still bound to our newly created `b` object! 
 
 ```js
 function f2 () {
@@ -274,6 +273,31 @@ console.log(bound());            // undefined, there is no variable in document 
 console.log(bound.call(window)); // undefined, no variable in document object. In this situation, call can't change the context
 console.log(bound2());           // 15, created a new object { a: 15 } and called f2() in this context        
 ```
+
+**Exceptional:** Since `this` is not bound in arrow functions, the methods `call()` or `apply()` can only pass in parameters. **`this` is ignored**.
+
+```js
+var adder = {
+  base: 1,
+
+  add: function(a) {
+    var f = v => v + this.base;
+
+    return f(a);
+  },
+
+  addThroughCall: function(a) {
+    var f = v => v + this.base;
+    var b = {
+      base: 2
+    };
+
+    return f.call(b, a);
+  }
+};
+```
+console.log(adder.add(1));  // output: 2
+console.log(adder.addThruCall(1));  // output: 2
 
 
 5. **This** In Event Listeners

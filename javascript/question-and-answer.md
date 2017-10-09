@@ -168,11 +168,56 @@ const o = {
     }
 }
 ```
-
 **Unfortunately**, the code above results in an error. The error occurs because `this` is set to `Window` in the `setTimeout`
 methods. **`Window` does not have a `speakLeet` method**.
 
 **Exception:** In strict mode, rules are different. Context remains as whatever it was set to. e.g.
+
+**Another example:**
+
+```js
+function Counter() {
+  this.num = 0;
+  
+  this.timer = setInterval(function add() {
+    this.num++;
+    console.log(this.num);
+  }, 1000);
+}
+
+var b = new Counter();
+// NaN
+// NaN
+// NaN
+// ...
+```
+Our `setInterval` function is not called on a declared object. It also isn't being called with the `new` keyword (only the `Counter()` function is)
+And lastly, we are not using `call`, `bind`, or `apply`. **setInterval** is just a normal function(). So, the value of
+`this` is being bound to **global object**!
+
+**N.B.** The arrow function does not create its own `this`, the `this` value of the enclosing execution context is used. Thus, in the
+following code, the `this` within the function that is passed to `setInterval` has the same values as `this` in the enclosing function. 
+
+**Solve the issue using Arrow function
+```js
+function Counter() {
+  this.num = 0;
+  
+  this.timer = setInterval(() => {
+    this.num++;
+    console.log(this.num);
+  }, 1000);
+}
+
+var b = new Counter();
+// 1
+// 2
+// 3
+// ...
+```
+The original `this` binding created by the `Counter` constructor function is preserved. Inside the `setInterval` function,
+`this` is still bound to our newly created `b` object!
+ 
 
 ```js
 function f2 () {

@@ -311,6 +311,40 @@ button.addEventListener('click', function() {
 })
 ```
 
+#### Convert a string to `spinal string`. Spinal string case is all-lowercase-words-joined-by-dashes.
+
+Input:
+This Is Spinal Tap
+thisIsSpinalTap
+The_Andy_Griffith_Show
+Teletubbies say Eh-oh
+AllThe-small Things
+
+Output: 
+this-is-spinal-tap
+this-is-spinal-tap
+the-andy-griffith-show
+teletubbies-say-eh-oh
+all-the-small-things
+
+
+Solutions: 
+
+```js
+function spinalCase(str) {
+  // Create a variable for the white space and underscores
+  var regex = /\s+|_+/g
+  
+  // Replace low-upper case to low-space-uppercase
+  str = str.replace(/([a-z])([A-Z])/g, '$1 $2');
+  
+  // Replace space and underscore with -
+  return str.replace(regex, '-').toLowerCase();
+}
+
+// test here
+spinalCase('This Is Spinal Tap');
+```
 
 ======================================================
 

@@ -326,6 +326,7 @@ $ git checkout --theirs -- .                        # accept stashed changes
 ```sh
 $ git log                                          # Show  all the change/commit history
 $ git log <branch-name>                            # Show the commits of a specific branch
+$ git log <branch1>..<branch2>                     # Show all commits between two branches 
 $ git log --oneline --decorate --all --graph       # See all commits with better visualization
 $ git log --name-only                              # only file name
 $ git log --name-status                            # file name + status

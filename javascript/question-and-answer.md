@@ -168,11 +168,55 @@ const o = {
     }
 }
 ```
-
 **Unfortunately**, the code above results in an error. The error occurs because `this` is set to `Window` in the `setTimeout`
 methods. **`Window` does not have a `speakLeet` method**.
 
 **Exception:** In strict mode, rules are different. Context remains as whatever it was set to. e.g.
+
+**Another example:**
+
+```js
+function Counter() {
+  this.num = 0;
+  
+  this.timer = setInterval(function add() {
+    this.num++;
+    console.log(this.num);
+  }, 1000);
+}
+
+var b = new Counter();
+// NaN
+// NaN
+// NaN
+// ...
+```
+Our `setInterval` function is not called on a declared object. It also isn't being called with the `new` keyword (only the `Counter()` function is)
+And lastly, we are not using `call`, `bind`, or `apply`. **setInterval** is just a normal function(). So, the value of
+`this` is being bound to **global object**!
+
+**N.B.** The arrow function does not create its own `this`, the `this` value of the enclosing execution context is used. Thus, in the
+following code, the `this` within the function that is passed to `setInterval` has the same values as `this` in the enclosing function. 
+
+**Solve the issue using Arrow function
+```js
+function Counter() {
+  this.num = 0;
+  
+  this.timer = setInterval(() => {
+    this.num++;
+    console.log(this.num);
+  }, 1000);
+}
+
+var b = new Counter();
+// 1
+// 2
+// 3
+// ...
+```
+The original `this` binding created by the `Counter` constructor function is preserved. Inside the `setInterval` function,
+`this` is still bound to our newly created `b` object! 
 
 ```js
 function f2 () {
@@ -230,6 +274,31 @@ console.log(bound.call(window)); // undefined, no variable in document object. I
 console.log(bound2());           // 15, created a new object { a: 15 } and called f2() in this context        
 ```
 
+**Exceptional:** Since `this` is not bound in arrow functions, the methods `call()` or `apply()` can only pass in parameters. **`this` is ignored**.
+
+```js
+var adder = {
+  base: 1,
+
+  add: function(a) {
+    var f = v => v + this.base;
+
+    return f(a);
+  },
+
+  addThroughCall: function(a) {
+    var f = v => v + this.base;
+    var b = {
+      base: 2
+    };
+
+    return f.call(b, a);
+  }
+};
+```
+console.log(adder.add(1));  // output: 2
+console.log(adder.addThruCall(1));  // output: 2
+
 
 5. **This** In Event Listeners
 `this`  is set the element that fired the event in an event listener.
@@ -242,6 +311,40 @@ button.addEventListener('click', function() {
 })
 ```
 
+#### Convert a string to `spinal string`. Spinal string case is all-lowercase-words-joined-by-dashes.
+
+Input:
+This Is Spinal Tap
+thisIsSpinalTap
+The_Andy_Griffith_Show
+Teletubbies say Eh-oh
+AllThe-small Things
+
+Output: 
+this-is-spinal-tap
+this-is-spinal-tap
+the-andy-griffith-show
+teletubbies-say-eh-oh
+all-the-small-things
+
+
+Solutions: 
+
+```js
+function spinalCase(str) {
+  // Create a variable for the white space and underscores
+  var regex = /\s+|_+/g
+  
+  // Replace low-upper case to low-space-uppercase
+  str = str.replace(/([a-z])([A-Z])/g, '$1 $2');
+  
+  // Replace space and underscore with -
+  return str.replace(regex, '-').toLowerCase();
+}
+
+// test here
+spinalCase('This Is Spinal Tap');
+```
 
 ======================================================
 

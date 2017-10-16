@@ -91,6 +91,25 @@ checking and object-oriented features.
 
 
 
+---
+
+## The Complete Angular Master Class (Udemy)
+
+#### Shadow DOM
+- It's normally a specification that enables DOM tree, Style, etc Encapsulation. 
+- Allows us to apply **scoped styles** to elements without bleeding out to the outer world.
+
+N.B. only supported by safari >= v10, chrome >= v53.
+
+```js
+var el = document.querySelector('favorite');
+var root = el.createShadowRoot();
+
+root.innerHTML = `
+    <style>h1 { color: red }</style>
+    <h1>Hello</h1>
+`
+```
 
 
 

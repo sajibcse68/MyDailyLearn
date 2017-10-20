@@ -2,7 +2,7 @@
 
 - When browser find the `<script>` tag to download, all other parallel downloading halts. (6 files can be downloaded by modern browser)
 - if we add `async` in `<script>` tag then it would be downloaded asynchronously
-    - e.g. `<script type="text/javascript" src="http://www.abc.com/test.js" async></script`
+    - e.g. `<script type="text/javascript" src="http://www.abc.com/test.js" async></script>`
 - Efficient choices for `string concatenation` is `+=`
     - e.g. const a = ''; a += 'b'; a += 'c';
 - Use a document fragment to insert additions all at once. Fragments are invisible containers that hold multiple DOM elements without
@@ -63,6 +63,7 @@ foo.get(); // 5
 - Here, `Counter` returns `two closures`: `increment` & `get` functions.
 - Both of these functions keep a `reference` to the scope of `Counter` and, therefore, always keep access to the `Count`
   variable that was defined in that scope.
+
 ```js
 // Closures Inside Loops
 for(var i = 0; i < 10; i++) {
@@ -71,10 +72,12 @@ for(var i = 0; i < 10; i++) {
   }, 1000);
 }
 ```
+
 - The above will not output the numbers `0 to 9`, but the number `10 ten times`
 - The anonymous function keeps a reference to i. At the time 'console.log' gets called, the `for loop` has already finished, and
- the value of `i` has been set to `10`
+  the value of `i` has been set to `10`
 - In order to get the desired behavior, it is necessary to create a `copy` of the value of `i`
+
 ```js
 // 1. Avoiding the Reference Problem
 for(var i = 0; i < 10; i++) {
@@ -98,8 +101,10 @@ for(var i = 0; i < 10; i++) {
     })(i), 1000)
 }
 ```
+
 - There is another possible way of achieving this, which is to return a function from the `anonymous wrapper` that will then
   have the same behavior as the code above.
+
 ```js
 // 3. Avoiding the Reference Problem
 for(var i = 0; i < 10; i++) {
@@ -108,13 +113,32 @@ for(var i = 0; i < 10; i++) {
   }, 1000, i)
 }
 ```
+
 - The other popular way to achieve this is to add an additional argument to the `setTimeout` function, which passes these arguments to the callback
+
 ```js
 // 4. Avoiding the Reference Problem
+for (let i = 0; i < 10; i++) {
+
+  // using the ES6 let syntax, it creates a new binding
+  // every single time the function is called
+  // read more: http://exploringjs.com/es6/ch_variables.html#sec_let-const-loop-heads
+
+  setTimeout(function() {
+    console.log(i);
+  }, 3000);
+}
+```
+
+- Wnen we declare a variable with let then, the it creates a new binding for each of it child scope (every single time the function is called)
+
+```js
+// 5. Avoiding the Reference Problem
 for(var i = 0; i < 10; i++) {
   setTimeout(console.log.bind(console, i), 1000);
 }
 ```
+
 - There's yet another way to accomplish this by using `.bind`, which can bind a `this` context and arguments to function.
 
 #### Closures Help in Function "Construction Zones"

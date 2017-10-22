@@ -502,6 +502,12 @@ $ git <branch-name> --tree-filter 'rm -f password.txt'  # Remove password.txt fi
 
 $ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt'
 
+#### Let's say, we are merging `release` branch into `master` and we have 3 folders `foo/`, `bar/`, `js/`. Now want to resolve conflicts 
+such as `foo/`, `bar/` should like `master` and `js/` should like `release` branch.
+
+    $ git checkout master -- . ':!js/'   # . ':!js/' means all except js/, so, foo/ & bar/ are checked out
+    $ git checkout release -- js/
+    $ git commit -am 'Fix conflicts'
 
 #### SubModules: (always push to two repo, first to submodules then parent repo)
 ```

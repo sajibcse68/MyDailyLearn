@@ -32,14 +32,14 @@ checking and object-oriented features.
 #### Pipes and Methods
 - A pipe takes in data as input and tranforms it to a desired output.
 - e.g.
-    - lowecase: Well, lowecase
+    - lowercase: Well, lowecase
     - date: Formats dates how we like them
     - number: Formats numbers
     - decimal: Formats decimals
     - replace: Creates a new string, replacing specified characters
     - slice: Creates a new list or string containing a subset of the elements
     - json: Transforms any input to a JSON.formatted string
-#### spliting to Two Components
+#### Spiliting to Two Components
 - Our `main.ts` is where we import our first component and bootstrap it.
 - In order to import a class, we must give it the `export` keyword.
 - We use `directives` metadata to list the directives our component class.
@@ -74,6 +74,7 @@ checking and object-oriented features.
 - When we use th **ngModel** syntax, we can only set it equal to a data bound property.
   - Ok: [(ngModal)]="user.age", [(ngModal)]="firsName"
   - Not Ok: [(ngModal)]="fullName()"
+
 #### Services
 - Services are used to organise and share code accross our app, and they'are usually where we create
   our data access methods.

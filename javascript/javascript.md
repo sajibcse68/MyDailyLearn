@@ -8,6 +8,9 @@
 - We can't .bind() a function multiple time.
 - Use a document fragment to insert additions all at once. Fragments are invisible containers that hold multiple DOM elements without
   being a node itself.
+- JS MUST Know: `Scoping`, `Closures`, `Hoisting`, `This`, `Data Structures: Objects and Arrays`, `Design Patterns`, `Callbacks and Promises`.
+
+
 
 ```javascript
 var list = document.getElementById('kotwList');

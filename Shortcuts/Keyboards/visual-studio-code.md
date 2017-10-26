@@ -26,9 +26,14 @@
 <kbd>Cmd</kbd> + <kbd>Opt</kbd> + <kbd>up arrow</kbd>: Add a new cursor above  
 <kbd>Cmd</kbd> + <kbd>Opt</kbd> + <kbd>down arrow</kbd>: Add a new cursor down  
 
+## Go to
+<kbd>Ctrl</kbd> + <kbd>G</kbd> :  Go to line  
+<kbd>Ctrl</kbd> + <kbd>-</kbd> :  Navigate backward  
+<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> :  Navigate forward  
+
+
 #### Miscellaneous
 <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd> P</kbd> : See all Shortcuts  
-<kbd>Ctrl</kbd> + <kbd>G</kbd> :  Go to line  
 <kbd>Cmd</kbd> + <kbd>K</kbd> <kbd>Cmd</kbd> + <kbd>C</kbd> : Add line comment  
 <kbd>Cmd</kbd> + <kbd>K</kbd> <kbd>Cmd</kbd> + <kbd>U</kbd> : Remove line comment  
 <kbd>Ctrl</kbd> + <kbd>`</kbd> : Toggle terminal window  

@@ -1,8 +1,11 @@
-##### Assign a class running/stop by if-else checking a variable **status** value
+##### Assign a class running/stop by if-else checking a variable 
+
+**status** value
 ```
 {{ 'running' if status == 'READY' else 'stop' }}
 {% if status=='READY' %} ready {% elif status=='bound' %} bound {% else %} creating {% endif %}
 ```
+
 ##### Rendering a template
 `this.$el.append(global.nunjucksEnv.render(<template-name>));`
 
@@ -21,7 +24,7 @@
 ##### Fancy codes
 ```
 // dump: (debug friendly) Call `JSON.stringify` on an object and `dump` the result into the template. Useful for debugging: {{ items | dump }}
-{% set items = ["a", 1, {b : true}]%}
+{% set items = ["a", 1, {b : true}] %}
 {{item | dump}}     // output: ["a",1,{"b":true}]
 
 #### loop
@@ -59,7 +62,7 @@ Inside loops we can access some variables:
 // Set multiple at once
 {% set x, y, z = 5 %}
 
-// commnets syntex -> {# and #}. Comments are completely stripped out when rendering.
+// comments syntex -> {# and #}. Comments are completely stripped out when rendering.
 {# Loop through all the users #}
 {% for user in users %}...{% endfor %}
 ```

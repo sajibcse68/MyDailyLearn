@@ -5,8 +5,12 @@
     - e.g. `<script type="text/javascript" src="http://www.abc.com/test.js" async></script>`
 - Efficient choices for `string concatenation` is `+=`
     - e.g. const a = ''; a += 'b'; a += 'c';
+- We can't .bind() a function multiple time.
 - Use a document fragment to insert additions all at once. Fragments are invisible containers that hold multiple DOM elements without
   being a node itself.
+- JS MUST Know: `Scoping`, `Closures`, `Hoisting`, `This`, `Data Structures: Objects and Arrays`, `Design Patterns`, `Callbacks and Promises`.
+
+
 
 ```javascript
 var list = document.getElementById('kotwList');

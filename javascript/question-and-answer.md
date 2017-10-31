@@ -91,7 +91,188 @@ function logIt(){         |
 logIt();                  |
 ```
 
-#### How does `this` keyword change in different context?
+##### First, memory is set aside for all `necessary variables` and `declared functions`.
+
+```js
+functions getMysterNumber () { |  // loads like this
+  function chooseMystery() {   |  function getMysterNumber() {
+    return 12;                 |    function chooseMystery() {
+  }                            |      return 12;
+                               |    }
+                               |    // it replaced the above chooseMystery function
+  return getMysterNumber();    |    function chooseMystery() {
+                               |      return 7;
+  function chooseMystery() {   |    }
+    return 7;                  |    return getMysterNumber(); // output: 7;
+  }                            |
+}                              |   }
+```
+
+##### Function Expressions are never hoisted! They are treated as assignments.
+
+```js                                 | // loads look like
+function getMysteryNumber() {         | function getMysteryNumber() {
+  var chooseMystery = function(){     |   var chooseMystery = undefined;
+    return 12;                        |   var chooseMystery = undefined;  // replace the above 'chooseMystery'
+  }                                   |   chooseMystery = function() {
+  return chooseMystery();             |     return 12;
+                                      |   }
+  var chooseMystery = function() {    |    return chooseMystery();        // return 12;
+    return 7;                         |   chooseMystery = function() {  | // this section is unreachable
+  }                                   |     return 7;                   | // because it is below return statement
+}                                     |   }                             |
+                                        }
+```
+
+##### Check if 'return' statement is at the top
+```js                                 | // loads look like
+function getMysteryNumber() {         | function getMysteryNumber() {
+  return chooseMystery();             |
+  var chooseMystery = function(){     |   var chooseMystery = undefined;
+    return 12;                        |   var chooseMystery = undefined;  // replace the above 'chooseMystery'
+  }                                   |   return chooseMystery();         // ERROR
+                                      |
+                                      |   chooseMystery = function() {  | // this section is unreachable
+                                      |     return 12;                  | // because it is below return statement
+                                      |   }                             |
+  var chooseMystery = function() {    |            // return 12;
+    return 7;                         |   chooseMystery = function() {  | // this section is also unreachable
+  }                                   |     return 7;                   | // because it is below return statement
+}                                     |   }                             |
+                                        }
+```
+
+##### Analyzing Hoisting Load Order
+
+```js
+function theBridgeOfHoistingDoom() { | Alrighty, here’s the hoisted version. The function looks for any variables to
+  function fellowship() {            | create space for, finds sword, dwarf, fall, and ring, and sets them all to
+    return "friends";                | undefined. There’s only one declared function, fellowship, so that comes next.
+  }                                  | In this case, there are no replacement declared functions. The executable code
+  var sword = "sting";               | that assigns new values or functions to variable has all var keywords popped off.
+  var dwarf = function() {           | Any executable code after the first return of sword is excluded from the answer.
+    return "axe";                    |
+  };                                 | function theBridgeOfHoistingDoom() {
+  var fall = "Fly you fools!";       |   var sword = undefined;
+  fellowship = function() {          |   var dwarf = undefined;
+    return "broken";                 |   var fall = undefined;
+  };                                 |   var ring = undefined;
+  ring();                            |   function fellowship() {
+  return sword;                      |     return "friends";
+  fellowship = function() {          |   }
+    return "mines"                   |   sword = "sting";
+  };                                 |   dwarf = function() {
+  sword = function() {               |     return "axe";
+    return "glamdring";              |   };
+  };                                 |   fall = "Fly you fools!";
+  var ring = function() {            |   fellowship = function() {
+    return "precious";               |     return "broken";
+  };                                 |   };
+}                                    |   ring();
+                                     |    return sword;
+                                     |  }
+```
+```js
+function theBridgeOfHoistingDoom() { |
+  var ring = undefined;              | Alrighty, here’s the hoisted version. The function looks for any variables to
+  power = undefined;                 | create space for, finds ring and power, and sets them both to undefined. The
+  function balrog() {                | order of declared functions is balrog, elf, balrog, wizard, and elf. When older
+    return "fire";                   | versions of the loaded functions are replaced, we are left with balrog, wizard,
+  }                                  | and then elf. The only executable code that actually ever runs are the lines
+  var ring;                          | that precede and include the return of the call to wizard
+  function elf() {                   |
+    return "pointy ears";            |
+  }                                  | function theBridgeOfHoistingDoom() {
+  ring = wizard;                     |   var ring = undefined;
+  wizard = balrog;                   |   var power = undefined;
+  return wizard();                   |   function balrog() {
+  function balrog() {                |     return "whip";
+    return "whip";                   |   }
+  }                                  |   function wizard() {
+  function wizard() {                |     return "white";
+    return "white";                  |   }
+  }                                  |   function elf() {
+  var power = ring();                |     return "immortal";
+  return elf();                      |   }
+  function elf() {                   |   ring = wizard;
+    return "immortal";               |   wizard = balrog;
+  }                                  |   return wizard();
+}                                    | }
+```
+
+###### Analyzing load order II
+
+1. For all variable declarations, put the corresponding declarations at the top of the function. Assign them a value
+   of undefined and maintain their order.
+
+2. Now that variable declarations have been placed at the top, remove the original declarations, but leave any associated assignments.
+
+3. Then, hoist all function declarations to immediately after your variable declarations, maintaining their order as well.
+
+4. Any function expression assignment is treated here as executable code, and does not change the load order.
+
+5. Remove any unreachable statements after the first return statement.
+
+
+```js
+function theBridgeOfHoistingDoom() { | Alrighty, here’s the hoisted version. The function looks for any variables to
+  function fellowship() {            | create space for, finds sword, dwarf, fall, and ring, and sets them all to
+    return "friends";                | undefined. There’s only one declared function, fellowship, so that comes next.
+  }                                  | In this case, there are no replacement declared functions. The executable code
+  var sword = "sting";               | that assigns new values or functions to variable has all var keywords popped off.
+  var dwarf = function() {           | Any executable code after the first return of sword is excluded from the answer.
+    return "axe";                    |
+  };                                 | function theBridgeOfHoistingDoom() {
+  var fall = "Fly you fools!";       |   var sword = undefined;
+  fellowship = function() {          |   var dwarf = undefined;
+    return "broken";                 |   var fall = undefined;
+  };                                 |   var ring = undefined;
+  ring();                            |   function fellowship() {
+  return sword;                      |     return "friends";
+  fellowship = function() {          |   }
+    return "mines"                   |   sword = "sting";
+  };                                 |   dwarf = function() {
+  sword = function() {               |     return "axe";
+    return "glamdring";              |   };
+  };                                 |   fall = "Fly you fools!";
+  var ring = function() {            |   fellowship = function() {
+    return "precious";               |     return "broken";
+  };                                 |   };
+}                                    |   ring();
+                                     |    return sword;
+                                     |  }
+
+```
+
+###### Analyze Load Order III
+Q. What is the output of theBridgeOfHoistingDoom()?
+
+1. If the result is undefined, log an "undefined" string to the console.
+2. If the function is unable to complete, log an "ERROR" string to the console.
+
+```js
+function theBridgeOfHoistingDoom() {   | Answer: console.log("ERROR");
+  var sword = undefined;               | // cause ring() is not a function, it's a string.
+  var dwarf = undefined;               |
+  var fall = undefined;                |
+  var ring = undefined;                |
+  function fellowship() {              |
+    return "friends";                  |
+  }                                    |
+  sword = "sting";                     |
+  dwarf = function() {                 |
+    return "axe";                      |
+  }                                    |
+  fall = "Fly you fools!";             |
+  fellowship = function() {            |
+    return "broken";                   |
+  }                                    |
+  ring();                              |
+  return sword;                        |
+}                                      |
+```                                    
+
+#### Q. How does `this` keyword change in different context?
 
 `this` is a keyword whose value changes depending on how a function gets called. There `six` different ways where
 `this` can take take new values. They are:

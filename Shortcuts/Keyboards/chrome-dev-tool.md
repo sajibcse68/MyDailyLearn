@@ -14,5 +14,10 @@
 * `Cmd + \`                          -- pause/resume script execution
 
 
+#### Capture screenshot
+* Elements | select any node | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> | write `Capture node screenshot`
+
+* <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> (select an elemenet btn, top left corner) | drag the portion want to take screenshot
+
 ### Reference:
 1. https://developers.google.com/web/tools/chrome-devtools/

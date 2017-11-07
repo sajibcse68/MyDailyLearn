@@ -326,6 +326,7 @@ $ git checkout --theirs -- .                        # accept stashed changes
 ```sh
 $ git log                                          # Show  all the change/commit history
 $ git log <branch-name>                            # Show the commits of a specific branch
+$ git log <branch1>..<branch2>                     # Show all commits between two branches 
 $ git log --oneline --decorate --all --graph       # See all commits with better visualization
 $ git log --name-only                              # only file name
 $ git log --name-status                            # file name + status
@@ -412,9 +413,11 @@ $ git push -f origin <branch-name>                     # by force overwrite the 
 $ git checkout <admin_branch>
 $ git rebase master                                    # Merge all commits of admin_branch after master's commits
 $ git checkout master                                  
-$ git checkout -b <history_master>                     # Backup master branch if necessary
+$ git branch master.bac                                # Backup master branch if necessary
 $ git merge <admin_branch>
 $ git commit --amend --committer-date-is-author-date   # keep the date same as committer date when amending
+
+$ git rebase --onto master branch1 branch2             # take all the commits after branch1 up to branch2
 
 # Change the `author` of an earlier commit
 $ git checkout <commit-hash>                                             # checkout the commit we're trying to modify
@@ -499,6 +502,12 @@ $ git <branch-name> --tree-filter 'rm -f password.txt'  # Remove password.txt fi
 
 $ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt'
 
+#### Let's say, we are merging `release` branch into `master` and we have 3 folders `foo/`, `bar/`, `js/`. Now want to resolve conflicts 
+such as `foo/`, `bar/` should like `master` and `js/` should like `release` branch.
+
+    $ git checkout master -- . ':!js/'   # . ':!js/' means all except js/, so, foo/ & bar/ are checked out
+    $ git checkout release -- js/
+    $ git commit -am 'Fix conflicts'
 
 #### SubModules: (always push to two repo, first to submodules then parent repo)
 ```
@@ -552,18 +561,6 @@ $ git merge -s ours <old-master>               # Merge old master, keeping "our"
 $ git show --decorate <commit-hash>            # see 'Author', 'Date' and 'diff'                        
 $ git show --pretty=%H 1a3fge7                 # short commit hash -> full commit hash
 $ git rev-parse 3cdd5d                         # short commit hash -> full commit hash
-$ git diff-tree -r <commit-hash>               # show list of files that were changed or added in the commit
-$ git diff-tree -r <hash> -p                   # show list of files with changes that were changed or added in the commit
-$ git diff-tree --name-only -r <hash>          # show only the file name of changed files
-$ git diff-tree --no-commit-id -r <hash>       # show only the file name of changed files
-$ git check-ignore -v -- <file-name>           # see what .gitignore rule applies for a given file             
-$ git init                                     # From scratch -- create a new local repository
-$ git diff                                     # workspace vs index
-$ git diff --shortstat                         # # files changed, # insertions(+), # deletions(-)
-$ git diff --cached                            # index vs repo, show all staged and unstaged file changes
-$ git diff --staged                            # synonym of --cached, index vs repo, show all staged and unstaged file changes
-$ git diff HEAD                                # workspace vs repo
-$ git diff -- file_delete                      # see the deleted files, use '--' to separate paths from revisions
 $ git shortlog -sen --format="[%s]" --         # see all the users with name, email & total commit numbers
 $ git whatchanged --since="3 day ago"          # see the changed file lists name since 3 days
 $ git whatchanged --since="1 day ago" -p       # see the changes with file lists
@@ -574,6 +571,8 @@ $ git clone <url> --single-branch              # clone only single branch
 $ git clone user@<private-ip>:<repo-path>      # clone from other machine over ssh (machines connected in local network)
 $ git clone <url> --depth=1                    # Create a shallow clone with a history truncated to the specified number of commits
 $ git clone .git my-repo                       # Restore a repo from .git folder
+$ git init                                     # From scratch -- create a new local repository
+$ git check-ignore -v -- <file-name>           # see what .gitignore rule applies for a given file             
 $ git gui
 $ git ls-tree -d HEAD                          # Tree object including the mode and the name of each item and the SHA value
 $ git difftool
@@ -607,6 +606,17 @@ $ git diff b1..b2                              # Compare two brances, show you w
 $ git diff <commit1> <commit2>                 # Show changes between two commits id
 $ <url><tag-1>...<tag-2>                       # Compare changes of two tags in github 
 # [Example](https://github.com/jenkinsci/jenkins/compare/jenkins-1.651...jenkins-1.651.2)
+
+$ git diff-tree -r <commit-hash>               # show list of files that were changed or added in the commit
+$ git diff-tree -r <hash> -p                   # show list of files with changes that were changed or added in the commit
+$ git diff-tree --name-only -r <hash>          # show only the file name of changed files
+$ git diff-tree --no-commit-id -r <hash>       # show only the file name of changed files, don't print the commit hash
+$ git diff                                     # workspace vs index
+$ git diff --shortstat                         # # files changed, # insertions(+), # deletions(-)
+$ git diff --cached                            # index vs repo, show all staged and unstaged file changes
+$ git diff --staged                            # synonym of --cached, index vs repo, show all staged and unstaged file changes
+$ git diff HEAD                                # workspace vs repo
+$ git diff -- file_delete                      # see the deleted files, use '--' to separate paths from revisions
 
 # Set git diff to a default value (if git diff not works)
 $ git config --global --unset diff;            # this two commands reset git diff to default

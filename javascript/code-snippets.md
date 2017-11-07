@@ -1,4 +1,4 @@
-### Get details of DNS
+#### :eight_spoked_asterisk: Get details of DNS
 ```js
 console.log('document.URL : ', document.URL);                             // http://sub.mydomain.com:1234/a/b/c/d
 console.log('document.location.href : ', document.location.href);         // http://sub.mydomain.com:1234/a/b/c/d 
@@ -8,7 +8,7 @@ console.log('document.location.host : ', document.location.host);         // sub
 console.log('document.location.pathname : ', document.location.pathname); // /a/b/c/d
 ```
 
-#### indexOf() and splice() method
+#### :eight_spoked_asterisk: indexOf() and splice() method
 this.swords.indexOf(val) >== 0  
 - swords is an array. The indexOf() will return the first found index of a value, or -1 if it's not found. 
 
@@ -17,7 +17,7 @@ this.swords.splice(this.swords.indexOf(val), 1)
 - const soldiers = ["Knights", "Pikemen", "Archers"];
 - soldiers.splice(1, 2); will delete "Pekemen" and "Archers" and returns ["Pekemen" , "Archers"]
  
-#### jQuery `.clone()` method
+#### :eight_spoked_asterisk: jQuery `.clone()` method
 - Create a deep copy of the set of matched elements.
 - `clone()` vs `append()`
 
@@ -52,7 +52,7 @@ $( ".hello" ).clone().appendTo( ".goodbye" );
 </div>
 ```
 
-#### Check if JavaScript object is JSON
+#### :eight_spoked_asterisk: Check if JavaScript object is JSON
 ```
 var objectConstructor = "test".constructor;
 var arrayConstructor = [].constructor;
@@ -79,9 +79,24 @@ function whatIsIt(object) {
     }
 }
 ```
-[ref](http://stackoverflow.com/questions/11182924/how-to-check-if-javascript-object-is-json)
+[reference here](http://stackoverflow.com/questions/11182924/how-to-check-if-javascript-object-is-json)
+
+
+#### :eight_spoked_asterisk: Compare two distinct objects properties if properties are same
+
+```js
+const arr1 = ['Hello', 'World!'];
+const arr2 = ['Hello', 'World!'];
+
+console.log(arr1 === arr2); // false
+
+const arr1Str = JSON.stringify(arr1);
+const arr2Str = JSON.stringify(arr2);
+
+console.log(arr1Str === arr2Str);    // true
+```
  
-### A Common `Misconception`
+#### :eight_spoked_asterisk: A Common `Misconception`
 ```js
 Foo.method = function() {
   function test() {
@@ -113,7 +128,7 @@ Foo.method = function() {
 }
 ```
 
-### Get user's current longitude and latitude
+#### :eight_spoked_asterisk: Get user's current longitude and latitude
 Every browser has an built in navigator that can give us user's langitude and latitude.
 Browser will show a promt to allow/block this site from knowing user's current location.
 
@@ -125,7 +140,7 @@ if( navigator.geolocation) {
 }
 ```
 
-### Convert Integer value to Roman numerical string.
+#### :eight_spoked_asterisk: Convert Integer value to Roman numerical string.
 
 The Rules-
 - When the symbol appears `after a larger` symbol it is `added`.
@@ -160,7 +175,7 @@ function convertToRoman(num) {
 convertToRoman(36);
 ```
  
-### Fancy Codes
+#### :eight_spoked_asterisk: Fancy Codes
 
 ```js
 // Create a new object (server response)

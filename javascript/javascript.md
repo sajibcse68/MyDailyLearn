@@ -2,11 +2,15 @@
 
 - When browser find the `<script>` tag to download, all other parallel downloading halts. (6 files can be downloaded by modern browser)
 - if we add `async` in `<script>` tag then it would be downloaded asynchronously
-    - e.g. `<script type="text/javascript" src="http://www.abc.com/test.js" async></script`
+    - e.g. `<script type="text/javascript" src="http://www.abc.com/test.js" async></script>`
 - Efficient choices for `string concatenation` is `+=`
     - e.g. const a = ''; a += 'b'; a += 'c';
+- We can't .bind() a function multiple time.
 - Use a document fragment to insert additions all at once. Fragments are invisible containers that hold multiple DOM elements without
   being a node itself.
+- JS MUST Know: `Scoping`, `Closures`, `Hoisting`, `This`, `Data Structures: Objects and Arrays`, `Design Patterns`, `Callbacks and Promises`.
+
+
 
 ```javascript
 var list = document.getElementById('kotwList');
@@ -63,6 +67,7 @@ foo.get(); // 5
 - Here, `Counter` returns `two closures`: `increment` & `get` functions.
 - Both of these functions keep a `reference` to the scope of `Counter` and, therefore, always keep access to the `Count`
   variable that was defined in that scope.
+
 ```js
 // Closures Inside Loops
 for(var i = 0; i < 10; i++) {
@@ -71,10 +76,12 @@ for(var i = 0; i < 10; i++) {
   }, 1000);
 }
 ```
+
 - The above will not output the numbers `0 to 9`, but the number `10 ten times`
 - The anonymous function keeps a reference to i. At the time 'console.log' gets called, the `for loop` has already finished, and
- the value of `i` has been set to `10`
+  the value of `i` has been set to `10`
 - In order to get the desired behavior, it is necessary to create a `copy` of the value of `i`
+
 ```js
 // 1. Avoiding the Reference Problem
 for(var i = 0; i < 10; i++) {
@@ -98,8 +105,10 @@ for(var i = 0; i < 10; i++) {
     })(i), 1000)
 }
 ```
+
 - There is another possible way of achieving this, which is to return a function from the `anonymous wrapper` that will then
   have the same behavior as the code above.
+
 ```js
 // 3. Avoiding the Reference Problem
 for(var i = 0; i < 10; i++) {
@@ -108,13 +117,32 @@ for(var i = 0; i < 10; i++) {
   }, 1000, i)
 }
 ```
+
 - The other popular way to achieve this is to add an additional argument to the `setTimeout` function, which passes these arguments to the callback
+
 ```js
 // 4. Avoiding the Reference Problem
+for (let i = 0; i < 10; i++) {
+
+  // using the ES6 let syntax, it creates a new binding
+  // every single time the function is called
+  // read more: http://exploringjs.com/es6/ch_variables.html#sec_let-const-loop-heads
+
+  setTimeout(function() {
+    console.log(i);
+  }, 3000);
+}
+```
+
+- Wnen we declare a variable with let then, the it creates a new binding for each of it child scope (every single time the function is called)
+
+```js
+// 5. Avoiding the Reference Problem
 for(var i = 0; i < 10; i++) {
   setTimeout(console.log.bind(console, i), 1000);
 }
 ```
+
 - There's yet another way to accomplish this by using `.bind`, which can bind a `this` context and arguments to function.
 
 #### Closures Help in Function "Construction Zones"
@@ -159,7 +187,7 @@ gitveAssignment();   // it shows "... Torpedo #6!" instead of "... Torpedo #4!"
 // solutions #1:
 function assignTorpedo (name, passengerArray) {
   for (var i = 0; i < passengerArray.length; i++) {
-    if (passengerArray[i] == name {
+    if (passengerArray[i] == name) {
       return function () {                                // immediately return the function
         alert("Ahoy, " + name + "!\n" +                   // so that i variable don't get the
         " Man your post at Torpedo # " + (i+1) + "!");    // chance of increment
@@ -174,14 +202,14 @@ function assignTorpedo (name, passengerArray) {
 function assignTorpedo (passengerArray) {
   return function(name) {
     for (var i = 0; i < passengerArray.length; i++) {       // since we've put the loop inside the returned function,
-        if (passengerArray[i] == name {                     // i variable will come directly from that local scope
+        if (passengerArray[i] == name) {                     // i variable will come directly from that local scope
           alert("Ahoy, " + name + "!\n" +
           " Man your post at Torpedo # " + (i+1) + "!");   
         }
       }
   }
 }
-``
+```
 
 
 #### Change the `tooltip` value with js when button is clicked
@@ -517,182 +545,3 @@ var funcName = function(a, b) {
 ```
 
 ## Hoisting
-##### First, memory is set aside for all necessary variables and `declared functions`.
-
-```js
-functions getMysterNumber () { |    // loads like this
-  function chooseMystery() {   |  function getMysterNumber() {
-    return 12;                 |   function chooseMystery() {
-  }                            |     return 12;
-                               |   }
-  return getMysterNumber();    |   function chooseMystery() {  // it replaced the above chooseMystery function
-                               |     return 7;
-  function chooseMystery() {   |   }
-    return 7;                  |   return getMysterNumber(); // output: 7;
-  }                            |
-}                              |   }
-```
-
-##### Function Expressions are never hoisted! They are treated as assignments.
-
-```js                                 | // loads look like
-function getMysteryNumber() {         | function getMysteryNumber() {
-  var chooseMystery = function(){     |   var chooseMystery = undefined;
-    return 12;                        |   var chooseMystery = undefined;  // replace the above 'chooseMystery'
-  }                                   |   chooseMystery = function() {
-  return chooseMystery();             |     return 12;
-                                      |   }
-  var chooseMystery = function() {    |    return chooseMystery();        // return 12;
-    return 7;                         |   chooseMystery = function() {  | // this section is unreachable
-  }                                   |     return 7;                   | // because it is below return statement
-}                                     |   }                             |
-                                        }
-```
-
-##### Check if 'return' statement is at the top
-```js                                 | // loads look like
-function getMysteryNumber() {         | function getMysteryNumber() {
-  return chooseMystery();             |
-  var chooseMystery = function(){     |   var chooseMystery = undefined;
-    return 12;                        |   var chooseMystery = undefined;  // replace the above 'chooseMystery'
-  }                                   |   return chooseMystery();         // ERROR
-                                      |
-                                      |   chooseMystery = function() {  | // this section is unreachable
-                                      |     return 12;                  | // because it is below return statement
-                                      |   }                             |
-  var chooseMystery = function() {    |            // return 12;
-    return 7;                         |   chooseMystery = function() {  | // this section is also unreachable
-  }                                   |     return 7;                   | // because it is below return statement
-}                                     |   }                             |
-                                        }
-```
-
-##### Analyzing Hoisting Load Order
-
-```js
-function theBridgeOfHoistingDoom() { | Alrighty, here’s the hoisted version. The function looks for any variables to
-  function fellowship() {            | create space for, finds sword, dwarf, fall, and ring, and sets them all to
-    return "friends";                | undefined. There’s only one declared function, fellowship, so that comes next.
-  }                                  | In this case, there are no replacement declared functions. The executable code
-  var sword = "sting";               | that assigns new values or functions to variable has all var keywords popped off.
-  var dwarf = function() {           | Any executable code after the first return of sword is excluded from the answer.
-    return "axe";                    |
-  };                                 | function theBridgeOfHoistingDoom() {
-  var fall = "Fly you fools!";       |   var sword = undefined;
-  fellowship = function() {          |   var dwarf = undefined;
-    return "broken";                 |   var fall = undefined;
-  };                                 |   var ring = undefined;
-  ring();                            |   function fellowship() {
-  return sword;                      |     return "friends";
-  fellowship = function() {          |   }
-    return "mines"                   |   sword = "sting";
-  };                                 |   dwarf = function() {
-  sword = function() {               |     return "axe";
-    return "glamdring";              |   };
-  };                                 |   fall = "Fly you fools!";
-  var ring = function() {            |   fellowship = function() {
-    return "precious";               |     return "broken";
-  };                                 |   };
-}                                    |   ring();
-                                     |    return sword;
-                                     |  }
-```
-```js
-function theBridgeOfHoistingDoom() { |
-  var ring = undefined;              | Alrighty, here’s the hoisted version. The function looks for any variables to
-  power = undefined;                 | create space for, finds ring and power, and sets them both to undefined. The
-  function balrog() {                | order of declared functions is balrog, elf, balrog, wizard, and elf. When older
-    return "fire";                   | versions of the loaded functions are replaced, we are left with balrog, wizard,
-  }                                  | and then elf. The only executable code that actually ever runs are the lines
-  var ring;                          | that precede and include the return of the call to wizard
-  function elf() {                   |
-    return "pointy ears";            |
-  }                                  | function theBridgeOfHoistingDoom() {
-  ring = wizard;                     |   var ring = undefined;
-  wizard = balrog;                   |   var power = undefined;
-  return wizard();                   |   function balrog() {
-  function balrog() {                |     return "whip";
-    return "whip";                   |   }
-  }                                  |   function wizard() {
-  function wizard() {                |     return "white";
-    return "white";                  |   }
-  }                                  |   function elf() {
-  var power = ring();                |     return "immortal";
-  return elf();                      |   }
-  function elf() {                   |   ring = wizard;
-    return "immortal";               |   wizard = balrog;
-  }                                  |   return wizard();
-}                                    | }
-```
-
-###### Analyzing load order II
-
-1. For all variable declarations, put the corresponding declarations at the top of the function. Assign them a value
-   of undefined and maintain their order.
-
-2. Now that variable declarations have been placed at the top, remove the original declarations, but leave any associated assignments.
-
-3. Then, hoist all function declarations to immediately after your variable declarations, maintaining their order as well.
-
-4. Any function expression assignment is treated here as executable code, and does not change the load order.
-
-5. Remove any unreachable statements after the first return statement.
-
-
-```js
-function theBridgeOfHoistingDoom() { | Alrighty, here’s the hoisted version. The function looks for any variables to
-  function fellowship() {            | create space for, finds sword, dwarf, fall, and ring, and sets them all to
-    return "friends";                | undefined. There’s only one declared function, fellowship, so that comes next.
-  }                                  | In this case, there are no replacement declared functions. The executable code
-  var sword = "sting";               | that assigns new values or functions to variable has all var keywords popped off.
-  var dwarf = function() {           | Any executable code after the first return of sword is excluded from the answer.
-    return "axe";                    |
-  };                                 | function theBridgeOfHoistingDoom() {
-  var fall = "Fly you fools!";       |   var sword = undefined;
-  fellowship = function() {          |   var dwarf = undefined;
-    return "broken";                 |   var fall = undefined;
-  };                                 |   var ring = undefined;
-  ring();                            |   function fellowship() {
-  return sword;                      |     return "friends";
-  fellowship = function() {          |   }
-    return "mines"                   |   sword = "sting";
-  };                                 |   dwarf = function() {
-  sword = function() {               |     return "axe";
-    return "glamdring";              |   };
-  };                                 |   fall = "Fly you fools!";
-  var ring = function() {            |   fellowship = function() {
-    return "precious";               |     return "broken";
-  };                                 |   };
-}                                    |   ring();
-                                     |    return sword;
-                                     |  }
-
-```
-
-###### Analyze Load Order III
-Q. What is the output of theBridgeOfHoistingDoom()?
-
-1. If the result is undefined, log an "undefined" string to the console.
-2. If the function is unable to complete, log an "ERROR" string to the console.
-
-```js
-function theBridgeOfHoistingDoom() {   | Answer: console.log("ERROR");
-  var sword = undefined;               | // cause ring() is not a function, it's a string.
-  var dwarf = undefined;               |
-  var fall = undefined;                |
-  var ring = undefined;                |
-  function fellowship() {              |
-    return "friends";                  |
-  }                                    |
-  sword = "sting";                     |
-  dwarf = function() {                 |
-    return "axe";                      |
-  }                                    |
-  fall = "Fly you fools!";             |
-  fellowship = function() {            |
-    return "broken";                   |
-  }                                    |
-  ring();                              |
-  return sword;                        |
-}                                      |
-```                                    |

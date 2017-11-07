@@ -18,3 +18,9 @@
     $ hugo new theme <theme-name>       # create a new   theme
 
     $ hugo new a.md                     # create a new file inside content/
+    $ hugo new dir1/b.md                # create a new file content/dir1/b.md
+    $ hugo server -D                    # render with draft file (draft: true)
+
+
+    
+

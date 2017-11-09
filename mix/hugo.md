@@ -117,6 +117,24 @@ Notice how once we have entered the loop (i.e. `range`), the value of `{{ . }}` 
 <div>Hello, World</div>
 ```
 
+## :arrow_forward: Functions
+
+#### urlize
+Takes a string, sanitize it for usage in URLs, and converts spaces to hyphens.
+
+```
+// *.md file
++++
+location = "Chicago IL"
++++
+
+// *.html
+<a href="/locations/{{ . | urlize }}">{{ . }}</a>
+
+// output
+<a href="/locations/chicago-il">Chicago IL</a>
+```
+
 #### :arrow_forward: Note
 - Function are used only inside `Layouts` directory not from others directory
 - We can use `shortcodes` inside *content/<*.md>* file by `{{< shortcode-file-name>}}`. Shortcode file exists in *layouts/shortcodes/<file>.html*

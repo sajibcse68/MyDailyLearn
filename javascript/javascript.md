@@ -452,16 +452,21 @@ for (var i = 0; i < len; i++ ) {
   // finally add the `div` element to the document          
   document.body.appendChild(div);                           
 }
-#### Solve the problem:                                     // function(numCopy) is outer function and invoking immediately
-Output: 3 3 3       (when we click on 1, 2, 3 !!)           // by wrapping it in parentheses and calling it right away, passing
-                                                            // in `nowNum`. Inside the outer function the value is known as `numCopy` 
-elem.addEventListener('click', (function(numCopy) {         // Now, if doesn't matter that `nowNum` changes later down the line.
-```                                                         // We stored the value of `nowNum` in `numCopy` inside our outer function.
-    return function() {                                     // Lastly, the outer function returns the inner function to the event listener.
-      alert(numCopy);                                       // Because of the way JavaScript scope works, that inner function has access to
-    };                                                      // `numCopy` which will never change.
-})(nowNum));                                                
+```
+Output: 3 3 3       (when we click on 1, 2, 3 !!) 
 
+#### Solve the problem:
+
+```                                                  // function(numCopy) is outer function and invoking immediately
+elem.addEventListener('click', (function(numCopy) {  // by wrapping it in parentheses and calling it right away, passing
+      return function() {                            // in `nowNum`. Inside the outer function the value is known as `numCopy` 
+        alert(numCopy);                              // Now, if doesn't matter that `nowNum` changes later down the line.
+      };                                             // We stored the value of `nowNum` in `numCopy` inside our outer function.
+})(nowNum));                                         // Lastly, the outer function returns the inner function to the event listener.
+                                                     // Because of the way JavaScript scope works, that inner function has access to
+                                                     // `numCopy` which will never change.
+                                                    
+```
 
 
 ## Object Oriented JavaScript (Udacity)

@@ -65,8 +65,7 @@ Just put parentheses:      // JS interpretate everything what is in parentheses 
   console.log(foo === null)  // true boolean
 
 #### Q. Explain `Hoisting` in JavaScript
-When you declare a variable in JavaScript (using "var"), that variable declaration is "hoisted" to the top of the
-current scope: meaning the top of the current function or the top of the script if the variable isn't in a function.
+When you declare a variable in JavaScript (using "var"), that variable declaration is "hoisted" to the top of the current scope: meaning the top of the current function or the top of the script if the variable isn't in a function.
 
 #### What is the output?
 
@@ -96,7 +95,7 @@ logIt();                  |
 ##### First, memory is set aside for all necessary variables and `declared functions`.
 
 ```js
-functions getMysterNumber () { |    // loads like this
+function getMysterNumber () {  |  // loads like this
   function chooseMystery() {   |  function getMysterNumber() {
     return 12;                 |   function chooseMystery() {
   }                            |     return 12;

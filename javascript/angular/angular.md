@@ -39,7 +39,7 @@ checking and object-oriented features.
     - replace: Creates a new string, replacing specified characters
     - slice: Creates a new list or string containing a subset of the elements
     - json: Transforms any input to a JSON.formatted string
-#### Spiliting to Two Components
+#### Splitting to Two Components
 - Our `main.ts` is where we import our first component and bootstrap it.
 - In order to import a class, we must give it the `export` keyword.
 - We use `directives` metadata to list the directives our component class.
@@ -76,7 +76,7 @@ checking and object-oriented features.
   - Not Ok: [(ngModal)]="fullName()"
 
 #### Services
-- Services are used to organise and share code accross our app, and they'are usually where we create
+- Services are used to organize and share code across our app, and they're usually used where we create
   our data access methods.
 - When we run an Angular 2 application, it creates a dependency injector. An injector is in charge of knowing how to
   create and send things.
@@ -90,8 +90,6 @@ checking and object-oriented features.
 - Our http calls return an observable, not a promise, which behaves more like an array.
 
 
-
-
 ---
 
 ## The Complete Angular Master Class (Udemy)
@@ -99,7 +97,7 @@ checking and object-oriented features.
 #### Shadow DOM
 - It's normally a specification that enables DOM tree, Style, etc Encapsulation. 
 - Allows us to apply **scoped styles** to elements without bleeding out to the outer world.
-
+ 
 N.B. only supported by safari >= v10, chrome >= v53.
 
 ```js
@@ -112,9 +110,25 @@ root.innerHTML = `
 `
 ```
 
+#### Components
+Three steps to use a components.
 
+- `Create` a component
+- `Register` a component
+- Add an element in an `HTML markup`
 
+A component encapsulates the data, the logic and html markup for a view.
 
+#### Templates
+
+## Commands
+```
+// create a new Component
+$ ng g c <name>
+
+// create a new Service
+$ ng g s <name>
+```
 
 
 

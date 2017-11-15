@@ -75,11 +75,67 @@ Go Templates treat the following values as false:
 
 // and, or
 {{ if and ( or ((isset .Params "title") (isset .Params "caption")) (isset .Params "altr") }}
+```
 
+#### :arrow_forward: Define a variable Independent of Context
+```
+{{ $title := .Site.Title }}
+<ul>
+{{ range .Params.tags }}
+    <li>
+        <a href="/tags"{{ . | urlize }}>{{ . }}</a>
+        - {{ $title }}
+    </li>
+{{ end }}
+</ul>
+```
+
+Notice how once we have entered the loop (i.e. `range`), the value of `{{ . }}` has changed for every iteration but `$title` is not cause we assigned value of `$title` from outside the loop and we have access to the value within the loops as well. 
+
+#### :arrow_forward: Use `$.` to access the Global Context
+`$` has special significance in your templates. `$` is set to the starting value of `.` (the dot) by default. This mean we have access to the global context from anywhere.
+
+```
+{{ range .Params.tags }}
+<li>
+<a href="tags/{{ . | urlize }}">{{ . }}</a>
+- {{ $.Site.Title }}
+</li>
+{{ end }}
 
 ```
 
-#### Note
+#### :arrow_forward: Remove `space`, `horizontal tab`, `carriage return`, `newline` etc. from templates
+
+```
+// Input
+<div>
+{{- .Title -}}
+</div>
+
+// Output
+<div>Hello, World</div>
+```
+
+## :arrow_forward: Functions
+
+#### urlize
+Takes a string, sanitize it for usage in URLs, and converts spaces to hyphens.
+
+```
+// *.md file
++++
+location = "Chicago IL"
++++
+
+// *.html
+<a href="/locations/{{ . | urlize }}">{{ . }}</a>
+
+// output
+<a href="/locations/chicago-il">Chicago IL</a>
+```
+
+#### :arrow_forward: Note
 - Function are used only inside `Layouts` directory not from others directory
 - We can use `shortcodes` inside *content/<*.md>* file by `{{< shortcode-file-name>}}`. Shortcode file exists in *layouts/shortcodes/<file>.html*
 

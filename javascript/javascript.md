@@ -21,9 +21,9 @@ var fragment = document.createDocumentFragment();
 
 const kotwLen = kotw.length;
 for (var i=0, len = kotwLen; i<len; i++) {
-    var element = document.createElement('li');
-    element.appendChild(document.createTextNode(kotw[i]));
-    fragment.appendChild(element);
+ var element = document.createElement('li');
+ element.appendChild(document.createTextNode(kotw[i]));
+ fragment.appendChild(element);
 // now we add each new `li` element to the staging fragment, instead of to the document itself
 }
 list.appendChild(fragment);
@@ -145,7 +145,7 @@ for(var i = 0; i < 10; i++) {
 
 - There's yet another way to accomplish this by using `.bind`, which can bind a `this` context and arguments to function.
 
-#### Closures Help in Function "Construction Zones"
+#### Closures Help in Function `Construction Zones`
 - A closure wraps up an entire environment, binding necessary variables from other scopes.
 - A closure can make the creation of very similar functions untra-efficient.
 
@@ -549,10 +549,7 @@ var funcName = function(a, b) {
 };
 ```
 
-## Hoisting
-
 ## Debugging Tips
-
 #### How to find DOM elements quickly?
 Mark a DOM elements panel ans use it in your console. Chrome inspector keeps the `last five (5)` elements panel in history so that the final marked element displays as `$0`, the second to last marked element `$1` and so on.
 
@@ -597,7 +594,7 @@ function app() {
 app();
 ```
 
-#### Add a debugger a in a function.
+#### Add a debugger in a function.
 
 Use `debug(funcName)` in the console and script will stop when it reaches the function we passed in.
 

@@ -88,8 +88,6 @@ checking and object-oriented features.
 - Angular apps usually load data using classes after the Angular app is initialized and running.
 - We can use HTTP library through dependency injection.
 - Our http calls return an observable, not a promise, which behaves more like an array.
-
-
 ---
 
 ## The Complete Angular Master Class (Udemy)

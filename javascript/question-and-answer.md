@@ -274,7 +274,7 @@ function theBridgeOfHoistingDoom() {   | Answer: console.log("ERROR");
 
 #### Q. How does `this` keyword change in different context?
 
-`this` is a keyword whose value changes depending on how a function gets called. There `six` different ways where
+`this` is a keyword whose value changes depending on how a function gets called. There have `six` different ways where
 `this` can take take new values. They are:
 
 1. `this` in global context
@@ -481,7 +481,7 @@ console.log(adder.add(1));  // output: 2
 console.log(adder.addThruCall(1));  // output: 2
 
 
-5. **This** In Event Listeners
+6. **This** In Event Listeners
 `this`  is set the element that fired the event in an event listener.
 
 ```js

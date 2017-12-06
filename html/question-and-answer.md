@@ -7,6 +7,8 @@
     - True
 - What actually meta tag does ?
     - Meta tag communicate from source to browser.
+- How to redirect a page using `meta` tag?
+    - <meta http-equiv="refresh" content="0; url=https://example.com/" />
 - `Quirks` mode is when th browser -
     - Assumes that the HTML in the web page is NOT following th HTML standard, i.e., not in standards mode.
       Styles won't work correctly, etc.

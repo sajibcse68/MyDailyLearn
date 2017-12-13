@@ -34,6 +34,7 @@
 
 #### Miscellaneous
 <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd> P</kbd> : See all Shortcuts  
+<kbd>Opt</kbd> + <kbd>Shift</kbd> + <kbd> A </kbd> : Comment out multi lines
 <kbd>Cmd</kbd> + <kbd>K</kbd> <kbd>Cmd</kbd> + <kbd>C</kbd> : Add line comment  
 <kbd>Cmd</kbd> + <kbd>K</kbd> <kbd>Cmd</kbd> + <kbd>U</kbd> : Remove line comment  
 <kbd>Ctrl</kbd> + <kbd>`</kbd> : Toggle terminal window  

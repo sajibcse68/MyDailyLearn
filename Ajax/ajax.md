@@ -1,8 +1,37 @@
+#### What is HTTP (HyperText Transfer Protocol) ?
+- Based on request/response  stateless protocol
+    - Client opens connection to server
+    - Client sends HTTP request for a resource
+    - Server sends HTTP response to the client (w/resource)
+    - Client closes connection to server
+#### URN -> URI -> URL
+**https://a.bcd.com/wiki/fish** here:
+
+- *https* is the scheme/protocol. (e.g. http/https/file)
+- *a.bcd.com* is the hostname.
+- */wiki/fish* is the path.
+
+- URN (Uniform Resource Name)
+    - Uniquely identifies resources or name of resource
+    - Does not tell us how to get the resource
+    - e.g. "HTML/CSS/Javascript/Web_Developers/Yaakov/Chaikin"
+
+- URI (Uniform Resource Identifier)
+    - Uniquely identifies resource or location
+    - Does not necessarily tell us how to get the resource (much more `directory type` structure looking thing)
+    - e.g. "/official_web_site/index.html" (unable to get that resource cause don't know where to go to get it)
+
+- URL: Uniform Resource Locator
+    - Form of URI that provides info on how to get resource
+    - e.g. http://www.mysite.com/official_web_site/index.html
+
 ************ onreadystatechange event ****************
-/*
+```
 When a request to a server is sent, we want to perform some actions based on the response,
 the readystatechange event is triggered every time the readyState changes
-*/
+```
+
+
 
 readyState:
 -----------
@@ -45,6 +74,8 @@ $('button').off('click')                           // destroy all events on butt
 $('button'.trigger('click');                       // similar to if the user clicked the button
 
 
-<---------------- note -------------------->
+#### Mixin
 - Sometimes jQuery change the value of `this`
 - Inside AJAX callbacks `this` is set to the AJAX settings
+- `GET` method sends data to server as part of the URL
+- `POST` method sends data as part of message body

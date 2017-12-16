@@ -12,6 +12,7 @@
 * `Cmd + F`                 -- Find text in current file
 * `Cmd + Shift + A`         -- Find actions or options
 * `Cmd + R`                 -- Replace word
+* `Cmd + D`                 -- Duplicate a line row or a section
 * `Option + Shift + C`      -- Show recent changes of file
 * `Cmd + Shift + E`         -- Show recently edited file
 * `Cmd + W`                 -- Incremental selection

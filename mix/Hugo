@@ -15,3 +15,9 @@ $ hugo                           // generate public folder
 $ hugo new site <path-to-project>          // create a hugo project
 $ hugo new theme <theme-name>              // create a new theme
 $
+
+
+<-------- Debugging --------------->
+```
+$ {{ printf "%v" variable }}
+```

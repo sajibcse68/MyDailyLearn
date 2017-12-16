@@ -21,4 +21,5 @@
 - Using only HTML, how would you make sure that 3 words in an HTML document `always appear together in 1 line`, even if 
   the text word-wraps because the browser window is too narrow for that text line?
     - Place `&nbsp;` entity reference after th `1st word` and after the `2nd word`(with no spaces in between words and entity references)
-- 
+- What is shadow DOM?
+  - Allows us to apply **scoped styles** to elements without bleeding out to the outer world.

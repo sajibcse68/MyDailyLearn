@@ -23,3 +23,12 @@
     - Place `&nbsp;` entity reference after th `1st word` and after the `2nd word`(with no spaces in between words and entity references)
 - What is shadow DOM?
   - Allows us to apply **scoped styles** to elements without bleeding out to the outer world.
+```
+  // example
+  var el = document.querySelector('table')
+  var root = el.createShadowRoot();
+  root.innerHTML = `
+    <style>h1 { color: red }</style>
+    <h1>Hello</h1>
+  `
+```

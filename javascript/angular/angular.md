@@ -21,13 +21,15 @@ checking and object-oriented features.
 - Our component decorator is what truns plain Typescript class into a component.
 
 #### Structural Directives
-- A directive (within Angular) is how we add dynamic begavior to HTML.
+- A directive (within Angular) is how we add dynamic behavior to HTML.
 - There are three kinks of directives:
   - Component
     - Has a template
   - Structural
+    - Modify the structure of the DOM
     - e.g. *ngFor and *ngIf are the examples of Structural Directives.
   - Attribute
+    - Modify the attributes of DOM elements
 
 #### Pipes and Methods
 - A pipe takes in data as input and tranforms it to a desired output.

@@ -614,3 +614,5 @@ func1(1, 2);
 
 #### Quickly access elements in the console
 A faster way to do a querySelector  in the console is with the dollar sign. `$('css-selector')` will return the first match of CSS selector. `$$('css-selector')` will return all of them. it we should use an element more than once, it's worth saving it as a variable. 
+
+#### Console object ultimate guide

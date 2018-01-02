@@ -556,6 +556,8 @@ $ git mv <src-file> <new-file-name>            # Rename a file and keeps all the
 $ git status                                   # Difference between working directory and the index
 $ git fetch                                    # Get the latest changes from origin (no merge)
 $ git fetch -p                                 # -p = --prune, after fetching remove any remove-tracking references that no longer exist on the remote 
+$ git branch | awk '/\*/ { print $2; }'        # get the current branch name
+$ git rev-parse --abbrev-ref HEAD              # get the current branch name
 $ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
 $ git show --decorate <commit-hash>            # see 'Author', 'Date' and 'diff'                        

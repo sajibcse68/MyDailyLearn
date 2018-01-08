@@ -38,7 +38,7 @@
     - `/^[^\d]+/i` here, first `^` is used to anchor beginning of subject
 - Even Shorted With Negated Shorted
      - `[^\d]` = `\D` = match every character except numbers
-     - [^\s] = `S` = match every character except whitespace
+     - [^\s] = `\S` = match every character except whitespace
      - [^\w] = \W = match every character except words
 - Matching a Specific Number of Times With Interval Expressions
     - `/[a-z]{2}/` matches any character from a-z exactly 2 times

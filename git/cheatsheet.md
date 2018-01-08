@@ -206,6 +206,11 @@ See list of local and remote branches that contains a specific commit.
 
     $ git branch -a --contains <commit-sha>
 
+See list of branches ordered by most recent commit
+
+    $ git branch --sort=committerdate   # ASC order
+    $ git branch --sort=-committerdate  # DES order
+
 #### Rename a branch name.
 
     $ git branch -m <new-name>              # rename the current branch

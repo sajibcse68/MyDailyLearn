@@ -102,6 +102,8 @@ echo $a          |    echo $a
     `echo 'Warning Will Robinson!'`   >&2
 
 #### Fancy commands
+
+```sh
 $ man bash | wc -l                                             # total number of line in man page of bash (e.g. 4890)
 $ info bash | wc -l                                            # totla number of line in info page of bash (e.g. 9526)
 $ w | cut -d " " -f 1 - | grep -v USER | sort -u               # show the currently connected users
@@ -110,3 +112,4 @@ $ uname -m                                                     # show the os pro
 $ sleep 2                                                      # sleep for 2 seconds
 $ enable                                                       # return all builtin keyword
 $ compgen -k                                                   # return all keyword
+```

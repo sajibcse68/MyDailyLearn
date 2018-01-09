@@ -101,10 +101,6 @@ echo $a          |    echo $a
 - Use file redirection techniques to send the output to other files, such as stderr:
     `echo 'Warning Will Robinson!'`   >&2
 
-
-
-
-
 #### Fancy commands
 $ man bash | wc -l                                             # total number of line in man page of bash (e.g. 4890)
 $ info bash | wc -l                                            # totla number of line in info page of bash (e.g. 9526)

@@ -206,6 +206,11 @@ See list of local and remote branches that contains a specific commit.
 
     $ git branch -a --contains <commit-sha>
 
+See list of branches ordered by most recent commit
+
+    $ git branch --sort=committerdate   # ASC order
+    $ git branch --sort=-committerdate  # DES order
+
 #### Rename a branch name.
 
     $ git branch -m <new-name>              # rename the current branch
@@ -584,6 +589,9 @@ $ git help <verb>                              # Find out more
 $ git fsck --full                              # = File System Check, verify al object files and data
 $ git fsck --lost-found                        # Verifies the connectivity and validity of the objects in the database
 $ git command --help                           # When in doubt, use git help
+$ git diff-tree -r --diff-filter=D b1 b2       # List of files that exists in b1 but not in b2
+$ git show <commit-hash>:<file-path>           # See a old version of a file
+
 $ git config --global core.editor "subl -n -w" # '-n' will open a new instance of Sublime & '-w' will make the git wait for you to close Sublime before proceeding
 
 $ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>  # find renamed file (previous name of a file)

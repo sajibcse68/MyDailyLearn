@@ -237,13 +237,14 @@ M + b:  Move backward a word.
 
 ##### The Linux five basic commands a programmer should know about
    ls, cd, mv, mkdir, rm  
-// Additional basic commands:
-  pwd - Print Working Directory
-  cd - Change Directory
-  ls - LiSt directory contents
-   echo, cat, man, pwd, cp, ln, less, grep, tail, ssh, reboot, poweroff  
-// Bonus  
-   vim  
+-  Additional basic commands:
+   - pwd - Print Working Directory
+   - cd - Change Directory
+   - ls - LiSt directory contents
+   - echo, cat, man, pwd, cp, ln, less, grep, tail, ssh, reboot, poweroff  
+- Bonus  
+   - vim
+
 But really, a programmer needs more than that.  
 
 #### Different problem solve

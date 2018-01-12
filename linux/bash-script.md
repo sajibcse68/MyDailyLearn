@@ -97,9 +97,9 @@ echo $a          |    echo $a
      - `-e` -> enable `backslash`, `escaped characters` line `\n` and `\t`
      - `-E` -> disable backslash escaped characters in case they were enabled by default
 - ls * would list contents of directories:
-    - `echo * would show file and directory names
+    - `echo *` would show file and directory names
 - Use file redirection techniques to send the output to other files, such as stderr:
-    `echo 'Warning Will Robinson!'`   >&2
+    `echo 'Warning Will Robinson!'` >&2
 
 #### Fancy commands
 

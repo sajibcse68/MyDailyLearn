@@ -16,7 +16,37 @@ this.swords.splice(this.swords.indexOf(val), 1)
 - If the right sword is available, we will remove it from the swords array with some index cleverness. `[0]` denote from where search would be start and `1` denotes how many item(s) we want to remove.
 - const soldiers = ["Knights", "Pikemen", "Archers"];
 - soldiers.splice(1, 2); will delete "Pekemen" and "Archers" and returns ["Pekemen" , "Archers"]
- 
+
+#### :eight_spoked_asterisk: JavaScript `Object.assign()` method
+`Object.assign()` method is used to copy the values of all enumerable own properties from one or more source objects to a target object. It will return the target object.
+
+```js
+// Merge an object
+let first = { firstName: 'Sajib' };
+let last = { lastName: 'Khan' };
+let fullName = Object.assign(firstName, lastName);
+console.log(fullName);
+// { firstName: 'Sajib', lastName: 'Khan' }
+console.log(firstName);
+// { firstName: 'Sajib', lastName: 'Khan' } as the target also changed
+
+// Merge multiple sources
+let ob = Object.assign({ a: 1 }, { b: 2 }, { c: 3 });
+console.log(ob);
+// { a: 1, b: 2, c: 3 }
+
+// Merge and overwrite equal keys
+let ob = Object.assign({ a: 1 }, { a: 2 }, { c: 3 });
+console.log(ob);
+// { a: 3 }
+
+// Clone an object
+let ob = { name: 'Sajib Khan' }
+let cloneOb = Object.assign({}, ob);
+console.log(cloneOb);
+// { name: 'Sajib Khan' }
+```
+
 #### :eight_spoked_asterisk: jQuery `.clone()` method
 - Create a deep copy of the set of matched elements.
 - `clone()` vs `append()`
@@ -79,7 +109,7 @@ function whatIsIt(object) {
     }
 }
 ```
-[reference here](http://stackoverflow.com/questions/11182924/how-to-check-if-javascript-object-is-json)
+[See Reference](http://stackoverflow.com/questions/11182924/how-to-check-if-javascript-object-is-json)
 
 
 #### :eight_spoked_asterisk: Compare two distinct objects properties if properties are same

@@ -666,8 +666,8 @@ $ git branch -d <hot-branch>                  # delete the release branch
 ``` 
 
 #### Stage vs Track file:
-- Tracked files are files that were in the last snapshot; they can be unmodified, modified, or staged.
-- Untracked files are everything else? any files in your working directory that were not in your last snapshot and are not in your staging area (index)
+- Tracked files are files that were in the last snapshot; they can be `unmodified`, `modified`, or `staged`.
+- Untracked files are everything else? any files in your working directory that were not in your last snapshot and are not in your staging area (index). e.g.
 
 ```
 $ touch index.html              # unstaged, untracked

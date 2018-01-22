@@ -571,6 +571,31 @@ console.timeEnd('Timer1');
 Timer1: <15.920>ms
 ```
 
+#### Use of `console.count()`
+Logs are the number of times that this particular call to `count()` has been called. This function takes an optional argument `label`.
+
+```js
+var user = '';
+
+function greet() {
+  console.count(user);
+  return 'hi ' + user;
+}
+
+user = 'bob';
+greet();
+user = 'alice';
+greet();
+greet();
+console.count('alice');
+
+// Output:
+'bob: 1'
+'alice: 1'
+'alice: 2'
+'alice: 3'
+```
+
 #### Get trace and print the stack trace a function calling
 `console.trace()` creates a views and triggers events, so eventually we'll want to know what caused the function call.
 

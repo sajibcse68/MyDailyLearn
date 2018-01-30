@@ -605,10 +605,26 @@ console.log(document.body);
 ```
 
 #### Use of `console.dirxml()`
-console.dirxml() displays the object in xml representation.
+console.dirxml() displays the object in xml representation. console.dirxml() and console.log() is identical to output.
 ```js
 console.dirxml(document.body);
 ```
+
+#### Use of `console.error()`
+console.error() displays a message to the console with an error style (error icon + font color red).
+
+```js
+$.ajax({
+  url: 'test.url.sajib.bd',
+  type: 'GET',
+  error: function(resp) {
+    console.log(resp.statusText);
+    console.error(resp.statusText);
+  }
+});
+```
+
+#### Use of `console.group()`, `console.groupCollapsed()` and `console.groupEnd()`
 
 #### Get trace and print the stack trace a function calling
 `console.trace()` creates a views and triggers events, so eventually we'll want to know what caused the function call.

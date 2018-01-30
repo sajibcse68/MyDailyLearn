@@ -596,6 +596,20 @@ console.count('alice');
 'alice: 3'
 ```
 
+#### Use of `console.dir()`
+console.dir() outputs the object with properties where console.log() shows the string output.
+
+```js
+console.dir(document.body);
+console.log(document.body);
+```
+
+#### Use of `console.dirxml()`
+console.dirxml() displays the object in xml representation.
+```js
+console.dirxml(document.body);
+```
+
 #### Get trace and print the stack trace a function calling
 `console.trace()` creates a views and triggers events, so eventually we'll want to know what caused the function call.
 

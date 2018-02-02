@@ -206,6 +206,11 @@ See list of local and remote branches that contains a specific commit.
 
     $ git branch -a --contains <commit-sha>
 
+See list of branches ordered by most recent commit
+
+    $ git branch --sort=committerdate   # ASC order
+    $ git branch --sort=-committerdate  # DES order
+
 #### Rename a branch name.
 
     $ git branch -m <new-name>              # rename the current branch
@@ -402,7 +407,7 @@ $ git branch <branceName> HEAD@{1}     # Create a new branch with a commit (the 
 
 #### Squash:
 ```
-# in general I do
+# Normally I do
 $ git reset --soft HEAD~3                              # undo last 3 commits, remains all the changes in local
 $ git add --all; git commit -m 'new squash message'    # commit the 3 previous commits in one
 $ git push -f origin <branch-name>                     # by force overwrite the remote branch and also commits
@@ -443,14 +448,13 @@ will begin with `pick`. Replacing `pick` with `squash` or `s` will tell Git to c
 To combine N commits into one, set every commit in the list to be squash except the first one. Upon exiting the editor, and if
 no conflict arises, git rebase will allow you to create a new commit message for the new combined commit.
 
-$ git commit --amend --author="author name <author@email.com>"              # change the author name & email
-# Editor will open, save and exit                                           # we can change 'commit-message' here
-$ git rebase --continue                                                     # finish the rebase
+$ git commit --amend --author="author name <author@email.com>"     # change the author name & email
+# Editor will open, save and exit                                  # we can change 'commit-message' here
+$ git rebase --continue                                            # finish the rebase
 
 # Reordering commits using rebase
-$ git rebase -i <commit-hash>                                               # go to last good commit
-# then reorder the commits, be careful it shows the commit in reverse
-  way as we see `git log` commands, shows old to new (top to bottom)
+$ git rebase -i <commit-hash>                                      # go to last good commit
+# then reorder the commits, be careful it shows the commit in reverse way as we see `git log` commands, shows old to new (top to bottom)
 
 # Change very first commit msg + squash the 2nd commit with first commit
 $ git rebase -i --root                                   # checkout to very first commit
@@ -584,6 +588,9 @@ $ git help <verb>                              # Find out more
 $ git fsck --full                              # = File System Check, verify al object files and data
 $ git fsck --lost-found                        # Verifies the connectivity and validity of the objects in the database
 $ git command --help                           # When in doubt, use git help
+$ git diff-tree -r --diff-filter=D b1 b2       # List of files that exists in b1 but not in b2
+$ git show <commit-hash>:<file-path>           # See a old version of a file
+
 $ git config --global core.editor "subl -n -w" # '-n' will open a new instance of Sublime & '-w' will make the git wait for you to close Sublime before proceeding
 
 $ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>  # find renamed file (previous name of a file)
@@ -659,13 +666,13 @@ $ git branch -d <hot-branch>                  # delete the release branch
 ``` 
 
 #### Stage vs Track file:
-- Tracked files are files that were in the last snapshot; they can be unmodified, modified, or staged.
-- Untracked files are everything else ? any files in your working directory that were not in your last snapshot and are not in your staging area (index)
+- Tracked files are files that were in the last snapshot; they can be `unmodified`, `modified`, or `staged`.
+- Untracked files are everything else? any files in your working directory that were not in your last snapshot and are not in your staging area (index). e.g.
 
 ```
-$ touch index.html                // unstaged, untracked
-$ git add index.html              // staged, untracked
-$ git commit -m 'be tracked'      // staged, tracked
+$ touch index.html              # unstaged, untracked
+$ git add index.html            # staged, untracked
+$ git commit -m 'be tracked'    # staged, tracked
 ```
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
@@ -678,8 +685,8 @@ ORIG_HEAD        - previous state of HEAD
 MERGE_HEAD       - records the commit(s) which you are merging into your branch when you run git merge.
 CHERRY_PICK_HEAD - records the commit which you are cherry-picking when you run git cherry-pick.
 
-$ git rev-parse <any-head>                  # see the commit hash of the HEAD
-$ cat .git/HEAD                             # open the HEAD file
+$ git rev-parse <any-head>     # see the commit hash of the HEAD
+$ cat .git/HEAD                # open the HEAD file
 ```
 #### The Seven Rules of a Great Git Commit Message:
 1. Separate subject from body with a blank line
@@ -688,7 +695,7 @@ $ cat .git/HEAD                             # open the HEAD file
 4. Do not end the subject line with a period
 5. Use the Imperative mood in the subject line
 6. Wrap the body at 72 characters
-7. Use the body to explain `what and why vs. how
+7. Use the body to explain what and why vs. how
 
 [See details](http://chris.beams.io/posts/git-commit/)
  

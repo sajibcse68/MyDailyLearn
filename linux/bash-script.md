@@ -97,15 +97,13 @@ echo $a          |    echo $a
      - `-e` -> enable `backslash`, `escaped characters` line `\n` and `\t`
      - `-E` -> disable backslash escaped characters in case they were enabled by default
 - ls * would list contents of directories:
-    - `echo * would show file and directory names
+    - `echo *` would show file and directory names
 - Use file redirection techniques to send the output to other files, such as stderr:
-    `echo 'Warning Will Robinson!'`   >&2
-
-
-
-
+    `echo 'Warning Will Robinson!'` >&2
 
 #### Fancy commands
+
+```sh
 $ man bash | wc -l                                             # total number of line in man page of bash (e.g. 4890)
 $ info bash | wc -l                                            # totla number of line in info page of bash (e.g. 9526)
 $ w | cut -d " " -f 1 - | grep -v USER | sort -u               # show the currently connected users
@@ -114,3 +112,4 @@ $ uname -m                                                     # show the os pro
 $ sleep 2                                                      # sleep for 2 seconds
 $ enable                                                       # return all builtin keyword
 $ compgen -k                                                   # return all keyword
+```

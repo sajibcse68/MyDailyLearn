@@ -25,6 +25,7 @@
 <kbd>Cmd</kbd> + <kbd>Opt</kbd> + <kbd>Shift</kbd> + <kbd>-></kbd>: Select a block of text  
 <kbd>Cmd</kbd> + <kbd>Opt</kbd> + <kbd>up arrow</kbd>: Add a new cursor above  
 <kbd>Cmd</kbd> + <kbd>Opt</kbd> + <kbd>down arrow</kbd>: Add a new cursor down  
+<kbd>Opt</kbd> + <kbd>click</kbd>: Bind cursor to another place
 
 ## Go to
 <kbd>Ctrl</kbd> + <kbd>G</kbd> :  Go to line  

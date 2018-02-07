@@ -12,3 +12,16 @@ $ vue init webpack compare-vue   # create a app called 'compare-vue'
 $ npm run dev                    # run the app, url: localhost:8080
 ```
 
+#### For loop example
+```
+<div class="column is-one-third" v-for="(faq, index) of faqs" :key='index'>
+  <div class="card">
+    <div class="card-content">
+      <p class="title">{{ faq.title }}</p>
+      <p class="answer">{{ faq.body }}</p>
+    </div>
+  </div>
+</div>
+```
+
+**Ref:** https://github.com/sajibcse68/compare-vue

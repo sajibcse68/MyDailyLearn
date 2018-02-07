@@ -8,6 +8,8 @@
 - We can't .bind() a function multiple time.
 - Use a document fragment to insert additions all at once. Fragments are invisible containers that hold multiple DOM elements without
   being a node itself.
+- Every functions receives two additional parameters: `this`, `arguments`.
+- When a function is stored as a property of an object, we call it a `method`. When a method is invoked, `this` is bound to that object.
 - JS MUST Know: `Scoping`, `Closures`, `Hoisting`, `This`, `Data Structures: Objects and Arrays`, `Design Patterns`, `Callbacks and Promises`.
 
 
@@ -605,10 +607,26 @@ console.log(document.body);
 ```
 
 #### Use of `console.dirxml()`
-console.dirxml() displays the object in xml representation.
+console.dirxml() displays the object in xml representation. console.dirxml() and console.log() is identical to output.
 ```js
 console.dirxml(document.body);
 ```
+
+#### Use of `console.error()`
+console.error() displays a message to the console with an error style (error icon + font color red).
+
+```js
+$.ajax({
+  url: 'test.url.sajib.bd',
+  type: 'GET',
+  error: function(resp) {
+    console.log(resp.statusText);
+    console.error(resp.statusText);
+  }
+});
+```
+
+#### Use of `console.group()`, `console.groupCollapsed()` and `console.groupEnd()`
 
 #### Get trace and print the stack trace a function calling
 `console.trace()` creates a views and triggers events, so eventually we'll want to know what caused the function call.

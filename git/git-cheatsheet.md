@@ -658,6 +658,8 @@ $ git push --tags                             # push the tags to origin
 $ git tag -d <tag-name>                       # delete a tag locally
 $ git push origin :refs/tags/<tag-name>       # delete a tag from remote
 
+$ git tag --contains <commit>                 # list of tags contain a commit
+$ git describe --exact-match <commit>         # check if the commit contains tag(s)
 $ git checkout <tag-name>
 $ git checkout -b <hot-branch>                # checkout a new branch from present commit
 $ git checkout master

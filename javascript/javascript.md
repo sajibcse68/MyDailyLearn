@@ -8,6 +8,8 @@
 - We can't .bind() a function multiple time.
 - Use a document fragment to insert additions all at once. Fragments are invisible containers that hold multiple DOM elements without
   being a node itself.
+- Every functions receives two additional parameters: `this`, `arguments`.
+- When a function is stored as a property of an object, we call it a `method`. When a method is invoked, `this` is bound to that object.
 - JS MUST Know: `Scoping`, `Closures`, `Hoisting`, `This`, `Data Structures: Objects and Arrays`, `Design Patterns`, `Callbacks and Promises`.
 
 
@@ -570,6 +572,61 @@ console.timeEnd('Timer1');
 // Output:
 Timer1: <15.920>ms
 ```
+
+#### Use of `console.count()`
+Logs are the number of times that this particular call to `count()` has been called. This function takes an optional argument `label`.
+
+```js
+var user = '';
+
+function greet() {
+  console.count(user);
+  return 'hi ' + user;
+}
+
+user = 'bob';
+greet();
+user = 'alice';
+greet();
+greet();
+console.count('alice');
+
+// Output:
+'bob: 1'
+'alice: 1'
+'alice: 2'
+'alice: 3'
+```
+
+#### Use of `console.dir()`
+console.dir() outputs the object with properties where console.log() shows the string output.
+
+```js
+console.dir(document.body);
+console.log(document.body);
+```
+
+#### Use of `console.dirxml()`
+console.dirxml() displays the object in xml representation. console.dirxml() and console.log() is identical to output.
+```js
+console.dirxml(document.body);
+```
+
+#### Use of `console.error()`
+console.error() displays a message to the console with an error style (error icon + font color red).
+
+```js
+$.ajax({
+  url: 'test.url.sajib.bd',
+  type: 'GET',
+  error: function(resp) {
+    console.log(resp.statusText);
+    console.error(resp.statusText);
+  }
+});
+```
+
+#### Use of `console.group()`, `console.groupCollapsed()` and `console.groupEnd()`
 
 #### Get trace and print the stack trace a function calling
 `console.trace()` creates a views and triggers events, so eventually we'll want to know what caused the function call.

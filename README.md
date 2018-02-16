@@ -8,10 +8,10 @@ Here is some important `commands` or `code snippets` on different topics that I 
 1. [Docker](#docker)
 
 
-## [Git](https://github.com/sajibcse68/MyDailyLearn/blob/master/Git/GitCheatSheet.md)
+## [Git](https://github.com/sajibcse68/MyDailyLearn/blob/master/git/git-cheatsheet.md)
 
-- [Configure git](https://github.com/sajibcse68/MyDailyLearn/blob/git/git/cheatsheet.md#configure-git)
-- [Branching](https://github.com/sajibcse68/MyDailyLearn/blob/git/git/cheatsheet.md#branching)
+- [Configure git](https://github.com/sajibcse68/MyDailyLearn/blob/git/git/git-cheatsheet.md#configure-git)
+- [Branching](https://github.com/sajibcse68/MyDailyLearn/blob/git/git/git-cheatsheet.md#branching)
 - 
 
 * Merging, amend, conflicts

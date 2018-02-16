@@ -24,4 +24,9 @@ $ npm run dev                    # run the app, url: localhost:8080
 </div>
 ```
 
+```
+<!-- v-for and v-text directives -->
+
+<li v-for="faq in faqs" v-text="name"></li>
+```
 **Ref:** https://github.com/sajibcse68/compare-vue

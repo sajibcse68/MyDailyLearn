@@ -157,7 +157,12 @@ Here, `-v` flag invert the matches.
 
 Delete all the branches except *master* that are already *merged* with current branch.
 
-    $ git branch --merged | grep -E '^\*|master$' | xargs -n 1 branch -d
+    $ git branch --merged | grep -E '^\*|master$' | xargs -n 1 git branch -D
+
+Delete all the local branch(es) except `master`
+
+    $ git checkout master
+    $ git branch | xargs git branch -D
 
 Cleanup/delete remote (say, *origin*) deleted branch in local.
 

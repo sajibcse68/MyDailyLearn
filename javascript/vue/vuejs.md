@@ -138,7 +138,27 @@ Normally vue render the variable as text (it's safe for security). If we need to
 
 ```
 
+#### Pass own arguments with event object 
 
+```
+<template>
+  <div>
+    <p v-on:click="increase(2, $event)">Counter: {{ counter }}</p>
+  </div>
+</template>
+
+<script>
+  data: {
+    counter: 0
+  }
+  methods: {
+    increase(step, e) {
+      this.counter += step;
+      e.preventDefault()
+    }
+  }
+</script>
+```
 
 #### **Shortcuts:**
 

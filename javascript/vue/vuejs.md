@@ -12,6 +12,13 @@ $ vue init webpack compare-vue   # create a app called 'compare-vue'
 $ npm run dev                    # run the app, url: localhost:8080
 ```
 
+#### Known Options for Vue instance
+
+- **el:** Connect to DOM
+- **data:** Store Data to be used
+- **methods:** Methods of this Vue Instance
+- **computed:** Dependent Properties
+
 #### For loop example
 ```
 <div class="column is-one-third" v-for="(faq, index) of faqs" :key='index'>
@@ -287,5 +294,10 @@ v-bind:title                -> :title
 
 ```
 
+#### Reacting to changing with Computed properties
+
+```
+
+```
 
 **Ref:** https://github.com/sajibcse68/compare-vue

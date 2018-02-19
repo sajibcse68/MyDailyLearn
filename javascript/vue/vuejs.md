@@ -114,6 +114,32 @@ Normally vue render the variable as text (it's safe for security). If we need to
 
 ```
 
+#### Get event data from the event
+
+```
+<template>
+  <div>
+    <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
+  </div>
+</template>
+
+<script>
+  data: {
+    x: 0,
+    y: 0
+  }
+  methods: {
+    updateCoordinates(e) {
+      this.x = e.clientX;
+      this.y = e.clientY;
+    }
+  }
+</script>
+
+```
+
+
+
 #### **Shortcuts:**
 
 ```

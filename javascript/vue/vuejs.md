@@ -286,17 +286,49 @@ Normally vue render the variable as text (it's safe for security). If we need to
 </script>
 ```
 
+#### Reacting to changing with Computed properties
+
+```
+<template>
+  <div id="app">
+    <button v-on:click="counter++">Increase</button>
+    <button v-on:click="counter--">Decrease</button>
+    <button v-on:click="secondCounter++">Increase Second</button>
+    
+    <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+    <p>Counter: {{ result() }} | {{ output }}</p>
+  </div>
+</template>
+
+<script>
+  data: {
+    counter: 0,
+    secondCounter: 0
+  },
+  // caching the result, don't need to calculated always
+  computed: {
+    output: function() {
+      console.log('Computed');
+      return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5'
+    }
+  },
+  // always trigger cause  Vue does not know what is the codes in methods actually.
+  methods: {
+    result: function() {
+      console.log('methods');
+      return this.counter > 5 ? 'Greater 5' : 'Smaller than 5'
+    }
+  }
+</script>
+
+```
+
+
 #### **Shortcuts:**
 
 ```
 v-on:click="method"         -> @click="method"
 v-bind:title                -> :title
-
-```
-
-#### Reacting to changing with Computed properties
-
-```
 
 ```
 

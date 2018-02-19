@@ -94,6 +94,26 @@ $ npm run dev                    # run the app, url: localhost:8080
 
 ```
 
+#### Output raw HTML with `v-html` directives.
+Normally vue render the variable as text (it's safe for security). If we need to render as HTML then use `v-html`.
+
+**N.B:** It can cause bad cors attack. Use this if the source is trusty/clean. 
+
+```
+<template>
+  <div>
+    <p v-html="finishedLink"></p>
+  </div>
+</template>
+
+<script>
+  data: {
+    finishedLink: '<a href="http://google.com">Google</a>'
+  }
+</script>
+
+```
+
 #### **Shortcuts:**
 
 ```

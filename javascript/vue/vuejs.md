@@ -213,6 +213,31 @@ Normally vue render the variable as text (it's safe for security). If we need to
 </script>
 ```
 
+#### Listen to keyboard events
+
+```
+<template>
+  <div>
+    
+    <input type="text" v-on:keyup.enter.space="alertMe"> 
+    <!-- event will be triggered for any enter/space in input field -->
+
+  </div>
+</template>
+
+<script>
+  data: {
+    x: 0,
+    y: 0
+  }
+  methods: {
+    alertMe() {
+      alert('Alert!');
+    }
+  }
+</script>
+```
+
 #### **Shortcuts:**
 
 ```

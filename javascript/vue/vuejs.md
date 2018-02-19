@@ -143,7 +143,8 @@ Normally vue render the variable as text (it's safe for security). If we need to
 ```
 <template>
   <div>
-    <p v-on:click="increase(2, $event)">Counter: {{ counter }}</p>
+    <button v-on:click="increase(2, $event)">Click me</button>
+    <p>Counter: {{ counter }}</p>
   </div>
 </template>
 
@@ -213,7 +214,7 @@ Normally vue render the variable as text (it's safe for security). If we need to
 </script>
 ```
 
-#### Listen to keyboard events
+#### Listening to keyboard events
 
 ```
 <template>
@@ -233,6 +234,29 @@ Normally vue render the variable as text (it's safe for security). If we need to
   methods: {
     alertMe() {
       alert('Alert!');
+    }
+  }
+</script>
+```
+
+#### Writing JavaScript code in the Template
+
+```
+<template>
+  <div>
+    <button v-on:click="counter++">Click me</button>
+    <p>Counter: {{ counter > 10 ? 'Greater that 10' : 'Smaller or equal to 10' }}</p>
+  </div>
+</template>
+
+<script>
+  data: {
+    counter: 0
+  }
+  methods: {
+    increase(step, e) {
+      this.counter += step;
+      e.preventDefault()
     }
   }
 </script>

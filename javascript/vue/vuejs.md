@@ -262,6 +262,23 @@ Normally vue render the variable as text (it's safe for security). If we need to
 </script>
 ```
 
+#### Using Two way data binding `v-model="variable"`
+
+```
+<template>
+  <div>
+    <input type="text" v-model="name">
+    <p>{{ name }}</p>
+  </div>
+</template>
+
+<script>
+  data: {
+    name: 'Jhon'
+  }
+</script>
+```
+
 #### **Shortcuts:**
 
 ```

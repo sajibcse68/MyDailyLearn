@@ -160,6 +160,59 @@ Normally vue render the variable as text (it's safe for security). If we need to
 </script>
 ```
 
+#### Modifying and event with event modifiers (e.g. `v-on:mousemove.stop=""`)
+
+```
+<template>
+  <div>
+    <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}
+      <span v-on:mousemove.stop="">DEAD SPOT</span>
+    </p>
+  </div>
+</template>
+
+<script>
+  data: {
+    x: 0,
+    y: 0
+  }
+  methods: {
+    updateCoordinates(e) {
+      this.x = e.clientX;
+      this.y = e.clientY;
+    }
+  }
+</script>
+```
+
+**Alternate:**
+
+```
+<template>
+  <div>
+    <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}
+      <span v-on:mousemove="doStopPropagation">DEAD SPOT</span>
+    </p>
+  </div>
+</template>
+
+<script>
+  data: {
+    x: 0,
+    y: 0
+  }
+  methods: {
+    updateCoordinates(e) {
+      this.x = e.clientX;
+      this.y = e.clientY;
+    },
+    doStopPropagation(e) {
+      e.stopPropagation();
+    }
+  }
+</script>
+```
+
 #### **Shortcuts:**
 
 ```

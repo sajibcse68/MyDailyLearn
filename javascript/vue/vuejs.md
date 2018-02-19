@@ -32,6 +32,8 @@ $ npm run dev                    # run the app, url: localhost:8080
 
 #### Bind Attribute and Class Name
 
+- We can't use interpolation syntax `{{ }}` inside any HTML attributes, so, we need to bind by using Vue's Directives like: v-bind:title="title". See below example: 
+
 <template>
 
   <style>
@@ -62,6 +64,35 @@ $ npm run dev                    # run the app, url: localhost:8080
     }
   }
 </script>
+
+#### Disable re-rendering with `v-once`
+
+```
+<template>
+  <div>
+    <h1 v-once>{{ title }}</h1>
+    <!-- <h1>Hello World</h1> -->
+    
+    <p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>
+    <!-- Hello changed - <a href="http://google.com">Google</a></p>  -->
+    
+  </div>
+</template>
+
+<script>
+  data: {
+    title: 'Hello World!',
+    link: 'http://google.com'
+  },
+  methods: {
+    sayHello: function() {
+      this.title = 'Hello changed',
+      return this.title;
+    }
+  }
+</script>
+
+```
 
 #### **Shortcuts:**
 

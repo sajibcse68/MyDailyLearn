@@ -18,6 +18,7 @@ $ npm run dev                    # run the app, url: localhost:8080
 - **data:** Store Data to be used
 - **methods:** Methods of this Vue Instance
 - **computed:** Dependent Properties
+- **watch:** Execute code upon data changes
 
 #### For loop example
 ```
@@ -323,6 +324,38 @@ Normally vue render the variable as text (it's safe for security). If we need to
 
 ```
 
+- An **Alternative** to computed properties `Watching` for
+
+```
+// template same as before
+
+<script>
+  data: {
+    counter: 0,
+    secondCounter: 0
+  },
+  // caching the result, don't need to calculated always
+  computed: {
+    output: function() {
+      console.log('Computed');
+      return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5'
+    }
+  },
+  watch: {
+    // counter matches with data 'counter', watching when the value of 'counter' changed, if change then this counter 
+    // is triggered with the updated value.
+
+    counter: function(value) => {
+      var vm = this;
+      setTimeout(function(){
+        vm.counter = 0;
+      }, 2000)
+    }
+  }
+</script>
+
+
+```
 
 #### **Shortcuts:**
 

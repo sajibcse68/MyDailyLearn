@@ -353,6 +353,47 @@ Normally vue render the variable as text (it's safe for security). If we need to
     }
   }
 </script>
+```
+
+#### Dynamic styling with CSS classes
+
+```
+<template>
+  <div id="app">
+  <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+  <div class="demo" @click="attachRed = !attachRed" :class="{ red:  attachRed }"></div>
+  <div class="demo" :class="[color, { red: attachRed }]"></div>
+</div>
+<hr>
+
+<input type="text" v-model="color">
+
+<style>
+  .red {
+    background-color: red;
+  }
+  .green {
+    background-color: green;
+  }
+</style>
+
+<script>
+el: '#app'
+data: {
+  attachRed: false,
+  color:  'green'
+},
+computed: {
+  divClasses() {
+    return {
+      red: this.attachRed,
+      blue: !this.attachRed
+    }
+  }
+}
+</script>
+</template>
+
 
 
 ```

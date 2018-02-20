@@ -533,6 +533,29 @@ data: {
   }
 </script>
 ```
+
+#### Use of `v-for` with `<template>`
+
+
+```
+<div id="app">
+  <ul>
+
+    <template v-for="(ingredient, index) in ingredients">
+      <h1>{{ ingredient }}</h1>
+      <h1>{{ index }}</h1>
+    </template>
+
+  </ul>
+</div>
+
+<script>
+  data: {
+    ingredients: ['meat', 'fruit', 'cookies'],
+  }
+</script>
+```
+
 #### **Shortcuts:**
 
 ```

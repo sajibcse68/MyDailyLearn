@@ -423,6 +423,35 @@ computed: {
 }
 </script>
 
+#### Styling elements with an Array syntax
+
+<template>
+<div id="app">
+  <div class="demo" :style="{ backgroundColor: color }"></div> <!-- Or, :style="{ background-color: color }" -->
+  <div class="demo" :style="myStyle"></div>
+  <div class="demo" :style="[ myStyle, { height: width + 'px' }]"></div>
+</div>
+<hr>
+<input type="text" v-model="color">
+<input type="text" v-model="width">
+</template>
+
+<script>
+data: {
+  color: 'gray';
+  width: 100;
+},
+computed: {
+  myStyle: function() {
+    return {
+      backgroundColor: this.color,
+      width: this.width + 'px'
+    }
+  }
+}
+</script>
+
+
 #### **Shortcuts:**
 
 ```

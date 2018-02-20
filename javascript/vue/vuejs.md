@@ -18,6 +18,7 @@ $ npm run dev                    # run the app, url: localhost:8080
 - **data:** Store Data to be used
 - **methods:** Methods of this Vue Instance
 - **computed:** Dependent Properties
+- **watch:** Execute code upon data changes
 
 #### For loop example
 ```
@@ -321,6 +322,293 @@ Normally vue render the variable as text (it's safe for security). If we need to
   }
 </script>
 
+```
+
+- An **Alternative** to computed properties `Watching` for
+
+```
+// template same as before
+
+<script>
+  data: {
+    counter: 0,
+    secondCounter: 0
+  },
+  // caching the result, don't need to calculated always
+  computed: {
+    output: function() {
+      console.log('Computed');
+      return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5'
+    }
+  },
+  watch: {
+    // counter matches with data 'counter', watching when the value of 'counter' changed, if change then this counter 
+    // is triggered with the updated value.
+
+    counter: function(value) => {
+      var vm = this;
+      setTimeout(function(){
+        vm.counter = 0;
+      }, 2000)
+    }
+  }
+</script>
+```
+
+#### Dynamic styling with CSS classes
+
+```
+<template>
+  <div id="app">
+  <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+  <div class="demo" @click="attachRed = !attachRed" :class="{ red:  attachRed }"></div>
+  <div class="demo" :class="[color, { red: attachRed }]"></div>
+</div>
+<hr>
+
+<input type="text" v-model="color">
+</template>
+
+<style>
+  .red {
+    background-color: red;
+  }
+  .green {
+    background-color: green;
+  }
+</style>
+
+<script>
+el: '#app'
+data: {
+  attachRed: false,
+  color:  'green'
+},
+computed: {
+  divClasses() {
+    return {
+      red: this.attachRed,
+      blue: !this.attachRed
+    }
+  }
+}
+</script>
+
+```
+
+#### Setting styles dynamically without CSS classes
+
+<template>
+<div id="app">
+  <div class="demo" :style="{ backgroundColor: color }"></div> <!-- Or, :style="{ background-color: color }" -->
+  <div class="demo" :style="myStyle"></div>
+</div>
+<hr>
+<input type="text" v-model="color">
+<input type="text" v-model="width">
+</template>
+
+<script>
+data: {
+  color: 'gray';
+  width: 100;
+},
+computed: {
+  myStyle: function() {
+    return {
+      backgroundColor: this.color,
+      width: this.width + 'px'
+    }
+  }
+}
+</script>
+
+#### Styling elements with an Array syntax
+
+<template>
+<div id="app">
+  <div class="demo" :style="{ backgroundColor: color }"></div> <!-- Or, :style="{ background-color: color }" -->
+  <div class="demo" :style="myStyle"></div>
+  <div class="demo" :style="[ myStyle, { height: width + 'px' }]"></div>
+</div>
+<hr>
+<input type="text" v-model="color">
+<input type="text" v-model="width">
+</template>
+
+<script>
+data: {
+  color: 'gray';
+  width: 100;
+},
+computed: {
+  myStyle: function() {
+    return {
+      backgroundColor: this.color,
+      width: this.width + 'px'
+    }
+  }
+}
+</script>
+
+#### Conditioning rendering with v-if/v-else
+
+```
+<template>
+<div id="app">
+  <p v-if="show">if statement <span> Nested element </span></p>
+  <p v-else>else statement</p>
+
+  <button @click="show = !show">Switch </button>
+</div>
+</template>
+
+<script>
+data: {
+  show: false
+}
+</script>
+
+```
+
+#### Alternative of v-if using `<template>` (group html elements)
+
+```
+<template>
+<div id="app">
+  <p v-if="show">if statement <span> Nested element </span></p>
+  <p v-else>else statement</p>
+
+  <template v-if="show">
+    <h1>Heading</h1>
+    <p>Inside a template </h1>
+  </template>
+
+  <button @click="show = !show">Switch </button>
+</div>
+</template>
+
+<script>
+data: {
+  show: false
+}
+</script>
+
+```  
+
+#### Use v-show if we don't want to detach element from DOM (v-show adds `style="display:none"`)
+
+```
+<template>
+<div id="app">
+  <p v-show="show">if statement <span> Nested element </span></p>
+
+  <button @click="show = !show">Switch </button>
+</div>
+</template>
+
+<script>
+data: {
+  show: false
+}
+</script>
+```  
+
+#### Rendering lists with `v-for`
+
+```
+<div id="app">
+  <ul>
+    <li v-for="(ingredient, ind) in ingredients">{{ ingredient }} - {{ ind }}</li>
+  </ul>
+</div>
+
+<script>
+  data: {
+    ingredients: ['meat', 'fruit', 'cookies'],
+    positions: [
+      {name: 'Max', age: '27', color: 'red'},
+      {name: 'Anna', age: 'unknown', color: 'blue'}
+    ]
+  }
+</script>
+```
+
+#### Use of `v-for` with `<template>`
+
+
+```
+<div id="app">
+  <ul>
+
+    <!-- <template> </template> does not rendered in HTML only inner elements rendered -->
+    <template v-for="(ingredient, index) in ingredients">
+      <h1>{{ ingredient }}</h1>
+      <h1>{{ index }}</h1>
+    </template>
+
+  </ul>
+</div>
+
+<script>
+  data: {
+    ingredients: ['meat', 'fruit', 'cookies'],
+  }
+</script>
+```
+
+#### Looping through objects
+
+```
+<div id="app">
+  <ul>
+    <li v-for="person in persons">
+      <div f-for="(value, key, index) in person">({{ index }}) {{key}}: {{ value }} </div> 
+    </li>
+  </ul>
+</div>
+
+<script>
+  data: {
+    positions: [
+      {name: 'Max', age: '27', color: 'red'},
+      {name: 'Anna', age: 'unknown', color: 'blue'}
+    ]
+  }
+</script>
+```
+
+
+#### Looping through a lists of numbers
+
+```
+<div id="app">
+  <ul>
+    <li v-for="person in persons">
+      <div f-for="n in 10">{{ n }} </div> 
+    </li>
+  </ul>
+</div>
+```
+
+#### Keeping track of Elements when using `v-for` (bind `:key=""`)
+
+```
+<div id="app">
+  <ul>
+    <li v-for="person in persons">
+      <div f-for="(value, key, index) in person" :key="ingredient">({{ index }}) {{key}}: {{ value }} </div>
+
+      <button @click="ingredients.push('spices')">Add New Ingredient</button>
+    </li>
+  </ul>
+</div>
+
+<script>
+  data: {
+    ingredients: ['meat', 'fruit', 'cookies'],
+  }
+</script>
 ```
 
 

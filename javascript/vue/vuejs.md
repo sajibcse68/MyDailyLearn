@@ -514,6 +514,25 @@ data: {
 </script>
 ```  
 
+#### Rendering lists with `v-for`
+
+```
+<div id="app">
+  <ul>
+    <li v-for="ing in ingredients">{{ ing }}</li>
+  </ul>
+</div>
+
+<script>
+  data: {
+    ingredients: ['meat', 'fruit', 'cookies'],
+    positions: [
+      {name: 'Max', age: '27', color: 'red'},
+      {name: 'Anna', age: 'unknown', color: 'blue'}
+    ]
+  }
+</script>
+```
 #### **Shortcuts:**
 
 ```

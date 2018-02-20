@@ -541,6 +541,7 @@ data: {
 <div id="app">
   <ul>
 
+    <!-- <template> </template> does not rendered in HTML only inner elements rendered -->
     <template v-for="(ingredient, index) in ingredients">
       <h1>{{ ingredient }}</h1>
       <h1>{{ index }}</h1>
@@ -555,6 +556,28 @@ data: {
   }
 </script>
 ```
+
+#### Looping through objects
+
+```
+<div id="app">
+  <ul>
+    <li v-for="person in persons">
+      <div f-for="(value, key, index) in person">({{ index }}) {{key}}: {{ value }} </div> 
+    </li>
+  </ul>
+</div>
+
+<script>
+  data: {
+    positions: [
+      {name: 'Max', age: '27', color: 'red'},
+      {name: 'Anna', age: 'unknown', color: 'blue'}
+    ]
+  }
+</script>
+```
+
 
 #### **Shortcuts:**
 

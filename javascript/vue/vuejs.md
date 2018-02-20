@@ -519,7 +519,7 @@ data: {
 ```
 <div id="app">
   <ul>
-    <li v-for="ing in ingredients">{{ ing }}</li>
+    <li v-for="(ingredient, ind) in ingredients">{{ ingredient }} - {{ ind }}</li>
   </ul>
 </div>
 

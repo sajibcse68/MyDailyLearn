@@ -591,6 +591,27 @@ data: {
 </div>
 ```
 
+#### Keeping track of Elements when using `v-for` (bind `:key=""`)
+
+```
+<div id="app">
+  <ul>
+    <li v-for="person in persons">
+      <div f-for="(value, key, index) in person" :key="ingredient">({{ index }}) {{key}}: {{ value }} </div>
+
+      <button @click="ingredients.push('spices')">Add New Ingredient</button>
+    </li>
+  </ul>
+</div>
+
+<script>
+  data: {
+    ingredients: ['meat', 'fruit', 'cookies'],
+  }
+</script>
+```
+
+
 #### **Shortcuts:**
 
 ```

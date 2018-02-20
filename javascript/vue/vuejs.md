@@ -471,6 +471,30 @@ data: {
 
 ```
 
+#### Alternative of v-if using `<template>` (group html elements)
+
+```
+<template>
+<div id="app">
+  <p v-if="show">if statement <span> Nested element </span></p>
+  <p v-else>else statement</p>
+
+  <template v-if="show">
+    <h1>Heading</h1>
+    <p>Inside a template </h1>
+  </template>
+
+  <button @click="show = !show">Switch </button>
+</div>
+</template>
+
+<script>
+data: {
+  show: false
+}
+</script>
+
+```  
 
 #### **Shortcuts:**
 

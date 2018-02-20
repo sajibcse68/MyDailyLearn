@@ -12,6 +12,13 @@ $ vue init webpack compare-vue   # create a app called 'compare-vue'
 $ npm run dev                    # run the app, url: localhost:8080
 ```
 
+#### Known Options for Vue instance
+
+- **el:** Connect to DOM
+- **data:** Store Data to be used
+- **methods:** Methods of this Vue Instance
+- **computed:** Dependent Properties
+
 #### For loop example
 ```
 <div class="column is-one-third" v-for="(faq, index) of faqs" :key='index'>
@@ -94,6 +101,229 @@ $ npm run dev                    # run the app, url: localhost:8080
 
 ```
 
+#### Output raw HTML with `v-html` directives.
+Normally vue render the variable as text (it's safe for security). If we need to render as HTML then use `v-html`.
+
+**N.B:** It can cause bad cors attack. Use this if the source is trusty/clean. 
+
+```
+<template>
+  <div>
+    <p v-html="finishedLink"></p>
+  </div>
+</template>
+
+<script>
+  data: {
+    finishedLink: '<a href="http://google.com">Google</a>'
+  }
+</script>
+
+```
+
+#### Get event data from the event
+
+```
+<template>
+  <div>
+    <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
+  </div>
+</template>
+
+<script>
+  data: {
+    x: 0,
+    y: 0
+  }
+  methods: {
+    updateCoordinates(e) {
+      this.x = e.clientX;
+      this.y = e.clientY;
+    }
+  }
+</script>
+
+```
+
+#### Pass own arguments with event object 
+
+```
+<template>
+  <div>
+    <button v-on:click="increase(2, $event)">Click me</button>
+    <p>Counter: {{ counter }}</p>
+  </div>
+</template>
+
+<script>
+  data: {
+    counter: 0
+  }
+  methods: {
+    increase(step, e) {
+      this.counter += step;
+      e.preventDefault()
+    }
+  }
+</script>
+```
+
+#### Modifying and event with event modifiers (e.g. `v-on:mousemove.stop=""`)
+
+```
+<template>
+  <div>
+    <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}
+      <span v-on:mousemove.stop="">DEAD SPOT</span>
+    </p>
+  </div>
+</template>
+
+<script>
+  data: {
+    x: 0,
+    y: 0
+  }
+  methods: {
+    updateCoordinates(e) {
+      this.x = e.clientX;
+      this.y = e.clientY;
+    }
+  }
+</script>
+```
+
+**Alternate:**
+
+```
+<template>
+  <div>
+    <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}
+      <span v-on:mousemove="doStopPropagation">DEAD SPOT</span>
+    </p>
+  </div>
+</template>
+
+<script>
+  data: {
+    x: 0,
+    y: 0
+  }
+  methods: {
+    updateCoordinates(e) {
+      this.x = e.clientX;
+      this.y = e.clientY;
+    },
+    doStopPropagation(e) {
+      e.stopPropagation();
+    }
+  }
+</script>
+```
+
+#### Listening to keyboard events
+
+```
+<template>
+  <div>
+    
+    <input type="text" v-on:keyup.enter.space="alertMe"> 
+    <!-- event will be triggered for any enter/space in input field -->
+
+  </div>
+</template>
+
+<script>
+  data: {
+    x: 0,
+    y: 0
+  }
+  methods: {
+    alertMe() {
+      alert('Alert!');
+    }
+  }
+</script>
+```
+
+#### Writing JavaScript code in the Template
+
+```
+<template>
+  <div>
+    <button v-on:click="counter++">Click me</button>
+    <p>Counter: {{ counter > 10 ? 'Greater that 10' : 'Smaller or equal to 10' }}</p>
+  </div>
+</template>
+
+<script>
+  data: {
+    counter: 0
+  }
+  methods: {
+    increase(step, e) {
+      this.counter += step;
+      e.preventDefault()
+    }
+  }
+</script>
+```
+
+#### Using Two way data binding `v-model="variable"`
+
+```
+<template>
+  <div>
+    <input type="text" v-model="name">
+    <p>{{ name }}</p>
+  </div>
+</template>
+
+<script>
+  data: {
+    name: 'Jhon'
+  }
+</script>
+```
+
+#### Reacting to changing with Computed properties
+
+```
+<template>
+  <div id="app">
+    <button v-on:click="counter++">Increase</button>
+    <button v-on:click="counter--">Decrease</button>
+    <button v-on:click="secondCounter++">Increase Second</button>
+    
+    <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+    <p>Counter: {{ result() }} | {{ output }}</p>
+  </div>
+</template>
+
+<script>
+  data: {
+    counter: 0,
+    secondCounter: 0
+  },
+  // caching the result, don't need to calculated always
+  computed: {
+    output: function() {
+      console.log('Computed');
+      return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5'
+    }
+  },
+  // always trigger cause  Vue does not know what is the codes in methods actually.
+  methods: {
+    result: function() {
+      console.log('methods');
+      return this.counter > 5 ? 'Greater 5' : 'Smaller than 5'
+    }
+  }
+</script>
+
+```
+
+
 #### **Shortcuts:**
 
 ```
@@ -101,6 +331,5 @@ v-on:click="method"         -> @click="method"
 v-bind:title                -> :title
 
 ```
-
 
 **Ref:** https://github.com/sajibcse68/compare-vue

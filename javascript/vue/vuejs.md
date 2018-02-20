@@ -496,6 +496,24 @@ data: {
 
 ```  
 
+#### Use v-show if we don't want to detach element from DOM (v-show adds `style="display:none"`)
+
+```
+<template>
+<div id="app">
+  <p v-show="show">if statement <span> Nested element </span></p>
+
+  <button @click="show = !show">Switch </button>
+</div>
+</template>
+
+<script>
+data: {
+  show: false
+}
+</script>
+```  
+
 #### **Shortcuts:**
 
 ```

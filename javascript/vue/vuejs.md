@@ -579,6 +579,18 @@ data: {
 ```
 
 
+#### Looping through a lists of numbers
+
+```
+<div id="app">
+  <ul>
+    <li v-for="person in persons">
+      <div f-for="n in 10">{{ n }} </div> 
+    </li>
+  </ul>
+</div>
+```
+
 #### **Shortcuts:**
 
 ```

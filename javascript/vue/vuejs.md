@@ -451,6 +451,26 @@ computed: {
 }
 </script>
 
+#### Conditioning rendering with v-if/v-else
+
+```
+<template>
+<div id="app">
+  <p v-if="show">if statement <span> Nested element </span></p>
+  <p v-else>else statement</p>
+
+  <button @click="show = !show">Switch </button>
+</div>
+</template>
+
+<script>
+data: {
+  show: false
+}
+</script>
+
+```
+
 
 #### **Shortcuts:**
 

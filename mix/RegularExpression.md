@@ -78,10 +78,24 @@ Rule: /penguin/igm
         - c = job/n4/
         - d = 123
 
-                            
+#### Validate US Telephone numbers
+Valid numbers are:
 
+```
+555-555-5555
+(555)555-5555
+(555) 555-5555
+555 555 5555
+5555555555
+1 555 555 5555
+```
+**Rule:** var regex = `/^(1\s?)?(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/`
 
-
+- `^` denotes the beginning of the string.
+- `(1\s?)?` checks for "1" or a "1 " at the beginning
+- `\d{n}` checks for exactly n number of digits so (\(\d{3}\)|\d{3}) checks for three digits, also allows three digits inside ().
+- `$` denotes the end of string
+- check by `regex.test('(555)555-5555')`;
 
 
 

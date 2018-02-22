@@ -627,6 +627,33 @@ methods: {
 }
 ```
 
+#### Mounting a template
+
+```
+<div id='app1'></div>
+
+var vm1 = new Vue({
+  template: '<h1>Hello VM1</h1>'
+})
+
+vm1.mount('app1');
+
+// Alternate: 
+vm1.mount();
+document.getElementById('app1').appendChild(vm1.$el);
+
+```
+
+
+
+
+
+
+
+
+
+
+
 #### Difference between `v-model` and `v-bind`?
 
 ```

@@ -611,6 +611,21 @@ data: {
 </script>
 ```
 
+#### Access template from Vue module (`this.$refs`) by setting a ref
+
+- If we change the by using `$refs` it changes in the DOM directly not in the Vue instance (template). So, if vue rerender the previous value will be reflected!
+
+```
+<template>
+  <button @click="changeInnerText" ref="myButton">Set Ref</button>
+</template>
+
+methods: {
+  changeInnerText() {
+    this.$refs.myButton.innerText = 'Text';
+  }
+}
+```
 
 #### **Shortcuts:**
 

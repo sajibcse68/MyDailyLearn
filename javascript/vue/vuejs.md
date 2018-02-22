@@ -627,6 +627,25 @@ methods: {
 }
 ```
 
+#### Difference between `v-model` and `v-bind`?
+
+```
+<input v-model="something">
+```
+
+`v-model` is the syntactic sugar for:
+
+```
+<input
+  v-bind:value="something"
+  :value="something" (shorthand syntax)
+  v-on:input="something=$event.target.value"
+  @input="something=$event.target.value" (shorthand)
+>
+```
+
+[Ref:](https://stackoverflow.com/questions/42260233/vue-js-difference-between-v-model-and-v-bind)
+
 #### **Shortcuts:**
 
 ```

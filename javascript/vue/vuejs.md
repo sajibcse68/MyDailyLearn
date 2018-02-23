@@ -611,6 +611,114 @@ data: {
 </script>
 ```
 
+#### Access template from Vue module (`this.$refs`) by setting a ref
+
+- If we change the by using `$refs` it changes in the DOM directly not in the Vue instance (template). So, if vue rerender the previous value will be reflected!
+
+```
+<template>
+  <button @click="changeInnerText" ref="myButton">Set Ref</button>
+</template>
+
+methods: {
+  changeInnerText() {
+    this.$refs.myButton.innerText = 'Text';
+  }
+}
+```
+
+#### Mounting a template
+
+```
+<div id='app1'></div>
+
+var vm1 = new Vue({
+  template: '<h1>Hello VM1</h1>'
+})
+
+vm1.mount('app1');
+
+// Alternate: 
+vm1.mount();
+document.getElementById('app1').appendChild(vm1.$el);
+
+```
+
+#### VueJS Instance Lifecycle
+
+```
+<template>
+  <button @click="title="Changed">Update Title</button>
+  <button @click="destroy">Destroy</button>
+</template>
+
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    title: 'The VueJS Instance'
+  },
+  beforeCreate() {
+    console.log('beforeCreate()');
+  },
+  created() {
+    console.log('created()');
+  },
+  beforeMount() {
+    console.log('beforeMount()');
+  },
+  mounted() {
+    console.log('mounted()');
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate()');
+  },
+  updated() {
+    console.log('updated()');
+  },
+  beforeDestroy() {
+    console.log('beforeDestroy()');
+  },
+  destroyed() {
+    console.log('destroyed()');
+  },
+
+  methods() {
+    destroy() {
+      this.$destroy();
+    }
+  }
+})
+</script>
+
+```
+
+
+
+
+
+
+
+
+
+#### Difference between `v-model` and `v-bind`?
+
+```
+<input v-model="something">
+```
+
+`v-model` is the syntactic sugar for:
+
+```
+<input
+  v-bind:value="something"
+  :value="something" (shorthand syntax)
+  v-on:input="something=$event.target.value"
+  @input="something=$event.target.value" (shorthand)
+>
+```
+
+[Ref:](https://stackoverflow.com/questions/42260233/vue-js-difference-between-v-model-and-v-bind)
 
 #### **Shortcuts:**
 

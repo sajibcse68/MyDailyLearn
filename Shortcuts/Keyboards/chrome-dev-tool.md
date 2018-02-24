@@ -14,10 +14,27 @@
 * `Cmd + \`                          -- pause/resume script execution
 
 
+#### Convert browser into an Editor
+    document.body.contentEditable=true
+
 #### Capture screenshot
-* Elements | select any node | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> | write `Capture node screenshot`
+* Elements | select any node | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> | write `Capture node screenshot` | click 
 
 * <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> (select an elemenet btn, top left corner) | drag the portion want to take screenshot
+
+* <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> | select an elemenet btn, top left corner | drag the portion want to take screenshot
+
+#### Negative filter in dev tool `console`
+
+['one', 'two', 'three', 'four'].forEach(item => {
+	console.log(item);
+});
+
+// output:  one, two, three, four
+
+Now, if we write `-two` in filter box
+
+// output:  one, three, four
 
 ### Reference:
 1. https://developers.google.com/web/tools/chrome-devtools/

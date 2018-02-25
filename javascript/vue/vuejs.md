@@ -710,6 +710,7 @@ new Vue({
 <app-child>
   <h1 slot="headerH1">Pass this template from parent using Slot</h1>
   <p slot="paragraph">{{ name }}</p>
+  <p>Default slot</p>
 
 
  <!-- we can use interpolation also -->
@@ -740,6 +741,9 @@ data: () {
   <div class="paragraph">
     <slot name="headerH1"></slot>
   </div>
+
+  <!-- if the slot has no name it is default slot -->
+  <slot></slot>
 
 </template>
 <script>  

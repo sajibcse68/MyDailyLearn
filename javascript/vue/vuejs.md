@@ -10,6 +10,8 @@ $ npm install -g vue             # install vue globally
 # Create and run an app
 $ vue init webpack compare-vue   # create a app called 'compare-vue'
 $ npm run dev                    # run the app, url: localhost:8080
+
+$ npm run build                  # compressed/minified files
 ```
 
 #### Known Options for Vue instance
@@ -19,6 +21,12 @@ $ npm run dev                    # run the app, url: localhost:8080
 - **methods:** Methods of this Vue Instance
 - **computed:** Dependent Properties
 - **watch:** Execute code upon data changes
+
+
+#### Key sentences
+
+- Components extends the Vue instance
+
 
 #### For loop example
 ```
@@ -648,7 +656,7 @@ document.getElementById('app1').appendChild(vm1.$el);
 
 ```
 <template>
-  <button @click="title="Changed">Update Title</button>
+  <button @click="title='Changed'">Update Title</button>
   <button @click="destroy">Destroy</button>
 </template>
 
@@ -693,10 +701,51 @@ new Vue({
 
 ```
 
+#### Pass HTML content from parent to child using `<slot>`
 
+```
+// parent.vue
 
+<template>
+<app-child>
+  <h1>Pass this template from parent using Slot</h1>
+  <p>{{ name }}</p>
+ <!-- we can use interpolation also -->
+</app-child>
 
+</template>
 
+<style>
+import ./child.vue
+
+data: () {
+  return {
+    name: 'Hello World'
+  }
+}
+</style>
+```
+
+```
+// child.vue
+
+<template>
+  
+  <slot> </slot>
+
+</template>
+<script>  
+
+</script>
+<style>
+// the child's style will be applied when we use slot 
+h1 {
+  color: red;
+}
+
+</style>
+
+```
 
 
 

@@ -708,8 +708,10 @@ new Vue({
 
 <template>
 <app-child>
-  <h1>Pass this template from parent using Slot</h1>
-  <p>{{ name }}</p>
+  <h1 slot="headerH1">Pass this template from parent using Slot</h1>
+  <p slot="paragraph">{{ name }}</p>
+
+
  <!-- we can use interpolation also -->
 </app-child>
 
@@ -731,7 +733,13 @@ data: () {
 
 <template>
   
-  <slot> </slot>
+  <div class="title">
+    <slot name="headerH1"></slot>
+  </div>
+
+  <div class="paragraph">
+    <slot name="headerH1"></slot>
+  </div>
 
 </template>
 <script>  

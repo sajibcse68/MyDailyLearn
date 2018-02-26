@@ -759,7 +759,15 @@ h1 {
 
 ```
 
+#### How Directives work?
 
+Hooks workflow:
+
+- `bind(el, binding, vnode)`: Once directive is Attached
+- `inserted(el, binding, vnode)`: Inserted in Parent Node
+- `update(el, binding, vnode, oldVnode)`: Once Component is Updated (without Children)
+- `componentUpdated(el, binding, vnode, oldVnode)`: Once Component is Updated (with Children)
+- `unbind(el, binding, vnode)`: Once directive is Removed
 
 
 #### Difference between `v-model` and `v-bind`?

@@ -770,6 +770,21 @@ Hooks workflow:
 - `unbind(el, binding, vnode)`: Once directive is Removed
 
 
+#### HTML5 History Mode
+
+- The default mode for vue-router is hash mode - it uses the URL hash to simulate a full URL so that the page won't be reloaded when the URL changes.
+
+- To get rid of the hash, we can use the router's `history mode`, which leverages the `history.pushState` API to achieve URL navigation without a page reload:
+
+```
+const router = new VueRouter({
+  mode: 'history',
+  routes: [...]
+})
+```
+
+**N.B.** Since our app is a single page client side app, without a proper server configuration, the user will get a 404 not found error. So, if no matched then, server should serve `index.html` always! 
+
 #### Difference between `v-model` and `v-bind`?
 
 ```

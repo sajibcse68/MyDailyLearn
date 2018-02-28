@@ -804,6 +804,12 @@ const router = new VueRouter({
 
 [Ref:](https://stackoverflow.com/questions/42260233/vue-js-difference-between-v-model-and-v-bind)
 
+
+#### Vuex
+
+- Mutation's methods always run synchronous tasks
+- Need to use Action's methods to run asynchronous tasks
+
 #### **Shortcuts:**
 
 ```

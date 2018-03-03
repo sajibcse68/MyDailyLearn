@@ -47,6 +47,11 @@ Now, if we write `-two` in filter box
   - `$0` will print out the last selected element in the `Console`. 
   - `$1` will print out the elements that was selected before last one. 
   - Total `5`  ($0 to $4) history is saved
+- Black boxing a script:
+  - Sources | Call Stack | Right-click on any script, select `Blackbox Script`.
+- `Conditional Breakpoint` maybe helpful for AJAX/API/XHR call - 
+  - Sources | Right click on line #, select conditional breakpoint, write condition
+  - Also, we can select `XHR Breakpoints` from right panel
 
 
 ### Reference:

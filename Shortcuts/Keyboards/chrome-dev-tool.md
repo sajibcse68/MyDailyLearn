@@ -14,6 +14,7 @@
 * `Cmd + \`                          -- pause/resume script execution
 
 
+
 #### Convert browser into an Editor
     document.body.contentEditable=true
 
@@ -35,6 +36,18 @@
 Now, if we write `-two` in filter box
 
 // output:  one, three, four
+
+#### Helpful Debugging Shortcuts:
+
+- Hide/Show an element
+  - Elements | select any element | press `H` to toggle hide/show
+- See final only applied CSS: Elements | `Computed` section
+- Change color value format (hsl, rgb, etc.): Elements | `Styles` | `Shift + Click` on rectangular color box
+- History of last selected element:
+  - `$0` will print out the last selected element in the `Console`. 
+  - `$1` will print out the elements that was selected before last one. 
+  - Total `5`  ($0 to $4) history is saved
+
 
 ### Reference:
 1. https://developers.google.com/web/tools/chrome-devtools/

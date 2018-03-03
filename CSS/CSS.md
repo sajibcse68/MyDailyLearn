@@ -28,6 +28,17 @@
 - Content overflow
     - overflow - visible (default), auto (scroll bar), hidden (cut the text outside box)
 
+#### CSS Specificity Value
+
+- Style attribute
+- ID
+- Class, psuedo-class, attribute
+- Elements
+
+**N.B:** top to bottom -> most-specificity to least-specificity  
+
+See [CSS specificity calculator](https://specificity.keegan.st/)
+
 #### Positioning Elements by Floating
 - Floating elements can produce very flexible layouts
 - Floats are taken out of normal document flow

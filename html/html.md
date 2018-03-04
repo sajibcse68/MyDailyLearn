@@ -565,7 +565,7 @@ Using the `transform` property in CSS3, we can translate, rotate, scale and skew
     }
     ```
 #### Transitions
-CSS3 privides `transitions`, which allow us to `transsition between two states of a specified element`.
+CSS3 provides `transitions`, which allow us to `transition between two states of a specified element`.
 
 ```
 .element {

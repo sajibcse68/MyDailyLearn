@@ -59,6 +59,7 @@ Now, if we write `-two` in filter box
   - Scroll the page green color denotes that it is painting this area
   - e.g. koalastothemax.com
 - `Memory leaks`:
+  - `Memory Leaks` can be defined as memory that is not required by an application anymore that for some reason is not returned to the operating system or the pool of free memory.
   - If foo() call bar(), and bar() call foo() then it is caused `Memory Leak` cause it would never be ended (not garbage collection)
 
 ### Reference:

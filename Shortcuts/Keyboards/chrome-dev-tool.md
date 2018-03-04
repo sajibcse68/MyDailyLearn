@@ -37,7 +37,7 @@ Now, if we write `-two` in filter box
 
 // output:  one, three, four
 
-#### Helpful Debugging Shortcuts:
+#### Deep Dive into Debugging:
 
 - Hide/Show an element
   - Elements | select any element | press `H` to toggle hide/show
@@ -52,7 +52,14 @@ Now, if we write `-two` in filter box
 - `Conditional Breakpoint` maybe helpful for AJAX/API/XHR call - 
   - Sources | Right click on line #, select conditional breakpoint, write condition
   - Also, we can select `XHR Breakpoints` from right panel
-
+- Page Jank, GPU memory, see FPS (Frames per second)
+  - 3 dot settings | More Tools | Rendering | Check `FPS Meter`
+- `Paint Flashing`:
+  - 3 dot settings | More Tools | Rendering | Check `Paint Flashing`
+  - Scroll the page green color denotes that it is painting this area
+  - e.g. koalastothemax.com
+- `Memory leaks`:
+  - If foo() call bar(), and bar() call foo() then it is caused `Memory Leak` cause it would never be ended (not garbage collection)
 
 ### Reference:
 1. https://developers.google.com/web/tools/chrome-devtools/

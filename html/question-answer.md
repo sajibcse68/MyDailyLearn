@@ -32,3 +32,11 @@
     <h1>Hello</h1>
   `
 ```
+- Why do we need to use `rel="noopener"` when opening a link in a new tab/window?
+  - If we don't use `rel="noopener"` the new page can access our window object via `window.opener`. Some legacy APIs mean it can navigate your page to a different URL using `window.opener.location = newURL`.
+
+```
+<a href="http://example.com" target="_blank" rel="noopener">
+   Example site
+</a>
+```

@@ -163,6 +163,50 @@ function logIt(){         |
 logIt();                  |
 ```
 
+#### What is `Debouncing` in JavaScript?
+
+There are some browser events that can fire many times within a short timespan very quickly, such as resizing  a window or scrolling
+down page. This can cause a serious performance issues.
+
+`Debouncing` is one way to solve this issue by limiting the time that needs to pass by until a function is called. So, it limits the 
+rate at which a function can fire.
+
+```
+// Returns a function, that, as long as it continues to be invoked, will not
+// be triggered. The function will be called after it stops being called for
+// N milliseconds. If `immediate` is passed, trigger the function on the
+// leading edge, instead of the trailing.
+function debounce(func, wait, immediate) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+};
+```
+
+This function - when wrapped around an event - will execute only after a certain amount of time has elapsed
+
+```
+// function to be called when user scrolls
+function foo () {
+  console.log('You are scrolling');
+} 
+
+// wrap our function in a debounce to fire once 2 seconds have gone by
+let elem = document.getElementById('container');
+elem.addEventListener('scroll', debounce(foo, 2000))
+```
+
+**Ref:** [MDN](https://davidwalsh.name/javascript-debounce-function), [FreeCodeCamp](https://medium.freecodecamp.org/3-questions-to-watch-out-for-in-a-javascript-interview-725012834ccb)
+
 ##### First, memory is set aside for all necessary variables and `declared functions`.
 
 ```js

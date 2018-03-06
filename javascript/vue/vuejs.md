@@ -10,6 +10,8 @@ $ npm install -g vue             # install vue globally
 # Create and run an app
 $ vue init webpack compare-vue   # create a app called 'compare-vue'
 $ npm run dev                    # run the app, url: localhost:8080
+
+$ npm run build                  # compressed/minified files
 ```
 
 #### Known Options for Vue instance
@@ -19,6 +21,12 @@ $ npm run dev                    # run the app, url: localhost:8080
 - **methods:** Methods of this Vue Instance
 - **computed:** Dependent Properties
 - **watch:** Execute code upon data changes
+
+
+#### Key sentences
+
+- Components extends the Vue instance
+
 
 #### For loop example
 ```
@@ -648,7 +656,7 @@ document.getElementById('app1').appendChild(vm1.$el);
 
 ```
 <template>
-  <button @click="title="Changed">Update Title</button>
+  <button @click="title='Changed'">Update Title</button>
   <button @click="destroy">Destroy</button>
 </template>
 
@@ -693,13 +701,89 @@ new Vue({
 
 ```
 
+#### Pass HTML content from parent to child using `<slot>`
+
+```
+// parent.vue
+
+<template>
+<app-child>
+  <h1 slot="headerH1">Pass this template from parent using Slot</h1>
+  <p slot="paragraph">{{ name }}</p>
+  <p>Default slot</p>
 
 
+ <!-- we can use interpolation also -->
+</app-child>
+
+</template>
+
+<style>
+import ./child.vue
+
+data: () {
+  return {
+    name: 'Hello World'
+  }
+}
+</style>
+```
+
+```
+// child.vue
+
+<template>
+  
+  <div class="title">
+    <slot name="headerH1"></slot>
+  </div>
+
+  <div class="paragraph">
+    <slot name="headerH1"></slot>
+  </div>
+
+  <!-- if the slot has no name it is default slot -->
+  <slot></slot>
+
+</template>
+<script>  
+
+</script>
+<style>
+// the child's style will be applied when we use slot 
+h1 {
+  color: red;
+}
+
+</style>
+
+```
+
+#### How Directives work?
+
+Hooks workflow:
+
+- `bind(el, binding, vnode)`: Once directive is Attached
+- `inserted(el, binding, vnode)`: Inserted in Parent Node
+- `update(el, binding, vnode, oldVnode)`: Once Component is Updated (without Children)
+- `componentUpdated(el, binding, vnode, oldVnode)`: Once Component is Updated (with Children)
+- `unbind(el, binding, vnode)`: Once directive is Removed
 
 
+#### HTML5 History Mode
 
+- The default mode for vue-router is hash mode - it uses the URL hash to simulate a full URL so that the page won't be reloaded when the URL changes.
 
+- To get rid of the hash, we can use the router's `history mode`, which leverages the `history.pushState` API to achieve URL navigation without a page reload:
 
+```
+const router = new VueRouter({
+  mode: 'history',
+  routes: [...]
+})
+```
+
+**N.B.** Since our app is a single page client side app, without a proper server configuration, the user will get a 404 not found error. So, if no matched then, server should serve `index.html` always! 
 
 #### Difference between `v-model` and `v-bind`?
 
@@ -719,6 +803,12 @@ new Vue({
 ```
 
 [Ref:](https://stackoverflow.com/questions/42260233/vue-js-difference-between-v-model-and-v-bind)
+
+
+#### Vuex
+
+- Mutation's methods always run synchronous tasks
+- Need to use Action's methods to run asynchronous tasks
 
 #### **Shortcuts:**
 

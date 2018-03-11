@@ -48,6 +48,27 @@ list.appendChild(fragment);
 #### `Closures` and `References`
 - One of the JS most powerful features is closures.
 - With `closures`, scopes `always` keep access to the outer scope, in which they were defined.
+
+- Closure is when a function `remember` its lexical scope even when the function is executed outside that lexical scope -- KyleSimpson-AdvancedJavaScript-FrontendMasters
+
+```js
+function foo() {
+  var bar = "bar";
+
+  function baz() {
+    console.log(bar);
+  }
+
+  bam(baz);
+}
+
+function bam(baz) {
+  baz();             // "bar"
+}
+
+foo();
+```
+
 ```js
 // Emulating private variables
 function Counter(start) {

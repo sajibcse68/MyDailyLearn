@@ -411,7 +411,7 @@ var d = function() {                   |  c;           // ??
 - In `C` language we include headerfile (e.g. include #stdio.h), it's one kind of Hoisting
 
 ```js
-a(1);     // ??
+a(1);     // ??, Ans: 39  
 
 function a(foo) {
   if (foo > 20) return foo;

@@ -405,6 +405,26 @@ var d = function() {                   |  c;           // ??
                                        |  };
 ```
 
+#### Why `Hoisting` is important?
+
+- `Hoisting` is necessary for `Mutual Recursion`.
+- In `C` language we include headerfile (e.g. include #stdio.h), it's one kind of Hoisting
+
+```js
+a(1);     // ??
+
+function a(foo) {
+  if (foo > 20) return foo;
+  return b(foo+2);
+}
+function b(foo) {
+  return c(foo) + 1;
+}
+function c(foo) {
+  return a(foo*2);
+}
+```
+
 #### Q. How does `this` keyword change in different context?
 
 `this` is a keyword whose value changes depending on how a function gets called. There have `six` different ways where

@@ -387,6 +387,24 @@ function theBridgeOfHoistingDoom() {   | Answer: console.log("ERROR");
 }                                      |
 ```                                    
 
+###### Analyzing Load Order IV
+
+```js                                  |  // after hoisting
+var a = b();                           |  function b() {
+var c = c();                           |  {
+a;                                     | 
+c;                                     |  var a;
+                                       |  var c;
+function b() {                         |  var d;
+  return c;                            |  a = b();
+}                                      |  c = d();
+                                       |  a;           // ??
+var d = function() {                   |  c;           // ??
+  return b();                          |  d = function() {
+};                                     |    return b(); 
+                                       |  };
+```
+
 #### Q. How does `this` keyword change in different context?
 
 `this` is a keyword whose value changes depending on how a function gets called. There have `six` different ways where

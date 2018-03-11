@@ -10,6 +10,7 @@
   being a node itself.
 - Every functions receives two additional parameters: `this`, `arguments`.
 - When a function is stored as a property of an object, we call it a `method`. When a method is invoked, `this` is bound to that object.
+- JavaScript has function scope only*
 - JS MUST Know: `Scoping`, `Closures`, `Hoisting`, `This`, `Data Structures: Objects and Arrays`, `Design Patterns`, `Callbacks and Promises`.
 
 ```javascript

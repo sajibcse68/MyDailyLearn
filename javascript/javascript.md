@@ -49,7 +49,7 @@ list.appendChild(fragment);
 - One of the JS most powerful features is closures.
 - With `closures`, scopes `always` keep access to the outer scope, in which they were defined.
 
-- Closure is when a function `remember` its lexical scope even when the function is executed outside that lexical scope -- KyleSimpson-AdvancedJavaScript-FrontendMasters
+- Closure is when a **function** `remember` its lexical scope even when the **function** is executed outside that lexical scope -- KyleSimpson-AdvancedJavaScript-FrontendMasters
 
 ```js
 function foo() {
@@ -68,6 +68,19 @@ function bam(baz) {
 
 foo();
 ```
+
+```js
+var foo = (function() {
+  var o = { foo: "bar" };
+
+  return { obj: o };
+})();
+
+// it's not closure, its just object reference!
+console.log(foo.obj.foo);
+```
+
+
 
 ```js
 // Emulating private variables

@@ -1,6 +1,6 @@
 #### Notes
 
-- When browser find the `<script>` tag to download, all other parallel downloading halts. (6 files can be downloaded by modern browser)
+- When browser find the `<script>` tag to download, all other parallel/concurrent downloading halts. (6 files can be downloaded by modern chrome browser)
 - if we add `async` in `<script>` tag then it would be downloaded asynchronously
     - e.g. `<script type="text/javascript" src="http://www.abc.com/test.js" async></script>`
 - Efficient choices for `string concatenation` is `+=`
@@ -10,9 +10,8 @@
   being a node itself.
 - Every functions receives two additional parameters: `this`, `arguments`.
 - When a function is stored as a property of an object, we call it a `method`. When a method is invoked, `this` is bound to that object.
+- JavaScript has function scope only*
 - JS MUST Know: `Scoping`, `Closures`, `Hoisting`, `This`, `Data Structures: Objects and Arrays`, `Design Patterns`, `Callbacks and Promises`.
-
-
 
 ```javascript
 var list = document.getElementById('kotwList');
@@ -49,6 +48,27 @@ list.appendChild(fragment);
 #### `Closures` and `References`
 - One of the JS most powerful features is closures.
 - With `closures`, scopes `always` keep access to the outer scope, in which they were defined.
+
+- Closure is when a function `remember` its lexical scope even when the function is executed outside that lexical scope -- KyleSimpson-AdvancedJavaScript-FrontendMasters
+
+```js
+function foo() {
+  var bar = "bar";
+
+  function baz() {
+    console.log(bar);
+  }
+
+  bam(baz);
+}
+
+function bam(baz) {
+  baz();             // "bar"
+}
+
+foo();
+```
+
 ```js
 // Emulating private variables
 function Counter(start) {
@@ -183,7 +203,7 @@ function assignTorpedo (name, passengerArray) {
 var subPassengers = ["Luke", "Leia", "Han", "Chewie", "Yoda", "Boba"];
 var giveAssignment = assignTorpedo("Chewie", subPassengers);
 
-gitveAssignment();   // it shows "... Torpedo #6!" instead of "... Torpedo #4!"
+giveAssignment();   // it shows "... Torpedo #6!" instead of "... Torpedo #4!"
 ```
 ```js
 // solutions #1:
@@ -672,4 +692,8 @@ func1(1, 2);
 #### Quickly access elements in the console
 A faster way to do a querySelector  in the console is with the dollar sign. `$('css-selector')` will return the first match of CSS selector. `$$('css-selector')` will return all of them. it we should use an element more than once, it's worth saving it as a variable. 
 
-#### Console object ultimate guide
+#### JavaScript Resources
+
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript (MDN: mozilla developer network)
+- https://github.com/rwaldron/idiomatic.js (code styling)
+- www.ecma-international.org/ecma-262/5.1/

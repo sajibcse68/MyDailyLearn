@@ -135,6 +135,25 @@ Actually, `==` use coercion to cast the values to be of the same type. On the ot
 
 [See Reference](https://hackernoon.com/understanding-js-coercion-ff5684475bfc)
 
+#### What is the two conditions of being a `Module`?
+
+1. There must be an outer enclosing function.
+2. From inside that functions return at least one/more inner function(s).
+
+```js
+var myModule = (function() {
+  'use strict';
+
+  return {
+    publicMethod: function() {
+      console.log('Hello World!');
+    }
+  };
+})();
+
+myModule.publicMethod(); // Hello World!
+```
+
 #### Q. Explain `Hoisting` in JavaScript
 When you declare a variable in JavaScript (using "var"), that variable declaration is "hoisted" to the top of the current scope: meaning the top of the current function or the top of the script if the variable isn't in a function.
 

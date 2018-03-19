@@ -707,6 +707,17 @@ function spinalCase(str) {
 spinalCase('This Is Spinal Tap');
 ```
 
+#### What type of scoping rule(s) does JavaScript have?
+- Lexical scope
+#### What are 3 different ways we can create a new scoped variable?
+- `Let` inside a scope
+- `Var` inside a function
+- `err` in catch close: e.g. catch(err) { ... }
+
+#### What is the different between undeclared and undefined?
+`Undeclared`: It's never been declared in any scoped we have accessed to
+`Undefined`: It has beed in a scope but it does not have currently any value 
+
 ======================================================
 
 Some questions to check:

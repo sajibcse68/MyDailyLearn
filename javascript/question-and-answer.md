@@ -4,6 +4,14 @@
 #### Describe Event Bubbling ('bubble up')
  Also known as "propogation". Events on an element will "bubble up" and also fire on all parents.
 
+#### What are benefits of a `named function` over a `anonymous function`?
+
+- Handy function self-reference: necessary when referencing from inside the function, e.g. `recursion` 
+- More debuggable stack traces: helpful when seeing `stack trace` while debugging
+- More self-documenting code: when using the function as callback it is more documented
+
+So, in production code we should use `Name Function` always.
+
 #### Difference between `target` and `currentTarget`    
  `target` is actual thing what is clicked and `currentTarget` is where the event listener is attached to.
  

@@ -718,6 +718,25 @@ spinalCase('This Is Spinal Tap');
 `Undeclared`: It's never been declared in any scoped we have accessed to
 `Undefined`: It has beed in a scope but it does not have currently any value 
 
+#### What does happen when we declare a variable with `var` and `let`?
+Declaring with `var` two things are happened:  
+1. Hoist the variable at **compile time**.
+2. Initialize the Hoisted variable with `undefined` at **runtime**. 
+
+Declaring with `let` only one thing is happened:
+1. Hoist the variable
+
+```js
+function foo(bar) {                       | var a;      // undefined
+ if (bar) {                               | if (bar) {
+   console.log(baz);  // ReferenceError   |  let baz;   // uninitialized
+   let baz = bar;                         |  console.log(baz);
+   var a;                                 |  let baz = bar;
+ }                                        |
+}                                         |
+```
+**So, `let` is hoisted but not initialized actually.**
+
 ======================================================
 
 Some questions to check:

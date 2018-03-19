@@ -14,6 +14,7 @@
 * `Cmd + \`                          -- pause/resume script execution
 
 
+
 #### Convert browser into an Editor
     document.body.contentEditable=true
 
@@ -35,6 +36,31 @@
 Now, if we write `-two` in filter box
 
 // output:  one, three, four
+
+#### Deep Dive into Debugging:
+
+- Hide/Show an element
+  - Elements | select any element | press `H` to toggle hide/show
+- See final only applied CSS: Elements | `Computed` section
+- Change color value format (hsl, rgb, etc.): Elements | `Styles` | `Shift + Click` on rectangular color box
+- History of last selected element:
+  - `$0` will print out the last selected element in the `Console`. 
+  - `$1` will print out the elements that was selected before last one. 
+  - Total `5`  ($0 to $4) history is saved
+- Black boxing a script:
+  - Sources | Call Stack | Right-click on any script, select `Blackbox Script`.
+- `Conditional Breakpoint` maybe helpful for AJAX/API/XHR call - 
+  - Sources | Right click on line #, select conditional breakpoint, write condition
+  - Also, we can select `XHR Breakpoints` from right panel
+- Page Jank, GPU memory, see FPS (Frames per second)
+  - 3 dot settings | More Tools | Rendering | Check `FPS Meter`
+- `Paint Flashing`:
+  - 3 dot settings | More Tools | Rendering | Check `Paint Flashing`
+  - Scroll the page green color denotes that it is painting this area
+  - e.g. koalastothemax.com
+- `Memory leaks`:
+  - `Memory Leaks` can be defined as memory that is not required by an application anymore that for some reason is not returned to the operating system or the pool of free memory.
+  - If foo() call bar(), and bar() call foo() then it is caused `Memory Leak` cause it would never be ended (not garbage collection)
 
 ### Reference:
 1. https://developers.google.com/web/tools/chrome-devtools/

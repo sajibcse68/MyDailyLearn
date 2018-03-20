@@ -4,6 +4,14 @@
 #### Describe Event Bubbling ('bubble up')
  Also known as "propogation". Events on an element will "bubble up" and also fire on all parents.
 
+#### What are benefits of a `named function` over a `anonymous function`?
+
+- Handy function self-reference: necessary when referencing from inside the function, e.g. `recursion` 
+- More debuggable stack traces: helpful when seeing `stack trace` while debugging
+- More self-documenting code: when using the function as callback it is more documented
+
+So, in production code we should use `Name Function` always.
+
 #### Difference between `target` and `currentTarget`    
  `target` is actual thing what is clicked and `currentTarget` is where the event listener is attached to.
  
@@ -134,6 +142,25 @@ greet();  // Hello, visitor!
 Actually, `==` use coercion to cast the values to be of the same type. On the other hand when we use strict equality `===` JS won't type cast the values (meaning that if they are of different types they're not equal). Simply, **== is comparison which allows coercion, === is comparison without coercion.** 
 
 [See Reference](https://hackernoon.com/understanding-js-coercion-ff5684475bfc)
+
+#### What is the two conditions of being a `Module`?
+
+1. There must be an outer enclosing function.
+2. From inside that functions return at least one/more inner function(s).
+
+```js
+var myModule = (function() {
+  'use strict';
+
+  return {
+    publicMethod: function() {
+      console.log('Hello World!');
+    }
+  };
+})();
+
+myModule.publicMethod(); // Hello World!
+```
 
 #### Q. Explain `Hoisting` in JavaScript
 When you declare a variable in JavaScript (using "var"), that variable declaration is "hoisted" to the top of the current scope: meaning the top of the current function or the top of the script if the variable isn't in a function.
@@ -679,6 +706,17 @@ function spinalCase(str) {
 // test here
 spinalCase('This Is Spinal Tap');
 ```
+
+#### What type of scoping rule(s) does JavaScript have?
+- Lexical scope
+#### What are 3 different ways we can create a new scoped variable?
+- `Let` inside a scope
+- `Var` inside a function
+- `err` in catch close: e.g. catch(err) { ... }
+
+#### What is the different between undeclared and undefined?
+`Undeclared`: It's never been declared in any scoped we have accessed to
+`Undefined`: It has beed in a scope but it does not have currently any value 
 
 ======================================================
 

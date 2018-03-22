@@ -145,10 +145,11 @@ Actually, `==` use coercion to cast the values to be of the same type. On the ot
 
 #### What is the two conditions of being a `Module`?
 
-1. There must be an outer enclosing function.
-2. From inside that functions return at least one/more inner function(s).
+1. There must be an outer enclosing function that executes at least one.
+2. From inside that functions return at least one inner function(s).
 
 ```js
+// example 1
 var myModule = (function() {
   'use strict';
 
@@ -162,6 +163,39 @@ var myModule = (function() {
 myModule.publicMethod(); // Hello World!
 ```
 
+```js
+// example 2
+define ("foo", function() { // define run the function automatically and assign the return value in 'foo'
+  var o = { bar: "bar" };
+  return {
+    bar: function() {
+      console.log(o.bar);
+    }
+  }
+});
+```
+
+One important thing is to the **File content** is also a module. e.g. ES6 + module pattern
+
+- By default, File based module is singletone, mean it has only one instance. If we import the File from inside different files it creates only one instance and share with all.
+
+```js
+// foo.js
+var o = { bar: "bar" };
+
+export function bar() {
+  console.log(o.bar);
+};
+
+import { bar } from 'foo.js';
+
+bar();  // bar
+
+import * as foo from 'foo.js';
+
+foo.bar();  // bar
+
+```
 #### Q. Explain `Hoisting` in JavaScript
 When you declare a variable in JavaScript (using "var"), that variable declaration is "hoisted" to the top of the current scope: meaning the top of the current function or the top of the script if the variable isn't in a function.
 

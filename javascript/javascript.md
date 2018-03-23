@@ -704,6 +704,15 @@ func1(1, 2);
 ```
 `func1` expects 3 arguments, but only 2 is passed in.
 
+#### Use of `console.memory`
+- If performance issue is even trickier, and we are looking for a sneaky memory leak then `cosole.memory` (property, not a function) to check out our heap size status.
+
+```js
+console.memory
+```
+
+
+
 #### Quickly access elements in the console
 A faster way to do a querySelector  in the console is with the dollar sign. `$('css-selector')` will return the first match of CSS selector. `$$('css-selector')` will return all of them. it we should use an element more than once, it's worth saving it as a variable. 
 

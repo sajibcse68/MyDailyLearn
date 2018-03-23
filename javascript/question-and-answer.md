@@ -752,6 +752,17 @@ spinalCase('This Is Spinal Tap');
 `Undeclared`: It's never been declared in any scoped we have accessed to
 `Undefined`: It has beed in a scope but it does not have currently any value 
 
+#### What is the only value in JS that is not equal to itself?
+`NaN` is the only value that is not equal to itself.
+
+```js
+if (!Number.isNaN) {
+  Number.isNaN = function isNaN(x) {
+    return x !== x;
+    // NaN === NaN -- false
+  }
+}
+```
 #### What does happen when we declare a variable with `var` and `let`?
 Declaring with `var` two things are happened:  
 1. Hoist the variable at **compile time**.

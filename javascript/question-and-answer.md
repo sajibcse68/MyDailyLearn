@@ -145,10 +145,11 @@ Actually, `==` use coercion to cast the values to be of the same type. On the ot
 
 #### What is the two conditions of being a `Module`?
 
-1. There must be an outer enclosing function.
-2. From inside that functions return at least one/more inner function(s).
+1. There must be an outer enclosing function that executes at least one.
+2. From inside that functions return at least one inner function(s).
 
 ```js
+// example 1
 var myModule = (function() {
   'use strict';
 
@@ -162,6 +163,39 @@ var myModule = (function() {
 myModule.publicMethod(); // Hello World!
 ```
 
+```js
+// example 2
+define ("foo", function() { // define run the function automatically and assign the return value in 'foo'
+  var o = { bar: "bar" };
+  return {
+    bar: function() {
+      console.log(o.bar);
+    }
+  }
+});
+```
+
+One important thing is to the **File content** is also a module. e.g. ES6 + module pattern
+
+- By default, File based module is singletone, mean it has only one instance. If we import the File from inside different files it creates only one instance and share with all.
+
+```js
+// foo.js
+var o = { bar: "bar" };
+
+export function bar() {
+  console.log(o.bar);
+};
+
+import { bar } from 'foo.js';
+
+bar();  // bar
+
+import * as foo from 'foo.js';
+
+foo.bar();  // bar
+
+```
 #### Q. Explain `Hoisting` in JavaScript
 When you declare a variable in JavaScript (using "var"), that variable declaration is "hoisted" to the top of the current scope: meaning the top of the current function or the top of the script if the variable isn't in a function.
 
@@ -717,6 +751,46 @@ spinalCase('This Is Spinal Tap');
 #### What is the different between undeclared and undefined?
 `Undeclared`: It's never been declared in any scoped we have accessed to
 `Undefined`: It has beed in a scope but it does not have currently any value 
+
+#### What is the only value in JS that is not equal to itself?
+`NaN` is the only value that is not equal to itself.
+
+```js
+if (!Number.isNaN) {
+  Number.isNaN = function isNaN(x) {
+    return x !== x;
+    // NaN === NaN -- false
+  }
+}
+```
+#### What does happen when we declare a variable with `var` and `let`?
+Declaring with `var` two things are happened:  
+1. Hoist the variable at **compile time**.
+2. Initialize the Hoisted variable with `undefined` at **runtime**. 
+
+Declaring with `let` only one thing is happened:
+1. Hoist the variable
+
+```js
+function foo(bar) {                       | var a;      // undefined
+ if (bar) {                               | if (bar) {
+   console.log(baz);  // ReferenceError   |  let baz;   // uninitialized
+   let baz = bar;                         |  console.log(baz);
+   var a;                                 |  let baz = bar;
+ }                                        |
+}                                         |
+```
+**So, `let` is hoisted but not initialized actually.**
+
+#### How to write optimized JavaScript
+
+1. **Order of object properties:** always instantiate our object properties in the same order so that hidden classes, and subsequently optimized code, can be shared.
+2. **Dynamic properties:** adding properties to an object after instantiation will force a hidden class change and slow down any methods that were optimized for the previous hidden class. Instead, assign all of an object's properties in its constructor.
+3. **Methods:** code that executes the same method repeatedly will run faster than code that executes many different methods only once (due to inline caching).
+4. **Arrays:** avoid sparse arrays where keys are not incremental numbers. Sparse arrays which don't have every element inside them are a `hash table`. Elements in such arrays are more expensive to access. Also, try to avoid pre-allocating large arrays. It's better to grow as you go. Finally, don't delete elements in arrays. It makes the keys sparse.
+5. Tagged values: V8 represents objects and numbers with 32 bits. It uses a bit to know if it is an object (flag = 1) or and integer (flag = 0) called SMI (`SMall Integer`) because of its 31 bits. Then, if a numeric value is bigger that 31 bits, V8 will box the number, turning it into a double and creating a new object to put the number inside. Try to use 31 bit signed numbers whenever possible to avoid teh expensive boxing operation into a JS object. 
+
+[Ref:](https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e)
 
 ======================================================
 

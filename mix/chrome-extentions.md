@@ -1,5 +1,12 @@
 
-#### There are three environments for chorme extensions:
+## Index
+
+- [Chrome Extension Environment](#chrome-extension-environment)
+- [Message passing API](#message-passing-api)
+
+---
+### Chrome Extension Environment
+There are **three** environments for chorme extensions -
 
 1. Background environment
 
@@ -27,7 +34,9 @@
 }]
 ```
 
-#### Message passing API (`UserEnvironment -> backgroundEnvironment`)
+### Message passing API
+
+We can pass message from `UserEnvironment` to  `backgroundEnvironment` using API
 
 ```js
 

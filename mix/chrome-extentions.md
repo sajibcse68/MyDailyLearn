@@ -23,6 +23,20 @@
 ```js
 "content_scripts": [{
   "matches": ["http://*/*", "https://*/*"],
-  "js": ["myScript.js"]
+  "js": ["user-env.js"]
 }]
+```
+
+#### Message passing API (`UserEnvironment -> backgroundEnvironment`)
+
+```js
+
+// user-env.js
+chrome.runtime.sendMessage(document.getElementByTagName('title')[0].innerText);
+
+// background.js
+chrome.runtime.onMessage.addListener(function(response, sender, sendResponse) {
+  alert(response);
+})
+
 ```

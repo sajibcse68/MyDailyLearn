@@ -3,7 +3,7 @@
 
 - [Chrome Extension Environment](#chrome-extension-environment)
 - [Message passing API](#message-passing-api)
-
+- [Override Chrome Pages](#override-chrome-pages)
 ---
 ### Chrome Extension Environment
 There are **three** environments for chorme extensions -
@@ -49,3 +49,28 @@ chrome.runtime.onMessage.addListener(function(response, sender, sendResponse) {
 })
 
 ```
+
+### Override Chrome Pages
+
+We can override `history`, `bookmark manager` & `newtab` pages with chrome extensions.
+
+- Override `newtab` page -
+
+```js
+// manifest.json
+"chrome_url_overrides": {
+  "newtab": "newtab.html"
+}
+
+// newtab.html
+<!doctype html>
+<html>
+  <head>
+    <title>My First Chrome Extension</title>
+  </head>
+  <body>
+    Overriding New Tab here!
+  </body>
+</html>
+```
+

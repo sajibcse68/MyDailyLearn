@@ -748,6 +748,13 @@ spinalCase('This Is Spinal Tap');
 - `Var` inside a function
 - `err` in catch close: e.g. catch(err) { ... }
 
+#### What are the **four** things the `new` keyword actually does when we put in front of a function call (**aka: constructor call**)?
+
+1. Create a brand new empty object
+2. Newly created object is linked to another object
+3. Newly created object gets the passed in the `this` keyword to the function call
+4. return the newly created object
+
 #### What is the different between undeclared and undefined?
 `Undeclared`: It's never been declared in any scoped we have accessed to
 `Undefined`: It has beed in a scope but it does not have currently any value 
@@ -781,6 +788,18 @@ function foo(bar) {                       | var a;      // undefined
 }                                         |
 ```
 **So, `let` is hoisted but not initialized actually.**
+
+#### Compare `null`, `undefined`, `NaN`
+
+A **null** value represents nothing, nonexistent or invalid object or address. It converts to `0` in simple arithmetic operations and it's global object. `null == false` gives us false.
+
+The global **undefined** property represents the primitive value `undefined`. It tells us something has not assigned value; isn't defined. **undefined** isn't converted into any number, so using it in maths calculations returns `NaN`.
+
+**NaN (Not-A-Number)** represents something which is not a number, even though it's actually a number. It's not equal to itself and to check if something is NaN we need to use **isNaN()** function.
+
+All of the above are falsy values so they convert to false.
+
+[Ref](https://codeburst.io/understanding-null-undefined-and-nan-b603cb74b44c)
 
 #### How to write optimized JavaScript
 

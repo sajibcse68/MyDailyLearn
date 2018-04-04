@@ -829,6 +829,18 @@ All of the above are falsy values so they convert to false.
 
 [Ref:](https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e)
 
+
+#### What is a constructor call?
+- Function call with a `new` keyword
+#### What is **[[Portotype]]** and where does it come from?
+- It means a object linkage. It comes when we create a new object.
+#### How does **[[Prototype]]** affect the behavior of an object?
+- When we call an method/property/object of an object, if it is not found then it is delegated the chaning by `[[Prototype]]`.
+#### What is the 3 different ways to find where an object (say, `ob`) **[[Prototype]]** is linked to?
+- `ob.__proto__`
+- Object.getPrototypeOf(ob)
+- ob.constructor.prototype
+
 ======================================================
 
 Some questions to check:

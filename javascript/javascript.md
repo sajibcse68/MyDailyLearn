@@ -12,6 +12,7 @@
 - When a function is stored as a property of an object, we call it a `method`. When a method is invoked, `this` is bound to that object.
 - JavaScript has function scope only*
 - V8 transtales JavaScript code into more efficient machine code instead of using and interpreter. V8 doesn't produce bytecode or any intermediate code.
+- Objects are built by constructor call (a function is called by `new` keyword). A constructor makes an object **linked to** its own `prototype`.
 - Exciting features of ES6: destructuring, default parameter values, symbols, concise methods, computed properties, arrow functions, block scoping, promises, generators, iterators, modules, proxies, weakmaps, etc. etc. 
 - JS MUST Know: `Scoping`, `Closures`, `Hoisting`, `This`, `Data Structures: Objects and Arrays`, `Design Patterns`, `Callbacks and Promises`.
 

@@ -25,9 +25,9 @@ var fragment = document.createDocumentFragment();
 
 const kotwLen = kotw.length;
 for (var i=0, len = kotwLen; i<len; i++) {
- var element = document.createElement('li');
- element.appendChild(document.createTextNode(kotw[i]));
- fragment.appendChild(element);
+  var element = document.createElement('li');
+  element.appendChild(document.createTextNode(kotw[i]));
+  fragment.appendChild(element);
 // now we add each new `li` element to the staging fragment, instead of to the document itself
 }
 list.appendChild(fragment);
@@ -37,9 +37,9 @@ list.appendChild(fragment);
 - Every `var` keywords adds a look-up for the JavaScript parser that can be avoided with comma extensions.
 - For concatenation over an array's contents,`join()` method is faster (inherited from the Array prototype)
 - `console.time('timer name')` and `console.timeEnd('timer name')` 
-    - to unite timer boundaries into one timer, their parameter labels must match
-    - output: timer name 0.036 ms
-    - `console.time` automatically prefaces the time measurement with the label we passed in a `parameter, plus a colon`.
+  - to unite timer boundaries into one timer, their parameter labels must match
+  - output: timer name 0.036 ms
+  - `console.time` automatically prefaces the time measurement with the label we passed in a `parameter, plus a colon`.
 - The `triple-equal (===)` comparator compares both `type and contents`. `===` seeks a `strict` equality.
 - The `instanceof` operator helps identity objects.
 - `Exceptions`: are run time errors.
@@ -89,14 +89,14 @@ console.log(foo.obj.foo);
 // Emulating private variables
 function Counter(start) {
   var count = start;
-   return {
+  return {
     increment: function() {
       count++;
     },
     get: function() {
       return count;
     }
-   }
+  }
 }
 var foo = Counter(4);
 foo.increment();
@@ -269,15 +269,16 @@ function assignTorpedo (passengerArray) {
 ```
 
 #### Check if specific html portion is visible or not!
- ``` 
- var html = $(this).closest('.box');
-  html.find('.file-data').toggle();
-  const btnTake = html.find('.show-hide-btn');
-  if(html.find('.file-data').is(':visible')) {
-     btnTake.text('Hide');
-  } else {
-     btnTake.text('Show');
-  }
+
+```js 
+var html = $(this).closest('.box');
+html.find('.file-data').toggle();
+const btnTake = html.find('.show-hide-btn');
+if(html.find('.file-data').is(':visible')) {
+  btnTake.text('Hide');
+} else {
+  btnTake.text('Show');
+}
 ```
 
 #### Check if an object has a key
@@ -343,10 +344,10 @@ eval('regiment' + number).motto = motto;
     - If built well, `namespaces` remain `agnostic` of other namespaces.
     - `Namespaces` reduce global `footprint` while also keeping data grouped around their intended functionality.
     - `Closure` of js is used to cause some properties to be private, bound only to a surrounding function's local scope,
-       and some properties to be public, accessible by all holders of the namespace.
+      and some properties to be public, accessible by all holders of the namespace.
     - `Private` properties are `created` in the local scope of the `function expression`. `public` properties are built withtin
-       the `object` which is then `returned` to become the `namespace`. Access to `private` data is thus prossible only
-       because of `closure` within the larger `module`.
+      the `object` which is then `returned` to become the `namespace`. Access to `private` data is thus prossible only
+      because of `closure` within the larger `module`.
     - If a module reference globally-scoped variable, it's a best practice to bring them into the scope of anonymous closure
       through the use of a `imports` technique.
     - Our `imports` ensures clarity of `scope` within a `module`. By using a `parameter`, we protect the `global` data 
@@ -439,7 +440,7 @@ console.log(literalCircle.getArea());
     With `call`, you can write a method once and then inherit it in another object, without having to rewrite the method for the new object.
 - With `call() or apply()` we can set the value of `this`, and invoke a function as a new method of an existing object.
 - Using call to invoke a function and specifying the `context` for `this`. In below example, when we will call great the value of this
- will be bind to boject `i`.
+will be bind to boject `i`.
 
 ```
 function greet() {
@@ -467,7 +468,7 @@ greet.call(i); // output: Douglas Crockford Is An Awesome Javascript Developer
     - var str = JSON.stringify(obj);       // converts from object to JSON 
     
 ---
- 
+
 ## Closures and Event Listeners
 #### The Problem:
 
@@ -501,8 +502,8 @@ elem.addEventListener('click', (function(numCopy) {  // by wrapping it in parent
         alert(numCopy);                              // Now, if doesn't matter that `nowNum` changes later down the line.
       };                                             // We stored the value of `nowNum` in `numCopy` inside our outer function.
 })(nowNum));                                         // Lastly, the outer function returns the inner function to the event listener.
-                                                     // Because of the way JavaScript scope works, that inner function has access to
-                                                     // `numCopy` which will never change.
+                                                    // Because of the way JavaScript scope works, that inner function has access to
+                                                    // `numCopy` which will never change.
                                                     
 ```
 
@@ -534,8 +535,8 @@ console.log(rose.z);                           // 3, since there is no 'z' in ro
 
 ```js
 function theBridgeOfHoistingDoom() { |
-                                     | Alrighty, here’s the hoisted version. The function looks for any variables to
-                                     | create space for, finds ring and power, and sets them both to undefined. The
+                                    | Alrighty, here’s the hoisted version. The function looks for any variables to
+                                    | create space for, finds ring and power, and sets them both to undefined. The
   function balrog() {                | order of declared functions is balrog, elf, balrog, wizard, and elf. When older
     return "fire";                   | versions of the loaded functions are replaced, we are left with balrog, wizard,
   }                                  | and then elf. The only executable code that actually ever runs are the lines
@@ -576,14 +577,14 @@ var carlike = function(obj, loc){           | amy.move();
 
 ```js
 function funcName(a, b) {
- // this is declared function
- // this function is loaded in memory when the program/code is run and held there until we use it
+// this is declared function
+// this function is loaded in memory when the program/code is run and held there until we use it
 }
 
 var funcName = function(a, b) {
-   // ^ the function keyword will now assign the following function to the variable
-   // loads only when the program reaches the line of code
-   // Note the semicolon, it assigns the entire function to a variable
+  // ^ the function keyword will now assign the following function to the variable
+  // loads only when the program reaches the line of code
+  // Note the semicolon, it assigns the entire function to a variable
 };
 ```
 

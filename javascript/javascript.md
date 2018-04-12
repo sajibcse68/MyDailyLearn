@@ -48,6 +48,44 @@ list.appendChild(fragment);
 - Use variables to cache objects (it is more clear than `with` and also no lengthy nested object names!)
 - JavaScript's `eval` keyword may not be evil, but it can affect legibility, an ability to debug and performance.
 
+## Track of What's new in JavaScript (ECMAScript)
+
+### ECHMAScript 2016 (ES7)
+
+1. **Array.prototype.includes:** `includes` is a simple method on the Array and helps to easily find if the items is in the Array (including `NaN` unlike indexOf).
+
+```js
+const arr = [1, 2, 3, 4, NaN];
+
+// Instead of
+if (arr.indexOf(3) >= 0) {
+  console.log(true);
+}
+
+// Use
+if (arr.includes(3)) {
+  console.log(true)
+}
+
+// Note: the indexOf does not work for searching NaN
+arr.includes(NaN)  // true
+arr.indexOf(NaN)  // -1 (doesn't work for NaN)
+```
+
+**N.B.** The JS spec people wanted to name it `contains`, but this was apparently already used by **Mootools** so they used `includes`.
+
+2. **Exponentiation infix operator:** Math operation like addition and subtraction have infix operators like `+` and `-`, respectively. Similar `**` operator was introduced instead of `Math.pow`.
+
+```js
+// Instead of
+Math.pow(7, 2); // 49
+
+// Use
+7**2; // 49
+```
+
+[See Reference](https://medium.freecodecamp.org/here-are-examples-of-everything-new-in-ecmascript-2016-2017-and-2018-d52fa3b5a70e)
+
 #### `Closures` and `References`
 - One of the JS most powerful features is closures.
 - With `closures`, scopes `always` keep access to the outer scope, in which they were defined.

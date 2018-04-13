@@ -1,4 +1,13 @@
-#### Explain Event Delegation
+
+- [Explain Event Delegation](#explain-event-delegation)
+- [Describe Event Bubbling](#describe-event-bubbling)
+- [What are benefits of a `named function` over a `anonymous function`?](#what-are-benefits-of-a-named-function-over-a-anonymous-function)
+- [Difference between `target` and `currentTarget`?](#difference-between-target-and-currenttarget)
+- [Explain why the following doesn't work as an IIFE](#explain-why-the-following-doesnt-work-as-an-iife-immediately-invoked-function-expression)
+- [Difference between a variable that is: null, undefined, or undeclared](#difference-between-a-variable-that-is-null-undefined-or-undeclared)
+---
+
+### Explain Event Delegation
  Js event listeners fire not only a single DOM but on all it's descendants
  
 #### Describe Event Bubbling ('bubble up')
@@ -12,7 +21,7 @@
 
 So, in production code we should use `Name Function` always.
 
-#### Difference between `target` and `currentTarget`    
+#### Difference between `target` and `currentTarget`?
  `target` is actual thing what is clicked and `currentTarget` is where the event listener is attached to.
  
 #### Explain why the following doesn't work as an IIFE (Immediately Invoked Function Expression)
@@ -485,6 +494,15 @@ function c(foo) {
   return a(foo*2);
 }
 ```
+#### How to determine what should be the `this` keyword value?
+
+The sequence we should be think is: (priority: top to bottom)
+
+1. Is the function called by **new**?
+2. Is the function called by **call()** or **apply()**?
+  - Note: `bind()` effectively uses `apply()`
+3. Is the function called on a context object? e.g. ob.funcA
+4. DEFAULT: global object(except strict mode)
 
 #### Q. How does `this` keyword change in different context?
 
@@ -810,6 +828,18 @@ All of the above are falsy values so they convert to false.
 5. Tagged values: V8 represents objects and numbers with 32 bits. It uses a bit to know if it is an object (flag = 1) or and integer (flag = 0) called SMI (`SMall Integer`) because of its 31 bits. Then, if a numeric value is bigger that 31 bits, V8 will box the number, turning it into a double and creating a new object to put the number inside. Try to use 31 bit signed numbers whenever possible to avoid teh expensive boxing operation into a JS object. 
 
 [Ref:](https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e)
+
+
+#### What is a constructor call?
+- Function call with a `new` keyword
+#### What is **[[Portotype]]** and where does it come from?
+- It means a object linkage. It comes when we create a new object.
+#### How does **[[Prototype]]** affect the behavior of an object?
+- When we call an method/property/object of an object, if it is not found then it is delegated the chaning by `[[Prototype]]`.
+#### What is the 3 different ways to find where an object (say, `ob`) **[[Prototype]]** is linked to?
+- `ob.__proto__`
+- Object.getPrototypeOf(ob)
+- ob.constructor.prototype
 
 ======================================================
 

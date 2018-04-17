@@ -1,7 +1,3 @@
-
-
-
-
 ### Search 
 ```  
 # Search inside text file
@@ -209,6 +205,10 @@ $ echo 'Hello' | sudo -S apt-get update
 
 # Show all user
 $ compgen -u
+
+# sync two directories
+$ rsync -a --progress <source> <destination>
+# mv can't do merging/replacing, error: 'Directory not empty'
 
 # Send file to remote machine through terminal
 $ scp remote_user@remote_host:/path/to/remote/file /path/to/local/file

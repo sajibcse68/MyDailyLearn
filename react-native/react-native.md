@@ -9,4 +9,11 @@ $ react-native run-android
 
 # run the project in ios, e.g. XCode
 $ react-native run-ios
+
+# install and run react-devtools
+$ npm i -g react-devtools
+$ react-devtools
+
+# see the console.log() in terminal
+$ react-native log-android
 ```

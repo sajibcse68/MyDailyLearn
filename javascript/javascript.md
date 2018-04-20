@@ -84,6 +84,181 @@ Math.pow(7, 2); // 49
 7**2; // 49
 ```
 
+### ECHMAScript 2017 (ES8)
+
+1. **Object.values()** is a new function that's similar to `Object.keys()` but returns all the values of the Object's own properties any value(s) in the prototypical chain.
+
+```js
+const ob = { a: "foo", b: 12, c: true }
+
+// ES2015
+const values = Object.keys(ob).map(key => ob[key]);
+console.log(values); // ["foo", 12, true]
+
+// ES2017
+const values = Object.values(ob);
+console.log(values); // ["foo", 12, true]
+```
+
+2. **Object.entries()** is related to `Object.keys`, but instead of returning just keys, it returns both keys and values.
+
+```js
+// Example 1
+const ob = { a: "foo", b: 12, c: true };
+
+// ES 5.1
+Object.keys(ob).forEach(function(key) {
+  console.log('key: ' + key + ' value: ' + ob[key]);
+});
+
+// ES8
+for (let [key, value] of Object.entries(ob)) {
+  console.log(`key: ${key} value: ${value}`);
+}
+```
+
+3. **String Padding:** Two instance methods were added to String -- `String.prototype.padStart` and `String.prototype.padEnd` -- that allow appending/prepending either and empty string or some other string to the start or the end of the original string.
+
+```js
+'someString'.padStart(numberOfCharacters [, stringForPadding]);
+
+'5'.padStart(10)              // '         5'
+'5'.padStart(10, '=*')        // '=*=*=*=*=5'
+
+'5'.padEnd(10, '=*')        // '5         '
+'5'.padEnd(10, '=*')        // '5=*=*=*=*='
+```
+
+4. **Object.getOwnPropertyDescriptors** method returns all the details (including getter `get` and setter `set` methods) for all the properties of a given object.
+The main motivation to add this is to allow shallow copying / cloning and object into another object that also copies getter and setter functions as opposed to `Object.assign`.
+
+>Object.assign shallow copies all the details except getter and setter functions of the original source object.
+
+```js
+// Before
+var Car = {
+  name: 'BMW',
+  price: 1000000,
+  set discount(x) {
+    this.d = x;
+  },
+  get discount() {
+    return this.d;
+  }
+};
+// print details of Car object's 'discount' property
+console.log(Object.getOwnPropertyDescriptor(Car, 'discount));
+// {
+//   get: [Function: get],
+//   set: [Function: set],
+//   enumerable: true,
+//   configurable: true
+// }
+
+// Copy Car's properties to ElectricCar using Object.assign
+const ElectricCar = Object.assign({}, Car);
+
+// Print details of ElectricCar object's 'discount' property
+console.log(Object.getOwnPropertyDescriptor(Car, 'discount));
+// {
+//   value: undefined,
+//   writable: true,
+//   enumerable: true,
+//   configurable: true
+// }
+
+Note: the getter and setter method are missing in ElectricCar object for 'discount' property!
+
+
+// Copy Car's properties to ElectricCar2 using Object.defineProperties
+// and extract Car's properties using Object.getOwnPropertyDescriptors
+const ElectricCar2 = Object.defineProperties({}, Object.getOwnPropertyDescriptors(Car));
+
+// Print details of ElectricCar2 object's 'discount' property
+console.log(Object.getOwnPropertyDescriptor(ElectricCar2, 'discount));
+// {
+//   get: [Function: get],
+//   set: [Function: set],
+//   enumerable: true,
+//   configurable: true
+// }
+
+Note: getters and setters are present in the ElectricCar2 object for 'discount' property!
+```
+
+5. Add **Trailing Commas** in the function parameters. It is added to help with tools like `git blame` to ensure only new developers get blamed.
+
+```js
+// ECHMAScript 2017
+function Person(
+  name,
+  age,  // allow trailing commas
+) {
+  this.name = name;
+  this.age = age;
+}
+```
+
+6. **Async/Await:** `Async` allows us to not deal with callback hell and make the entire code look simple. The `async` keyword tells JavaScript compiler pauses whenever it reaches the `await` keyword within that function. It assumes that the expression after `await` returns a promise and waits until the promise is `resolved` or `rejected` before moving further.
+
+```js
+// ES2015 promise
+function getAmount(userId) {
+  getUser(userId)
+    .then(getBankBalance)
+    .then(amount => {
+      console.log(amount);
+    });
+}
+
+// ES2017
+async function getAmount2(userId) {
+  var user = await getUser(userId);
+  var amount = await getBankBalance(user);
+  console.log(amount);
+}
+
+getAmount('1');  // $1234
+getAmount2('1'); // $1234
+
+function getUser(userId) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('john');
+    }, 1000)
+  })
+}
+
+function getBankBalance(user) {
+  return new Promise (resolve, reject) {
+    setTimeout(() => {
+      if (user === 'john') {
+        resolve('$1000');
+      } else {
+        reject('unknown user');
+      }
+    }, 1000)
+  }
+}
+```
+
+```js
+// Example 2: Parallel call
+// Async functions themselves return a Promise!
+async function doubleAndAdd(a, b) {
+  [a, b] = await Promise.all([doubleAfter1Sec(a), doubleAfter1Sec(b)]);
+  return a + b;
+}
+
+doubleAndAdd(1, 2).then(console.log);
+
+function doubleAfter1Sec(params) {
+  return new Promise(resolve => {
+    setTimeout(resolve(param * 2), 1000);
+  });
+}
+```
+
 [See Reference](https://medium.freecodecamp.org/here-are-examples-of-everything-new-in-ecmascript-2016-2017-and-2018-d52fa3b5a70e)
 
 #### `Closures` and `References`

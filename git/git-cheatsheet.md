@@ -561,6 +561,16 @@ Signed-off-by: <name> <email>
 
 ```
 
+#### How to tell git to ignore local changes (already tracked by git)?
+We can use `assume-unchanged` or `no-assume-unchanged` to tell to ignore/no-ingore the file.
+
+```
+// ignore local changes
+$ git update-index --asume-unchanged <file>
+
+// undo the git ignoring the file
+$ git update-index --no-assume-unchanged <file>
+```
 
 #### Fancy commands:
 

@@ -769,9 +769,9 @@ spinalCase('This Is Spinal Tap');
 #### What are the **four** things the `new` keyword actually does when we put in front of a function call (**aka: constructor call**)?
 
 1. Create a brand new empty object
-2. Newly created object is linked to another object
+2. Newly created object is linked to another object (construction function)
 3. Newly created object gets the passed in the `this` keyword to the function call
-4. return the newly created object
+4. Return the newly created object
 
 #### What is the different between undeclared and undefined?
 `Undeclared`: It's never been declared in any scoped we have accessed to

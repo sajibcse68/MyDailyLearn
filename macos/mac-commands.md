@@ -41,6 +41,13 @@ $ du -k <path> | awk '$1 > 500000' | sort -nr
 # see all folders
 $ ls | sort -k 2 -t "_"
 ```
+
+#### Delete all files start with `.` e.g. .DS_Store, ._abc
+
+```
+$ find . -name ".*" -exec rm -f '{}' +
+```
+
 <------- Set the time of showing notification banner ----->
 defaults write com.apple.notificationcenterui bannerTime <SECONDS>
 

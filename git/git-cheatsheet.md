@@ -632,6 +632,8 @@ $ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -vv -u '$USE
 # Show diff
 $ git diff b1..b2                              # Compare two brances, show you what is in b2 that is not in b1
 $ git diff <commit1> <commit2>                 # Show changes between two commits id
+$ git diff b1..b2 --name-only                  # Show changed file names only
+$ git diff b1..b1 -- <file-path>               # Show the changes of a file
 $ <url><tag-1>...<tag-2>                       # Compare changes of two tags in github 
 # [Example](https://github.com/jenkinsci/jenkins/compare/jenkins-1.651...jenkins-1.651.2)
 

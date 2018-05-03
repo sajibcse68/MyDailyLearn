@@ -832,14 +832,39 @@ All of the above are falsy values so they convert to false.
 
 #### What is a constructor call?
 - Function call with a `new` keyword
-#### What is **[[Portotype]]** and where does it come from?
+#### What is **[[Prototype]]** and where does it come from?
 - It means a object linkage. It comes when we create a new object.
 #### How does **[[Prototype]]** affect the behavior of an object?
-- When we call an method/property/object of an object, if it is not found then it is delegated the chaning by `[[Prototype]]`.
+- When we call an method/property/object of an object, if it is not found then it is delegated the chaining by `[[Prototype]]`.
 #### What is the 3 different ways to find where an object (say, `ob`) **[[Prototype]]** is linked to?
 - `ob.__proto__`
 - Object.getPrototypeOf(ob)
 - ob.constructor.prototype
+
+#### `__proto__`, `[[prototype]]` and `prototype`
+
+- `[[Prototype]]` is an object specifies its prototype via the internal property.
+
+```js
+const foo = {
+  getName: function() {
+    return this.name;
+  }
+};
+
+const a1 = {
+  [[prototype]] = foo;
+  name: 'sajib';
+}
+
+a1.getName(); // sajib
+```
+- `__proto__` brings direct access to [[Prototype]]
+- `prototype` is the **object** that is used to build __proto__ when we create an object with `new`.
+- `prototype` is not available on the instances themselves (or, other objects), but only on the constructor functions.
+- `prototype` is only available on functions since they are copied from `Function` and `Object`, but in anything else it is not. However, `__proto__` is available everywhere.
+
+
 
 ======================================================
 

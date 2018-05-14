@@ -43,3 +43,15 @@ Components have a lifecycle: they are `instantiated`, `rendered`, `undated`, `un
 - `render() -> React Element:` This method is called, assuming `shouldComponentUpdate` returned `true`. The render method must return a React Element to render (or null, to render nothing).
 
 - `componentDidMount(object prevProps, object prevState):` This method is invoked after re-rendering occurs. At this point, the native UI for this component has been updated to reflect the React Element returned from the `render()` method.
+
+### Debugging
+
+- [React-native-debugger](https://github.com/jhen0409/react-native-debugger/blob/master/docs/getting-started.md)
+- Cmd + M | Enable remote JS Debugging (url: localhost:8081/debugger-ui)
+- $ react-native log-android (see console output in terminal)
+
+
+```
+# Run react-native-debugger
+$ open "rndebugger://set-debugger-loc?host=localhost&port=8081"
+```

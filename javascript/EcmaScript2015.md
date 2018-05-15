@@ -612,6 +612,13 @@ class Widget {                          | class SponsorWidget extends Widget {
 
 ```
 ## Module
+
+#### Why we need to use `Module`?
+
+- Maintainability
+- Reusability
+- Namespacing
+
 #### importing Named Exports
 - Functions from **named** exports must be assigned to variables with **the same name** enclosed in cruly braces
 ```js

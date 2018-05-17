@@ -264,9 +264,15 @@ $ git push -u origin <branch-name>                # -u = --set-upstream tells Gi
 $ git push origin HEAD:<branch-name>              # Push the current branch without thinking about its local name.
 $ git push --all --tags origin                    # Push all branches and tags
 $ git push origin HEAD --quiet                    # --quiet = -q, run git command silently (without showing any output)
+$ git push -f origin <branch-name>                # Overwrite remote branch (by force)
 $ git subtree push --prefix dist origin gh-pages  # Push only a specific folder to remote branch
 $ git subtree push --prefix src origin gh-pages   # Deploy source directory
-$ git push -f origin <branch-name>                # Overwrite remote branch (by force)
+
+# force push for subtree
+$ git subtree split --prefix dist/ master
+# will return a token
+$ git push origin <token> force                   # force push for subtree
+
 
 # Merge
 $ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch

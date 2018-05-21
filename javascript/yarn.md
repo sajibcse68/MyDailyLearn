@@ -18,6 +18,17 @@ $ yarn add <package>
 $ yarn remove <package>
 ```
 
+#### Change of modify a config value. The change is written in `~/.yarnrc` file.
+```
+$ yarn config list     # see the global config list
+
+$ yarn config set save-prefix '~'  # save-prefix was '^' before now '~'
+$ yarn config list                 # notice 'save-prefix': '~'
+$ cat ~/.yarnrc                    # save-prefix "~" is written
+
+$ yarn config delete save-prefix   # undo the config to default, delete the entry from ~/.yarnrc file
+```
+
 #### Dependency types
 
 - `dependencies:` These are normal dependencies, or rather ones that we need running our code (e.g. React or ImmutableJS).
@@ -56,3 +67,25 @@ $ yarn remove <package>
 | Latest (Any) Minor      | X       | "1.X"     | 1.0.0 -> 1.999.999     |
 | Latest (Any) Patch      | *       | "1.1.*"   | 1.1.0 -> 1.1.999       |
 | Latest (Any) Patch      | X       | "1.1.X"   | 1.1.0 -> 1.1.999       |
+
+#### Fancy Commands
+
+```
+# see the installed version, desired version based on sembar & latest available version
+$ yarn outdated
+
+# upgrade a package version
+$ yarn upgrade
+
+# see the complete dependency graph
+$ yarn list
+
+# see details of disk size with/without dependencies, # of shared dependencies etc.
+$ yarn why <package>
+
+# see the details info of a package
+$ yarn info <package>
+
+# see the global config list
+$ yarn config list
+```

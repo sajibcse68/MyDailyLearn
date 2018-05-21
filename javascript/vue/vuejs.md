@@ -818,6 +818,24 @@ const router = new VueRouter({
   - get values from state
   - transforming state values if required (similar as computed property of a Component)
 
+#### Service worker caching config (Progressive Web App)
+```
+  // service worker caching
+  new SWPrecacheWebpackPlugin({
+    cacheId: 'my-vue-app',
+    filename: 'service-worker.js',
+    staticFileGlobs: ['dist/**/*.{js,html,css}'],
+    runtimeCaching: [
+      {
+        urlPattern: /^http:\/\/res\.cloudinary\.com\//,
+        handler: 'cacheFirst'
+      }
+    ],
+    minify: true,
+    stripPrefix: 'dist/'
+  });
+```
+
 #### **Shortcuts:**
 
 ```

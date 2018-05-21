@@ -807,8 +807,16 @@ const router = new VueRouter({
 
 #### Vuex
 
-- Mutation's methods always run synchronous tasks
-- Need to use Action's methods to run asynchronous tasks
+- MUTATIONS:
+  - methods that changes the state with a minimum amount of logic.
+  - must be synchronous
+- ACTIONS:
+  - set value in state (committing one or more mutations)
+  - set and get value using a rest api
+  - can be asynchronous
+- GETTERS:
+  - get values from state
+  - transforming state values if required (similar as computed property of a Component)
 
 #### **Shortcuts:**
 

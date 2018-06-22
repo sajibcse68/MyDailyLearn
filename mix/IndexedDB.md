@@ -54,3 +54,10 @@ open.onsuccess = function openSuccess() {
   }
 }
 ```
+
+#### Miscellaneous:
+
+```
+// delete DB from chrome console
+$ indexedDB.deleteDatabase('db-name');
+```

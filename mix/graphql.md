@@ -27,3 +27,12 @@
 - GraphQl was developed to cope with the **need for more flexibility and efficiency** in client-server communication.
 - Overfetching: graphQL don't downloading unnecessary data
 - Underfetching: graphQL gives all necessary data in one API endpoint unlike REST is underfetching (an endpoing doesn't return enough of the right information; need to send multiple requests: n+1-requests problem).
+
+#### Core Concepts
+##### The Schema Definition Language (SDL)
+- 3 kinds of **mutations**
+  - `creating` new data
+  - `updating` existing data
+  - `deleting` existing data
+
+

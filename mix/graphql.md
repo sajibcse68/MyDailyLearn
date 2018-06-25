@@ -7,6 +7,7 @@
 - Uses **strong type** system to define capabilities of an API
 - Schema serves as contract between client and server.
 - Frontend and Backend teams can work completely independent from each other.
+- GraphQL is great for frontend developers as data fetching complexity can be pushed to the server-side (mean: client does not care where data is coming from)
 
 #### A more efficient Alternative to REST
 
@@ -34,5 +35,15 @@
   - `creating` new data
   - `updating` existing data
   - `deleting` existing data
+
+#### Architecture Use Cases
+- GraphQL server with a connected database
+- GraphQL server to integrate existing system
+- A hybrid approach with a connected database and integration of existing system
+
+##### Resolver functions
+- GraphQL queries/mutations consist of set of fields
+- GraphQL server has one resolver function per field
+- The purpose of each resolver is to retrieve the data for its corresponding field
 
 

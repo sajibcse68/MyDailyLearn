@@ -7,6 +7,7 @@
 - Uses **strong type** system to define capabilities of an API
 - Schema serves as contract between client and server.
 - Frontend and Backend teams can work completely independent from each other.
+- GraphQL is great for frontend developers as data fetching complexity can be pushed to the server-side (mean: client does not care where data is coming from)
 
 #### A more efficient Alternative to REST
 
@@ -27,3 +28,22 @@
 - GraphQl was developed to cope with the **need for more flexibility and efficiency** in client-server communication.
 - Overfetching: graphQL don't downloading unnecessary data
 - Underfetching: graphQL gives all necessary data in one API endpoint unlike REST is underfetching (an endpoing doesn't return enough of the right information; need to send multiple requests: n+1-requests problem).
+
+#### Core Concepts
+##### The Schema Definition Language (SDL)
+- 3 kinds of **mutations**
+  - `creating` new data
+  - `updating` existing data
+  - `deleting` existing data
+
+#### Architecture Use Cases
+- GraphQL server with a connected database
+- GraphQL server to integrate existing system
+- A hybrid approach with a connected database and integration of existing system
+
+##### Resolver functions
+- GraphQL queries/mutations consist of set of fields
+- GraphQL server has one resolver function per field
+- The purpose of each resolver is to retrieve the data for its corresponding field
+
+

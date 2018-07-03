@@ -14,8 +14,12 @@ $ npm install -g yarn
 #### Add or Remove package
 
 ```
-$ yarn add <package>
-$ yarn remove <package>
+$ yarn global <add/bin/list/remove/upgrade> [--prefix]
+
+$ yarn global add <package>  # add a package globally
+$ yarn add <package>         # add a package in current project
+$ yarn remove <package>      # remove a package from current project
+
 ```
 
 #### Change of modify a config value. The change is written in `~/.yarnrc` file.
@@ -71,11 +75,17 @@ $ yarn config delete save-prefix   # undo the config to default, delete the entr
 #### Fancy Commands
 
 ```
+# see the yarn bin directory location
+$ yarn bin
+
 # see the installed version, desired version based on sembar & latest available version
 $ yarn outdated
 
 # upgrade a package version
 $ yarn upgrade
+
+# display the outdated packages before performing any upgrade, allowing user to select which packages to upgrade
+$ yarn upgrade-interactive
 
 # see the complete dependency graph
 $ yarn list

@@ -17,7 +17,8 @@ $ npm install -g yarn
 $ yarn global <add/bin/list/remove/upgrade> [--prefix]
 
 $ yarn global add <package>  # add a package globally
-$ yarn add <package>         # add a package in current project
+$ yarn add <package>         # add a package into current project's dependencies
+$ yarn add <package> --dev   # add a package into current project's dev-dependencies
 $ yarn remove <package>      # remove a package from current project
 
 ```

@@ -135,6 +135,7 @@ var message string       // manually declared variable
       fmt.Println(element)
   }
 
+<script src="https://gist.github.com/sajibcse68/fe2e82df9094f733bdeff894e4041d12.js"></script>
 
 ### Commands:
 

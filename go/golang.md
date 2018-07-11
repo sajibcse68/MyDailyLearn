@@ -1,24 +1,23 @@
 #### What is Go
-Go is an `open-source` programming language created by Google in 2007. It makes it easy to build **simple, efficient** programs.
+Go is an `open-source` programming language created by Google in 2007 & announced publicly in 2009. It makes it easy to build **simple, efficient** programs.
 
 Benefits:
 - Compiled: Compiler generates single executable file
 - Statically typed: types are enforced before program is run
-- Fast: concurrency built in
+- Fast & efficient: concurrency built in
 - Easy to deploy
 - Fun to write
 
 Go is a great language choice for writing lower-level programs that provide services to other systems.
 This type of programming is called **System Programming**.
 
-Application Programs             vs           System Programs
---------------------                         -----------------
-Allows users to perform tasks.               Provides services to other systems.
-
-- E-commerce                                 - APIs
--To-do lists                                 - Game engines
-- Text editors                               - Network applications
-- Music players                              - CLI apps (command line)
+| Application Programs              |     System Programs                       |
+|-----------------------------------|-------------------------------------------|
+| Allows users to perform tasks.    | Provides services to other systems.       |
+| E-commerce                        | APIs                                      |
+| To-do lists                       | Game engines                              |
+| Text editors                      | Network applications                      |
+| Music players                     | CLI apps (command line)                   |
 
 - Building and running with `go build`
     - A **compiler** reads source code and produces one executable file. We call this build process.

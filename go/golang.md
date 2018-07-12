@@ -136,6 +136,15 @@ var message string       // manually declared variable
   }
 
 
+### Concurrency in Go
+- `Goroutine`
+  - A lightweight synchronized thread managed by the runtime
+- `Channel`
+  - A typed conduit for messages between gorutines
+- `Select`
+  - Lets a goroutine wait for multiple communication operations
+
+
 ### Commands:
 
 ```
@@ -146,9 +155,20 @@ $
 
 - `GoPath:` Go Path is an environment variable of the operating system, that when set, will tells google go where to find our go environment.
 
+### Web Frameworks
+For building REST and other web APIs:
 
+- Beego: http://beego.me
+- Martini: http://martini.codegangsta.io/
+- Gorilla: http://www.gorillatoolkit.org/
+- Gocraft: https://github.com/gocraft/web
+- Revel: https://revel.github.io/
 
-
+### Database Drivers
+Standard database functions: database/sql  
+Driver interfaces: database/sql/driver  
+Available for relational and NoSQL databases
+Many community-driven https://github.com/golang/go/wiki/SQLDrivers
 
 
 

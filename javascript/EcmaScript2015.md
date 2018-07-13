@@ -612,6 +612,34 @@ class Widget {                          | class SponsorWidget extends Widget {
 
 ```
 
+#### Caution: `super` keyword can't bind `.call()`, `.bind()` or `.apply()`
+
+```js
+class A {
+  one() { console.log("one:A"); }
+  two() { console.log("two:A"); }
+}
+
+var B = {
+  one() { console.log("one:B"); }
+  one() { console.log("two:B"); }
+}
+
+class C extends A {
+  foo() {
+    this.one();
+    super.two();
+  }
+}
+
+var x = new C();
+
+x.foo();       // one:A two:A  <--- ok
+
+x.foo.call(B); // one:B two:A  <--- Oops!
+
+```
+
 #### We have to call `super` first
 
 ```js
@@ -718,7 +746,7 @@ let post = {
 for (let p of post) {
   console.log(p);     // TypeError: post[Symbol.iterator] is not a function
 }
- ```
+```
 
 - Iterables Return an **Iterator** object. This object knows how to **access items from a collection** 1 at a time,
 while **keeping track of its current position** within the sequence.
@@ -765,9 +793,9 @@ post[Symbol.iterator] = function(){
   return { next };
 }
 
- for (let p of post) {
-   console.log(p);      //  New Features in JS \n 19
- }
+  for (let p of post) {
+    console.log(p);      //  New Features in JS \n 19
+  }
 ```
 
 ## Generators
@@ -817,9 +845,9 @@ post[Symbol.iterator] = function *(){
   }                               |   yield this.title;
 }                                 |   yield this.replies;
                                     }
- for (let p of post) {
-   console.log(p);      //  New Features in JS \n 19
- }
+  for (let p of post) {
+    console.log(p);      //  New Features in JS \n 19
+  }
 ```
 
 

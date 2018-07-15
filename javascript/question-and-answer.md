@@ -8,10 +8,10 @@
 ---
 
 ### Explain Event Delegation
- Js event listeners fire not only a single DOM but on all it's descendants
- 
+Js event listeners fire not only a single DOM but on all it's descendants
+
 #### Describe Event Bubbling ('bubble up')
- Also known as "propogation". Events on an element will "bubble up" and also fire on all parents.
+Also known as "propogation". Events on an element will "bubble up" and also fire on all parents.
 
 #### What are benefits of a `named function` over a `anonymous function`?
 
@@ -22,8 +22,8 @@
 So, in production code we should use `Name Function` always.
 
 #### Difference between `target` and `currentTarget`?
- `target` is actual thing what is clicked and `currentTarget` is where the event listener is attached to.
- 
+`target` is actual thing what is clicked and `currentTarget` is where the event listener is attached to.
+
 #### Explain why the following doesn't work as an IIFE (Immediately Invoked Function Expression)
     function foo() {
         // code
@@ -34,7 +34,7 @@ Just put parentheses:      // JS interpretate everything what is in parentheses 
     ( function foo() {     // `expression` not a `statement`.
       //code               // So, it will run immediately
     } )();                 
- 
+
 #### Explain the difference on the usage of following -
   
   ```
@@ -67,11 +67,10 @@ Just put parentheses:      // JS interpretate everything what is in parentheses 
     
     console.log(typeof foo); // "undefined" as a string
     console.log(foo === undefined) // true boolean
-     
+
     const baz = 'undefined';
      console.log(baz === undefined); // false. Hooray, I guess
-    
-  
+
 - null:
   - null has a value. It's value is null
   - null is a "nothing" value
@@ -282,9 +281,9 @@ elem.addEventListener('scroll', debounce(foo, 2000))
 ```js
 function getMysterNumber () {  |  // loads like this
   function chooseMystery() {   |  function getMysterNumber() {
-    return 12;                 |   function chooseMystery() {
-  }                            |     return 12;
-                               |   }
+    return 12;                 |    function chooseMystery() {
+  }                            |      return 12;
+                               |    }
   return getMysterNumber();    |   function chooseMystery() {  // it replaced the above chooseMystery function
                                |     return 7;
   function chooseMystery() {   |   }
@@ -387,8 +386,7 @@ function theBridgeOfHoistingDoom() { |
 
 ###### Analyzing load order II
 
-1. For all variable declarations, put the corresponding declarations at the top of the function. Assign them a value
-   of undefined and maintain their order.
+1. For all variable declarations, put the corresponding declarations at the top of the function. Assign them a value of undefined and maintain their order.
 
 2. Now that variable declarations have been placed at the top, remove the original declarations, but leave any associated assignments.
 
@@ -573,7 +571,7 @@ Consider the following code.
 const o = {
     doSomethingLater() {
         setTimeout(function(){
-           this.speakLeet();    // error
+          this.speakLeet();    // error
         }, 1000)
     }
     speakLeet() {
@@ -798,11 +796,11 @@ Declaring with `let` only one thing is happened:
 
 ```js
 function foo(bar) {                       | var a;      // undefined
- if (bar) {                               | if (bar) {
-   console.log(baz);  // ReferenceError   |  let baz;   // uninitialized
-   let baz = bar;                         |  console.log(baz);
-   var a;                                 |  let baz = bar;
- }                                        |
+  if (bar) {                              | if (bar) {
+    console.log(baz);  // ReferenceError  |  let baz;   // uninitialized
+    let baz = bar;                        |  console.log(baz);
+    var a;                                |  let baz = bar;
+  }                                       |
 }                                         |
 ```
 **So, `let` is hoisted but not initialized actually.**

@@ -640,7 +640,7 @@ x.foo.call(B); // one:B two:A  <--- Oops!
 
 ```
 
-#### We have to call `super` first
+#### We have to call `super` first in `constructor()`
 
 ```js
 class Foo {
@@ -654,7 +654,7 @@ class Foo {
 }
 
 class Bar extends Foo {
-  contructor(who) {
+  constructor(who) {
     this.x = 1; // <-- error!
     super(who); // <-- this must come first
   }

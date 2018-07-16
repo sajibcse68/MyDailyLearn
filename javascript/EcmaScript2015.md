@@ -108,8 +108,8 @@ getRequest('/topics/17/tags', function(data) {
 - `Rest parameters` and the `spread operator` look the `same`, but the former is used in function `definations` and the
   later in function `invocations`
 - `Arrow functions` bind to the scope of where they are `defined`, not where they are used.
-   It is also known as `lexical binding`
-   
+  It is also known as `lexical binding`
+
 ## Object and Strings
 #### Removing repetition From Creating Objects
 - We can remove `duplicate` variable names from object properties when those properties have the `same name` as the
@@ -142,6 +142,17 @@ let { fullName } = buildUser("Sam", "Williams" );
 let {last, fullName } = buildUser("Sam", "Williams")
 
 ```
+
+- We can also assign various values from an object using Destructuring:
+
+```js
+const foo = { x: 1, y: 2};
+
+// store the values of foo.x into a and foo.y into b
+const { x: a, y: b} = foo // a = 1, b = 2
+// read like 'get the field of x and copy the value into a' and so on
+```
+
 
 #### Adding a Function to an Object
 - In previous versions of JS, adding a function to an object required specifying the `property name` and then the `full function definition` (including the `function` keyword)

@@ -153,6 +153,16 @@ const { x: a, y: b} = foo // a = 1, b = 2
 // read like 'get the field of x and copy the value into a' and so on
 ```
 
+- Use `Destructuring` assignment to assign variables from nested objects:
+
+```js
+const a = {
+  start : { x: 5, y: 6}
+}
+
+const { start: { x: startX, y: startY }} = a;
+console.log(startX, startY); // 5, 6 
+```
 
 #### Adding a Function to an Object
 - In previous versions of JS, adding a function to an object required specifying the `property name` and then the `full function definition` (including the `function` keyword)

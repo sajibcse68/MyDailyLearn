@@ -164,6 +164,22 @@ const { start: { x: startX, y: startY }} = a;
 console.log(startX, startY); // 5, 6 
 ```
 
+- Use `Destructuring` assignment to assign variables from `Arrays`:
+
+One key difference between the spread operator and array destructuring is that the spread operator unpacks all contents of an array into a comma-separated list. Consequently, we can't pick or choose whick elements we want to assign to variables.
+
+```js
+const [a, b] = [1, 2, 3, 4, 5, 6];
+console.log(a, b); // 1, 2
+```
+
+we can also access the value at any index in an array with destructuring by using commas to reach the desired index:
+
+```js
+const [a,b,,, c] = [1, 2, 3, 4, 5, 6];
+console.log(a, b); // 1, 2, 5
+```
+
 #### Adding a Function to an Object
 - In previous versions of JS, adding a function to an object required specifying the `property name` and then the `full function definition` (including the `function` keyword)
 - In `ES6` a new shorthand notation is available a method to an object where the keyword `function` is no longer necessary. 

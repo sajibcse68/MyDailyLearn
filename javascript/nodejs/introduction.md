@@ -29,7 +29,6 @@ of threads. Its model of concurrency is completely based around events.
 - Reads/Writes on the Databases
 - Calls to extensions
 
-
 #### Simple code
 
 ```
@@ -55,3 +54,23 @@ browser-sync start --server --directory --files "*"
     # e.g. nvm install v7.1.0 --reinstall-packages-from=4.3.2
 
     $ nvm use 4.3.2            # Use a specific version
+
+#### The 15 JavaScript concepts that every (NodeJS) programmer must know:
+
+1. JavaScript (ES6) Class
+2. JavaScript Prototype
+3. Imediately Invoked Function Expression (IIFE)
+4. JavaScript Closures
+5. The Module Pattern
+6. Hoisting
+7. Understanding Scope
+8. Currying
+9. Memorization
+10. Callback Function
+11. The apply(), call(), bind() methods
+12. Polymorphism in JavaScript
+13. Asynchronous JS
+14. Understand Promises
+15. Async & Await
+
+[See Reference](https://medium.com/@madasamy/15-javascript-concepts-that-every-nodejs-programmer-must-to-know-6894f5157cb7)

@@ -108,8 +108,8 @@ getRequest('/topics/17/tags', function(data) {
 - `Rest parameters` and the `spread operator` look the `same`, but the former is used in function `definations` and the
   later in function `invocations`
 - `Arrow functions` bind to the scope of where they are `defined`, not where they are used.
-   It is also known as `lexical binding`
-   
+  It is also known as `lexical binding`
+
 ## Object and Strings
 #### Removing repetition From Creating Objects
 - We can remove `duplicate` variable names from object properties when those properties have the `same name` as the
@@ -141,6 +141,43 @@ let { fullName } = buildUser("Sam", "Williams" );
 // grabbing `last` and `fullName` from the return object 
 let {last, fullName } = buildUser("Sam", "Williams")
 
+```
+
+- We can also assign various values from an object using Destructuring:
+
+```js
+const foo = { x: 1, y: 2};
+
+// store the values of foo.x into a and foo.y into b
+const { x: a, y: b} = foo // a = 1, b = 2
+// read like 'get the field of x and copy the value into a' and so on
+```
+
+- Use `Destructuring` assignment to assign variables from nested objects:
+
+```js
+const a = {
+  start : { x: 5, y: 6}
+}
+
+const { start: { x: startX, y: startY }} = a;
+console.log(startX, startY); // 5, 6 
+```
+
+- Use `Destructuring` assignment to assign variables from `Arrays`:
+
+One key difference between the spread operator and array destructuring is that the spread operator unpacks all contents of an array into a comma-separated list. Consequently, we can't pick or choose whick elements we want to assign to variables.
+
+```js
+const [a, b] = [1, 2, 3, 4, 5, 6];
+console.log(a, b); // 1, 2
+```
+
+we can also access the value at any index in an array with destructuring by using commas to reach the desired index:
+
+```js
+const [a,b,,, c] = [1, 2, 3, 4, 5, 6];
+console.log(a, b); // 1, 2, 5
 ```
 
 #### Adding a Function to an Object
@@ -640,7 +677,7 @@ x.foo.call(B); // one:B two:A  <--- Oops!
 
 ```
 
-#### We have to call `super` first
+#### We have to call `super` first in `constructor()`
 
 ```js
 class Foo {
@@ -654,7 +691,7 @@ class Foo {
 }
 
 class Bar extends Foo {
-  contructor(who) {
+  constructor(who) {
     this.x = 1; // <-- error!
     super(who); // <-- this must come first
   }

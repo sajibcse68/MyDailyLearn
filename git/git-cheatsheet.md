@@ -662,7 +662,10 @@ $ git push -f origin HEAD^:master              # "undo" the push from remote and
 $ git blame <file>                             # List the change dates and authors for a file
 $ git show <commit>:<file>                     # Show the file changes for a commit id and/or file
 
-$ git branch --set-upstream master_upstream origin/master_upstream
+$ git branch <branch> --set-upstream-to <remote/branch> # git v1.8.0 or later
+$ git branch <branch> --u <remote/branch>               # git v1.8.0 or later
+
+$ git branch --set-upstream master_upstream origin/master_upstream # git v1.7.12 or earlier
 # The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
 ```
 

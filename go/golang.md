@@ -29,8 +29,7 @@ This type of programming is called **System Programming**.
     - The **os.Args** array contains all arguments passed to the running program, including user-supplied arguments
     from the **command line**.
 - The **goimports** Command: `$ goimports -w main.go`
-    - The **goimports** command ships with Go. It **deletes missing packages** and automatically updates import
-     statements in the source code.
+    - The **goimports** command ships with Go. It **deletes missing packages** and automatically updates import statements in the source code.
 
 #### Variable and Types
 - The **:=** operator tells Go to **atomatically find out the data type** on the right being assigned to the **newly declared**
@@ -127,7 +126,7 @@ var message string       // manually declared variable
 - A **slice literal** is a quick way to create slices with initial elements via type inference. We can pass elements
   between curly braces {}.
   - e.g. langs := []string{"Go", "Ruby", "JavaScript"};
-         fmt.Println(langs)
+    fmt.Println(langs)
 - By using **range** on a slice, we can be sure the indices used are **always valid** for that slice.
   - e.g. for i := range langsArr {
     fmt.Println(langsArr[i])
@@ -137,11 +136,39 @@ var message string       // manually declared variable
   }
 
 
+### Concurrency in Go
+- `Goroutine`
+  - A lightweight synchronized thread managed by the runtime
+- `Channel`
+  - A typed conduit for messages between gorutines
+- `Select`
+  - Lets a goroutine wait for multiple communication operations
 
 
+### Commands:
 
+```
+$ go version     # see the version
+$ go env         # see all the Environment variables
+$ 
+```
 
+- `GoPath:` Go Path is an environment variable of the operating system, that when set, will tells google go where to find our go environment.
 
+### Web Frameworks
+For building REST and other web APIs:
+
+- Beego: http://beego.me
+- Martini: http://martini.codegangsta.io/
+- Gorilla: http://www.gorillatoolkit.org/
+- Gocraft: https://github.com/gocraft/web
+- Revel: https://revel.github.io/
+
+### Database Drivers
+Standard database functions: database/sql  
+Driver interfaces: database/sql/driver  
+Available for relational and NoSQL databases
+Many community-driven https://github.com/golang/go/wiki/SQLDrivers
 
 
 

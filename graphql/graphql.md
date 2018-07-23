@@ -54,7 +54,7 @@ These arguments have the following meaning and conventional names:
 
 1. `obj:` The object that contains the result returned from the resolver on the parent field, or, in the case of a top-lavel `Query`, the `rootValue` passed from the `server configuration`. This argument enables the nested nature of GraphQL queries.
 
-2. `args:` An object with the arguments passed into the field in the query. For example, if the field was called with author(name: "Ada"), the `args` object would be: `{ "name": "Ada"}`.
+2. `args:` An object with the arguments passed into the field in the query. For example, if the field was called with author(name: "Ada"), the `args` object would be: `{ "name": "Ada"}`.3
 
 3. `context:` This is an object shared by all resolvers in a particular query, and is used to contain per-request state, including authentication information, dataloader instances, and anything else that should be taken into account when resolving the query.
 

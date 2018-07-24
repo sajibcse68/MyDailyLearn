@@ -1,11 +1,11 @@
 ### What is Docker?
-- Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run: code, runtime, system tools, system libraries – anything you can install on a server. This guarantees that it will always run the same, regardless of the environment it is running in.
-  
-  [see more](https://www.docker.com/what-docker)
+Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run: code, runtime, system tools, system libraries – anything you can install on a server. This guarantees that it will always run the same, regardless of the environment it is running in.
+
+[see more](https://www.docker.com/what-docker)
 
 ### Why Docker?
-- Docker provides an integrated technology suite that enables development and
-  IT operations teams to build, ship, and run distributed applications anywhere.
+
+- Docker provides an integrated technology suite that enables development and IT operations teams to build, ship, and run distributed applications anywhere.
 - Light weight containers
 - Available on most linux distors
 
@@ -71,19 +71,25 @@ $ export DOCKER_HOST=tcp://$HOST:2376 DOCKER_TLS_VERIFY=1
 
 # push an image
 $ docker push <username>/<image_name>:<tag>
+
+#
+'-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock'
 ```
 
-<--------------------    ---------------------->
-'-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock'
 
 ### Different operation in docker
+
+```
 $ echo $id
 $ id=$(docker ps -l | sed -n '2p' | awk {'print substr($1,3)'})
 $ docker stop $id
 $ echo $id
 $ id=$(hostname)
+```
 
 ### Accepted docker.conf of docker 1.6 version
+
+```
 description "Docker daemon"
 
 start on (local-filesystems and net-device-up IFACE!=lo)
@@ -127,6 +133,7 @@ script
 end script
 
 <........end...............>
+```
 
 ```
 < ...................... docker 1.6 .... docker.conf........... >

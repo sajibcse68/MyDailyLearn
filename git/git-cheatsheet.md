@@ -264,9 +264,15 @@ $ git push -u origin <branch-name>                # -u = --set-upstream tells Gi
 $ git push origin HEAD:<branch-name>              # Push the current branch without thinking about its local name.
 $ git push --all --tags origin                    # Push all branches and tags
 $ git push origin HEAD --quiet                    # --quiet = -q, run git command silently (without showing any output)
+$ git push -f origin <branch-name>                # Overwrite remote branch (by force)
 $ git subtree push --prefix dist origin gh-pages  # Push only a specific folder to remote branch
 $ git subtree push --prefix src origin gh-pages   # Deploy source directory
-$ git push -f origin <branch-name>                # Overwrite remote branch (by force)
+
+# force push for subtree
+$ git subtree split --prefix dist/ master
+# will return a token
+$ git push origin <token> force                   # force push for subtree
+
 
 # Merge
 $ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch
@@ -656,7 +662,10 @@ $ git push -f origin HEAD^:master              # "undo" the push from remote and
 $ git blame <file>                             # List the change dates and authors for a file
 $ git show <commit>:<file>                     # Show the file changes for a commit id and/or file
 
-$ git branch --set-upstream master_upstream origin/master_upstream
+$ git branch <branch> --set-upstream-to <remote/branch> # git v1.8.0 or later
+$ git branch <branch> --u <remote/branch>               # git v1.8.0 or later
+
+$ git branch --set-upstream master_upstream origin/master_upstream # git v1.7.12 or earlier
 # The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
 ```
 

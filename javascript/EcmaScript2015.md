@@ -108,8 +108,8 @@ getRequest('/topics/17/tags', function(data) {
 - `Rest parameters` and the `spread operator` look the `same`, but the former is used in function `definations` and the
   later in function `invocations`
 - `Arrow functions` bind to the scope of where they are `defined`, not where they are used.
-   It is also known as `lexical binding`
-   
+  It is also known as `lexical binding`
+
 ## Object and Strings
 #### Removing repetition From Creating Objects
 - We can remove `duplicate` variable names from object properties when those properties have the `same name` as the
@@ -141,6 +141,43 @@ let { fullName } = buildUser("Sam", "Williams" );
 // grabbing `last` and `fullName` from the return object 
 let {last, fullName } = buildUser("Sam", "Williams")
 
+```
+
+- We can also assign various values from an object using Destructuring:
+
+```js
+const foo = { x: 1, y: 2};
+
+// store the values of foo.x into a and foo.y into b
+const { x: a, y: b} = foo // a = 1, b = 2
+// read like 'get the field of x and copy the value into a' and so on
+```
+
+- Use `Destructuring` assignment to assign variables from nested objects:
+
+```js
+const a = {
+  start : { x: 5, y: 6}
+}
+
+const { start: { x: startX, y: startY }} = a;
+console.log(startX, startY); // 5, 6 
+```
+
+- Use `Destructuring` assignment to assign variables from `Arrays`:
+
+One key difference between the spread operator and array destructuring is that the spread operator unpacks all contents of an array into a comma-separated list. Consequently, we can't pick or choose whick elements we want to assign to variables.
+
+```js
+const [a, b] = [1, 2, 3, 4, 5, 6];
+console.log(a, b); // 1, 2
+```
+
+we can also access the value at any index in an array with destructuring by using commas to reach the desired index:
+
+```js
+const [a,b,,, c] = [1, 2, 3, 4, 5, 6];
+console.log(a, b); // 1, 2, 5
 ```
 
 #### Adding a Function to an Object
@@ -543,10 +580,10 @@ between curly braces.
 ```js
 class SponsorWidget {
   constructor(name, description, url) {
-   //...
-   this.description = description;    // don't forget to use 'this' to access instance poperties and methods
-   this.url = url;
-  }
+  //...
+  this.description = description;    // don't forget to use 'this' to access instance poperties and methods
+  this.url = url;
+}
 
   render() {
     let link = this._buildLink(this.url);
@@ -611,7 +648,64 @@ class Widget {                          | class SponsorWidget extends Widget {
                                         | }
 
 ```
+
+#### Caution: `super` keyword can't bind `.call()`, `.bind()` or `.apply()`
+
+```js
+class A {
+  one() { console.log("one:A"); }
+  two() { console.log("two:A"); }
+}
+
+var B = {
+  one() { console.log("one:B"); }
+  one() { console.log("two:B"); }
+}
+
+class C extends A {
+  foo() {
+    this.one();
+    super.two();
+  }
+}
+
+var x = new C();
+
+x.foo();       // one:A two:A  <--- ok
+
+x.foo.call(B); // one:B two:A  <--- Oops!
+
+```
+
+#### We have to call `super` first in `constructor()`
+
+```js
+class Foo {
+  constructor(who) {
+    this.me = who;
+  }
+
+  identify() {
+    return "I am " + this.me;
+  }
+}
+
+class Bar extends Foo {
+  constructor(who) {
+    this.x = 1; // <-- error!
+    super(who); // <-- this must come first
+  }
+}
+```
+
 ## Module
+
+#### Why we need to use `Module`?
+
+- Maintainability
+- Reusability
+- Namespacing
+
 #### importing Named Exports
 - Functions from **named** exports must be assigned to variables with **the same name** enclosed in cruly braces
 ```js
@@ -689,7 +783,7 @@ let post = {
 for (let p of post) {
   console.log(p);     // TypeError: post[Symbol.iterator] is not a function
 }
- ```
+```
 
 - Iterables Return an **Iterator** object. This object knows how to **access items from a collection** 1 at a time,
 while **keeping track of its current position** within the sequence.
@@ -736,9 +830,9 @@ post[Symbol.iterator] = function(){
   return { next };
 }
 
- for (let p of post) {
-   console.log(p);      //  New Features in JS \n 19
- }
+  for (let p of post) {
+    console.log(p);      //  New Features in JS \n 19
+  }
 ```
 
 ## Generators
@@ -788,9 +882,9 @@ post[Symbol.iterator] = function *(){
   }                               |   yield this.title;
 }                                 |   yield this.replies;
                                     }
- for (let p of post) {
-   console.log(p);      //  New Features in JS \n 19
- }
+  for (let p of post) {
+    console.log(p);      //  New Features in JS \n 19
+  }
 ```
 
 

@@ -21,13 +21,21 @@ $ react-native log-android
 ### Debugging
 
 - [React-native-debugger](https://github.com/jhen0409/react-native-debugger/blob/master/docs/getting-started.md)
+
+```
 - Cmd + M | Enable remote JS Debugging (url: localhost:8081/debugger-ui)
 - $ react-native log-android (see console output in terminal)
 
-
-```
 # Run react-native-debugger
 $ open "rndebugger://set-debugger-loc?host=localhost&port=8081"
+```
+
+- [React-native-debugger-open](https://www.npmjs.com/package/react-native-debugger-open)
+- Cmd + M | Enable remote JS Debugging
+
+```
+$ yarn global add react-native-debugger-open
+$ rndebugger-open --open --port 8081
 ```
 
 ## Lifecycle API

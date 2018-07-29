@@ -385,7 +385,7 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-- Wnen we declare a variable with let then, the it creates a new binding for each of it child scope (every single time the function is called)
+- When we declare a variable with let then, the it creates a new binding for each of it child scope (every single time the function is called)
 
 ```js
 // 5. Avoiding the Reference Problem

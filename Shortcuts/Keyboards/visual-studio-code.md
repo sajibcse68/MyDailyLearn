@@ -34,6 +34,7 @@
 
 
 #### Miscellaneous
+<kbd>Code --diff file1 file2 : See diff of two files (from terminal)  
 <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd> P</kbd> : See all Shortcuts  
 <kbd>Opt</kbd> + <kbd>Shift</kbd> + <kbd> A </kbd> : Comment out multi lines
 <kbd>Cmd</kbd> + <kbd>K</kbd> <kbd>Cmd</kbd> + <kbd>C</kbd> : Add line comment  

@@ -1,15 +1,18 @@
 ##### Assign a class running/stop by if-else checking a variable 
 
-**status** value
 ```
 {{ 'running' if status == 'READY' else 'stop' }}
-{% if status=='READY' %} ready {% elif status=='bound' %} bound {% else %} creating {% endif %}
+
+{% if status=='READY' %} ready
+{% else %} creating
+{% endif %}
 ```
 
 ##### Rendering a template
 `this.$el.append(global.nunjucksEnv.render(<template-name>));`
 
 ##### Iterate loop in html template, items is an array
+
 ```
 {% for item in items %}
   <li>{{ item.title }}</li>
@@ -54,7 +57,7 @@ Inside loops we can access some variables:
 
 // Iterate loop through object/map
 {% for key, value in ob %}
-   The value of {{ key }} is {{ value }}
+  The value of {{ key }} is {{ value }}
 {% endfor %}
 
 // String concatenation and set a variable

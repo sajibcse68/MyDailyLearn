@@ -581,6 +581,7 @@ $ git update-index --no-assume-unchanged <file>
 #### Fancy commands:
 
 ```sh
+$ git ls-remote <repo-url>                     # List references of a remote repo without cloning
 $ git mv <src-file> <new-file-name>            # Rename a file and keeps all the previous history
 $ git status                                   # Difference between working directory and the index
 $ git fetch                                    # Get the latest changes from origin (no merge)

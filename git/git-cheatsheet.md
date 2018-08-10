@@ -581,6 +581,7 @@ $ git update-index --no-assume-unchanged <file>
 #### Fancy commands:
 
 ```sh
+$ git ls-remote <repo-url>                     # List references of a remote repo without cloning
 $ git mv <src-file> <new-file-name>            # Rename a file and keeps all the previous history
 $ git status                                   # Difference between working directory and the index
 $ git fetch                                    # Get the latest changes from origin (no merge)
@@ -681,6 +682,7 @@ $ git checkout <commit-hash>                  # checkout to a commit to give a t
 $ git tag                                     # show list of tag
 $ git tag -a v1.0.0 -m "message"              # give a tag to this commit
 $ git push --tags                             # push the tags to origin
+$ git fetch --tags                            # update local with remote tags
 $ git tag -d <tag-name>                       # delete a tag locally
 $ git push origin :refs/tags/<tag-name>       # delete a tag from remote
 

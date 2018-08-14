@@ -357,6 +357,7 @@ $ git log --pretty=format:"%h - %an, %ar : %s"     # commit hash-tag -> name -> 
 # see commit-hash, branch-name, commit-message, time, committer-name and changes of the commits
 $ git log -p --all -G pattern --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --branches
 
+$ git log --format=fuller                          # see both 'AuthorDate' & 'CommitDate'
 $ git log --pretty=oneline
 $ git log -1 --pretty=format:'%an'                 # Print last commit's Author Name  
 $ git log --oneline -p

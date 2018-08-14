@@ -506,6 +506,55 @@ if ('key' in 'myObject') {
   return true;
 }
 ```
+
+#### Implement a function which allows us iterate over first `n` numbers.
+
+In JavaScript, `iterator` is a design pattern that allows us to traverse over a list or collection.
+
+**String, Array, Map, Set, TypedArrays** follow the iterator protocol.
+
+- `Iterable` Protocol: the object must define a special method **@@iterator** (as `Symbol.iterator` key) which takes zero arguments and returns an object which itself should follow the `iterator` protocol.
+
+- `Iterator` Protocol: the object must define a method named `next`, which itself returns an object with two properties.  
+  1. `value`: the current item in iteration
+  2. `done`: a boolean, that represents whether the iteration is finished or not. `done=true` means iteration is finished
+
+```js
+function makeIterable(end = 50) {
+  let i = 0;
+  const iteratorFunc = () => {
+    const iterator = {
+      next() {
+        i += 1;
+        if (i <= end) {
+          return {
+            value: i,
+            done: false
+          }
+        }
+        return { done: true }
+      },
+    };
+    return iterator;
+  };
+  return {
+    [Symbol.iterator]: iteratorFunc,
+  };
+}
+
+const numbersTill100 = makeIterable(100);
+for (const i for numbersTill100) {
+  // 1, 2, 3, ........, 99, 100
+}
+```
+The `@@iterator` method is only called once at the beginning of the `for..of` loop. So, we can write:
+
+```js
+for (const i for makeIterable(100)) {
+  // 1, 2, 3, ........, 99, 100
+}
+```
+
 #### Why `Eval` should be avoided!
 ```
 function regimentmotto(number, motto) {

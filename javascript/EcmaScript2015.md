@@ -97,7 +97,7 @@ function setPageThread(name, {popular, expires, activeClass} = {}) {
 - `Variadic functions` can accept any number of arguments.
 - The new `rest parameter` syntax allows us to represent an `indefinite number of arguments` as an `Array`. This way,
   changes to function signature are `less likely to break code`.
-- The 3 dots (...) make tags a rest parameter. It sould be last parameter of function.
+- The 3 dots (...) make tags a rest parameter. It should be last parameter of function.
 - The `spread operator` allows us to `split an Array` argument into `individual elements`
 ```js
 getRequest('/topics/17/tags', function(data) {

@@ -422,7 +422,7 @@ function theBridgeOfHoistingDoom() { | Alrighty, here’s the hoisted version. T
     return "precious";               |     return "broken";
   };                                 |   };
 }                                    |   ring();
-                                     |    return sword;
+                                     |     return sword;
                                      |  }
 
 ```
@@ -636,7 +636,7 @@ function f2 () {
   return this;
 }
 
-console.log(f2() === window);     // False 
+console.log(f2() === window);     // False
 console.log(f2() === undefined);  // True
 ```
 

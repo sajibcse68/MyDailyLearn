@@ -9,6 +9,20 @@
 - Frontend and Backend teams can work completely independent from each other.
 - GraphQL is great for frontend developers as data fetching complexity can be pushed to the server-side (mean: client does not care where data is coming from)
 
+
+**[From Jeff Handley Twitter](https://twitter.com/JeffHandley/status/1035075407043690496)**
+
+1. The server implements resolvers that fulfill specific graph queries -- the client cannot ask for anything the server does not explicitly handle.
+
+2. The server returns only what the client asked for. No more, no less. No wasted bits over the wire.
+
+3. APIs sitting behind GraphQL do not need to worry about serving every possible shape clients will want. Web wants more, mobile wants less? APIs don't care. Clients ask for what they need. APIs return domain models. GraphQL transforms into ViewModels.
+
+4. The GraphQL layer can then specifically optimize queries over the RESTful APIs, minimizing API calls necessary to resolve a query. Yes, it is work to implement each resolved, but the explicitness is so liberating.
+
+5. And your clients have no idea what is happening behind the GraphQL. One call from the client could fan out to a dozen APIs (*in a good way).
+
+
 #### A more efficient Alternative to REST
 
 - Increased mobile usage creates need for efficient data loading.

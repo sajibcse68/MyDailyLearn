@@ -4,11 +4,15 @@ A progressive, incrementally-adoptable JavaScript framework for building UI on t
 #### Installing
 
 ```sh
-$ npm install -g vue-cli         # install cli
-$ npm install -g vue             # install vue globally
+$ yarn global add @vue/cli         # install cli
+Or,
+$ npm install -g @vue/cli          # install cli
+$ vue -V                           # see cli version, e.g. 3.x
+
+$ npm install -g vue               # install vue globally
 
 # Create and run an app
-$ vue init webpack compare-vue   # create a app called 'compare-vue'
+$ vue create <project-name>      # create a project
 $ npm run dev                    # run the app, url: localhost:8080
 
 $ npm run build                  # compressed/minified files

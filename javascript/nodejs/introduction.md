@@ -59,7 +59,7 @@ browser-sync start --server --directory --files "*"
 
 1. JavaScript (ES6) Class
 2. JavaScript Prototype
-3. Imediately Invoked Function Expression (IIFE)
+3. Immediately Invoked Function Expression (IIFE)
 4. JavaScript Closures
 5. The Module Pattern
 6. Hoisting

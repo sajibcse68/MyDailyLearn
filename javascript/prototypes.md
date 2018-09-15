@@ -52,3 +52,8 @@ a1.getName(); // sajib
   ob.staticMethod(); 
   // TypeError: A.staticMethod is not a function
 ```
+
+
+#### Two mechanism always exists in JavaScript codes -- Lexical Scopes & Prototype Chain:
+
+<img src="../images/lexical-scope-and-prototypes-chain.png" alt="lexical-scope-and-prototypes-chain" width="400px"/>

@@ -7,7 +7,21 @@
 - [Difference between a variable that is: null, undefined, or undeclared](#difference-between-a-variable-that-is-null-undefined-or-undeclared)
 ---
 
-### Explain Event Delegation
+#### What is asynchronous programming, and why is it important in JavaScript?
+
+- `Synchronous` programming means that, barring conditionals and function calls, code is executed sequentially from top-to-bottom, blocking on long-running tasks such as network requests and disk I/O.
+- `Asynchronous` programming means that the engine runs in an event loop. When a blocking or, long time operation is needed, the request is started, and the code keeps running without blocking for the result (running in other place). When the response is ready, and interrupt is fired, which causes an event handler to be run, where the control flow continues. In this way, a single program thread can handle many concurrent operations.
+- User interfaces are asynchronous by nature!
+- Good to hear:
+  - An understanding of what is blocking means, and the performance implications.
+  - An understanding of event handling, and why its important for UI code
+- Red flags:
+  - Unfamiliar with the terms asynchronous or synchronous
+  - Unable to articulate performance implications or the relationship between asynchronous code and UI code.
+
+[Ref](https://trello.com/c/5TzQwzMJ/80-what-is-asynchronous-programming-and-why-is-it-important-in-javascript)
+
+#### Explain Event Delegation
 Js event listeners fire not only a single DOM but on all it's descendants
 
 #### Describe Event Bubbling ('bubble up')
@@ -29,12 +43,15 @@ So, in production code we should use `Name Function` always.
         // code
     }();
     
-Just put parentheses:      // JS interpretate everything what is in parentheses as
-    
-    ( function foo() {     // `expression` not a `statement`.
-      //code               // So, it will run immediately
-    } )();                 
+Just put parentheses:
 
+```js
+    ( function foo() {
+      //code
+    } )();
+// JS interpretate everything what is in parentheses as `expression` not a `statement`.
+// So, it will run immediately
+```
 #### Explain the difference on the usage of following -
   
   ```
@@ -124,7 +141,7 @@ a || b  // 100
 a && b  // "test"
 
 a || c  // 100
-a || c  // null
+a && c  // null
 ``` 
 
 If the variable is not boolean then it will be coercion to one. When we use `||` operator, if the first value casts to true we will get that value returned. Otherwise, we will always get the second one.

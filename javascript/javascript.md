@@ -769,6 +769,39 @@ elem.addEventListener('click', (function(numCopy) {  // by wrapping it in parent
                                                     
 ```
 
+#### Returning from a `finally` block (with try/catch)
+
+If the `finally` block returns a value, this value becomes the `return` value of the entire `try-catch-finally` block production, regardless of any `return` statements in the `try` and `catch` blocks. This includes exceptions thrown inside of the `catch` block:
+
+```
+(function() {
+  try {
+    try {
+      throw new Error
+    } catch( err ) {
+      console.error('inner', err.message);
+      throw err;
+    } finally {
+      console.log('finally');
+      return;
+    }
+  }
+  catch(ex) {
+    console.error('outer: ', ex.message);
+  }
+})();
+
+// Output:
+// 'inner' 'oops'
+// finally
+```
+
+The `outer 'oops'` is not thrown because of the return in the finally block. The same would apply to any value returned from the catch block.
+
+
+
+
+
 
 ## Object Oriented JavaScript (Udacity)
 #### Extend vs Object.create(): Property Lookup of Delegated Objects

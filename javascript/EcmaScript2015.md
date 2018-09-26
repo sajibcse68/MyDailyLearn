@@ -216,14 +216,14 @@ function buildUser(first, last) {
 - Object Destructuring: We can use shorthand to assign **properties** from objects to **local variables** with the **same name**
 
 ```js
-let user = buildUser("Sajib, "Khan");
+let user = buildUser('Sajib', 'Khan');
 
 let first = user.first;
 let last = user.last;
 let fullName = user.fullName;
 
 // simpified
-let {first, last, fullName } = buildUser("Sajib", "Khan");   // assigning from object properties to variables
+let {first, last, fullName } = buildUser('Sajib', 'Khan');   // assigning from object properties to variables
 ```
 
 #### Writing Multi-line Strings
@@ -322,7 +322,7 @@ function activeUsers() {
   console.log( a, b, c);      // Output: Sam Alex Brook
 }
 ```
-#### Using for..or to Loop Over Arrays
+#### Using for..of to Loop Over Arrays
 The **for..of** statements iterates over **property values**, and it's better way to loop over arrays
 and other **iterable objects**.
 
@@ -331,7 +331,8 @@ let names = ["Sam", "Tyler", "Brook"];
 
 for (let index in names) {
   console.log( names[index] );
-  // two steps first: assign index value to index value, second: use index variable to get actual element
+  // two steps first: assign index value to index value,
+  // second: use index variable to get actual element
 };
 
 for(let name of names) {
@@ -725,7 +726,7 @@ export function logMessage(message) {         | logMessage('Hello from log');
 // flash-message.js                           | // app.js
 function alertMessage(message) {              | import * as flash from './flash-message'
   alert(message);                             |
-function logMessage(message) {                | flash.logMessage('Hello from log');         // functions become object properties
+function logMessage(message) {                | flash.logMessage('Hello from log');  // functions become object properties
 }                                             | flash.alertMessage('Hello from alert');
   console.log(message);                       |
 }

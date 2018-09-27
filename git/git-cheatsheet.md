@@ -224,7 +224,7 @@ See list of branches ordered by most recent commit
 
 #### Track a new branch.
 
-    $ git bracnh -u <remote/branch>
+    $ git branch -u <remote/branch>
 
 
 ####  Add, Commit, Amend, Pull, Push, Merge & Delete:
@@ -385,7 +385,7 @@ $ git log --reverse --pretty=%H | grep -A 1 $(git rev-parse HEAD) | tail -n1 | x
 ```
 
 #### Recovery/Reset:
-                                    
+
 ```sh
 $ git log                                 # Show all the change/commit history
 $ git show <commit hash>                  # See what changes in a specific commit
@@ -577,6 +577,12 @@ $ git update-index --asume-unchanged <file>
 
 // undo the git ignoring the file
 $ git update-index --no-assume-unchanged <file>
+```
+
+#### Generate a Git Hash (SHA1) for specific contents:
+
+```sh
+$ echo 'Hello, World!' | git hash-object --stdin
 ```
 
 #### Fancy commands:

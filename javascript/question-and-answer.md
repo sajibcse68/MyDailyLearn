@@ -7,7 +7,21 @@
 - [Difference between a variable that is: null, undefined, or undeclared](#difference-between-a-variable-that-is-null-undefined-or-undeclared)
 ---
 
-### Explain Event Delegation
+#### What is asynchronous programming, and why is it important in JavaScript?
+
+- `Synchronous` programming means that, barring conditionals and function calls, code is executed sequentially from top-to-bottom, blocking on long-running tasks such as network requests and disk I/O.
+- `Asynchronous` programming means that the engine runs in an event loop. When a blocking or, long time operation is needed, the request is started, and the code keeps running without blocking for the result (running in other place). When the response is ready, and interrupt is fired, which causes an event handler to be run, where the control flow continues. In this way, a single program thread can handle many concurrent operations.
+- User interfaces are asynchronous by nature!
+- Good to hear:
+  - An understanding of what is blocking means, and the performance implications.
+  - An understanding of event handling, and why its important for UI code
+- Red flags:
+  - Unfamiliar with the terms asynchronous or synchronous
+  - Unable to articulate performance implications or the relationship between asynchronous code and UI code.
+
+[Ref](https://trello.com/c/5TzQwzMJ/80-what-is-asynchronous-programming-and-why-is-it-important-in-javascript)
+
+#### Explain Event Delegation
 Js event listeners fire not only a single DOM but on all it's descendants
 
 #### Describe Event Bubbling ('bubble up')
@@ -29,12 +43,15 @@ So, in production code we should use `Name Function` always.
         // code
     }();
     
-Just put parentheses:      // JS interpretate everything what is in parentheses as
-    
-    ( function foo() {     // `expression` not a `statement`.
-      //code               // So, it will run immediately
-    } )();                 
+Just put parentheses:
 
+```js
+    ( function foo() {
+      //code
+    } )();
+// JS interpretate everything what is in parentheses as `expression` not a `statement`.
+// So, it will run immediately
+```
 #### Explain the difference on the usage of following -
   
   ```
@@ -124,7 +141,7 @@ a || b  // 100
 a && b  // "test"
 
 a || c  // 100
-a || c  // null
+a && c  // null
 ``` 
 
 If the variable is not boolean then it will be coercion to one. When we use `||` operator, if the first value casts to true we will get that value returned. Otherwise, we will always get the second one.
@@ -826,56 +843,6 @@ All of the above are falsy values so they convert to false.
 5. Tagged values: V8 represents objects and numbers with 32 bits. It uses a bit to know if it is an object (flag = 1) or and integer (flag = 0) called SMI (`SMall Integer`) because of its 31 bits. Then, if a numeric value is bigger that 31 bits, V8 will box the number, turning it into a double and creating a new object to put the number inside. Try to use 31 bit signed numbers whenever possible to avoid teh expensive boxing operation into a JS object. 
 
 [Ref:](https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e)
-
-
-#### What is a constructor call?
-- Function call with a `new` keyword
-#### What is **[[Prototype]]** and where does it come from?
-- It means a object linkage. It comes when we create a new object.
-#### How does **[[Prototype]]** affect the behavior of an object?
-- When we call an method/property/object of an object, if it is not found then it is delegated the chaining by `[[Prototype]]`.
-#### What is the 3 different ways to find where an object (say, `ob`) **[[Prototype]]** is linked to?
-- `ob.__proto__`
-- Object.getPrototypeOf(ob)
-- ob.constructor.prototype
-
-#### `__proto__`, `[[prototype]]` and `prototype`
-
-- `[[Prototype]]` is an object specifies its prototype via the internal property.
-
-```js
-const foo = {
-  getName: function() {
-    return this.name;
-  }
-};
-
-const a1 = {
-  [[prototype]] = foo;
-  name: 'sajib';
-}
-
-a1.getName(); // sajib
-```
-
-- `__proto__` brings direct access to [[Prototype]]
-- `prototype` is the **object** that is used to build __proto__ when we create an object with `new`.
-- `prototype` is not available on the instances themselves (or, other objects), but only on the constructor functions.
-- `prototype` is only available on functions since they are copied from `Function` and `Object`, but in anything else it is not. However, `__proto__` is available everywhere.
-- Any method declared directly to `Function` will be considered as `static method`, which means `it exists as local property of` that Function `only and won't available to its instances`.
-
-```js
-  function A() {
-    function staticMethod() {
-      // this is static method and can't access from the instance of A
-    }
-  }
-
-  const ob = new A();
-  ob.staticMethod(); 
-  // TypeError: A.staticMethod is not a function
-```
-
 
 ======================================================
 

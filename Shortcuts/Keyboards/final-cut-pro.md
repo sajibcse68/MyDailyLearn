@@ -15,6 +15,9 @@
 | b              | make the Blade tool active                    |
 | a              | make the Select (arrow) tool active           |
 | cmd + sft + s  | detach the Audio                              |
+| sft + c        | make the Crop tool active and display onscreen controls for the selected clip or the topmost clip under the playhead             |
+| cmd + sft + s  | detach the Audio                              |
+
 
 ## Application:
 

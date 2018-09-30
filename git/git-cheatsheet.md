@@ -626,8 +626,11 @@ $ git show <commit-hash>:<file-path>           # See a old version of a file
 
 $ git config --global core.editor "subl -n -w" # '-n' will open a new instance of Sublime & '-w' will make the git wait for you to close Sublime before proceeding
 
+$ git cat-file -t <commit>                     # print the type
+$ git cat-file -p <commit>                     # print the contents
+
 $ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>  # find renamed file (previous name of a file)
-$ git archive --format zip --output src.zip <commit>   # save/archive a speciftc commit
+$ git archive --format zip --output src.zip <commit>   # save/archive a specific commit
 
 $ for branch in `git branch | grep -v HEAD`;do echo `git show --format="%ci %cr %H" $branch | head -n 1` $branch;done
   output: <date-time> <commit-sha> <branch-name> (for every branch) 

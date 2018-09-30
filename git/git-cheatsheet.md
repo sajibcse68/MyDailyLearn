@@ -718,6 +718,18 @@ $ git commit -m 'be tracked'    # staged, tracked
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
 
+#### Commit Object
+A `commit` points to:
+  - a tree
+
+and contains metadata:
+  - author and committer
+  - data
+  - message
+  - parent commit (one or more)
+
+the `SHA1` of the commit is the hash off all this information.
+
 #### Different types of HEAD:
 ```
 HEAD             - the current sha-1 of the current commit in the current branch

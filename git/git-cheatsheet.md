@@ -224,7 +224,7 @@ See list of branches ordered by most recent commit
 
 #### Track a new branch.
 
-    $ git bracnh -u <remote/branch>
+    $ git branch -u <remote/branch>
 
 
 ####  Add, Commit, Amend, Pull, Push, Merge & Delete:
@@ -385,7 +385,7 @@ $ git log --reverse --pretty=%H | grep -A 1 $(git rev-parse HEAD) | tail -n1 | x
 ```
 
 #### Recovery/Reset:
-                                    
+
 ```sh
 $ git log                                 # Show all the change/commit history
 $ git show <commit hash>                  # See what changes in a specific commit
@@ -579,6 +579,12 @@ $ git update-index --asume-unchanged <file>
 $ git update-index --no-assume-unchanged <file>
 ```
 
+#### Generate a Git Hash (SHA1) for specific contents:
+
+```sh
+$ echo 'Hello, World!' | git hash-object --stdin
+```
+
 #### Fancy commands:
 
 ```sh
@@ -620,8 +626,11 @@ $ git show <commit-hash>:<file-path>           # See a old version of a file
 
 $ git config --global core.editor "subl -n -w" # '-n' will open a new instance of Sublime & '-w' will make the git wait for you to close Sublime before proceeding
 
+$ git cat-file -t <commit>                     # print the type
+$ git cat-file -p <commit>                     # print the contents
+
 $ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>  # find renamed file (previous name of a file)
-$ git archive --format zip --output src.zip <commit>   # save/archive a speciftc commit
+$ git archive --format zip --output src.zip <commit>   # save/archive a specific commit
 
 $ for branch in `git branch | grep -v HEAD`;do echo `git show --format="%ci %cr %H" $branch | head -n 1` $branch;done
   output: <date-time> <commit-sha> <branch-name> (for every branch) 
@@ -711,6 +720,18 @@ $ git commit -m 'be tracked'    # staged, tracked
 ```
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
+
+#### Commit Object
+A `commit` points to:
+  - a tree
+
+and contains metadata:
+  - author and committer
+  - data
+  - message
+  - parent commit (one or more)
+
+the `SHA1` of the commit is the hash off all this information.
 
 #### Different types of HEAD:
 ```

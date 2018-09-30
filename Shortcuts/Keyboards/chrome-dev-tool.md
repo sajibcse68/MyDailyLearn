@@ -16,7 +16,7 @@
 
 
 #### Convert browser into an Editor
-    document.body.contentEditable=true
+  document.body.contentEditable=true
 
 #### Capture screenshot
 * Elements | select any node | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> | write `Capture node screenshot` | click 

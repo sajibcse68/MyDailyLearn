@@ -378,6 +378,7 @@ $ git log --since=1.hour.ago                       # Since(hours)
 $ git log --since=2.weeks                          # Since two weeks
 $ git log --since=1.month.ago --until=2.weeks.ago  # Since & until (relative)
 $ git log --since=2000-01-01 --until=2012-12-21    # Since & until (absolute)
+$ git log --diff-filter=M --oneline                # See the commits where files are modified
 $ git log --diff-filter=D --summary | grep delete  # See the deleted files
 $ git blame index.html --date short
 $ git rm                                           # Remove the file from the staging area and also from the disk                         
@@ -395,10 +396,11 @@ $ git log --reverse --pretty=%H | grep -A 1 $(git rev-parse HEAD) | tail -n1 | x
 #### Show (more logging)
 
 ```
-$ git show <commit-hash>                # See what changes in a specific commit
+$ git show <commit-hash>                # see what changes in a specific commit
+$ git show <commit> --stat              # see files changed in a commit
 $ git show --decorate <commit-hash>     # see 'Author', 'Date' and 'diff'
-$ git show --pretty=%H 1a3fge7          # short commit hash -> full commit hash
-$ git show <commit-hash>:<file-path>    # See a old version of a file
+$ git show --pretty=%H <commit>         # short commit hash -> full commit hash
+$ git show <commit>:<file-path>         # See a old version of a file
 $ git show <tag-name>                   # show details info of a tag
 ```
 
@@ -662,7 +664,7 @@ $ for branch in `git branch -r | sed 's@origin/@ @'`;do `git branch  $branch ori
 $ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -vv -u '$USERNAME:$PASS' "https://bitbucket.org/branch/create" -s -d 'repository=$TEAMORUSER%2F$REPO&from_branch=master&branch_name=feature'
 
 # Show diff
-$ git diff b1..b2                              # Compare two brances, show you what is in b2 that is not in b1
+$ git diff b1..b2                              # Compare two branches, show you what is in b2 that is not in b1
 $ git diff <commit1> <commit2>                 # Show changes between two commits id
 $ git diff b1..b2 --name-only                  # Show changed file names only
 $ git diff b1..b1 -- <file-path>               # Show the changes of a file

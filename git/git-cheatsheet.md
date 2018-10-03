@@ -392,11 +392,20 @@ $ git log --reverse --pretty=%H | grep -A 1 $(git rev-parse HEAD) | tail -n1 | x
 # e.g. git log -10 --reverse would get last 10 commits then reverse it
 ```
 
+#### Show (more logging)
+
+```
+$ git show <commit-hash>                # See what changes in a specific commit
+$ git show --decorate <commit-hash>     # see 'Author', 'Date' and 'diff'
+$ git show --pretty=%H 1a3fge7          # short commit hash -> full commit hash
+$ git show <commit-hash>:<file-path>    # See a old version of a file
+$ git show <tag-name>                   # show details info of a tag
+```
+
 #### Recovery/Reset:
 
 ```sh
 $ git log                                 # Show all the change/commit history
-$ git show <commit hash>                  # See what changes in a specific commit
 $ git reset --soft <commit hash>          # Back to a specific commit and exits the change
 $ git diff HEAD                           # Show the changes to files not yet staged
 
@@ -605,8 +614,6 @@ $ git branch | awk '/\*/ { print $2; }'        # get the current branch name
 $ git rev-parse --abbrev-ref HEAD              # get the current branch name
 $ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
-$ git show --decorate <commit-hash>            # see 'Author', 'Date' and 'diff'                        
-$ git show --pretty=%H 1a3fge7                 # short commit hash -> full commit hash
 $ git rev-parse 3cdd5d                         # short commit hash -> full commit hash
 $ git shortlog -sen --format="[%s]" --         # see all the users with name, email & total commit numbers
 $ git whatchanged --since="3 day ago"          # see the changed file lists name since 3 days
@@ -630,7 +637,6 @@ $ git fsck --full                              # = File System Check, verify al 
 $ git fsck --lost-found                        # Verifies the connectivity and validity of the objects in the database
 $ git command --help                           # When in doubt, use git help
 $ git diff-tree -r --diff-filter=D b1 b2       # List of files that exists in b1 but not in b2
-$ git show <commit-hash>:<file-path>           # See a old version of a file
 $ git ls-files -s                              # -s = --stage, Show staged contents' mode bits, object name and stage number in the output.
 
 $ git config --global core.editor "subl -n -w" # '-n' will open a new instance of Sublime & '-w' will make the git wait for you to close Sublime before proceeding
@@ -680,7 +686,6 @@ $ git config --global --unset diff.external
 
 $ git push -f origin HEAD^:master              # "undo" the push from remote and keep the local intact
 $ git blame <file>                             # List the change dates and authors for a file
-$ git show <commit>:<file>                     # Show the file changes for a commit id and/or file
 
 $ git branch <branch> --set-upstream-to <remote/branch> # git v1.8.0 or later
 $ git branch <branch> --u <remote/branch>               # git v1.8.0 or later

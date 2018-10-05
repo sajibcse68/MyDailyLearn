@@ -4,11 +4,15 @@ A progressive, incrementally-adoptable JavaScript framework for building UI on t
 #### Installing
 
 ```sh
-$ npm install -g vue-cli         # install cli
-$ npm install -g vue             # install vue globally
+$ yarn global add @vue/cli         # install cli
+Or,
+$ npm install -g @vue/cli          # install cli
+$ vue -V                           # see cli version, e.g. 3.x
+
+$ npm install -g vue               # install vue globally
 
 # Create and run an app
-$ vue init webpack compare-vue   # create a app called 'compare-vue'
+$ vue create <project-name>      # create a project
 $ npm run dev                    # run the app, url: localhost:8080
 
 $ npm run build                  # compressed/minified files
@@ -807,8 +811,34 @@ const router = new VueRouter({
 
 #### Vuex
 
-- Mutation's methods always run synchronous tasks
-- Need to use Action's methods to run asynchronous tasks
+- MUTATIONS:
+  - methods that changes the state with a minimum amount of logic.
+  - must be synchronous
+- ACTIONS:
+  - set value in state (committing one or more mutations)
+  - set and get value using a rest api
+  - can be asynchronous
+- GETTERS:
+  - get values from state
+  - transforming state values if required (similar as computed property of a Component)
+
+#### Service worker caching config (Progressive Web App)
+```
+  // service worker caching
+  new SWPrecacheWebpackPlugin({
+    cacheId: 'my-vue-app',
+    filename: 'service-worker.js',
+    staticFileGlobs: ['dist/**/*.{js,html,css}'],
+    runtimeCaching: [
+      {
+        urlPattern: /^http:\/\/res\.cloudinary\.com\//,
+        handler: 'cacheFirst'
+      }
+    ],
+    minify: true,
+    stripPrefix: 'dist/'
+  });
+```
 
 #### **Shortcuts:**
 

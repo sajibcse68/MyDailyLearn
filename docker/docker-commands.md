@@ -1,16 +1,15 @@
-<--------- What is Docker? ------------------->
-- Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run:
-  code, runtime, system tools, system libraries – anything you can install on a server. This guarantees that
-  it will always run the same, regardless of the environment it is running in.
-  // see more https://www.docker.com/what-docker
+### What is Docker?
+Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run: code, runtime, system tools, system libraries – anything you can install on a server. This guarantees that it will always run the same, regardless of the environment it is running in.
 
-<--------  Why Docker ?? ----------->
-- Docker provides an integrated technology suite that enables development and
-  IT operations teams to build, ship, and run distributed applications anywhere.
+[see more](https://www.docker.com/what-docker)
+
+### Why Docker?
+
+- Docker provides an integrated technology suite that enables development and IT operations teams to build, ship, and run distributed applications anywhere.
 - Light weight containers
 - Available on most linux distors
 
-<-------- Why should we care? -------------->
+### Why should we care?
 - It's first
 - Minimal overhead/resource usage
 - Run thousands of containers
@@ -20,66 +19,77 @@
 - Image: Immutable snapshot of a container
 - Hub/Index: Central hub for sharing images
 
-<---------- docker install ------------>
+### Various Docker Commands:
+
+```sh
+# docker install
 $ wget -qO- https://get.docker.com/ | sh
 $ usermod -aG docker <username>
 
-<-------- run docker as a daemon ------------->
+# run docker as a daemon
 $ docker run -d -p 4000:22 -i -t <image-name> /usr/sbin/sshd -D
 
-< ------------------------- Run and bind port image ----------------------------------------->
-$ docker run --rm -p 8080:8080 -t <image-name>                    // -p host_port:container_port
+# run and bind port image
+$ docker run --rm -p 8080:8080 -t <image-name>
+# -p host_port:container_port
 
-<--------- remove all images by force -------------->
+# remove all images by force
 $ docker rmi -f $(docker images -q)
 
-<--------- remove all containers ---------->
+# remove all containers
 $ docker rm -f $(docker ps -a -q)
 
-< ------------------------ run an image ----------------------------------------->
+# run an image
 $ docker run -p 49160:8080 -d <image-name>
-// -d runs the container in detached mode, leaving the container running in the background
-// -p flag redirects a public port to a private port in the container
+# -d runs the container in detached mode, leaving the container running in the background
+# -p flag redirects a public port to a private port in the container
 
-< ----------------------- get container ID ------------------------------------------>
+# get container ID
 $ docker ps
 $ docker ps -l // exited docker container
 
-<------------------------- print logs of container ----------------------------------------->
+# print logs of container
 $ docker logs <container ID>
 
-< ------------------------- calling app using 'curl' --------------------------------->
+# calling app using 'curl'
 $ curl -i localhost:<binding port>
 
-< ------------------------- specify a repository and tag ----------------------------->
+# specify a repository and tag
 $ docker build -t sajib/<image-name> .
 
-<-------------------------- ecec a container ------------------------------------------>
+# ecec a container
 $ docker exec -it e5f272d20a82 /bin/bash
 
-< ------------------------ ENTRYPOINT for jenkins ------------------------------------------>
+# ENTRYPOINT for jenkins
 $ ENTRYPOINT ["/usr/bin/java", "-Djava.awt.headless=true", "-jar", "/usr/share/jenkins/jenkins.war", "--httpPort=8080", "--ajp13Port=-1"]
 
-<------------------------- install a specifiq version of docker --------------------------------->
+# install a specifiq version of docker
 $ sudo apt-get install lxc-docker-1.6.0
 
-<--------------------- edit docker config file  --------------------->
-export DOCKER_HOST=tcp://$HOST:2376 DOCKER_TLS_VERIFY=1
+# edit docker config file
+$ export DOCKER_HOST=tcp://$HOST:2376 DOCKER_TLS_VERIFY=1
 
-<------------ push an image ---------------------->
+# push an image
 $ docker push <username>/<image_name>:<tag>
 
-<--------------------    ---------------------->
+#
 '-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock'
+```
 
-<-------------------- different operation in docker ---------------------->
+
+### Different operation in docker
+
+```
 $ echo $id
 $ id=$(docker ps -l | sed -n '2p' | awk {'print substr($1,3)'})
 $ docker stop $id
 $ echo $id
 $ id=$(hostname)
+```
 
-<----------------------- accepted docker.conf of docker 1.6 version ---------->
+### Accepted docker.conf of docker 1.6 version
+
+```
 description "Docker daemon"
 
 start on (local-filesystems and net-device-up IFACE!=lo)
@@ -122,8 +132,10 @@ script
         exec "$DOCKER" -d $DOCKER_OPTS
 end script
 
-<...................end.................................>
+<........end...............>
+```
 
+```
 < ...................... docker 1.6 .... docker.conf........... >
 description "Docker daemon"
 
@@ -183,4 +195,5 @@ post-start script
         fi
         DOCKER_OPTS='-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock'
 end script
-<-------------------------- The End ------------------------------------------------->
+<----------- The End -------------->
+```

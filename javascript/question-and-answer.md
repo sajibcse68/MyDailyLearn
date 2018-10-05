@@ -7,11 +7,25 @@
 - [Difference between a variable that is: null, undefined, or undeclared](#difference-between-a-variable-that-is-null-undefined-or-undeclared)
 ---
 
-### Explain Event Delegation
- Js event listeners fire not only a single DOM but on all it's descendants
- 
+#### What is asynchronous programming, and why is it important in JavaScript?
+
+- `Synchronous` programming means that, barring conditionals and function calls, code is executed sequentially from top-to-bottom, blocking on long-running tasks such as network requests and disk I/O.
+- `Asynchronous` programming means that the engine runs in an event loop. When a blocking or, long time operation is needed, the request is started, and the code keeps running without blocking for the result (running in other place). When the response is ready, and interrupt is fired, which causes an event handler to be run, where the control flow continues. In this way, a single program thread can handle many concurrent operations.
+- User interfaces are asynchronous by nature!
+- Good to hear:
+  - An understanding of what is blocking means, and the performance implications.
+  - An understanding of event handling, and why its important for UI code
+- Red flags:
+  - Unfamiliar with the terms asynchronous or synchronous
+  - Unable to articulate performance implications or the relationship between asynchronous code and UI code.
+
+[Ref](https://trello.com/c/5TzQwzMJ/80-what-is-asynchronous-programming-and-why-is-it-important-in-javascript)
+
+#### Explain Event Delegation
+Js event listeners fire not only a single DOM but on all it's descendants
+
 #### Describe Event Bubbling ('bubble up')
- Also known as "propogation". Events on an element will "bubble up" and also fire on all parents.
+Also known as "propogation". Events on an element will "bubble up" and also fire on all parents.
 
 #### What are benefits of a `named function` over a `anonymous function`?
 
@@ -22,19 +36,22 @@
 So, in production code we should use `Name Function` always.
 
 #### Difference between `target` and `currentTarget`?
- `target` is actual thing what is clicked and `currentTarget` is where the event listener is attached to.
- 
+`target` is actual thing what is clicked and `currentTarget` is where the event listener is attached to.
+
 #### Explain why the following doesn't work as an IIFE (Immediately Invoked Function Expression)
     function foo() {
         // code
     }();
     
-Just put parentheses:      // JS interpretate everything what is in parentheses as
-    
-    ( function foo() {     // `expression` not a `statement`.
-      //code               // So, it will run immediately
-    } )();                 
- 
+Just put parentheses:
+
+```js
+    ( function foo() {
+      //code
+    } )();
+// JS interpretate everything what is in parentheses as `expression` not a `statement`.
+// So, it will run immediately
+```
 #### Explain the difference on the usage of following -
   
   ```
@@ -67,11 +84,10 @@ Just put parentheses:      // JS interpretate everything what is in parentheses 
     
     console.log(typeof foo); // "undefined" as a string
     console.log(foo === undefined) // true boolean
-     
+
     const baz = 'undefined';
      console.log(baz === undefined); // false. Hooray, I guess
-    
-  
+
 - null:
   - null has a value. It's value is null
   - null is a "nothing" value
@@ -125,7 +141,7 @@ a || b  // 100
 a && b  // "test"
 
 a || c  // 100
-a || c  // null
+a && c  // null
 ``` 
 
 If the variable is not boolean then it will be coercion to one. When we use `||` operator, if the first value casts to true we will get that value returned. Otherwise, we will always get the second one.
@@ -282,9 +298,9 @@ elem.addEventListener('scroll', debounce(foo, 2000))
 ```js
 function getMysterNumber () {  |  // loads like this
   function chooseMystery() {   |  function getMysterNumber() {
-    return 12;                 |   function chooseMystery() {
-  }                            |     return 12;
-                               |   }
+    return 12;                 |    function chooseMystery() {
+  }                            |      return 12;
+                               |    }
   return getMysterNumber();    |   function chooseMystery() {  // it replaced the above chooseMystery function
                                |     return 7;
   function chooseMystery() {   |   }
@@ -387,8 +403,7 @@ function theBridgeOfHoistingDoom() { |
 
 ###### Analyzing load order II
 
-1. For all variable declarations, put the corresponding declarations at the top of the function. Assign them a value
-   of undefined and maintain their order.
+1. For all variable declarations, put the corresponding declarations at the top of the function. Assign them a value of undefined and maintain their order.
 
 2. Now that variable declarations have been placed at the top, remove the original declarations, but leave any associated assignments.
 
@@ -424,7 +439,7 @@ function theBridgeOfHoistingDoom() { | Alrighty, here’s the hoisted version. T
     return "precious";               |     return "broken";
   };                                 |   };
 }                                    |   ring();
-                                     |    return sword;
+                                     |     return sword;
                                      |  }
 
 ```
@@ -573,7 +588,7 @@ Consider the following code.
 const o = {
     doSomethingLater() {
         setTimeout(function(){
-           this.speakLeet();    // error
+          this.speakLeet();    // error
         }, 1000)
     }
     speakLeet() {
@@ -638,7 +653,7 @@ function f2 () {
   return this;
 }
 
-console.log(f2() === window);     // False 
+console.log(f2() === window);     // False
 console.log(f2() === undefined);  // True
 ```
 
@@ -766,12 +781,12 @@ spinalCase('This Is Spinal Tap');
 - `Var` inside a function
 - `err` in catch close: e.g. catch(err) { ... }
 
-#### What are the **four** things the `new` keyword actually does when we put in front of a function call (**aka: constructor call**)?
+#### What are the **`four`** things the `new` keyword actually does when we put in front of a function call (**aka: constructor call**)?
 
-1. Create a brand new empty object
-2. Newly created object is linked to another object
-3. Newly created object gets the passed in the `this` keyword to the function call
-4. return the newly created object
+1. Create a brand new empty object (aka constructed) out of thin air.
+2. Newly created/constructed object is linked to (`[[Prototype]]`) the function's prototype.
+3. Newly created/constructed object is set as the `this` binding for that function call.
+4. Unless the function returns its own alternate object, the new-invoked call will automatically return the newly constructed object.
 
 #### What is the different between undeclared and undefined?
 `Undeclared`: It's never been declared in any scoped we have accessed to
@@ -798,11 +813,11 @@ Declaring with `let` only one thing is happened:
 
 ```js
 function foo(bar) {                       | var a;      // undefined
- if (bar) {                               | if (bar) {
-   console.log(baz);  // ReferenceError   |  let baz;   // uninitialized
-   let baz = bar;                         |  console.log(baz);
-   var a;                                 |  let baz = bar;
- }                                        |
+  if (bar) {                              | if (bar) {
+    console.log(baz);  // ReferenceError  |  let baz;   // uninitialized
+    let baz = bar;                        |  console.log(baz);
+    var a;                                |  let baz = bar;
+  }                                       |
 }                                         |
 ```
 **So, `let` is hoisted but not initialized actually.**
@@ -828,18 +843,6 @@ All of the above are falsy values so they convert to false.
 5. Tagged values: V8 represents objects and numbers with 32 bits. It uses a bit to know if it is an object (flag = 1) or and integer (flag = 0) called SMI (`SMall Integer`) because of its 31 bits. Then, if a numeric value is bigger that 31 bits, V8 will box the number, turning it into a double and creating a new object to put the number inside. Try to use 31 bit signed numbers whenever possible to avoid teh expensive boxing operation into a JS object. 
 
 [Ref:](https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e)
-
-
-#### What is a constructor call?
-- Function call with a `new` keyword
-#### What is **[[Portotype]]** and where does it come from?
-- It means a object linkage. It comes when we create a new object.
-#### How does **[[Prototype]]** affect the behavior of an object?
-- When we call an method/property/object of an object, if it is not found then it is delegated the chaning by `[[Prototype]]`.
-#### What is the 3 different ways to find where an object (say, `ob`) **[[Prototype]]** is linked to?
-- `ob.__proto__`
-- Object.getPrototypeOf(ob)
-- ob.constructor.prototype
 
 ======================================================
 

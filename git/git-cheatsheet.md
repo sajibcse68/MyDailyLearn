@@ -224,7 +224,7 @@ See list of branches ordered by most recent commit
 
 #### Track a new branch.
 
-    $ git bracnh -u <remote/branch>
+    $ git branch -u <remote/branch>
 
 
 ####  Add, Commit, Amend, Pull, Push, Merge & Delete:
@@ -264,9 +264,15 @@ $ git push -u origin <branch-name>                # -u = --set-upstream tells Gi
 $ git push origin HEAD:<branch-name>              # Push the current branch without thinking about its local name.
 $ git push --all --tags origin                    # Push all branches and tags
 $ git push origin HEAD --quiet                    # --quiet = -q, run git command silently (without showing any output)
+$ git push -f origin <branch-name>                # Overwrite remote branch (by force)
 $ git subtree push --prefix dist origin gh-pages  # Push only a specific folder to remote branch
 $ git subtree push --prefix src origin gh-pages   # Deploy source directory
-$ git push -f origin <branch-name>                # Overwrite remote branch (by force)
+
+# force push for subtree
+$ git subtree split --prefix dist/ master
+# will return a token
+$ git push origin <token> force                   # force push for subtree
+
 
 # Merge
 $ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch
@@ -279,6 +285,9 @@ $ git merge --squash <privateFeatureBranch>
 $ git branch <branch-name>                          # Create a new branch
 
 ```
+- Fast-forward happens (when doing `Pull/Merge`) when there are no commits on the base branch that occurred after the `feature` branch was created.
+
+
 #### Checkout (go forward/backward):
 ```
 $ git checkout -                                 # Switch to the last branch you are
@@ -313,6 +322,7 @@ $ git stash save                                    # Save the changes in tempor
 $ git stash save "provide a stash message"          # We can provide a stash message when stashing.
 $ git stash save -u                                 # stash untracked files
 $ git stash save --include-untracked                # stash untracked files
+$ git stash --all                                   # Keep all files (even ignored ones!)
 
 $ git stash apply stash@{0}                         # Return the codes that I cleaned before
 $ git stash apply stash@{2}                         # get back the #3 stash codes.
@@ -334,6 +344,8 @@ $ git checkout stash -- .                           # replace all the files with
 Or, 
 $ git stash apply                                   # apply the stashed changes, conflicts occure here
 $ git checkout --theirs -- .                        # accept stashed changes 
+
+$ git checkout <stash-name> -- <file-name>          # grab a single file from a stash
 ```
 
 #### Logging:
@@ -348,9 +360,12 @@ $ git log --stat                                   # file name, status, insert/d
 $ git log -p <file/directory>                      # Show change history for file/directory including diffs
 $ git log --pretty=format:"%h - %an, %ar : %s"     # commit hash-tag -> name -> data -> commit-message
 
+$ git log --name-status --follow -- <file-name>    # follow/see the commits in where a file is being changed. It works for moved/renamed files also
+
 # see commit-hash, branch-name, commit-message, time, committer-name and changes of the commits
 $ git log -p --all -G pattern --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --branches
 
+$ git log --format=fuller                          # see both 'AuthorDate' & 'CommitDate'
 $ git log --pretty=oneline
 $ git log -1 --pretty=format:'%an'                 # Print last commit's Author Name  
 $ git log --oneline -p
@@ -378,7 +393,7 @@ $ git log --reverse --pretty=%H | grep -A 1 $(git rev-parse HEAD) | tail -n1 | x
 ```
 
 #### Recovery/Reset:
-                                    
+
 ```sh
 $ git log                                 # Show all the change/commit history
 $ git show <commit hash>                  # See what changes in a specific commit
@@ -561,10 +576,27 @@ Signed-off-by: <name> <email>
 
 ```
 
+#### How to tell git to ignore local changes (already tracked by git)?
+We can use `assume-unchanged` or `no-assume-unchanged` to tell to ignore/no-ingore the file.
+
+```
+// ignore local changes
+$ git update-index --asume-unchanged <file>
+
+// undo the git ignoring the file
+$ git update-index --no-assume-unchanged <file>
+```
+
+#### Generate a Git Hash (SHA1) for specific contents:
+
+```sh
+$ echo 'Hello, World!' | git hash-object --stdin
+```
 
 #### Fancy commands:
 
 ```sh
+$ git ls-remote <repo-url>                     # List references of a remote repo without cloning
 $ git mv <src-file> <new-file-name>            # Rename a file and keeps all the previous history
 $ git status                                   # Difference between working directory and the index
 $ git fetch                                    # Get the latest changes from origin (no merge)
@@ -599,11 +631,15 @@ $ git fsck --lost-found                        # Verifies the connectivity and v
 $ git command --help                           # When in doubt, use git help
 $ git diff-tree -r --diff-filter=D b1 b2       # List of files that exists in b1 but not in b2
 $ git show <commit-hash>:<file-path>           # See a old version of a file
+$ git ls-files -s                              # -s = --stage, Show staged contents' mode bits, object name and stage number in the output.
 
 $ git config --global core.editor "subl -n -w" # '-n' will open a new instance of Sublime & '-w' will make the git wait for you to close Sublime before proceeding
 
+$ git cat-file -t <commit>                     # print the type
+$ git cat-file -p <commit>                     # print the contents
+
 $ git log --format='%h $ad- %s [%an]' --name-only --follow -- <file-path>  # find renamed file (previous name of a file)
-$ git archive --format zip --output src.zip <commit>   # save/archive a speciftc commit
+$ git archive --format zip --output src.zip <commit>   # save/archive a specific commit
 
 $ for branch in `git branch | grep -v HEAD`;do echo `git show --format="%ci %cr %H" $branch | head -n 1` $branch;done
   output: <date-time> <commit-sha> <branch-name> (for every branch) 
@@ -622,6 +658,8 @@ $ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -vv -u '$USE
 # Show diff
 $ git diff b1..b2                              # Compare two brances, show you what is in b2 that is not in b1
 $ git diff <commit1> <commit2>                 # Show changes between two commits id
+$ git diff b1..b2 --name-only                  # Show changed file names only
+$ git diff b1..b1 -- <file-path>               # Show the changes of a file
 $ <url><tag-1>...<tag-2>                       # Compare changes of two tags in github 
 # [Example](https://github.com/jenkinsci/jenkins/compare/jenkins-1.651...jenkins-1.651.2)
 
@@ -644,7 +682,10 @@ $ git push -f origin HEAD^:master              # "undo" the push from remote and
 $ git blame <file>                             # List the change dates and authors for a file
 $ git show <commit>:<file>                     # Show the file changes for a commit id and/or file
 
-$ git branch --set-upstream master_upstream origin/master_upstream
+$ git branch <branch> --set-upstream-to <remote/branch> # git v1.8.0 or later
+$ git branch <branch> --u <remote/branch>               # git v1.8.0 or later
+
+$ git branch --set-upstream master_upstream origin/master_upstream # git v1.7.12 or earlier
 # The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
 ```
 
@@ -660,9 +701,12 @@ $ git checkout <commit-hash>                  # checkout to a commit to give a t
 $ git tag                                     # show list of tag
 $ git tag -a v1.0.0 -m "message"              # give a tag to this commit
 $ git push --tags                             # push the tags to origin
+$ git fetch --tags                            # update local with remote tags
 $ git tag -d <tag-name>                       # delete a tag locally
 $ git push origin :refs/tags/<tag-name>       # delete a tag from remote
 
+$ git show-ref --tags                         # see the tags with the commit it's pointing to
+$ git show <tag-name>                         # show details info of a tag
 $ git tag --contains <commit>                 # list of tags contain a commit
 $ git describe --exact-match <commit>         # check if the commit contains tag(s)
 $ git checkout <tag-name>
@@ -688,6 +732,35 @@ $ git commit -m 'be tracked'    # staged, tracked
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
 
+#### Commit Object
+A `commit` points to:
+  - a tree
+
+and contains metadata:
+  - author and committer
+  - data
+  - message
+  - parent commit (one or more)
+
+the `SHA1` of the commit is the hash off all this information.
+
+#### Three areas where code lives:
+
+1. Working area
+  - the files that are also not in the staging, not handled by git
+  - Also called `untracked files`
+2. Staging area (aka `Index`, `Cache`)
+  - the files are going to be part of the next commit
+  - the staging area is how git knows what will change between the current commit & the next commit.
+4. Repository
+  - the files git knows about
+  - contains all of our commits
+
+#### Three types of git `References`
+- Tags & Annotated tags
+- Branches
+- HEAD
+
 #### Different types of HEAD:
 ```
 HEAD             - the current sha-1 of the current commit in the current branch
@@ -709,7 +782,7 @@ $ cat .git/HEAD                # open the HEAD file
 7. Use the body to explain what and why vs. how
 
 [See details](http://chris.beams.io/posts/git-commit/)
- 
+
 ## Difference between HEAD~ and HEAD^
 - `HEAD^` means the `first parent` of the tip of the current branch, `HEAD^2` means `second parent of current branch`, `HEAD~1 / HEAD~2` means always `first parent`. [see this](http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
 - ~2 means up two levels in the hierarchy, via the first parent if a commit has more than one parent.

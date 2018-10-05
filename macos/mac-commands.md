@@ -41,6 +41,13 @@ $ du -k <path> | awk '$1 > 500000' | sort -nr
 # see all folders
 $ ls | sort -k 2 -t "_"
 ```
+
+#### Delete all files start with `.` e.g. .DS_Store, ._abc
+
+```
+$ find . -name ".*" -exec rm -f '{}' +
+```
+
 <------- Set the time of showing notification banner ----->
 defaults write com.apple.notificationcenterui bannerTime <SECONDS>
 
@@ -64,35 +71,38 @@ ctrl+S to forward search (works in zsh for me but not bash)
 ctrl+F to move forward by a char
 ctrl+B to move backward by a char
 
-<---------------------- show hidden files ----------------------------->
-Go to terminal, then
+#### Toggle Hidden Folders/Files
+```
+$ Cmd + Shift + .  # keyboard shortcuts
+
+# Go to terminal, then
 $ defaults write com.apple.finder AppleShowAllFiles YES
 $ killall Finder
 
-// hide hidden files
+# hide hidden files
 Go to terminal, then
 $ defaults write com.apple.finder AppleShowAllFiles NO
 $ killall Finder
-
+```
 <---------------------- mac keyboard shortcut  ------------------------->
 - Get info:
-   	- Cmd + I, Cmd + option + I (to see single window)
+  - Cmd + I, Cmd + option + I (to see single window)
 - Close window:
-   	- Cmd + W
+  - Cmd + W
 - Enter/Exit full screen
     - Cmd + ctrl + F
 - Show/hide the dock:
 	- Cmd + option + D
 - scrernshots:
-    - Cmd + Shift + 3
-    - Cmd + Shift + 4 (give crosshairs)
+  - Cmd + Shift + 3
+  - Cmd + Shift + 4 (give crosshairs)
 - Hide application:
 	- Cmd + H
 	- Cmd + option + H (all application)
 - Application switcher:
 	- Cmd + Tab
 - Spotlight Search:
-    - cmd + space
+  - cmd + space
 - Zoom in/out:
 	- Cmd + option + +/-
 - Force Quit:
@@ -151,7 +161,7 @@ Cmd + I: Show info
 Cmd + D: Duplicate
 Cmd + L: Make Alias
 Cmd + R: Show Original Item
-Cmd + T: Add to Favourites
+Cmd + T: Add to Favorites
 Cmd + Delete: Move Highlighted Item to Trash
 Cmd + E: Eject
 Cmd + F: Find (Invokes Sherlock)

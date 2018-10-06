@@ -448,7 +448,7 @@ $ git add --all; git commit -m 'new squash message'    # commit the 3 previous c
 $ git push -f origin <branch-name>                     # by force overwrite the remote branch and also commits
 ```
 
-#### Rebase:
+### Rebase:
 ```sh
 $ git checkout <admin_branch>
 $ git rebase master                                    # Merge all commits of admin_branch after master's commits
@@ -458,8 +458,10 @@ $ git merge <admin_branch>
 $ git commit --amend --committer-date-is-author-date   # keep the date same as committer date when amending
 
 $ git rebase --onto master branch1 branch2             # take all the commits after branch1 up to branch2
+```
 
-# Change the `author` of an earlier commit
+- Change the `author` of an earlier commit:
+```
 $ git checkout <commit-hash>                                             # checkout the commit we're trying to modify
 $ git commit --amend --author "New-author-name <new-author@mail.com>"    # change the author name and mail
 $ git replace <old-commit-hash> <new-commit-hash>                        # replace the old commit by new one
@@ -470,12 +472,15 @@ $ git push -f origin HEAD                                                # force
 # Alternate way (May occur conflicts and more complex)
 $ git rebase -i <commit-hash>                                                # go to last good commit
 # Editor will open, write `edit` before the commit we want to change author
+```
 
-# Change the `commit message` of an earlier commit
+- Change the `commit message` of an earlier commit:
+
+```
 $ git filter-branch -f --msg-filter 'sed "s/<old-msg>/<new-msg>/g"' -- --all # Replace the old message with new message
-e.g. git filter-branch -f --msg-filter \
-     'sed "s/release\/Version-[0-9].[0-9].[0-9]/develop/g"' \
-     --tag-name-filter cat -- --all
+# e.g. git filter-branch -f --msg-filter \
+    'sed "s/release\/Version-[0-9].[0-9].[0-9]/develop/g"' \
+    --tag-name-filter cat -- --all
 
 $ git rebase -i HEAD-{N}
 # Upon running this command, an editor will open with a list of these N commit message, one per line. Each of these lines
@@ -486,8 +491,10 @@ no conflict arises, git rebase will allow you to create a new commit message for
 $ git commit --amend --author="author name <author@email.com>"     # change the author name & email
 # Editor will open, save and exit                                  # we can change 'commit-message' here
 $ git rebase --continue                                            # finish the rebase
+```
 
-# Reordering commits using rebase
+- Reordering commits using rebase:
+```
 $ git rebase -i <commit-hash>                                      # go to last good commit
 # then reorder the commits, be careful it shows the commit in reverse way as we see `git log` commands, shows old to new (top to bottom)
 
@@ -501,6 +508,16 @@ $ git rebase --skip
 $ git rebase --abort
 ```
 [See this](https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/)
+
+- Rebase Options:
+  - **pick:** keep the commit
+  - **reword:** keep the commit, just change the message
+  - **edit:** keep the commit, but stop to edit more than the message
+  - **squash:** combine this commit with the previous one, stop to edit the message
+  - **fixup:** combine this commit   with the previous one, keep the previous commit message
+  - **exec:** run the command on this line after picking the previous commit
+  - **drop:** remove the commit (tip: if we comment out or remove the line, this commit will be dropped too!)
+
 
 #### Working with Remotes:
 ```

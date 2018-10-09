@@ -30,9 +30,10 @@
 - <kbd>Opt</kbd> + <kbd>click</kbd>: Bind cursor to another place
 
 #### Go to
-- <kbd>Ctrl</kbd> + <kbd>G</kbd> :Go to line
-- <kbd>Ctrl</kbd> + <kbd>-</kbd> :Navigate backward
-- <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> :Navigate forward
+- <kbd>Ctrl</kbd> + <kbd>G</kbd>: Go to line
+- <kbd>Ctrl</kbd> + <kbd>-</kbd>: Navigate backward
+- <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd>: Navigate forward
+- <kbd>Cmd</kbd> + <kbd> K </kbd> <kbd> Cmd </kbd> + <kbd> Q </kbd>: Navigate to the last location edited
 
 #### Editor
 - <kbd>Cmd</kbd> + <kbd>\</kbd> : Split editor right
@@ -42,6 +43,7 @@
 - <kbd>Code --diff file1 file2</kbd> : See diff of two files (from terminal)
 - <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd> P</kbd> : See all Shortcuts
 - <kbd>Opt</kbd> + <kbd>Shift</kbd> + <kbd> A </kbd> : Comment out multi lines
+- <kbd>Cmd</kbd> + <kbd>K</kbd> <kbd>Cmd</kbd> + <kbd>S</kbd> : Open keyboard shortcuts window
 - <kbd>Cmd</kbd> + <kbd>K</kbd> <kbd>Cmd</kbd> + <kbd>C</kbd> : Add line comment
 - <kbd>Cmd</kbd> + <kbd>K</kbd> <kbd>Cmd</kbd> + <kbd>U</kbd> : Remove line comment
 - <kbd>Ctrl</kbd> + <kbd>`</kbd> : Toggle terminal window

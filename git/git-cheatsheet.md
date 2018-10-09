@@ -378,6 +378,7 @@ $ git log --since=1.hour.ago                       # Since(hours)
 $ git log --since=2.weeks                          # Since two weeks
 $ git log --since=1.month.ago --until=2.weeks.ago  # Since & until (relative)
 $ git log --since=2000-01-01 --until=2012-12-21    # Since & until (absolute)
+$ git log --diff-filter=M --oneline                # See the commits where files are modified
 $ git log --diff-filter=D --summary | grep delete  # See the deleted files
 $ git blame index.html --date short
 $ git rm                                           # Remove the file from the staging area and also from the disk                         
@@ -392,11 +393,21 @@ $ git log --reverse --pretty=%H | grep -A 1 $(git rev-parse HEAD) | tail -n1 | x
 # e.g. git log -10 --reverse would get last 10 commits then reverse it
 ```
 
+#### Show (more logging)
+
+```
+$ git show <commit-hash>                # see what changes in a specific commit
+$ git show <commit> --stat              # see files changed in a commit
+$ git show --decorate <commit-hash>     # see 'Author', 'Date' and 'diff'
+$ git show --pretty=%H <commit>         # short commit hash -> full commit hash
+$ git show <commit>:<file-path>         # See a old version of a file
+$ git show <tag-name>                   # show details info of a tag
+```
+
 #### Recovery/Reset:
 
 ```sh
 $ git log                                 # Show all the change/commit history
-$ git show <commit hash>                  # See what changes in a specific commit
 $ git reset --soft <commit hash>          # Back to a specific commit and exits the change
 $ git diff HEAD                           # Show the changes to files not yet staged
 
@@ -437,7 +448,7 @@ $ git add --all; git commit -m 'new squash message'    # commit the 3 previous c
 $ git push -f origin <branch-name>                     # by force overwrite the remote branch and also commits
 ```
 
-#### Rebase:
+### Rebase:
 ```sh
 $ git checkout <admin_branch>
 $ git rebase master                                    # Merge all commits of admin_branch after master's commits
@@ -447,8 +458,10 @@ $ git merge <admin_branch>
 $ git commit --amend --committer-date-is-author-date   # keep the date same as committer date when amending
 
 $ git rebase --onto master branch1 branch2             # take all the commits after branch1 up to branch2
+```
 
-# Change the `author` of an earlier commit
+- Change the `author` of an earlier commit:
+```
 $ git checkout <commit-hash>                                             # checkout the commit we're trying to modify
 $ git commit --amend --author "New-author-name <new-author@mail.com>"    # change the author name and mail
 $ git replace <old-commit-hash> <new-commit-hash>                        # replace the old commit by new one
@@ -459,12 +472,15 @@ $ git push -f origin HEAD                                                # force
 # Alternate way (May occur conflicts and more complex)
 $ git rebase -i <commit-hash>                                                # go to last good commit
 # Editor will open, write `edit` before the commit we want to change author
+```
 
-# Change the `commit message` of an earlier commit
+- Change the `commit message` of an earlier commit:
+
+```
 $ git filter-branch -f --msg-filter 'sed "s/<old-msg>/<new-msg>/g"' -- --all # Replace the old message with new message
-e.g. git filter-branch -f --msg-filter \
-     'sed "s/release\/Version-[0-9].[0-9].[0-9]/develop/g"' \
-     --tag-name-filter cat -- --all
+# e.g. git filter-branch -f --msg-filter \
+    'sed "s/release\/Version-[0-9].[0-9].[0-9]/develop/g"' \
+    --tag-name-filter cat -- --all
 
 $ git rebase -i HEAD-{N}
 # Upon running this command, an editor will open with a list of these N commit message, one per line. Each of these lines
@@ -475,8 +491,10 @@ no conflict arises, git rebase will allow you to create a new commit message for
 $ git commit --amend --author="author name <author@email.com>"     # change the author name & email
 # Editor will open, save and exit                                  # we can change 'commit-message' here
 $ git rebase --continue                                            # finish the rebase
+```
 
-# Reordering commits using rebase
+- Reordering commits using rebase:
+```
 $ git rebase -i <commit-hash>                                      # go to last good commit
 # then reorder the commits, be careful it shows the commit in reverse way as we see `git log` commands, shows old to new (top to bottom)
 
@@ -490,6 +508,16 @@ $ git rebase --skip
 $ git rebase --abort
 ```
 [See this](https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/)
+
+- Rebase Options:
+  - **pick:** keep the commit
+  - **reword:** keep the commit, just change the message
+  - **edit:** keep the commit, but stop to edit more than the message
+  - **squash:** combine this commit with the previous one, stop to edit the message
+  - **fixup:** combine this commit   with the previous one, keep the previous commit message
+  - **exec:** run the command on this line after picking the previous commit
+  - **drop:** remove the commit (tip: if we comment out or remove the line, this commit will be dropped too!)
+
 
 #### Working with Remotes:
 ```
@@ -605,8 +633,6 @@ $ git branch | awk '/\*/ { print $2; }'        # get the current branch name
 $ git rev-parse --abbrev-ref HEAD              # get the current branch name
 $ git update-index --assume-unchanged <file>   # Tell git to assume unchanged a file
 $ git merge -s ours <old-master>               # Merge old master, keeping "our" (origin/master's) content
-$ git show --decorate <commit-hash>            # see 'Author', 'Date' and 'diff'                        
-$ git show --pretty=%H 1a3fge7                 # short commit hash -> full commit hash
 $ git rev-parse 3cdd5d                         # short commit hash -> full commit hash
 $ git shortlog -sen --format="[%s]" --         # see all the users with name, email & total commit numbers
 $ git whatchanged --since="3 day ago"          # see the changed file lists name since 3 days
@@ -630,7 +656,6 @@ $ git fsck --full                              # = File System Check, verify al 
 $ git fsck --lost-found                        # Verifies the connectivity and validity of the objects in the database
 $ git command --help                           # When in doubt, use git help
 $ git diff-tree -r --diff-filter=D b1 b2       # List of files that exists in b1 but not in b2
-$ git show <commit-hash>:<file-path>           # See a old version of a file
 $ git ls-files -s                              # -s = --stage, Show staged contents' mode bits, object name and stage number in the output.
 
 $ git config --global core.editor "subl -n -w" # '-n' will open a new instance of Sublime & '-w' will make the git wait for you to close Sublime before proceeding
@@ -656,7 +681,7 @@ $ for branch in `git branch -r | sed 's@origin/@ @'`;do `git branch  $branch ori
 $ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -vv -u '$USERNAME:$PASS' "https://bitbucket.org/branch/create" -s -d 'repository=$TEAMORUSER%2F$REPO&from_branch=master&branch_name=feature'
 
 # Show diff
-$ git diff b1..b2                              # Compare two brances, show you what is in b2 that is not in b1
+$ git diff b1..b2                              # Compare two branches, show you what is in b2 that is not in b1
 $ git diff <commit1> <commit2>                 # Show changes between two commits id
 $ git diff b1..b2 --name-only                  # Show changed file names only
 $ git diff b1..b1 -- <file-path>               # Show the changes of a file
@@ -680,7 +705,6 @@ $ git config --global --unset diff.external
 
 $ git push -f origin HEAD^:master              # "undo" the push from remote and keep the local intact
 $ git blame <file>                             # List the change dates and authors for a file
-$ git show <commit>:<file>                     # Show the file changes for a commit id and/or file
 
 $ git branch <branch> --set-upstream-to <remote/branch> # git v1.8.0 or later
 $ git branch <branch> --u <remote/branch>               # git v1.8.0 or later

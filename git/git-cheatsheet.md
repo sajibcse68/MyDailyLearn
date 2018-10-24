@@ -514,7 +514,7 @@ $ git rebase --abort
   - **reword:** keep the commit, just change the message
   - **edit:** keep the commit, but stop to edit more than the message
   - **squash:** combine this commit with the previous one, stop to edit the message
-  - **fixup:** combine this commit   with the previous one, keep the previous commit message
+  - **fixup:** combine this commit with the previous one, keep the previous commit message
   - **exec:** run the command on this line after picking the previous commit
   - **drop:** remove the commit (tip: if we comment out or remove the line, this commit will be dropped too!)
 
@@ -576,7 +576,7 @@ $ git push --recurse-submodules=on-demand                        # Push to paren
 $ git config alias.pushall "push --recurse-submodules=on-demand" # Alias   
 ```
 
-#### Cleanup garbase in remote repo:
+#### Cleanup garbage in remote repo:
 ```sh
 $ git reflog expire --expire="1 hour" --all
 $ git reflog expire --expire-unreachable="1 hour" --all
@@ -755,6 +755,17 @@ $ git commit -m 'be tracked'    # staged, tracked
 ```
 
 `$ git log --pretty=format:"%h $ad- %s [%an]" `
+
+#### GitHub vs Git - The Key is Collaboration:
+
+- Git:
+  - Open source version control software
+- GitHub:
+  - Repository hosting
+  - Browse code
+  - Issues
+  - Pull Requests
+  - Forks
 
 #### Commit Object
 A `commit` points to:

@@ -221,33 +221,6 @@ import * as foo from 'foo.js';
 foo.bar();  // bar
 
 ```
-#### Q. Explain `Hoisting` in JavaScript
-When you declare a variable in JavaScript (using "var"), that variable declaration is "hoisted" to the top of the current scope: meaning the top of the current function or the top of the script if the variable isn't in a function.
-
-#### What is the output?
-
-```js
-var text = 'outside';
-function logIt(){
-    console.log(text);
-    var text = 'inside';
-};
-logIt();
-```
-**Answer:** `undefined`  
-**Explanation:** variable declarations are `hoisted` to the top of the current scope. Variable assignments, however, are not.
-
-- The code gets interpreted as though it were
-
-```js                     | So, we have a new variable text inside of logIt() that is initialized to undefined,
-  var text = 'outside';   | which is what it holds when we hit our log statement
-function logIt(){         |
-    var text;             |
-    console.log(text);    |
-    text = 'inside';      |
-};                        |
-logIt();                  |
-```
 
 #### What is `Debouncing` in JavaScript?
 
@@ -293,20 +266,50 @@ elem.addEventListener('scroll', debounce(foo, 2000))
 
 **Ref:** [MDN](https://davidwalsh.name/javascript-debounce-function), [FreeCodeCamp](https://medium.freecodecamp.org/3-questions-to-watch-out-for-in-a-javascript-interview-725012834ccb)
 
+#### Q. Explain `Hoisting` in JavaScript
+When you declare a variable in JavaScript (using "var"), that variable declaration is "hoisted" to the top of the current scope: meaning the top of the current function or the top of the script if the variable isn't in a function.
+
+#### What is the output?
+
+```js
+var text = 'outside';
+function logIt(){
+    console.log(text);
+    var text = 'inside';
+}
+logIt();
+```
+**Answer:** `undefined`
+
+**Explanation:** variable declarations are `hoisted` to the top of the current scope. Variable assignments, however, are not.
+
+- The code gets interpreted as though it were
+
+```js                     | So, we have a new variable text inside of logIt() that is initialized to undefined,
+  var text = undefined;   | which is what it holds when we hit our log statement
+  text = 'outside';       |
+function logIt(){         |
+    var text;             |
+    console.log(text);    |
+    text = 'inside';      |
+};                        |
+logIt();                  |
+```
+
 ##### First, memory is set aside for all necessary variables and `declared functions`.
 
 ```js
-function getMysterNumber () {  |  // loads like this
-  function chooseMystery() {   |  function getMysterNumber() {
-    return 12;                 |    function chooseMystery() {
-  }                            |      return 12;
-                               |    }
-  return getMysterNumber();    |   function chooseMystery() {  // it replaced the above chooseMystery function
-                               |     return 7;
-  function chooseMystery() {   |   }
-    return 7;                  |   return getMysterNumber(); // output: 7;
-  }                            |
-}                              |   }
+function getMysterNumber () {   |  // loads like this
+  function chooseMystery() {    |  function getMysterNumber() {
+    return 12;                  |    function chooseMystery() {
+  }                             |      return 12;
+                                |    }
+  return chooseMystery();       |   function chooseMystery() {  // it replaced the above chooseMystery function
+                                |     return 7;
+  function chooseMystery() {    |   }
+    return 7;                   |   return chooseMystery(); // output: 7;
+  }                             |
+}                               |   }
 ```
 
 ##### Function Expressions are never hoisted! They are treated as assignments.
@@ -319,10 +322,10 @@ function getMysteryNumber() {         | function getMysteryNumber() {
   return chooseMystery();             |     return 12;
                                       |   }
   var chooseMystery = function() {    |    return chooseMystery();        // return 12;
-    return 7;                         |   chooseMystery = function() {  | // this section is unreachable
-  }                                   |     return 7;                   | // because it is below return statement
-}                                     |   }                             |
-                                        }
+    return 7;                         |   chooseMystery = function() {  // this section is unreachable
+  }                                   |     return 7;                   // because it is below return statement
+}                                     |   }
+                                      |  }
 ```
 
 ##### Check if 'return' statement is at the top
@@ -333,45 +336,45 @@ function getMysteryNumber() {         | function getMysteryNumber() {
     return 12;                        |   var chooseMystery = undefined;  // replace the above 'chooseMystery'
   }                                   |   return chooseMystery();         // ERROR
                                       |
-                                      |   chooseMystery = function() {  | // this section is unreachable
-                                      |     return 12;                  | // because it is below return statement
-                                      |   }                             |
-  var chooseMystery = function() {    |            // return 12;
-    return 7;                         |   chooseMystery = function() {  | // this section is also unreachable
-  }                                   |     return 7;                   | // because it is below return statement
-}                                     |   }                             |
+                                      |   chooseMystery = function() { // this section is unreachable
+                                      |     return 12;                 // because it is below return statement
+                                      |   }
+  var chooseMystery = function() {    |
+    return 7;                         |   chooseMystery = function() { // this section is also unreachable
+  }                                   |     return 7;                  // because it is below return statement
+}                                     |   }
                                         }
 ```
 
 ##### Analyzing Hoisting Load Order
 
 ```js
-function theBridgeOfHoistingDoom() { | Alrighty, here’s the hoisted version. The function looks for any variables to
-  function fellowship() {            | create space for, finds sword, dwarf, fall, and ring, and sets them all to
-    return "friends";                | undefined. There’s only one declared function, fellowship, so that comes next.
-  }                                  | In this case, there are no replacement declared functions. The executable code
-  var sword = "sting";               | that assigns new values or functions to variable has all var keywords popped off.
-  var dwarf = function() {           | Any executable code after the first return of sword is excluded from the answer.
-    return "axe";                    |
-  };                                 | function theBridgeOfHoistingDoom() {
-  var fall = "Fly you fools!";       |   var sword = undefined;
-  fellowship = function() {          |   var dwarf = undefined;
-    return "broken";                 |   var fall = undefined;
-  };                                 |   var ring = undefined;
-  ring();                            |   function fellowship() {
-  return sword;                      |     return "friends";
-  fellowship = function() {          |   }
-    return "mines"                   |   sword = "sting";
-  };                                 |   dwarf = function() {
-  sword = function() {               |     return "axe";
-    return "glamdring";              |   };
-  };                                 |   fall = "Fly you fools!";
-  var ring = function() {            |   fellowship = function() {
-    return "precious";               |     return "broken";
-  };                                 |   };
-}                                    |   ring();
-                                     |    return sword;
-                                     |  }
+function theBridgeOfHoistingDoom() {  | Alrighty, here’s the hoisted version. The function looks for any variables to
+  function fellowship() {             | create space for, finds sword, dwarf, fall, and ring, and sets them all to
+    return "friends";                 | undefined. There’s only one declared function, fellowship, so that comes next.
+  }                                   | In this case, there are no replacement declared functions. The executable code
+  var sword = "sting";                | that assigns new values or functions to variable has all var keywords popped off.
+  var dwarf = function() {            | Any executable code after the first return of sword is excluded from the answer.
+    return "axe";                     |
+  };                                  | function theBridgeOfHoistingDoom() {
+  var fall = "Fly you fools!";        |   var sword = undefined;
+  fellowship = function() {           |   var dwarf = undefined;
+    return "broken";                  |   var fall = undefined;
+  };                                  |   var ring = undefined;
+  ring();                             |   function fellowship() {
+  return sword;                       |     return "friends";
+  fellowship = function() {           |   }
+    return "mines"                    |   sword = "sting";
+  };                                  |   dwarf = function() {
+  sword = function() {                |     return "axe";
+    return "glamdring";               |   };
+  };                                  |   fall = "Fly you fools!";
+  var ring = function() {             |   fellowship = function() {
+    return "precious";                |     return "broken";
+  };                                  |   };
+}                                     |   ring();
+                                      |   return sword;
+                                      | }
 ```
 ```js
 function theBridgeOfHoistingDoom() { |
@@ -403,7 +406,7 @@ function theBridgeOfHoistingDoom() { |
 
 ###### Analyzing load order II
 
-1. For all variable declarations, put the corresponding declarations at the top of the function. Assign them a value of undefined and maintain their order.
+1. For all variable declarations, put the corresponding declarations at the top of the function. Assign them a value of `undefined` and maintain their order.
 
 2. Now that variable declarations have been placed at the top, remove the original declarations, but leave any associated assignments.
 

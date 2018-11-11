@@ -828,33 +828,6 @@ console.log(blue.z);                           // undefined, no 'z' in blue, her
 console.log(rose.z);                           // 3, since there is no 'z' in rose, delegation goes through to gold, which does have gold.z
 ```
 
-```js
-function theBridgeOfHoistingDoom() { |
-                                    | Alrighty, here’s the hoisted version. The function looks for any variables to
-                                    | create space for, finds ring and power, and sets them both to undefined. The
-  function balrog() {                | order of declared functions is balrog, elf, balrog, wizard, and elf. When older
-    return "fire";                   | versions of the loaded functions are replaced, we are left with balrog, wizard,
-  }                                  | and then elf. The only executable code that actually ever runs are the lines
-  var ring;                          | that precede and include the return of the call to wizard
-  function elf() {                   |
-    return "pointy ears";            |
-  }                                  | function theBridgeOfHoistingDoom() {
-  ring = wizard;                     |   var ring = undefined;
-  wizard = balrog;                   |   var power = undefined;
-  return wizard();                   |   function balrog() {
-  function balrog() {                |     return "whip";
-    return "whip";                   |   }
-  }                                  |   function wizard() {
-  function wizard() {                |     return "white";
-    return "white";                  |   }
-  }                                  |   function elf() {
-  var power = ring();                |     return "immortal";
-  return elf();                      |   }
-  function elf() {                   |   ring = wizard;
-    return "immortal";               |   wizard = balrog;
-  }                                  |   return wizard();
-}                                    | }
-```
 #### Object Decorator Pattern
 
 ```js                                       | var amy = carlike({}, 1);

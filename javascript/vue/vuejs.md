@@ -717,7 +717,7 @@ new Vue({
   <p>Default slot</p>
 
 
- <!-- we can use interpolation also -->
+<!-- we can use interpolation also -->
 </app-child>
 
 </template>
@@ -839,6 +839,10 @@ const router = new VueRouter({
     stripPrefix: 'dist/'
   });
 ```
+
+#### Mixin
+
+- `{{ ... }}` is called `Interpolation` or `String Interpolation`
 
 #### **Shortcuts:**
 

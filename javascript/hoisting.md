@@ -176,7 +176,6 @@ function theBridgeOfHoistingDoom() {  | Alrighty, here’s the hoisted version. 
 }                                     |   ring();
                                       |     return sword;
                                       |  }
-
 ```
 
 ###### Analyze Load Order III
@@ -224,6 +223,33 @@ var d = function() {                  |  c;           // ??
 };                                    |    return b(); 
                                       |  };
 ```
+
+#### The variables declared with `let` or `const` are hoisted but stay **`uninitialised`**
+
+- What is the output?
+
+```js
+function foo(bar) {
+	if (bar) {
+		console.log(baz); // Uncaught ReferenceError: baz is not defined
+		let baz = bar;
+	}
+}
+
+foo("bar");
+```
+
+**Important:**
+- Just like `var`, `let/const` declarations are hoisted to the top. Unlike `var` which is initialized as `undefined`, the `let` keyword is not initialized. So if we try to use a `let` variable before declaration, we'll get a **Reference Error**.
+
+- The variables declared with `let / const` only get initialized when the `let/const/class` statement is evaluated, everything before (above) that is called the temporal `Dead Zone`.
+
+
+[Ref-1](https://dev.to/sarah_chima/var-let-and-const--whats-the-difference-69e)
+[Ref-2](https://stackoverflow.com/a/31222689/4133798)
+
+
+
 
 #### Why `Hoisting` is important?
 

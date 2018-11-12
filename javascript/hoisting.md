@@ -177,40 +177,14 @@ function theBridgeOfHoistingDoom() {  | Alrighty, here’s the hoisted version. 
                                       |     return sword;
                                       |  }
 ```
+Answer: console.log("ERROR"); // cause ring() is not a function, it's undefined.
 
-###### Analyze Load Order III
-Q. What is the output of theBridgeOfHoistingDoom()?
-
-1. If the result is undefined, log an "undefined" string to the console.
-2. If the function is unable to complete, log an "ERROR" string to the console.
-
-```js
-function theBridgeOfHoistingDoom() {   | Answer: console.log("ERROR");
-  var sword = undefined;               | // cause ring() is not a function, it's a string.
-  var dwarf = undefined;               |
-  var fall = undefined;                |
-  var ring = undefined;                |
-  function fellowship() {              |
-    return "friends";                  |
-  }                                    |
-  sword = "sting";                     |
-  dwarf = function() {                 |
-    return "axe";                      |
-  }                                    |
-  fall = "Fly you fools!";             |
-  fellowship = function() {            |
-    return "broken";                   |
-  }                                    |
-  ring();                              |
-  return sword;                        |
-}                                      |
-```                                    
-
-###### Analyzing Load Order IV
+###### Analyzing Load Order III
 
 ```js                                 |  // after hoisting
 var a = b();                          |  function b() {
-var c = c();                          |  {
+var c = d();                          |   return c;
+                                      |  }
 a;                                    | 
 c;                                    |  var a;
                                       |  var c;

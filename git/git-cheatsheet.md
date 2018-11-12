@@ -243,6 +243,7 @@ $ git commit -m 'msg' --include file1.txt file2.txt # Commit specific files
 
 # Amend
 $ git add task2.txt                                 # Add any file
+$ git commit --amend --no-edit                      # Don't change commit message, merge staged changes with previous commit
 $ git commit --amend -m 'new message'               # Merge current change to previous commit and will also change the commit hash
 $ git commit --amend --date="<date>"                # Override the date
 
@@ -535,7 +536,7 @@ $ git fetch <remote-name>                      # Fetching/pulling from remote
 #### Conflicts:
 * Life being the pain in the proverbial that it is, our merge might have a `conflict`.
 * The git status command will help you understand where the conflict exists. If you open the file,
-* You?ll notice some markers: <<<<, >>>>, and ====, that surround the lines that conflict,
+* You'll notice some markers: <<<<, >>>>, and ====, that surround the lines that conflict,
 * Including the changes that each branch is trying achieve.
 * Fix manually.
 
@@ -744,7 +745,7 @@ $ git branch -d <hot-branch>                  # delete the release branch
 - For a project github page url will be '<username.github.io/<projectname>'  # sajibcse68.github.io/dojo_rules
 ``` 
 
-#### Stage vs Track file:
+#### Tracked vs Untrack file:
 - Tracked files are files that were in the last snapshot; they can be `unmodified`, `modified`, or `staged`.
 - Untracked files are everything else? any files in your working directory that were not in your last snapshot and are not in your staging area (index). e.g.
 

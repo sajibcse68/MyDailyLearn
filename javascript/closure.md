@@ -189,12 +189,16 @@ function assignTorpedo (name, passengerArray) {
 // solutions #2:
 function assignTorpedo (passengerArray) {
   return function(name) {
-    for (var i = 0; i < passengerArray.length; i++) {       // since we've put the loop inside the returned function,
-        if (passengerArray[i] == name) {                     // i variable will come directly from that local scope
+    for (var i = 0; i < passengerArray.length; i++) { // since we've put the loop inside the returned function,
+        if (passengerArray[i] == name) {              // i variable will come directly from that local scope
           alert("Ahoy, " + name + "!\n" +
           " Man your post at Torpedo # " + (i+1) + "!");   
         }
       }
   }
 }
+
+var subPassengers = ["Luke", "Leia", "Han", "Chewie", "Yoda", "Boba"];
+var giveAssignment = assignTorpedo(subPassengers);
+giveAssignment("Chewie"); // 4
 ```

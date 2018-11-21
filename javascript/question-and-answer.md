@@ -38,20 +38,6 @@ So, in production code we should use `Name Function` always.
 #### Difference between `target` and `currentTarget`?
 `target` is actual thing what is clicked and `currentTarget` is where the event listener is attached to.
 
-#### Explain why the following doesn't work as an IIFE (Immediately Invoked Function Expression)
-    function foo() {
-        // code
-    }();
-    
-Just put parentheses:
-
-```js
-    ( function foo() {
-      //code
-    } )();
-// JS interpretate everything what is in parentheses as `expression` not a `statement`.
-// So, it will run immediately
-```
 #### Explain the difference on the usage of following -
   
   ```

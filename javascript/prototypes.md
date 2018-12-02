@@ -61,7 +61,7 @@ a1.getName(); // sajib
 <img src="../images/lexical-scope-and-prototypes-chain.png" alt="lexical-scope-and-prototypes-chain" width="400px"/>
 
 
-====================================================
+===========
 
 Object Oriented in JavaScript
 -----------------------------
@@ -96,7 +96,7 @@ o1.__proto__ === User.prototype;
 o1.__proto__ === o2.__proto__;
 ```
 
-====================================
+===========
 
 
 - When an inherited function is executed, the value of `this` points to the **inheriting** object, not to the `prototype object` where the function is an own property.
@@ -118,7 +118,7 @@ o1.a = 5;
 console.log(o1.f1()); // 5, this = o1 not ob!
 ```
 
-===============================
+===========
 
 - New object using **Object.create()** (ES5)
 
@@ -139,8 +139,7 @@ console.log(d.hasOwnProperty);
 // undefined, because d doesn't inherit from Object.prototype
 ```
 
-
-===============================
+===========
 
 - New object using `Class` syntactical sugar:
 
@@ -182,8 +181,7 @@ const o1 = Object.create(Rectangle)
 console.log(o1);
 ```
 
-
-===============================
+===========
 
 - Use `hasOwnProperty()` to know if the property exists as it's own property
 
@@ -207,7 +205,7 @@ __proto__ === Object.prototype
 |
 ob
 
-==============================
+===========
 
 - Prototype `Shadowing`:
 
@@ -242,7 +240,7 @@ o2 = Object.assign(o1, {a: 1});
   console.log(`Hello, I'm ${User.prototype.identify.call(this)}.`);
 ```
 
-===========================
+===========
 
 - Avoid Shadowing
 
@@ -263,7 +261,7 @@ User.prototype.sayHello = function() {
 const o1 = new User('a1');
 ```
 
-============================
+===========
 
 - Object Linked
 
@@ -300,7 +298,7 @@ o1.getArea(); // 6
 o1.getArea(); // 20
 ```
 
-==============================
+===========
 
 - OLOO (Object Linked to Other Object): delegated objects
 
@@ -362,7 +360,7 @@ r1.getArea(); // 6
 ```
 
 
-==============================
+===========
 
 - Class in ES6
   - nicer syntax

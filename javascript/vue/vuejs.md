@@ -27,13 +27,14 @@ $ npm run build                  # compressed/minified files
 - **watch:** Execute code upon data changes
 
 
-#### Key sentences
+#### Key Sentences
 
 - Components extends the Vue instance
 
 
 #### For loop example
-```
+
+```html
 <div class="column is-one-third" v-for="(faq, index) of faqs" :key='index'>
   <div class="card">
     <div class="card-content">
@@ -44,7 +45,7 @@ $ npm run build                  # compressed/minified files
 </div>
 ```
 
-```
+```html
 <!-- v-for and v-text directives -->
 
 <li v-for="faq in faqs" v-text="name"></li>
@@ -85,9 +86,91 @@ $ npm run build                  # compressed/minified files
   }
 </script>
 
+#### Dynamic Components:
+
+- We can use `<component>` to render dynamic components.
+
+```html
+<template>
+  <div>
+    <button @click="selectedComp = 'Comp1'">Component 1</button>
+    <button @click="selectedComp = 'Comp2'">Component 2</button>
+    <button @click="selectedComp = 'Comp3'">Component 3</button>
+
+    <component :is="selectedComp">
+      <p>Default Content</p>
+    </component>
+  </div>
+</template>
+```
+
+```js
+<script>
+import Comp1 from './Comp1.vue'
+import Comp2 from './Comp2.vue'
+import Comp3 from './Comp3.vue'
+
+export default {
+  data: {
+    return {
+      selectedComp: 'Comp1',
+    }
+  }
+  components: {
+    'comp1': Comp1,
+    'comp2': Comp2,
+    'comp3': Comp3,
+  }
+}
+</script>
+```
+
+
+#### Prevent destroying components when rendering Dynamic components:
+
+- we can use `<keep-alive>` to prevent destroying a component.
+
+```html
+<template>
+  <div>
+    <button @click="selectedComp = 'Comp1'">Component 1</button>
+    <button @click="selectedComp = 'Comp2'">Component 2</button>
+    <button @click="selectedComp = 'Comp3'">Component 3</button>
+
+    <keep-alive>
+      <component :is="selectedComp">
+        <p>Default Content</p>
+      </component>
+    </keep-alive>
+  </div>
+</template>
+```
+
+```js
+<script>
+import Comp1 from './Comp1.vue'
+import Comp2 from './Comp2.vue'
+import Comp3 from './Comp3.vue'
+
+export default {
+  data: {
+    return {
+      selectedComp: 'Comp1',
+    }
+  }
+  components: {
+    'comp1': Comp1,
+    'comp2': Comp2,
+    'comp3': Comp3,
+  }
+}
+</script>
+```
+
+
 #### Disable re-rendering with `v-once`
 
-```
+```js
 <template>
   <div>
     <h1 v-once>{{ title }}</h1>

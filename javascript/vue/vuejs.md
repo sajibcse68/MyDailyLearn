@@ -129,6 +129,7 @@ export default {
 #### Prevent destroying components when rendering Dynamic components:
 
 - we can use `<keep-alive>` to prevent destroying a component.
+- Useful two lifecycle hooks: `Activated()` & `Deactivated()`.
 
 ```html
 <template>

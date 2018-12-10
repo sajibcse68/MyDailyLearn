@@ -200,7 +200,7 @@ function buildUser (first, last, postCount) {
 }
 ```
 
-#### Removing Repetitiion From Creating Objects
+#### Removing Repetition From Creating Objects
 - We can remove **duplicate** variable names from object properties when those properties
 have the **same name** as the variables being assigned to them.
 

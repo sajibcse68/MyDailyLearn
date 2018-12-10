@@ -286,7 +286,7 @@ foo3();          // bar
 foo3.call(o2); // bar !! cause it is hard binding to o1 
 ```
 
-#### Prioriy of `this` binding (top -> bottom: high -> low)
+#### Priority of `this` binding (top -> bottom: high -> low)
 
 1. Was the function called with `new`?
 2. Was the function called with `call` or `apply` specifying an explicit `this`?

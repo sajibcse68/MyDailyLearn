@@ -145,7 +145,7 @@ down page. This can cause a serious performance issues.
 `Debouncing` is one way to solve this issue by limiting the time that needs to pass by until a function is called. So, it limits the 
 rate at which a function can fire.
 
-```
+```js
 // Returns a function, that, as long as it continues to be invoked, will not
 // be triggered. The function will be called after it stops being called for
 // N milliseconds. If `immediate` is passed, trigger the function on the

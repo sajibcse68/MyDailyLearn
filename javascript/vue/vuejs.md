@@ -924,6 +924,62 @@ const router = new VueRouter({
   });
 ```
 
+
+#### Toggling similar elements
+
+Vue elements will reuse elements that have the same tag name when using `v-if` on them.
+
+
+```html
+<template>
+<div id="app">
+  <div v-if="isUsername">
+    <Label>Username</Label>
+    <input />
+  </div>
+  <div v-else>
+    <Label>Email</Label>
+    <input />
+  </div>
+
+  <button @click="toggle"> Toggle </button>
+</div>
+</template>
+```
+```js
+<script>
+new Vue({
+  el: "#app",
+  data: {
+    isUsername: true
+  },
+  methods: {
+    toggle() {
+      this.isUsername = !this.isUsername
+    }
+  }
+})
+</script>
+```
+here `<input />` element will not be replaced.
+
+To solve this we just need to add a key to each of them so Vue knows they are distinct element:
+
+```html
+div id="app">
+  <div v-if="isUsername" key="username"> <!-- key="username" -->
+    <Label>Username</Label>
+    <input />
+  </div>
+  <div v-else key="email"> <!-- key="email" -->
+    <Label>Email</Label>
+    <input />
+  </div>
+  
+  <button @click="toggle"> Toggle </button>
+</div>
+```
+
 #### Mixin
 
 - `{{ ... }}` is called `Interpolation` or `String Interpolation`

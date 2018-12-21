@@ -980,6 +980,32 @@ div id="app">
 </div>
 ```
 
+#### Vue Router has 3 types of gurards:
+
+1. Global guards (on the instance)
+  - These are called `each time the URL changes`
+  - Guards: `beforeEach`, `beforeResolve`, `afterEach`
+2. Route guards (on router definition)
+  - These are `only called when the associated ROUTE is matched`
+  - Guards: `beforeEnter`
+3. Route Component guards
+  - These are `only called when a ROUTE COMPONENT is used/unused`
+  - Guards: `beforeRouterEnter`, `beforeRouterUpdate`, `beforeRouterLeave`
+
+**NOTE:** All guards except `afterEach` are `asynchronous`. They are called in sequence, therefore, you need to explicitly call the `next()` methods to tell the router that we are done and that he can continue the sequence. This is also called `middleware pattern`.
+
+- When to use each of them??
+
+Assuming, we are navigating from `/` to `/contact`:
+
+1. `beforeRouteLeave --` called on the `/` route component
+2. `beforeEach --` called `globally` when a new navigation stars
+3. `beforeEnter --` called when `/contact` route matches
+4. `beforeRouteEnter --` called when `/contact` route component matches
+5. `beforeResolve --` called `globally` when route component guards are done
+6.  `afterEach --` called `globally` when everything is resolved
+
+
 #### Mixin
 
 - `{{ ... }}` is called `Interpolation` or `String Interpolation`

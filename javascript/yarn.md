@@ -4,7 +4,8 @@
 - Secure
 
 #### Install
-```
+
+```bash
 $ brew install yarn   # macOS
 $ brew upgrade yarn   # upgrade to latest stable version
 
@@ -14,7 +15,7 @@ $ npm install -g yarn
 
 #### Add or Remove package
 
-```
+```bash
 $ yarn global <add/bin/list/remove/upgrade> [--prefix]
 
 $ yarn global add <package>  # add a package globally
@@ -25,7 +26,8 @@ $ yarn remove <package>      # remove a package from current project
 ```
 
 #### Change of modify a config value. The change is written in `~/.yarnrc` file.
-```
+
+```bash
 $ yarn config list                 # see the global config list
 
 $ yarn config set save-prefix '~'  # save-prefix was '^' before now '~'
@@ -34,6 +36,12 @@ $ cat ~/.yarnrc                    # save-prefix "~" is written
 
 $ yarn config delete save-prefix
 # undo the config to default, delete the entry from ~/.yarnrc file
+```
+
+#### Scripts
+
+```bash
+
 ```
 
 #### Dependency types

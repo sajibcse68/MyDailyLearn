@@ -20,23 +20,26 @@ $ ip -s link
 - ctrl+F to move forward by a char
 - ctrl+B to move backward by a char
 
-#### Show hidden files
+#### Show or Hide hidden files or directories
 ```
-Go to terminal, then
+# keyboard shortcut (toggle hide/show)
+Cmd + Shift + .
+
+# Go to terminal, then
 $ defaults write com.apple.finder AppleShowAllFiles YES
 $ killall Finder
 
-// hide hidden files
-Go to terminal, then
+# hide hidden files
+# Go to terminal, then
 $ defaults write com.apple.finder AppleShowAllFiles NO
 $ killall Finder
 ```
 #### Fancy shortcuts
 ```
 - Get info:
-   	- Cmd + I, Cmd + option + I (to see single window)
+  - Cmd + I, Cmd + option + I (to see single window)
 - Close window:
-   	- Cmd + W
+  - Cmd + W
 - Show / hide the dock:
 	- Cmd + option + D
 - scrernshots:

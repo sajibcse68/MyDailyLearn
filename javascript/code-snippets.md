@@ -125,7 +125,16 @@ const arr2Str = JSON.stringify(arr2);
 
 console.log(arr1Str === arr2Str);    // true
 ```
- 
+
+#### Get a subset of JavaScript Object's properties:
+
+```js
+const ob = { a: 5, b: 6, c: 7  };
+const subsetOfOb = (({ a, c }) => ({ a, c }))(ob);
+
+console.log(subsetOfOb); // { a: 5, c: 7 }
+```
+
 #### :eight_spoked_asterisk: A Common `Misconception`
 ```js
 Foo.method = function() {

@@ -1,7 +1,3 @@
-
-
-
-
 ### Search 
 ```  
 # Search inside text file
@@ -13,6 +9,8 @@ $ gradle run | less        // search in 'gradle run' command
 # Finding a File Containing a Particular Text String
 # Pass --color to grep command, displays matched text/words in color on terminal
 $ grep -R --color "sampleWord" <directory> 
+
+$ sudo find / -type f -name '._*'              # find files with regular expression
 $ sudo find / -type f -name jenkins.xml        # find a file
 $ sudo find / -type d -name jenkins            # find a directory
 $ sudo find / -type d -name plugins -ls
@@ -209,6 +207,10 @@ $ echo 'Hello' | sudo -S apt-get update
 
 # Show all user
 $ compgen -u
+
+# sync two directories
+$ rsync -a --progress <source> <destination>
+# mv can't do merging/replacing, error: 'Directory not empty'
 
 # Send file to remote machine through terminal
 $ scp remote_user@remote_host:/path/to/remote/file /path/to/local/file

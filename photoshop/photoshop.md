@@ -1,4 +1,4 @@
-<----- we need two things to design ------->
+### We need two things to design
 - Eliments
   - Lines
   - Shapes
@@ -7,7 +7,7 @@
   - Spaces
 - Equipments
 
-<----- principle of Design ------>
+### Principle of design
 - Rhythm
 - Proportion
 - Perspective
@@ -25,7 +25,7 @@
   - layouts of design
   - posters and business card
 
-<--------------- learning tools -------------------------->
+### learning tools
 - Rectangular marquee tool(M)
 - Move tool(V)
 - Paint bucket tool(G)
@@ -35,8 +35,9 @@
 - Gradiant tool(G)
 - Pen tool(P)                   // we should delete path after using pen tool
 
--
+### Shortcuts:
 
+`Cmd + j`: duplicate a layer 
 
 
 

@@ -58,7 +58,7 @@
   margin: 15px 0;
 }
 ```
- 
+
 - Certain properties with matching namespaces are nestable.
 
 ```
@@ -78,7 +78,7 @@
 ```
 
 - While nesting, the `&` symbol references the parent selector:
- 
+
 - Selectors can also be added `before the &` referene:
 
 ```
@@ -228,12 +228,12 @@ sup {
 ```
 // application.css
 .btn-a,
- .btn-b {
-  border: 1px solid #ccc;
-  font-size: 1em;
-  text-transform: uppercase;
-  background: #777;
-}
+  .btn-b {
+    border: 1px solid #ccc;
+    font-size: 1em;
+    text-transform: uppercase;
+    background: #777;
+  }
 .btn-b {
   background: #ff0;
 }
@@ -491,6 +491,26 @@ header {
 header {
   background: pink;
 }
+```
+
+#### Use @for to create a Saas loop
+
+- `@for` is used in two ways:
+  - `start through end`: includes the end number
+  - `start to end`: excludes the end number
+
+```style
+@for $i from 1 through 3 {
+  .col-#{$i} { font-size: 10 * $i; }
+}
+```
+- `#{$i}` combines a variable (`i`) with text to make a string.
+
+output:
+```style
+.col-1 { font-size: 10; }
+.col-2 { font-size: 10; }
+.col-3 { font-size: 10; }
 ```
 #### Each
 - The `@each` directive allows us to loop through each list item.

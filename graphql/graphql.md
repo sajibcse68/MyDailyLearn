@@ -75,3 +75,8 @@ These arguments have the following meaning and conventional names:
 
 4. `info:` This argument should only be used in advanced cases, but it contains information about the execution state of the query, including the field name, path to the field from the root, and more.
 
+#### GraphQL Cheat Sheets
+
+<img src="../images/graphql-cheatsheet.png" alt="graphql-cheatsheet" width="400px"/>
+
+[Reference](https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a)

@@ -1013,13 +1013,13 @@ Assuming, we are navigating from `/` to `/contact`:
 
 #### Vue Cheat Sheets 
 
-<img src="../../images/vuejs-cheatsheet.png" alt="lexical-scope-and-prototypes-chain" width="400px"/>
+<img src="../../images/vuejs-cheatsheet.png" alt="vuejs-cheatsheet" width="400px"/>
 
 [Reference](https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a)
 
 #### Vuex Cheat Sheets
 
-<img src="../../images/vuex-cheatsheet.png" alt="lexical-scope-and-prototypes-chain" width="400px"/>
+<img src="../../images/vuex-cheatsheet.png" alt="vuex-cheatsheet" width="400px"/>
 
 [Reference](https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a)
 

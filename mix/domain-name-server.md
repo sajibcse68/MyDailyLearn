@@ -42,4 +42,16 @@ Explaining `www.customer.support.microsoft.com.` (the last dot (`.`) will be ass
 - FH DNS server caches the recently accessed website's ip address in its local DNS cache
 - FH DNS server is shared by several users
 - Our computer also have its own local DNS Cache
-- 
+
+#### Recursive DNS Query vs Iterative DNS Query
+
+- **Recursive DNS Query**
+  - DNS Resolver takes the responsibility to get the final DNS resolution
+  - DnS Resolver keep sending DNS query to subsequent DNS server based on referral answer
+  - DNS client receives a definite answer: either the DNS resolution or error msg
+  - Burden is on DNS resolver
+- **Iterative DNS Query**
+  - DNS client has to work itself to get the DNS resolution
+  - DNS client keep sending DNS query to subsequent DNS server based on referral answer
+  - DNS client receives a referral answer or error msg
+  - Burden is on DNS client

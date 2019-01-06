@@ -64,3 +64,15 @@ Explaining `www.customer.support.microsoft.com.` (the last dot (`.`) will be ass
 - `in-addr` for ipv4 addresses is the `second level DNS` responsible to provide definite response to RDNS query
 - `ipv6` DNS is ipv6 counter part of `in-addr` DNS
 - Reverse DNS is used in `troubleshooting/traceroute` commands etc.
+
+#### Notes:
+
+1. DNS System is hierarchical and decentralized, root and top level DNS are under central authority called `IANA`
+2. Second level and below DNS servers are under the authority of respective organization
+3. FHDNS is also called `DNS Resolver`
+4. DNS Resolver and our own system caches the recent DNS resolutions to speed up future requests
+5. Recursive DNS Query is returned with `definite response`
+6. Iterative DNS Query is returned by the `referral response`
+7. DNS Servers are replicated at multiple geographical locations
+8. `arpa` TLD DNS Server is responsible for IP to domain name resolution
+9. DNS System is like an `internet phone book`

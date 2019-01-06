@@ -32,3 +32,14 @@ Explaining `www.customer.support.microsoft.com.` (the last dot (`.`) will be ass
 - `.arpa` - Used for Reverse DNS
 - `.org` - for Non-Profit Organzations
 - `.net` - Internet Technologies
+
+#### First Hop DNS Servers (DNS Resolver)
+
+- Our computer is assigned the address of First Hop DNS Server - Either statically/manually configured Or Dynamically obtained from `DHCP` servers
+- Our computers always first ask `FH DNS` server to obtain the IP address of a domain name of a website we are trying to access
+- If FH DNS has the ip address of the host server which host the website it returns the address to our computer, else, it query the root DNS server on our behalf for the website's IP address
+- FH DNS is also called `DNS Resolver`
+- FH DNS server caches the recently accessed website's ip address in its local DNS cache
+- FH DNS server is shared by several users
+- Our computer also have its own local DNS Cache
+- 

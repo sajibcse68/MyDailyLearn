@@ -12,7 +12,7 @@
 - The DNS at the leaves of the tree contains the record (IPs) of the Servers hosting actual website/service
 
 #### Website's Domain Name
-Explaining `www.customer.support.microsoft.com.`
+Explaining `www.customer.support.microsoft.com.` (the last dot (`.`) will be assigned automatically)
 
 - `.` represent root server
 - `.com` represent TLDs  (Top Level Domain)
@@ -20,4 +20,15 @@ Explaining `www.customer.support.microsoft.com.`
 - `.support` is Microsoft's sub DNS Server
 - `.customer` Microsoft's server which is hosting the actual website (www.services). It is not a DNS
 
+#### What is the Fully Qualified Domain Name (FQDN)?
 
+- FQDN = Host Name + Domain Name
+
+#### Top Level DNS Servers Classification
+
+- `.edu` - Educational Institution
+- `.com` - Commercial Orgnization
+- `.in` - India, for country specific domain, e.g. `.bd`
+- `.arpa` - Used for Reverse DNS
+- `.org` - for Non-Profit Organzations
+- `.net` - Internet Technologies

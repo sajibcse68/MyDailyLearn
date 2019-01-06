@@ -55,3 +55,12 @@ Explaining `www.customer.support.microsoft.com.` (the last dot (`.`) will be ass
   - DNS client keep sending DNS query to subsequent DNS server based on referral answer
   - DNS client receives a referral answer or error msg
   - Burden is on DNS client
+
+#### What is `Reverse DNS Query`
+
+- Reverse DNS lookup is opposite of normal DNS lookup
+- Reverse DNS lookup query can be both - Iterative or Recursive
+- `arpa` is TLD server responsible for handling all RDNS queries
+- `in-addr` for ipv4 addresses is the `second level DNS` responsible to provide definite response to RDNS query
+- `ipv6` DNS is ipv6 counter part of `in-addr` DNS
+- Reverse DNS is used in `troubleshooting/traceroute` commands etc.

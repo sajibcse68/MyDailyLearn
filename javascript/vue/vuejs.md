@@ -1039,3 +1039,14 @@ v-bind:title                -> :title
   - `(returns)` Virtual DOM --- (diffed against Old Virtual DOM) DOM Updates
   - `(generates)` Actual DOM --- Actual DOM
 
+#### Virtual DOM
+(Essentially) A lightweight JavaScript data format to represent what the actual DOM should look like at `a given point in time`.
+
+- Actual DOM
+  - document.createElement('div')
+  - "[object HTMLDivElement]" --> Browser Native Object (expensive)
+- Virtual DOM
+  - vm.$createElement('div')
+  - { tag: 'div', data: { attrs" {}, ... }, children: [] } --> Plain JavaScript Object (cheap)
+
+Another benefits: Decouples rendering login from the actual DOM - enables rendering capabilities in non-browser environments, e.g. server-side and native mobile rendering.

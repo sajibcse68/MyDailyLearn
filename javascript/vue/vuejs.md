@@ -168,7 +168,6 @@ export default {
 </script>
 ```
 
-
 #### Disable re-rendering with `v-once`
 
 ```js
@@ -924,7 +923,6 @@ const router = new VueRouter({
   });
 ```
 
-
 #### Toggling similar elements
 
 Vue elements will reuse elements that have the same tag name when using `v-if` on them.
@@ -1032,3 +1030,12 @@ v-bind:title                -> :title
 ```
 
 **Ref:** https://github.com/sajibcse68/compare-vue
+
+
+#### Initial Render
+
+- Template
+  - `(Compiled into)` Render Function --- (returns) New Virtual DOM
+  - `(returns)` Virtual DOM --- (diffed against Old Virtual DOM) DOM Updates
+  - `(generates)` Actual DOM --- Actual DOM
+

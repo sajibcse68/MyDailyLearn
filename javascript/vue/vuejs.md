@@ -168,7 +168,6 @@ export default {
 </script>
 ```
 
-
 #### Disable re-rendering with `v-once`
 
 ```js
@@ -924,7 +923,6 @@ const router = new VueRouter({
   });
 ```
 
-
 #### Toggling similar elements
 
 Vue elements will reuse elements that have the same tag name when using `v-if` on them.
@@ -1010,6 +1008,19 @@ Assuming, we are navigating from `/` to `/contact`:
 
 - `{{ ... }}` is called `Interpolation` or `String Interpolation`
 
+
+#### Vue Cheat Sheets 
+
+<img src="../../images/vuejs-cheatsheet.png" alt="vuejs-cheatsheet" width="400px"/>
+
+[Reference](https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a)
+
+#### Vuex Cheat Sheets
+
+<img src="../../images/vuex-cheatsheet.png" alt="vuex-cheatsheet" width="400px"/>
+
+[Reference](https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a)
+
 #### **Shortcuts:**
 
 ```
@@ -1019,3 +1030,12 @@ v-bind:title                -> :title
 ```
 
 **Ref:** https://github.com/sajibcse68/compare-vue
+
+
+#### Initial Render
+
+- Template
+  - `(Compiled into)` Render Function --- (returns) New Virtual DOM
+  - `(returns)` Virtual DOM --- (diffed against Old Virtual DOM) DOM Updates
+  - `(generates)` Actual DOM --- Actual DOM
+

@@ -40,18 +40,23 @@ So, in production code we should use `Name Function` always.
 
 #### Explain the difference on the usage of following -
   
-  ```
-  function foo() {
-    // I am known as a definition or statement
-  }
-  ```
+```js
+function foo() {
+  // I am known as a definition or statement
+}
+```
   
-  ```
-  var foo = function() {
-    // i am an expression, i resolve to a value, even if just 'undefined'
-    // expression = MDN - an expression is any valid unit of code that resolves to a value
-  }
-  ```
+```js
+var foo = function() {
+  // i am an expression, i resolve to a value, even if just 'undefined'
+  // expression = MDN - an expression is any valid unit of code that resolves to a value
+}
+```
+
+#### What is `Factory Function`?
+
+Any function that returns a `new object` which is not a Constructor function (not called with `new` keyword).
+
 #### Difference between a variable that is: null, undefined, or undeclared
 - Undeclared: never used/defined before
   const bar = foo + 1;
@@ -59,20 +64,19 @@ So, in production code we should use `Name Function` always.
   console.log(typeof bar); // undeclared, but also returns "undefined"
   
 - Undefined:
-    - variable declared but no defined value (not initialized)
-    - object/array exists but nothing at that key/index
-    - function exists but doesn't return anything
-    - falsy
-  
-    let foo;
-    const bar = foo;  // foo is undefined
+  - variable declared but no defined value (not initialized)
+  - object/array exists but nothing at that key/index
+  - function exists but doesn't return anything
+  - falsy
 
-    
-    console.log(typeof foo); // "undefined" as a string
-    console.log(foo === undefined) // true boolean
-
-    const baz = 'undefined';
-     console.log(baz === undefined); // false. Hooray, I guess
+    ```js
+      let foo;
+      const bar = foo;  // foo is undefined
+      console.log(typeof foo); // "undefined" as a string
+      console.log(foo === undefined) // true boolean
+      const baz = 'undefined';
+      console.log(baz === undefined); // false. Hooray, I guess
+    ```
 
 - null:
   - null has a value. It's value is null
@@ -80,9 +84,10 @@ So, in production code we should use `Name Function` always.
   - not zero, not an empty string/object/array
   - falsy
   
-  let foo = null;
-  console.log(foo === null)  // true boolean
-
+  ```js
+    let foo = null;
+    console.log(foo === null)  // true boolean
+  ```
 #### What is the two conditions of being a `Module`?
 
 1. There must be an outer enclosing function that executes at least one.

@@ -94,6 +94,14 @@ Any function that returns a `new object` which is not a Constructor function (no
 
 The `get` syntax **binds an object property to a function** that will be called when that property is looked up.
 
+**Note:**
+
+- It can have an identifier which is either a number or a string
+- It must have exactly zero parameters
+- It must not appear in an object literal with another `get` or with a data entry for the same property. e.g. `{ get x() }, get x() {})` and `{ x: ..., get x() {}}` are forbidden.
+
+**Examples:**
+
 - Defining a getter on new objects in object initializers
 
   ```js

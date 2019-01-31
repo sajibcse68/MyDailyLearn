@@ -53,7 +53,7 @@ function getMysteryNumber() {         | function getMysteryNumber() {
   }                                   |   chooseMystery = function() {
   return chooseMystery();             |     return 12;
                                       |   }
-  var chooseMystery = function() {    |    return chooseMystery();        // return 12;
+  var chooseMystery = function() {    |   return chooseMystery();        // return 12;
     return 7;                         |   chooseMystery = function() {  // this section is unreachable
   }                                   |     return 7;                   // because it is below return statement
 }                                     |   }
@@ -61,6 +61,7 @@ function getMysteryNumber() {         | function getMysteryNumber() {
 ```
 
 ##### Check if `return` statement is at the top
+
 ```js                                 | // loads look like
 function getMysteryNumber() {         | function getMysteryNumber() {
   return chooseMystery();             |
@@ -213,17 +214,14 @@ function foo(bar) {
 foo("bar");
 ```
 
-**Important:**
+**Note**
+
 - Just like `var`, `let/const` declarations are hoisted to the top. Unlike `var` which is initialized as `undefined`, the `let` keyword is not initialized. So if we try to use a `let` variable before declaration, we'll get a **Reference Error**.
 
 - The variables declared with `let / const` only get initialized when the `let/const/class` statement is evaluated, everything before (above) that is called the temporal `Dead Zone`.
 
-
 [Ref-1](https://dev.to/sarah_chima/var-let-and-const--whats-the-difference-69e)
 [Ref-2](https://stackoverflow.com/a/31222689/4133798)
-
-
-
 
 #### Why `Hoisting` is important?
 

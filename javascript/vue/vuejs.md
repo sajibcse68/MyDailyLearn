@@ -4,11 +4,15 @@ A progressive, incrementally-adoptable JavaScript framework for building UI on t
 #### Installing
 
 ```sh
-$ npm install -g vue-cli         # install cli
-$ npm install -g vue             # install vue globally
+$ yarn global add @vue/cli         # install cli
+Or,
+$ npm install -g @vue/cli          # install cli
+$ vue -V                           # see cli version, e.g. 3.x
+
+$ npm install -g vue               # install vue globally
 
 # Create and run an app
-$ vue init webpack compare-vue   # create a app called 'compare-vue'
+$ vue create <project-name>      # create a project
 $ npm run dev                    # run the app, url: localhost:8080
 
 $ npm run build                  # compressed/minified files
@@ -23,13 +27,14 @@ $ npm run build                  # compressed/minified files
 - **watch:** Execute code upon data changes
 
 
-#### Key sentences
+#### Key Sentences
 
 - Components extends the Vue instance
 
 
 #### For loop example
-```
+
+```html
 <div class="column is-one-third" v-for="(faq, index) of faqs" :key='index'>
   <div class="card">
     <div class="card-content">
@@ -40,7 +45,7 @@ $ npm run build                  # compressed/minified files
 </div>
 ```
 
-```
+```html
 <!-- v-for and v-text directives -->
 
 <li v-for="faq in faqs" v-text="name"></li>
@@ -81,9 +86,91 @@ $ npm run build                  # compressed/minified files
   }
 </script>
 
+#### Dynamic Components:
+
+- We can use `<component>` to render dynamic components.
+
+```html
+<template>
+  <div>
+    <button @click="selectedComp = 'Comp1'">Component 1</button>
+    <button @click="selectedComp = 'Comp2'">Component 2</button>
+    <button @click="selectedComp = 'Comp3'">Component 3</button>
+
+    <component :is="selectedComp">
+      <p>Default Content</p>
+    </component>
+  </div>
+</template>
+```
+
+```js
+<script>
+import Comp1 from './Comp1.vue'
+import Comp2 from './Comp2.vue'
+import Comp3 from './Comp3.vue'
+
+export default {
+  data: {
+    return {
+      selectedComp: 'Comp1',
+    }
+  }
+  components: {
+    'comp1': Comp1,
+    'comp2': Comp2,
+    'comp3': Comp3,
+  }
+}
+</script>
+```
+
+
+#### Prevent destroying components when rendering Dynamic components:
+
+- we can use `<keep-alive>` to prevent destroying a component.
+- Useful two lifecycle hooks: `Activated()` & `Deactivated()`.
+
+```html
+<template>
+  <div>
+    <button @click="selectedComp = 'Comp1'">Component 1</button>
+    <button @click="selectedComp = 'Comp2'">Component 2</button>
+    <button @click="selectedComp = 'Comp3'">Component 3</button>
+
+    <keep-alive>
+      <component :is="selectedComp">
+        <p>Default Content</p>
+      </component>
+    </keep-alive>
+  </div>
+</template>
+```
+
+```js
+<script>
+import Comp1 from './Comp1.vue'
+import Comp2 from './Comp2.vue'
+import Comp3 from './Comp3.vue'
+
+export default {
+  data: {
+    return {
+      selectedComp: 'Comp1',
+    }
+  }
+  components: {
+    'comp1': Comp1,
+    'comp2': Comp2,
+    'comp3': Comp3,
+  }
+}
+</script>
+```
+
 #### Disable re-rendering with `v-once`
 
-```
+```js
 <template>
   <div>
     <h1 v-once>{{ title }}</h1>
@@ -713,7 +800,7 @@ new Vue({
   <p>Default slot</p>
 
 
- <!-- we can use interpolation also -->
+<!-- we can use interpolation also -->
 </app-child>
 
 </template>
@@ -807,8 +894,132 @@ const router = new VueRouter({
 
 #### Vuex
 
-- Mutation's methods always run synchronous tasks
-- Need to use Action's methods to run asynchronous tasks
+- MUTATIONS:
+  - methods that changes the state with a minimum amount of logic.
+  - must be synchronous
+- ACTIONS:
+  - set value in state (committing one or more mutations)
+  - set and get value using a rest api
+  - can be asynchronous
+- GETTERS:
+  - get values from state
+  - transforming state values if required (similar as computed property of a Component)
+
+#### Service worker caching config (Progressive Web App)
+```
+  // service worker caching
+  new SWPrecacheWebpackPlugin({
+    cacheId: 'my-vue-app',
+    filename: 'service-worker.js',
+    staticFileGlobs: ['dist/**/*.{js,html,css}'],
+    runtimeCaching: [
+      {
+        urlPattern: /^http:\/\/res\.cloudinary\.com\//,
+        handler: 'cacheFirst'
+      }
+    ],
+    minify: true,
+    stripPrefix: 'dist/'
+  });
+```
+
+#### Toggling similar elements
+
+Vue elements will reuse elements that have the same tag name when using `v-if` on them.
+
+
+```html
+<template>
+<div id="app">
+  <div v-if="isUsername">
+    <Label>Username</Label>
+    <input />
+  </div>
+  <div v-else>
+    <Label>Email</Label>
+    <input />
+  </div>
+
+  <button @click="toggle"> Toggle </button>
+</div>
+</template>
+```
+```js
+<script>
+new Vue({
+  el: "#app",
+  data: {
+    isUsername: true
+  },
+  methods: {
+    toggle() {
+      this.isUsername = !this.isUsername
+    }
+  }
+})
+</script>
+```
+here `<input />` element will not be replaced.
+
+To solve this we just need to add a key to each of them so Vue knows they are distinct element:
+
+```html
+div id="app">
+  <div v-if="isUsername" key="username"> <!-- key="username" -->
+    <Label>Username</Label>
+    <input />
+  </div>
+  <div v-else key="email"> <!-- key="email" -->
+    <Label>Email</Label>
+    <input />
+  </div>
+  
+  <button @click="toggle"> Toggle </button>
+</div>
+```
+
+#### Vue Router has 3 types of gurards:
+
+1. Global guards (on the instance)
+  - These are called `each time the URL changes`
+  - Guards: `beforeEach`, `beforeResolve`, `afterEach`
+2. Route guards (on router definition)
+  - These are `only called when the associated ROUTE is matched`
+  - Guards: `beforeEnter`
+3. Route Component guards
+  - These are `only called when a ROUTE COMPONENT is used/unused`
+  - Guards: `beforeRouterEnter`, `beforeRouterUpdate`, `beforeRouterLeave`
+
+**NOTE:** All guards except `afterEach` are `asynchronous`. They are called in sequence, therefore, you need to explicitly call the `next()` methods to tell the router that we are done and that he can continue the sequence. This is also called `middleware pattern`.
+
+- When to use each of them??
+
+Assuming, we are navigating from `/` to `/contact`:
+
+1. `beforeRouteLeave --` called on the `/` route component
+2. `beforeEach --` called `globally` when a new navigation stars
+3. `beforeEnter --` called when `/contact` route matches
+4. `beforeRouteEnter --` called when `/contact` route component matches
+5. `beforeResolve --` called `globally` when route component guards are done
+6.  `afterEach --` called `globally` when everything is resolved
+
+
+#### Mixin
+
+- `{{ ... }}` is called `Interpolation` or `String Interpolation`
+
+
+#### Vue Cheat Sheets 
+
+<img src="../../images/vuejs-cheatsheet.png" alt="vuejs-cheatsheet" width="400px"/>
+
+[Reference](https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a)
+
+#### Vuex Cheat Sheets
+
+<img src="../../images/vuex-cheatsheet.png" alt="vuex-cheatsheet" width="400px"/>
+
+[Reference](https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a)
 
 #### **Shortcuts:**
 
@@ -819,3 +1030,12 @@ v-bind:title                -> :title
 ```
 
 **Ref:** https://github.com/sajibcse68/compare-vue
+
+
+#### Initial Render
+
+- Template
+  - `(Compiled into)` Render Function --- (returns) New Virtual DOM
+  - `(returns)` Virtual DOM --- (diffed against Old Virtual DOM) DOM Updates
+  - `(generates)` Actual DOM --- Actual DOM
+

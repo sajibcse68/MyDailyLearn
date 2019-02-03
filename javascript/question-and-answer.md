@@ -369,6 +369,90 @@ All of the above are falsy values so they convert to false.
 
 [Ref](https://codeburst.io/understanding-null-undefined-and-nan-b603cb74b44c)
 
+#### Implement an `Event Emitter` that supports standard operations
+
+Using `ES2015` classes:
+
+```js
+class EventEmitter {
+  constructor() {
+    this.events = {};
+  }
+  on(event, listener) {
+    if (typeof this.events[event] !== 'object') {
+      this.events[event] = [];
+    }
+    this.events[event].push(listener);
+    return () => this.off(event, listener);
+  }
+  off(event, listener) {
+    if (typeof this.events[event] === 'object') {
+      const idx = this.events[event].indexOf(listener);
+      if (idx > -1) {
+        this.events[event].splice(idx, 1);
+      }
+    }
+  }
+  emit(event, ...args) {
+    if (typeof this.events[event] === 'object') {
+      this.events[event].forEach(listener => listener.apply(this, args));
+    }
+  }
+  once(event, listener) {
+    const remove = this.on(event, (...args) => {
+      // tricky, think how it's working!
+      remove();
+      listener.apply(this, args);
+    });
+  }
+}
+```
+
+Using `plain prototype` with factory function
+
+```js
+const anEventEmitter = {
+  events: {},
+  on(event, listener) {
+    if (this.events[event] !== 'object') {
+      this.events[event] = [];
+    }
+    this.events[event].push(listener);
+
+    return () => this.off(event, listener);
+  }
+
+  off(event, listener) {
+    if(this.events[event] === 'object') {
+      const idx = this.events[event].indexOf(listener);
+      if (idx > -1) {
+        this.events[event].splice(idx, 1);
+      }
+    }
+  }
+
+  emit(event, ...args) {
+    if (this.events[event] === 'object') {
+      this.events[event].forEach(listener => listener.apply(this, args));
+    }
+  }
+
+  once(event, listener) {
+    const remove = this.on(event, (...args) => {
+      remove();
+      listener.apply(this, args);
+    });
+  }
+};
+
+const EventEmitter = () => ({
+  __proto__: anEventEmitter,
+  events: {}
+})
+```
+
+[Ref](https://gist.github.com/mudge/5830382#gistcomment-2623252)
+
 #### How to write optimized JavaScript
 
 1. **Order of object properties:** always instantiate our object properties in the same order so that hidden classes, and subsequently optimized code, can be shared.

@@ -202,6 +202,9 @@ $ ps wwaux | grep postg
 # See ip address
 $ ip addr
 
+# change password
+$ sudo passwd
+
 # Give sudo password with command in a line
 $ echo 'Hello' | sudo -S apt-get update
 

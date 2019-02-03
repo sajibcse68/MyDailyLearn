@@ -40,48 +40,130 @@ So, in production code we should use `Name Function` always.
 
 #### Explain the difference on the usage of following -
   
-  ```
-  function foo() {
-    // I am known as a definition or statement
-  }
-  ```
+```js
+function foo() {
+  // I am known as a definition or statement
+}
+```
   
-  ```
-  var foo = function() {
-    // i am an expression, i resolve to a value, even if just 'undefined'
-    // expression = MDN - an expression is any valid unit of code that resolves to a value
-  }
-  ```
+```js
+var foo = function() {
+  // i am an expression, i resolve to a value, even if just 'undefined'
+  // expression = MDN - an expression is any valid unit of code that resolves to a value
+}
+```
+
+#### What is `Factory Function`?
+
+Any function that returns a `new object` which is not a Constructor function (not called with `new` keyword).
+
 #### Difference between a variable that is: null, undefined, or undeclared
+
 - Undeclared: never used/defined before
   const bar = foo + 1;
   
   console.log(typeof bar); // undeclared, but also returns "undefined"
   
 - Undefined:
-    - variable declared but no defined value (not initialized)
-    - object/array exists but nothing at that key/index
-    - function exists but doesn't return anything
-    - falsy
-  
-    let foo;
-    const bar = foo;  // foo is undefined
+  - variable declared but no defined value (not initialized)
+  - object/array exists but nothing at that key/index
+  - function exists but doesn't return anything
+  - falsy
 
-    
-    console.log(typeof foo); // "undefined" as a string
-    console.log(foo === undefined) // true boolean
-
-    const baz = 'undefined';
-     console.log(baz === undefined); // false. Hooray, I guess
+    ```js
+      let foo;
+      const bar = foo;  // foo is undefined
+      console.log(typeof foo); // "undefined" as a string
+      console.log(foo === undefined) // true boolean
+      const baz = 'undefined';
+      console.log(baz === undefined); // false. Hooray, I guess
+    ```
 
 - null:
   - null has a value. It's value is null
   - null is a "nothing" value
   - not zero, not an empty string/object/array
   - falsy
-  
-  let foo = null;
-  console.log(foo === null)  // true boolean
+
+  ```js
+    let foo = null;
+    console.log(foo === null)  // true boolean
+  ```
+
+#### What does JavaScript `get` or `getter` keyword do?
+
+The `get` syntax **binds an object property to a function** that will be called when that property is looked up.
+
+**Note:**
+
+- It can have an identifier which is either a number or a string
+- It must have exactly zero parameters
+- It must not appear in an object literal with another `get` or with a data entry for the same property. e.g. `{ get x() }, get x() {})` and `{ x: ..., get x() {}}` are forbidden.
+
+**Examples:**
+
+- Defining a getter on new objects in object initializers
+
+  ```js
+  const obj = {
+    log: ['foo', 'bar'],
+    get latest() {
+      if (this.log.length === 0) return undefined;
+      return this.log[this.log.length - 1];
+    }
+  }
+  console.log(obj.latest); // "bar"
+
+    ```
+
+- Deleting a getter using the `delete` operator
+
+  ```js
+  delete obj.latest;
+  ```
+
+- Defining a getter on existing objects using `defineProperty`.
+
+  ```js
+  var o = {a: 0};
+  Object.defineProperty(o, 'b', {get: function() { return this.a + 1; }})
+
+  console.log(o.b); // runs the getter, which yeilds a + 1
+  ```
+
+
+- Using a `computed` property name
+
+  ```js
+  const name = 'foo';
+
+  const o = {
+    get[name]() { return 'bar' }
+  };
+
+  console.log(o.foo); // "bar"
+  ```
+
+
+- **`Get vs definePropery()`**
+
+  When using `get` the property will be defined on the property of the object while using `Object.defineProperty()` the property will be defined on the instance it is applied to.
+
+  ```js
+  class Foo {
+    get hello() {
+      return 'world';
+    }
+  }
+
+  const o = new Foo();
+  console.log(o.hello); // "world"
+
+  console.log(Object.getOwnPropertyDescriptor(o, 'hello')); // undefined
+
+  console.log(Object.getOwnPropertyDescriptor(Object.getPrototypeOf(o), 'hello'));
+  // // { configurable: true, enumerable: false, get: function get hello() { return 'world'; }, set: undefined }
+  ```
 
 #### What is the two conditions of being a `Module`?
 

@@ -55,11 +55,9 @@ a1.getName(); // sajib
   // TypeError: A.staticMethod is not a function
 ```
 
-#### Two mechanism always exists in JavaScript codes -- Lexical Scopes & Prototype Chain:
+#### Two mechanism always exists in JavaScript codes -- Lexical Scopes & Prototype Chain
 
 <img src="../images/lexical-scope-and-prototypes-chain.png" alt="lexical-scope-and-prototypes-chain" width="400px"/>
-
-
 
 #### Object Oriented in JavaScript
 
@@ -131,7 +129,7 @@ console.log(d.hasOwnProperty);
 // undefined, because d doesn't inherit from Object.prototype
 ```
 
-#### New object using `Class` syntactical sugar:
+#### New object using `class` syntactical sugar
 
 ```js
 class Shape {
@@ -193,7 +191,7 @@ __proto__ === Object.prototype
 |
 ob
 
-#### Prototype `Shadowing`:
+#### Prototype `Shadowing`
 
 ```js
 function User(name) {

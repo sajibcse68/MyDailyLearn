@@ -28,8 +28,27 @@ function logIt(){         |
 logIt();                  |
 ```
 
-##### First, memory is set aside for all necessary variables and `declared functions`.
+#### Why `Hoisting` is important?
 
+- `Hoisting` is necessary for `Mutual Recursion`.
+- In `C` language we include `header file` (e.g. include #stdio.h), it's one kind of Hoisting
+
+```js
+a(1);     // ??, Ans: 39
+
+function a(foo) {
+  if (foo > 20) return foo;
+  return b(foo+2);
+}
+function b(foo) {
+  return c(foo) + 1;
+}
+function c(foo) {
+  return a(foo*2);
+}
+```
+
+##### First, memory is set aside for all necessary variables and `declared functions`
 ```js
 function getMysteryNumber () {   |  // loads like this
   function chooseMystery() {    |  function getMysteryNumber() {
@@ -44,7 +63,7 @@ function getMysteryNumber () {   |  // loads like this
 }                               |   }
 ```
 
-##### Function Expressions are never hoisted! They are treated as assignments.
+##### Function Expressions are never hoisted! They are treated as assignments
 
 ```js                                 | // loads look like
 function getMysteryNumber() {         | function getMysteryNumber() {
@@ -79,7 +98,7 @@ function getMysteryNumber() {         | function getMysteryNumber() {
                                         }
 ```
 
-##### Analyzing Hoisting Load Order
+##### Analyzing Hoisting Load Order I
 
 ```js
 function theBridgeOfHoistingDoom() {  | Alrighty, here’s the hoisted version. The function looks for any variables to
@@ -140,15 +159,10 @@ function theBridgeOfHoistingDoom() { |
 #### Analyzing load order II
 
 1. For all variable declarations, put the corresponding declarations at the top of the function. Assign them a value of `undefined` and maintain their order.
-
 2. Now that variable declarations have been placed at the top, remove the original declarations, but leave any associated assignments.
-
 3. Then, hoist all function declarations to immediately after your variable declarations, maintaining their order as well.
-
 4. Any function expression assignment is treated here as executable code, and does not change the load order.
-
 5. Remove any unreachable statements after the first return statement.
-
 
 ```js
 function theBridgeOfHoistingDoom() {  | Alrighty, here’s the hoisted version. The function looks for any variables to
@@ -221,24 +235,5 @@ foo("bar");
 - The variables declared with `let / const` only get initialized when the `let/const/class` statement is evaluated, everything before (above) that is called the temporal `Dead Zone`.
 
 [Ref-1](https://dev.to/sarah_chima/var-let-and-const--whats-the-difference-69e)
+
 [Ref-2](https://stackoverflow.com/a/31222689/4133798)
-
-#### Why `Hoisting` is important?
-
-- `Hoisting` is necessary for `Mutual Recursion`.
-- In `C` language we include `header file` (e.g. include #stdio.h), it's one kind of Hoisting
-
-```js
-a(1);     // ??, Ans: 39  
-
-function a(foo) {
-  if (foo > 20) return foo;
-  return b(foo+2);
-}
-function b(foo) {
-  return c(foo) + 1;
-}
-function c(foo) {
-  return a(foo*2);
-}
-```

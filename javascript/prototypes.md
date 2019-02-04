@@ -55,16 +55,13 @@ a1.getName(); // sajib
   // TypeError: A.staticMethod is not a function
 ```
 
-
 #### Two mechanism always exists in JavaScript codes -- Lexical Scopes & Prototype Chain:
 
 <img src="../images/lexical-scope-and-prototypes-chain.png" alt="lexical-scope-and-prototypes-chain" width="400px"/>
 
 
-===========
 
-Object Oriented in JavaScript
------------------------------
+#### Object Oriented in JavaScript
 
 - Common OO patterns
 - Prototype
@@ -72,7 +69,7 @@ Object Oriented in JavaScript
 
 `Every single 'object' is built by a constructor function call`
 
-#### Explanation of Prototype
+## Explanation of Prototype
 
 ```js
 function User(name) {
@@ -96,10 +93,7 @@ o1.__proto__ === User.prototype;
 o1.__proto__ === o2.__proto__;
 ```
 
-===========
-
-
-- When an inherited function is executed, the value of `this` points to the **inheriting** object, not to the `prototype object` where the function is an own property.
+#### When an inherited function is executed, the value of `this` points to the **inheriting** object, not to the `prototype object` where the function is an own property.
 
 ```js
 var ob = {
@@ -118,9 +112,7 @@ o1.a = 5;
 console.log(o1.f1()); // 5, this = o1 not ob!
 ```
 
-===========
-
-- New object using **Object.create()** (ES5)
+#### New object using **Object.create()** (ES5)
 
 ```js
 var a = {a: 1}; 
@@ -139,9 +131,7 @@ console.log(d.hasOwnProperty);
 // undefined, because d doesn't inherit from Object.prototype
 ```
 
-===========
-
-- New object using `Class` syntactical sugar:
+#### New object using `Class` syntactical sugar:
 
 ```js
 class Shape {
@@ -163,7 +153,7 @@ class Rectangle extends Shape {
 const o1 = new Rectangle(2, 3);
 ```
 
-#### similar in Object pattern:
+#### Similar in Object pattern
 
 ```js
 function Shape(h, w) {
@@ -181,9 +171,7 @@ const o1 = Object.create(Rectangle)
 console.log(o1);
 ```
 
-===========
-
-- Use `hasOwnProperty()` to know if the property exists as it's own property
+#### Use `hasOwnProperty()` to know if the property exists as it's own property
 
 ```js
 const ob = {};
@@ -205,9 +193,7 @@ __proto__ === Object.prototype
 |
 ob
 
-===========
-
-- Prototype `Shadowing`:
+#### Prototype `Shadowing`:
 
 ```js
 function User(name) {
@@ -240,9 +226,7 @@ o2 = Object.assign(o1, {a: 1});
   console.log(`Hello, I'm ${User.prototype.identify.call(this)}.`);
 ```
 
-===========
-
-- Avoid Shadowing
+#### Avoid Shadowing
 
 ```js
 function User(name) {
@@ -261,9 +245,7 @@ User.prototype.sayHello = function() {
 const o1 = new User('a1');
 ```
 
-===========
-
-- Object Linked
+#### Object Linked
 
 ```js
 function Shape(height, width) {
@@ -298,9 +280,7 @@ o1.getArea(); // 6
 o1.getArea(); // 20
 ```
 
-===========
-
-- OLOO (Object Linked to Other Object): delegated objects
+#### OLOO (Object Linked to Other Object): delegated objects
 
 ```js
 function Shape(height, width) {
@@ -332,7 +312,7 @@ const r1 = new Bar(2, 3);
 r1.getArea(); // 6
 ```
 
-#### Convert the above codes to OLOO
+## Convert the above codes to OLOO
 
 ```js
 const Shape = {
@@ -359,13 +339,11 @@ r1.getArea(); // 6
 
 ```
 
+#### Class in ES6
 
-===========
-
-- Class in ES6
-  - nicer syntax
-  - it's actually syntactical sugar, cause behind the scene prototype chain is working
-  - it has some limitations also
+- nicer syntax
+- it's actually syntactical sugar, cause behind the scene prototype chain is working
+- it has some limitations also
 
 ```js
 class Shape {
@@ -402,7 +380,7 @@ r2.getArea(); // ??
 ```
 
 
-#### Different ways to create objects and the resulting prototype chain:
+#### Different ways to create objects and the resulting prototype chain
 
 ```js
 const o = {a: 1};
@@ -480,7 +458,7 @@ obj.myname(); // myname
 [Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto#Browser_compatibility)
 
 
-#### Notes:
+#### Notes
 
 - The `__proto__` property has been standardized in the ECMAScript 2015 language specification for web browsers to ensure compatibility, so will be supported into the future. It is deprecated in favor of `Object.getPrototypeOf/Reflect.getPrototypeOf` and `Object.setPrototypeOf/Reflect.setPrototypeOf` (though still, setting the `[[Prototype]]` of an object is a slow operation that should be avoided if performance is a concern)
 
@@ -496,7 +474,7 @@ obj.myname(); // myname
 
   }
   ```
-- We have to call `super` first in constructor
+#### We have to call `super` first in constructor
   ```js
   class Foo {
     constructor(who) {

@@ -137,7 +137,7 @@ function theBridgeOfHoistingDoom() { |
 }                                    | }
 ```
 
-###### Analyzing load order II
+#### Analyzing load order II
 
 1. For all variable declarations, put the corresponding declarations at the top of the function. Assign them a value of `undefined` and maintain their order.
 
@@ -180,7 +180,7 @@ function theBridgeOfHoistingDoom() {  | Alrighty, here’s the hoisted version. 
 ```
 Answer: console.log("ERROR"); // cause ring() is not a function, it's undefined.
 
-###### Analyzing Load Order III
+#### Analyzing Load Order III
 
 ```js                                 |  // after hoisting
 var a = b();                          |  function b() {

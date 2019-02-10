@@ -1,9 +1,19 @@
-### We need two things to design
-- Eliments
+
+## What is Photoshop?
+- Adobe photoshop is a `Raster Graphic Editor`.
+- Photoshop's primary functions include-
+  - editing
+  - website design
+  - creation of elements
+  - layouts of design
+  - posters and business card
+
+### We need `two` things to design
+- Elements
   - Lines
   - Shapes
   - Colors
-  - Texttures
+  - Textures
   - Spaces
 - Equipments
 
@@ -17,13 +27,6 @@
 - Balance
 - Unity
 
-- Adobe photoshop is a Raster Graphic Editor.
-- Photoshop's primary functions include-
-  - editing
-  - website design
-  - creation of elements
-  - layouts of design
-  - posters and business card
 
 ### learning tools
 - Rectangular marquee tool(M)
@@ -37,8 +40,10 @@
 
 ### Shortcuts:
 
-`Cmd + j`: duplicate a layer 
-
+- `Cmd + j`: duplicate a layer
+- `Cmd + c`: copy layer
+- `Cmd + d`: deselect layer
+- `Cmd + v`: paste layer
 
 
 

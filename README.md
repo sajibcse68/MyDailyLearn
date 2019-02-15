@@ -112,7 +112,11 @@ Here is some important `commands` or `code snippets` on different topics that I 
   - [We have to call `super` first in constructor](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#we-have-to-call-super-first-in-constructor)
 - [**Coercion**](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/coercion.md)
   - [Explain `Coercion` in JavaScript with examples](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/coercion.md#q-explain-coercion-in-javascript)
-- [****]
+- [**Class**](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/class.md)
+  - [Public class fields](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/class.md#public-class-fields)
+  - [Private class fields](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/class.md#private-class-fields)
+  - [Public and static properties](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/class.md#public-and-static-properties)
+  - 
     
 ## [Vue](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md)
 ## [Node](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/nodejs/introduction.md)

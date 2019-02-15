@@ -10,11 +10,13 @@
 5. `this` in an arrow function
 6. `this` in an event listener
 
+---------
 
-1. **`This` In a Global Context**
+#### **1. `This` In a Global Context**
+
 When `this` is called outside of any function, in a global context, this defaults to the `window` object in the browser.
 
-2. **`This` In Object Constructor**
+#### **`2. This` In Object Constructor**
 When we create a new instance of an object with the `new` keyword, `this` refers to the instance.
 
 ```js
@@ -29,7 +31,7 @@ console.log(alice); // this.age = 10
 console.log(bob); // this.age = 20
 ```
 
-3. **`This` In An Object Method**
+#### **`3. This` In An Object Method**
 Methods are fancy words for functions that are associated with an object. e.g.
 
 ```js
@@ -42,7 +44,7 @@ const ob = {
 ob.sayThis(); // ob
 ```
 
-4. `This` In A Simple Function
+#### `4. This` In A Simple Function
 Inside simple functions `this` refers to `Window`. Simple functions are functions we know extremely well. Anonymous functions written in the same form are also considered
 simple functions.
 
@@ -75,6 +77,7 @@ const o = {
     }
 }
 ```
+
 **Unfortunately**, the code above results in an error. The error occurs because `this` is set to `Window` in the `setTimeout`
 methods. **`Window` does not have a `speakLeet` method**.
 
@@ -138,7 +141,7 @@ console.log(f2() === undefined);  // True
 
 `this` was not defined, so it's remained **`undefined`**.
 
-5. `This` is in Arrow Functions
+#### `5. This` is in Arrow Function
 In a arrow functions `this` is always the same as `this` around it (in its immediate scope, also called lexical scope).
 So, the `this` context stays as the object, not `Window`.
 
@@ -207,7 +210,7 @@ console.log(adder.add(1));  // output: 2
 console.log(adder.addThruCall(1));  // output: 2
 
 
-6. **This** In Event Listeners
+#### **6. This** In Event Listeners
 `this`  is set the element that fired the event in an event listener.
 
 ```js
@@ -219,10 +222,10 @@ button.addEventListener('click', function() {
 ```
 
 
+-----
 
-===========================================
+#### Default Rules
 
-#### Default rules:
 - if we are in `Strict` mode then `this = undefined` otherwise `this = global object` 
 
 ```js

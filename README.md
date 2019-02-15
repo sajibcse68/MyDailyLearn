@@ -71,7 +71,7 @@ Here is some important `commands` or `code snippets` on different topics that I 
 
 ## [Vanilla JavaScript](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/javascript.md)
 
-- [Hoisting](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/hoisting.md)
+- [**Hoisting**](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/hoisting.md)
   - [Explain `Hoisting` in JavaScript](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/hoisting.md#explain-hoisting-in-javascript)
   - [Why `Hoisting` Important?](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/hoisting.md#why-hoisting-is-important)
   - [First, memory is set aside for all necessary variables and declared functions](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/hoisting.md#first-memory-is-set-aside-for-all-necessary-variables-and-declared-functions)
@@ -81,11 +81,11 @@ Here is some important `commands` or `code snippets` on different topics that I 
   - [Analyzing load order II](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/hoisting.md#analyzing-load-order-ii)
   - [Analyzing Load Order III](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/hoisting.md#analyzing-load-order-iii)
   - [The variables declared with `let` or `const` are hoisted but stay `uninitialised`](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/hoisting.md#the-variables-declared-with-let-or-const-are-hoisted-but-stay-uninitialised)
-- [Closure](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/closure.md)
+- [**Closure**](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/closure.md)
   - [Closures and References](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/closure.md)
   - [Closures Help in Function `Construction Zones`](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/closure.md#closures-help-in-function-construction-zones)
   - [Loops with Closure: A cautionary Tale](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/closure.md#loops-with-closure-a-cautionary-tale-be-a-closure-master)
-- [Prototypes and Inheritance](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md)
+- [**Prototypes and Inheritance**](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md)
   - [Prototypes!](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#prototypes)
   - [What is Constructor call?](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#what-is-a-constructor-call)
   - [What is `[[Prototype]]` and where does it come from?](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#what-is-prototype-and-where-does-it-come-from)
@@ -110,6 +110,9 @@ Here is some important `commands` or `code snippets` on different topics that I 
   - [Dig into some examples from MDN](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#dig-into-some-examples-from-mdn)
   - [Notes](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#notes)
   - [We have to call `super` first in constructor](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#we-have-to-call-super-first-in-constructor)
+- [**Coercion**](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/coercion.md)
+  - [Explain `Coercion` in JavaScript with examples](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/coercion.md#q-explain-coercion-in-javascript)
+- [****]
     
 ## [Vue](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md)
 ## [Node](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/nodejs/introduction.md)

@@ -40,6 +40,11 @@
 
 ### Shortcuts:
 
+- `Cmd + t`: free transform
+- `t`: type tool
+- `u`: line tool
+- `b`: brush tool
+
 - `Cmd + j`: duplicate a layer
 - `Cmd + c`: copy layer
 - `Cmd + d`: deselect layer

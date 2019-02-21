@@ -44,6 +44,16 @@
 - `t`: type tool
 - `u`: line tool
 - `b`: brush tool
+- `Cmd + ]`: move the selected layer to one layer down
+- `Cmd + Shift + ]`: move the selected layer to very fast
+- `Cmd + [`: move the selected layer to one layer up
+- `Cmd + Shift + [`: move the selected layer to very last
+- `Cmd + create new layer btn`: create new layer to the down of selected layer
+- `Cmd + Shift + U`: make a layer black-and-white
+- `Shift + tab`: make the workspace big hiding the various tools
+- Press `Alt` to pick a color when `brush` tool is selected
+- `Alt + <- ` to decrease the spacing between alphabet (type tool selected)
+- `Alt + -> ` to increase the spacing between alphabet (type tool selected)
 
 - `Cmd + j`: duplicate a layer
 - `Cmd + c`: copy layer

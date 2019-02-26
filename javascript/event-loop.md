@@ -9,7 +9,7 @@
 
 [Philip Roberts Video](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
 
-- Example 1:
+#### Example 1:
 
 ```js
 function main(){
@@ -28,7 +28,7 @@ main();
 
 [Ref](https://medium.com/front-end-hacking/javascript-event-loop-explained-4cd26af121d4)
 
-- Example 2:
+#### Example 2:
 
 ```js
 function main(){
@@ -52,7 +52,7 @@ function runWhileLoopForNSeconds(sec){
 
 ```
 
-- Example 3: Callback hell
+#### Example 3: Callback hell
 ```js
 doA(() => {           |   first(() => {
   doB();              |     third();

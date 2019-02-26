@@ -131,6 +131,17 @@ Here is some important `commands` or `code snippets` on different topics that I 
   - [Hard Binding of `this`](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/this-keyword.md#hard-binding)
   - [Priority of `this` binding (top -> bottom: hight -> low)](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/this-keyword.md#priority-of-this-binding-top---bottom-high---low)
 
+- [**Immediately Invoked Function Expression (IIFE)**](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/IIFE.md)
+
+- [**Event Loop**](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/event-loop.md)
+  - [Underesting Asynchronous JavaScript --- Event Loop](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/event-loop.md#understanding-asynchronous-javascriptthe-event-loop)
+  - [Example 1](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/event-loop.md#example-1)
+  - [Example 2](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/event-loop.md#example-2)
+  - [Example 3: Callback Hell](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/event-loop.md#example-3-callback-hell)
+
+- [ JavaScript `Reactivity` Using `Object.defineProperty()`](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/js-reactivity-visuality.js)
+  
+
 
 
 ## [Vue](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md)

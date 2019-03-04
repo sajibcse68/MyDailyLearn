@@ -382,6 +382,19 @@ Normally vue render the variable as text (it's safe for security). If we need to
 </script>
 ```
 
+#### Two way binding from Child to Parent
+
+Vue.js has introduced a `.Sync` modifier to `v-bind` which update the Parent data from Child easily (from **>= 2.3.0**). Just emit the `update` event.
+
+```html
+<!-- parent -->
+<child-component :inputData.sync="parentData"></child-component>
+
+<!-- child -->
+<input>type="text" v-model="inputData" @keyup="$emit('update:inputData', inputData);"</input>
+```
+
+
 #### Reacting to changing with Computed properties
 
 ```

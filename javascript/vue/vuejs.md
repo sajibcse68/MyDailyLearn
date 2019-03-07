@@ -1097,3 +1097,46 @@ chainWebpack: config => {
 ```
 
 [Ref](https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only)
+
+#### Compile templates in client manually!
+
+Say, we need to generate the `Breadcrumb` manually using `<router-link>` (if we use anchor `<a>` element directlly then HTML5/Vue History mode does not work). So, we need to Compile it manually inside JS.
+
+```html
+<template>
+  <component :is="breadcrumb"></component>
+</template>
+```
+
+```js
+import Vue from "vue";
+
+export default {
+  data() {
+    return {
+      breadcrumb: null
+    }
+  },
+  computed: {
+    ...mapGetters(['beadcrumb']) // coming from vuux
+    /**
+    * <div><li><router-link to="/dashboard"><i class="fa fa-server"></i><span>dashboard</span></router-link>
+    * </li><li><router-link to="/dashboard/product"><span>product</span></router-link></li></div>
+    **/
+  },
+  methods: {
+    renderBreadcrumb() {
+      this.breadcrumb = Vue.compile(this.breadcrumb); // compile manually & unpdate 'breadcrumb' data
+    }
+  },
+  mounted() {
+    this.renderBreadcrumb();
+  },
+  watch: {
+    // it will trigger when 'breadcrumb' changes
+    breadcrumb() {
+      this.renderBreadcrumb();
+    }
+  }
+}
+```

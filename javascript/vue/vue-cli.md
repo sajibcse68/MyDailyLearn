@@ -12,5 +12,6 @@ $ yarn global remove vue-cli
 #### Install Prototyping
 
 ```js
+// install vue cli-service-global
 $ npm install -g @vue/cli-service-global
 ```

@@ -26,11 +26,9 @@ $ npm run build                  # compressed/minified files
 - **computed:** Dependent Properties
 - **watch:** Execute code upon data changes
 
-
 #### Key Sentences
 
 - Components extends the Vue instance
-
 
 #### For loop example
 
@@ -55,6 +53,7 @@ $ npm run build                  # compressed/minified files
 
 - We can't use interpolation syntax `{{ }}` inside any HTML attributes, so, we need to bind by using Vue's Directives like: v-bind:title="title". See below example: 
 
+```html
 <template>
 
   <style>
@@ -85,6 +84,7 @@ $ npm run build                  # compressed/minified files
     }
   }
 </script>
+```
 
 #### Dynamic Components:
 
@@ -102,9 +102,7 @@ $ npm run build                  # compressed/minified files
     </component>
   </div>
 </template>
-```
 
-```js
 <script>
 import Comp1 from './Comp1.vue'
 import Comp2 from './Comp2.vue'
@@ -125,7 +123,6 @@ export default {
 </script>
 ```
 
-
 #### Prevent destroying components when rendering Dynamic components:
 
 - we can use `<keep-alive>` to prevent destroying a component.
@@ -145,9 +142,7 @@ export default {
     </keep-alive>
   </div>
 </template>
-```
 
-```js
 <script>
 import Comp1 from './Comp1.vue'
 import Comp2 from './Comp2.vue'
@@ -170,15 +165,15 @@ export default {
 
 #### Disable re-rendering with `v-once`
 
-```js
+```html
 <template>
   <div>
     <h1 v-once>{{ title }}</h1>
     <!-- <h1>Hello World</h1> -->
-    
+
     <p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>
     <!-- Hello changed - <a href="http://google.com">Google</a></p>  -->
-    
+
   </div>
 </template>
 
@@ -198,11 +193,12 @@ export default {
 ```
 
 #### Output raw HTML with `v-html` directives.
+
 Normally vue render the variable as text (it's safe for security). If we need to render as HTML then use `v-html`.
 
 **N.B:** It can cause bad cors attack. Use this if the source is trusty/clean. 
 
-```
+```html
 <template>
   <div>
     <p v-html="finishedLink"></p>
@@ -219,7 +215,7 @@ Normally vue render the variable as text (it's safe for security). If we need to
 
 #### Get event data from the event
 
-```
+```html
 <template>
   <div>
     <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
@@ -241,9 +237,9 @@ Normally vue render the variable as text (it's safe for security). If we need to
 
 ```
 
-#### Pass own arguments with event object 
+#### Pass own arguments with event object
 
-```
+```html
 <template>
   <div>
     <button v-on:click="increase(2, $event)">Click me</button>
@@ -266,7 +262,7 @@ Normally vue render the variable as text (it's safe for security). If we need to
 
 #### Modifying and event with event modifiers (e.g. `v-on:mousemove.stop=""`)
 
-```
+```html
 <template>
   <div>
     <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}
@@ -291,7 +287,7 @@ Normally vue render the variable as text (it's safe for security). If we need to
 
 **Alternate:**
 
-```
+```html
 <template>
   <div>
     <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}
@@ -319,11 +315,11 @@ Normally vue render the variable as text (it's safe for security). If we need to
 
 #### Listening to keyboard events
 
-```
+```html
 <template>
   <div>
-    
-    <input type="text" v-on:keyup.enter.space="alertMe"> 
+
+    <input type="text" v-on:keyup.enter.space="alertMe">
     <!-- event will be triggered for any enter/space in input field -->
 
   </div>
@@ -344,7 +340,7 @@ Normally vue render the variable as text (it's safe for security). If we need to
 
 #### Writing JavaScript code in the Template
 
-```
+```html
 <template>
   <div>
     <button v-on:click="counter++">Click me</button>
@@ -367,7 +363,7 @@ Normally vue render the variable as text (it's safe for security). If we need to
 
 #### Using Two way data binding `v-model="variable"`
 
-```
+```html
 <template>
   <div>
     <input type="text" v-model="name">
@@ -397,13 +393,13 @@ Vue.js has introduced a `.Sync` modifier to `v-bind` which update the Parent dat
 
 #### Reacting to changing with Computed properties
 
-```
+```html
 <template>
   <div id="app">
     <button v-on:click="counter++">Increase</button>
     <button v-on:click="counter--">Decrease</button>
     <button v-on:click="secondCounter++">Increase Second</button>
-    
+
     <p>Counter: {{ counter }} | {{ secondCounter }}</p>
     <p>Counter: {{ result() }} | {{ output }}</p>
   </div>
@@ -429,12 +425,11 @@ Vue.js has introduced a `.Sync` modifier to `v-bind` which update the Parent dat
     }
   }
 </script>
-
 ```
 
 - An **Alternative** to computed properties `Watching` for
 
-```
+```js
 // template same as before
 
 <script>
@@ -465,7 +460,7 @@ Vue.js has introduced a `.Sync` modifier to `v-bind` which update the Parent dat
 
 #### Dynamic styling with CSS classes
 
-```
+```html
 <template>
   <div id="app">
   <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
@@ -506,6 +501,7 @@ computed: {
 
 #### Setting styles dynamically without CSS classes
 
+```html
 <template>
 <div id="app">
   <div class="demo" :style="{ backgroundColor: color }"></div> <!-- Or, :style="{ background-color: color }" -->
@@ -530,9 +526,11 @@ computed: {
   }
 }
 </script>
+```
 
 #### Styling elements with an Array syntax
 
+```html
 <template>
 <div id="app">
   <div class="demo" :style="{ backgroundColor: color }"></div> <!-- Or, :style="{ background-color: color }" -->
@@ -558,10 +556,11 @@ computed: {
   }
 }
 </script>
+```
 
 #### Conditioning rendering with v-if/v-else
 
-```
+```html
 <template>
 <div id="app">
   <p v-if="show">if statement <span> Nested element </span></p>
@@ -576,12 +575,11 @@ data: {
   show: false
 }
 </script>
-
 ```
 
 #### Alternative of v-if using `<template>` (group html elements)
 
-```
+```html
 <template>
 <div id="app">
   <p v-if="show">if statement <span> Nested element </span></p>
@@ -602,11 +600,11 @@ data: {
 }
 </script>
 
-```  
+```
 
 #### Use v-show if we don't want to detach element from DOM (v-show adds `style="display:none"`)
 
-```
+```html
 <template>
 <div id="app">
   <p v-show="show">if statement <span> Nested element </span></p>
@@ -620,11 +618,11 @@ data: {
   show: false
 }
 </script>
-```  
+```
 
 #### Rendering lists with `v-for`
 
-```
+```html
 <div id="app">
   <ul>
     <li v-for="(ingredient, ind) in ingredients">{{ ingredient }} - {{ ind }}</li>
@@ -644,8 +642,7 @@ data: {
 
 #### Use of `v-for` with `<template>`
 
-
-```
+```html
 <div id="app">
   <ul>
 
@@ -667,7 +664,7 @@ data: {
 
 #### Looping through objects
 
-```
+```html
 <div id="app">
   <ul>
     <li v-for="person in persons">
@@ -686,7 +683,6 @@ data: {
 </script>
 ```
 
-
 #### Looping through a lists of numbers
 
 ```
@@ -701,7 +697,7 @@ data: {
 
 #### Keeping track of Elements when using `v-for` (bind `:key=""`)
 
-```
+```html
 <div id="app">
   <ul>
     <li v-for="person in persons">
@@ -723,7 +719,7 @@ data: {
 
 - If we change the by using `$refs` it changes in the DOM directly not in the Vue instance (template). So, if vue rerender the previous value will be reflected!
 
-```
+```html
 <template>
   <button @click="changeInnerText" ref="myButton">Set Ref</button>
 </template>
@@ -737,7 +733,7 @@ methods: {
 
 #### Mounting a template
 
-```
+```html
 <div id='app1'></div>
 
 var vm1 = new Vue({
@@ -754,7 +750,7 @@ document.getElementById('app1').appendChild(vm1.$el);
 
 #### VueJS Instance Lifecycle
 
-```
+```html
 <template>
   <button @click="title='Changed'">Update Title</button>
   <button @click="destroy">Destroy</button>
@@ -803,7 +799,7 @@ new Vue({
 
 #### Pass HTML content from parent to child using `<slot>`
 
-```
+```html
 // parent.vue
 
 <template>
@@ -829,7 +825,7 @@ data: () {
 </style>
 ```
 
-```
+```html
 // child.vue
 
 <template>
@@ -869,14 +865,13 @@ Hooks workflow:
 - `componentUpdated(el, binding, vnode, oldVnode)`: Once Component is Updated (with Children)
 - `unbind(el, binding, vnode)`: Once directive is Removed
 
-
 #### HTML5 History Mode
 
 - The default mode for vue-router is hash mode - it uses the URL hash to simulate a full URL so that the page won't be reloaded when the URL changes.
 
 - To get rid of the hash, we can use the router's `history mode`, which leverages the `history.pushState` API to achieve URL navigation without a page reload:
 
-```
+```js
 const router = new VueRouter({
   mode: 'history',
   routes: [...]
@@ -887,13 +882,13 @@ const router = new VueRouter({
 
 #### Difference between `v-model` and `v-bind`?
 
-```
+```html
 <input v-model="something">
 ```
 
 `v-model` is the syntactic sugar for:
 
-```
+```html
 <input
   v-bind:value="something"
   :value="something" (shorthand syntax)
@@ -903,7 +898,6 @@ const router = new VueRouter({
 ```
 
 [Ref:](https://stackoverflow.com/questions/42260233/vue-js-difference-between-v-model-and-v-bind)
-
 
 #### Vuex
 
@@ -919,7 +913,8 @@ const router = new VueRouter({
   - transforming state values if required (similar as computed property of a Component)
 
 #### Service worker caching config (Progressive Web App)
-```
+
+```js
   // service worker caching
   new SWPrecacheWebpackPlugin({
     cacheId: 'my-vue-app',
@@ -940,7 +935,6 @@ const router = new VueRouter({
 
 Vue elements will reuse elements that have the same tag name when using `v-if` on them.
 
-
 ```html
 <template>
 <div id="app">
@@ -957,7 +951,8 @@ Vue elements will reuse elements that have the same tag name when using `v-if` o
 </div>
 </template>
 ```
-```js
+
+```html
 <script>
 new Vue({
   el: "#app",
@@ -972,7 +967,8 @@ new Vue({
 })
 </script>
 ```
-here `<input />` element will not be replaced.
+
+Here, `<input />` element will not be replaced.
 
 To solve this we just need to add a key to each of them so Vue knows they are distinct element:
 
@@ -994,14 +990,19 @@ div id="app">
 #### Vue Router has 3 types of gurards:
 
 1. Global guards (on the instance)
-  - These are called `each time the URL changes`
-  - Guards: `beforeEach`, `beforeResolve`, `afterEach`
+
+- These are called `each time the URL changes`
+- Guards: `beforeEach`, `beforeResolve`, `afterEach`
+
 2. Route guards (on router definition)
-  - These are `only called when the associated ROUTE is matched`
-  - Guards: `beforeEnter`
+
+- These are `only called when the associated ROUTE is matched`
+- Guards: `beforeEnter`
+
 3. Route Component guards
-  - These are `only called when a ROUTE COMPONENT is used/unused`
-  - Guards: `beforeRouterEnter`, `beforeRouterUpdate`, `beforeRouterLeave`
+
+- These are `only called when a ROUTE COMPONENT is used/unused`
+- Guards: `beforeRouterEnter`, `beforeRouterUpdate`, `beforeRouterLeave`
 
 **NOTE:** All guards except `afterEach` are `asynchronous`. They are called in sequence, therefore, you need to explicitly call the `next()` methods to tell the router that we are done and that he can continue the sequence. This is also called `middleware pattern`.
 
@@ -1014,15 +1015,13 @@ Assuming, we are navigating from `/` to `/contact`:
 3. `beforeEnter --` called when `/contact` route matches
 4. `beforeRouteEnter --` called when `/contact` route component matches
 5. `beforeResolve --` called `globally` when route component guards are done
-6.  `afterEach --` called `globally` when everything is resolved
-
+6. `afterEach --` called `globally` when everything is resolved
 
 #### Mixin
 
 - `{{ ... }}` is called `Interpolation` or `String Interpolation`
 
-
-#### Vue Cheat Sheets 
+#### Vue Cheat Sheets
 
 <img src="../../images/vuejs-cheatsheet.png" alt="vuejs-cheatsheet" width="400px"/>
 
@@ -1036,14 +1035,13 @@ Assuming, we are navigating from `/` to `/contact`:
 
 #### **Shortcuts:**
 
-```
+```js
 v-on:click="method"         -> @click="method"
 v-bind:title                -> :title
 
 ```
 
 **Ref:** https://github.com/sajibcse68/compare-vue
-
 
 #### Initial Render
 
@@ -1053,6 +1051,7 @@ v-bind:title                -> :title
   - `(generates)` Actual DOM --- Actual DOM
 
 #### Virtual DOM
+
 (Essentially) A lightweight JavaScript data format to represent what the actual DOM should look like at `a given point in time`.
 
 - Actual DOM
@@ -1063,3 +1062,51 @@ v-bind:title                -> :title
   - { tag: 'div', data: { attrs" {}, ... }, children: [] } --> Plain JavaScript Object (cheap)
 
 Another benefits: Decouples rendering login from the actual DOM - enables rendering capabilities in non-browser environments, e.g. server-side and native mobile rendering.
+
+#### Runtime + Compiler vs. Runtime-only
+
+If we need to compile templates on the client(e.g. passing a string to the `template` option, or mounting to an element using its in-DOM HTML as the template), we need the `Compiler` to compile the template.
+
+```js
+// this requires the compiler
+new Vue({
+  template: '<div>{{ hi }}</div>
+})
+
+// this does not
+new Vue({
+  render(h) {
+    return h('div', thisl.hi)
+  }
+})
+```
+
+- when using `vue-loader` or `vueify`, templates inside `*.vue` fiels are pre-compiled into JavaScript at build time.
+
+- Since the runtime-only builds are roughly `30%` lighter-weight than their full-build counterparts, we should use it whenever we can.
+
+Need this configure as alias:
+
+```js
+// webpack
+moudule.exports = {
+  // ...
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+    }
+  }
+
+}
+```
+
+```js
+// babel.config.js
+chainWebpack: config => {
+  config.resolve.alias
+    .set('vue$', 'vue/dist/vue')
+},
+
+```
+
+[Ref](https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only)

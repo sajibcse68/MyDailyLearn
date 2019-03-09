@@ -21,7 +21,8 @@ $ ip -s link
 - ctrl+B to move backward by a char
 
 #### Show or Hide hidden files or directories
-```
+
+```sh
 # keyboard shortcut (toggle hide/show)
 Cmd + Shift + .
 
@@ -34,32 +35,33 @@ $ killall Finder
 $ defaults write com.apple.finder AppleShowAllFiles NO
 $ killall Finder
 ```
+
 #### Fancy shortcuts
-```
+
 - Get info:
   - Cmd + I, Cmd + option + I (to see single window)
 - Close window:
   - Cmd + W
 - Show / hide the dock:
-	- Cmd + option + D
+  - Cmd + option + D
 - scrernshots:
-    - Cmd + Shift + 3
-    - Cmd + Shift + 4 (give crosshairs)
+  - Cmd + Shift + 3
+  - Cmd + Shift + 4 (give crosshairs)
 - Hide application:
-	- Cmd + H
-	- Cmd + option + H (all application)
+  - Cmd + H
+  - Cmd + option + H (all application)
 - Application switcher:
-	- Cmd + Tab
+  - Cmd + Tab
 - Zoom in/out:
-	- Cmd + option + +/-
+  - Cmd + option + +/-
 - Force Quit:
-	- Cmd + option + Esc
+  - Cmd + option + Esc
 - Dictionary
-	- Cmd + Ctrl + D
+  - Cmd + Ctrl + D
 - Minimize window
-	- Cmd + M
+  - Cmd + M
 - Mac Help
-	- Cmd + ?
+  - Cmd + ?
 
 #### Go Menu
 
@@ -72,8 +74,6 @@ $ killall Finder
 - Go Application Directory : Cmd + Shift + A
 - Go to Folder             : Cmd + Shift + G
 - Connect to Server        : Cmd  + K
-- Cmd + [                  : Back
-- Cmd + ]                  : Forward
 - Cmd + Shift + C          : Go to Computer Directory
 - Cmd + Shift + H          : Go to Home Directory
 - Cmd + Shift + I          : Go to iDisk
@@ -82,56 +82,51 @@ $ killall Finder
 - Cmd + Shift + G          : Go to Folder
 - Cmd + K                  : Connect to Server
 
-
-#### View Menu
-- as Icons                 : Cmd + 1
-- as List                  : Cmd + 2
-- as Co
-
-
 #### Apple Menu
-Cmd + option + D           : Toggle Dock Hiding On/Off
-Cmd + Shift + Q            : Logout
+
+- Cmd + option + D           : Toggle Dock Hiding On/Off
+- Cmd + Shift + Q            : Logout
 
 #### Finder Menu
-Cnd + Shift + Delete       : Empty Trash
-Cmd + H                    : Hide Finder
+
+- Cnd + Shift + Delete       : Empty Trash
+- Cmd + H                    : Hide Finder
 
 #### File Menu
-Cmd + N                    : New Finder window
-Cmd + Shift + N            : New Folder
-Cmd + O                    : Open
-Cmd + W                    : Close window
-Cmd + I                    : Show info
-Cmd + D                    : Duplicate
-Cmd + L                    : Make Alias
-Cmd + R                    : Show Original Item
-Cmd + T                    : Add to Favourites
-Cmd + Delete               : Move Highlighted Item to Trash
-Cmd + E                    : Eject
-Cmd + F                    : Find (Invokes Sherlock)
+
+- Cmd + N                    : New Finder window
+- Cmd + Shift + N            : New Folder
+- Cmd + O                    : Open
+- Cmd + W                    : Close window
+- Cmd + I                    : Show info
+- Cmd + D                    : Duplicate
+- Cmd + L                    : Make Alias
+- Cmd + R                    : Show Original Item
+- Cmd + T                    : Add to Favourites
+- Cmd + Delete               : Move Highlighted Item to Trash
+- Cmd + E                    : Eject
+- Cmd + F                    : Find (Invokes Sherlock)
 
 #### Edit Menu
-Cmd + z                    : undo
-Cmd + X                    : Cut
-Cmd + C                    : Copy
-Cmd + V                    : Paste
-Cmd + A                    : Select All
+
+- Cmd + z                    : undo
+- Cmd + X                    : Cut
+- Cmd + C                    : Copy
+- Cmd + V                    : Paste
+- Cmd + A                    : Select All
 
 #### View Menu
-Cmd + 1                    : as Icons
-Cmd + 2                    : as List
-Cmd + 3                    : as Columns
-Cmd + B                    : Minimize Finder Toolbar
-Cmd + J                    : View Options
 
-------------------- Window -----------------
-Cmd + M                    : Minimize Window
+- Cmd + 1                    : as Icons  
+- Cmd + 2                    : as List
+- Cmd + 3                    : as Columns
+- Cmd + B                    : Minimize Finder Toolbar
+- Cmd + J                    : View Options
 
-------------------- Help --------------------
-Cmd + ?                    : Mac Help
-```
+#### Window
 
+- Cmd + M                    : Minimize Window
 
+#### Help
 
-
+- Cmd + ?                    : Mac Help

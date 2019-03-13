@@ -46,3 +46,11 @@ Note: React `v15.5.0`, `PropTypes` is imported independently from React, like th
 ```js
 import React, { PropTypes } from "react";
 ```
+
+#### Stateless Functional Component, Stateless Component and Stateful component
+
+- `A stateless functional component` is any function we write which accepts `props` and return `JSX`
+
+- `A stateless component` is a class that extends `React.Component`, but does not use internal state.
+
+- `A stateful component` is any component that does maintain its own internal state. We may see stateful component referred to simply as `components` or `React components`.

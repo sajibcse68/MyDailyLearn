@@ -44,6 +44,8 @@
 - `t`: type tool
 - `u`: line tool
 - `b`: brush tool
+- `v`: move tool
+- `Cmd + ;`: show/hide guides/ruler
 - `Cmd + ]`: move the selected layer to one layer down
 - `Cmd + Shift + ]`: move the selected layer to very fast
 - `Cmd + [`: move the selected layer to one layer up

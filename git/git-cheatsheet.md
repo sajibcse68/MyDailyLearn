@@ -4,21 +4,24 @@
 
 We have mainly three types of config file (system's, user's, repo's)
 
-    /etc/gitconfig        # (--system), system's config file
-    ~/.gitconfig          # (--global), user's config file
-    <repo>/.git/config    # (--local), repo's config file
-    
-    # git searches 4 places for config file
-    1. Your machine's system .gitconfig file. (/usr/local/etc/gitconfig)
-    2. Your user .gitconfig file located at ~/.gitconfig.
-    3. A second user-specific configuration file located at $XDG_CONFIG_HOME/git/config or $HOME/.config/git/config.
-    4. The local repo's config file .git/config.
+```sh
+/etc/gitconfig      # (--system), system's config file
+~/.gitconfig        # (--global), user's config file
+<repo>/.git/config  # (--local), repo's config file
+```
 
-#### Configure user's *name* and *email* 
+Git searches 4 places for config file
+
+1. Your machine's system .gitconfig file. (/usr/local/etc/gitconfig)
+2. Your user .gitconfig file located at ~/.gitconfig.
+3. A second user-specific configuration file located at $XDG_CONFIG_HOME/git/config or $HOME/.configgit/config.
+4. The local repo's config file .git/config.
+
+#### Configure user's *name* and *email*
 
 Configure globally (save in `(~/.gitconfig)` file).
 
-```
+```sh
 $ git config --global user.name <your-name>
 $ git config --global user.email <your-email>
 ```
@@ -26,12 +29,13 @@ $ git config --global user.email <your-email>
 Configure locally ( save in `<repo>/.git/config` file). It **overwrites** the global configuration.
 This config is only for the specific repository.
 
-```
+```sh
 $ git config --local user.name <your-name>
 $ git config --local user.email <your-email>
 ```
 
-#### Other `config` commands.
+#### Other `config` commands
+
 ```sh
 $ git config --list                                 # See full configuration of git
 $ git config --list --show-origin                   # See full configuration with config file path
@@ -41,7 +45,7 @@ $ git config --global color.ui true                 # Better visualization
 $ git config core.ignorecase false                  # If we want case sensitive git
 $ git config --global core.mergeoptions --no-edit   # While merging/pulling stop opening the editor for commit message
 $ git config --global merge.log true                # Add list of changed files in commit message
-                                                    
+
 $ git config --global --remove-section alias        # Remove the global alias section
 $ git config --remove-section alias                 # Remove the global alias section
 $ git config --global --unset alias.<name>          # Unset an alias
@@ -81,6 +85,7 @@ $ git config --global alias.br branch        # git br -> git branch
 ```
 
 ## Branching
+
 >* master   ->  default develop branch
 >* origin   ->  default remote address/url
 >* HEAD     ->  current branch
@@ -89,95 +94,122 @@ $ git config --global alias.br branch        # git br -> git branch
 
 #### Create new branch
 
-    $ git branch <name>                  # create a new branch
-    $ git checkout <branch-name>         # switch to a branch
+```sh
+$ git branch <name>                  # create a new branch
+$ git checkout <branch-name>         # switch to a branch
+$ git checkout -b <branch-name>      # create & switch to a branch by a command
 
-    $ git checkout -b <branch-name>      # create & switch to a branch by a command
-
-Create a branch at a point instead of the last commit of the current branch (also known as `HEAD`).
-
-    $ git checkout -b <name> <start-point>
+# create a branch at a point instead of the last commit of the current branch (also known as `HEAD`).
+$ git checkout -b <name> <start-point>
+```
 
 The `<start-point>` can be any [revision](https://git-scm.com/docs/revisions) known to git (e.g. branch name, commit SHA, symbolic reference HEAD or tag-name etc.). 
 
-    $ git checkout -b <name> <some-other-branch>
-    $ git checkout -b <name> <commit-sha>
-    $ git checkout -b <name> <tag-name>
-    $ git checkout -b <name> HEAD~2
+```sh
+$ git checkout -b <name> <some-other-branch>
+$ git checkout -b <name> <commit-sha>
+$ git checkout -b <name> <tag-name>
+$ git checkout -b <name> HEAD~2
+```
 
 Create a local branch from a remote branch.
 
-    $ git checkout -b <branch-name> <remote>/<branch-name>
+```sh
+$ git checkout -b <branch-name> <remote>/<branch-name>
+```
 
 Create a local branch (say, 'feature') tracking with remote branch (say, `origin/feature`).
 
-    $ git fetch
-    $ git checkout feature      # create a local branch 'feature' branch tracking with origin/feature branch
+```sh
+$ git fetch
+$ git checkout feature      # create a local branch 'feature' branch tracking with origin/feature branch
+```
 
 Create a new branch with no parent (having empty commit lists).
 
-    $ git checkout --orphan <branch-name>
-
+```sh
+$ git checkout --orphan <branch-name>
+```
 
 #### Delete branch
 
 Delete a local branch.
 
-    $ git branch -d <branch-name>
+```sh
+$ git branch -d <branch-name>
 
-    # shortcut of
-    $ git branch --delete <branch-name>
+# shortcut of
+$ git branch --delete <branch-name>
+```
 
 This will not delete the branch if the branch has any unmerged changes with  *upstream-branch*, or in *HEAD* if no
 upstream was set with --track or --set-upstream.
 
 Force to delete a local branch (even if it has unmerged changes).
 
-    $ git branch -D <branch-name>
+```sh
+$ git branch -D <branch-name>
 
-    # shortcut of
-    $ git branch --delete --force <branch-name>
+# shortcut of
+$ git branch --delete --force <branch-name>
+```
 
 Delete a remote branch.
 
-    $ git branch origin :<branch-name>
+```sh
+$ git branch origin :<branch-name>
 
-    # alternatives
-    $ git push origin --delete <branch-name>
+# alternatives
+$ git push origin --delete <branch-name>
+```
 
 Delete a remote branch (say, *old-name*) and push a new local branch (*new-branch*).
 
-    $ git push origin :<old-name> <new-name>
+```sh
+$ git push origin :<old-name> <new-name>
+```
 
 Delete all the branches that are merged with `master` already.
 
-    $ git checkout master
-    $ git branch --merged master | grep -v '^\*'  | xargs -n 1 git branch -d
+```sh
+$ git checkout master
+$ git branch --merged master | grep -v '^\*'  | xargs -n 1 git branch -d
+```
 
 Here, `-v` flag invert the matches.
 
 Delete all the branches except *master* that are already *merged* with current branch.
 
-    $ git branch --merged | grep -E '^\*|master$' | xargs -n 1 git branch -D
+```sh
+$ git branch --merged | grep -E '^\*|master$' | xargs -n 1 git branch -D
+```
 
 Delete all the local branch(es) except `master`
 
-    $ git checkout master
-    $ git branch | xargs git branch -D
+```sh
+$ git checkout master
+$ git branch | xargs git branch -D
+```
 
 Cleanup/delete remote (say, *origin*) deleted branch in local.
 
-    $ git remote prune origin
+```sh
+$ git remote prune origin
+```
 
 #### Quick switch to a previous branch (or, commit SHA, symbolic references, etc.)
 
-    $ git checkout -
+```sh
+$ git checkout -
+```
 
 #### Branch listing
 
 See all local branches.
 
-    $ git branch
+```sh
+$ git branch
+```
 
 See all remote branches.
 
@@ -223,20 +255,20 @@ See list of branches ordered by most recent commit
 
     $ git branch <old-name> <new-name>      # rename without checking out that branch
 
-#### Track a new branch.
+#### Track a new branch
 
     $ git branch -u <remote/branch>
 
-
 ##  Add, Commit, Amend, Pull, Push, Merge & Delete
+
 ```sh
 # Add
-$ git add .                                         # Stage Modified and New files
-$ git add -A                                        # -A = --all, Stage Modified, New and Deleted files
-$ git add -p                                        # Stage a particular change
-$ git add -N                                        # --intend-to-add, An entry for the path is placed in the index with no content
+$ git add .     # Stage Modified and New files
+$ git add -A    # -A = --all, Stage Modified, New and Deleted files
+$ git add -p    # Stage a particular change
+$ git add -N    # --intend-to-add, An entry for the path is placed in the index with no content
 
-# Commit                                                                          
+# Commit
 $ git commit -am 'commit message'                   # Add & commit        
 $ git commit --allow-empty -m k3;                   # Commit empty change
 $ git cherry-pick <commit-hash>                     # Take a commit change of another branch
@@ -287,11 +319,12 @@ $ git merge --squash <privateFeatureBranch>
 $ git branch <branch-name>                          # Create a new branch
 
 ```
+
 - Fast-forward happens (when doing `Pull/Merge`) when there are no commits on the base branch that occurred after the `feature` branch was created.
 
-
 ## Checkout (go forward/backward)
-```
+
+```sh
 $ git checkout -                                 # Switch to the last branch you are
 $ git checkout --orphan <branch-name>            # Create a branch with no commit list
 $ git checkout -b <branch-name>                  # Create & checkout to new branch
@@ -305,8 +338,10 @@ $ git checkout origin/master <file-name>         # Reset a file with origin/mast
 $ git checkout remote/branch -- <dir>            # Take only a folder changes of a specific branch
 $ git checkout stash@{0} -- <file1> <file2>      # Checkout the files to stash@{0} version
 ```
+
 ## Cherry Pick
-```
+
+```sh
 $ git cherry-pick <commit-hash>                             # Copy a single commit to current branch
 $ git cherry-pick <commit-hash> -X theirs                   # If conflicts occurs then accepts theirs
 $ git cherry-pick --edit <commit-hash>                      # Pop-up a editor, then change the commit message.
@@ -319,6 +354,7 @@ $ git cherry-pick <hash> <hash>                             # pick multiple comm
 ```
 
 ## Stashing
+
 ```sh
 $ git stash save                                    # Save the changes in temporary box
 $ git stash save "provide a stash message"          # We can provide a stash message when stashing.
@@ -343,7 +379,7 @@ $ git stash save --keep-index
 # resolve conflicts when doing stash pop
 $ git checkout stash -- .                           # replace all the files with the stashed version
 
-Or, 
+Or,
 $ git stash apply                                   # apply the stashed changes, conflicts occure here
 $ git checkout --theirs -- .                        # accept stashed changes 
 
@@ -351,6 +387,7 @@ $ git checkout <stash-name> -- <file-name>          # grab a single file from a 
 ```
 
 ## Logging:
+
 ```sh
 $ git log                                          # Show  all the change/commit history
 $ git log <branch-name>                            # Show the commits of a specific branch
@@ -383,7 +420,8 @@ $ git log --since=2000-01-01 --until=2012-12-21    # Since & until (absolute)
 $ git log --diff-filter=M --oneline                # See the commits where files are modified
 $ git log --diff-filter=D --summary | grep delete  # See the deleted files
 $ git blame index.html --date short
-$ git rm                                           # Remove the file from the staging area and also from the disk                         
+
+$ git rm                                           # Remove the file from the staging area and also from the disk
 $ git rm --cached development.log                  # What if you're already tracking log files?
 $ git rm -r --cached <dir-name>                    # Remove the cache for a directory from .idea
 $ git log --format="%h" <file-name> | xargs git show --name-only # get list of modified files where a specific file is modified 
@@ -397,7 +435,7 @@ $ git log --reverse --pretty=%H | grep -A 1 $(git rev-parse HEAD) | tail -n1 | x
 
 ## Show (more logging)
 
-```
+```sh
 $ git show <commit-hash>                # see what changes in a specific commit
 $ git show <commit> --stat              # see files changed in a commit
 $ git show --decorate <commit-hash>     # see 'Author', 'Date' and 'diff'
@@ -409,13 +447,12 @@ $ git show <tag-name>                   # show details info of a tag
 ## Recovery or Reset
 
 ```sh
-$ git log                                 # Show all the change/commit history
-$ git reset --soft <commit hash>          # Back to a specific commit and exits the change
-$ git diff HEAD                           # Show the changes to files not yet staged
-
-$ git checkout -- <file-name>             # Replaces the changes with the last content in HEAD 
-$ git clean -f -n                         # clean untract file (dry run)
-$ git clean -df                           # -d remove untracked directories in addition to untracked files, -f (force)
+$ git log                          # Show all the change/commit history
+$ git reset --soft <commit hash>   # Back to a specific commit and exits the change
+$ git diff HEAD                    # Show the changes to files not yet staged
+$ git checkout -- <file-name>      # Replaces the changes with the last content in HEAD
+$ git clean -f -n                  # clean untract file (dry run)
+$ git clean -df                    # -d remove untracked directories in addition to untracked files, -f(force)
 $ git clean -dxf
 # -f force git to delete the files
 # -d delete untracked directories in addition to untracked files
@@ -434,16 +471,18 @@ $ git checkout -b <branch> <sha>
 ```
 
 #### Reset Using **reflog**:
+
 ```sh
-$ git reflog                           # See all the task step by step
-$ git reset <HEAD no.>                 # Return to present after a hard reset, e.g. HEAD@{8}
-$ git reset --hard                     # We moved to HAED@{8} completely
-$ git log --walk-reflogs               # More details
-$ git branch <branceName> HEAD@{1}     # Create a new branch with a commit (the branch is deleted where this commit was given)
+$ git reflog                        # See all the task step by step
+$ git reset <HEAD no.>              # Return to present after a hard reset, e.g. HEAD@{8}
+$ git reset --hard                  # We moved to HAED@{8} completely
+$ git log --walk-reflogs            # More details
+$ git branch <branceName> HEAD@{1}  # Create a new branch with a commit (the branch is deleted where this commit was given)
 ```
 
 ## Squash
-```
+
+```sh
 # Normally I do
 $ git reset --soft HEAD~3                              # undo last 3 commits, remains all the changes in local
 $ git add --all; git commit -m 'new squash message'    # commit the 3 previous commits in one
@@ -455,7 +494,7 @@ $ git push -f origin <branch-name>                     # by force overwrite the 
 ```sh
 $ git checkout <admin_branch>
 $ git rebase master                                    # Merge all commits of admin_branch after master's commits
-$ git checkout master                                  
+$ git checkout master
 $ git branch master.bac                                # Backup master branch if necessary
 $ git merge <admin_branch>
 $ git commit --amend --committer-date-is-author-date   # keep the date same as committer date when amending
@@ -464,11 +503,12 @@ $ git rebase --onto master branch1 branch2             # take all the commits af
 ```
 
 #### Change the `author` of an earlier commit
-```
+
+```sh
 $ git checkout <commit-hash>                                             # checkout the commit we're trying to modify
 $ git commit --amend --author "New-author-name <new-author@mail.com>"    # change the author name and mail
 $ git replace <old-commit-hash> <new-commit-hash>                        # replace the old commit by new one
-$ git filter-branch -- --all ^<new-commit-hash>                          # note '^' before hash, rewrite all futures commits based on the replacement                   
+$ git filter-branch -- --all ^<new-commit-hash>                          # note '^' before hash, rewrite all futures commits based on the replacement
 $ git replace -d <old-commit-hash>                                       # remove the replacement for cleanliness 
 $ git push -f origin HEAD                                                # force push 
 
@@ -479,7 +519,7 @@ $ git rebase -i <commit-hash>                                                # g
 
 #### Change the `commit message` of an earlier commit:
 
-```
+```sh
 $ git filter-branch -f --msg-filter 'sed "s/<old-msg>/<new-msg>/g"' -- --all # Replace the old message with new message
 # e.g. git filter-branch -f --msg-filter \
     'sed "s/release\/Version-[0-9].[0-9].[0-9]/develop/g"' \
@@ -497,33 +537,37 @@ $ git rebase --continue                                            # finish the 
 ```
 
 #### Reordering commits using rebase
-```
-$ git rebase -i <commit-hash>                                      # go to last good commit
+
+```sh
+$ git rebase -i <commit-hash>  # go to last good commit
 # then reorder the commits, be careful it shows the commit in reverse way as we see `git log` commands, shows old to new (top to bottom)
 
 # Change very first commit msg + squash the 2nd commit with first commit
-$ git rebase -i --root                                   # checkout to very first commit
+$ git rebase -i --root    # checkout to very first commit
+
 # Editor will open, write `edit` before the first-commit, `squash` before the 2nd commit
 $ git commit --amend -am 'New commit message'
 $ git rebase --continue
 
-$ git rebase --skip                      
-$ git rebase --abort
+$ git rebase --skip   # skip the rebase
+$ git rebase --abort  # stop rebasing & back to the stage starting rebase
 ```
+
 [See this](https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/)
 
 #### Rebase Options:
-  - **pick:** keep the commit
-  - **reword:** keep the commit, just change the message
-  - **edit:** keep the commit, but stop to edit more than the message
-  - **squash:** combine this commit with the previous one, stop to edit the message
-  - **fixup:** combine this commit with the previous one, keep the previous commit message
-  - **exec:** run the command on this line after picking the previous commit
-  - **drop:** remove the commit (tip: if we comment out or remove the line, this commit will be dropped too!)
 
+- **pick:** keep the commit
+- **reword:** keep the commit, just change the message
+- **edit:** keep the commit, but stop to edit more than the message
+- **squash:** combine this commit with the previous one, stop to edit the message
+- **fixup:** combine this commit with the previous one, keep the previous commit message
+- **exec:** run the command on this line after picking the previous commit
+- **drop:** remove the commit (tip: if we comment out or remove the line, this commit will be dropped too!)
 
 ## Working with Remotes
-```
+
+```sh
 $ git remote add <name> <address/url>          # Add new remote/repositories
 $ git remote rm <name>                         # Remove a remote
 $ git remote rename <present-name> <new-name>  # Rename a remote
@@ -536,6 +580,7 @@ $ git fetch <remote-name>                      # Fetching/pulling from remote
 ```
 
 ## Conflicts
+
 * Life being the pain in the proverbial that it is, our merge might have a `conflict`.
 * The git status command will help you understand where the conflict exists. If you open the file,
 * You'll notice some markers: <<<<, >>>>, and ====, that surround the lines that conflict,
@@ -554,7 +599,7 @@ $ grep -lr '<<<<<<<' . | xargs git checkout --ours
 $ git checkout --conflict=merge -- <file>   # get the file back with conflicts
 ```
 
-#### e.g. Merging `release` branch into `master` and we have 3 folders `foo/`, `bar/`, `js/`. Now want to resolve conflicts such as `foo/`, `bar/` should like `master` and `js/` should like `release` branch.
+> e.g. Merging `release` branch into `master` and we have 3 folders `foo/`, `bar/`, `js/`. Now want to resolve conflicts such as `foo/`, `bar/` should like `master` and `js/` should like `release` branch.
 
 ```sh
 $ git checkout master -- . ':!js/'   # . ':!js/' means all except js/, so, foo/ & bar/ are checkeout
@@ -563,27 +608,29 @@ $ git commit -am 'Fix conflicts'
 ```
 
 ## Submodules
+
 Always push to two repo, first to submodules then parent repo.
 
 ```sh
 $ git submodule add git@example.com:css.git                      # Add a submodule in a git project, also create a .gitmodules file
-$ git submodule init                                             # Initialize submodules.                   
-$ git submodule update                                           # Update the submodules                  
+$ git submodule init                                             # Initialize submodules.
+$ git submodule update                                           # Update the submodules
 $ git branch temp_changes a7eded4                                # After 'git submodule update' command, codes get checked out in a HEADLESS state.
 $ git push --recurse-submodules=check                            # Will abort a push it we haven't pushed a submodule. (run in parent dir )
 $ git push --recurse-submodules=on-demand                        # Push to parent repo, then it'll push to submodule automatically.
-$ git config alias.pushall "push --recurse-submodules=on-demand" # Alias   
+$ git config alias.pushall "push --recurse-submodules=on-demand" # Alias
 ```
 
 ## Some important operations
 
 #### Cleanup garbage in remote repository
+
 ```sh
 $ git reflog expire --expire="1 hour" --all
 $ git reflog expire --expire-unreachable="1 hour" --all
 $ git prune --expire="1 hour" -v
 $ git gc --aggressive --prune="1 hour"
-$ git rc                               # cleanup unnecessary files and optimize local repo
+$ git rc  # cleanup unnecessary files and optimize local repo
 ```
 
 #### Prune empty commits
@@ -595,9 +642,12 @@ $ git <branch-name> --tree-filter 'rm -f password.txt'  # Remove password.txt fi
 
 ``Faster for large code base``, workded on staging area, --ignore-match
 
-    $ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt'
+```sh
+$ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt'
+```
 
 #### Create a new **[WorkTree](https://git-scm.com/docs/git-worktree#_synopsis)** and work paralley in the same repo (diffeent branch)
+
 ```sh
 $ git worktree add <second-path>
 $ git checkout <branch>          # checkout a different branch
@@ -616,6 +666,7 @@ $ git commit -s -m <commit-message>
 ```
 
 #### How to tell git to ignore local changes (already tracked by git)?
+
 We can use `assume-unchanged` or `no-assume-unchanged` to tell to ignore/no-ingore the file.
 
 ```sh
@@ -633,12 +684,13 @@ $ echo 'Hello, World!' | git hash-object --stdin
 ```
 
 ## Tags and Releases
+
 - Release tag point to a single commit
 - Semantic versioning should be followed for tags (major.minor.patch)
 - Three key reasons for creating a release branch:
-	- Manual QA
-	- Long running releases
-	- On demand hot fixed
+  - Manual QA
+  - Long running releases
+  - On demand hot fixed
 
 ```sh
 $ git checkout <commit-hash>                  # checkout to a commit to give a tag
@@ -662,7 +714,7 @@ $ git branch -d <hot-branch>                  # delete the release branch
 # Github pages
 - For a username github page url will be '<username>.github.io'   # sajibcse68.github.io
 - For a project github page url will be '<username.github.io/<projectname>'  # sajibcse68.github.io/dojo_rules
-``` 
+```
 
 ## Fancy commands
 
@@ -688,7 +740,7 @@ $ git clone user@<private-ip>:<repo-path>      # clone from other machine over s
 $ git clone <url> --depth=1                    # Create a shallow clone with a history truncated to the specified number of commits
 $ git clone .git my-repo                       # Restore a repo from .git folder
 $ git init                                     # From scratch -- create a new local repository
-$ git check-ignore -v -- <file-name>           # see what .gitignore rule applies for a given file             
+$ git check-ignore -v -- <file-name>           # see what .gitignore rule applies for a given file
 $ git gui
 $ git ls-tree -d HEAD                          # Tree object including the mode and the name of each item and the SHA value
 $ git difftool
@@ -728,7 +780,7 @@ $ git diff b1..b2                              # Compare two branches, show you 
 $ git diff <commit1> <commit2>                 # Show changes between two commits id
 $ git diff b1..b2 --name-only                  # Show changed file names only
 $ git diff b1..b1 -- <file-path>               # Show the changes of a file
-$ <url><tag-1>...<tag-2>                       # Compare changes of two tags in github 
+$ <url><tag-1>...<tag-2>                       # Compare changes of two tags in github
 # [Example](https://github.com/jenkinsci/jenkins/compare/jenkins-1.651...jenkins-1.651.2)
 
 $ git diff-tree -r <commit-hash>               # show list of files that were changed or added in the commit
@@ -744,7 +796,7 @@ $ git diff -- file_delete                      # see the deleted files, use '--'
 
 # Set git diff to a default value (if git diff not works)
 $ git config --global --unset diff;            # this two commands reset git diff to default
-$ git config --global --unset diff.external   
+$ git config --global --unset diff.external
 
 $ git push -f origin HEAD^:master              # "undo" the push from remote and keep the local intact
 $ git blame <file>                             # List the change dates and authors for a file
@@ -759,6 +811,7 @@ $ git branch --set-upstream master_upstream origin/master_upstream # git v1.7.12
 ## Concepts
 
 #### Tracked vs Untrack file
+
 - Tracked files are files that were in the last snapshot; they can be `unmodified`, `modified`, or `staged`.
 - Untracked files are everything else? any files in your working directory that were not in your last snapshot and are not in your staging area (index). e.g.
 
@@ -781,14 +834,16 @@ The Key is Collaboration
   - Forks
 
 #### Commit Object
+
 A `commit` points to:
-  - a tree
+- a tree
 
 and contains metadata:
-  - author and committer
-  - data
-  - message
-  - parent commit (one or more)
+
+- author and committer
+- data
+- message
+- parent commit (one or more)
 
 the `SHA1` of the commit is the hash off all this information.
 
@@ -805,12 +860,14 @@ the `SHA1` of the commit is the hash off all this information.
   - contains all of our commits
 
 #### Three types of git `References`
+
 - Tags & Annotated tags
 - Branches
 - HEAD
 
 #### Different types of HEAD
-```
+
+```sh
 HEAD             - the current sha-1 of the current commit in the current branch
 FETCH_HEAD       - a short-lived ref, to keep track of what has been fetched from the remote repository
 ORIG_HEAD        - previous state of HEAD
@@ -820,7 +877,9 @@ CHERRY_PICK_HEAD - records the commit which you are cherry-picking when you run 
 $ git rev-parse <any-head>     # see the commit hash of the HEAD
 $ cat .git/HEAD                # open the HEAD file
 ```
+
 #### The Seven Rules of a Great Git Commit Message
+
 1. Separate subject from body with a blank line
 2. Limit the subject line to 50 characters
 3. Capitalize the subject line
@@ -832,12 +891,13 @@ $ cat .git/HEAD                # open the HEAD file
 [See details](http://chris.beams.io/posts/git-commit/)
 
 #### Difference between HEAD~ and HEAD^
+
 - `HEAD^` means the `first parent` of the tip of the current branch, `HEAD^2` means `second parent of current branch`, `HEAD~1 / HEAD~2` means always `first parent`. [see this](http://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
 - ~2 means up two levels in the hierarchy, via the first parent if a commit has more than one parent.
 - ^2 means the second parent where a commit has more than one parent (i.e. because it's a merge)
 - These can be combined, so HEAD~2^3 means HEAD's grandparent commit's third parent commit.
 
-```
+```sh
 G   H   I   J               A =      = A^0
  \ /     \ /                B = A^   = A^1     = A~1
   D   E   F                 C = A^2  = A^2
@@ -850,8 +910,10 @@ G   H   I   J               A =      = A^0
          A                  J = F^2  = B^3^2   = A^^3^2
 ```
 
-`HEAD~2`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  2 commits older than HEAD  
-`HEAD^2`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  the second parent of HEAD, if HEAD was a merge, otherwise illegal  
-`HEAD@{2}`  &nbsp;                       : &nbsp;&nbsp;  refers to the 3rd listing in the overview of git reflog  
-`HEAD~~`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  2 commits older than HEAD  
-`HEAD^^`    &nbsp;&nbsp;&nbsp;&nbsp;     : &nbsp;&nbsp;  2 commits older than HEAD  
+```sh
+HEAD~2:   2 commits older than HEAD  
+HEAD^2:   the second parent of HEAD, if HEAD was a merge, otherwise illegal  
+HEAD@{2}: refers to the 3rd listing in the overview of git reflog  
+HEAD~~:   2 commits older than HEAD  
+HEAD^^:   2 commits older than HEAD  
+```

@@ -1,7 +1,8 @@
-#### `Memorize, Memorize, Memorize` - It will make life easier
-```
+### `Memorize, Memorize, Memorize` - It will make life easier
+
+```sh
 $ pwd                 : Print working directory
-$ hostname            : Computer's network name
+$ hostname            : Computers network name
 $ mkdir               : Make directory
 $ cd                  : Change directory
 $ ls                  : List directory
@@ -26,7 +27,15 @@ $ exit                : Exit shell
 $ sudo                : Dnager! Become super user root
 ```
 
-#### Sort folders by size
+### Mac read the files in the following order
+
+- /etc/profile
+- ~/.bash_profile
+- ~/.bash_login
+- ~/.profile
+
+### Sort folders by size
+
 ```sh
 $ du -sh *                               # show all folders sizes of current location
 $ du -k <path>
@@ -42,37 +51,43 @@ $ du -k <path> | awk '$1 > 500000' | sort -nr
 $ ls | sort -k 2 -t "_"
 ```
 
-#### Delete all files start with `.` e.g. .DS_Store, ._abc
+### Delete all files start with `.` e.g. .DS_Store, .\_abc
 
+    $ find . -name ".*" -exec rm -f '{}' +
+
+### Set the time of showing notification banner
+
+    $ defaults write com.apple.notificationcenterui bannerTime <SECONDS>
+
+### Details of network interface cards
+
+    $ ip addr
+
+### Show details of mac system profile
+
+    $ system_profiler SPSoftwareDataType
+
+### statistics of network interfaces
+
+```sh
+$ ip link
+$ ip -s link
 ```
-$ find . -name ".*" -exec rm -f '{}' +
-```
 
-<------- Set the time of showing notification banner ----->
-defaults write com.apple.notificationcenterui bannerTime <SECONDS>
+### terminal keyboard shortcut
 
-<------- Details of network interface cards ------------->
-ip addr
+- ctrl+A to jump to start of the line
+- ctrl+E to jump to end of the line
+- ctrl+K to kill the line starting from the cursor position
+- ctrl+Y to paste text from the kill buffer
+- ctrl+R to reverse search for commands you typed in the past from your history
+- ctrl+S to forward search (works in zsh for me but not bash)
+- ctrl+F to move forward by a char
+- ctrl+B to move backward by a char
 
-<------- Show details of mac system profile ------------------->
-$ system_profiler SPSoftwareDataType
+### Toggle Hidden Folders/Files
 
-<--------- statistics of network interfaces -------------->
-ip link
-ip -s link
-
-<--------------- terminal keyboard shortcut ------------->
-ctrl+A to jump to start of the line
-ctrl+E to jump to end of the line
-ctrl+K to kill the line starting from the cursor position
-ctrl+Y to paste text from the kill buffer
-ctrl+R to reverse search for commands you typed in the past from your history
-ctrl+S to forward search (works in zsh for me but not bash)
-ctrl+F to move forward by a char
-ctrl+B to move backward by a char
-
-#### Toggle Hidden Folders/Files
-```
+```sh
 $ Cmd + Shift + .  # keyboard shortcuts
 
 # Go to terminal, then
@@ -84,75 +99,61 @@ Go to terminal, then
 $ defaults write com.apple.finder AppleShowAllFiles NO
 $ killall Finder
 ```
-<---------------------- mac keyboard shortcut  ------------------------->
+
+### Print serial number of Mac
+
+    $ system_profiler |grep "Serial Number (system)"
+
+## Keyboard Shortcuts
+
 - Get info:
   - Cmd + I, Cmd + option + I (to see single window)
 - Close window:
   - Cmd + W
 - Enter/Exit full screen
-    - Cmd + ctrl + F
-- Show/hide the dock:
-	- Cmd + option + D
+  - Cmd + ctrl + F
+- Show/hide the dock: - Cmd + option + D
 - scrernshots:
   - Cmd + Shift + 3
   - Cmd + Shift + 4 (give crosshairs)
-- Hide application:
-	- Cmd + H
-	- Cmd + option + H (all application)
-- Application switcher:
-	- Cmd + Tab
+- Hide application: - Cmd + H - Cmd + option + H (all application)
+- Application switcher: - Cmd + Tab
 - Spotlight Search:
   - cmd + space
-- Zoom in/out:
-	- Cmd + option + +/-
-- Force Quit:
-	- Cmd + option + Esc
-- Dictionary
-	- Cmd + Ctrl + D
-- Minimize window
-	- Cmd + M
-- Put displays to sleep
-	- Cmd + Shift + power
-- Mac Help
-	- Cmd + ?
+- Zoom in/out: - Cmd + option + +/-
+- Force Quit: - Cmd + option + Esc
+- Dictionary - Cmd + Ctrl + D
+- Minimize window - Cmd + M
+- Put displays to sleep - Cmd + Shift + power
+- Mac Help - Cmd + ?
 
-<----------- Go Manu -------------->
-- Back:
-	- Cmd + [
-- Forward:
-	- Cmd + ]
-- Computer Directory:
-	- Cmd + Shift + C
-- Home Directory:
-	- Cmd + Shift + H
-- Go iDisk:
-	- Cmd + Shift + I
-- Go Favourites Directory:
-	- Cmd + Shift + F
-- Go Application Directory:
-	- Cmd + Shift + A
-- Go to Folder:
-	- Cmd + Shift + G
-- Connect to Server:
-	- Cmd  + K
+#### Go Manu
 
-<----------- View Menu ----------->
-- as Icons:
-	- Cmd + 1
-- as List:
-	- Cmd + 2
+- Back: - Cmd + [
+- Forward: - Cmd + ]
+- Computer Directory: - Cmd + Shift + C
+- Home Directory: - Cmd + Shift + H
+- Go iDisk: - Cmd + Shift + I
+- Go Favourites Directory: - Cmd + Shift + F
+- Go Application Directory: - Cmd + Shift + A
+- Go to Folder: - Cmd + Shift + G
+- Connect to Server: - Cmd + K
+
+#### View Menu
+
+- as Icons: - Cmd + 1
+- as List: - Cmd + 2
 - as Co
 
-
-<------------- Apple Menu ------------>
+#### Apple Menu
 Cmd + option + D: Toggle Dock Hiding On/Off
 Cmd + Shift + Q: Logout
 
-<------------- Finder Menu ------------>
+#### Finder Menu
 Cnd + Shift + Delete: Empty Trash
 Cmd + H: Hide Finder
 
-<--------------- File Menu ------------>
+#### File Menu
 Cmd + N: New Finder window
 Cmd + Shift + N: New Folder
 Cmd + O: Open
@@ -166,21 +167,21 @@ Cmd + Delete: Move Highlighted Item to Trash
 Cmd + E: Eject
 Cmd + F: Find (Invokes Sherlock)
 
-<------------------ Edit Menu --------------->
+#### Edit Menu
 Cmd + z: undo
 Cmd + X: Cut
 Cmd + C: Copy
 Cmd + V: Paste
 Cmd + A: Select All
 
-<------------ View Menu --------------->
+#### View Menu
 Cmd + 1: as Icons
 Cmd + 2: as List
 Cmd + 3: as Columns
 Cmd + B: Minimize Finder Toolbar
 Cmd + J: View Options
 
------------------- Go Menu -----------------
+#### Go Menu
 Cmd + [ : Back
 Cmd + ]: Forward
 Cmd + Shift + C: Go to Computer Directory
@@ -191,14 +192,8 @@ Cmd + Shift + A: Go to Applications Directory
 Cmd + Shift + G: Go to Folder
 Cmd + K: Connect to Server
 
-------------------- Window -----------------
+#### Window
 Cmd + M: Minimize Window
 
-------------------- Help --------------------
+#### Help
 Cmd + ?: Mac Help
-
-# Mac read the files in the following order
-- /etc/profile
-- ~/.bash_profile
-- ~/.bash_login
-- ~/.profile

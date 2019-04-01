@@ -6,17 +6,15 @@
 - `BILLING`: Build and scale your recurring business model
 - `CONNECT`: Everything platforms need to get sellers paid
 
-
 #### Stripe.js and Elements
 
 - Enable us to collect sensitive payment information using customizable UI elements.
-
 
 [Stripe elements](https://stripe.com/payments/elements) is a set of pre-built UI components for building `checkout` flow and is available as a feature of Stripe.js. Elements provide ready-made UI components like inputs and buttons for collecting inforamation from the user. Stripe.js then `tokenizes` the sensitive information within an Element without ever having it touch own server.
 
 Elements features:
 
-- Automatically foramt card information as it's entered
+- Automatically format card information as it's entered
 - Transtale placholders into customer's preferred language
 - Responsive design to fit the width of your customer's screen for moble device
 - Customizable styling to match the look and feel of checkout flow

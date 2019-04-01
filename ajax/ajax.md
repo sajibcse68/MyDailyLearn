@@ -42,17 +42,49 @@ the readystatechange event is triggered every time the readyState changes
 ```
 ##### Response Codes:
 
-```
+```js
 1xx Information purposes
 2xx Successful request
-300 Redirection
-404 Client side errors
+3xx Redirection
+4xx Client side errors
 5xx Server side errors
 ```
 
-#### Sample Ajax Call
+Some HTTP Status Code Examples:
 
 ```
+101: Switching protocols
+102: Processing
+
+204: No content
+206: Partial content
+
+300: Multiple choice
+301: Moved permanently
+303: See other
+
+401: Gone
+404: Not found
+409: Conflict
+411: Length required
+412: precondition failed
+413: Payload too large
+417: Expectation failed
+418: I'm a teapot
+426: Upgrade required
+451: Unavailable for legal reasons
+
+503: Service unavailable
+508: Loop detected
+507: Insufficient storage
+
+```
+
+[Reference](https://www.youtube.com/watch?v=x1xJ8BCQTf8)
+
+#### Sample Ajax Call
+
+```js
 $('.confirmation').on('click', 'button', function() {
   const that = this;
   $.ajax('confirmation.html', {
@@ -77,7 +109,7 @@ $('.confirmation').on('click', 'button', function() {
 ```
 #### jQuery Advanced Events: 
 
-```
+```js
 $('button').on('click', function() { ... }) // create an event
 $('button').off('click')                    // destroy all events on button click
 $('button'.trigger('click');                // similar to if the user clicked the button

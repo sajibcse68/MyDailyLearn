@@ -54,3 +54,10 @@ import React, { PropTypes } from "react";
 - `A stateless component` is a class that extends `React.Component`, but does not use internal state.
 
 - `A stateful component` is any component that does maintain its own internal state. We may see stateful component referred to simply as `components` or `React components`.
+
+
+#### LifeCycle Hooks or Methods
+
+- The `ComponentWillMount()` method is called before the `render()` method when a component is being mounted to the DOM.
+- The `ComponentDidMounted()` is called after a component is mounted to the DOM. Any calls to `setState()` will trigger a re-rendering of the component.
+- The `ComponentWillReceiveProps()` is called whenever a component is receiving new props.

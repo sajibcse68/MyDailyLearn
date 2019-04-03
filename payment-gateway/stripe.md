@@ -130,3 +130,40 @@ function stripeTokenHandler(token) {
 5. Checkout takes the returned token and stores it in the page's primary form—the one surrounding the `<script>` tag above, in a hidden element named `stripeToken`.
 6. Checkout submits the form to our `server`.
 7. Our server uses the posted token to charge the card.
+
+
+## Billing
+
+#### Products and Plans
+
+Two core models make up subscriptions, the heart of Stripe's recurring billing system: `Product` and `Plan`
+
+- `Products` - defines the product or service you offer
+  - has no pricing information
+  - has a plan
+
+- `Plans` - defines how to charge a product
+  - has pricing info: currency, billing interval, amount, and pricing tiers
+  - creating more than on Plan for a product makes it possible to vary pricing by billing interval (i.e. monthly vs. quarterly billing)
+
+#### Licensed and Metered usage
+
+There are `two` models of usage for plans: `licensed` and `metered`
+
+- `licensed` - (usage_type='licensed') usage allows you to set the `number of units for a subscription` item when creating or updating the subscription
+
+- `metered plans` - accumulate total usage over a billing period
+  - Usage is reported via the [Usage API](https://stripe.com/docs/billing/subscriptions/metered-billing#reporting-usage)
+  - Usage is resets to `zero` every billing period.
+  - A broadband provider charging per megabyte of usage every month
+  - Billing for metered plans is calculated the same way as for `licensed` usage, except the usage total is multiplied by the plan amount instead of using a `fixed quantity`
+
+#### Tiered Billing
+
+More complex pricing schemes are expressed through [tiered pricing](https://stripe.com/docs/billing/subscriptions/tiers) (billing_scheme='tiered') which can be combined with either licensed or metered usage.
+
+`Three` modes of metered billing:
+
+- `Fixed per-unit pricing` by setting billing_scheme to per_unit. The total at the end of the period is amount × usage
+- `Volume-based pricing` by setting billing_scheme to tiered and setting tiers_mode to volume. The total at the end of the period is the amount for the specific tier × usage. For example, given a tiering configuration of $5 for usage of 1 - 5, $4 for 6 - 10, and $3 for 11 - 20, a usage of 11 would result in a total of $33 ($3 × 11)
+- `Graduated pricing` by setting billing_scheme to tiered and setting tiers_mode to graduated. The total at the end of the period is the sum of the amount for each tier × the usage for that particular tier. For example, given a graduated tiering configuration of $5 for usage of 1 - 5, $4 for 6 - 10, and $3 for 11 - 20, a usage of 11 would result in a total of $48 ($5 × 5 + $4 × 5 + $3 × 1).

@@ -120,3 +120,13 @@ function stripeTokenHandler(token) {
 ```
 
 [See Reference](https://stripe.com/docs/stripe-js)
+
+#### Stripe Workflow
+
+1. The customer arrives at our payment page that includes the Checkout code, loaded over `HTTPS`.
+2. The customer clicks the payment button (e.g., Pay with Card), completes the payment form, and clicks on the `Pay Now` button.
+3. Checkout sends the payment details `directly to Stripe` from the customer's browser, assuming the details` pass basic validation`.
+4. Stripe returns a `token` to Checkout, or an `error` message if the card-network validation fails.
+5. Checkout takes the returned token and stores it in the page's primary form—the one surrounding the `<script>` tag above, in a hidden element named `stripeToken`.
+6. Checkout submits the form to our `server`.
+7. Our server uses the posted token to charge the card.

@@ -390,7 +390,6 @@ Vue.js has introduced a `.Sync` modifier to `v-bind` which update the Parent dat
 <input>type="text" v-model="inputData" @keyup="$emit('update:inputData', inputData);"</input>
 ```
 
-
 #### Reacting to changing with Computed properties
 
 ```html
@@ -685,7 +684,7 @@ data: {
 
 #### Looping through a lists of numbers
 
-```
+```html
 <div id="app">
   <ul>
     <li v-for="person in persons">
@@ -794,7 +793,6 @@ new Vue({
   }
 })
 </script>
-
 ```
 
 #### Pass HTML content from parent to child using `<slot>`
@@ -852,10 +850,9 @@ h1 {
 }
 
 </style>
-
 ```
 
-#### How Directives work?
+#### How Directives work
 
 Hooks workflow:
 
@@ -880,7 +877,7 @@ const router = new VueRouter({
 
 **N.B.** Since our app is a single page client side app, without a proper server configuration, the user will get a 404 not found error. So, if no matched then, server should serve `index.html` always! 
 
-#### Difference between `v-model` and `v-bind`?
+#### Difference between `v-model` and `v-bind`
 
 ```html
 <input v-model="something">
@@ -1111,7 +1108,7 @@ chainWebpack: config => {
 
 [Ref](https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only)
 
-#### Compile templates in client manually!
+#### Compile templates in client manually
 
 Say, we need to generate the `Breadcrumb` manually using `<router-link>` (if we use anchor `<a>` element directlly then HTML5/Vue History mode does not work). So, we need to Compile it manually inside JS.
 
@@ -1153,3 +1150,80 @@ export default {
   }
 }
 ```
+
+#### Reactivity in Depth
+
+- When we pass a plain JavaScript object to a Vue instance as its data option, Vue.js will walk through all of its properties and convert them to getter/setters using [Object.defineProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+
+- Due to the limitation of ES5, Vue.js **cannot detect property addition or deletion**
+
+- Since Vue.js performs the getter/setter conversion process during instance initialization, a property `must be present in the data object` in order for Vue.js to convert it and make it `reactive`
+
+  ```js
+  var data = { a: 1 }
+  var vm = new Vue({
+    data: data
+  })
+  // `vm.a` and `data.a` are now reactive
+  vm.b = 2
+  // `vm.b` is NOT reactive
+  data.b = 2
+  // `data.b` is NOT reactive
+  ```
+
+- Add a property and make it `reactive` after an instance has been created
+
+  ```js
+  vm.$set('b', 2)
+  // `vm.b` and `data.b` are now reactive
+
+  Vue.set(data, 'c', 3)
+  // `vm.c` and `data.c` are now reactive1
+  ```
+
+- New properties added to the object `will not trigger` changes so, create a `fresh object` with properties from both the original object and the mixin object
+
+  ```js
+  // instead of `Object.assign(this.someObject, { a: 1, b: 2 })`
+  this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })
+  ```
+
+Reactivity Workflow:
+
+  <img src="../../images/vue-reactivity.png" alt="vue-reactivity" width="500px"/>
+
+#### Reactivity inside Computed Properties
+
+- Vue.js computed properties are **not** simple getters. Each computed property keeps track of its own reactive dependencies
+- When a computed property is evaluated, Vue.js updates its `dependency list` and **caches** the result value. The cached value is only `invalidated` when one of the tracked dependencies have changed
+- Because of computed property caching, the getter function is not always called when you access a computed property
+
+  ```js
+  var vm = new Vue({
+    data: {
+      msg: 'hi'
+    },
+    computed: {
+      example: function () {
+        return Date.now() + this.msg
+      }
+    }
+  })
+  ```
+
+The computed property `example` has only one dependency: `vm.msg`. `Date.now()` is **not** a reactive dependency, because it has nothing to do with Vue’s data observation system. Therefore, when you programmatically access `vm.example`, you will find the timestamp to remain the same unless vm.msg triggers a `re-evaluation`.
+
+In some use cases we may want to preserve the simple getter-like behavior, where every time we access `vm.example` it simply calls the `getter` again. We can do that by `turning off caching` for a specific computed property.
+
+```js
+computed: {
+  example: {
+    cache: false,
+    get: function () {
+      return Date.now() + this.msg
+    }
+  }
+}
+```
+
+**N.B.** However, note this only affects programmatic access inside JavaScript; data-bindings are still dependency-driven. When we bind to a computed property in the template as `{{example}}`, the DOM will only be updated when a reactive dependency has changed.

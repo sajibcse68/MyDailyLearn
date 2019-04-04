@@ -808,6 +808,11 @@ $ git branch --set-upstream master_upstream origin/master_upstream # git v1.7.12
 # The --set-upstream flag is deprecated and will be removed. Consider using --track or --set-upstream-to branch master_upstream set up to track remote branch master_upstream from origin.
 ```
 
+#### Quickly browse the history of files in any git repos
+
+1. Go to a file in GitHub (or GitLab, or Bitbucket)
+2. Replace github.com with github.githistory.xyz
+
 ## Concepts
 
 #### Tracked vs Untrack file

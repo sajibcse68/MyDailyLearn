@@ -74,3 +74,39 @@ const loginAction = () => {
   }
 };
 ```
+
+#### Register a Store Listener
+
+- We can access to on the Redux `store` object is **store.subscribe()**. This allows you to subscribe listener functions to the store.
+
+```js
+const ADD = 'ADD';
+
+const reducer = (state = 0, action) => {
+  switch(action.type) {
+    case ADD:
+      return state + 1;
+    default:
+      return state;
+  }
+};
+
+const store = Redux.createStore(reducer);
+
+// global count variable
+let count = 0;
+
+const callback = () => {
+  count += 1;
+}
+
+// store listener: increment the global 'count' variable every time the store receives an action
+store.subscribe(callback);
+
+store.dispatch({type: ADD});
+console.log(count); // 1
+store.dispatch({type: ADD});
+console.log(count); // 2
+store.dispatch({type: ADD});
+console.log(count); // 3
+```

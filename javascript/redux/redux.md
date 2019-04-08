@@ -29,7 +29,7 @@ const store = Redux.createStore((state = 5) => state);
 const currentState = store.getState();
 ```
 
-#### Redux Action
+## Redux Action
 
 - An `action creator` is simply a JavaScript function that returns an action. In other words, action creators create objects that represent action events
 - `dispatch` method is what you use to dispatch actions to the Redux store
@@ -48,4 +48,29 @@ const loginAction = () => {
 
 // dispatch the action
 store.dispatch(loginAction())
+```
+
+#### Handle an Action in the Store
+
+- `Reducers` in Redux are responsible for the `state modifications` that take place in response to `actions`
+- A `reducer` takes `state` and `action` as `arguments`, and it always returns a **new state**
+- The `reducer` function must always return a `new copy of state` and `never` modify state directly thought Redux does not enforce state immutability.
+
+```js
+const defaultState = {
+  login: false
+};
+
+const reducer = (state = defaultState, action) => {
+  // handle an action in the store
+  return action.type === "LOGIN" ? { login: true } : state;
+};
+
+const store = Redux.createStore(reducer);
+
+const loginAction = () => {
+  return {
+    type: 'LOGIN'
+  }
+};
 ```

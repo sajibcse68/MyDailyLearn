@@ -49,3 +49,52 @@ const loginAction = () => {
 // dispatch the action
 store.dispatch(loginAction())
 ```
+
+#### Combine Multiple Reducers
+
+- First principle of Redux: all app state is held in a `single` state object in the store
+- Redux provides reducer `composition` as a solution for a complex state model
+- In order to let us combine `multiple` reducers together, Redux provides the `combineReducers()` method
+
+```js
+const INCREMENT = 'INCREMENT';
+const DECREMENT = 'DECREMENT';
+
+const counterReducer = (state = 0, action) => {
+  switch(action.type) {
+    case INCREMENT:
+      return state + 1;
+    case DECREMENT:
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
+
+const authReducer = (state = {authenticated: false}, action) => {
+  switch(action.type) {
+    case LOGIN:
+      return {
+        authenticated: true
+      }
+    case LOGOUT:
+      return {
+        authenticated: false
+      }
+    default:
+      return state;
+  }
+};
+
+// combine multiple reducers
+const rootReducer = Redux.combineReducers({
+  count: counterReducer,
+  auth: authReducer
+})
+
+// pass rootReducer into createStore
+const store = Redux.createStore(rootReducer);
+```

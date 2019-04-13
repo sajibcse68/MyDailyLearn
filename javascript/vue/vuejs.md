@@ -1227,3 +1227,89 @@ computed: {
 ```
 
 **N.B.** However, note this only affects programmatic access inside JavaScript; data-bindings are still dependency-driven. When we bind to a computed property in the template as `{{example}}`, the DOM will only be updated when a reactive dependency has changed.
+
+#### Parent-Child Communication
+
+We can use [ref](https://vuejs.org/v2/guide/components-edge-cases.html#Accessing-Child-Component-Instances-amp-Child-Elements) or [Even Bus](https://vuejs.org/v2/guide/state-management.html)
+
+Need to Know:
+
+1. `$on()` - allows to declare a listener on Vue instance with which to listen to events
+2. `$emit()` - allows to trigger events on the same instance (self)
+
+
+Using Refs:
+
+```js
+import ChildForm from './components/ChildForm'
+
+new Vue({
+  el: '#app',
+  data: {
+    item: {}
+  },
+  template: `
+  <div>
+     <ChildForm :item="item" ref="form" />
+     <button type="submit" @click.prevent="submit">Post</button>
+  </div>
+  `,
+  methods: {
+    submit() {
+      this.$refs.form.submit()
+    }
+  },
+  components: { ChildForm },
+})
+```
+
+Using Event Bus:
+
+```js
+import ChildForm from './components/ChildForm'
+
+new Vue({
+  el: '#app',
+  data: {
+    item: {},
+    bus: new Vue(),
+  },
+  template: `
+  <div>
+     <ChildForm :item="item" :bus="bus" ref="form" />
+     <button type="submit" @click.prevent="submit">Post</button>
+  </div>
+  `,
+  methods: {
+    submit() {
+      this.bus.$emit('submit')
+    }
+  },
+  components: { ChildForm },
+})
+```
+
+// ChildForm.vue
+
+```html
+<template>
+ ...
+</template>
+
+<script>
+export default {
+  name: 'NowForm',
+  props: ['item', 'bus'],
+  methods: {
+    submit() {
+        ...
+    }
+  },
+  mounted() {
+    this.bus.$on('submit', this.submit)
+  },  
+}
+</script>
+```
+
+[Reference](https://stackoverflow.com/a/47565763/4133798)

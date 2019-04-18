@@ -31,8 +31,14 @@
 
 #### Go to
 - <kbd>Ctrl</kbd> + <kbd>G</kbd>: Go to line
-- <kbd>Ctrl</kbd> + <kbd>-</kbd>: Navigate backward
-- <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd>: Navigate forward
+
+- <kbd>Ctrl</kbd> + <kbd>-</kbd>: Navigate backward (Mac)
+- <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>-</kbd>: Navigate backward (Ubuntu)
+- <kbd>Alt</kbd> + <kbd><-</kbd>: Navigate backward (Windows)
+
+- <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd>: Navigate forward (Mac / Ubuntu)
+- <kbd>Alt</kbd> + <kbd>-></kbd>: Navigate forward (Windows)
+
 - <kbd>Cmd</kbd> + <kbd> K </kbd> <kbd> Cmd </kbd> + <kbd> Q </kbd>: Navigate to the last location edited
 
 #### Editor

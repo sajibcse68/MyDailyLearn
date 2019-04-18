@@ -984,22 +984,22 @@ div id="app">
 </div>
 ```
 
-#### Vue Router has 3 types of gurards:
+#### Vue Router has 3 types of gurards
 
 1. Global guards (on the instance)
 
-- These are called `each time the URL changes`
-- Guards: `beforeEach`, `beforeResolve`, `afterEach`
+   - These are called `each time the URL changes`
+   - Guards: `beforeEach`, `beforeResolve`, `afterEach`
 
 2. Route guards (on router definition)
 
-- These are `only called when the associated ROUTE is matched`
-- Guards: `beforeEnter`
+   - These are `only called when the associated ROUTE is matched`
+   - Guards: `beforeEnter`
 
 3. Route Component guards
 
-- These are `only called when a ROUTE COMPONENT is used/unused`
-- Guards: `beforeRouterEnter`, `beforeRouterUpdate`, `beforeRouterLeave`
+   - These are `only called when a ROUTE COMPONENT is used/unused`
+   - Guards: `beforeRouterEnter`, `beforeRouterUpdate`, `beforeRouterLeave`
 
 **NOTE:** All guards except `afterEach` are `asynchronous`. They are called in sequence, therefore, you need to explicitly call the `next()` methods to tell the router that we are done and that he can continue the sequence. This is also called `middleware pattern`.
 
@@ -1013,6 +1013,71 @@ Assuming, we are navigating from `/` to `/contact`:
 4. `beforeRouteEnter --` called when `/contact` route component matches
 5. `beforeResolve --` called `globally` when route component guards are done
 6. `afterEach --` called `globally` when everything is resolved
+
+## Filters
+
+Filters are useable in two places -
+
+  1. Mustache interpolations
+  2. `v-bind` expressions
+
+Filters should be appended to the end of the JavaScript expression, denoted by the `pipe` symbol.
+
+```js
+// in mustaches
+{{ message | capitalize }}
+
+// in v-bind
+<div v-bind:itemId="itemId | formatId"></div>
+```
+
+#### Define Local Filter
+
+Assign a filter method in Component's options -
+
+```js
+filters: {
+  capitalize(value) {
+    if (!value) return ''
+    value = value.toString();
+    return value.charAt(0).toUpperCase() + value.slice(1);
+  }
+}
+```
+
+#### Define a Global Filter
+
+Assign a filter using `Vue.filter()` before initialize `Vue instance`:
+
+```js
+Vue.filter('capitalize', (value) {
+  if(!value) return "";
+  value = value.toString();
+  return `${value.charAt(0).toUpperCase()}${value.slice(1)}`;
+});
+
+new Vue({
+  ...
+})
+```
+
+#### Chained Filter
+
+Filter can be chained:
+
+```js
+{{ message | filterA | filterB }}
+```
+
+#### Filter with Arguments
+
+If we pass one argument then it will be passed as `second` parameters, `first` parameter will be `message`.
+
+```js
+{{ message || filterA("arg1", "arg2")) }}
+```
+
+Here `filterA` is defined as a function taking `three` arguments. The value of `message` will be passed  into the first argument.
 
 #### Mixin
 
@@ -1035,7 +1100,6 @@ Assuming, we are navigating from `/` to `/contact`:
 ```js
 v-on:click="method"         -> @click="method"
 v-bind:title                -> :title
-
 ```
 
 **Ref:** https://github.com/sajibcse68/compare-vue

@@ -97,7 +97,7 @@ Here is some important `commands` or `code snippets` on different topics that I 
   - [Two mechanism always exists in JavaScirpt -- Lexical Scopes & Prototype Chain](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#two-mechanism-always-exists-in-javascript-codes----lexical-scopes--prototype-chain)
   - [Object Oriented in JavaScript](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#object-oriented-in-javascript)
   - [Explanation of Prototype](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#explanation-of-prototype)
-  - [When an inherited function is executed, the value of `this` points to the inheriting object, not to the `prototype object` where the function is an own property](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypesmd#when-an-inherited-function-is-executed-the-value-of-this-points-to-the-inheriting-object-not-to-the-prototype-object-where-the-function-is-an-own-property)
+  - [When an inherited function is executed, the value of `this` points to the inheriting object, not to the `prototype object` where the function is an own property](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#when-an-inherited-function-is-executed-the-value-of-this-points-to-the-inheriting-object-not-to-the-prototype-object-where-the-function-is-an-own-property)
   - [New object using Object.create() (ES5)](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#new-object-using-objectcreate-es5)
   - [New object using `class` syntactical sugar](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#new-object-using-class-syntactical-sugar)
   - [Similar in Object pattern](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/prototypes.md#similar-in-object-pattern)
@@ -199,7 +199,7 @@ Here is some important `commands` or `code snippets` on different topics that I 
 - [Compile Templates in Client Manually](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#compile-templates-in-client-manually)
 - [**Reactivity in Depth**](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#reactivity-in-depth)
   - [Reactivity inside Computed Properties](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#reactivity-inside-computed-properties)
-  - [Parent-child Communication](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#parent-child-communication)
+- [Parent-child Communication](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#parent-child-communication)
 
 ## [Node](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/nodejs/introduction.md)
 ## [React](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/react/react-overview.md)

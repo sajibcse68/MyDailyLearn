@@ -260,7 +260,7 @@ Normally vue render the variable as text (it's safe for security). If we need to
 </script>
 ```
 
-#### Modifying and event with event modifiers (e.g. `v-on:mousemove.stop=""`)
+#### Modifying and Event with Modifiers (e.g. `v-on:mousemove.stop=""`)
 
 ```html
 <template>
@@ -984,7 +984,7 @@ div id="app">
 </div>
 ```
 
-#### Vue Router has 3 types of gurards
+#### Vue Router has 3 types of guards
 
 1. Global guards (on the instance)
 

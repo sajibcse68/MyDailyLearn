@@ -1069,6 +1069,16 @@ Filter can be chained:
 {{ message | filterA | filterB }}
 ```
 
+#### Filter with Arguments
+
+If we pass one argument then it will be passed as `second` parameters, `first` parameter will be `message`.
+
+```js
+{{ message || filterA("arg1", "arg2")) }}
+```
+
+Here `filterA` is defined as a function taking `three` arguments. The value of `message` will be passed  into the first argument.
+
 #### Mixin
 
 - `{{ ... }}` is called `Interpolation` or `String Interpolation`

@@ -1061,6 +1061,14 @@ new Vue({
 })
 ```
 
+#### Chained Filter
+
+Filter can be chained:
+
+```js
+{{ message | filterA | filterB }}
+```
+
 #### Mixin
 
 - `{{ ... }}` is called `Interpolation` or `String Interpolation`

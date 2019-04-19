@@ -27,7 +27,7 @@ MyComponent.defaultProps = {
 
 React assigns default props if props are `undefined`, but if we pass `null` as the value for a prop, if will remain `null`.
 
-#### Use `PropTypes` to Define the Props we expect
+#### Use `PropTypes` to Define the Props We Expect
 
 It's considered a best practice to set `propTypes` when we know the type of a prop ahead of time. We can define a `propTypes` property for a component in the same way we defined `defaultProps`.
 
@@ -47,6 +47,88 @@ Note: React `v15.5.0`, `PropTypes` is imported independently from React, like th
 import React, { PropTypes } from "react";
 ```
 
+## Understanding React `setState`
+
+`setState()` si the only legitimate way to update state after the initial state setup.
+
+Key Notes:
+
+- Update to a component state should be done using `setState()`
+- We can pass **object** or **function** to `setState()`
+- We have to pass `function` when we need to update state multiple times
+- Do not depend on `this.state` immediately after calling `setState()` since it is Asynchronous. Use `Callback`.
+
+#### Update a State Property
+
+we can pass an object as arguments of `setState()`.
+
+```js
+import React, { Component } from 'react'
+
+class Search extends Component {
+  constructor(props) {
+    super(props)
+
+    state = {
+      searchTerm: ''
+    }
+  }
+
+  updateState = (event) => {
+    // update searchTerm, say this function is called from UI
+    setState({
+      searchTerm: event.target.value
+    });
+  }
+}
+```
+
+#### Passing a Function to `setState()`
+
+What if we want to increment a counter 3 times after clicking a button one time? Let's see:
+
+```js
+handleIncrement() {
+  this.setState({ count: this.state.count + 1 });
+  this.setState({ count: this.state.count + 1 });
+  this.setState({ count: this.state.count + 1 });
+}
+```
+we might be surprised to find **that doesn't work**. It's `equivalent` to:
+
+```js
+Object.assign(
+  {},
+  { count: this.state.count + 1 },
+  { count: this.state.count + 1 },
+  { count: this.state.count + 1 }
+)
+```
+
+So, instead of call happening three times, it happens just once.
+This can be fixed by `passing a function` to **setState()**.
+
+```js
+handleIncrement() {
+  this.setState((prevState) => ({ count: this.state.count + 1 }));
+  this.setState((prevState) => ({ count: this.state.count + 1 }));
+  this.setState((prevState) => ({ count: this.state.count + 1 }));
+
+  // now incrementing count three times with one click!
+}
+```
+
+#### Access Previous State using Updater
+
+when we pass `function` to `setState()`, first argument is the prevState.
+
+```js
+this.setState( prevState => {
+  // prevState is the current state
+  return { count: prevState + 1 }
+})
+```
+
 #### Stateless Functional Component, Stateless Component and Stateful component
 
 - `A stateless functional component` is any function we write which accepts `props` and return `JSX`
@@ -55,6 +137,7 @@ import React, { PropTypes } from "react";
 
 - `A stateful component` is any component that does maintain its own internal state. We may see stateful component referred to simply as `components` or `React components`.
 
+[Reference](https://css-tricks.com/understanding-react-setstate/)
 
 #### LifeCycle Hooks or Methods
 

@@ -47,6 +47,36 @@ Note: React `v15.5.0`, `PropTypes` is imported independently from React, like th
 import React, { PropTypes } from "react";
 ```
 
+## Understanding React `setState`
+
+`setState()` si the only legitimate way to update state after the initial state setup.
+
+#### Update a state property
+
+we can pass an object as arguments of `setState()`.
+
+```js
+import React, { Component } from 'react'
+
+class Search extends Component {
+  constructor(props) {
+    super(props)
+
+    state = {
+      searchTerm: ''
+    }
+  }
+
+  updateState = (event) => {
+    // update searchTerm, say this function is called from UI
+    setState({
+      searchTerm: event.target.value
+    });
+  }
+}
+```
+
+
 #### Stateless Functional Component, Stateless Component and Stateful component
 
 - `A stateless functional component` is any function we write which accepts `props` and return `JSX`

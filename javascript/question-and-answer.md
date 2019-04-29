@@ -239,6 +239,13 @@ console.log(onlyTrueValues);
 // [1, "Alice", "Bob"]
 ```
 
+#### How to create an Empty Objects?
+
+```js
+let emptyArr = Object.create(null);
+// emptyArr.__proto__ === "undefined"
+```
+
 #### What is `Debouncing` in JavaScript?
 
 There are some browser events that can fire many times within a short timespan very quickly, such as resizing  a window or scrolling

@@ -260,6 +260,19 @@ sayHello(null); // no error!!
 sayHello("Sajib"); // no error
 ```
 
+#### How to get Query String Parameters?
+
+```js
+// say, "?post=1234&action=edit"
+const urlParams = new URLSearchParams(window.location.search);
+
+console.log(urlParams.has('post')); // true
+console.log(urlParams.get('action')); // "edit"
+console.log(urlParams.getAll('action')); // ["edit"]
+console.log(urlParams.toString()); // "?post=1234&action=edit"
+console.log(urlParams.append('active', '1')); // "?post=1234&action=edit&active=1"
+```
+
 #### What is `Debouncing` in JavaScript?
 
 There are some browser events that can fire many times within a short timespan very quickly, such as resizing  a window or scrolling

@@ -246,6 +246,20 @@ let emptyArr = Object.create(null);
 // emptyArr.__proto__ === "undefined"
 ```
 
+#### How to require function parameters by force?
+
+```js
+const isRequired = () => { throw new Error("param is required"); };
+
+const sayHello = (name = isRequired()) => { console.log(`Hello ${name}`)};
+
+sayHello(); // throw an error
+sayHello(undefined); // throw an error
+
+sayHello(null); // no error!!
+sayHello("Sajib"); // no error
+```
+
 #### What is `Debouncing` in JavaScript?
 
 There are some browser events that can fire many times within a short timespan very quickly, such as resizing  a window or scrolling

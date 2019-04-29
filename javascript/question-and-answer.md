@@ -227,7 +227,17 @@ console.log(uniqueValues);
 // [1, 2, 3]
 ```
 
-#### 
+#### How can remove all `falsy` values from an Array?
+
+```js
+const onlyTrueValues = [0, 1, "Alice", undefined, null, false, "Bob"
+  .map(item => {
+    // ...
+  }).filter(Boolean);
+
+console.log(onlyTrueValues);
+// [1, "Alice", "Bob"]
+```
 
 #### What is `Debouncing` in JavaScript?
 

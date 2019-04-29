@@ -90,7 +90,7 @@ Any function that returns a `new object` which is not a Constructor function (no
     console.log(foo === null)  // true boolean
   ```
 
-#### What does JavaScript `get` or `getter` keyword do?
+## What does JavaScript `get` or `getter` keyword do?
 
 The `get` syntax **binds an object property to a function** that will be called when that property is looked up.
 
@@ -102,7 +102,7 @@ The `get` syntax **binds an object property to a function** that will be called 
 
 **Examples:**
 
-- Defining a getter on new objects in object initializers
+#### Defining a getter on new objects in object initializers
 
   ```js
   const obj = {
@@ -122,7 +122,7 @@ The `get` syntax **binds an object property to a function** that will be called 
   delete obj.latest;
   ```
 
-- Defining a getter on existing objects using `defineProperty`.
+#### Defining a getter on existing objects using `defineProperty`.
 
   ```js
   var o = {a: 0};
@@ -132,7 +132,7 @@ The `get` syntax **binds an object property to a function** that will be called 
   ```
 
 
-- Using a `computed` property name
+#### Using a `computed` property name
 
   ```js
   const name = 'foo';
@@ -145,7 +145,7 @@ The `get` syntax **binds an object property to a function** that will be called 
   ```
 
 
-- **`Get vs definePropery()`**
+#### **`Get vs definePropery()`**
 
   When using `get` the property will be defined on the property of the object while using `Object.defineProperty()` the property will be defined on the instance it is applied to.
 
@@ -218,6 +218,16 @@ import * as foo from 'foo.js';
 foo.bar();  // bar
 
 ```
+
+#### How to get `Unique` values of an Array?
+
+```js
+const uniqueValues = [...new Set([1, 2, 3, 3])];
+console.log(uniqueValues);
+// [1, 2, 3]
+```
+
+#### 
 
 #### What is `Debouncing` in JavaScript?
 
@@ -311,6 +321,7 @@ spinalCase('This Is Spinal Tap');
 
 #### What type of scoping rule(s) does JavaScript have?
 - Lexical scope
+
 #### What are 3 different ways we can create a new scoped variable?
 - `Let` inside a scope
 - `Var` inside a function

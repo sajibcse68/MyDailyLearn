@@ -18,3 +18,18 @@ Workflow
 - for..in
 - with
 - delete
+ 
+Tips: always write optimize code that is predictable!
+
+#### Memory Heap vs Call Stack
+
+`Memory Heap`: where the memory allocation happens - allocate memory, use memory, release memory
+`Call Stack`: keep track where we are in the code so that we can run the codes in order
+
+#### How does garbage collection actually works in JavaScript?
+
+- Use [**Mark-and-Sweep**](https://www.geeksforgeeks.org/mark-and-sweep-garbage-collection-algorithm/) algorithm
+
+<img src="../images/mark-and-sweep-algo.png" alt="mark-and-sweep-algo" width="400px"/>
+
+-

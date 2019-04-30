@@ -32,4 +32,15 @@ Tips: always write optimize code that is predictable!
 
 <img src="../images/mark-and-sweep-algo.png" alt="mark-and-sweep-algo" width="400px"/>
 
--
+#### What is Memory Leaks?
+
+When `Memory Heaps` is full  (no `garbage collection` is happening, it is called **Memory Leaks**. When memory leaks happens the browser will be crashed!
+
+```js
+let array = [];
+
+// infinite loop, memory leaks
+for (let i = 2; i > 1; i++) {
+  array.push(i);
+}
+```

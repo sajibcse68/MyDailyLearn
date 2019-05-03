@@ -795,6 +795,26 @@ new Vue({
 </script>
 ```
 
+#### Dynamic Lifecycle Injection
+
+we can add lifecycle dynamically
+
+```js
+import { onMounted, onUnmounted } from 'vue';
+
+export default {
+  beforeCreate() {
+    onMounted(() => {
+      console.log('mounted');
+    })
+
+    onUnmounted(() => {
+      console.log('unmounted');
+    })
+  }
+}
+```
+
 #### Pass HTML content from parent to child using `<slot>`
 
 ```html

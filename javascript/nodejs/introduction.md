@@ -2,7 +2,9 @@
 - Allows us to build scalable network applications using JavaScript on the server-side
 - `V8 JavaScript Runtime`, that is the same runtime that is used in our `Chrome` browser
 - Node does provides a wrapper around this engine providing additional functionality for building network applications
-- It's fast because it's mostly `C` code
+- It's fast because it's mostly `C++` code
+
+<img src="../../images/nodejs-environment.png" alt="nodejs-environment" width="500px"/>
 
 #### What could we build?
 - `Websocket server`, like a chat server

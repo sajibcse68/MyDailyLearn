@@ -43,4 +43,16 @@ let array = [];
 for (let i = 2; i > 1; i++) {
   array.push(i);
 }
+
+// Event listeners
+const element = document.getElementById("button");
+element.addEventListener("click", onClick);
+// if we back and forth specially in single page application and don't remove event listeners
+// then it causes memory leaks
+
+// setInterval
+setInterval(() => {
+  // referencing  objects...
+})
+
 ```

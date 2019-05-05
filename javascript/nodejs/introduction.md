@@ -3,6 +3,8 @@
 - `V8 JavaScript Runtime`, that is the same runtime that is used in our `Chrome` browser
 - Node does provides a wrapper around this engine providing additional functionality for building network applications
 - It's fast because it's mostly `C++` code
+- Use `V8` engine to understand JavaScript
+- Use **`LIBUV`** library which works a lot to create a Event Loop to extend Async properties
 
 <img src="../../images/nodejs-environment.png" alt="nodejs-environment" width="500px"/>
 

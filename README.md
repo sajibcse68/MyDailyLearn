@@ -183,6 +183,7 @@ Here is some important `commands` or `code snippets` on different topics that I 
 - [Bind Attribute and Class Name](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#bind-attribute-and-class-name)
 - [Dynamic Components](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#dynamic-components)
   - [Prevent Destroying components when rendering Dynamic components](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#prevent-destroying-components-when-rendering-dynamic-components)
+- [Lazy Loading Off-screen Components](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#lazy-loading-off-screen-components)
 - [Disable Re-rendering with v-once](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#disable-re-rendering-with-v-once)
 - [Output Raw HTML with v-html Directives](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#output-raw-html-with-v-html-directives)
 - [Get Event Data from the Event](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#get-event-data-from-the-event)

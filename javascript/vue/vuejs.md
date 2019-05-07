@@ -163,6 +163,34 @@ export default {
 </script>
 ```
 
+#### Lazy Loading Off-screen Components
+
+We can use `v-if` to lazily load `off-screen` components.
+
+```html
+<template>
+  <div id="app">
+    <modal v-if="isModalVisible"/>
+  </div>
+  <button @click="isModalVisible = true">Open Modal</button>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      // Modal will not be downloaded until this value will equal 'true'
+      isModalVisible: false
+    }
+  },
+  components: {
+    'Modal': () => import('./components/Modal')
+  }
+}
+</script>
+```
+
+
 #### Disable re-rendering with `v-once`
 
 ```html

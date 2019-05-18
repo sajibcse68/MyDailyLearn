@@ -96,8 +96,9 @@ var AppointmentListView = Backbone.View.extend({
   }
 });
 ```
-#### Organised router @codeSchool
-```
+#### Organized router @codeSchool
+
+```js
 var TodoApp = new (Backbone.Router.extend({
 	routes: {
 		"": "index",
@@ -122,7 +123,8 @@ var TodoApp = new (Backbone.Router.extend({
 #### You'll want to create an instance of the AppointmentView, render it, and replace the contents of #app with its top-level element.
 
 - Lastly, don't forget to fetch data from the server for the appointment.
-```
+
+```js
 var AppRouter = Backbone.Router.extend({
   routes: { "appointments/:id": "show" },
   show: function(id){
@@ -138,7 +140,8 @@ var AppRouter = Backbone.Router.extend({
 - Next, instead of passing in the appointmentList collection in initialize, create an     instance of AppointmentList and assign it to this.appointmentList.
 - Add a start function to the router to start our Backbone history with pushState on.
 - Finally, call the router's start function from inside a jQuery ready function to ensure we don't start updating the DOM before it's ready.
-```
+
+```js
 var AppRouter = new (Backbone.Router.extend({
   routes: { "appointments/:id": "show", "": "index" },
 
@@ -174,6 +177,7 @@ $(function(){ AppRouter.start() });
 ### Reviewing how model data is fetched from server
 
 #### Customizing Collections
+
 ```js
 var TodoItems = Backbone.Collection.extend({
     comparator: function(todo1, todo2){
@@ -189,6 +193,7 @@ var TodoItems = Backbone.Collection.extend({
 });
 ```
 #### Real Routes
+
 ```js
 var TodoRouter = new (Backbone.Router.extend({
   routes: {
@@ -210,7 +215,9 @@ search: function(query, page){
 TodoRouter.route(/^todos\/(\d+)$/. 'show')
 Advanced Regex Routes // need to know
 ```
+
 #### Varying views
+
 ```js
 - var TodoView = Backbone.View.extend({
     initialize: function() {
@@ -241,9 +248,12 @@ var TodoForm = Backbone.View.extend({
   }
 })
 ```
+
 #### App organization
+
 - skip links using events
-```
+
+```js
 <ul>
 <li><a href="/completed" data-internal="true">Show Completed</a></li>
 <li><a href="/completed"</a></li>
@@ -254,11 +264,14 @@ events: {
   }
 }
 ```
+
 #### Make read only model
+
 - method = "read", "create", "update", or "delete"
 - todoItem.fetch();
 - todoItem.save();
-```
+
+```js
   var TodoItem = Backbone.Model.extend({
   sync: function(method, model, options){
     if(method === "read"){
@@ -269,6 +282,7 @@ events: {
   }
 })
 ```
+
 - How would we replace a server with localStorage?
   - It's a browser site storage that most browser have
   - set an item
@@ -284,16 +298,19 @@ events: {
 
 
 #### Run project
-```
+
+```sh
 $ gulp
 ```
 #### Show gulp command error details
-```
+
+```sh
 $ gulp prod
 // js debugger
 $ debugger         
 ```
 #### The issues with React is that
+
 - It is very new and most existing libraries are not ready.
 - React only handles the View part of MVC. You have to use you own components for M and C.
 - React is all JS, even CSS is changed via JS ( that will make it very difficult to work with for anyone not programmer)
@@ -301,26 +318,3 @@ $ debugger
 - React has some good ideas but I don't like how it works. Also, it makes it hard to use other libraries like Jquery.
   The thing I like about backbone is it is simple and stable. We can just any existing jquery library with it.
 .....
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

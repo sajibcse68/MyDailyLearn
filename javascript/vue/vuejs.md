@@ -1032,6 +1032,113 @@ div id="app">
 </div>
 ```
 
+#### Vue Observable - Alternate to Vuex
+
+[Vue Observable](https://vuejs.org/v2/api/#Vue-observable) introduced in Vue `v2.6.0` could be a lightweight alternative to statement management in smaller applications. So, let's create an object `users`:
+
+```js
+import Vue from "vue";
+
+const state = Vue.observable({
+  users: {
+    c6676a9aca4c270086ef31a35cc80446: {
+      name: "Ibrahim Ezzy",
+      twitter: "3zzy",
+      bio: "Software Imagineer. Front-end, UI & Design."
+    },
+    "4d50982553c3286d65182075c178245f": {
+      name: "Tim Apple",
+      twitter: "tim_cook",
+      bio: "Chief Executive Officer of Apple"
+    }
+  }
+});
+```
+
+A generic `setState` method to **update** any object within the state:
+
+```js
+const mutations = {
+    setState({ object, objectPath, value, upsert = false } = {}) {
+        console.log("setState args: ", { object, objectPath, value, upsert });
+        if (state[object] === undefined || value === undefined)
+            console.error("setState: Invalid Object or Value");
+        if (objectPath === undefined) state[object] = value;
+        if (objectPath && Array.isArray(objectPath) && objectPath.length) {
+            let navigate = [object, ...objectPath.slice(0, -1)],
+            valueObj = navigate.reduce((obj, prop) => {
+                if (typeof obj[prop] !== "object") {
+                if (upsert) {
+                    obj[prop] = {};
+                } else {
+                    console.error(`setState: property '${prop}' doesn't exist`);
+                }
+                }
+                return obj[prop];
+            }, state);
+            Vue.set(valueObj, objectPath[objectPath.length - 1], value);
+        }
+    }
+    // other specific mutations ...
+};
+```
+
+And a generic `getState` method to get any object from the state:
+
+```js
+const getters = {
+    getState({ object, objectPath } = {}) {
+        if (state[object] === undefined) console.error("getState: Invalid Object.");
+        if (objectPath === undefined) return state[object];
+        if (objectPath && Array.isArray(objectPath) && objectPath.length) {
+            let navigate = [object, ...objectPath.slice(0, -1)],
+            valueObj = navigate.reduce((obj, prop) => {
+                if (obj[prop] === undefined) {
+                console.error(`getState: property '${prop}' doesn't exist`);
+                }
+                return obj[prop];
+            }, state),
+            value = valueObj[objectPath[objectPath.length - 1]];
+            if (value === undefined) console.error(`getState: Invalid object path`);
+            return value;
+        }
+    }
+    // other specific getters ...
+};
+```
+
+Now, we can access `users` like so:
+
+```js
+data() {
+  return {
+    users: getters.getState({
+      object: "users"
+    })
+  };
+}
+```
+
+and update (or, create) using `setState`:
+
+```js
+methods: {
+  updateName(e, id) {
+    console.log(e.target.innerText, id);
+    mutations.setState({
+      object: "users",
+      objectPath: [id, "name"],
+      value: e.target.innerText
+    });
+  }
+}
+```
+
+Obviously these functions only work with `Objects` but we get the idea.
+
+[Reference](https://dev.to/3zzy/using-vue-observable-as-a-lightweight-state-management-alternative-to-vuex-1pb5?fbclid=IwAR1SsICQ5W08yDE9o0zcCxyTnZ1IoNSabqCb3hot3Hc-9Ej5d3imJkHX5SQ)   
+[CodeSandbox](https://codesandbox.io/s/zn85x6pr1p?fontsize=14)
+
 #### Vue Router has 3 types of guards
 
 1. Global guards (on the instance)

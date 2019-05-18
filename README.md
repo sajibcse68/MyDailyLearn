@@ -215,6 +215,7 @@ Here is some important `commands` or `code snippets` on different topics that I 
 - [**Vuex**](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#vuex)
 - [Service Worker Caching Config - Progressive Web App](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#service-worker-caching-config-progressive-web-app)
 - [Toggling Similar Elements](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#toggling-similar-elements)
+- [**Vue Observable** - Alternate to Vuex](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#vue-observable---alternate-to-vuex)
 - [Vue Router has 3 Types of Guards](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#vue-router-has-3-types-of-guards)
 - [Vue Filters](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#filters)
   - [Define Local Filter](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/vue/vuejs.md#define-local-filter)

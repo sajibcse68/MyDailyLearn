@@ -131,7 +131,6 @@ The `get` syntax **binds an object property to a function** that will be called 
   console.log(o.b); // runs the getter, which yeilds a + 1
   ```
 
-
 #### Using a `computed` property name
 
   ```js
@@ -143,7 +142,6 @@ The `get` syntax **binds an object property to a function** that will be called 
 
   console.log(o.foo); // "bar"
   ```
-
 
 #### **`Get vs definePropery()`**
 
@@ -287,28 +285,28 @@ rate at which a function can fire.
 // N milliseconds. If `immediate` is passed, trigger the function on the
 // leading edge, instead of the trailing.
 function debounce(func, wait, immediate) {
-	var timeout;
-	return function() {
-		var context = this, args = arguments;
-		var later = function() {
-			timeout = null;
-			if (!immediate) func.apply(context, args);
-		};
-		var callNow = immediate && !timeout;
-		clearTimeout(timeout);
-		timeout = setTimeout(later, wait);
-		if (callNow) func.apply(context, args);
-	};
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
 };
 ```
 
 This function - when wrapped around an event - will execute only after a certain amount of time has elapsed
 
-```
+```js
 // function to be called when user scrolls
 function foo () {
   console.log('You are scrolling');
-} 
+}
 
 // wrap our function in a debounce to fire once 2 seconds have gone by
 let elem = document.getElementById('container');
@@ -316,7 +314,6 @@ elem.addEventListener('scroll', debounce(foo, 2000))
 ```
 
 **Ref:** [MDN](https://davidwalsh.name/javascript-debounce-function), [FreeCodeCamp](https://medium.freecodecamp.org/3-questions-to-watch-out-for-in-a-javascript-interview-725012834ccb)
-
 
 #### How to determine what should be the `this` keyword value?
 
@@ -328,24 +325,125 @@ The sequence we should be think is: (priority: top to bottom)
 3. Is the function called on a context object? e.g. ob.funcA
 4. DEFAULT: global object(except strict mode)
 
-#### Convert a string to `spinal string`. Spinal string case is all-lowercase-words-joined-by-dashes.
+#### Convert a value to String
 
-Input:
+Here, 5 ways are described to covert a value to String:
+
+```js
+const value = 12345;
+
+// Concat Empty String
+value + '';
+
+// Template Strings
+`${value}`;
+
+// JSON.stringify
+JSON.stringify(value);
+
+// toString()
+value.toString();
+
+// String()
+String(value);
+
+// RESULT
+// '12345'
+```
+
+Let's compare some different type of variables converting to String
+
+```js
+// string
+const string = "hello";
+string + ''; // 'hello'
+`${string}`; // 'hello'
+JSON.stringify(string); // '"hello"'
+string.toString(); // 'hello'
+String(string); // 'hello'
+
+// number
+const number = 123;
+number + ''; // '123'
+`${number}`; // '123'
+JSON.stringify(number); // '123'
+number.toString(); // '123'
+String(number); // '123'
+
+// boolean
+const boolean = true;
+boolean + ''; // 'true'
+`${boolean}`; // 'true'
+JSON.stringify(boolean); // 'true'
+boolean.toString(); // 'true'
+String(boolean); // 'true'
+
+// array
+const array = [1, "2", 3];
+array + ''; // '1,2,3'
+`${array}`; // '1,2,3'
+JSON.stringify(array); // '[1,"2",3]'
+array.toString(); // '1,2,3'
+String(array); // '1,2,3'
+
+// object
+const object = {one: 1 };
+object + ''; // '[object Object]'
+`${object}`; // '[object Object]'
+JSON.stringify(object); // '{"one":1}'
+object.toString(); // '[object Object]'
+String(object); // '[object Object]'
+
+// symbol
+const symbolValue = Symbol('123');
+symbolValue + ''; // ❌ TypeError
+`${symbolValue}`; // ❌ TypeError
+JSON.stringify(symbolValue); // undefined
+symbolValue.toString(); // 'Symbol(123)'
+String(symbolValue); // 'Symbol(123)'
+
+// undefinedValue
+const undefinedValue = undefined;
+undefinedValue + ''; // 'undefined'
+`${undefinedValue}`; // 'undefined'
+JSON.stringify(undefinedValue); // undefined
+undefinedValue.toString(); // ❌ TypeError
+String(undefinedValue); // 'undefined'
+
+// nullValue
+const nullValue = null;
+nullValue + ''; // 'null'
+`${nullValue}`; // 'null'
+JSON.stringify(nullValue); // 'null'
+nullValue.toString(); // ❌ TypeError
+String(nullValue); // 'null'
+```
+
+We can see that `String()` handle the `null` and `undefined` quite well. No errors are thrown - unless that what we want. If we are not sure about our data type then `String()` is always good by default.
+
+[Reference](https://medium.com/dailyjs/5-ways-to-convert-a-value-to-string-in-javascript-6b334b2fc778)
+
+#### Convert a string to `spinal string`.
+
+Spinal string case is all-lowercase-words-joined-by-dashes
+
+```js
+// Input:
 This Is Spinal Tap
 thisIsSpinalTap
 The_Andy_Griffith_Show
 Teletubbies say Eh-oh
 AllThe-small Things
 
-Output: 
+// Output:
 this-is-spinal-tap
 this-is-spinal-tap
 the-andy-griffith-show
 teletubbies-say-eh-oh
 all-the-small-things
+```
 
-
-Solutions: 
+Solutions:
 
 ```js
 function spinalCase(str) {
@@ -364,9 +462,11 @@ spinalCase('This Is Spinal Tap');
 ```
 
 #### What type of scoping rule(s) does JavaScript have?
+
 - Lexical scope
 
 #### What are 3 different ways we can create a new scoped variable?
+
 - `Let` inside a scope
 - `Var` inside a function
 - `err` in catch close: e.g. catch(err) { ... }
@@ -379,10 +479,12 @@ spinalCase('This Is Spinal Tap');
 4. Unless the function returns its own alternate object, the new-invoked call will automatically return the newly constructed object.
 
 #### What is the different between undeclared and undefined?
+
 `Undeclared`: It's never been declared in any scoped we have accessed to
-`Undefined`: It has beed in a scope but it does not have currently any value 
+`Undefined`: It has beed in a scope but it does not have currently any value
 
 #### What is the only value in JS that is not equal to itself?
+
 `NaN` is the only value that is not equal to itself.
 
 ```js
@@ -393,12 +495,16 @@ if (!Number.isNaN) {
   }
 }
 ```
-#### What does happen when we declare a variable with `var` and `let`?
-Declaring with `var` two things are happened:  
+
+#### What does happens when we declare a variable with `var` and `let`?
+
+Declaring with `var` two things are happened:
+
 1. Hoist the variable at **compile time**.
-2. Initialize the Hoisted variable with `undefined` at **runtime**. 
+2. Initialize the Hoisted variable with `undefined` at **runtime**.
 
 Declaring with `let` only one thing is happened:
+
 1. Hoist the variable
 
 ```js
@@ -410,6 +516,7 @@ function foo(bar) {                       | var a;      // undefined
   }                                       |
 }                                         |
 ```
+
 **So, `let` is hoisted but not initialized actually.**
 
 #### Compare `null`, `undefined`, `NaN`

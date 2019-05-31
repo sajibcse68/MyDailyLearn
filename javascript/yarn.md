@@ -85,7 +85,7 @@ $ yarn config delete save-prefix
 
 #### Fancy Commands
 
-```
+```sh
 # see the yarn bin directory location
 $ yarn bin
 

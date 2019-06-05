@@ -158,6 +158,26 @@ React.DOM.render(
 )
 ```
 
+#### Uncontrolled Components
+
+```js
+const EncouragementForm extends React.Component {
+  handleSubmit = e => {
+    alert(this.input.value);
+    e.preventDefault();
+  }
+  render() {
+    <form onSubmit={this.handleSubmit}>
+      <label>
+        Send an Encouraging message:
+        <input type="text" ref={input => this.input = input }/>
+      </label>
+      <button> Submit </button>
+    </form>
+  }
+}
+```
+
 #### LifeCycle Hooks or Methods
 
 - The `ComponentWillMount()` method is called before the `render()` method when a component is being mounted to the DOM.

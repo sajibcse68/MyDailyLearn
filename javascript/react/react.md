@@ -206,6 +206,35 @@ const EncouragementForm extends React.Component {
 }
 ```
 
+#### React Fragment
+
+we can use `React.Fragment` instead of using any extra `div` or `section`, etc.
+
+```js
+const NavItems = () =>
+  <React.Fragment>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/services">Services</a>
+    <a href="/contact">Contact</a>
+  </React.Fragment>
+```
+
+const App = () => {
+  <header>
+    <nav>
+      <NavItems />
+    </nav>
+  </header>
+
+  ReactDOM.render(
+    <App />,
+    document.getElementById('root');
+  )
+}
+
+**N.B.** Shortcut of `<React.Fragment></React.Fragment>` is `<></>`
+
 #### LifeCycle Hooks or Methods
 
 - The `ComponentWillMount()` method is called before the `render()` method when a component is being mounted to the DOM.

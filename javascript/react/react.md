@@ -49,7 +49,7 @@ import React, { PropTypes } from "react";
 
 ## Understanding React `setState`
 
-`setState()` si the only legitimate way to update state after the initial state setup.
+`setState()` is the only legitimate way to update state after the initial state setup.
 
 Key Notes:
 
@@ -110,9 +110,9 @@ This can be fixed by `passing a function` to **setState()**.
 
 ```js
 handleIncrement() {
-  this.setState((prevState) => ({ count: this.state.count + 1 }));
-  this.setState((prevState) => ({ count: this.state.count + 1 }));
-  this.setState((prevState) => ({ count: this.state.count + 1 }));
+  this.setState((prevState) => ({ count: prevState.count + 1 }));
+  this.setState((prevState) => ({ count: prevState.count + 1 }));
+  this.setState((prevState) => ({ count: prevState.count + 1 }));
 
   // now incrementing count three times with one click!
 }
@@ -135,9 +135,28 @@ this.setState( prevState => {
 
 - `A stateless component` is a class that extends `React.Component`, but does not use internal state.
 
-- `A stateful component` is any component that does maintain its own internal state. We may see stateful component referred to simply as `components` or `React components`.
+- `A state`ful component` is any component that does maintain its own internal state. We may see stateful component referred to simply as `components` or `React components`.
 
 [Reference](https://css-tricks.com/understanding-react-setstate/)
+
+#### Compound Components
+
+```js
+const Display = ({ ifTruthy = true, children } => {
+  (ifTruthy)
+  ? React.Children.only(children)
+  : null
+})
+
+const age = 20;
+
+React.DOM.render(
+  <Display ifTruthy={age >= 18}>
+    <h1>You can vote!</h1>
+  </Display>,
+  document.getElementById('root');
+)
+```
 
 #### LifeCycle Hooks or Methods
 

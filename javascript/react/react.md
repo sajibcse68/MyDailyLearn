@@ -237,6 +237,40 @@ const App = () => {
 
 #### LifeCycle Hooks or Methods
 
-- The `ComponentWillMount()` method is called before the `render()` method when a component is being mounted to the DOM.
-- The `ComponentDidMounted()` is called after a component is mounted to the DOM. Any calls to `setState()` will trigger a re-rendering of the component.
-- The `ComponentWillReceiveProps()` is called whenever a component is receiving new props.
+```js
+// Mounting Life Cycles
+constructor() {
+  // before component is mounted
+}
+getDerivedStateFromProps() {
+  // invoked right after component is constructed
+}
+render() {
+  // when first mounted
+}
+componentDidMount() {
+  // right after component is mounted
+}
+
+// Updating Life Cycles
+getDerivedStateFromProps() {
+  // invoked right after component is receives new props
+}
+shouldComponentUpdate() {
+  // if this returns false, then render() and componentDidUpdate() won't be called
+}
+render() {
+  // when data changes
+}
+getSnapshotBefore() {
+  // right before most recently rendered output is rendered
+}
+componentDidUpdate() {
+  // invoked right after update 
+}
+
+// Unmounting Life Cycle
+componentWillUnmount() {
+  // invoked right before a component is unmounted
+}
+```

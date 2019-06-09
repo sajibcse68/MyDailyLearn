@@ -235,6 +235,54 @@ const App = () => {
 
 **N.B.** Shortcut of `<React.Fragment></React.Fragment>` is `<></>`
 
+#### Understand Context API
+
+```js
+const Context = React.createContext();
+
+class Provider extends React.Component {
+  state = {
+    name: 'Sajib Khan'
+  }
+  render() {
+    return (
+      <Context.Provider value={{ state: this.state }}>
+        { this.props.children }
+      </Context.Provider>
+    )
+  }
+}
+
+const Trail = props => {
+  <div>
+    <Context.consumer>
+      {(context) => (
+        <p>This is the context: {context.state.name}</p>
+      )}
+    </Context.consumer>
+  </div>
+}
+
+const Lift = props => (
+  <div>
+    <Trail />
+  </div>
+)
+
+class Resort extends React.Component {
+  render() {
+    return (
+      <Provider>
+        <div>
+          <Lift />
+        </div>
+      </Provider>
+    )
+  }
+}
+```
+
+
 #### LifeCycle Hooks or Methods
 
 ```js

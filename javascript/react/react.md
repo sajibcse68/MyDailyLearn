@@ -235,7 +235,7 @@ const App = () => {
 
 **N.B.** Shortcut of `<React.Fragment></React.Fragment>` is `<></>`
 
-#### Understand Context API
+## Understand Context API
 
 ```js
 const Context = React.createContext();
@@ -282,6 +282,63 @@ class Resort extends React.Component {
 }
 ```
 
+#### Referencing Context in Stateless Functional Components
+
+```js
+const Context = React.createContext();
+
+class Provider extends React.Component {
+  state = {
+    name: 'Sajib Khan',
+    status: 'OPEN'
+  }
+  render() {
+    return (
+      <Context.Provider
+        value={{ state: this.state,
+        changeStatus: () => this.setState({
+          status: 'CLOSED'
+        })
+      }}>
+        { this.props.children }
+      </Context.Provider>
+    )
+  }
+}
+
+const Trail = props => {
+  <div>
+    <Context.consumer>
+      {(context) => (
+        <div>
+          <p>This is the context: {context.state.name}</p>
+          <p>The resort is: { context.state.status }</p>
+          <button onClick={context.changeStatus}>Close Resort</button>
+        </div>
+        
+      )}
+    </Context.consumer>
+  </div>
+}
+
+const Lift = props => (
+  <div>
+    <Trail />
+  </div>
+)
+
+class Resort extends React.Component {
+  render() {
+    return (
+      <Provider>
+        <div>
+          <Lift />
+        </div>
+      </Provider>
+    )
+  }
+}
+```
 
 #### LifeCycle Hooks or Methods
 

@@ -125,12 +125,11 @@ function stripeTokenHandler(token) {
 
 1. The customer arrives at our payment page that includes the Checkout code, loaded over `HTTPS`.
 2. The customer clicks the payment button (e.g., Pay with Card), completes the payment form, and clicks on the `Pay Now` button.
-3. Checkout sends the payment details `directly to Stripe` from the customer's browser, assuming the details` pass basic validation`.
+3. Checkout sends the payment details `directly to Stripe` from the customer's browser, assuming the details `pass basic validation`.
 4. Stripe returns a `token` to Checkout, or an `error` message if the card-network validation fails.
 5. Checkout takes the returned token and stores it in the page's primary form—the one surrounding the `<script>` tag above, in a hidden element named `stripeToken`.
 6. Checkout submits the form to our `server`.
 7. Our server uses the posted token to charge the card.
-
 
 ## Billing
 
@@ -229,7 +228,7 @@ Deleting a plan does not affect any existing subscribers of that plan, but new c
 Get the subscribers of a plan:
 
 ```js
-var stripe = require("stripe")("sk_test_3zxmVmMJBuVYwNnBeKwB7msF");
+var stripe = require("stripe")("sk_test_abc123");
 
 const subscriptions = stripe.subscriptions.list({
   plan: 'plan_CBb6IXqvTLXp3f',
@@ -245,3 +244,18 @@ Each Customer object in Stripe is set to a specific currency the first time any 
 - An invoice item is created for the customer
 - The customer’s balance is adjusted
 - A flat-rate coupon is attached to the customer (not a percent-off coupon)
+
+## Payment Intents API
+
+[Payment Intent API](https://stripe.com/docs/payments/payment-intents): Starting in September 2019, a new regulation called [Strong Customer Auhentication](https://stripe.com/docs/strong-customer-authentication) (SCA) will require businesses in Europe to request additonal authentication for online payments.
+
+It tracks the lifecycle of a customer checkout flow and triggers additional authentication steps when required by regulatory mandates, custom Radar fraud rules, or redirect-based payment methods.
+
+#### How Payment Intents API works
+
+A [PaymentIntent](https://stripe.com/docs/api/payment_intents/object) object tracks the state of the payment through the status attribute. When the payment is successful, the status of the PaymentIntent changes to succeeded and you can confidently fulfill the order.
+
+The Payment Intents API centers around two actions:
+
+- Create: [Creating a PaymentIntent](https://stripe.com/docs/payments/payment-intents/creating-payment-intents) at the beginning of a checkout flow lets you track all the attempts to pay for an order.
+- Confirm: Confirming a PaymentIntent will attempt to take the payment through the entire payment process. You can confirm a PaymentIntent either on your server with [confirm](https://stripe.com/docs/api/payment_intents/confirm) or on the client with Stripe.js and the mobile SDKs.

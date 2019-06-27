@@ -18,9 +18,19 @@ const reducer = (state = 5) => {
 const store = Redux.createStore(reducer);
 ```
 
-<img src="../../images/react-redux-connect-flow.png" alt="react-redux-connect-flow" width="500px"/>
+#### React to Redux Connect Flow
 
-[Reference](https://www.freecodecamp.org/news/how-to-connect-react-to-redux-a-diagrammatic-guide-d2687c14750a/)
+1. Click the `submit` button on the React search component
+2. The `click` function dispatches an Action. The Action `dispatch` function is connected to the search component via `mapDispatchToProps` and is made available to `this.props`
+
+    <img src="../../images/react-redux-connect-flow.png" alt="react-redux-connect-flow" width="500px"/>
+
+    [Reference](https://www.freecodecamp.org/news/how-to-connect-react-to-redux-a-diagrammatic-guide-d2687c14750a/)
+
+3. (out of scope for this post) The dispatched action is responsible to `fetch` data and dispatch another action to update the Reducer state
+4. The Reducer state updates itself with the new search data available from Step 3.
+5. The Reducer state is already connected to `this.props` in the search component via `mapStateToProps`
+6. `this.props` has the latest search data and the view now re-renders to show the updated search results
 
 #### Get State from the Redux Store
 

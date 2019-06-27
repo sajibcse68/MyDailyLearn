@@ -18,6 +18,10 @@ const reducer = (state = 5) => {
 const store = Redux.createStore(reducer);
 ```
 
+<img src="../../images/react-redux-connect-flow.png" alt="react-redux-connect-flow" width="500px"/>
+
+[Reference](https://www.freecodecamp.org/news/how-to-connect-react-to-redux-a-diagrammatic-guide-d2687c14750a/)
+
 #### Get State from the Redux Store
 
 Use `store.getState()` to retrieve the `state` from the `store`.

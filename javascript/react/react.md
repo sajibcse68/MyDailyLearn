@@ -403,7 +403,7 @@ ReactDom.render(
 
 #### LifeCycle Hooks or Methods
 
-```js
+```js  
 // Mounting Life Cycles
 constructor() {
   // before component is mounted

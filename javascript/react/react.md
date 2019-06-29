@@ -235,6 +235,18 @@ const App = () => {
 
 **N.B.** Shortcut of `<React.Fragment></React.Fragment>` is `<></>`
 
+## React App Life-cycle Walk through
+
+1. JS file loaded by the browser
+2. Instance of App component is created
+3. App components `constructor` function gets called
+4. State object is created and assigned to the `this.state` object
+5. Call any local method of component
+6. React calls the components render method
+7. 
+
+
+
 ## Understand Context API
 
 ```js

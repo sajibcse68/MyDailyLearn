@@ -243,9 +243,7 @@ const App = () => {
 4. State object is created and assigned to the `this.state` object
 5. Call any local method of component
 6. React calls the components render method
-7. 
-
-
+7. App returns `JSX`, gets rendered to page as HTML
 
 ## Understand Context API
 
@@ -412,6 +410,26 @@ ReactDom.render(
   document.getElementById('root')
 )
 ```
+
+#### Alternative State Initialization
+
+we can initialize `state` directly in Class instead of inside constructor. [Babel](https://babeljs.io/repl) product the same output after processing.
+
+```js
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+  }
+}
+
+// equivalent of
+
+class App extends React.Component {
+  state = { loading: true }
+}
+```
+
 
 #### LifeCycle Hooks or Methods
 

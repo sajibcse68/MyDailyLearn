@@ -259,3 +259,9 @@ The Payment Intents API centers around two actions:
 
 - Create: [Creating a PaymentIntent](https://stripe.com/docs/payments/payment-intents/creating-payment-intents) at the beginning of a checkout flow lets you track all the attempts to pay for an order.
 - Confirm: Confirming a PaymentIntent will attempt to take the payment through the entire payment process. You can confirm a PaymentIntent either on your server with [confirm](https://stripe.com/docs/api/payment_intents/confirm) or on the client with Stripe.js and the mobile SDKs.
+
+#### Merchant Initiated Transactions
+
+Payments made with saved cards when the customer is not present in the checkout flow (sometimes called `“off-session”`) may qualify as merchant-initiated transactions. These payments technically fall outside the scope of SCA. In practice, marking a payment as a “merchant-initiated transaction” will be similar to requesting an exemption. And like any other exemption, it will still be up to the bank to decide whether authentication is needed for the transaction.
+
+To use **merchant-initiated transactions**, you will need to `authenticate the card` either when it’s being `saved` or on the `first payment`. Finally, you will need to get an agreement from the customer (also referred to as a `“mandate”`), in order to charge their card at a later point.

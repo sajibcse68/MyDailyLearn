@@ -75,6 +75,44 @@ These arguments have the following meaning and conventional names:
 
 4. `info:` This argument should only be used in advanced cases, but it contains information about the execution state of the query, including the field name, path to the field from the root, and more.
 
+#### Querying with Fragments
+
+```js
+query {
+  one: getOneFriend(id: "a123jlska") {
+    ...friendFragment
+  }
+  secondWithAge(id: "sjk8347958357") {
+    ...friendFragment
+    age
+  }
+}
+
+fragment friendFragment on Friend {
+	firstName
+	lastName
+	gender
+}
+
+// output
+
+{
+  "data": {
+    "one": {
+      "firstName": "Sajib",
+      "lastName": "Khan",
+      "gender": "MALE",
+    },
+    "secondWithAge": {
+      "firstName": "Alice",
+      "lastName": "Bob",
+      "gender": "MALE",
+      "age": 50
+    }
+  }
+}
+```
+
 #### GraphQL Cheat Sheets
 
 <img src="../images/graphql-cheatsheet.png" alt="graphql-cheatsheet" width="400px"/>

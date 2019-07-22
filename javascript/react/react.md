@@ -470,3 +470,68 @@ componentWillUnmount() {
   // invoked right before a component is unmounted
 }
 ```
+## Refs and the DOM
+
+Refs provide a way to access DOM nodes or React elements created in the render method.
+
+#### When to Use Refs
+
+- Managing focus, text selection, content length or, media playback
+- Triggering imperative animations
+- Integrating with third-party DOM libraries
+
+Avoid using refs for anything that can be done declaratively, e.g. instead of exposing `oepn()` and `close()` methods on a `Dialog` component, pass an `isOpen` prop to it.
+
+#### Creating Refs
+
+Refs are created using `React.createRef()` and attached to React elements via the `ref` attribute. Refs are commonly assigned to an instance property when a component is constructed so they can be referenced throughout the component.
+
+```js
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+  render() {
+    return <div ref={this.myRef} />;
+  }
+}
+```
+
+#### Accessing Refs
+
+When a ref is passed to an element in `render`, a reference to the node becomes accessible at the `current` attribute of the ref.
+
+```js
+const node = this.myRef.current;
+```
+
+The value of the ref depending on the type of the node:
+
+- When the `ref` attribute wis used on an HTML element, the `ref` created in the constructor with `React.createRef()` receives the underlying DOM elements as its `current` property.
+
+- When the ref attribute is used on a custom class component, the ref object receives the mounted instance of the component as its current.
+
+- **You may not use the ref attribute on function components** because they don’t have instances.
+
+#### Use Callback on Image Load with Ref
+
+```js
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.imageRef = React.createRef();
+  }
+  componentDidMount() {
+    this.imageRef.current.addEventListener('load');
+  }
+  render() {
+    const { description, url } = this.props.image;
+    return (
+      <div>
+        <img ref={this.imageRef} alt={description} src={urls.regular}>
+      </div>
+    )
+  }
+}
+```

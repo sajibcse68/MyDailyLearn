@@ -132,6 +132,15 @@ store.dispatch({type: ADD});
 console.log(count); // 3
 ```
 
+## Reducers
+
+#### Ruleso of Reducers
+
+- Must return any value besides `undefined`
+- Produces `state` or data to be used inside of your app using only `previous state and the action`
+- Must not return reach `out of itself` to decide what value to return (reducers are pure)
+- Must not mutate its input `state` argument
+
 #### Combine Multiple Reducers
 
 - First principle of Redux: all app state is held in a `single` state object in the store
@@ -183,7 +192,7 @@ const store = Redux.createStore(rootReducer);
 
 #### Use Middleware to Handle Asynchronous Actions
 
-- Redux provides `middleware` designed specifically to handle `Asynchronous` called **Redux  Thunk Middleware**
+- Redux provides `middleware` designed specifically to handle `Asynchronous` called **Redux Thunk Middleware**
 - To include `Redux Thunk middleware`, we need to pass it as an argument to `Redux.applyMiddleware()`. This statement is then provided as a `second` optional parameter to the `createStore()` function.
 - Create an `asynchronous` action that `return` a function in the action creator that takes `dispatch` as an `argument`. Within this function, we can `dispatch` actions and perform `asynchronous requests`.
 

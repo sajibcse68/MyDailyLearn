@@ -48,6 +48,12 @@ const currentState = store.getState();
 - An `action creator` is simply a JavaScript function that returns an action. In other words, action creators create objects that represent action events
 - `dispatch` method is what you use to dispatch actions to the Redux store
 
+#### Rules of Action Creator
+
+1. Action creators `must` return action objects
+2. Actions must have a type property
+3. Actions can optionally have a `payload` 
+
 ```js
 const store = Redux.createStore(
   (state = {login: false}) => state
@@ -56,7 +62,8 @@ const store = Redux.createStore(
 // action creator
 const loginAction = () => {
   return {
-    type: 'LOGIN'
+    type: 'LOGIN',
+    payload: 'Sajib' // optional
   }
 };
 

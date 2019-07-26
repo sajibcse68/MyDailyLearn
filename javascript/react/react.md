@@ -548,3 +548,10 @@ Bad Navigation:
 4. Browser receives `index.html` file, dumps old HTML file it was showing (including all of our React/Redux state data!)
 5. `index.html` file lists our JS files in script tags - browser downloads and executes these scripts
 6. Our app starts up
+
+#### 3 Types of Router
+
+1. `Browser Router`: Uses everything after the TLD (.com, .net) or port as the `path`. e.g. localhost:3000/pagetwo
+2. `Hash Router`: Uses everything after a # as the `path`. e.g. `localhost:3000/#/pagetwo`
+3. `Memory Router`: Doesn't use the URL to track navigation. e.g. `localhost:3000/`
+ 

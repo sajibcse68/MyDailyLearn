@@ -535,3 +535,16 @@ class MyComponent extends React.Component {
   }
 }
 ```
+
+## React Route
+
+#### How to Not Navigation with React Router
+
+Bad Navigation:
+
+1. We add `<a/>` tag to our application with `href="/pagetwo"` and click it
+2. Our browser makesa  request to localhost:3000
+3. Development server responds with `index.html` file
+4. Browser receives `index.html` file, dumps old HTML file it was showing (including all of our React/Redux state data!)
+5. `index.html` file lists our JS files in script tags - browser downloads and executes these scripts
+6. Our app starts up

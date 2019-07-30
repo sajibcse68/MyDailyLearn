@@ -429,9 +429,17 @@ class App extends React.Component {
   state = { loading: true }
 }
 ```
+#### Redux vs Context API
+
+- Redux:
+  - Distributes data to various components
+  - Centralizes data in a store
+  - Provides mechanism for changing data in the store
+- Context:
+  - Distributes data to various components
 
 
-#### LifeCycle Hooks or Methods
+## LifeCycle Hooks or Methods
 
 ```js  
 // Mounting Life Cycles

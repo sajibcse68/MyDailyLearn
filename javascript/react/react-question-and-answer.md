@@ -23,3 +23,10 @@ It's another technique for sharing code between React components:
   <h1>Hello {data.target}</h1>
 )}/>
 ```
+
+#### React unit tests vs integration tests for commponents
+
+`React testing library` provides a clean and simple API which focuses on testing applications “as a user would”. This means an API returns `HTML` Elements rather than React Components with shallow rendering in Enzyme. It’s is a nice tool for writing integrational tests.
+
+`Enzyme` is still a valid tool, it provides a more sophisticated API which gives us access to component’s props and internal state. It makes sense to create `unit tests`for components.
+

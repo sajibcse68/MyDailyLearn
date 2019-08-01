@@ -10,4 +10,16 @@ Here are 3 ways to prevent component `re-rendering:
 
 #### When to Use Component instead of PureComponent?
 
-We use `PureComponents` in `99%` of cases in modern React. However, if we are working with `Redux` selectors, often we will need to explicitly specify the incoming prop changes to cancel the impending re-render to prevent UI thrashing. In this case, it’s appropriate to use a Component
+We use `PureComponents` in `99%` of cases in modern React. However, if we are working with `Redux` selectors, often we will need to explicitly specify the incoming prop changes to cancel the impending re-render to prevent UI thrashing. In this case, it’s appropriate to use a Component.
+
+#### What is the `render props`?
+
+When a component takes a function that returns a React element and calls it instead of implementing its own render logic.
+
+It's another technique for sharing code between React components:
+
+```js
+<DataProvider render={data => (
+  <h1>Hello {data.target}</h1>
+)}/>
+```

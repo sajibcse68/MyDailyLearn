@@ -30,3 +30,53 @@ It's another technique for sharing code between React components:
 
 `Enzyme` is still a valid tool, it provides a more sophisticated API which gives us access to component’s props and internal state. It makes sense to create `unit tests`for components.
 
+#### Migration from Class to Function Components
+
+Follow the steps:
+
+1. Class component state with useState hook
+2. Class component lifecycle methods with useEffect hook
+3. Bonus points: better abstraction with custom hooks
+
+Class Components:
+
+```js
+class App extends React.Component {
+  state = {
+    value: localStorage.getItem("info") || ""
+  };
+  componentDidUpdate() {
+    localStorage.setItem("info", this.state.value);
+  }
+  onChange = event => {
+    this.setState({ value: event.target.value });
+  };
+  render() {
+    const { value } = this.state;
+    return (
+      <div>
+        <input value={value} type="text" onChange={this.onChange} />
+        <p>{value}</p>
+      </div>
+    );
+  }
+}
+```
+
+Migration to Functional Component:
+
+```js
+const App = () => {
+  const val = localStorage.getItem("info") || "";
+  const [value, setValue] = useState(val);
+  const onChange = event => setValue(event.target.value);
+  useEffect(() => localStorage.setItem("info", value), [value]);
+
+  return (
+    <div>
+      <input value={value} type="text" onChange={onChange} />
+      <p>{value}</p>
+    </div>
+  );
+};
+```

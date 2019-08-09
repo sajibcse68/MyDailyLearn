@@ -18,6 +18,17 @@ const reducer = (state = 5) => {
 const store = Redux.createStore(reducer);
 ```
 
+#### History of Redux
+
+- Redux was developed in 2015 by `Dan Abramov`
+- `Andrew Clard` joined Redux
+
+#### What is Flux
+
+- A design pattern developed by Facebook
+- An alternative to MVC, MVP, or MVVM
+- Variations of MVC design pattern
+
 #### React to Redux Connect Flow
 
 1. Click the `submit` button on the React search component
@@ -134,7 +145,7 @@ console.log(count); // 3
 
 ## Reducers
 
-#### Ruleso of Reducers
+#### Rules of Reducers
 
 - Must return any value besides `undefined`
 - Produces `state` or data to be used inside of your app using only `previous state and the action`

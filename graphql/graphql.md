@@ -1,7 +1,7 @@
-#### What is GraphQL & Benefits?
+## What is GraphQL & Benefits?
 
 - New `API` standard that was invented & open-sourced by Facebook
-- Provides a more efficient, powerful and flexible alternatives to `REST`.
+- Provides a more efficient, powerful and flexible alternatives to `REST (Representation State Transfer)`.
 - Enables **declaratative data fetching**.
 - Exposes **single endpoint** and responds to `queries`.
 - Uses **strong type** system to define capabilities of an API
@@ -23,13 +23,13 @@
 5. And your clients have no idea what is happening behind the GraphQL. One call from the client could fan out to a dozen APIs (*in a good way).
 
 
-#### A more efficient Alternative to REST
+## A more efficient Alternative to REST
 
 - Increased mobile usage creates need for efficient data loading.
 - Variety of different frontend frameworks and platforms on the client-side.
 - Fast development speed & expectation for rapid feature development
 
-#### GraphQL is **not** only for React developers
+## GraphQL is **not** only for React developers
 
 - Facebook uses GraphQL since 2012 in their native mobile apps.
 - First time presented publicly at React.js Conf 2015
@@ -37,14 +37,14 @@
 - Other companies were working on similar ideas
 - `Netflix` open-sourced their solution `Falcor`.
 
-#### GraphQL is the better REST
+## GraphQL is the better REST
 
 - GraphQl was developed to cope with the **need for more flexibility and efficiency** in client-server communication.
 - Overfetching: graphQL don't downloading unnecessary data
 - Underfetching: graphQL gives all necessary data in one API endpoint unlike REST is underfetching (an endpoing doesn't return enough of the right information; need to send multiple requests: n+1-requests problem).
 
-#### Core Concepts
-##### The Schema Definition Language (SDL)
+## Core Concepts
+#### The Schema Definition Language (SDL)
 - 3 kinds of **mutations**
   - `creating` new data
   - `updating` existing data
@@ -55,12 +55,12 @@
 - GraphQL server to integrate existing system
 - A hybrid approach with a connected database and integration of existing system
 
-##### Resolver functions
+#### Resolver functions
 - GraphQL queries/mutations consist of set of fields
 - GraphQL server has one resolver function per field
 - The purpose of each resolver is to retrieve the data for its corresponding field
 
-##### Resolver function signature
+#### Resolver function signature
 
 >fieldName(obj, args, context, info) { result }
 
@@ -113,7 +113,50 @@ fragment friendFragment on Friend {
 }
 ```
 
-#### GraphQL Cheat Sheets
+## Call a GraphQL API with Axios
+
+Say, API endpoint is `https://abc123.appsync-api.us-east-2.amazonaws.com/graphql`.
+
+And we want to send is:
+
+```js
+query PostsForAuthor {
+  author(id: 1) {
+    firstName
+    posts {
+      title
+      votes
+    }
+  }
+}
+```
+
+Now, we can put together into a simple POST request with Axios like so:
+
+```js
+const axios = require("axios")
+axios({
+  url: 'https://1jzxrj179.lp.gql.zone/graphql',
+  method: 'post',
+  data: {
+    query: `
+      query PostsForAuthor {
+        author(id: 1) {
+          firstName
+            posts {
+              title
+              votes
+            }
+          }
+        }
+      `
+  }
+}).then((result) => {
+  console.log(result.data)
+});
+```
+
+## GraphQL Cheat Sheets
 
 <img src="../images/graphql-cheatsheet.png" alt="graphql-cheatsheet" width="400px"/>
 

@@ -546,6 +546,13 @@ class MyComponent extends React.Component {
 
 ## React Route
 
+#### Familiar with Various React Router Libraries
+
+1. `react-router`: Core navigation lib - we don't install this manually
+2. `raect-router-dom`: Navigation for dom-based apps
+3. `react-router-native`: Navigation for react-native apps
+4. `react-router-redux`: Bindings between Redux and React Router
+
 #### How to Not Navigation with React Router
 
 Bad Navigation:

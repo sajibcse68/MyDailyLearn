@@ -129,7 +129,7 @@ this.setState( prevState => {
 })
 ```
 
-#### Stateless Functional Component, Stateless Component and Stateful component
+## Stateless Functional Component, Stateless Component and Stateful component
 
 - `A stateless functional component` is any function we write which accepts `props` and return `JSX`
 
@@ -138,6 +138,8 @@ this.setState( prevState => {
 - `A state`ful component` is any component that does maintain its own internal state. We may see stateful component referred to simply as `components` or `React components`.
 
 [Reference](https://css-tricks.com/understanding-react-setstate/)
+
+## Compound, Uncontrolled and Controlled Components
 
 #### Compound Components
 
@@ -178,7 +180,7 @@ const EncouragementForm extends React.Component {
 }
 ```
 
-#### Uncontrolled Components
+#### Controlled Components
 
 ```js
 const EncouragementForm extends React.Component {
@@ -206,7 +208,7 @@ const EncouragementForm extends React.Component {
 }
 ```
 
-#### React Fragment
+## React Fragment
 
 we can use `React.Fragment` instead of using any extra `div` or `section`, etc.
 
@@ -292,7 +294,7 @@ class Resort extends React.Component {
 }
 ```
 
-#### Referencing Context in Stateless Functional Components
+## Referencing Context in Stateless Functional Components
 
 ```js
 const Context = React.createContext();
@@ -350,7 +352,7 @@ class Resort extends React.Component {
 }
 ```
 
-#### Higher Order Components
+## Higher Order Components
 
 When a components take a component as parameter and return a new component is called `Higer Order Component`.
 
@@ -411,7 +413,7 @@ ReactDom.render(
 )
 ```
 
-#### Alternative State Initialization
+## Alternative State Initialization
 
 we can initialize `state` directly in Class instead of inside constructor. [Babel](https://babeljs.io/repl) product the same output after processing.
 
@@ -429,7 +431,7 @@ class App extends React.Component {
   state = { loading: true }
 }
 ```
-#### Redux vs Context API
+## Redux vs Context API
 
 - Redux:
   - Distributes data to various components

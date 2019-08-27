@@ -1,4 +1,4 @@
-#### How to Prevent Components fron `re-rendering`?
+#### How to Prevent Components from `re-rendering`?
 
 Here are 3 ways to prevent component `re-rendering:
 
@@ -24,13 +24,13 @@ It's another technique for sharing code between React components:
 )}/>
 ```
 
-#### React unit tests vs integration tests for commponents
+#### React Unit Tests vs Integration Tests for Components
 
 `React testing library` provides a clean and simple API which focuses on testing applications “as a user would”. This means an API returns `HTML` Elements rather than React Components with shallow rendering in Enzyme. It’s is a nice tool for writing integrational tests.
 
 `Enzyme` is still a valid tool, it provides a more sophisticated API which gives us access to component’s props and internal state. It makes sense to create `unit tests`for components.
 
-#### Migration from Class to Function Components
+#### Migration from Class to Function Component
 
 Follow the steps:
 

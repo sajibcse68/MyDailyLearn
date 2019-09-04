@@ -80,3 +80,14 @@ const App = () => {
   );
 };
 ```
+
+#### How to force a component `re-mount` when click on the same route?
+
+One way is to force a component to re-mount is to change the `key` prop:
+
+```js
+<Route
+    path="/about"
+    render={props => <About key={Date.now()} {...props} />}
+  />
+```

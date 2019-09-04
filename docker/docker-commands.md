@@ -48,6 +48,9 @@ $ docker run -p 49160:8080 -d <image-name>
 $ docker ps
 $ docker ps -l // exited docker container
 
+# List of volumes are mounted in a docker container
+$ docker inspect -f "{{ .Mounts }}" <container-id>
+
 # print logs of container
 $ docker logs <container ID>
 

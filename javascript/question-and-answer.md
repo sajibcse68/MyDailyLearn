@@ -615,6 +615,13 @@ const EventEmitter = () => ({
 
 [Ref](https://gist.github.com/mudge/5830382#gistcomment-2623252)
 
+#### Live Reloading vs Hot Reloading
+
+- `Live Reloading` relaods or refreshes the entire app when a file changes. For example, if we have four links deep into our navigation and saved a change, live reloading would restart the app and load the app back to the initial route.
+- `Hot Reloading` only refreshes the files that were changed without losing the state of the app. If we have four links deep into our navigation and saved a change to some styling, the state would not change, but the new styles would appear on the page without having to navigate back to the page we are on because we would still be on the same page 
+
+[Reference](https://stackoverflow.com/a/41429055/4133798)
+
 #### How to write optimized JavaScript
 
 1. **Order of object properties:** always instantiate our object properties in the same order so that hidden classes, and subsequently optimized code, can be shared.

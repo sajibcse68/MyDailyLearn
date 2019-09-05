@@ -91,3 +91,23 @@ One way is to force a component to re-mount is to change the `key` prop:
     render={props => <About key={Date.now()} {...props} />}
   />
 ```
+
+#### How Can We `Memorize` React Component?
+
+We can use `React.memo` (react > v16.6.0) to memorize a component:
+
+```js
+const UserDetails = ({user, onedit}) => {
+  const {title, fullName, profileImg} = user;
+
+  return (
+    <div className="user-details-wrapper">
+      <img src={profileImg}>
+      <h4>{fullName}</h4>
+      <p>{title}</p>
+    </div>
+  )
+}
+
+export default `React.memo(UserDetails)`;
+```

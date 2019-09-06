@@ -21,3 +21,21 @@ function* watchLastAction( {
   yield takeLatest('ACTION', workerSagaToRun);
 })
 ```
+
+## Effect Creators
+
+- Each effect creator returns a palin javascript object and does not perform any execution
+- The execution is performed by the middleware during the iteration process
+- The middleware examines each Effect description and performs the appropriate action
+
+`call --` runs a function, if it returns a promise, pauses the saga until the promise is resolved
+`put --` dispatches an action
+
+```js
+function* effects() {
+  let result = yield call(fnToRun, optionalArgsToPassToFn)
+  yield put(actionToDispatch(result))
+}
+```
+
+Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel` 

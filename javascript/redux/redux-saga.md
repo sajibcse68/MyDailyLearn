@@ -39,3 +39,13 @@ function* effects() {
 ```
 
 Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel` 
+
+## Redux-saga Advantages
+
+- Synchronous looking code with an easy to follow step by step
+- Can allow for fairly complicated flows
+- Easy to write tests with little to no mocking
+- Sagas are composable
+- Action-Creators are pure
+- Isolates side-effect code to a single area of the application
+- Many helper functions & solid documentation

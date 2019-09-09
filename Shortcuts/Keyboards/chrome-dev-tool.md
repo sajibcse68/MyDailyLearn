@@ -38,6 +38,28 @@ Now, if we write `-two` in filter box
 
 // output: one, three, four
 
+#### Timing Breakdown Phases Explained
+
+> Open Chrome Inspector | Network | click on a request | Timing
+
+- `Queueing:` The browser queues requests when:
+  - There are higher priority requests
+  - There are already `six` TCP connections open for this origin, which is the limit. Applies to HTTP/1.0 and HTTP/1.1 only
+  - The browser is briefly allocating space in the disk cache
+- `Stalled:` The request could be stalled for any of the reason described `Queueing`
+- `DNS Lookup:` The browser is resolving the request's IP address
+- `Proxy Negotiation:` The browser is negotiating the request with a [proxy server](https://en.wikipedia.org/wiki/Proxy_server)
+- `Request Sent`: The request is being sent
+- `ServiceWorker Preparation:` The browser is starting up the service worker
+- `Request to ServiceWorker:` The request is being sent to the service worker
+- `Waiting (TTFB):` **Time to First Byte (TTFB)** is the time when the browser is waiting for the first byte of the response.
+- `Content Download:` The browser is receiving the response
+- `Receiving Push:` The browser is receiving data for this response via `HTTP/2 Server Push`
+- `Reading Push:` The browser is reading the local data previously received
+
+
+[Ref](https://developers.google.com/web/tools/chrome-devtools/network/reference#timing-explanation)
+
 #### Quickly clear all the data from a website
 
 Press `Cmd + Shift + P` | Type in clear | Select` Clear site data`

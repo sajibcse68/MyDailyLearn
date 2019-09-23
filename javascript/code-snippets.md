@@ -220,6 +220,9 @@ convertToRoman(36);
 // Create a new object (server response)
 const o = Object.create(null);
 
+// change any text in the web page
+document.designMode=true  // write this line in console
+
 // Convert browser into an Editor
 document.body.contentEditable=true
 

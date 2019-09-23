@@ -677,7 +677,7 @@ console.timeEnd('Timer1');
 Timer1: <15.920>ms
 ```
 
-#### Use of `console.count()`
+#### Use of `console.count()` and `console.countReset()`
 Logs are the number of times that this particular call to `count()` has been called. This function takes an optional argument `label`.
 
 ```js
@@ -701,6 +701,8 @@ console.count('alice');
 'alice: 2'
 'alice: 3'
 ```
+
+`console.countReset()` is used to clear a counter.
 
 #### Use of `console.dir()`
 console.dir() outputs the object with properties where console.log() shows the string output.
@@ -753,6 +755,20 @@ function app() {
 }
 
 app();
+```
+
+#### Use of `console.table()`
+
+This particular method is incredibly useful to describe an object or array content in a human-friendly table. It makes inspection and logging of nested and complex arrays/objects
+
+```js
+const users = [
+  { name: 'Marco', age: 26 },
+  { name: 'Leo', age: 24 }
+];
+
+// Log a table with the users information
+console.table(users);
 ```
 
 #### Add a debugger in a function.

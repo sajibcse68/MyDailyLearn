@@ -298,6 +298,23 @@ function debounce(func, wait, immediate) {
     if (callNow) func.apply(context, args);
   };
 };
+
+// another implementation
+const debounce = (func, timer) => {
+  let timeId = null;
+  return (...args) => {
+    if(timeId) {
+      clearTimeout(timeId);
+    }
+    timeId = setTimeout(() => {
+      func(...args);
+    }, timer);
+  }
+}
+
+document.querySelector('input').addEventListener('keyup', debounce((e) => {
+  console.log('e: ', e);
+}, 1000))
 ```
 
 This function - when wrapped around an event - will execute only after a certain amount of time has elapsed

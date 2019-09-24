@@ -60,6 +60,14 @@ $ sudo visudo
 root    ALL=(ALL:ALL) ALL
 jenkins ALL=(ALL:ALL) ALL
 ```
+
+#### Show Hardware Information
+
+```js
+$ lshw             # show all hardware details 
+$ lshw -C display  # show display details
+```
+
 #### SSH
 ---
 ##### Get SSH RSA Fingerprints

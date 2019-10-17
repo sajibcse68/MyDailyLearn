@@ -193,6 +193,21 @@ typeof b; // ???
 // 'number' -> 'b' is global variable with value 0
 ```
 
+#### What if we set the Array.length = 0 manually?
+
+```js
+const arr = ['sajib', 'khan'];
+arr.length = 0;
+
+arr[0]; // ???
+```
+
+If we reduce the value of the `length` property has the side-effect of deleting own array elements whose array index is between `the old and new length values.`
+
+So, when JS executes `arr.length = 0`, all the items of the array arr are `deleted`.
+
+**Answer:** `undefined`
+
 #### What is the two conditions of being a `Module`?
 
 1. There must be an outer enclosing function that executes at least one.

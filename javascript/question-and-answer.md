@@ -176,6 +176,23 @@ console.log(Object.getOwnPropertyDescriptor(Object.getPrototypeOf(o), 'hello'));
 
 ## Miscellaneous
 
+#### Output of following snippet?
+
+```js
+function foo() {
+  let a = b = 0;
+  // declares a local variable 'a' and a global variable 'b'. There is no variable 'b' declared in the foo() scope or global scope. So JS interprets 'b=0' expression as window.b = 0
+  a++;
+  return a;
+}
+
+foo();
+typeof a; // ???
+// 'undefined' -> 'a' is declared within 'foo()' scope
+typeof b; // ???
+// 'number' -> 'b' is global variable with value 0
+```
+
 #### What is the two conditions of being a `Module`?
 
 1. There must be an outer enclosing function that executes at least one.

@@ -32,3 +32,9 @@
   }
 }
 ```
+#### Properties That Control Alignment
+
+- [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) -- controls alignment of all items on the main axis (x-axis)
+- [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) -- controls alignment of all items on the cross axis (y-axis)
+- [align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self) -- controls alignment of an individual flex item on the cross axis
+- [align-control](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content) -- described in the spec as for `packing flex lines`. Controls space between flex lines on the cross axis

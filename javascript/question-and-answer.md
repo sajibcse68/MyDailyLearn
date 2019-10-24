@@ -41,6 +41,37 @@ So, in production code we should use `Name Function` always.
 
 `target` is actual thing what is clicked and `currentTarget` is where the event listener is attached to.
 
+#### How to Check for `null`?
+
+>`null` is a primitive type in JavaScript that represents an intentional absence of a value -- it is set on-purpose
+
+- One way to check for `null` is JS is to check if a value loosely equal to `null` using **double equality** (==) operator:
+
+```js
+console.log(null == null) // true
+console.log(null == undefined ) // true!
+```
+
+So, `null` is only loosely equal to `itself` and `undefined` (not to the other falsy values).
+
+- Other way is to check using strict equality (===)
+
+```js
+console.log(null == null) // true
+console.log(null == undefined ) // false
+```
+
+so, that's perfect!
+
+- An alternative method of checking for `null` is based on knowing that null is falsy, but empty objects are truthy, so `null` is the only falsy object.
+
+```js
+console.log(typeof null === "object" && !null) // true
+console.log(typeof {} === "object" && !{}) // false
+```
+
+The value null is falsy but empty objects are truthy, so `typeof null === "object" && !null` is a convenient way to check for null.
+
 #### Explain the difference on the usage of following -
 
 ```js

@@ -204,6 +204,40 @@ console.log(Object.getOwnPropertyDescriptor(o, 'hello')); // undefined
 console.log(Object.getOwnPropertyDescriptor(Object.getPrototypeOf(o), 'hello'));
 // // { configurable: true, enumerable: false, get: function get hello() { return 'world'; }, set: undefined }
 ```
+## Comparison
+
+#### Compare `null`, `undefined`, `NaN`
+
+A **null** value represents nothing, nonexistent or invalid object or address. It converts to `0` in simple arithmetic operations and it's global object. `null == false` gives us false.
+
+The global **undefined** property represents the primitive value `undefined`. It tells us something has not assigned value; isn't defined. **undefined** isn't converted into any number, so using it in maths calculations returns `NaN`.
+
+**NaN (Not-A-Number)** represents something which is not a number, even though it's actually a number. It's not equal to itself and to check if something is NaN we need to use **isNaN()** function.
+
+All of the above are falsy values so they convert to false.
+
+[Ref](https://codeburst.io/understanding-null-undefined-and-nan-b603cb74b44c)
+
+#### What Gets Logged in Various Sorting Conditions?
+
+```js
+const arr1 = ['a', 'b', 'c'];
+const arr2 = ['b', 'c', 'a'];
+
+console.log(
+  arr1.sort() === arr1,
+  arr2.sort() == arr2,
+  arr1.sort() === arr2.sort()
+);
+
+// output: true true false  
+```
+
+**Explanation:** the array `sort()` method sorts the original array and returns a reference to that array. The sort order of the array doesn't matter when we're comparing objects. Since `arr1.sort()` and `arr1` point to the same object in the memory, the first equality test return `true`.
+
+Second comparison also return `true` for same reason.
+
+Third comparison returns `false` cause the sort order of `arr1.sort()` and `arr2.sort()` are the same; however, they still point to different objects in memory. 
 
 ## Miscellaneous
 
@@ -621,18 +655,6 @@ function foo(bar) {                       | var a;      // undefined
 ```
 
 **So, `let` is hoisted but not initialized actually.**
-
-#### Compare `null`, `undefined`, `NaN`
-
-A **null** value represents nothing, nonexistent or invalid object or address. It converts to `0` in simple arithmetic operations and it's global object. `null == false` gives us false.
-
-The global **undefined** property represents the primitive value `undefined`. It tells us something has not assigned value; isn't defined. **undefined** isn't converted into any number, so using it in maths calculations returns `NaN`.
-
-**NaN (Not-A-Number)** represents something which is not a number, even though it's actually a number. It's not equal to itself and to check if something is NaN we need to use **isNaN()** function.
-
-All of the above are falsy values so they convert to false.
-
-[Ref](https://codeburst.io/understanding-null-undefined-and-nan-b603cb74b44c)
 
 #### Implement an `Event Emitter` that supports standard operations
 

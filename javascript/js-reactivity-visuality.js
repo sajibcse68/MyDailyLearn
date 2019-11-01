@@ -1,4 +1,4 @@
-let data = { price: 5, quantity: 2};
+let data = { price: 5, quantity: 2 };
 let target, total, salePrice;
 
 class Dep {
@@ -6,7 +6,6 @@ class Dep {
     this.subscribers = [];
   }
   depend() {
-    console.log('target: ', target);
     if (target && !this.subscribers.includes(target)) {
       this.subscribers.push(target);
     }
@@ -19,6 +18,7 @@ class Dep {
 Object.keys(data).forEach(key => {
   let internalValue = data[key];
   const dep = new Dep();
+
   Object.defineProperty(data, key, {
     get() {
       dep.depend();
@@ -43,14 +43,12 @@ watcher(() => {
 
 watcher(() => {
   salePrice = data.price * 0.9;
-})
-
-
+});
 
 // total;            // 10
 // salePrice;        // 4.5
 
-// data.price = 12; // update price
+// data.price = 12; // updating price
 
 // total;           // 24
 // salePrice;       // 10.8

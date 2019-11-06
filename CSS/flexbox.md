@@ -32,6 +32,20 @@
   }
 }
 ```
+
+#### Shrink a Div Horizontally and Add 3 Dots
+
+```css
+flex-grow: 1;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+```
+
+[Ref1](https://meetrix.io/blog/posts/shrink-a-div-horizontally-and-add-3-dots.html)
+
+[Ref2](https://css-tricks.com/flexbox-truncated-text/)
+
 #### Properties That Control Alignment
 
 - [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) -- controls alignment of all items on the main axis (x-axis)

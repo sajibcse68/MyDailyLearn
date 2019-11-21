@@ -1,5 +1,7 @@
 #### Notes
 
+- JavaScript was created by `Brendan Eich` while he was working for Netscape back in May `1995`. He created the first version of JavaScript in only `10 days` and named it **Mocha**. It was renamed to **LiveScript** on `September` 1995. And then by `December` 1995, it was renamed again to **JavaScript**.
+
 - When browser find the `<script>` tag to download, all other parallel/concurrent downloading halts. (6 files can be downloaded by modern chrome browser)
 - if we add `async` in `<script>` tag then it would be downloaded asynchronously
     - e.g. `<script type="text/javascript" src="http://www.abc.com/test.js" async></script>`

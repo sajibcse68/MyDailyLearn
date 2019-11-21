@@ -67,14 +67,14 @@ Consider the following code.
 
 ```js
 const o = {
-    doSomethingLater() {
-        setTimeout(function(){
-          this.speakLeet();    // error
-        }, 1000)
-    }
-    speakLeet() {
-        console.log('Method of 'o' not Window');
-    }
+  speakLeet() {
+    console.log('Hello World!');
+  },
+  doSomethingLater() {
+    setTimeout(function(){
+      this.speakLeet();    // error
+    }, 1000)
+  }
 }
 ```
 

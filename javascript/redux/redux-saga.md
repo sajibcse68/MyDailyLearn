@@ -1,8 +1,13 @@
 ## Redux Saga
 
-- `Redux-sata` is a library that aims to make handling side effects (i.e. asynchronous things like data fetching) in React/Redux applications easier & better.
+- `Redux-saga` is a library that aims to make handling side effects (i.e. asynchronous things like data fetching) in React/Redux applications easier & better.
+- It is a redux `middleware` and more sophisticated than `redux-thunk`
 - A saga is like a `separate thread` in our application that's solely responsible for side effect
 - Generators are used to make our `async` code look more synchronous making it easier to read, write, & text
+- Manages side effects
+- Depends on **ES6** and **Yield**
+- Consumes and emits actions
+- Works without Redux!
 
 #### Why Redux Saga?
 

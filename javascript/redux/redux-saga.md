@@ -12,16 +12,18 @@
 ### Why Redux Saga?
 
 - Ideal for common real-world applications
+- Facilitates side-effects (API calls, database transactions) in Redux application
+- Advanced tools (forking processes, yielding thread) cover almost all real-world use cases
 - Large, growing and contributing user base
 - Works on both client and server
 
-#### Sagas (in Functional Programming)
+### Sagas (in Functional Programming)
 
 - Series of reversible transactions
 - Replaces single, locking transaction
 - Uses a process manager to manage sub-process
 
-#### Sagas (in Redux)
+### Sagas (in Redux)
 
 - A long-running background process
 - Responsible for application's side effects
@@ -29,6 +31,22 @@
 - Redux saga is the process manager
 - Functionality: listens for actions, `dispatches other actions` (using effects)
 - Interact with `external APIs` or modify system files (using request, fs, or other)
+
+### Redux Saga vs Redux Thunk
+
+- Redux Saga
+  - Common Redux middleware
+  - Created by third party developer
+  - Only runs in ES6 environments that support Yield
+  - Uses `yield` and `generator` functions to simplify async
+  - Uses effects and plain actions to coordinate sagas
+- Redux Thunk
+  - Common Redux middleware
+  - Created by Redux creator
+  - Runs in any JavaScript context
+  - Has no built-in solution for asynchronous calls
+  - No way to orchestrate side-effects between thunks
+  
 
 ## Saga Helpers
 

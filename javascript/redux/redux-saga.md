@@ -21,6 +21,15 @@
 - Replaces single, locking transaction
 - Uses a process manager to manage sub-process
 
+#### Sagas (in Redux)
+
+- A long-running background process
+- Responsible for application's side effects
+- Used in conjunction with `ES6 Yield`
+- Redux saga is the process manager
+- Functionality: listens for actions, `dispatches other actions` (using effects)
+- Interact with `external APIs` or modify system files (using request, fs, or other)
+
 ## Saga Helpers
 
 1. `takeEvery --` takes every matching action and runs the instructed saga, can run concurrent tasks

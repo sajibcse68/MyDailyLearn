@@ -9,11 +9,17 @@
 - Consumes and emits actions
 - Works without Redux!
 
-#### Why Redux Saga?
+### Why Redux Saga?
 
 - Ideal for common real-world applications
 - Large, growing and contributing user base
 - Works on both client and server
+
+#### Sagas (in Functional Programming)
+
+- Series of reversible transactions
+- Replaces single, locking transaction
+- Uses a process manager to manage sub-process
 
 ## Saga Helpers
 

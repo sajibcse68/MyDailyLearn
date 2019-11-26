@@ -2,7 +2,13 @@
 
 - `Redux-sata` is a library that aims to make handling side effects (i.e. asynchronous things like data fetching) in React/Redux applications easier & better.
 - A saga is like a `separate thread` in our application that's solely responsible for side effect
-- Generators are used to make our `async` code look more synchronous making it wasier to read, write, & text
+- Generators are used to make our `async` code look more synchronous making it easier to read, write, & text
+
+#### Why Redux Saga?
+
+- Ideal for common real-world applications
+- Large, growing and contributing user base
+- Works on both client and server
 
 ## Saga Helpers
 
@@ -14,7 +20,7 @@ function* watchAction() {
 }
 ```
 
-2. `takeLates --` takes every matching action and runs the instructed saga bu `chancels any previous saga task` if it is still running
+2. `takeLates --` takes every matching action and runs the instructed saga but `chancels any previous saga task` if it is still running
 
 ```js
 function* watchLastAction( {
@@ -24,7 +30,7 @@ function* watchLastAction( {
 
 ## Effect Creators
 
-- Each effect creator returns a palin javascript object and does not perform any execution
+- Each effect creator returns a plain javascript object and does not perform any execution
 - The execution is performed by the middleware during the iteration process
 - The middleware examines each Effect description and performs the appropriate action
 

@@ -66,7 +66,13 @@ function* watchLastAction( {
 })
 ```
 
-## Effect Creators
+## Redux Saga Effects
+
+- Utility method provided by Redux Saga
+- Returns an object containing instructions for Redux Saga
+- Redux Saga generates the side effects, not the effect itself
+
+### Effect Creators
 
 - Each effect creator returns a plain javascript object and does not perform any execution
 - The execution is performed by the middleware during the iteration process
@@ -84,6 +90,19 @@ function* effects() {
 
 Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel` 
 
+#### Effect: Take
+
+- Pauses between concurrent lines of code
+- Code resumes when `specified action is despatched`
+- Only one thread - multiple actions do not lead to multiple responses
+- Properties of action are passed as yielded variable
+
+#### Effect: Put
+
+- Immediately dispatches an action to the rest of the app
+- Code execution does not pause
+- Like calling dispatch in `Redux-Thunk` or React-Redux
+
 ## Redux-saga Advantages
 
 - Synchronous looking code with an easy to follow step by step
@@ -93,3 +112,7 @@ Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel`
 - Action-Creators are pure
 - Isolates side-effect code to a single area of the application
 - Many helper functions & solid documentation
+
+## References
+
+- [Redux Saga Sandbox](https://github.com/danielstern/redux-saga-sandbox)

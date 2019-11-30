@@ -143,6 +143,22 @@ Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel`
   5. Child process is cancelled
   6. Go to step 2
 
+#### Effect: Select
+
+- Returns a copy of the application's state when yielded to
+- Any passed selectors are invoked
+
+#### Effect: Spawn
+
+- Creates a new process, similar to fork - caller is not interrupted
+- New process is not child of caller - will not be cancelled if caller errors or is itself cancelled
+
+
+#### Effects: All
+
+- Combines numerous take statements into one
+- Code execution resumes when all actions have been dispatched (in any order)
+
 ## Redux-saga Advantages
 
 - Synchronous looking code with an easy to follow step by step

@@ -74,9 +74,14 @@ function* watchLastAction( {
 
 ### Effect Creators
 
+- Effects create a plain objects - Redux saga interprets them and executes processes
 - Each effect creator returns a plain javascript object and does not perform any execution
 - The execution is performed by the middleware during the iteration process
 - The middleware examines each Effect description and performs the appropriate action
+- `Take`, `TakeEvery` and `TakeLatest` wait for a specific kind of action to create a new process
+- `Call`, `Fork`, and `Spawn` create a different kinds of processes
+- Forked processes are cancelled when their parent is cancelled or errors
+- `Take` and `Call` pause the execution of caller process
 
 `call --` runs a function, if it returns a promise, pauses the saga until the promise is resolved
 `put --` dispatches an action

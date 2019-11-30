@@ -103,6 +103,12 @@ Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel`
 - Code execution does not pause
 - Like calling dispatch in `Redux-Thunk` or React-Redux
 
+#### Effect: Call
+
+- Calls the specified method
+- Equivalent to invoking the method directly
+- Used for testing
+
 ## Redux-saga Advantages
 
 - Synchronous looking code with an easy to follow step by step

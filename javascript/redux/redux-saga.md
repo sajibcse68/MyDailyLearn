@@ -164,6 +164,25 @@ Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel`
 - Combines numerous take statements into one
 - Code execution resumes when all actions have been dispatched (in any order)
 
+## Channels
+
+### What are Channel
+
+- `Action Channel` buffer actions to be processed one at a time
+- `Event Channel` connects app to outside event sources
+- `Channel` can communicate between two sagas
+
+### Action Channels
+
+- Records all events with specified type
+- Calling `take` accesses and removes oldest record
+- Used to handle actions that would otherwise be lost
+
+### Generic Channels
+
+- Creates special line of communication between two sagas
+- Action types not required
+
 ## Redux-saga Advantages
 
 - Synchronous looking code with an easy to follow step by step

@@ -130,6 +130,19 @@ Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel`
 - Method that returns true if callee process has been cancelled by caller
 - Used in finally block to determine if cancellation (not error) is cause of termination
 
+#### Effect: TakeLatest
+
+- Combination of fork, takeEvery, and cancel
+- Forks child process each time specified action is dispatched, while keeping exactly on instance of the child process running
+- Sequence:
+
+  1. Specified action is dispatched (say, click a button, will do api call)
+  2. Child process is forked in response
+  3. CHild process runs in own thread
+  4. Specified action is dispatched again (click the button again)
+  5. Child process is cancelled
+  6. Go to step 2
+
 ## Redux-saga Advantages
 
 - Synchronous looking code with an easy to follow step by step

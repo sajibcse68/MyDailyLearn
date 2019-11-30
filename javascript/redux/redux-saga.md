@@ -109,6 +109,27 @@ Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel`
 - Equivalent to invoking the method directly
 - Used for testing
 
+#### Effect: Fork
+
+- Invokes the specified method (like call)
+- Can't access yielded variables
+- Caller continues without pausing execution
+- If parent process errors or is cancelled, all forked processes are cancelled
+- Finally block of forked method is invoked during cancellation
+
+#### Effect: TakeEvery
+
+- Works like take, except forks the specified method every time specified action is dispatched
+- Code execution resumes immediately in main thread
+
+#### Effect: Cancel
+
+- Stops a forked process
+- Stopped process will be cut off at most recent yield
+- `finally{}` is invoked in forked process
+- Method that returns true if callee process has been cancelled by caller
+- Used in finally block to determine if cancellation (not error) is cause of termination
+
 ## Redux-saga Advantages
 
 - Synchronous looking code with an easy to follow step by step

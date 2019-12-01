@@ -183,6 +183,12 @@ Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel`
 - Creates special line of communication between two sagas
 - Action types not required
 
+### Event Channels
+
+- Wraps an outside source of events (i.e., WebSocket)
+- Sagas can take rom Event Channel
+- Event Channel converts events into take able actions and emits them
+
 ## Redux-saga Advantages
 
 - Synchronous looking code with an easy to follow step by step

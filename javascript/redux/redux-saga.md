@@ -168,9 +168,9 @@ Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel`
 
 ### What are Channel
 
-- `Action Channel` buffer actions to be processed one at a time
-- `Event Channel` connects app to outside event sources
-- `Channel` can communicate between two sagas
+- `Action Channel` create a buffer for actions and to be processed one at a time
+- `Event Channel` can emit take-friendly actions from non-promise based outside sources
+- `Generic Channel` can allow for communication between two sagas
 
 ### Action Channels
 
@@ -188,6 +188,41 @@ Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel`
 - Wraps an outside source of events (i.e., WebSocket)
 - Sagas can take rom Event Channel
 - Event Channel converts events into take able actions and emits them
+
+## Testing Redux Saga Application
+
+- Tests need to avoid making real AJAX calls
+- Effects do not do anything unless run by Redux Saga
+- Call effect must be used instead of yielding directly to API methods
+
+### Testing: Official/Standard Method (Unit Tests)
+
+- Saga is executed as plain generator
+- Tests pass mock values to next()
+- Structure of effects is tested against expected values
+- Store is never used
+
+### Testing: Alternative Method (End-to-End Tests)
+
+- Mock store and application state are created
+- Entire saga is run from beginning to end
+- At completion, new state is compared to expected value
+- APIs must be injected as dependencies
+
+### Comparison: Official (Unit Test) vs Alternative (End-to-End Test)
+
+- Standard Method (unit test):
+  - Requires that call be used for functions
+  - Cannot test application state against expected values
+  - Outside APIs can be imported with no special considerations
+  - Tests are brief and simple to set up
+  - Test fails if yielded effects do not match expected values
+- Alternative Method (e2e test):
+  - Call usage recommended but not required
+  - Can test application state against expected values
+  - Any outside APIs must be injected as dependencies
+  - Tests are complex and require preparation of mock store and PIs
+  - Test fails if final application state does not match expected values 
 
 ## Redux-saga Advantages
 

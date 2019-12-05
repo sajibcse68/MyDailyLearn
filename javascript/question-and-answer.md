@@ -327,6 +327,40 @@ import * as foo from 'foo.js';
 foo.bar(); // bar
 ```
 
+#### How to Prevent adding new properties to an object?
+
+We can use `Object.preventExtensions()` method to prevent adding new properties to an object:
+
+```js
+'use strict';
+
+let myObj = {
+  one: 1,
+  two: 2
+};
+
+console.log(myObj.one); // 1
+console.log(myObj.two); // 2
+
+Object.preventExtensions(myObj);
+
+try {
+  myObj.three = 3;
+} catch (e) {
+  console.log(e.message);
+  // "Cannot add property three, object is not extensible" }
+
+console.log(myObj.three); // undefined
+```
+
+Note:
+-----
+
+- In `strict mode` browser will throw the error shown in the catch block
+- In `non-strict node`, browser attempt will just fail silently
+- We can still delete properties, unlike when using `Object.freeze()`
+- This prevents addition of own properties, but we can still add to the object's prototype
+
 #### How to get `Unique` values of an Array?
 
 ```js

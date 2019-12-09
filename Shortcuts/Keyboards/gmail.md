@@ -36,3 +36,21 @@ Align center                                  - ⌘/Ctrl + Shift + e
 Align right	                                  - ⌘/Ctrl + Shift + r
 Remove formatting                             - ⌘/Ctrl + \
 ```
+
+## Actions
+
+```
+* Archive                                     - e
+Report as Spam                                - !
+* Reply                                       - r
+* Reply in a new window                       - Shirt + r
+* Reply all                                   - a
+Reply all in a new window                     - Shift + a
+* Forward                                     - f
+* Undo last action                            - z
+* Mark as read                                - Shift + i
+* Mark as unread                              - Shift + u
+* Mark as important                           - + or =
+* Mark as not important                       - - (minus)
+
+```

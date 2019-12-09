@@ -52,5 +52,16 @@ Reply all in a new window                     - Shift + a
 * Mark as unread                              - Shift + u
 * Mark as important                           - + or =
 * Mark as not important                       - - (minus)
+```
 
+## Navigation
+
+```
+Go to next page                              - g + n
+Go to previous page	                         - g + p
+* Newer conversation                         - k
+* Older conversation                         - j
+Open conversation                            - o or Enter
+Go to next Inbox section                     - `
+Go to previous Inbox section                 - ~
 ```

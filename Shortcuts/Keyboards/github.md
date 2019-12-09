@@ -1,5 +1,6 @@
 ### Site wide shortcuts
-```
+
+```sh
 s or /     - Focus search bar
 g + n      - Go to notifications
 g + d      - Go to Dashboard
@@ -12,7 +13,8 @@ h          - Open hovercard
 ```
 
 ### Repositories
-```
+
+```sh
 Cmd + /    - Focus secondary search bar
 g + c      - Go to code
 g + i      - Go to issues

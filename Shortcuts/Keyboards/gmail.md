@@ -16,3 +16,23 @@ Go to next misspelled word (Mac only)         - ⌘ + ;
 Open spelling suggestions                     - ⌘/Ctrl + m
 ```
 
+## Formatting Text
+
+```
+Previous font                                 - ⌘/Ctrl + Shift + 5
+Next font                                     - ⌘/Ctrl + Shift + 6
+* Decrease text size                          - ⌘/Ctrl + Shift + -
+* Increase text size                          - ⌘/Ctrl + Shift and +
+* Bold                                        - ⌘/Ctrl + b
+* Italics                                     - ⌘/Ctrl + i
+* Underline                                   - ⌘/Ctrl + u
+Numbered list                                 - ⌘/Ctrl + Shift + 7
+Bulleted list                                 - ⌘/Ctrl + Shift + 8
+Quote                                         - ⌘/Ctrl + Shift + 9
+* Indent less                                 - ⌘/Ctrl + [
+* Indent more                                 - ⌘/Ctrl + ]
+Align left                                    - ⌘/Ctrl + Shift + l
+Align center                                  - ⌘/Ctrl + Shift + e
+Align right	                                  - ⌘/Ctrl + Shift + r
+Remove formatting                             - ⌘/Ctrl + \
+```

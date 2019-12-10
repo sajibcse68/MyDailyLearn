@@ -633,6 +633,13 @@ $ git gc --aggressive --prune="1 hour"
 $ git rc  # cleanup unnecessary files and optimize local repo
 ```
 
+#### Search all of git history for a String
+
+```sh
+$ git log -S<search-string>              # search in log output
+$ git reflog -S<search-string>           # search in reflog output
+```
+
 #### Prune empty commits
 
 ```sh

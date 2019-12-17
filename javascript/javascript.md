@@ -657,6 +657,41 @@ var funcName = function(a, b) {
 };
 ```
 
+## JavaScript Module CheatSheet
+
+#### Different Ways to Export and Import
+
+```js
+// Name Export | Name Import
+export const name = 'value';
+import { name } from '...';
+
+// Default Export | Default Import
+export default 'value';
+import anyName from '...';
+
+// Rename Export | NameImport
+export { name as newName }
+import { newName } from '...';
+
+// Name + Default | Import All
+export const name = 'value'
+export default 'value
+import * as anyName from '...'
+
+// Export List + Rename | Import List + Rename
+export {
+  name1,
+  name2 as newName2
+}
+import {
+  name1 as newName2,
+  newName2
+} from '...'
+```
+
+[Ref](https://dev.to/samanthaming/javascript-module-cheatsheet-5b4o)
+
 ## Debugging Tips
 #### How to find DOM elements quickly?
 Mark a DOM elements panel ans use it in your console. Chrome inspector keeps the `last five (5)` elements panel in history so that the final marked element displays as `$0`, the second to last marked element `$1` and so on.

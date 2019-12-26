@@ -1,3 +1,21 @@
+## Flexbox
+
+### Controlling the Alignment of the Elements
+
+#### justify-content
+
+`justify-content: ` work on how the remaining space in the container will be distributed around the flex elements if there is any remaining spaces in the container
+
+It accepts `5` values:
+
+1. `flex-start (default)`: align items to the beginning of the flex-container
+2. `flex-end: ` align items to the end of flex container
+3. `center: ` centers the content inside the flex container
+4. `space-between: ` separates the content with equal spaces with no spaces at the beginning or at the end of the container
+5. 
+
+
+
 #### Flex with Responsive
 
 ```css

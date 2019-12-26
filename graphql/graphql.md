@@ -156,6 +156,12 @@ axios({
 });
 ```
 
+## Keeping cache in sync
+
+- Refetch matching queries after a mutation
+- Use update method on mutation
+- Watch Queries
+
 ## GraphQL Cheat Sheets
 
 <img src="../images/graphql-cheatsheet.png" alt="graphql-cheatsheet" width="400px"/>

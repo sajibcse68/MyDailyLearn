@@ -454,6 +454,24 @@ Vue.js has introduced a `.Sync` modifier to `v-bind` which update the Parent dat
 </script>
 ```
 
+## Vue `Watch` property
+
+#### Should We Use Watch or Computed?
+
+Watched props can often be confused with `computed` properties, because they operate in a similar way.
+
+> Watch is for side effects. A `side effect` is anything that happens outside of our component, or anything `asynchronous`.
+
+Common examples are:
+
+- Fetching data
+- Manipulating the DOM
+- Using a browser API, such as local storage or audio playback
+
+None of these things affect our component directly, so they are considered as `side-effects`.
+
+> However, there are cases where we might want to use a `watcher` to update something in our `data`.
+
 - An **Alternative** to computed properties `Watching` for
 
 ```js
@@ -483,6 +501,24 @@ Vue.js has introduced a `.Sync` modifier to `v-bind` which update the Parent dat
     }
   }
 </script>
+```
+
+#### Watching Nested Data - Arrays or Objects
+
+We can watch arrays or objects nested properties by setting `deep: true` in our watcher and rearranging the handler function:
+
+```js
+watch: {
+  myObject: {
+    // This will let Vue know to look inside the object/array
+    deep: true,
+    // We have to move our method to a handler field
+    handler(newValue, oldValue)
+      console.log('myObject has changed!');
+    },
+    // Will fire as soon as the component is created
+    immediate: true,
+  }
 ```
 
 #### Dynamic styling with CSS classes

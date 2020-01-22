@@ -108,3 +108,13 @@ Each of these classes will be prefixed with the name of the transition. Here the
   opacity: 0;
 }
 </style>
+
+#### Transition on Initial Render
+
+We can add the `appear` attribute to apply a transition on the initial render of a node:
+
+```html
+<transition appear>
+  <!-- ... -->
+</transition>
+```

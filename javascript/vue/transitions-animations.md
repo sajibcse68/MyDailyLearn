@@ -118,3 +118,20 @@ We can add the `appear` attribute to apply a transition on the initial render of
   <!-- ... -->
 </transition>
 ```
+
+#### Transition Modes
+
+Simultaneous entering and leaving transitions aren't always desireable. So, Vue offers some alternative `transitions modes`:
+
+`in-out`: New element transitions in first, then when complete, the current element transitions out.
+`out-in`: Current element transitions out first, then when complete, the new element transitions in.
+
+```html
+<transition name="fade" mode="out-in">
+  <!-- ... the buttons ... -->
+</transition>
+
+```
+
+
+[Ref](https://vuejs.org/v2/guide/transitions.html#Transition-Modes)

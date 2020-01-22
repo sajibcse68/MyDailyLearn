@@ -130,8 +130,45 @@ Simultaneous entering and leaving transitions aren't always desireable. So, Vue 
 <transition name="fade" mode="out-in">
   <!-- ... the buttons ... -->
 </transition>
-
 ```
 
-
 [Ref](https://vuejs.org/v2/guide/transitions.html#Transition-Modes)
+
+#### Transitioning between Components
+
+Transitioning between components is even simpler - we don’t even need the key `attribute`. Instead, we wrap a dynamic component:
+
+```html
+<template>
+  <transition name="component-fade" mode="out-in">
+    <component v-bind:is="view"></component>
+  </transition>
+</template>
+
+<script>
+  new Vue({
+    el: "#transition-components-demo",
+    data: {
+      view: "v-a"
+    },
+    components: {
+      "v-a": {
+        template: "<div>Component A</div>"
+      },
+      "v-b": {
+        template: "<div>Component B</div>"
+      }
+    }
+  });
+</script>
+
+<style>
+  .component-fade-enter-active,
+  .component-fade-leave-active {
+    transition: opacity 0.3s ease;
+  }
+  .component-fade-enter, .component-fade-leave-to {
+    opacity: 0;
+  }
+</style>
+```

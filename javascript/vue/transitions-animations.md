@@ -167,8 +167,116 @@ Transitioning between components is even simpler - we don’t even need the key 
   .component-fade-leave-active {
     transition: opacity 0.3s ease;
   }
-  .component-fade-enter, .component-fade-leave-to {
+  .component-fade-enter,
+  .component-fade-leave-to {
     opacity: 0;
   }
 </style>
 ```
+
+## List Transitions
+
+What if we have a whole list of items we want to render simultaneously, for example with `v-for`? In this case, we will use the `<transition-group>` component.
+
+- Unlike `<transition>`, it renders an actual element: a <`span>` by default. You can change the element that’s rendered with the `tag` attribute.
+- [Transition modes](https://vuejs.org/v2/guide/transitions.html#Transition-Modes) are not available, because we are no longer alternating between mutually exclusive elements.
+- Elements inside are always required to have a `unique key` attribute.
+- CSS transition classes will be applied to inner elements and not to the group/container itself.
+
+#### List Entering/Leaving Transitions
+
+Transitioning `entering` and `leaving` using the CSS classes:
+
+```html
+<template>
+  <div id="list-demo">
+    <button v-on:click="add">Add</button>
+    <button v-on:click="remove">Remove</button>
+    <transition-group name="list" tag="p">
+      <span v-for="item in items" v-bind:key="item" class="list-item">
+        {{ item }}
+      </span>
+    </transition-group>
+  </div>
+</template>
+
+<script>
+  new Vue({
+    el: "#list-demo",
+    data: {
+      items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      nextNum: 10
+    },
+    methods: {
+      randomIndex: function() {
+        return Math.floor(Math.random() * this.items.length);
+      },
+      add: function() {
+        this.items.splice(this.randomIndex(), 0, this.nextNum++);
+      },
+      remove: function() {
+        this.items.splice(this.randomIndex(), 1);
+      }
+    }
+  });
+</script>
+<style>
+  .list-item {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 1s;
+  }
+  .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+</style>
+```
+
+**N.B.** Here when you add or remove an item, the ones around it instantly snap into their new place instead of smoothly transitioning.
+
+#### List Move Transitions
+
+The `<transition-group>` component has another trick up its sleeve. It can not only animate entering and leaving, but also `changes in position`. So, `v-move` class is added when items are changing positions. Like the other classes, its prefix will match the value of a `provided name` attribute and we can also manually specify a class with the `move-class` attribute.
+
+> This class is mostly useful for specifying the transition timing and easing curve
+
+```html
+<template>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
+
+  <div id="flip-list-demo" class="demo">
+    <button v-on:click="shuffle">Shuffle</button>
+    <transition-group name="flip-list" tag="ul">
+      <li v-for="item in items" v-bind:key="item">
+        {{ item }}
+      </li>
+    </transition-group>
+  </div>
+</template>
+
+<script>
+  new Vue({
+    el: "#flip-list-demo",
+    data: {
+      items: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    },
+    methods: {
+      shuffle: function() {
+        this.items = _.shuffle(this.items);
+      }
+    }
+  });
+</script>
+
+<style>
+  .flip-list-move {
+    transition: transform 1s;
+  }
+</style>
+```
+
+Here Vue is using an `animation technique` called [FLIP](https://aerotwist.com/blog/flip-your-animations/) to smoothly transition elements from their `old position to their new position` using transforms.

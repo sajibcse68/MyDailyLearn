@@ -54,6 +54,12 @@ $ docker inspect -f "{{ .Mounts }}" <container-id>
 # print logs of container
 $ docker logs <container ID>
 
+# connects to the container
+$ docker container attach trusting_shamir
+
+# create volume docker
+$ docker volume create projetos
+
 # calling app using 'curl'
 $ curl -i localhost:<binding port>
 

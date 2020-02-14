@@ -177,6 +177,10 @@ $ uname -r                             # karnel release
 $ lsb_release -a                       # see ubuntu version
 $ df -ah                               # show the disk free (df), all human readable (-ah)
 $ arch                                 # print architecture type
+$ mkdosfs                              # creates an MS-DOS file system
+$ mkfs.vfat                            # creates a vfat file system
+$ mkswap                               # creates a SWAP file system
+$ swapon /dev/sda2                     # activate the swap
 
 # Short files by size (human readable output)
 $ du <dir> --human-readable | sort --human-numeric-sort

@@ -126,6 +126,13 @@ Any function that returns a `new object` which is not a Constructor function (no
   console.log(foo === null); // true boolean
   ```
 
+#### What is the JavaScript Principles When Code Runs?
+
+Two Principles:
+
+  1. Goes through the code line-by-line and runs/executes each line -- known as the `thread of execution`
+  2. Saves `data` like strings and arrays so we can use that data later -- in its memory (we can even save code e.g. functions)
+
 ## What does JavaScript `get` or `getter` keyword do?
 
 The `get` syntax **binds an object property to a function** that will be called when that property is looked up.

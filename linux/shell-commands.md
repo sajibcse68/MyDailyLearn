@@ -161,7 +161,8 @@ User git
 
 `For more informations type 'man dir_colors' in terminal.`
 
-### Fancy Commands:  
+### Fancy Commands:
+
 ```
 $ date                                 # show today's date
 $ cal                                  # show calendar
@@ -187,12 +188,6 @@ $ du -ma | sort -nr | head -n 20    # show 20 largest files/folders under the cu
 $ du -sh <path>                        # check the size (du -> disk use) of a directory's content on disk
 $ du -h                                # show all sub directory size
 
-# Free a port process
-sudo kill 'sudo lsof -t -i:9090'
-sudo lsof -t -i:24007                  # get the pid of 24007 port, say 123
-kill 123                               # kill the process
-kill -9 <pid>                          # kill the process (go)
-
 # Give a access permission of a file
 $ chmod 777 /var/run/docker.sock
 
@@ -201,6 +196,9 @@ $ dd if=/dev/zero of=/swap bs=1M count=8024;mkswap /swap;swapon /swap;echo "/swa
 
 $ netstat -tulpn | grep 8080           # Port status
 $ df                                   # See the drive and usage
+
+# Check if mongodb is running
+$ ps -ef | grep mongod | grep -v grep | wc -l | tr -d ' '
 
 # See the running process
 $ pstree                               # pstree 1152
@@ -229,8 +227,17 @@ $ scp remote_user@remote_host:/path/to/remote/file /path/to/local/file
 $ scp /home/sajib/TigerWorks/Source/dockerfiles/jenkins/jenkins_global_config/ root@45.55.247.59:/root/dockerfiles/jenkins/globalConfig/
 ```
 
-#### Run a local server
+#### Free a port process
+
+```sh
+$ sudo kill 'sudo lsof -t -i:9090'
+$ sudo lsof -t -i:24007                  # get the pid of 24007 port, say 123
+$ kill 123                               # kill the process
+$ kill -9 <pid>                          # kill the process (go)
 ```
+
+#### Run a local server
+```sh
 $ sudo python3 -m http.server 80
 ```
 ##### Cursor movement

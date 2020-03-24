@@ -200,6 +200,9 @@ $ df                                   # See the drive and usage
 # Check if mongodb is running
 $ ps -ef | grep mongod | grep -v grep | wc -l | tr -d ' '
 
+# Check if redis is running
+$ redis-cli ping // PONG
+
 # See the running process
 $ pstree                               # pstree 1152
 $ ps wwaux | grep jenkins

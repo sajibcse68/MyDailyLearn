@@ -101,3 +101,4 @@ Unlock lets you easily lock and manage access to your content, apps, community a
 
 - [Website](https://unlock-protocol.com/)
 - [Staging Dashboard -- for development](https://staging-app.unlock-protocol.com/dashboard/)
+- [Official React Example](https://github.com/unlock-protocol/react-example/blob/master/public/index.html#L37)

@@ -44,3 +44,18 @@ The first time you run the sample, it will prompt you to authorize access:
 To view the script's output, click `View > Logs`.
 
 Done!
+
+
+# Important Commands
+
+#### Write from Active Sheet to Another Sheet in a Workbook
+
+```js
+var app = SpreadsheetApp;
+// get value
+var value = app.getActiveSpreadsheet.getRange(1, 1).getValue();
+
+// select a sheet by name, set value
+var targetSheet = app.getActiveSpreadsheet.getSheetByName('sheet2');
+targetSheet.getRange(1, 1).setValue(value);
+```

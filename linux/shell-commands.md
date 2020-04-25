@@ -1,4 +1,4 @@
-### Search 
+## Search 
 ```  
 # Search inside text file
 $ gradle run | less        // search in 'gradle run' command
@@ -68,7 +68,7 @@ $ lshw             # show all hardware details
 $ lshw -C display  # show display details
 ```
 
-#### SSH
+## SSH
 ---
 ##### Get SSH RSA Fingerprints
 ```
@@ -161,7 +161,7 @@ User git
 
 `For more informations type 'man dir_colors' in terminal.`
 
-### Fancy Commands:
+## Fancy Commands:
 
 ```
 $ date                                 # show today's date
@@ -240,17 +240,27 @@ $ kill -9 <pid>                          # kill the process (go)
 ```
 
 #### Run a local server
+
 ```sh
 $ sudo python3 -m http.server 80
 ```
-##### Cursor movement
+
+#### Convert `.mov` to `.mp4` with Mac Terminal
+
+Perform an exact copy of both the audio and video streams into the new file
+
+```sh
+$ ffmpeg -i input.mov -acodec copy -vcodec copy output.mp4
+```
+
+#### Cursor movement
 C + a:  Move to the start of the line.  
 C + e:  Move to the end of the line.  
 C + l:  Clear the screen, reprinting the current line at the top.  
 M + f:  Move forward a word, where a word is composed of letters and digits.  
 M + b:  Move backward a word.  
 
-##### Cut, kill and yank
+#### Cut, kill and yank
 * C-k Kill the text from the current cursor position to the end of the line.  
 * M-d Kill from the cursor to the end of the current word, or, if between words, to the end of the next word. Word boundaries are the same as those used by M-f.  
 * M-[DEL] Kill from the cursor the start of the current word, or, if between words, to the start of the previous word. Word boundaries are the same as those used by M-b.
@@ -258,7 +268,8 @@ M + b:  Move backward a word.
 * C-y Yank the most recently killed text back into the buffer at the cursor.
 * M-y Rotate the kill-ring, and yank the new top. You can only do this if the prior command    is C-y or M-y.
 
-##### The Linux five basic commands a programmer should know about
+#### The Linux five basic commands a programmer should know about
+
    ls, cd, mv, mkdir, rm  
 -  Additional basic commands:
    - pwd - Print Working Directory

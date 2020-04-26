@@ -247,12 +247,16 @@ $ sudo python3 -m http.server 80
 
 #### Convert `.mov` to `.mp4` with Mac Terminal
 
-Perform an exact copy of both the audio and video streams into the new file
+- Converting video files to different formats
 
-```sh
-$ ffmpeg -i input.mov -acodec copy -vcodec copy output.mp4
-```
+    ```sh
+    $ ffmpeg -i video.mp4 video.avi
+    ```
+- Perform an exact copy of both the audio and video streams into the new file
 
+    ```sh
+    $ ffmpeg -i input.mov -acodec copy -vcodec copy output.mp4
+    ```
 #### Cursor movement
 C + a:  Move to the start of the line.  
 C + e:  Move to the end of the line.  

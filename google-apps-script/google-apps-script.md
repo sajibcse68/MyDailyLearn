@@ -45,7 +45,6 @@ To view the script's output, click `View > Logs`.
 
 Done!
 
-
 # Important Commands
 
 #### Write from Active Sheet to Another Sheet in a Workbook

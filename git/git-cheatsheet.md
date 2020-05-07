@@ -399,6 +399,8 @@ $ git log --stat                                   # file name, status, insert/d
 $ git log -p <file/directory>                      # Show change history for file/directory including diffs
 $ git log --pretty=format:"%h - %an, %ar : %s"     # commit hash-tag -> name -> data -> commit-message
 
+$ git log --follow -- <file-name>                  # See all commits that changed a file
+
 $ git log --name-status --follow -- <file-name>    # follow/see the commits in where a file is being changed. It works for moved/renamed files also
 
 # see commit-hash, branch-name, commit-message, time, committer-name and changes of the commits

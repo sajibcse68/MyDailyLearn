@@ -19,3 +19,38 @@ algorithm, among other changes.
 - `Contract creation transaction`: A special transaction, with the `“zero address”` as the recipient, that is used to register a contract and record it on the Ethereum blockchain (see “zero address”).
 - `DAO`: **Decentralized Autonomous Organization**. A company or other organization that
 operates without hierarchical management. Also may refer to a contract named “The DAO” launched on April 30, 2016, which was then hacked in June 2016; this ultimately motivated a hard fork (codenamed DAO) at block #1,192,000, which reversed the hacked DAO contract and caused Ethereum and Ethereum Classic to `split into two competing systems`.
+
+## What is Ethereum?
+
+**Ethereum** is often described as `“the world computer.”`
+
+From a computer science perspective, Ethereum is a deterministic but practically
+unbounded state machine, consisting of a globally accessible singleton state and a virtual
+machine that applies changes to that state.
+
+From a more practical perspective, Ethereum is an `open source`, `globally decentralized`
+computing infrastructure that executes programs called **`smart contracts`**. It uses a
+blockchain to synchronize and store the system’s state changes, along with a cryptocurrency
+called `ether` to meter and constrain execution resource costs.
+
+The Ethereum platform enables developers to build powerful decentralized applications
+with built-in economic functions. While providing high `availability`, `auditability`,
+`transparency`, and `neutrality`, it also reduces or eliminates censorship and reduces certain
+counterparty risks.
+
+### Components of a Blockchain
+
+The components of an open, public blockchain are (usually):
+
+- A peer-to-peer (P2P) network connecting participants and propagating transactions and blocks of verified transactions, based on a standardized `“gossip”` protocol
+- Messages, in the form of transactions, representing state transitions
+- A set of `consensus rules`, governing what constitutes a transaction and what makes for a valid state transition
+- A state machine that processes transactions according to the consensus rules
+- A chain of cryptographically secured blocks that acts as a journal of all the verified
+and accepted state transitions
+- A consensus algorithm that decentralizes control over the blockchain, by forcing
+participants to cooperate in the enforcement of the consensus rules
+- A game-theoretically sound incentivization scheme (e.g., proof-of-work costs
+plus block rewards) to economically secure the state machine in an open
+environment
+- One or more open source software implementations of the above (“clients”)

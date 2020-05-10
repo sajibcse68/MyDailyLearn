@@ -136,3 +136,14 @@ based verification.
 - `Rinkeby Test Network`: Ethereum public test blockchain and network, using the Clique consensus protocol with proof of authority (federated signing). ETH on this network `has no value`.
 - `Localhost 8545`: Connects to a node running on the same computer as the browser. The node can be part of any public blockchain (main or testnet), or a private testnet.
 - `Custom RPC`: Allows you to connect MetaMask to any node with a `Geth-compatible` Remote Procedure Call (RPC) interface. The node can be part of any public or private blockchain.
+
+### Externally Owned Accounts (EOAs) and Contracts
+
+`The type of account you created in the MetaMask wallet is called an externally owned account (EOA)`. Externally owned accounts are those that `have a private key`; having the private key means control over access to funds or contracts. Now, you’re probably guessing there is another type of account. 
+
+That other type of account is a `contract account`. A contract account has **smart contract code**, which a simple EOA can’t have. Furthermore, a contract account `does not have a private key`. Instead, it is owned (and
+controlled) by the logic of its smart contract code: the software program recorded on the Ethereum blockchain at the contract account’s creation and executed by the EVM. `Contracts have addresses, just like EOAs`. Contracts can also send and receive ether, just like EOAs. However, when a transaction destination is a contract address, it causes that contract to run in the EVM, using the transaction, and the transaction’s data, as its input. In addition to ether, transactions can contain data indicating which specific function in the contract to run and what parameters to pass to that function.
+
+In this way, transactions can call functions within contracts. Note that because `a contract account does not have a private key, it cannot initiate a transaction`. **Only EOAs can initiate transaction**s, but contracts can react to transactions by calling other contracts, building complex execution paths. One typical use of this is an EOA sending a request transaction to a multisignature smart contract wallet to send some ETH on to another address.
+
+A typical DApp programming pattern is to have Contract A calling Contract B in order to maintain a shared state across users of Contract A.

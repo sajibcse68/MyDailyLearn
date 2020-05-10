@@ -147,3 +147,10 @@ controlled) by the logic of its smart contract code: the software program record
 In this way, transactions can call functions within contracts. Note that because `a contract account does not have a private key, it cannot initiate a transaction`. **Only EOAs can initiate transaction**s, but contracts can react to transactions by calling other contracts, building complex execution paths. One typical use of this is an EOA sending a request transaction to a multisignature smart contract wallet to send some ETH on to another address.
 
 A typical DApp programming pattern is to have Contract A calling Contract B in order to maintain a shared state across users of Contract A.
+
+### Interacting with the Contract
+
+**Ethereum contracts are programs that control money, which run inside a virtual machine called the EVM**. They are created by a special transaction that submits their bytecode to be recorded on the blockchain. Once they are created on the blockchain, they have an Ethereum address, just like wallets. Anytime someone sends a transaction to a contract address it causes the contract to run in the EVM, with the transaction as its input.
+
+Transactions sent to contract addresses may have` ether or data or both`. If they contain ether, `it is “deposited`”
+to the contract balance. If they contain data, the data can specify a named function in the contract and call it, passing arguments to the function.

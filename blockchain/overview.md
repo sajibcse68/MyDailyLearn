@@ -125,3 +125,14 @@ a `web-based wallet`.
 - `Emerald Wallet`: Emerald Wallet is designed to work with the Ethereum Classic blockchain, but is compatible with other Ethereum-based blockchains. It’s an open source desktop application and works under `Windows, macOS, and Linux`. Emerald Wallet `can run a full node or connect to a public remote node`, working in a `“light”` mode. It
 also has a companion tool to do all operations from the command line.
 
+### Switching Networks
+
+As we can see on the MetaMask account page, we can choose between multiple Ethereum networks. `By default, MetaMask will try to connect to the main network`. The other choices are public testnets, any Ethereum node of your choice, or nodes running private blockchains on your own computer (localhost):
+
+- `Main Ethereum Network`: The main public Ethereum blockchain. Real ETH, real value, and real consequences.
+- `Ropsten Test Network`: Ethereum public test blockchain and network. ETH on this network has `no value`.
+- `Kovan Test Network`: Ethereum public test blockchain and network using the `Aura consensus protocol` with proof of authority (federated signing). ETH on this network has `no value`. The Kovan test network is supported by Parity only. Other Ethereum clients use the Clique consensus protocol, which was proposed later, for proof of authority–
+based verification.
+- `Rinkeby Test Network`: Ethereum public test blockchain and network, using the Clique consensus protocol with proof of authority (federated signing). ETH on this network `has no value`.
+- `Localhost 8545`: Connects to a node running on the same computer as the browser. The node can be part of any public blockchain (main or testnet), or a private testnet.
+- `Custom RPC`: Allows you to connect MetaMask to any node with a `Geth-compatible` Remote Procedure Call (RPC) interface. The node can be part of any public or private blockchain.

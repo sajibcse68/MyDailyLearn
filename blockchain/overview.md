@@ -79,3 +79,23 @@ In addition, many DApps include other decentralized components, such as:
 
 - A decentralized (P2P) storage protocol and platform
 - A decentralized (P2P) messaging protocol and platform
+
+### The Third Age of the Internet
+
+The concept of DApps is meant to take the `World Wide Web` to its next natural evolutionary stage, introducing `decentralization with peer-to-peer protocols` into every aspect of a web application. The term used to describe this evolution is web3, meaning the `third “version”` of the web. First proposed by `Dr. Gavin Wood`, `web3` represents a new vision and focus for web applications: from centrally owned and managed applications, to applications built on decentralized protocols.
+
+The `web3.js` library also includes an interface to a P2P storage network called **`Swarm`** and a P2P messaging service called `Whisper`.
+
+### Why Learn Ethereum
+
+**Blockchains have a very steep learning curve,** as they combine multiple disciplines into one domain: programming, information security, cryptography, economics, distributed systems, peer-to-peer networks, etc. Ethereum makes this learning curve a lot less steep, so you can get started quickly. But just below the surface of a deceptively simple environment lies a lot more. As you learn and start looking deeper,
+there’s always another layer of complexity and wonder.
+
+Ethereum is a great platform for learning about blockchains and it’s building a massive
+community of developers, faster than any other blockchain platform. More than
+any other, Ethereum is a developer’s blockchain, built by developers for developers. A
+developer familiar with JavaScript applications can drop into Ethereum and start producing
+working code very quickly. For the first few years of Ethereum’s life, it was
+common to see T-shirts announcing that you can create a token in just five lines of
+code. Of course, this is a `double-edged sword`. **It’s easy to write code, but it’s very hard
+to write good and secure code.**

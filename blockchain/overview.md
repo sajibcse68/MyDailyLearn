@@ -154,3 +154,20 @@ A typical DApp programming pattern is to have Contract A calling Contract B in o
 
 Transactions sent to contract addresses may have` ether or data or both`. If they contain ether, `it is “deposited`”
 to the contract balance. If they contain data, the data can specify a named function in the contract and call it, passing arguments to the function.
+
+## Ethereum Clients
+
+An Ethereum client is a `software application` that implements the Ethereum specification and `communicates over the peer-to-peer network` with other Ethereum clients. Different Ethereum clients interoperate if they comply with the reference specification and the standardized communications protocols. While these different clients are implemented by different teams and in different programming languages, they all `“speak” the same protocol and follow the same rules`. As such, they can all be used to operate and interact with the same Ethereum network.
+
+### Ethereum Networks
+
+There exist a variety of Ethereum-based networks that largely conform to the formal specification defined in the Ethereum Yellow Paper, but which may or may not interoperate with each other.
+
+Currently, there are six main implementations of the Ethereum protocol, written in six different languages:
+
+- Parity, written in Rust
+- Geth, written in Go
+- cpp-ethereum, written in C++
+- pyethereum, written in Python
+- Mantis, written in Scala
+- Harmony, written in Java

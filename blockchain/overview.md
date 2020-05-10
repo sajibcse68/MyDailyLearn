@@ -10,15 +10,15 @@
 - `Bytecode`: An abstract instruction set designed for efficient execution by a software interpreter or a virtual machine. Unlike human-readable source code, `bytecode` is expressed in numeric format.
 - `Compiling`: Converting code written in a `high-level` programming language (e.g., **Solidity**) into a `lower-level` language (e.g., **EVM bytecode**).
 - `Consensus`: When numerous nodes—usually most nodes on the network—all have the same
-blocks in their locally validated best blockchain. Not to be confused with consensus
-rules.
+  blocks in their locally validated best blockchain. Not to be confused with consensus
+  rules.
 - `Consensus rules`: The **block validation rules** that full nodes follow to stay in consensus with other nodes. Not to be confused with consensus.
 - `Constantinople fork`: The second part of the Metropolis stage, originally planned for mid-2018. Expected to include a switch to a hybrid `proof-of-work/proof-of-stake` consensus
-algorithm, among other changes.
+  algorithm, among other changes.
 - `Contract account`: **An account containing code that executes whenever it receives a transaction from another account** (EOA or contract).
 - `Contract creation transaction`: A special transaction, with the `“zero address”` as the recipient, that is used to register a contract and record it on the Ethereum blockchain (see “zero address”).
 - `DAO`: **Decentralized Autonomous Organization**. A company or other organization that
-operates without hierarchical management. Also may refer to a contract named “The DAO” launched on April 30, 2016, which was then hacked in June 2016; this ultimately motivated a hard fork (codenamed DAO) at block #1,192,000, which reversed the hacked DAO contract and caused Ethereum and Ethereum Classic to `split into two competing systems`.
+  operates without hierarchical management. Also may refer to a contract named “The DAO” launched on April 30, 2016, which was then hacked in June 2016; this ultimately motivated a hard fork (codenamed DAO) at block #1,192,000, which reversed the hacked DAO contract and caused Ethereum and Ethereum Classic to `split into two competing systems`.
 
 ## What is Ethereum?
 
@@ -47,10 +47,35 @@ The components of an open, public blockchain are (usually):
 - A set of `consensus rules`, governing what constitutes a transaction and what makes for a valid state transition
 - A state machine that processes transactions according to the consensus rules
 - A chain of cryptographically secured blocks that acts as a journal of all the verified
-and accepted state transitions
+  and accepted state transitions
 - A consensus algorithm that decentralizes control over the blockchain, by forcing
-participants to cooperate in the enforcement of the consensus rules
+  participants to cooperate in the enforcement of the consensus rules
 - A game-theoretically sound incentivization scheme (e.g., proof-of-work costs
-plus block rewards) to economically secure the state machine in an open
-environment
+  plus block rewards) to economically secure the state machine in an open
+  environment
 - One or more open source software implementations of the above (“clients”)
+
+### Components of Ethereum
+
+- `P2P network`: Ethereum runs on the `Ethereum main network`, which is addressable on `TCP port 30303`, and runs a protocol called ÐΞVp2p.
+- `Consensus rules`: Ethereum’s consensus rules are defined in the reference specification, the `Yellow` Paper. - - - `Transactions`: Ethereum transactions are network messages that include (among other things) a sender, recipient, value, and data payload.
+- `State machine`: Ethereum state transitions are processed by the Ethereum Virtual Machine (EVM), a stack-based virtual machine that executes bytecode (machine-language
+  instructions). EVM programs, called `“smart contracts,”` are written in high-level languages (e.g., `Solidity`) and compiled to `bytecode` for execution on the EVM.
+- `Data structures`: Ethereum’s state is stored locally on each node as a database (usually `Google’s LevelDB`), which contains the transactions and system state in a serialized hashed data structure called a **Merkle Patricia Tree**.
+- `Consensus algorithm`: Ethereum uses Bitcoin’s consensus model, `Nakamoto` Consensus, which uses sequential single-signature blocks, weighted in importance by `PoW` to determine the longest chain and therefore the current state. However, there are plans to move to a PoS weighted voting system, codenamed Casper, in the near future.
+- `Economic security`: Ethereum currently uses a PoW algorithm called `Ethash`, but this will eventually be dropped with the move to PoS at some point in the future.
+- `Clients`: Ethereum has several interoperable implementations of the client software, the most prominent of which are `Go-Ethereum (Geth)` and `Parity`.
+
+### Decentralized Applications (DApps)
+
+`DApp` is a web application that is built on top of open, decentralized, peer-to-peer infrastructure services.
+
+A DApp is composed of at least:
+
+- Smart contracts on a blockchain
+- A web frontend user interface
+
+In addition, many DApps include other decentralized components, such as:
+
+- A decentralized (P2P) storage protocol and platform
+- A decentralized (P2P) messaging protocol and platform

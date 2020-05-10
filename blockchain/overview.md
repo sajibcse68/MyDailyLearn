@@ -113,3 +113,15 @@ named `wei`. `One ether is 1 quintillion wei` (1 * 10^18 or 1,000,000,000,000,00
 
 `Ethereum is the system, ether is the currency.`
 
+### Choosing and Ethereum Wallet
+
+The following are some good starter wallets:
+
+- `MetaMask`: MetaMask is a browser extension wallet that runs in your browser (Chrome, Firefox, Opera, or Brave Browser). It is easy to use and convenient for testing, as it is able to connect to a variety of Ethereum nodes and test blockchains. `MetaMask is a web-based wallet`.
+- `Jaxx`: Jaxx is a multiplatform and multicurrency wallet that runs on a variety of operating systems, including Android, iOS, Windows, macOS, and Linux. It is often a good choice for new users as it is designed for simplicity and ease of use. Jaxx is `either a mobile or a desktop wallet`, depending on where you install it.
+- `MyEtherWallet (MEW)`: MyEtherWallet is a web-based wallet that runs in any browser. It has multiple
+sophisticated features we will explore in many of our examples. MyEtherWallet is
+a `web-based wallet`.
+- `Emerald Wallet`: Emerald Wallet is designed to work with the Ethereum Classic blockchain, but is compatible with other Ethereum-based blockchains. It’s an open source desktop application and works under `Windows, macOS, and Linux`. Emerald Wallet `can run a full node or connect to a public remote node`, working in a `“light”` mode. It
+also has a companion tool to do all operations from the command line.
+

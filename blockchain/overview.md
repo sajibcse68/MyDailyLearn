@@ -99,3 +99,17 @@ working code very quickly. For the first few years of Ethereum’s life, it was
 common to see T-shirts announcing that you can create a token in just five lines of
 code. Of course, this is a `double-edged sword`. **It’s easy to write code, but it’s very hard
 to write good and secure code.**
+
+## Ether Basics
+
+### Ether Currency Units
+
+Ethereum’s currency unit is called `ether`, identified also as `“ETH”` or with the symbols
+`Ξ` (from the Greek letter `“Xi”` that looks like a stylized capital E) or, less often, ♦: for
+example, 1 ether, or 1 ETH, or Ξ1, or ♦1.
+
+Ether is subdivided into smaller units, down to the smallest unit possible, which is
+named `wei`. `One ether is 1 quintillion wei` (1 * 10^18 or 1,000,000,000,000,000,000).
+
+`Ethereum is the system, ether is the currency.`
+

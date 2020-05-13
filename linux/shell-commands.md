@@ -245,6 +245,14 @@ $ kill -9 <pid>                          # kill the process (go)
 $ sudo python3 -m http.server 80
 ```
 
+### Share localhost server to mobile
+
+```sh
+$ npm install ngrok -g
+$ ngrok http <server-port>
+# we will get ip address
+```
+
 #### Convert `.mov` to `.mp4` with Mac Terminal
 
 - Converting video files to different formats

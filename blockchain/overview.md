@@ -171,3 +171,38 @@ Currently, there are six main implementations of the Ethereum protocol, written 
 - pyethereum, written in Python
 - Mantis, written in Scala
 - Harmony, written in Java
+
+## Wallets
+
+- a wallet is a software application that serves as the primary user interface
+to Ethereum.
+- The wallet controls access to a user’s **money, managing keys and
+addresses, tracking the balance, and creating and signing transactions**.
+
+### Wallet Technology Overview
+
+The most convenient Ethereum wallet is one with `a single private key and address that
+you reuse for everything`. Unfortunately, such a solution is a `privacy nightmare`, as
+anyone can easily track and correlate all your transactions. Using a new key for every
+transaction is best for privacy, but becomes very difficult to manage. The correct balance
+is difficult to achieve, but that’s why `good wallet design is paramount`.
+
+A common misconception about Ethereum is that Ethereum wallets contain ether or
+tokens. In fact, very strictly speaking, `the wallet holds only keys`. The ether or other tokens ae recorded on the Ethereum blockchain. Users control the `tokens on the network by signing transactions with the keys` in their wallets.
+
+The bank, can see the money in your account, and you only need convince the bank that you want to move funds to make a transaction) to the decentralized system of blockchain platforms (where `everyone can see the ether balance of an account, although they probably don’t know the account’s owner`, and everyone needs to be convinced the owner wants to move funds for a transaction to be enacted)
+
+> **"Ethereum wallets contain keys, not ether or tokens. Wallets are like
+keychains containing pairs of private and public keys. Users sign
+transactions with the private keys, thereby proving they own the
+ether. The ether is stored on the blockchain."**
+
+### Types of Wallets
+
+There are `two` types of wallets:
+
+1. `nondeterministic wallet`: where each key is independently generated
+from a different random number. The keys are not related to each other. This type of
+wallet is also known as a `JBOK` wallet, from the phrase **“Just a Bunch of Keys.”**
+
+2. `deterministic wallet`: where all the keys are `derived from a single master key`, known as the `seed`. All the keys in this type of wallet are related to each other and can be generated again if one has the original `seed`. To make deterministic wallets slightly `more secure against data-loss accidents`, such as having your `phone stolen` or dropping it in the toilet, the seeds are often encoded as a `list of words` (in English or another language) for you to write down and use in the event of an accident. These are known as the `wallet’s mnemonic code words`.

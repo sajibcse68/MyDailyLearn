@@ -206,3 +206,22 @@ from a different random number. The keys are not related to each other. This typ
 wallet is also known as a `JBOK` wallet, from the phrase **“Just a Bunch of Keys.”**
 
 2. `deterministic wallet`: where all the keys are `derived from a single master key`, known as the `seed`. All the keys in this type of wallet are related to each other and can be generated again if one has the original `seed`. To make deterministic wallets slightly `more secure against data-loss accidents`, such as having your `phone stolen` or dropping it in the toilet, the seeds are often encoded as a `list of words` (in English or another language) for you to write down and use in the event of an accident. These are known as the `wallet’s mnemonic code words`.
+
+## Transactions
+
+Transactions are `signed` messages originated by an externally owned account, transmitted
+by the Ethereum network, and recorded on the Ethereum blockchain. Ethereum is a `global singleton state machine`, and transactions are what make that state machine `“tick,”` changing its state. Contracts don’t run on their own. Ethereum doesn’t run autonomously. Everything `starts with a transaction`.
+
+### The Structure of a Transaction
+
+`A transaction is a serialized binary message` that contains the following data:
+
+- `Nonce:` A sequence number, issued by the originating EOA, used to prevent message replay
+- `Gas Price:` The price of gas (in `wei`) the originator is willing to pay
+- `Gas Limit:` the maximum amount of gas the originator is willing to buy for this transaction
+- `Recipient:` The destination Ethereum address
+- `Value:` The amount of ether to send to the destination
+- `Data:` The variable-length binary data payload
+
+you may notice there is no “from” data in the address identifying the originator EOA. That is because the EOA’s public key can be derived from the v,r,s components of the ECDSA signature. The address can, in turn, be derived from the public key. When you see a transaction showing a “from” field, that was added by the software used to visualize the transaction. Other metadata frequently added to the transaction by client software includes the block number (once it is mined and included in the blockchain) and a transaction ID (calculated hash). Again, this data is derived from the transaction, and does not form part of the transaction message itself.
+

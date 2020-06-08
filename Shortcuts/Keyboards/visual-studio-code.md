@@ -1,4 +1,4 @@
-### Keyboards Shortcuts for Visual Studio Code (Mac OS)
+## Keyboards Shortcuts for Visual Studio Code (Mac OS)
 #### Basic Editing:
 
 - <kbd>Cmd</kbd> + <kbd>C</kbd> : Copy selection
@@ -61,3 +61,37 @@
 
 #### Code Spell Checker
 - <kbd>Cmd</kbd> + <kbd>.</kbd> : Quick fix
+
+## Debug Node Server
+
+### Compound Launch Configuration
+
+An alternative way to start `multiple` debug sessions is by using a **compound** launch configuration. A compound launch configuration lists the names of two or more launch configurations that should be launched in parallel. Optionally a `preLaunchTask` can be specified that is run before the individual debug sessions are started:
+
+```js
+// launch.js
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Server",
+      "program": "${workspaceFolder}/server.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Client",
+      "program": "${workspaceFolder}/client.js"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Server/Client",
+      "configurations": ["Server", "Client"],
+      "preLaunchTask": "${defaultBuildTask}"
+    }
+  ]
+}
+```

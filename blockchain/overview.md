@@ -216,7 +216,7 @@ by the Ethereum network, and recorded on the Ethereum blockchain. Ethereum is a 
 
 `A transaction is a serialized binary message` that contains the following data:
 
-- `Nonce:` A sequence number, issued by the originating EOA, used to prevent message replay
+- `Nonce:` A sequence number, issued by the originating EOA, used to prevent message replay. the nonce is an attribute of the originating address; that is, it only has meaning in the context of the sending address. However, the nonce is not stored explicitly as part of an account’s state on the blockchain. Instead, it is calculated dynamically, by `counting the number of confirmed transactions` that have originated from an address. In summary, it is important to note that the use of the nonce is actually vital for an account-based protocol, in contrast to the “Unspent Transaction Output” (UTXO) mechanism of the Bitcoin protocol.
 - `Gas Price:` The price of gas (in `wei`) the originator is willing to pay
 - `Gas Limit:` the maximum amount of gas the originator is willing to buy for this transaction
 - `Recipient:` The destination Ethereum address
@@ -225,3 +225,17 @@ by the Ethereum network, and recorded on the Ethereum blockchain. Ethereum is a 
 
 you may notice there is no “from” data in the address identifying the originator EOA. That is because the EOA’s public key can be derived from the v,r,s components of the ECDSA signature. The address can, in turn, be derived from the public key. When you see a transaction showing a “from” field, that was added by the software used to visualize the transaction. Other metadata frequently added to the transaction by client software includes the block number (once it is mined and included in the blockchain) and a transaction ID (calculated hash). Again, this data is derived from the transaction, and does not form part of the transaction message itself.
 
+### Keeping Track of Nonces
+
+n practical terms, the nonce is an up-to-date count of the number of confirmed (i.e., on-chain) transactions that have originated from an account. To find out what the nonce is, you can interrogate the blockchain, for example via the `web3` interface. Open a JavaScript console in a browser with MetaMask running, or use the truffle `console` command to access the JavaScript web3 library, then type:
+
+```js
+web3.eth.getTransactionCount("0x9e713963a92c02317a681b9bb3065a8249de124f")
+40 // output
+```
+
+> The nonce is a zero-based counter, meaning the first transaction has nonce 0. In this example, we have a transaction count of 40, meaning nonces 0 through 39 have been seen. The next transaction’s nonce will need to be 40.
+
+When you create a new transaction, you assign the next nonce in the sequence. But until it is confirmed, it will not count toward the `getTransactionCount total`.
+
+Parity’s JSON RPC interface offers the `parity_nextNonce` function, which returns the next nonce that should be used in a transaction. The parity_nextNonce function `counts nonces correctly`, even if you construct several transactions in rapid succession without confirming them.

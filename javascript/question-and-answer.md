@@ -43,13 +43,13 @@ So, in production code we should use `Name Function` always.
 
 #### How to Check for `null`?
 
->`null` is a primitive type in JavaScript that represents an intentional absence of a value -- it is set on-purpose
+> `null` is a primitive type in JavaScript that represents an intentional absence of a value -- it is set on-purpose
 
 - One way to check for `null` is JS is to check if a value loosely equal to `null` using **double equality** (==) operator:
 
 ```js
-console.log(null == null) // true
-console.log(null == undefined ) // true!
+console.log(null == null); // true
+console.log(null == undefined); // true!
 ```
 
 So, `null` is only loosely equal to `itself` and `undefined` (not to the other falsy values).
@@ -57,8 +57,8 @@ So, `null` is only loosely equal to `itself` and `undefined` (not to the other f
 - Other way is to check using strict equality (===)
 
 ```js
-console.log(null == null) // true
-console.log(null == undefined ) // false
+console.log(null == null); // true
+console.log(null == undefined); // false
 ```
 
 so, that's perfect!
@@ -66,8 +66,8 @@ so, that's perfect!
 - An alternative method of checking for `null` is based on knowing that null is falsy, but empty objects are truthy, so `null` is the only falsy object.
 
 ```js
-console.log(typeof null === "object" && !null) // true
-console.log(typeof {} === "object" && !{}) // false
+console.log(typeof null === 'object' && !null); // true
+console.log(typeof {} === 'object' && !{}); // false
 ```
 
 The value null is falsy but empty objects are truthy, so `typeof null === "object" && !null` is a convenient way to check for null.
@@ -81,7 +81,7 @@ function foo() {
 ```
 
 ```js
-var foo = function() {
+var foo = function () {
   // i am an expression, i resolve to a value, even if just 'undefined'
   // expression = MDN - an expression is any valid unit of code that resolves to a value
 };
@@ -170,9 +170,9 @@ delete obj.latest;
 ```js
 var o = { a: 0 };
 Object.defineProperty(o, 'b', {
-  get: function() {
+  get: function () {
     return this.a + 1;
-  }
+  },
 });
 
 console.log(o.b); // runs the getter, which yeilds a + 1
@@ -186,7 +186,7 @@ const name = 'foo';
 const o = {
   get [name]() {
     return 'bar';
-  }
+  },
 };
 
 console.log(o.foo); // "bar"
@@ -211,6 +211,7 @@ console.log(Object.getOwnPropertyDescriptor(o, 'hello')); // undefined
 console.log(Object.getOwnPropertyDescriptor(Object.getPrototypeOf(o), 'hello'));
 // // { configurable: true, enumerable: false, get: function get hello() { return 'world'; }, set: undefined }
 ```
+
 ## Comparison
 
 #### Compare `null`, `undefined`, `NaN`
@@ -237,14 +238,14 @@ console.log(
   arr1.sort() === arr2.sort()
 );
 
-// output: true true false  
+// output: true true false
 ```
 
 **Explanation:** the array `sort()` method sorts the original array and returns a reference to that array. The sort order of the array doesn't matter when we're comparing objects. Since `arr1.sort()` and `arr1` point to the same object in the memory, the first equality test return `true`.
 
 Second comparison also return `true` for same reason.
 
-Third comparison returns `false` cause the sort order of `arr1.sort()` and `arr2.sort()` are the same; however, they still point to different objects in memory. 
+Third comparison returns `false` cause the sort order of `arr1.sort()` and `arr2.sort()` are the same; however, they still point to different objects in memory.
 
 ## Miscellaneous
 
@@ -252,7 +253,7 @@ Third comparison returns `false` cause the sort order of `arr1.sort()` and `arr2
 
 ```js
 function foo() {
-  let a = b = 0;
+  let a = (b = 0);
   // declares a local variable 'a' and a global variable 'b'. There is no variable 'b' declared in the foo() scope or global scope. So JS interprets 'b=0' expression as window.b = 0
   a++;
   return a;
@@ -287,13 +288,13 @@ So, when JS executes `arr.length = 0`, all the items of the array arr are `delet
 
 ```js
 // example 1
-var myModule = (function() {
+var myModule = (function () {
   'use strict';
 
   return {
-    publicMethod: function() {
+    publicMethod: function () {
       console.log('Hello World!');
-    }
+    },
   };
 })();
 
@@ -302,13 +303,13 @@ myModule.publicMethod(); // Hello World!
 
 ```js
 // example 2
-define('foo', function() {
+define('foo', function () {
   // define run the function automatically and assign the return value in 'foo'
   var o = { bar: 'bar' };
   return {
-    bar: function() {
+    bar: function () {
       console.log(o.bar);
-    }
+    },
   };
 });
 ```
@@ -360,8 +361,7 @@ try {
 console.log(myObj.three); // undefined
 ```
 
-Note:
------
+## Note:
 
 - In `strict mode` browser will throw the error shown in the catch block
 - In `non-strict node`, browser attempt will just fail silently
@@ -386,6 +386,15 @@ const onlyTrueValues = [0, 1, "Alice", undefined, null, false, "Bob"
 
 console.log(onlyTrueValues);
 // [1, "Alice", "Bob"]
+```
+
+#### How to Apply Style in Console Message
+
+```js
+console.log(
+  '%c This is a styled message',
+  'background: #222; color: #bada55; font-size: 14px; padding: 5px'
+);
 ```
 
 #### How to create an Empty Objects?
@@ -441,10 +450,10 @@ rate at which a function can fire.
 // leading edge, instead of the trailing.
 function debounce(func, wait, immediate) {
   var timeout;
-  return function() {
+  return function () {
     var context = this,
       args = arguments;
-    var later = function() {
+    var later = function () {
       timeout = null;
       if (!immediate) func.apply(context, args);
     };
@@ -470,7 +479,7 @@ const debounce = (func, timer) => {
 
 document.querySelector('input').addEventListener(
   'keyup',
-  debounce(e => {
+  debounce((e) => {
     console.log('e: ', e);
   }, 1000)
 );
@@ -723,7 +732,7 @@ class EventEmitter {
   }
   emit(event, ...args) {
     if (typeof this.events[event] === 'object') {
-      this.events[event].forEach(listener => listener.apply(this, args));
+      this.events[event].forEach((listener) => listener.apply(this, args));
     }
   }
   once(event, listener) {

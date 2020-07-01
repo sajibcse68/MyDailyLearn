@@ -203,6 +203,9 @@ $ ps -ef | grep mongod | grep -v grep | wc -l | tr -d ' '
 # Check if redis is running
 $ redis-cli ping // PONG
 
+# Restart mongodb service
+$ brew services restart mongodb-community
+
 # See the running process
 $ pstree                               # pstree 1152
 $ ps wwaux | grep jenkins
@@ -245,7 +248,7 @@ $ kill -9 <pid>                          # kill the process (go)
 $ sudo python3 -m http.server 80
 ```
 
-### Share localhost server to mobile
+#### Share localhost server to mobile
 
 ```sh
 $ npm install ngrok -g

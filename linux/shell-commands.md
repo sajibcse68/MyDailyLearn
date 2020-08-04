@@ -223,6 +223,9 @@ $ echo 'Hello' | sudo -S apt-get update
 # Show all user
 $ compgen -u
 
+# Change / Reset mysql db password
+$ sudo mysqladmin -u root -p<old-password> password '<new-password>'
+
 # sync two directories
 $ rsync -a --progress <source> <destination>
 # mv can't do merging/replacing, error: 'Directory not empty'

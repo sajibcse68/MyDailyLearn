@@ -74,6 +74,12 @@ An alternative way to start `multiple` debug sessions is by using a **compound**
   "version": "0.2.0",
   "configurations": [
     {
+      "command": "npm run backend_dev",
+      "name": "Run npm backend_dev",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Server",

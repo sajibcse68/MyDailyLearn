@@ -42,3 +42,19 @@ Based on the basic functionalities, the differences between Adsense and Google A
 
 `Inventory Type`: Adsense supports only basic web ads. So the publishers who are showing ads only on the web can fulfill their needs through Adsense. Whereas publishers who have their inventory on web, apps, TV, etc need to use Ad Manager.
 
+
+## Google Ad Manager with AdX account
+
+When you have an AdX account then the capabilities of GAM increase further:
+
+`Programmatic Direct Deals`: You can use GAM to send and receive proposals for direct deals programmatically. You can check, approve, or reject the proposals coming from advertisers at a single place. There are no such arrangements in Google Adsense.
+
+`Real-time Bidding`: Most of the demand from Adsense is based on pre-set criteria by the advertisers, through Google Ads. Whereas GAM can help you connect with demand sources that use real-time bidding.
+
+Real-time bids come from trading desks that are more advanced than Google Ads. The bids are based on real-time data of the users, hence the ads are more relevant with higher conversion rates. The advertisers using the trading desks are also large-scale buyers. Due to the bigger demand and targeted ads the revenue is higher when advertisers are bidding for your inventory in real-time.
+
+`Private Auctions`: After signing the direct deals with the advertisers, you can hold private auctions among them to sell your premium inventory at premium rates. Since Adsense doesn’t conduct real-time bidding, private auctions aren’t possible with it.
+
+`Floor Price`: Google Ad Manager allows you to set a minimum price of your inventory. By setting a floor price, you can improve your revenue and maintain the quality of ads on your site. When the floor price is set, you restrict the advertisers to stop buying the ad inventories at lower costs. By doing so, you also stop the low-quality ads that are generally targeted at sub-par inventory. Whereas with Adsense, you’ve to accept whatever rates you are getting.
+
+<img src="../images/adsense-vs-google-ad-manager.png" alt="adsense-vs-google-ad-manager" width="400px"/>

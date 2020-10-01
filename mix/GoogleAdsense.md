@@ -12,6 +12,8 @@ To understand the Google Ad Manager, you’ve to see it through two different pe
 - As an Ad Server
 - As a Supply Side Platform
 
+<img src="../images/google-ad-manager.png" alt="google-ad-manager" width="400px"/>
+
 ### Google Ad Manager as an Ad Server
 
 An [ad server](https://headerbidding.co/ad-server/) is a piece of technology that is responsible for managing and serving the ads to the user. The decision to serve the ads is done in real-time. As an Ad Server, Google Ad Manager helps publishers choose and deliver the appropriate ads based on various targeting criteria set for different campaigns.

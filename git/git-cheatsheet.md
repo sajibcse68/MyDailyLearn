@@ -635,6 +635,38 @@ $ git gc --aggressive --prune="1 hour"
 $ git rc  # cleanup unnecessary files and optimize local repo
 ```
 
+#### Remove Large Files from Git History with BFG
+
+```sh
+# Install the BFG cli tool
+$ brew install bfg
+
+# Backup the repo for safety
+$ cp -r my-repo my-repo.bac
+
+# Enter into the repo directory,
+# we have mainly 3 options for clearing large files
+# from git history
+
+# Option 1: remove any blobs bigger than a specific size (e.g. 40M)
+$ bfg --strip-blobs-bigger-than 40M git
+
+# Option 2: remove the biggest blobs, limited to a specified number
+$ bfg --strip-biggest-blobs 100 .git
+
+# Option 3: remove specific blobs, specified by IDs
+$ bfg --strip-blobs-with-ids blobs.txt your-repo.git
+
+# Expire and prune our git history to reflect our changes
+$ git reflog expire --expire=now --all && git gc --prune=now --aggressive
+
+# Verify: check repo size
+
+# Push to remote by force
+$ git push -f origin <branch-name>
+```
+
+
 #### Search all of git history for a String
 
 ```sh

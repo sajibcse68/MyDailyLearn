@@ -60,3 +60,35 @@ Real-time bids come from trading desks that are more advanced than Google Ads. T
 `Floor Price`: Google Ad Manager allows you to set a minimum price of your inventory. By setting a floor price, you can improve your revenue and maintain the quality of ads on your site. When the floor price is set, you restrict the advertisers to stop buying the ad inventories at lower costs. By doing so, you also stop the low-quality ads that are generally targeted at sub-par inventory. Whereas with Adsense, you’ve to accept whatever rates you are getting.
 
 <img src="../images/adsense-vs-google-ad-manager.png" alt="adsense-vs-google-ad-manager" width="400px"/>
+
+## Top Performing Ad Sizes
+
+### 728x90 - leaderboard
+
+Tends to have more ad inventory available from advertisers, which can increase earnings when both text and image ads are enabled.
+
+Performs well if placed above main content, and on forum sites.
+
+Can also be used with tablet-optimized pages.
+
+### 336x280 - Large Rectangle
+
+Tends to have more ad inventory available from advertisers, which can increase earnings when both text and image ads are enabled.
+
+Performs well when embedded within text content or at the end of articles.
+
+### 300x250 - Medium Rectangle
+
+Tends to have more ad inventory available from advertisers, which can increase earnings when both text and image ads are enabled.
+
+Performs well when embedded within text content or at the end of articles.
+
+### 300x50 - Mobile Banner
+
+Mobile-friendly web size also known as "smartphone banner." It fits larger smartphone screens at the top or bottom of the screen.
+
+### 160x600 - Wide Skyscraper
+
+Tends to have more ad inventory available from advertisers, which can increase earnings when both text and image ads are enabled.
+
+Best if used along sidebars of webpages.

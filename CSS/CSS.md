@@ -16,6 +16,14 @@
 - :active
 - :nth-child(...)
 
+#### What iss the difference between `width: auto` and `width: 100%` in CSS?
+
+- **width: auto** will try as hard as possible to keep an element the same width as its parent container when additional space is added from margins, padding, or borders.
+
+- **width: 100%** will make the element as wide as the parent container. Extra spacing will be added to the element's size without regards to the parent. This typically causes problems.
+
+  <img src="../images/width-auto-vs-100-percent.png">
+
 #### Box Model
 - Essential to understand
     - Prefer `box-sizing: border-box`;  // `box-sizing: content-box`;

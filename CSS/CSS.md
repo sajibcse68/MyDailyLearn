@@ -142,6 +142,14 @@ textarea {
 }
 ```
 
+#### How to unordered list with bullets
+
+```css
+ul {
+  list-style-type: none;
+}
+```
+
 ## Mixin
 ```
 // select all the selectors and apply this instead of inheritance

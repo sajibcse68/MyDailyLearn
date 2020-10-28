@@ -158,6 +158,16 @@ ul {
 }
 ```
 
+#### How to make a image fit
+
+```css
+img {
+  width: 100%;
+  height: 100%:
+  object-fit: contain;
+}
+```
+
 ## Mixin
 ```
 // select all the selectors and apply this instead of inheritance

@@ -134,6 +134,14 @@ textarea {
 }
 ```
 
+#### How to change placeholder's color?
+
+```css
+::placeholder {
+  color: cyan;
+}
+```
+
 ## Mixin
 ```
 // select all the selectors and apply this instead of inheritance

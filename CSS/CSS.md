@@ -150,6 +150,14 @@ ul {
 }
 ```
 
+#### Disable Text Selection
+
+```css
+.non-select-element {
+  user-select: none;
+}
+```
+
 ## Mixin
 ```
 // select all the selectors and apply this instead of inheritance

@@ -126,6 +126,14 @@ See [CSS specificity calculator](https://specificity.keegan.st/)
 }
 ```
 
+#### How to disable resizing of textarea?
+
+```css
+textarea {
+  resize: none;
+}
+```
+
 ## Mixin
 ```
 // select all the selectors and apply this instead of inheritance

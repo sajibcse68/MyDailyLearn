@@ -113,7 +113,20 @@ See [CSS specificity calculator](https://specificity.keegan.st/)
     }
 ```
 
-### Mixin
+## CSS Questions and Answers
+
+#### How can we disable a link?
+
+```css
+.inactive-link {
+  color: black;
+  text-decoration: none;
+  pointer-events: none;
+  pointer: default;
+}
+```
+
+## Mixin
 ```
 // select all the selectors and apply this instead of inheritance
 * {

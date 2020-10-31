@@ -1,15 +1,18 @@
 #### What is a `Responsive Web Site`?
+
 - Site designed to adapt its layout to the viewing environment by using fluid, proportion-based grids, flexible
   images, and CSS# media queries
 - Site's layout adapts to the size of the device.
 - Content verbosity or its visual delivery may change.
 
 #### Combining selectors
+
 - Element with class selectors (selector.class)
 - Child (direct) selector (selector > selector)
 - Descendent selector (selector selector)
 
 #### Pseudo-Class Selector
+
 - :link
 - :visited
 - :hover
@@ -25,16 +28,17 @@
   <img src="../images/width-auto-vs-100-percent.png">
 
 #### Box Model
+
 - Essential to understand
-    - Prefer `box-sizing: border-box`;  // `box-sizing: content-box`;
-    - `border-box` = The elements should have padding and border included in the element's total width and height.
-    - `content-box` = The `padding` and `border` properties includes (add) with the `width`. 
-- The * (Universal) selector
+  - Prefer `box-sizing: border-box`; // `box-sizing: content-box`;
+  - `border-box` = The elements should have padding and border included in the element's total width and height.
+  - `content-box` = The `padding` and `border` properties includes (add) with the `width`.
+- The \* (Universal) selector
 - Cumulative and collapsing margins
-    - Horizontal margins are cumulative (addition)
-    - Vertical margins are collapsing (take larger one)
+  - Horizontal margins are cumulative (addition)
+  - Vertical margins are collapsing (take larger one)
 - Content overflow
-    - overflow - visible (default), auto (scroll bar), hidden (cut the text outside box)
+  - overflow - visible (default), auto (scroll bar), hidden (cut the text outside box)
 
 #### CSS Specificity Value
 
@@ -43,40 +47,45 @@
 - Class, psuedo-class, attribute
 - Elements
 
-**N.B:** top to bottom -> most-specificity to least-specificity  
+**N.B:** top to bottom -> most-specificity to least-specificity
 
 See [CSS specificity calculator](https://specificity.keegan.st/)
 
 #### Positioning Elements by Floating
+
 - Floating elements can produce very flexible layouts
 - Floats are taken out of normal document flow
 - Floats don't have vertical margin collapse
 - To resume normal document flow, use the `clear` property.
-    - clear: left/right/both
+  - clear: left/right/both
 
 #### Relative and Absolute Element Positioning
+
 - Static positioning is default for all elements, except html
 - Relative positioning offsets the element relative to its normal document flow position
 - Absolute positioning is relative to closest ancestor which has positioning set to non-static value
 - Offset the relative container element offsets its contents as well.
 
 #### Responsive design (@media)
+
 - Basic syntax of a media query
-    - @media (media feature)
-    - @media (media feature) logical operator (media feature)
+  - @media (media feature)
+  - @media (media feature) logical operator (media feature)
 - Remember not to overlap breakpoints
 - Usually, we should provide base styling
-    - Then, change or add to then in each media query
+  - Then, change or add to then in each media query
 - Viewport `meta tag` to turn off default mobile zooming
-   - `<meta name="viewport" content="width=device-width, initial-scale=1">`
+
+  - `<meta name="viewport" content="width=device-width, initial-scale=1">`
 
 - What is `Bootstrap` ?
 - Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.
 
 #### Bootstrap Grid System
+
 - Structure Bootstrap expects for the grid-based layout
-    - Needs to be include .container (or .container-fluid)
-    - All columns must be inside .row
+  - Needs to be include .container (or .container-fluid)
+  - All columns must be inside .row
 - `SIZE` identifier identifies at which breakpoint specified column spans will be ignored and all elements will collapse (i.e., stack)
 - If no other rules apply, specifying `col-xs-..` will keep that layout no matter what the size of the screen.
 
@@ -103,7 +112,7 @@ See [CSS specificity calculator](https://specificity.keegan.st/)
       height: 150px;
     }
 /****************  Medium device only   *******************/
-@media (min-width: 768px) and (max-width: 991px)   
+@media (min-width: 768px) and (max-width: 991px)
     #p1 {
       width: 50%;
     }
@@ -112,6 +121,95 @@ See [CSS specificity calculator](https://specificity.keegan.st/)
       height: 100px;
     }
 ```
+
+## Combinators
+
+#### Adjacent Sibling
+
+- Elements share the same parent
+- Second element comes `immediately` after first element
+
+```css
+h2 + p {
+  color: red;
+}
+```
+
+```html
+<div>
+  <h2>Not applied</h2>
+  <p>CSS applied</p>
+  <h2>Not applied</h2>
+  <h3>Not applied</h3>
+  <p>Not applied</p>
+  <h2>Not applied</h2>
+  <p>CSS applied</p>
+</div>
+```
+
+#### General Sibling
+
+- Elements share the same parent
+- Second element comes after first element
+
+```css
+h2 ~ p {
+  color: red;
+}
+```
+
+```html
+<div>
+  <h2>Not applied</h2>
+  <p>CSS applied</p>
+  <h2>Not applied</h2>
+  <h3>Not applied</h3>
+  <p>CSS applied</p>
+</div>
+```
+
+#### Child Combinator
+
+- Second element is a direct child of first element
+
+```css
+div > p {
+  color: red;
+}
+```
+```html
+<div>
+  <h2>Not applied</h2>
+  <p>CSS applied</p>
+  <div>Not applied</div>
+  <article>
+    <p>Not applied</p>
+  </article>
+  <p>CSS applied</p>
+</div>
+```
+
+#### Decendant Combinator
+
+- Second element is a descendant of the first element
+
+```css
+div p {
+  color: red;
+}
+```
+```html
+<div>
+  <h2>Not applied</h2>
+  <p>CSS applied</p>
+  <div>Not applied</div>
+  <article>
+    <p>CSS applied</p>
+  </article>
+  <p>CSS applied</p>
+</div>
+```
+
 
 ## CSS Questions and Answers
 
@@ -169,6 +267,7 @@ img {
 ```
 
 ## Mixin
+
 ```
 // select all the selectors and apply this instead of inheritance
 * {
@@ -177,7 +276,6 @@ img {
 
 // as box-sizing don't be inheritenced so it doesn't work for child of body tag
 body {
- box-sizing: border-box;   
+ box-sizing: border-box;
 }
 ```
-

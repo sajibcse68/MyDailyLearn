@@ -29,7 +29,7 @@ input[type="checkbox"] {
 }
 /* Creating a custom checkbox based on demand */
 .geekmark {
-  position: absolute;
+  position: absolute; /* parent should have position: relative */
   top: 3px;
   left: -3px;
   height: 17px;
@@ -50,7 +50,7 @@ input[type="checkbox"] {
 }
 /* Checkmark to be shown in checkbox, It is not be shown when not checked */
 .geekmark:after {
-  content: "";
+  content: "\2713";
   position: absolute;
   display: none;
 }

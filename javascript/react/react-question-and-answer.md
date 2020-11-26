@@ -19,9 +19,7 @@ When a component takes a function that returns a React element and calls it inst
 It's another technique for sharing code between React components:
 
 ```js
-<DataProvider render={data => (
-  <h1>Hello {data.target}</h1>
-)}/>
+<DataProvider render={(data) => <h1>Hello {data.target}</h1>} />
 ```
 
 #### React Unit Tests vs Integration Tests for Components
@@ -43,12 +41,12 @@ Class Components:
 ```js
 class App extends React.Component {
   state = {
-    value: localStorage.getItem("info") || ""
+    value: localStorage.getItem('info') || '',
   };
   componentDidUpdate() {
-    localStorage.setItem("info", this.state.value);
+    localStorage.setItem('info', this.state.value);
   }
-  onChange = event => {
+  onChange = (event) => {
     this.setState({ value: event.target.value });
   };
   render() {
@@ -67,10 +65,10 @@ Migration to Functional Component:
 
 ```js
 const App = () => {
-  const val = localStorage.getItem("info") || "";
+  const val = localStorage.getItem('info') || '';
   const [value, setValue] = useState(val);
-  const onChange = event => setValue(event.target.value);
-  useEffect(() => localStorage.setItem("info", value), [value]);
+  const onChange = (event) => setValue(event.target.value);
+  useEffect(() => localStorage.setItem('info', value), [value]);
 
   return (
     <div>
@@ -87,9 +85,9 @@ One way is to force a component to re-mount is to change the `key` prop:
 
 ```js
 <Route
-    path="/about"
-    render={props => <About key={Date.now()} {...props} />}
-  />
+  path="/about"
+  render={(props) => <About key={Date.now()} {...props} />}
+/>
 ```
 
 #### How Can We `Memorize` React Component?
@@ -110,4 +108,10 @@ const UserDetails = ({user, onedit}) => {
 }
 
 export default `React.memo(UserDetails)`;
+```
+
+#### How to autofocus an input element programmatically?
+
+```js
+<input ref={(input) => input && input.focus()} />
 ```

@@ -59,6 +59,14 @@ browser-sync start --server --directory --files "*"
 
     $ nvm use 4.3.2            # Use a specific version
 
+#### How to Install Multiple Versions of same package in NPM?
+
+```sh
+# npm i <package_name_alias>@npm:<package_name>, let's say 'formik' is the package name
+$ npm i formik-latest@npm:formik@2.0.0
+
+```
+
 #### The 15 JavaScript concepts that every (NodeJS) programmer must know:
 
 1. JavaScript (ES6) Class

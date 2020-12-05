@@ -55,6 +55,18 @@ $ ls | sort -k 2 -t "_"
 
     $ find . -name ".*" -exec rm -f '{}' +
 
+### Convert HEIC image to JPEG
+
+```sh
+# install imagemagick
+$ brew install imagemagick
+
+# convert a single image
+$ magick convert foo.HEIC foo.jpg
+
+# bulk convert multiple images
+$ magick mogrify -monitor -format jpg *.HEIC
+```
 ### Set the time of showing notification banner
 
     $ defaults write com.apple.notificationcenterui bannerTime <SECONDS>

@@ -51,6 +51,24 @@
 
 See [CSS specificity calculator](https://specificity.keegan.st/)
 
+## CSS Position
+
+- Five position types: *static*(default), *relative*, *absolute*, *fixed*, *sticky*
+- Elements with static type is a **non-positioned element**. Other ones are **positioned elements**. We can use **LTRB properties + z-index** on positioned elements. **Absolute** type is positioned with respect to it's closed positioned ancestor
+- **Static** & **relative** are positioned according to normal flow of the document. **Absolute** & **fixed** are removed from the normal document flow. **Sticky** is within the normal flow, until it reaches it's constraint.
+#### Relative and Absolute Position
+
+- Relative positioning offsets the element relative to its normal document flow position
+- Absolute positioning is relative to closest ancestor which has positioning set to non-static value
+- Offset the relative container element offsets its contents as well.
+
+#### Sticky Position
+
+- Element is first positioned with the normal flow of the document (like static & relative), **then** it is offset with respect to its nearest scrolling ancestor and containing block depending on its **LTRB properties.**
+- Can think of its as a hybrid of **relative and fixed** positioning. *The element is treated as relative positioned until it crosses a specified threshold, at which point it is treated as fixed positioned.*
+- **LTRB properties** are offsets from its containing parent block element and scrolling ancestor that are used to **constrain** the stickied element within its parent and scrolling ancestor
+- Without **LTRB properties,** it behaves like the relative type.
+
 #### Positioning Elements by Floating
 
 - Floating elements can produce very flexible layouts
@@ -59,14 +77,7 @@ See [CSS specificity calculator](https://specificity.keegan.st/)
 - To resume normal document flow, use the `clear` property.
   - clear: left/right/both
 
-#### Relative and Absolute Element Positioning
-
-- Static positioning is default for all elements, except html
-- Relative positioning offsets the element relative to its normal document flow position
-- Absolute positioning is relative to closest ancestor which has positioning set to non-static value
-- Offset the relative container element offsets its contents as well.
-
-#### Responsive design (@media)
+## Responsive design (@media)
 
 - Basic syntax of a media query
   - @media (media feature)

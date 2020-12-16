@@ -966,11 +966,22 @@ greet.call(i); // output: Douglas Crockford Is An Awesome Javascript Developer
 
 ---
 
-#### Generate a Randon ID
+#### Generate a Random ID
 
 ```js
 Math.random().toString(36).substr(2, 9);
 // toString(36) converts a string to base36
+```
+
+#### Format a number to two significant digits
+
+```js
+myNumber.toPrecision(2)
+// 0.0010000 -> "0.0010"
+
+Number(myNumber.toPrecision(2))
+// 0.0010000 -> 0.001
+
 ```
 
 #### JavaScript Resources

@@ -973,6 +973,8 @@ Math.random().toString(36).substr(2, 9);
 // toString(36) converts a string to base36
 ```
 
+## Format Number
+
 #### Format a number to two significant digits
 
 ```js
@@ -981,7 +983,20 @@ myNumber.toPrecision(2)
 
 Number(myNumber.toPrecision(2))
 // 0.0010000 -> 0.001
+```
 
+#### Format a number with comma separated and with minimum fractional digits
+
+```js
+Number(parseFloat(3000).toFixed(2)).toLocaleString('en', {
+    minimumFractionDigits: 2
+});
+// result 3,000.00
+
+Number(parseFloat(123233.12).toFixed(2)).toLocaleString('en', {
+    minimumFractionDigits: 2
+});
+// result 123,233.12
 ```
 
 #### JavaScript Resources

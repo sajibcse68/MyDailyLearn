@@ -271,7 +271,6 @@ $ git add -N    # --intend-to-add, An entry for the path is placed in the index 
 # Commit
 $ git commit -am 'commit message'                   # Add & commit        
 $ git commit --allow-empty -m k3;                   # Commit empty change
-$ git cherry-pick <commit-hash>                     # Take a commit change of another branch
 $ git commit -m 'msg' --include file1.txt file2.txt # Commit specific files
 
 # Amend
@@ -438,12 +437,13 @@ $ git log --reverse --pretty=%H | grep -A 1 $(git rev-parse HEAD) | tail -n1 | x
 ## Show (more logging)
 
 ```sh
-$ git show <commit-hash>                # see what changes in a specific commit
-$ git show <commit> --stat              # see files changed in a commit
-$ git show --decorate <commit-hash>     # see 'Author', 'Date' and 'diff'
-$ git show --pretty=%H <commit>         # short commit hash -> full commit hash
-$ git show <commit>:<file-path>         # See a old version of a file
-$ git show <tag-name>                   # show details info of a tag
+$ git show <commit-hash>              # see what changes in a specific commit
+$ git show <commit> --stat            # see files changed in a commit
+$ git show --decorate <commit-hash>   # see 'Author', 'Date' and 'diff'
+$ git show --pretty=%H <commit>       # short commit hash -> full commit hash
+$ git show <commit>:<file-path>       # see a old version of a file
+$ git show <tag-name>                 # show details info of a tag
+$ git cherry -v b1 b2                 # see all of the commits which are contained within b2, but NOT in b1
 ```
 
 ## Recovery or Reset
@@ -665,7 +665,6 @@ $ git reflog expire --expire=now --all && git gc --prune=now --aggressive
 # Push to remote by force
 $ git push -f origin <branch-name>
 ```
-
 
 #### Search all of git history for a String
 

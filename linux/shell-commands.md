@@ -261,7 +261,7 @@ $ ngrok http <server-port>
 
 #### Convert `.mov` to `.mp4` with Mac Terminal
 
-- Converting video files to different formats
+- Converting video files to different formats. e.g. mp4 to avi
 
     ```sh
     $ ffmpeg -i video.mp4 video.avi

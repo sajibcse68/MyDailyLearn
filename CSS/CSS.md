@@ -77,7 +77,23 @@ See [CSS specificity calculator](https://specificity.keegan.st/)
 - To resume normal document flow, use the `clear` property.
   - clear: left/right/both
 
-## Responsive design (@media)
+## Responsive design
+
+#### Which meta tag should be added for responsive design?
+
+The `viewport` meta tag should be added.
+
+```js
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+This gives the browser instructions on how to control the page's dimensions and scaling.
+
+- The `width=device-width` part sets the width of the page to follow the screen-width of the device (which will vary depending on the device).
+
+- The `initial-scale=1.0` part sets the initial zoom level when the page is first loaded by the browser.
+
+#### @media Queries
 
 - Basic syntax of a media query
   - @media (media feature)
@@ -85,12 +101,18 @@ See [CSS specificity calculator](https://specificity.keegan.st/)
 - Remember not to overlap breakpoints
 - Usually, we should provide base styling
   - Then, change or add to then in each media query
-- Viewport `meta tag` to turn off default mobile zooming
-
-  - `<meta name="viewport" content="width=device-width, initial-scale=1">`
-
 - What is `Bootstrap` ?
 - Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.
+
+
+#### Viewport vs Media Queries
+
+- Viewport
+  - Adjust site to device viewport
+  - No design changes
+- Media Queries
+  - Change design depending on size
+  - Design changes define by us
 
 #### Bootstrap Grid System
 
@@ -220,7 +242,6 @@ div p {
   <p>CSS applied</p>
 </div>
 ```
-
 
 ## CSS Questions and Answers
 

@@ -15,14 +15,16 @@ $ npm start     # run the app, default localhost:3000
 
 **Ref:** https://github.com/sajibcse68/compare-react
 
+## React Props
+
 #### Use `Default Props`
 
 Default props allows us to spefify what a prop value should be if no value is explicitly provided.
 
 ```js
 MyComponent.defaultProps = {
-  location: "San Francisco"
-}
+  location: 'San Francisco',
+};
 ```
 
 React assigns default props if props are `undefined`, but if we pass `null` as the value for a prop, if will remain `null`.
@@ -33,8 +35,8 @@ It's considered a best practice to set `propTypes` when we know the type of a pr
 
 ```js
 MyComponent.propTypes = {
-  handleClick: PropTypes.func.isRequired
-}
+  handleClick: PropTypes.func.isRequired,
+};
 ```
 
 Here, `PropTypes.func` part checks that `handleClick` is a function. Adding `isRequired` tells React that `handleClick` is s required property for that component.
@@ -44,10 +46,12 @@ Among the `seven` JavaScript Primitive types, `function` and `boolean` (written 
 Note: React `v15.5.0`, `PropTypes` is imported independently from React, like this:
 
 ```js
-import React, { PropTypes } from "react";
+import React, { PropTypes } from 'react';
 ```
 
-## Understanding React `setState`
+## React State
+
+### Understanding React `setState`
 
 `setState()` is the only legitimate way to update state after the initial state setup.
 
@@ -63,23 +67,23 @@ Key Notes:
 we can pass an object as arguments of `setState()`.
 
 ```js
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class Search extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     state = {
-      searchTerm: ''
-    }
+      searchTerm: '',
+    };
   }
 
   updateState = (event) => {
     // update searchTerm, say this function is called from UI
     setState({
-      searchTerm: event.target.value
+      searchTerm: event.target.value,
     });
-  }
+  };
 }
 ```
 
@@ -94,6 +98,7 @@ handleIncrement() {
   this.setState({ count: this.state.count + 1 });
 }
 ```
+
 we might be surprised to find **that doesn't work**. It's `equivalent` to:
 
 ```js
@@ -102,7 +107,7 @@ Object.assign(
   { count: this.state.count + 1 },
   { count: this.state.count + 1 },
   { count: this.state.count + 1 }
-)
+);
 ```
 
 So, instead of call happening three times, it happens just once.
@@ -123,11 +128,23 @@ handleIncrement() {
 when we pass `function` to `setState()`, first argument is the prevState.
 
 ```js
-this.setState( prevState => {
+this.setState((prevState) => {
   // prevState is the current state
-  return { count: prevState + 1 }
-})
+  return { count: prevState + 1 };
+});
 ```
+
+### When to Use Derived State
+
+`getDerivedStateFromProps` exists for only one purpose. It enables a component to update its internal state as the result of **changes in props**.
+
+Derived state should be used sparingly. All problems with derived state that we have seen can be ultimately reduced to either
+
+(1) unconditionally updating state from props or  
+(2) updating state whenever props and state don’t match. (We’ll go over both in more detail below.)
+
+- If we’re using derived state to memoize some computation based only on the current props, you don’t need derived state. See [What about memoization](https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization)?
+- If we’re updating derived state unconditionally or updating it whenever props and state don’t match, your component likely `resets its state too frequently`.
 
 ## Stateless Functional Component, Stateless Component and Stateful component
 
@@ -135,7 +152,7 @@ this.setState( prevState => {
 
 - `A stateless component` is a class that extends `React.Component`, but does not use internal state.
 
-- `A state`ful component` is any component that does maintain its own internal state. We may see stateful component referred to simply as `components` or `React components`.
+- `A state`ful component`is any component that does maintain its own internal state. We may see stateful component referred to simply as`components`or`React components`.
 
 [Reference](https://css-tricks.com/understanding-react-setstate/)
 
@@ -213,26 +230,28 @@ const EncouragementForm extends React.Component {
 we can use `React.Fragment` instead of using any extra `div` or `section`, etc.
 
 ```js
-const NavItems = () =>
+const NavItems = () => (
   <React.Fragment>
     <a href="/">Home</a>
     <a href="/about">About</a>
     <a href="/services">Services</a>
     <a href="/contact">Contact</a>
   </React.Fragment>
+);
 ```
 
 const App = () => {
+
   <header>
     <nav>
       <NavItems />
     </nav>
   </header>
 
-  ReactDOM.render(
-    <App />,
-    document.getElementById('root');
-  )
+ReactDOM.render(
+<App />,
+document.getElementById('root');
+)
 }
 
 **N.B.** Shortcut of `<React.Fragment></React.Fragment>` is `<></>`
@@ -254,32 +273,30 @@ const Context = React.createContext();
 
 class Provider extends React.Component {
   state = {
-    name: 'Sajib Khan'
-  }
+    name: 'Sajib Khan',
+  };
   render() {
     return (
       <Context.Provider value={{ state: this.state }}>
-        { this.props.children }
+        {this.props.children}
       </Context.Provider>
-    )
+    );
   }
 }
 
-const Trail = props => {
+const Trail = (props) => {
   <div>
     <Context.consumer>
-      {(context) => (
-        <p>This is the context: {context.state.name}</p>
-      )}
+      {(context) => <p>This is the context: {context.state.name}</p>}
     </Context.consumer>
-  </div>
-}
+  </div>;
+};
 
-const Lift = props => (
+const Lift = (props) => (
   <div>
     <Trail />
   </div>
-)
+);
 
 class Resort extends React.Component {
   render() {
@@ -289,7 +306,7 @@ class Resort extends React.Component {
           <Lift />
         </div>
       </Provider>
-    )
+    );
   }
 }
 ```
@@ -302,42 +319,44 @@ const Context = React.createContext();
 class Provider extends React.Component {
   state = {
     name: 'Sajib Khan',
-    status: 'OPEN'
-  }
+    status: 'OPEN',
+  };
   render() {
     return (
       <Context.Provider
-        value={{ state: this.state,
-        changeStatus: () => this.setState({
-          status: 'CLOSED'
-        })
-      }}>
-        { this.props.children }
+        value={{
+          state: this.state,
+          changeStatus: () =>
+            this.setState({
+              status: 'CLOSED',
+            }),
+        }}
+      >
+        {this.props.children}
       </Context.Provider>
-    )
+    );
   }
 }
 
-const Trail = props => {
+const Trail = (props) => {
   <div>
     <Context.consumer>
       {(context) => (
         <div>
           <p>This is the context: {context.state.name}</p>
-          <p>The resort is: { context.state.status }</p>
+          <p>The resort is: {context.state.status}</p>
           <button onClick={context.changeStatus}>Close Resort</button>
         </div>
-        
       )}
     </Context.consumer>
-  </div>
-}
+  </div>;
+};
 
-const Lift = props => (
+const Lift = (props) => (
   <div>
     <Trail />
   </div>
-)
+);
 
 class Resort extends React.Component {
   render() {
@@ -347,7 +366,7 @@ class Resort extends React.Component {
           <Lift />
         </div>
       </Provider>
-    )
+    );
   }
 }
 ```
@@ -372,7 +391,7 @@ const DataComponent = (ComposedComponent, url) =>
       this.setState({loading: true})
       fetch(url)
         .then(resp => resp.json())
-        .then(data => 
+        .then(data =>
           this.setState({
             loaded: true,
             loading: false,
@@ -392,7 +411,7 @@ const DataComponent = (ComposedComponent, url) =>
     }
   }
 
-const PeopleList = ({data}) => 
+const PeopleList = ({data}) =>
   <ol>
     {data.results.map((person, i) => {
       const { first, last } = person.name;
@@ -428,9 +447,10 @@ class App extends React.Component {
 // equivalent of
 
 class App extends React.Component {
-  state = { loading: true }
+  state = { loading: true };
 }
 ```
+
 ## Redux vs Context API
 
 - Redux:
@@ -440,10 +460,9 @@ class App extends React.Component {
 - Context:
   - Distributes data to various components
 
-
 ## LifeCycle Hooks or Methods
 
-```js  
+```js
 // Mounting Life Cycles
 constructor() {
   // before component is mounted
@@ -472,7 +491,7 @@ getSnapshotBefore() {
   // right before most recently rendered output is rendered
 }
 componentDidUpdate() {
-  // invoked right after update 
+  // invoked right after update
 }
 
 // Unmounting Life Cycle
@@ -480,6 +499,7 @@ componentWillUnmount() {
   // invoked right before a component is unmounted
 }
 ```
+
 ## Refs and the DOM
 
 Refs provide a way to access DOM nodes or React elements created in the render method.
@@ -560,7 +580,7 @@ class MyComponent extends React.Component {
 Bad Navigation:
 
 1. We add `<a/>` tag to our application with `href="/pagetwo"` and click it
-2. Our browser makesa  request to localhost:3000
+2. Our browser makesa request to localhost:3000
 3. Development server responds with `index.html` file
 4. Browser receives `index.html` file, dumps old HTML file it was showing (including all of our React/Redux state data!)
 5. `index.html` file lists our JS files in script tags - browser downloads and executes these scripts
@@ -571,7 +591,7 @@ Bad Navigation:
 1. `Browser Router`: Uses everything after the TLD (.com, .net) or port as the `path`. e.g. localhost:3000/pagetwo
 2. `Hash Router`: Uses everything after a # as the `path`. e.g. `localhost:3000/#/pagetwo`
 3. `Memory Router`: Doesn't use the URL to track navigation. e.g. `localhost:3000/`
- 
+
 ## React Portals
 
 Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
@@ -615,3 +635,5 @@ A typical use case for portals is when a parent component has an **overflow: hid
 **Note:** When working with portals, remember that managing keyboard focus becomes very important.
 
 [Ref](https://reactjs.org/docs/portals.html)
+
+## Miscellaneous

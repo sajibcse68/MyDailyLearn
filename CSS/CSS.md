@@ -5,6 +5,13 @@
 - Site's layout adapts to the size of the device.
 - Content verbosity or its visual delivery may change.
 
+#### Some Responsive Device Width According to `WebFlow`
+
+- Mobile portrait width: 320px to 478px
+- Mobile landscape width: 568px to 767px
+- Tablet width: 768px to 991px
+- Desktop width: 1297px to up
+
 #### Combining selectors
 
 - Element with class selectors (selector.class)

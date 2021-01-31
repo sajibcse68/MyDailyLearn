@@ -140,11 +140,15 @@ this.setState((prevState) => {
 
 Derived state should be used sparingly. All problems with derived state that we have seen can be ultimately reduced to either
 
-(1) unconditionally updating state from props or  
+(1) unconditionally updating state from props or 
 (2) updating state whenever props and state don’t match. (We’ll go over both in more detail below.)
 
 - If we’re using derived state to memoize some computation based only on the current props, you don’t need derived state. See [What about memoization](https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization)?
 - If we’re updating derived state unconditionally or updating it whenever props and state don’t match, your component likely `resets its state too frequently`.
+
+```js
+static getDerivedStateFromProps(props, state)
+```
 
 ## Stateless Functional Component, Stateless Component and Stateful component
 

@@ -96,3 +96,13 @@ console.log('I am good!');
 'I am good', 'Hi, 'Hello' instead of 'I am good', 'Hello', 'Hi'
 
 since there is a two callback queue: MicroTask Queue and Callback Queue. Promise goes to microTask queue. When callStack is empty the event loop check microTask queue first then check callBack Queue!
+
+#### What are the rules for the execution of asynchronously delayed code?
+
+Hold promise-deferred functions in a microtask queue and callback function in a task queue (Callback queue) when the Wb Browser Feature (API) finishes.
+
+Add the function to the Call Stack (i.e. run the function) when:
+
+- Call Stack is empty & all global code run (Have the Event Loop check this condition)
+
+Prioritize functions in the `microtask queue` over the Callback queue.

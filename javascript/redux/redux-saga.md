@@ -164,6 +164,15 @@ Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel`
 - Combines numerous take statements into one
 - Code execution resumes when all actions have been dispatched (in any order)
 
+
+### Redux Saga Effects Nature
+
+- Effects create a plain objects - Redux Saga interprets then and executes processes
+- `Take`, `TakeEvery` and `TakeLatest` wait for a specific kind of action to create a new process
+- `Call`, `Fork` and `Spawn` create `different` kinds of new processes
+- `Forked` processes are cancelled when their `parent is cancelled` or errors
+- `Take` and `Call` pause the execution of caller process!
+
 ## Channels
 
 ### What are Channel

@@ -183,16 +183,22 @@ Others: `fork`, `select`, `race`, `spawn`, `join`, `cancel`
 
 ### Action Channels
 
+Action channels create a buffer for actions.
+
 - Records all events with specified type
 - Calling `take` accesses and removes oldest record
 - Used to handle actions that would otherwise be lost
 
 ### Generic Channels
 
+Generic channels can allow for communication between sagas
+
 - Creates special line of communication between two sagas
 - Action types not required
 
 ### Event Channels
+
+Event channels can emit take-friendly actions from non-promise based outside sources.
 
 - Wraps an outside source of events (i.e., WebSocket)
 - Sagas can take rom Event Channel

@@ -807,6 +807,23 @@ const EventEmitter = () => ({
 
 [Ref:](https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e)
 
+
+#### What are the checklists that you follow for reviewing frontend code
+========================================================================
+
+- Make sure the code works
+- Code is easily understand, written following the coding standards (React/Redux in our case), sync with existing code patterns
+- Check if it is possible to refactor to reduce duplication, write generic/re-useable code!
+- Meaningful names for variables/classes/methods and following the standard convention.
+- Handle JavaScript exceptions, errors, promise rejections and api errors properly
+- Keep functions/classes/components small, use Functional components where needed instead Class component, avoid infinite loop- while updating state, avoid using nested if/else statements
+- When new library is needed for a feature check for library size -- if lightweight (+popular) library present then check it out
+- Clean code: remove unused/unreachable code/packages, keep only the useful comments, no console logs
+- Check how component/page looks in different browsers (desktop and mobile)
+- Check security: SQL injection, Cross-site Scripting (XSS), etc.
+- Tests are readable, maintainable, trustworthy (though we're not following this now-a-days)
+- Git commits are small, divided into logical parts, understandable, use branches for new feature/fix
+
 ======================================================
 
 Some questions to check:

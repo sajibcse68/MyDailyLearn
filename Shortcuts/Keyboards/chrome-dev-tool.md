@@ -76,6 +76,14 @@ This clears the following:
 - Local Storage
 - Application Cache
 
+#### How to debug the CSS on hover behavior of a component?
+
+Sometimes we need to test the hover behavior of a component on our website, but it was controlled by JS! And we can't move the cursor from the element, as it’ll revert to default behavior.
+
+So, there is a keyboard shortcut for `pausing with the debugger` and the state should be left `frozen`. Follow:
+
+    Devtools | Source tab | select and trigger the state of the element | press `F8`
+
 
 #### Deep Dive into Debugging:
 

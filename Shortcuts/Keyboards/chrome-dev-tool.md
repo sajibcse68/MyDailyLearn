@@ -84,6 +84,11 @@ So, there is a keyboard shortcut for `pausing with the debugger` and the state s
 
     Devtools | Source tab | select and trigger the state of the element | press `F8`
 
+#### Multi-line editor in chrome dev-tools
+
+In chrome dev-tools we've coding playground (similar as CodePen or, CodeSandBox)!
+
+    Go to Sources | left drawer | optionally double arrow in “sub-tabs” | Snippets
 
 #### Deep Dive into Debugging:
 

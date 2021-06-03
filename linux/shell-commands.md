@@ -271,6 +271,19 @@ $ ngrok http <server-port>
     ```sh
     $ ffmpeg -i input.mov -acodec copy -vcodec copy output.mp4
     ```
+
+#### Count all the lines of code in a directory recursively
+
+```sh
+$ find . -name '*.js' | xargs wc -l  
+
+# if file name contains special character like spaces
+$ find . -name '*.js' | sed 's/.*/"&"/' | xargs  wc -l
+
+# sorted output
+$ find . -name '*.js' | xargs wc -l | sort -nr
+
+```
 #### Cursor movement
 C + a:  Move to the start of the line.  
 C + e:  Move to the end of the line.  

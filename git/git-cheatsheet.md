@@ -723,6 +723,18 @@ $ git update-index --no-assume-unchanged <file>
 $ echo 'Hello, World!' | git hash-object --stdin
 ```
 
+#### How to count total lines changed by an specific author in a git repository?
+
+```sh
+# per file
+$ git log --author="<authorname>" --pretty=tformat: --numstat
+
+# total added/removed lines using awk on Mac OSX
+git log --author="sajibcse68@gmail.com" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
+# output: added lines: 133972, removed lines: 441603, total lines: -307631
+
+```
+
 ## Tags and Releases
 
 - Release tag point to a single commit

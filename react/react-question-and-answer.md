@@ -115,3 +115,37 @@ export default `React.memo(UserDetails)`;
 ```js
 <input ref={(input) => input && input.focus()} />
 ```
+
+#### How to Block or, allow Navigation in React Component?
+
+The router context's `history` object also has a _block_ function but it works a little differently. It takes a callback that consumes `location` and `action` arguments.
+
+```js
+history.block((location, action) => {...});
+```
+
+Example:
+
+```js
+// functional component
+React.useEffect(() => {
+  this.unblock = history.block((targetLocation, action) => {
+    if (blockNavigating) {
+      return false;
+    }
+
+  // allow navigating
+  return true;
+}, [])
+
+// class component
+componentDidMount() {
+    this.unblock = history.block((targetLocation, action) => {
+    if (blockNavigating) {
+      return false;
+    }
+
+  // allow navigating
+  return true;
+}
+```

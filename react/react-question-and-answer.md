@@ -149,3 +149,20 @@ componentDidMount() {
   return true;
 }
 ```
+
+Another way to block navigation using `Prompt` (react-router, v4), e,g.
+
+```js
+import { Prompt } from 'react-router'
+
+const MyComponent = () => (
+  <>
+    <Prompt
+      when={shouldBlockNavigation}
+      message='You have unsaved changes, are you sure you want to leave?'
+    />
+    {/* Component JSX */}
+  </>
+)
+
+```

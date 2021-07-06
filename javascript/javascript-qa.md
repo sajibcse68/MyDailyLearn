@@ -130,8 +130,8 @@ Any function that returns a `new object` which is not a Constructor function (no
 
 Two Principles:
 
-  1. Goes through the code line-by-line and runs/executes each line -- known as the `thread of execution`
-  2. Saves `data` like strings and arrays so we can use that data later -- in its memory (we can even save code e.g. functions)
+1. Goes through the code line-by-line and runs/executes each line -- known as the `thread of execution`
+2. Saves `data` like strings and arrays so we can use that data later -- in its memory (we can even save code e.g. functions)
 
 ## What does JavaScript `get` or `getter` keyword do?
 
@@ -361,7 +361,7 @@ try {
 console.log(myObj.three); // undefined
 ```
 
-## Note:
+## Miscellaneous
 
 - In `strict mode` browser will throw the error shown in the catch block
 - In `non-strict node`, browser attempt will just fail silently
@@ -683,6 +683,24 @@ if (!Number.isNaN) {
 }
 ```
 
+#### How to Prevent User from Pasting Text
+
+if we want to prevent the user from pasting text into inputs by javascript we can use `paste` event listeners
+
+```html
+
+<input type="text"></input>
+<script>
+  // selecting the input.
+  const input = document.querySelector('input');
+
+  // prevent the user to paste text by using the paste eventListener.
+  input.addEventListener("paste", function(e){
+    e.preventDefault()
+  })
+</script>
+```
+
 #### What does happens when we declare a variable with `var` and `let`?
 
 Declaring with `var` two things are happened:
@@ -807,8 +825,8 @@ const EventEmitter = () => ({
 
 [Ref:](https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e)
 
-
 #### What are the checklists that you follow for reviewing frontend code
+
 ========================================================================
 
 - Make sure the code works

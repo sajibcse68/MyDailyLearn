@@ -147,10 +147,22 @@ console.log(count); // 3
 
 #### Rules of Reducers
 
+Reducers must follow some specific rules:
+
+- They should only calculate the new state value based on the `state` and `action` arguments
+- They are not allowed to modify the existing `state`. Instead, they must make *immutable updates*, by copying the existing state and making changes to the **copied values**.
+- They must not do any `asynchronous logic` or other `"side effects"`
 - Must return any value besides `undefined`
 - Produces `state` or data to be used inside of your app using only `previous state and the action`
 - Must not return reach `out of itself` to decide what value to return (reducers are pure)
-- Must not mutate its input `state` argument
+
+
+#### Why the Reducers Rules Important?
+
+- One of the goals of Redux is to make your code predictable. When a function's output is only calculated from the input arguments, it's easier to understand how that code works, and to test it.
+- On the other hand, if a function depends on variables outside itself, or behaves randomly, you never know what will happen when we run it.
+- If a function modifies other values, including its arguments, that can change the way the application works unexpectedly. This can be a common source of bugs, such as *"I updated my state, but now my UI isn't updating when it should!"*
+- Some of the `Redux DevTools` capabilities depend on having your reducers follow these rules correctly
 
 #### Combine Multiple Reducers
 

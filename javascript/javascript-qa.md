@@ -361,8 +361,6 @@ try {
 console.log(myObj.three); // undefined
 ```
 
-## Miscellaneous
-
 - In `strict mode` browser will throw the error shown in the catch block
 - In `non-strict node`, browser attempt will just fail silently
 - We can still delete properties, unlike when using `Object.freeze()`
@@ -402,6 +400,16 @@ console.log(
 ```js
 let emptyArr = Object.create(null);
 // emptyArr.__proto__ === "undefined"
+```
+
+#### Swap Two Numbers without using Third Variable?
+
+```js
+let a = 10;
+let b = 20;
+console.log(a, b); //OUTPUT: 10, 20
+[a, b] = [b, a];
+console.log(a, b); //OUTPUT: 20, 10
 ```
 
 #### How to require function parameters by force?

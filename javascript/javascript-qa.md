@@ -395,6 +395,25 @@ console.log(
 );
 ```
 
+So, here is some example we can use console in different way:
+
+```js
+// %s replaces an element with a string
+console.log('Helllo I love %s', 'Javascript');
+
+// %d  replaces an element with an integer
+console.log('Hello %d ', 1);
+
+// %f  replaces an element with a float
+console.log('Hello  %f ', 1.078);
+
+// %(o|O) | element is displayed as an object.
+console.log('Hello %O', { Name: 'Sidd' });
+
+// %c | Applies the provided CSS
+console.log('%cThis is a red text', 'color:red');
+```
+
 #### How to create an Empty Objects?
 
 ```js
@@ -407,9 +426,9 @@ let emptyArr = Object.create(null);
 ```js
 let a = 10;
 let b = 20;
-console.log(a, b); //OUTPUT: 10, 20
+console.log(a, b); // OUTPUT: 10, 20
 [a, b] = [b, a];
-console.log(a, b); //OUTPUT: 20, 10
+console.log(a, b); // OUTPUT: 20, 10
 ```
 
 #### How to require function parameters by force?

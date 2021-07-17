@@ -815,37 +815,42 @@ eval('regiment' + number).motto = motto;
   ```
   - `parseFloat()` Turns Strings with Decimals into Numbers.
   - `parseInt()` also converts numerical strings. But it seeks the first available integer at the front of a string.
-  ```
+  ```js
   parseInt("88 keys on a piano"); // output: 88
   parseFloat("1.234 keys on a bag"); // output: 1.234
   parseInt("There are 88 keys on a piano"); // NaN, cause string does not begin with a acceptable value
   parseInt("7.89") // output: 7, trim up descimals without `rounding`
   parseInt("1.23", 10) // parseInt(string, radix), it allows any `radix` value from `2 to 36`.
   ```
-  - typeof(NaN) // output: number
-    - console.log(NaN === NaN) // output: false
-    - js function isNaN() is used to check if a value is NaN.
-    - isNaN("34") // output: false
+
   - If unsure about `data type`, but highly reliant on a `Number` use `typeof` and `isNaN()` as a best practice
     - function checkNumber(data) { return typeof data === "number" && !isNaN(data); }
     - checkNumber(640) // output: true
     - checkNumber("640") // output: false, false by typeof data === "number"
     - checkNumber("NaN") // output: false, false by !isNaN()
+
   - An object that groups and protects related data and methods in JavaScript files is called a `Namespace`.
+
   - If built well, `namespaces` remain `agnostic` of other namespaces.
+
   - `Namespaces` reduce global `footprint` while also keeping data grouped around their intended functionality.
+
   - `Closure` of js is used to cause some properties to be private, bound only to a surrounding function's local scope,
     and some properties to be public, accessible by all holders of the namespace.
+
   - `Private` properties are `created` in the local scope of the `function expression`. `public` properties are built withtin
     the `object` which is then `returned` to become the `namespace`. Access to `private` data is thus prossible only
     because of `closure` within the larger `module`.
+
   - If a module reference globally-scoped variable, it's a best practice to bring them into the scope of anonymous closure
     through the use of a `imports` technique.
+
   - Our `imports` ensures clarity of `scope` within a `module`. By using a `parameter`, we protect the `global` data
     that might have been `overwritten`. All imported data becomes `locally` scoped to the `anonymous function`, to be used in
     `closure`. Thus, when compared with `searching` the entire `scopre chain`, `imports` are both clearer and faster.
 
   - `Augmentation` provides extra properties for existing modules.
+
   - In simple `augmentation`, the `module` file and the augmentation file `module` share their `private state`.
     Augmentation module `properties` may only `access` the `private` data from their file's `closure`. `Private` data
     from the `original` closure `will not` be lost, and `will` be accessible to all original `properties`.

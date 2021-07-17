@@ -398,8 +398,12 @@ console.log(
 So, here is some example we can use console in different way:
 
 ```js
+// log a variable
+const fruit = 'Apple';
+console.log({ fruit }); // {fruit: "Apple"}
+
 // %s replaces an element with a string
-console.log('Helllo I love %s', 'Javascript');
+console.log('Hello I love %s', 'Javascript');
 
 // %d  replaces an element with an integer
 console.log('Hello %d ', 1);
@@ -697,9 +701,9 @@ spinalCase('This Is Spinal Tap');
 `Undeclared`: It's never been declared in any scoped we have accessed to
 `Undefined`: It has beed in a scope but it does not have currently any value
 
-#### What is the only value in JS that is not equal to itself?
+#### What is the only value in JS that is not equal to itself? How to check 'NaN?
 
-`NaN` is the only value that is not equal to itself.
+`NaN` (not a number) is the only value that is not equal to itself.
 
 ```js
 if (!Number.isNaN) {
@@ -709,6 +713,26 @@ if (!Number.isNaN) {
   };
 }
 ```
+
+The `isNaN()` function determines whether a value is NaN or not.
+
+```js
+const a = NaN, b = 5;
+isNaN(a); // true
+
+isNaN(b); // false
+
+isNaN('test'); // true, surprising!!
+
+```
+
+`Coercion` inside the *isNaN* function can be surprising so we can use `Number.isNaN()` method determines whether the passed value is *NaN* and its **type is Number**. It is a more robust version of the original, *global isNaN()*.
+
+```js
+Number.isNaN('test'); // false
+```
+
+**Tips:** typeof(NaN) returns `number`!
 
 #### How to Prevent User from Pasting Text
 

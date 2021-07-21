@@ -249,6 +249,49 @@ Third comparison returns `false` cause the sort order of `arr1.sort()` and `arr2
 
 ## Miscellaneous
 
+#### What is the output?
+
+```js
+const str = 'constructor';
+
+console.log(str[str](01));
+```
+
+**Answer** 1 -->  str.constructor(01) returns "1"
+
+#### What is the output?
+
+```js
+function b() {
+  console.log(`the length is ${this.length}!`);
+}
+
+let a = {
+  length: 10,
+  getLength: function(b) {
+    arguments[0]();
+  }
+}
+
+a.getLength(b, 5);
+```
+
+**Answer:** "the length is 2!" -- cause inside b() this = arguments!
+
+#### What is the output?
+
+```js
+function printIt(value) {
+  return 'Hello ';
+}
+
+const string = printIt `World`;
+
+console.log(string);
+```
+
+**Answer:** Hello
+
 #### Output of following snippet?
 
 ```js

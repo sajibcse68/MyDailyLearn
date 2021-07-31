@@ -8,30 +8,29 @@
 - Efficient choices for `string concatenation` is `+=`
   - e.g. const a = ''; a += 'b'; a += 'c';
 - We can't .bind() a function multiple time.
-- Use a document fragment to insert additions all at once. Fragments are invisible containers that hold multiple DOM elements without
-  being a node itself.
 - Every functions receives two additional parameters: `this`, `arguments`.
 - When a function is stored as a property of an object, we call it a `method`. When a method is invoked, `this` is bound to that object.
 - JavaScript has function scope only\*
 - V8 transtales JavaScript code into more efficient machine code instead of using and interpreter. V8 doesn't produce bytecode or any intermediate code.
 - Objects are built by constructor call (a function is called by `new` keyword). A constructor makes an object **linked to** its own `prototype`.
-- Exciting features of ES6: destructuring, default parameter values, symbols, concise methods, computed properties, arrow functions, block scoping, promises, generators, iterators, modules, proxies, weakmaps, etc. etc.
 - JS MUST Know: `Scoping`, `Closures`, `Hoisting`, `This`, `Data Structures: Objects and Arrays`, `Design Patterns`, `Callbacks and Promises`.
+- Exciting features of ES6: destructuring, default parameter values, symbols, concise methods, computed properties, arrow functions, block scoping, promises, generators, iterators, modules, proxies, weakmaps, etc. etc.
+- Use a document fragment to insert additions all at once. Fragments are invisible containers that hold multiple DOM elements without being a node itself.
 
 ```javascript
 var list = document.getElementById('kotwList');
 var kotw = ['Jenna Rangespike', 'Neric Farthing', 'Darkin Stonefield'];
 
 var fragment = document.createDocumentFragment();
-// First we create a fragment, which will function as a staging area to hold all of our new `li` elements
+// First we create a fragment to hold all of our new `li` elements
 
-const kotwLen = kotw.length;
-for (var i = 0, len = kotwLen; i < len; i++) {
+for (var i = 0, len = kotw.length; i < len; i++) {
   var element = document.createElement('li');
   element.appendChild(document.createTextNode(kotw[i]));
   fragment.appendChild(element);
-  // now we add each new `li` element to the staging fragment, instead of to the document itself
+  // add each new `li` element to the fragment, instead of to the document itself
 }
+
 list.appendChild(fragment);
 // Finally, we append all of our new text nodes in one fell swoop, using only one DOM touch!
 ```

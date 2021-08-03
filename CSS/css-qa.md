@@ -1,13 +1,21 @@
 ## CSS Questions and Answers
 
-#### How to inspect `dropdown` element and change css?
+### What is the difference between `ems` and `rems`?
+
+`em` and `rem` are the two *relative lengths* we're likely to encounter most frequently when sizing anything from boxes to text.
+
+- the `em` unit means **"my parent element's font-size"**
+
+- the `rem` unit means **"The root element's font-size"**.
+
+### How to inspect `dropdown` element and change css?
 
 One way is to inspect the element is to prevent the `blur event` from being triggered is by removing the blur event listener!
 
 1. Inspect the dropdown input element in chrome browser
 2. Go to 'Event Listeners' then remove `blur` event, done!
 
-#### How can we disable a link?
+### How can we disable a link?
 
 ```css
 .inactive-link {
@@ -18,7 +26,7 @@ One way is to inspect the element is to prevent the `blur event` from being trig
 }
 ```
 
-#### How to disable resizing of textarea?
+### How to disable resizing of textarea?
 
 ```css
 textarea {
@@ -26,7 +34,7 @@ textarea {
 }
 ```
 
-#### How to change placeholder's color?
+### How to change placeholder's color?
 
 ```css
 ::placeholder {
@@ -34,7 +42,7 @@ textarea {
 }
 ```
 
-#### How to unordered list with bullets
+### How to unordered list with bullets
 
 ```css
 ul {
@@ -42,7 +50,7 @@ ul {
 }
 ```
 
-#### Disable Text Selection
+### Disable Text Selection
 
 ```css
 .non-select-element {
@@ -50,7 +58,7 @@ ul {
 }
 ```
 
-#### How to make a image fit
+### How to make a image fit
 
 ```css
 img {

@@ -15,6 +15,23 @@ One way is to inspect the element is to prevent the `blur event` from being trig
 1. Inspect the dropdown input element in chrome browser
 2. Go to 'Event Listeners' then remove `blur` event, done!
 
+
+### What is a `clearfix` and why need this?
+
+A `clearfix` is a way for an element to clear its child elements automatically without any additional markup. The clearfix property is generally used in **float layouts where elements are floated to be stacked horizontally**.
+
+The clearfix property allows a container to wrap its floated children. Without a clearfix, a container will not wrap around its floated children and will collapse, just as if its floated children had been positioned absolutely.
+
+```css
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+```
+
+
+
 ### How can we disable a link?
 
 ```css

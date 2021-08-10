@@ -79,6 +79,16 @@ const App = () => {
 };
 ```
 
+#### What can we do using "useEffect" comparative to Class component?
+
+```js
+useEffect( () => console.log("mount"), [] );
+useEffect( () => console.log("will update data1"), [ data1 ] );
+useEffect( () => console.log("will update any") );
+useEffect( () => () => console.log("will update data1 or unmount"), [ data1 ] );
+useEffect( () => () => console.log("unmount"), [] );
+```
+
 #### How to force a component `re-mount` when click on the same route?
 
 One way is to force a component to re-mount is to change the `key` prop:

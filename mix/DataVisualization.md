@@ -40,10 +40,10 @@ x(50); // 320
 Or, Apply a color coding:
 
 ```js
-var color = d3.scaleLinear().domain([10, 100]).range(["brown", "steelblue"]);
+var color = d3.scaleLinear().domain([10, 100]).range(['brown', 'steelblue']);
 
 // Or, shorthand
-var color = d3.scaleLinear([10, 100], ["brown", "steelblue"]);
+var color = d3.scaleLinear([10, 100], ['brown', 'steelblue']);
 
 color(20); // "#9a3439"
 color(50); // "#7b5167"
@@ -69,3 +69,16 @@ Create a linear scale for time.
 ## Quantize Scales
 
 - d3.scaleQuantize - create a uniform quantizing linear scale.
+
+## MixIn
+
+### How can we add an element as first child (prepend) using D3
+
+```js
+selection.insert(newElement[, anotherExistingElement]);
+
+// e.g.
+selection.insert("div", ":first-child"); // insert a 'div' as first child
+
+// N.B. selection.append() add the element as last child
+```

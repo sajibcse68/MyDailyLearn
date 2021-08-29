@@ -752,6 +752,7 @@ $ git push --tags                             # push the tags to origin
 $ git fetch --tags                            # update local with remote tags
 $ git tag -d <tag-name>                       # delete a tag locally
 $ git push origin :refs/tags/<tag-name>       # delete a tag from remote
+$ git push origin --delete $(git tag -l)      # delete all remote tags
 
 $ git show-ref --tags                         # see the tags with the commit it's pointing to
 $ git show <tag-name>                         # show details info of a tag

@@ -2,7 +2,7 @@
 
 ### What is the difference between `ems` and `rems`?
 
-`em` and `rem` are the two *relative lengths* we're likely to encounter most frequently when sizing anything from boxes to text.
+`em` and `rem` are the two _relative lengths_ we're likely to encounter most frequently when sizing anything from boxes to text.
 
 - the `em` unit means **"my parent element's font-size"**
 
@@ -15,7 +15,6 @@ One way is to inspect the element is to prevent the `blur event` from being trig
 1. Inspect the dropdown input element in chrome browser
 2. Go to 'Event Listeners' then remove `blur` event, done!
 
-
 ### What is a `clearfix` and why need this?
 
 A `clearfix` is a way for an element to clear its child elements automatically without any additional markup. The clearfix property is generally used in **float layouts where elements are floated to be stacked horizontally**.
@@ -24,13 +23,11 @@ The clearfix property allows a container to wrap its floated children. Without a
 
 ```css
 .clearfix:after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }
 ```
-
-
 
 ### How can we disable a link?
 
@@ -84,3 +81,27 @@ img {
   object-fit: contain;
 }
 ```
+
+### Drop Cap Letter
+
+We might have seen some blogs with the `first letter being huge` and the text is wrapped around it. That can be achieved with this simple trick on your text block.
+
+```css
+.has-dropcap:first-letter {
+  font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+  float: left;
+  font-size: 6rem;
+  line-height: 0.65;
+  margin: 0.1em 0.1em 0.2em 0;
+}
+```
+
+```html
+<p class="has-dropcap">
+  Carol McKinney Highsmith (born Carol Louise McKinney on May 18, 1946) is an
+  American photographer, author, and publisher who has photographed in all the
+  states of the United States, as well as the ....... as a record of the early 21st century.
+</p>
+```
+
+<img src="../images/css-drop-cap-letter.png" alt="drop-cap-letter" width="400px"/>

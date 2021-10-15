@@ -100,7 +100,8 @@ We might have seen some blogs with the `first letter being huge` and the text is
 <p class="has-dropcap">
   Carol McKinney Highsmith (born Carol Louise McKinney on May 18, 1946) is an
   American photographer, author, and publisher who has photographed in all the
-  states of the United States, as well as the ....... as a record of the early 21st century.
+  states of the United States, as well as the ....... as a record of the early
+  21st century.
 </p>
 ```
 
@@ -109,7 +110,18 @@ We might have seen some blogs with the `first letter being huge` and the text is
 ### How to Display a Link When the Element has No Text But the Href Attribute Has a Link?
 
 ```css
-a[href^="http"]:empty::before {
+a[href^='http']:empty::before {
   content: attr(href);
+}
+```
+
+### How to Change Selection Text Color?
+
+Most of the time when you visit any site and try to copy some text, it is just the `blue` color selection with `white` text. We can easily change the color using `selection pseudo-class`.
+
+```css
+::selection {
+  background-color: #f8e71c;
+  color: #000;
 }
 ```

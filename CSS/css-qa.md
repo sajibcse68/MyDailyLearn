@@ -105,3 +105,11 @@ We might have seen some blogs with the `first letter being huge` and the text is
 ```
 
 <img src="../images/css-drop-cap-letter.png" alt="drop-cap-letter" width="400px"/>
+
+### How to Display a Link When the Element has No Text But the Href Attribute Has a Link?
+
+```css
+a[href^="http"]:empty::before {
+  content: attr(href);
+}
+```

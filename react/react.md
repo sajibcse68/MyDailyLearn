@@ -662,7 +662,19 @@ componentDidMount() {
     Perf.printWasted();
   }, 5000)
 }
-
 ```
+
+### What are the Tricks We Can Use to Optimize React App?
+
+- Update lifecycle methods
+  - shouldComponentUpdate
+- PureComponent
+- Chrome's Performance Tab
+  - react_perf in url query
+- React Perf's Addon
+  - Perf.start(), Perf.stop()
+  - Perf.printWasted()
+- Subscribe to partial state
+- Immutable data
 
 ## Miscellaneous

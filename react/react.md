@@ -640,4 +640,29 @@ A typical use case for portals is when a parent component has an **overflow: hid
 
 [Ref](https://reactjs.org/docs/portals.html)
 
+## Performance
+
+One way is to use `react-addons-perf` add ons to check different criterias:
+
+```js
+import Perf from 'react-addons-perf'; // ES6
+
+// need for server-side-rendering
+if (typeof window !== 'undefined') {
+  window.Perf = Perf;
+}
+
+componentDidMount() {
+  setImmediate(() => {
+    Perf.start();
+  });
+
+  setTimeout(() => {
+    Perf.stop();
+    Perf.printWasted();
+  }, 5000)
+}
+
+```
+
 ## Miscellaneous

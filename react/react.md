@@ -140,7 +140,7 @@ this.setState((prevState) => {
 
 Derived state should be used sparingly. All problems with derived state that we have seen can be ultimately reduced to either
 
-(1) unconditionally updating state from props or 
+(1) unconditionally updating state from props or
 (2) updating state whenever props and state don’t match. (We’ll go over both in more detail below.)
 
 - If we’re using derived state to memoize some computation based only on the current props, you don’t need derived state. See [What about memoization](https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization)?
@@ -464,7 +464,7 @@ class App extends React.Component {
 - Context:
   - Distributes data to various components
 
-## LifeCycle Hooks or Methods
+## LifeCycle Methods
 
 ```js
 // Mounting Life Cycles
@@ -678,3 +678,18 @@ componentDidMount() {
 - Immutable data
 
 ## Miscellaneous
+
+### React vs ReactDOM
+
+- `React:` responsible for creating react elements (kinda like document.createElement())
+
+  ```js
+    const elementProps = {id: 'element-id', children: 'Hello world!'}
+    const elementType = 'h1';
+    const reactElement = React.createElement(elementType, elementProps);
+  ```
+- `ReactDOM:` responsible for render react elements to the DOM (kinda like rootElement.append())
+
+  ```js
+  ReactDOM.render(reactElement, rootElement);
+  ```

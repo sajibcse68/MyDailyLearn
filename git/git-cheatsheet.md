@@ -14,8 +14,14 @@ Git searches 4 places for config file
 
 1. Your machine's system .gitconfig file. (/usr/local/etc/gitconfig)
 2. Your user .gitconfig file located at ~/.gitconfig.
-3. A second user-specific configuration file located at $XDG_CONFIG_HOME/git/config or $HOME/.configgit/config.
+3. A second user-specific configuration file located at $XDG_CONFIG_HOME/git/config or $HOME/git/config
 4. The local repo's config file .git/config.
+
+if we set `--global` flag while saving config then
+
+- write to global `~/.gitconfig` file rather than the repository `.git/config`, write to `$XDG_CONFIG_HOME/git/config` file if this file exists and the `~/.gitconfig` file doesn’t.
+
+[Reference](https://git-scm.com/docs/git-config#Documentation/git-config.txt---global)
 
 #### Configure user's _name_ and _email_
 
@@ -95,9 +101,9 @@ $ git config --global alias.br branch        # git br -> git branch
 #### Create new branch
 
 ```sh
-$ git branch <name>                  # create a new branch
-$ git checkout <branch-name>         # switch to a branch
-$ git checkout -b <branch-name>      # create & switch to a branch by a command
+$ git branch <name>              # create a new branch
+$ git checkout <branch-name>     # switch to a branch
+$ git checkout -b <branch-name>  # create & switch to that branch
 
 # create a branch at a point instead of the last commit of the current branch (also known as `HEAD`).
 $ git checkout -b <name> <start-point>
@@ -365,7 +371,7 @@ $ git stash apply stash@{0}                         # Return the codes that I cl
 $ git stash apply stash@{2}                         # get back the #3 stash codes.
 $ git stash list                                    # Show how many stash we have
 $ git stash list --stash                            # Show all stash lists with changes file
-$ git stash show stash@{1}                          # Show only a specific stash with commits
+$ git stash show stash@{1}                          # Show only a specific stash changes
 $ git stash show -p stash@{1} | grep 'sajib'        # Search through git stash changes
 $ git stash branch <branch-name> stash@{1}          # create a new branch with the stash changes & delete the stash
 $ git stash show --patch                            # Shows file diffs
@@ -379,7 +385,7 @@ $ git stash save --keep-index
 $ git checkout stash -- .                           # replace all the files with the stashed version
 
 Or,
-$ git stash apply                                   # apply the stashed changes, conflicts occure here
+$ git stash apply                                   # apply the stashed changes, conflict occurs here
 $ git checkout --theirs -- .                        # accept stashed changes
 
 $ git checkout <stash-name> -- <file-name>          # grab a single file from a stash

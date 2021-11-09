@@ -111,19 +111,22 @@ Host <my-servers.com>
     $ nano ~/.ssh/config
     ```
 
-//  paste this  
-> Host bitbucket.org  
-> User git  
-> Hostname bitbucket.org  
-> PreferredAuthentications publickey  
-> IdentityFile ~/.ssh/id_rsa  
->  
-> Host bitbucket-accountB  
-User git  
-  Hostname bitbucket.org  
-  PreferredAuthentications publickey  
-  IdentitiesOnly yes  
-  IdentityFile ~/.ssh/accountB  
+//  paste this
+
+```sh
+Host bitbucket.org
+  User git
+  Hostname bitbucket.org
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_rsa
+
+Host bitbucket-accountB
+  User git
+  Hostname bitbucket.org
+  PreferredAuthentications publickey
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/accountB
+```
 
 4. Now clone from *default* account  
     ```

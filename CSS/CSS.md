@@ -281,14 +281,21 @@ div p {
 
 ## Mixin
 
-```
-// select all the selectors and apply this instead of inheritance
-* {
-  box-sizing: border-box;
+#### :where() pseduo-class function
+
+The `:where()` CSS pseduo-class function takes a selector list as its argument, and selects any element that can be selected by one of the selectors in that list.
+
+```css
+.parent :where(p, #title, .sub-title) { 
+  color: red;
+  cursor: pointer;
 }
 
-// as box-sizing don't be inheritenced so it doesn't work for child of body tag
-body {
- box-sizing: border-box;
+/* alternate of */
+.parent p,
+.parent #title,
+.parent .sub-title {
+  color: red;
+  cursor: pointer;
 }
 ```

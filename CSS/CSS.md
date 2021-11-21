@@ -299,3 +299,55 @@ The `:where()` CSS pseduo-class function takes a selector list as its argument, 
   cursor: pointer;
 }
 ```
+#### Conic gradients
+
+The `conic-gradient()` CSS function creates an image consisting of a gradient with color transitions rotated around a center point (rather than radiating from the center). Conic gradients include **pie charts** and **color wheels**
+
+```html
+<div class="parent">
+  <div class="box color-wheel"></div>
+  <div class="box sunrays"></div>
+  <div class="box chess"></div>
+  <div class="box pie-chart"></div>
+</div>
+```
+
+```css
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  width: 550px;
+  height: 200px;
+}
+.box {
+  height: 250px;
+  width: 250px;
+  background: red;
+  margin: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.color-wheel {
+  background: conic-gradient(red, orange, yellow, green, blue);
+  border-radius: 50%;
+}
+.sunrays{
+    background: repeating-conic-gradient(yellow 0 15deg,orange 0 30deg);
+}
+.chess {
+  background:
+     conic-gradient(#fff 0.25turn, #000 0.25turn 0.5turn, #fff 0.5turn 0.75turn, #000 0.75turn)
+     top left / 25% 25% repeat;
+}
+
+.pie-chart {
+  background: conic-gradient(#ED7E31 0 25%, #FFC000 0 70%, #70AD47 0 100%);
+  border-radius: 50%
+}
+```
+
+  <img src="../images/conic-gradient.png">
+
+
+
+[Reference](https://codepen.io/satyam-dev/pen/KKaJzEp)

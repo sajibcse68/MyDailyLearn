@@ -348,6 +348,18 @@ The `conic-gradient()` CSS function creates an image consisting of a gradient wi
 
   <img src="../images/conic-gradient.png">
 
-
-
 [Reference](https://codepen.io/satyam-dev/pen/KKaJzEp)
+
+#### Setting aspect ratio
+
+`Aspect ratio` is a proportional relationship between width and height (commonly expressed as `widht:height`).
+
+```css
+.widescreen {
+  aspect-ratio: 16 / 9;
+}
+.standard {
+  aspect-ratio: 1 / 1;
+}
+```
+

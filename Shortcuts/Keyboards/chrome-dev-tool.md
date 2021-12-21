@@ -78,12 +78,25 @@ This clears the following:
 
 #### How to debug the CSS on hover behavior of a component?
 
+Tips #1
+---
+
 Sometimes we need to test the hover behavior of a component on our website, but it was controlled by JS! And we can't move the cursor from the element, as it’ll revert to default behavior.
 
 So, there is a keyboard shortcut for `pausing with the debugger` and the state should be left `frozen`. Follow:
 
     Devtools | Source tab | select and trigger the state of the element | press `F8`
 
+Tips #2
+---
+
+Run the `setTimeout()` on your console | open the menu | wait for 5 seconds
+
+the debugger will automatically be applied and screen will be freezed.
+
+```
+setTimeout(() => {debugger;}, 5000)
+```
 #### Multi-line editor in chrome dev-tools
 
 In chrome dev-tools we've coding playground (similar as CodePen or, CodeSandBox)!

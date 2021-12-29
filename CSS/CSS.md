@@ -60,9 +60,10 @@ See [CSS specificity calculator](https://specificity.keegan.st/)
 
 ## CSS Position
 
-- Five position types: *static*(default), *relative*, *absolute*, *fixed*, *sticky*
+- Five position types: _static_(default), _relative_, _absolute_, _fixed_, _sticky_
 - Elements with static type is a **non-positioned element**. Other ones are **positioned elements**. We can use **LTRB properties + z-index** on positioned elements. **Absolute** type is positioned with respect to it's closed positioned ancestor
 - **Static** & **relative** are positioned according to normal flow of the document. **Absolute** & **fixed** are removed from the normal document flow. **Sticky** is within the normal flow, until it reaches it's constraint.
+
 #### Relative and Absolute Position
 
 - Relative positioning offsets the element relative to its normal document flow position
@@ -72,7 +73,7 @@ See [CSS specificity calculator](https://specificity.keegan.st/)
 #### Sticky Position
 
 - Element is first positioned with the normal flow of the document (like static & relative), **then** it is offset with respect to its nearest scrolling ancestor and containing block depending on its **LTRB properties.**
-- Can think of its as a hybrid of **relative and fixed** positioning. *The element is treated as relative positioned until it crosses a specified threshold, at which point it is treated as fixed positioned.*
+- Can think of its as a hybrid of **relative and fixed** positioning. _The element is treated as relative positioned until it crosses a specified threshold, at which point it is treated as fixed positioned._
 - **LTRB properties** are offsets from its containing parent block element and scrolling ancestor that are used to **constrain** the stickied element within its parent and scrolling ancestor
 - Without **LTRB properties,** it behaves like the relative type.
 
@@ -110,7 +111,6 @@ This gives the browser instructions on how to control the page's dimensions and 
   - Then, change or add to then in each media query
 - What is `Bootstrap` ?
 - Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.
-
 
 #### Viewport vs Media Queries
 
@@ -190,7 +190,6 @@ This gives the browser instructions on how to control the page's dimensions and 
 - Align grid items via `justify-items` (X-axis) and `align-items` (Y-axis)
 - Align the entire grid content via `justify-content` (X-axis) and `align-content` (Y-axis)
 
-
 ## Combinators
 
 #### Adjacent Sibling
@@ -246,6 +245,7 @@ div > p {
   color: red;
 }
 ```
+
 ```html
 <div>
   <h2>Not applied</h2>
@@ -267,6 +267,7 @@ div p {
   color: red;
 }
 ```
+
 ```html
 <div>
   <h2>Not applied</h2>
@@ -286,7 +287,7 @@ div p {
 The `:where()` CSS pseduo-class function takes a selector list as its argument, and selects any element that can be selected by one of the selectors in that list.
 
 ```css
-.parent :where(p, #title, .sub-title) { 
+.parent :where(p, #title, .sub-title) {
   color: red;
   cursor: pointer;
 }
@@ -299,6 +300,7 @@ The `:where()` CSS pseduo-class function takes a selector list as its argument, 
   cursor: pointer;
 }
 ```
+
 #### Conic gradients
 
 The `conic-gradient()` CSS function creates an image consisting of a gradient with color transitions rotated around a center point (rather than radiating from the center). Conic gradients include **pie charts** and **color wheels**
@@ -324,25 +326,28 @@ The `conic-gradient()` CSS function creates an image consisting of a gradient wi
   width: 250px;
   background: red;
   margin: 10px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .color-wheel {
   background: conic-gradient(red, orange, yellow, green, blue);
   border-radius: 50%;
 }
-.sunrays{
-    background: repeating-conic-gradient(yellow 0 15deg,orange 0 30deg);
+.sunrays {
+  background: repeating-conic-gradient(yellow 0 15deg, orange 0 30deg);
 }
 .chess {
-  background:
-     conic-gradient(#fff 0.25turn, #000 0.25turn 0.5turn, #fff 0.5turn 0.75turn, #000 0.75turn)
-     top left / 25% 25% repeat;
+  background: conic-gradient(
+      #fff 0.25turn,
+      #000 0.25turn 0.5turn,
+      #fff 0.5turn 0.75turn,
+      #000 0.75turn
+    ) top left / 25% 25% repeat;
 }
 
 .pie-chart {
-  background: conic-gradient(#ED7E31 0 25%, #FFC000 0 70%, #70AD47 0 100%);
-  border-radius: 50%
+  background: conic-gradient(#ed7e31 0 25%, #ffc000 0 70%, #70ad47 0 100%);
+  border-radius: 50%;
 }
 ```
 
@@ -363,3 +368,29 @@ The `conic-gradient()` CSS function creates an image consisting of a gradient wi
 }
 ```
 
+#### Nice hover effect on sidebar item
+
+```css
+.item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background-color: red;
+  transform: scaleY(0);
+  transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
+    background-color 0.1s;
+}
+
+.item:hover::before,
+.item-active::before {
+  transform: scaleY(1);
+  width: 100%;
+}
+
+.item:active::before {
+  background-color: orange;
+}
+```

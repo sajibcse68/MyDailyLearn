@@ -249,8 +249,8 @@ $(document).ready(function() {
 ```
 
 #### Animation using CSS
-```
-in css:                                 // make sure browser supports transition
+
+```css
 .vacation {
 transition: -10px;
 }

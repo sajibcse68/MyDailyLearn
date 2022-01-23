@@ -1,3 +1,12 @@
+### Why gas fee, what is mining?
+
+When tokens are sent over the network, each node in the network can propose new entries to be added to the ledger. These nodes validate transactions and compete with each other to solve a complex computational puzzle. In this process, they have to collect all recent network transactions, including some metadata, verify the transactions, guess a pseudo random number (**'nonce'**), and run all the data trough a `cryptographic algorithm (SHA-256)` to find the hash of the new block. This means that they have to perform computational work, which is the reason why this process is referred to as `"Proof-of-Word"`.
+
+If a node is the first one in the network to find the hash value, it can add the block to its ledger and broadcast the hash value of the new block, including all the block data, to the rest of the network. The nodes can now verify the validity of the hash. If they accept this newly added block of transactions as valid, they add the new block to their copy of the ledger.
+
+Proof-of-Work is designed in a way that the hash is difficult to find, whereas the solutions can be easily verified as true. By participating in this race of finding the hash value, mining nodes collectively make sure that all transactions included in a block are valid. The winning node is rewarded with the "block reward" in the form of newly minted network tokens (plus potential transaction fee / gas fee). This is why the process is referred to as "mining"!
+
+
 #### What is DEX?
 
 DEX stands for `“decentralized exchange”` and refers to a platform that enables the peer to peer trading of digital assets, otherwise known as cryptocurrencies. A DEX runs on a decentralized or ‘distributed’ database, called a `Blockchain`.

@@ -239,3 +239,7 @@ web3.eth.getTransactionCount("0x9e713963a92c02317a681b9bb3065a8249de124f")
 When you create a new transaction, you assign the next nonce in the sequence. But until it is confirmed, it will not count toward the `getTransactionCount total`.
 
 Parity’s JSON RPC interface offers the `parity_nextNonce` function, which returns the next nonce that should be used in a transaction. The parity_nextNonce function `counts nonces correctly`, even if you construct several transactions in rapid succession without confirming them.
+
+### Concepts
+
+- A malicious node, also called a byzantine node, can intentionally send wrong information to all the nodes involved in the consensus process!

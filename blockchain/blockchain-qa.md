@@ -7,7 +7,12 @@ If a node is the first one in the network to find the hash value, it can add the
 Proof-of-Work is designed in a way that the hash is difficult to find, whereas the solutions can be easily verified as true. By participating in this race of finding the hash value, mining nodes collectively make sure that all transactions included in a block are valid. The winning node is rewarded with the "block reward" in the form of newly minted network tokens (plus potential transaction fee / gas fee). This is why the process is referred to as "mining"!
 
 
-#### What is DEX?
+### How to adjust the difficulty of finding a hash value?
+
+The “difficulty” of finding that hash value, and therefore creating a block, adjusts over time in order to keep the interblock-time of 10 minutes4 relatively constant. It is adjusted periodically as a function of how much hashing power has been deployed by the network of miners. If blocks are
+created in less time than 10 minutes, difficulty increases. Likewise, if blocks take longer than 10 minutes to be created, difficulty decreases. Difficulty also increases with the level of competition—the number of other computers competing to validate a block.
+
+### What is DEX?
 
 DEX stands for `“decentralized exchange”` and refers to a platform that enables the peer to peer trading of digital assets, otherwise known as cryptocurrencies. A DEX runs on a decentralized or ‘distributed’ database, called a `Blockchain`.
 
@@ -15,7 +20,7 @@ Users sign up to a DEX via a web or mobile app. Then, they can use it to exchang
 
 Each DEX has many different trading pairs available for exchange, for example, Bitcoin and Ethereum, or XLM and USDT. Because the trades are happening on a decentralized exchange using a blockchain ledger, they happen very quickly, cheaply, and from any location or time zone.
 
-#### What are the 6 Methods of ERC20 Standard Tokens?
+### What are the 6 Methods of ERC20 Standard Tokens?
 
 1. totalSupply
 2. balanceOf
@@ -24,7 +29,7 @@ Each DEX has many different trading pairs available for exchange, for example, B
 5. approve
 6. allowance
 
-#### Coin vs Token vs Blockchain vs Protocol
+### Coin vs Token vs Blockchain vs Protocol
 
 Blockchain is the general technology. Then there are different protocols based on blockchain, and finally you have tokens for the various applications on a protocol.
 
@@ -38,7 +43,7 @@ Tokens serve a different purpose. If they were created to be used on a dApp, the
 
 Protocol are rules & regulations how to communicate with each other in Blockchain.
 
-#### What is Smart Contract and its characteristics?
+### What is Smart Contract and its characteristics?
 
 Smart contract refer to immutable computer programs that run deterministically in the contest of an Ethereum Virtual Machine as part of the Ethereum network protocol -- i.e, on the decentralized Ethereum world computer!
 

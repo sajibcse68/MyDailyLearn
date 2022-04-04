@@ -125,3 +125,19 @@ Most of the time when you visit any site and try to copy some text, it is just t
   color: #000;
 }
 ```
+
+### How to find an element that is causing the showing of horizontal scrolling in browser?
+
+```css
+.slide-content .scroller {
+  width: 1024px;
+}
+```
+
+The fastest way to add this in inspector:
+
+```css
+* {
+  outline: 1px solid #f00 !important;
+}
+```

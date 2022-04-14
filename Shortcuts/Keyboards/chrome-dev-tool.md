@@ -14,11 +14,11 @@
 - `Opt + Double-click on arrow icon` -- Expand/collapse node and all its children
 - `Cmd + \` -- pause/resume script execution
 
-#### Convert browser into an Editor
+# Convert browser into an Editor
 
 document.body.contentEditable=true
 
-#### Capture screenshot
+# Capture screenshot
 
 - Elements | select any node | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> | write `Capture node screenshot` | click
 
@@ -26,8 +26,9 @@ document.body.contentEditable=true
 
 - <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> | select an elemenet btn, top left corner | drag the portion want to take screenshot
 
-#### Negative filter in dev tool `console`
+# Negative filter in dev tool `console`
 
+```js
 ['one', 'two', 'three', 'four'].forEach(item => {
 console.log(item);
 });
@@ -37,8 +38,9 @@ console.log(item);
 Now, if we write `-two` in filter box
 
 // output: one, three, four
+```
 
-#### Timing Breakdown Phases Explained
+# Timing Breakdown Phases Explained
 
 > Open Chrome Inspector | Network | click on a request | Timing
 
@@ -57,14 +59,13 @@ Now, if we write `-two` in filter box
 - `Receiving Push:` The browser is receiving data for this response via `HTTP/2 Server Push`
 - `Reading Push:` The browser is reading the local data previously received
 
-
 [Ref](https://developers.google.com/web/tools/chrome-devtools/network/reference#timing-explanation)
 
-#### Quickly clear all the data from a website
+# Quickly clear all the data from a website
 
 Press `Cmd + Shift + P` | Type in clear | Select` Clear site data`
 
-Alternatively, you can navigate to the Application Panel > Clear Site 
+Alternatively, you can navigate to the Application Panel > Clear Site
 
 This clears the following:
 
@@ -76,10 +77,9 @@ This clears the following:
 - Local Storage
 - Application Cache
 
-#### How to debug the CSS on hover behavior of a component?
+# How to debug the CSS on hover behavior of a component?
 
-Tips #1
----
+## Tips #1
 
 Sometimes we need to test the hover behavior of a component on our website, but it was controlled by JS! And we can't move the cursor from the element, as it’ll revert to default behavior.
 
@@ -87,23 +87,25 @@ So, there is a keyboard shortcut for `pausing with the debugger` and the state s
 
     Devtools | Source tab | select and trigger the state of the element | press `F8`
 
-Tips #2
----
+## Tips #2
 
 Run the `setTimeout()` on your console | open the menu | wait for 5 seconds
 
 the debugger will automatically be applied and screen will be freezed.
 
-```
+```js
 setTimeout(() => {debugger;}, 5000)
 ```
-#### Multi-line editor in chrome dev-tools
+
+3 Multi-line editor in chrome dev-tools
 
 In chrome dev-tools we've coding playground (similar as CodePen or, CodeSandBox)!
 
-    Go to Sources | left drawer | optionally double arrow in “sub-tabs” | Snippets
+```sh
+Go to Sources | left drawer | optionally double arrow in “sub-tabs” | Snippets
+```
 
-#### Deep Dive into Debugging:
+# Deep Dive into Debugging:
 
 - Hide/Show an element
   - Elements | select any element | press `H` to toggle hide/show
@@ -128,6 +130,6 @@ In chrome dev-tools we've coding playground (similar as CodePen or, CodeSandBox)
   - `Memory Leaks` can be defined as memory that is not required by an application anymore that for some reason is not returned to the operating system or the pool of free memory.
   - If foo() call bar(), and bar() call foo() then it is caused `Memory Leak` cause it would never be ended (not garbage collection)
 
-### Reference:
+# Reference:
 
 1. https://developers.google.com/web/tools/chrome-devtools/

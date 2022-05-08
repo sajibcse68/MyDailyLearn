@@ -72,6 +72,27 @@ ul {
 }
 ```
 
+### Deep Dive into `object-fit` and `background-size`
+
+**Object-fit** - property defines how the content of a replaced element such as `img` or `video` should be resized to fit its container. The default value for `object-fit is fill`, which can result in an image squeezed or, stretched.
+
+- `object-fit: contain` resize the image to fit the aspect ration of its container. if the image's aspect ration doesn't match the container's, it will be either `letterboxed` or resized accordingly
+
+- `object-fit: cover` resize the image to fit the aspect ratio of its container, and if the image's aspect ratio doesn't match the container's, then it will be clipped to fit.
+
+- `object-fit: fill (default)` resize the aspect ration of its container, and if the image's aspect ration doesn't match the container's, it will be either `squeezed or stretched`
+
+- `object-fit: none` won't resize the image
+
+
+**background-size** - the first difference is that we're dealing with the background, not an HTML (`img`) element.
+
+- `background-size: auto`: will keep the image at its default size
+
+- `background-size: cover`: if the aspect rations are not the same, then the image will be masked to fit
+
+- `background-size: contain`: if the aspect rations are not the same, then the image will be letterboxed
+
 ### How to make a image fit
 
 ```css

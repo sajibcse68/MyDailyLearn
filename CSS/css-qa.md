@@ -84,7 +84,6 @@ ul {
 
 - `object-fit: none` won't resize the image
 
-
 **background-size** - the first difference is that we're dealing with the background, not an HTML (`img`) element.
 
 - `background-size: auto`: will keep the image at its default size
@@ -135,7 +134,7 @@ We might have seen some blogs with the `first letter being huge` and the text is
 When the page is scrolled by `#` link it could jump suddenly. To solve this problem, we can use:
 
 ```css
-scroll-behavior: smooth
+scroll-behavior: smooth;
 ```
 
 ### How to Display a Link When the Element has No Text But the Href Attribute Has a Link?
@@ -154,6 +153,19 @@ Most of the time when you visit any site and try to copy some text, it is just t
 ::selection {
   background-color: #f8e71c;
   color: #000;
+}
+```
+
+### How Can We Select the All Text of an Element?
+
+Sometimes we need to provide some content for users to select, such as phone numbers, addresses, titles, etc. We hope that when the user clicks on part of the text, the remaining text will be automatically selected!
+
+```css
+user-select: all
+
+/* add extra styles on selection  */
+::selection {
+  background-color: cyan;
 }
 ```
 

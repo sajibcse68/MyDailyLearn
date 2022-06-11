@@ -46,7 +46,7 @@ The components of an open, public blockchain are (usually):
 
 ### Decentralized Applications (DApps)
 
-`DApp` is a web application that is built on top of open, decentralized, peer-to-peer infrastructure services.
+`DApp` is a web application that is built on top of open, decentralized, peer-to-peer infrastructure services. So, it's a user-friendly interface for the blockchain and decentralized storage.
 
 A DApp is composed of at least:
 
@@ -57,6 +57,13 @@ In addition, many DApps include other decentralized components, such as:
 
 - A decentralized (P2P) storage protocol and platform
 - A decentralized (P2P) messaging protocol and platform
+
+### What is the Conditions for an dApp?
+
+1. `Decentralized`: first it must be decentralized and this is achieved by placing the smart contacts on the blockchain and the front-end and data store on decentralized storage
+2. `Deterministic`: meaning the dApp performs the same function no matter what environment it's executed in i.e web app or, mobile app or, something else. THe same input always produces the same output.
+3. `Turing complete`: meaning it can perform any action it's set up to perform provided its given enough resources.
+4. `Isolated`: meaning the operation or malfunction of a dApp is not impacted by and does not affect any other dApp or, entity in the same system.
 
 ### The Third Age of the Internet
 

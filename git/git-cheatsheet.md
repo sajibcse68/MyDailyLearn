@@ -486,7 +486,7 @@ $ git reflog                        # See all the task step by step
 $ git reset <HEAD no.>              # Return to present after a hard reset, e.g. HEAD@{8}
 $ git reset --hard                  # We moved to HAED@{8} completely
 $ git log --walk-reflogs            # More details
-$ git branch <branceName> HEAD@{1}  # Create a new branch with a commit (the branch is deleted where this commit was given)
+$ git branch <branchName> HEAD@{1}  # Create a new branch with a commit (the branch is deleted where this commit was given)
 ```
 
 ## Squash

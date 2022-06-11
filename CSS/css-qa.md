@@ -129,6 +129,39 @@ We might have seen some blogs with the `first letter being huge` and the text is
 
 <img src="../images/css-drop-cap-letter.png" alt="drop-cap-letter" width="400px"/>
 
+### How Can We Apply Styles If There is Any Error While Fetching the Image?
+
+We can add an `onerror` event to the `img` element. Then we can add a style to the element via the `onerror` event and user the 404 image.
+
+```html
+<img
+  src="https://miro.medium.com/xxx.jpg"
+  alt="fireworks picture"
+  onerror="this.classList.add('error');"
+/>
+
+<!-- css -->
+<style>
+  img.error {
+    color: transparent;
+    content: '';
+    display: inline-block;
+    transform: scale(1);
+  }
+  img.error::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #f5f5f5
+      url('https://cdn-images-1.medium.com/max/1600/1*we8wfyztsdo12e2Cww6oVA.jpeg')
+      no-repeat center / 100% 100%;
+  }
+</style>
+```
+
 ### How Can We Make the Scroll Smooth?
 
 When the page is scrolled by `#` link it could jump suddenly. To solve this problem, we can use:

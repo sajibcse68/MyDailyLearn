@@ -6,7 +6,6 @@ If a node is the first one in the network to find the hash value, it can add the
 
 Proof-of-Work is designed in a way that the hash is difficult to find, whereas the solutions can be easily verified as true. By participating in this race of finding the hash value, mining nodes collectively make sure that all transactions included in a block are valid. The winning node is rewarded with the "block reward" in the form of newly minted network tokens (plus potential transaction fee / gas fee). This is why the process is referred to as "mining"!
 
-
 ### How to adjust the difficulty of finding a hash value?
 
 The “difficulty” of finding that hash value, and therefore creating a block, adjusts over time in order to keep the interblock-time of 10 minutes4 relatively constant. It is adjusted periodically as a function of how much hashing power has been deployed by the network of miners. If blocks are
@@ -58,3 +57,12 @@ Smart contract refer to immutable computer programs that run deterministically i
 - `EVM context`: Smart contracts operate with a very limited execution context. They can access their own state, the context of the transaction that called them, and some information about the most recent blocks.
 
 `Decentralized world computer`: The EVM runs as a local instance on every Ethereum node, but because all instances of the EVM operate on the same initial state and produce the same final state, the system as a whole operates as a single “world computer.”
+
+### What is DeFi, GameFi, DeSci?
+
+- **DeFi (Decentralized Finance):** Financial transactions without a bank, on the decentralized blockchain. DeFi services use smart-contracts, automatic self-triggered logic functions on the blockchain to offer peer-to-peer financial instruments. The idea is, instead of using banks, brokerages, and exchangers to transfer money, make investments or do other financial transactions, everything goes on the blockchain, and smart contracts do the work previously handled by expensive intermediaries!
+
+- **GameFi:** is a blockchain based games that integrate with blockchain technologies to game rewards into money you can trade, invest and borrow again. For example in GameFi game you can get paid in cryptocurrencies for winning battles, growing vegetable or, renting out your land so others can mine it for minerals.
+
+- **DeSci (Decentralized Science):** is a web3 technologies such as decentralized storage, smart contacts, and decentralized organizations (DAOs) enable new possibilities for how science is incentivized, evaluated, financed and shared with the world. These emerging new technologies have a the potential to contribute to a scientific ecosystem that is more verifiable, more open, fairer, and of higher quality. -- DeSci Foundation. So the basic idea is to put science on the blockchain.
+

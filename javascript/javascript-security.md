@@ -36,9 +36,7 @@ Tips: avoid unsafe functions, validate input always. Sanitize data passed to int
 
 Third party packages may be prone to code injection. So, validate input data before passing them to libraries. External packages need to be audited for use of unsafe functions.
 
-## Defending against Prototype Pollution
-
-### Polluting the Object Prototype
+## Polluting the Object Prototype
 
 ```js
 const user = { name: 'Sajib Khan' }; // regular user
@@ -55,7 +53,23 @@ Solutions:
 
 - Validate JSON schema
 - Freeze the prototype
-  - Object.freeze
-- Create objects without prototype
+  - `Object.freeze`
+- Create objects without `prototype`
   - Object.create(null, ...)
-- Use Map instead of {}
+- Use `Map` instead of {}
+
+## Popular Security Testing Tools for JavaScript
+
+SAST (Static Application Security Testing)
+  - ESLint
+  - GitHub code scanning and LGTM
+  - semgrep
+
+OWASP ZAP
+  - Many commercial alternatives
+
+Dependency management
+  - npm audit
+  - Retire.js
+  - Dependency-Track
+  - Snyk

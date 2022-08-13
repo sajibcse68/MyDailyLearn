@@ -6,7 +6,6 @@ Yes!
 - Only browser APIs: limited access to resources allowed by the user
 - Same origin only: code and data from different sites cannot interact
 
-
 ## What are the JavaScript Security Pitfalls
 
 - Dynamic type system: abusing conversions and comparisons
@@ -27,7 +26,36 @@ Always "use strict" mode!
 1.  `eval`: e.g. eval(code)
 2.  `Function Constructor:` e.g.
     ```js
-        f = new Function('param', code);
-        f('argument');
+    f = new Function('param', code);
+    f('argument');
     ```
 
+Tips: avoid unsafe functions, validate input always. Sanitize data passed to interpreters.
+
+## What could be the Cautions to Use NPM Libraries or, Third-party Code?
+
+Third party packages may be prone to code injection. So, validate input data before passing them to libraries. External packages need to be audited for use of unsafe functions.
+
+## Defending against Prototype Pollution
+
+### Polluting the Object Prototype
+
+```js
+const user = { name: 'Sajib Khan' }; // regular user
+
+const malicious = { isAdmin: true }; // isAdmin is true for administrators only
+
+user['__proto__'] = malicious; // pollution
+
+console.log(user.isAdmin); // true. Escalation of privilege
+```
+
+Solutions:
+----------
+
+- Validate JSON schema
+- Freeze the prototype
+  - Object.freeze
+- Create objects without prototype
+  - Object.create(null, ...)
+- Use Map instead of {}

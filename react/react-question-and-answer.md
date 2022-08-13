@@ -117,7 +117,7 @@ const UserDetails = ({user, onedit}) => {
   )
 }
 
-export default `React.memo(UserDetails)`;
+export default React.memo(UserDetails);
 ```
 
 #### How to autofocus an input element programmatically?

@@ -39,6 +39,8 @@ These techniques are related to accessibility.
 - `Meta tags`. For example by using Schema.org, RDF, and JSON-LD
 - `WAI-ARIA`. A W3C technical specification that specifies how to increase the accessibility of web pages
 
+[Ref](https://www.frontendinterviewhandbook.com/css-questions#what-are-the-different-ways-to-visually-hide-content-and-make-it-available-only-for-screen-readers)
+
 ### How can we disable a link?
 
 ```css
@@ -185,6 +187,23 @@ scroll-behavior: smooth;
 ```css
 a[href^='http']:empty::before {
   content: attr(href);
+}
+```
+
+### How many @media properties are available?
+
+There are four types of `@media` properties:
+
+- `all` - for all media type devices
+- `print` - for printers
+- `speech` - for screenreaders that "reads" the page out loud
+- `screen` - for computer screens, tablets, smart-phones etc.
+
+```css
+@media print {
+  body {
+    color: black;
+  }
 }
 ```
 

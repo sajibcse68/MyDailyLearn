@@ -29,6 +29,16 @@ The clearfix property allows a container to wrap its floated children. Without a
 }
 ```
 
+#### What are the different ways to visually hide content (and make it available only for screen readers)?
+
+These techniques are related to accessibility.
+
+- `width: 0; height; 0`. Make the element not take up any space on the screen at all
+- `position: absolute; left: -99999px`. Position it outside of the screen
+- `text-indent: -9999px`. This only works on text within the `block` elements. This is the widely used and famous trick
+- `Meta tags`. For example by using Schema.org, RDF, and JSON-LD
+- `WAI-ARIA`. A W3C technical specification that specifies how to increase the accessibility of web pages
+
 ### How can we disable a link?
 
 ```css

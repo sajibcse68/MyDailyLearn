@@ -60,7 +60,7 @@ class FakeMath {
   // `random` is a static public method (ES2015 syntax)
   // that consumes `#computeRandomNumber`.
   static random() {
-    console.log('I heard you like random numbers…')
+    console.log('I heard you like random numbers…');
     return FakeMath.#computeRandomNumber();
   }
 }
@@ -77,18 +77,20 @@ FakeMath.#computeRandomNumber();
 ```
 
 #### Adding a Sponsor to the Sidebar
+
 - First: Using a Function Approach
 
 ```js
-function SponsorWidget(name, description, url) {   // Constructor functions are invoked with
-  this.name        = name;                         // the 'new' operator
+function SponsorWidget(name, description, url) {
+  // Constructor functions are invoked with
+  this.name = name; // the 'new' operator
   this.description = description;
-  this.url         = ulr;
+  this.url = ulr;
 }
 
-SponsorWidget.prototype.render = function() {
+SponsorWidget.prototype.render = function () {
   //...
-}
+};
 
 // Invoking the SponsorWidget function looks like this:
 let sponsorWidget = new SponsorWidget(name, description, url);
@@ -97,29 +99,31 @@ sponsorWidget.render();
 
 - Second: Using the New Class Syntax (Object Oriented Flavour like other OOP language)
 - To define a class, we use the **class** keyword followed by the name of the class. The body of a class is the part
-between curly braces.
+  between curly braces.
 
 ```js
 class SponsorWidget {
   constructor(name, description, url) {
-  //...
-  this.description = description;    // don't forget to use 'this' to access instance poperties and methods
-  this.url = url;
-}
+    //...
+    this.description = description; // don't forget to use 'this' to access instance poperties and methods
+    this.url = url;
+  }
 
   render() {
     let link = this._buildLink(this.url);
-                              // ^ can access previously assigned instance variables
+    // ^ can access previously assigned instance variables
   }
 
-  _buildLink(url) {     // Prefixing a method with an underscore is a convention for indicating that it should not be invoked from the public API (Private Method)
+  _buildLink(url) {
+    // Prefixing a method with an underscore is a convention for indicating that it should not be invoked from the public API (Private Method)
   }
 }
 ```
 
 #### Creating an Instance From a Class
+
 - The class syntax in not introducing a new object model to JavaScript. It's just **syntactical sugar** over the
-existing **prototype-based** inheritance.
+  existing **prototype-based** inheritance.
 
 ```js
 // syntactic Sugar              |  // Prototype Object Model
@@ -135,9 +139,10 @@ SponsorWidget.render();
 #### Class Inheritance
 
 - We can use class inheritance to reduce code repetition. Child classes **inherit** and **specialize** behavior
-defined in parent classes.
+  defined in parent classes.
 - The **extends keyword is used to create a class that inherits methods and properties** from another class. The
-**super** method runs the constructor function from parent class.
+  **super** method runs the constructor function from parent class.
+
 ```js
 // parent class                         | // child class
 class Widget {                          | class SponsorWidget extends Widget {
@@ -155,6 +160,7 @@ class Widget {                          | class SponsorWidget extends Widget {
 #### Overriding Inherited Methods
 
 - Child classes can invoke methods from their **parent** classes via the **super** object
+
 ```js
 // parent class                         | // child class
 class Widget {                          | class SponsorWidget extends Widget {
@@ -212,7 +218,7 @@ class Foo {
   }
 
   identify() {
-    return "I am " + this.me;
+    return 'I am ' + this.me;
   }
 }
 
@@ -222,4 +228,43 @@ class Bar extends Foo {
     super(who); // <-- this must come first
   }
 }
+```
+
+#### When are instance public fields executed?
+
+The execution of instance public fields roughly follows these `two` rules:
+
+- In base classes (classes without superclasses), instance public fields are executed `immediately` before the constructor
+- In derived classes (classes with superclasses):
+  - The superclass sets up its instance slots when `super()` is called
+  - Instance public fields are executed immediately after `super()`
+
+The following example demonstrates the rules:
+
+```js
+class SuperClass {
+  superProp = console.log('superProp');
+  constructor() {
+    console.log('super-constructor');
+  }
+}
+class SubClass extends SuperClass {
+  subProp = console.log('subProp');
+  constructor() {
+    console.log('BEFORE super()');
+    super();
+    console.log('AFTER super()');
+  }
+}
+new SubClass();
+```
+
+Output:
+
+```js
+BEFORE super()
+superProp
+super-constructor
+subProp
+AFTER super()
 ```

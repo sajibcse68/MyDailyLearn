@@ -9,6 +9,43 @@ CSS allows animation of HTML elements without using JavaScript or Flash!
 - To use CSS animation, we must first specify some **keyframes** for the animation
 - `Keyframes` hold what styles the element will have at certain times
 
+## Transition
+
+## Transform
+
+### Translate
+
+```css
+transform: translateX(20px); // horizontal move
+transform: translateY(20px); // vertical move
+transform: translate(20px, 20px); // both
+```
+
+### Scale
+
+```css
+  transform: scaleX(2); // width double
+  transform: scaleY(2): // height double
+  transform: scale(2, 2); // both simultaneously
+```
+
+### Rotate
+
+```css
+transform: rotate(90deg); // rotate 90 deg clockwise
+transform: rotate(-90deg); // rotate 90 deg counter clockwise
+transform: rotate(1 turn); // similar as 360deg
+```
+
+### Skew
+
+```css
+transform: skewX(30deg); // skew 30deg horizontal
+transform: skewY(30deg); // skew 30deg vertically
+transform: skew(30deg, 30deg); // both direction
+```
+
+### Transform Origin
 
 ## Some Important Animation Properties
 
@@ -23,8 +60,12 @@ The following example binds the "example" animation to the `<div>` element. The 
 ```css
 /* The animation code */
 @keyframes example {
-  from {background-color: red;}
-  to {background-color: yellow;}
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: yellow;
+  }
 }
 
 /* The element to apply the animation to */
@@ -42,10 +83,18 @@ The following example will change the background-color of the <div> element when
 ```css
 /* The animation code */
 @keyframes example {
-  0%   {background-color: red;}
-  25%  {background-color: yellow;}
-  50%  {background-color: blue;}
-  100% {background-color: green;}
+  0% {
+    background-color: red;
+  }
+  25% {
+    background-color: yellow;
+  }
+  50% {
+    background-color: blue;
+  }
+  100% {
+    background-color: green;
+  }
 }
 
 /* The element to apply the animation to */
@@ -135,7 +184,7 @@ The `animation-timing-function` property specifies the speed curve of the animat
 
 animation-timing-function property values:
 
-- `ease` - Specifies an animation with a slow start, then fast, then end slowly (this is default)
+- `ease` - (default) Specifies an animation with a slow start, then fast, then end slowly
 - `linear` - Specifies an animation with the same speed from start to end
 - `ease-in` - Specifies an animation with a slow start
 - `ease-out` - Specifies an animation with a slow end
@@ -143,11 +192,21 @@ animation-timing-function property values:
 - `cubic-bezier(n,n,n,n)` - Lets you define your own values in a cubic-bezier function
 
 ```css
-#div1 {animation-timing-function: linear;}
-#div2 {animation-timing-function: ease;}
-#div3 {animation-timing-function: ease-in;}
-#div4 {animation-timing-function: ease-out;}
-#div5 {animation-timing-function: ease-in-out;}
+#div1 {
+  animation-timing-function: linear;
+}
+#div2 {
+  animation-timing-function: ease;
+}
+#div3 {
+  animation-timing-function: ease-in;
+}
+#div4 {
+  animation-timing-function: ease-out;
+}
+#div5 {
+  animation-timing-function: ease-in-out;
+}
 ```
 
 ### animation-fill-mode

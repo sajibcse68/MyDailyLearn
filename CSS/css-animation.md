@@ -11,6 +11,9 @@ CSS allows animation of HTML elements without using JavaScript or Flash!
 
 ## Transition
 
+CSS transitions allows you to change property values smoothly, over a given duration. So, it provides a way to control animation speed when changing CSS properties. Instead of having property changes take effect immediately, you can cause the changes in a property to take place over a period of time. For example, if you change the color of an element from white to black, usually the change is instantaneous. With CSS transitions enabled, changes occur at time intervals that follow an acceleration curve, all of which can be customized.
+
+
 ## Transform
 
 ### Translate
@@ -19,6 +22,23 @@ CSS allows animation of HTML elements without using JavaScript or Flash!
 transform: translateX(20px); // horizontal move
 transform: translateY(20px); // vertical move
 transform: translate(20px, 20px); // both
+
+/* 3D */
+body {
+  /* we need to set a perspective first
+  the distance betn our eye and html body is 500px */
+  perspective: 500px;
+}
+
+img {
+  ...
+  transition: transform 1s;
+}
+
+img:hover {
+  transform: translateZ(300px);
+  /* it comes forward 300px to our eye so, seems like the img is zooming in */
+}
 ```
 
 ### Scale
@@ -35,6 +55,14 @@ transform: translate(20px, 20px); // both
 transform: rotate(90deg); // rotate 90 deg clockwise
 transform: rotate(-90deg); // rotate 90 deg counter clockwise
 transform: rotate(1 turn); // similar as 360deg
+
+/* 3D */
+
+body {
+  /* we need to set a perspective first
+  the distance betn our eye and html body is 500px */
+  perspective: 500px;
+}
 ```
 
 ### Skew
@@ -46,6 +74,26 @@ transform: skew(30deg, 30deg); // both direction
 ```
 
 ### Transform Origin
+
+when rotating an image we can set the transform origin (`center` is default value).
+
+```css
+img {
+  width: 300px;
+  height: 300px;
+  transition: transform 1s;
+  transform-origin: top; // top-center is the origin now
+  transform-origin: top left; // top-left is the origin now
+  transform-origin: 30% 80%; // origin is on 30% right and 80% bottom
+  transform-origin: 150px 150px; // origin is on center actually
+}
+
+img: hover {
+  transform: rotate(45deg);
+}
+```
+
+###
 
 ## Some Important Animation Properties
 

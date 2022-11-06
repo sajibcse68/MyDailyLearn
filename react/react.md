@@ -134,6 +134,31 @@ this.setState((prevState) => {
 });
 ```
 
+### What is useState Lazy Initialization?
+
+The arguments passed to `useState` is the `initialState`, the value which initialize your state in the **first** render and gets disregarded in subsequent renders. For example:
+
+```js
+
+const component = () => {
+  const [state, setState] = useState(getInitialThousandsItems());
+}
+```
+
+`Even though the initial value is disregarded upon next renders, the function which initializes it still gets called!`
+
+Lets assume **getInitialThousandsItems()** takes significant time so, in this case you can pass a `function` which returns initial
+state, this function will ony be executed once (initial render) and not on each render like the above code will. This is called the `lazy initialization of useState`.
+
+```js
+
+const component = () => {
+  const [state, setState] = useState(getInitialThousandsItems);
+}
+
+// getInitialThousandsItems() -> getInitialThousandsItems
+```
+
 ### When to Use Derived State
 
 `getDerivedStateFromProps` exists for only one purpose. It enables a component to update its internal state as the result of **changes in props**.

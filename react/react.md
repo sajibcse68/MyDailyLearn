@@ -49,6 +49,10 @@ Note: React `v15.5.0`, `PropTypes` is imported independently from React, like th
 import React, { PropTypes } from 'react';
 ```
 
+## React Hook Flow Diagram
+
+<img src="../images/react-hook-flow-diagram.png" alt="react-hook-flow-diagram" width="600px"/>
+
 ## React State
 
 ### Understanding React `setState`
@@ -294,6 +298,8 @@ document.getElementById('root');
 5. Call any local method of component
 6. React calls the components render method
 7. App returns `JSX`, gets rendered to page as HTML
+
+
 
 ## Understand Context API
 

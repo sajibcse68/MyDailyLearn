@@ -19,7 +19,7 @@ $ npm start     # run the app, default localhost:3000
 
 #### Use `Default Props`
 
-Default props allows us to spefify what a prop value should be if no value is explicitly provided.
+Default props allows us to specify what a prop value should be if no value is explicitly provided.
 
 ```js
 MyComponent.defaultProps = {

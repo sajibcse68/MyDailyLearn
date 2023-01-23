@@ -629,7 +629,7 @@ for (const i for makeIterable(100)) {
 
 #### Why `Eval` should be avoided!
 
-```
+```js
 function regimentmotto(number, motto) {
     eval('regiment' + number + ".motto = '" + motto + "'");
 }

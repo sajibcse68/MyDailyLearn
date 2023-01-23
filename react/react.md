@@ -50,7 +50,7 @@ import React, { PropTypes } from 'react';
 ```
 
 ## React Hook Flow Diagram
-
+.
 <img src="../images/react-hook-flow-diagram.png" alt="react-hook-flow-diagram" width="600px"/>
 
 ## React State

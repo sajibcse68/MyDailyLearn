@@ -532,6 +532,11 @@ import {
 
 ## Miscellaneous
 
+#### Priority flow of ENV files
+
+- **Dev** (npm start): .env.development.local, .env.local, .env.development, .env
+- **Prod** (npm run build): .env.production.local, .env.local, .env.production, .env
+
 #### Change the `tooltip` value with js when button is clicked
 
 ```
@@ -849,7 +854,7 @@ Number(parseFloat(123233.12).toFixed(2)).toLocaleString('en', {
 // result 123,233.12
 ```
 
-#### JavaScript Resources
+## JavaScript Resources
 
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript (MDN: mozilla developer network)
 - https://github.com/rwaldron/idiomatic.js (code styling)

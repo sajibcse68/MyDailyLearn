@@ -127,7 +127,7 @@ The `footer` element represents a footer for its nearest ancestor sectioning con
 article or page, but it is still related to the article or page.
 - Example usage of the `aside` tag withing a `section`
 
-```
+```html
 <section>
     <header>
         <!-- The header for this section -->

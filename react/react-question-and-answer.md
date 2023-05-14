@@ -12,14 +12,25 @@ Here are 3 ways to prevent component `re-rendering:
 
 We use `PureComponents` in `99%` of cases in modern React. However, if we are working with `Redux` selectors, often we will need to explicitly specify the incoming prop changes to cancel the impending re-render to prevent UI thrashing. In this case, it’s appropriate to use a Component.
 
-#### What is the `render props`?
+#### How can we avoid Props Drilling in React?
+
+We can avoid props drilling by using:
+
+1. Higher Order Component (HOC)
+2. Render Props
+
+#### What is the Render Props?
 
 When a component takes a function that returns a React element and calls it instead of implementing its own render logic.
 
 It's another technique for sharing code between React components:
 
 ```js
-<DataProvider render={(data) => <h1>Hello {data.target}</h1>} />
+<DataProvider render={(data) => <h1>Hello {data.target}</h1>} />;
+// inside DataProvider.jsx -> return props.render();
+
+Or, (<DataProvider>{(data) => <h1>Hello {data.target}</h1>}</DataProvider>);
+// inside DataProvider.jsx -> return props.children();
 ```
 
 #### React Unit Tests vs Integration Tests for Components
@@ -82,11 +93,11 @@ const App = () => {
 #### What can we do using "useEffect" comparative to Class component?
 
 ```js
-useEffect( () => console.log("mount"), [] );
-useEffect( () => console.log("will update data1"), [ data1 ] );
-useEffect( () => console.log("will update any") );
-useEffect( () => () => console.log("will update data1 or unmount"), [ data1 ] );
-useEffect( () => () => console.log("unmount"), [] );
+useEffect(() => console.log('mount'), []);
+useEffect(() => console.log('will update data1'), [data1]);
+useEffect(() => console.log('will update any'));
+useEffect(() => () => console.log('will update data1 or unmount'), [data1]);
+useEffect(() => () => console.log('unmount'), []);
 ```
 
 #### How to force a component `re-mount` when click on the same route?
@@ -163,16 +174,15 @@ componentDidMount() {
 Another way to block navigation using `Prompt` (react-router, v4), e,g.
 
 ```js
-import { Prompt } from 'react-router'
+import { Prompt } from 'react-router';
 
 const MyComponent = () => (
   <>
     <Prompt
       when={shouldBlockNavigation}
-      message='You have unsaved changes, are you sure you want to leave?'
+      message="You have unsaved changes, are you sure you want to leave?"
     />
     {/* Component JSX */}
   </>
-)
-
+);
 ```

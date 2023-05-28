@@ -65,6 +65,12 @@ Browser-centric metrics are no so important for web performance optimization!
 - It's automatic
 - You shouldn't use unload events, Cache-Control: no-store
 
+## Service Workers and Cache Storage
+
+### How does service worker work?
+
+<img src="../images/service-worker.png" alt="service-worker" width="500px"/>
+
 ## MixIn
 
 #### What is Latency?

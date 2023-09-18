@@ -276,10 +276,10 @@ Here is some important `commands` or `code snippets` on different topics that I 
   - [Migration from Class to Function Component](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/react/react-question-and-answer.md#migration-from-class-to-function-component)
 
 
-## [Node](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/nodejs/introduction.md)
-## [Angular](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/angular/angular.md)
-## [Gulp](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/gulp/gulp.md)
-## [Unit Testing](https://github.com/sajibcse68/MyDailyLearn/blob/master/javascript/unit-testing/mocha.md)
+## [Node](https://github.com/sajibcse68/MyDailyLearn/blob/master/nodejs/introduction.md)
+## [Angular](https://github.com/sajibcse68/MyDailyLearn/blob/master/angular/angular.md)
+## [Gulp](https://github.com/sajibcse68/MyDailyLearn/blob/master/gulp/gulp.md)
+## [Unit Testing](https://github.com/sajibcse68/MyDailyLearn/blob/master/unit-testing/mocha.md)
 
 # Docker
 

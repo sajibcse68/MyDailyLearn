@@ -1,15 +1,47 @@
-## Misc
+# Misc
 
-#### When we should use `useLayoutEffect` instead of `useEffect`?
+## Which is preferred, `useLayoutEffect` or `useEffect`?
 
-- **useLayoutEffect:** if you need to mutate the DOM and/or `do need` to perform measurements. This runs synchronously immediately after React has performed all DOM mutations. This can be useful if you need to make measurements (like getting the `scroll` position or other styles for an element) and then make DOM mutations **or** trigger a synchronous re-render by updating state
+###  useLayoutEffect vs useEffect
 
-- **useEffect:** if you don't need to interact with the DOM at all or your DOM changes are unobservable
+| useLayoutEffect                                      |  useEffect                                  |
+| ----------------------------------                   | -------------                               |
+| works Synchronously                                  | works Asynchronously                        |
+| runs Before the browser repaints the screen          | runs After the browser repaints the screen  |
+| Blocking, blocks the UI updates (visual changes)     | Non-blocking, does not block UI updates     |
+| use when need control before painting the UI updates | use in API call, side effects, etc.         |
 
-**Explanation:**
+### What would happen if a user clicks on a 'count button' on the UI?
 
-The `useEffect` runs _after_ react renders and ensures that effect callback does not block browser painting.This differs from the behavior in class components where `componentDidMount` and `componentDidUpdate` run `synchronously` after rendering.
+1. The user clicks the count button
+2. React updates the `count state` variable internally
+3. React handles the DOM mutation
+4. The `useLayoutEffect` hook is fired
+5. The browser waits for `useLayoutEffect` to finish and then paints the DOM changes to the browser screen
+6. The `useEffect` function is fired after the browser has painted the DOM changes
 
-However, if your effect is mutating the DOM (via a DOM node `ref`) and the DOM mutation will change the appearance of the DOM node between the time that it is rendered and your effect mutates it, then you **don't** want to use `useEffect` instead use `useLayoutEffect` otherwise the user could see a **`flicker`** when your DOM mutations take effect!
+
+```js
+  useEffect(() => {
+    console.log("log 1")
+  }, [])
+  useLayoutEffect(() => {
+    console.log("log 2")
+  }, [])
+
+/** 
+ * // output
+ * log 2
+ * log 1
+*/
+
+```
+
+### When to use `useLayoutEffect` instead of `useEffect`?
+
+- if you need to modify or, measure the DOM layout
+- animations, transitions, get the scroll position, etc.
+- component flickers when the state is updated, which means it first renders in a partially-ready state before re-rendering its final state right away
+- need synchronous control before painting the DOM changes on UI
 
 [Ref:](https://kentcdodds.com/blog/useeffect-vs-uselayouteffect)

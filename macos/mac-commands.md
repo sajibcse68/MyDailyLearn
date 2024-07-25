@@ -37,7 +37,8 @@ $ sudo                : Dnager! Become super user root
 ### Sort folders by size
 
 ```sh
-$ du -sh *                               # show all folders sizes of current location
+$ du -sh *                          # show all folders sizes of current location
+$ du -sh * | sort -h                # sort directories by size in human-readable mode
 $ du -k <path>
 $ du -ma | sort -nr | head -n 20    # show 20 largest files/folders under the current directory
 

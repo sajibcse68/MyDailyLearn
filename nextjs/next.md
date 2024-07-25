@@ -2,6 +2,10 @@
 
 Next, JS is an open-source, JavaScript framework that lets developers build static and server-side rendering web applications. Created by Zeit, Next JS doesn’t require any Webpack configuration and only needs npm run dev start building your next feature filled web application.
 
+## Next JS 14 Features
+
+- React Server Component
+
 ### What is the Advantages of Next.js?
 
 - Easy installation, project build, modification, and required package found.

@@ -282,6 +282,59 @@ div p {
 
 ## Mixin
 
+#### :has() pseudo class
+
+The CSS :has selector helps you select elements that contain elements that match the selector you pass into the :has() function. It’s essentially a “parent” selector. Example:
+
+```css
+/* Example 1: parent section has a specific element, ul */
+section:has(ul) {
+  background: red;
+}
+
+/* HTML */
+section>
+  <ul>
+    <li>Number</li>
+  </ul>
+</section>
+
+/* Example 2: parent section has both h2 and ul elements */
+section:has(h2):has(ul) {
+  background: red;
+}
+
+/* HTML */
+<section>
+  <h2>I am a heading 2</h2>
+  <ul>
+    <li>Number</li>
+  </ul>
+</section>
+
+/* Example 3: parent section has either h2 or p or, both elements */
+section:has(h2, p) {
+  background: red;
+}
+
+/* parent section does not have h3 element */
+section:not(:has(h3)) {
+  background: red;
+}
+
+/* parent section has an input that is checked, then the label gets bold */
+section:has(input:checked) label {
+  font-weight: 900;
+}
+
+/* form has a required input element */
+form:has(input:required) {
+  border: 1px solid red;
+}
+```
+
+N.B. Fortunately, the CSS :has() class is finally supported by all major browsers!
+
 #### :where() pseduo-class function
 
 The `:where()` CSS pseduo-class function takes a selector list as its argument, and selects any element that can be selected by one of the selectors in that list.

@@ -186,3 +186,93 @@ const MyComponent = () => (
   </>
 );
 ```
+
+#### Imperative vs Declarative Programming
+
+"Imperative programming is `how` you do something, and declarative programming is more like `what` you do."
+
+Let's try to explain imperative and declarative programming with example:
+
+##### Example 1: You and your husband have gone to a restaurant.
+
+- Imperative: I see that table located under the Gone Fishin' sign is empty. My husband and I are going to walk over there and sit down.
+
+- Declarative: Table for two, please
+
+Explanation: The imperative approach is concerned with `how` you're actually going to get a seat. You need to list out the steps, to be able to show `how` you're going to get a table. The declarative approach is more concerned with `what` you want, a table for two.
+
+##### Example 2: I'm right next to Wal-Mart. How do I get to your house from here?
+
+- Imperative: Go out of the north exit of the parking lot and take a left. Get on I-15 going North until you get to the 12th street exit. Take a right off the exit like you’re going to Ikea. Go straight and take a right at the first light. Continue through the next light then take your next left. My house is #298.
+
+- Declarative: My address is 298 West Immutable Alley, Eden, Utah 84310
+
+Explanation: Regardless of how I get to your house, what really matters is the car I drive. Am I going to drive an imperative stick shift car or a declarative automatic car?
+
+##### Coding Examples:
+
+```js
+/**
+ * 1. Write a function called double which takes in an array of numbers and returns a new array after doubling
+ * every item in that array – double([1,2,3]) // [2,4,6].
+ */
+
+// Imperative
+function double(arr) {
+  let results = [];
+  for (let i = 0; i < arr.length; i++) {
+    results.push(arr[i] * 2);
+  }
+  return results;
+}
+
+
+// Declarative
+function double(arr) {
+  return arr.map((item) => item * 2);
+}
+
+/**
+ * 2. Write a function called add which takes in an array and returns the result of adding up every
+ * item in the array – add([1,2,3]) // 6
+ */
+
+// Imperative
+function add(arr) {
+  let result = 0;
+  for (let i = 0; i < arr.length; i++) {
+    result += arr[i];
+  }
+  return result;
+}
+
+// Declarative
+
+function add(arr) {
+  return arr.reduce((prev, current) => prev + current, 0);
+}
+
+/**
+ * 3. Add a click event handler to the element which has an id of btn. When clicked, toggle (add or remove)
+ * the highlight class as well as change the text to Add Highlight or Remove Highlight depending
+ * on the current state of the element
+ */
+
+// Imperative
+
+$("#btn").click(function () {
+  $(this).toggleClass("highlight");
+  $(this).text() === "Add Highlight"
+    ? $(this).text("Remove Highlight")
+    : $(this).text("Add Highlight");
+});
+
+// Declarative
+
+<Btn
+  onToggleHighlight={handleToggle}
+  highlight={highlight}>
+    {buttonText}
+</Btn>
+
+```

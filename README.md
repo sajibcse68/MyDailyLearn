@@ -1,6 +1,12 @@
 # MyDailyLearn
 Here is some important `commands` or `code snippets` on different topics that I am learning in my developing life.
 
+## Support the Project ⭐
+
+✨ Feeling awesome? Show your support by starring and sharing this repo! It helps boost visibility and motivates me to keep growing it daily. 🙏
+
+<img alt="star_us" width="250" src="./star_us.gif">
+
 ## Table of Contents
 - [MyDailyLearn](#mydailylearn)
   - [Table of Contents](#table-of-contents)

@@ -8,8 +8,6 @@ Here is some important `commands` or `code snippets` on different topics that I 
 <img alt="star_me" width="250" src="./images/star_me.gif">
 
 ## Table of Contents
-- [MyDailyLearn](#mydailylearn)
-  - [Table of Contents](#table-of-contents)
 - [React](#react)
 - [Git](#git)
 - [JavaScript](#javascript)
@@ -23,14 +21,12 @@ Here is some important `commands` or `code snippets` on different topics that I 
 
 ## [React](react/react.md)
 
-### Table of Contents
-
 <details open>
 <summary>
 Hide/Show table of contents
 </summary>
 
-| No.                     | Questions                                                                                                               |
+| Category                | Question                                                                                                               |
 | ----------------------- |-----------------------------------------------------------------------------------------------------|
 |  **Basic**              |                                                                                                     |
 |                         | [What is React](react/react.md#what-is-react)                                                       |

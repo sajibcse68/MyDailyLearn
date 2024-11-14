@@ -99,7 +99,7 @@ since there is a two callback queue: MicroTask Queue and Callback Queue. Promise
 
 #### What are the rules for the execution of asynchronously delayed code?
 
-Hold promise-deferred functions in a microtask queue and callback function in a task queue (Callback queue) when the Wb Browser Feature (API) finishes.
+Hold promise-deferred functions in a microtask queue and callback function in a task queue (Callback queue) when the Web Browser Feature (API) finishes.
 
 Add the function to the Call Stack (i.e. run the function) when:
 

@@ -31,18 +31,18 @@ Hide/Show table of contents
 </summary>
 
 | Category                | Question                                                                                                               |
-| ----------------------- |-----------------------------------------------------------------------------------------------------|
-|  **Basic**              |                                                                                                     |
+| ----------------------- |------------------------------------------------------------------------------------------------------------------------|
+|                         | <h3>Basic</h3>              |                                                                                          |
 |                         | [What is React](react/react.md#what-is-react)                                                       |
 |                         | [Installing](react/react.md#installing)                                              |
-| **React Props**         |                                                                                                    |
+|                         | <h3>React Props</h3>         |                                                                                                    |
 |                         | [Use Default Props](react/react.md#use-default-props)|
 |                         | [Use PropTypes to Define the Props We Expect](react/react.md#use-proptypes-to-define-the-props-we-expect)|
-| **Life Cycle**          |                                                                                                    |
+|                         | <h3>Life Cycle</h3>          |                                                                                                    |
 |                         | [React Hook Flow Diagram](react/react.md#react-hook-flow-diagram)|
 |                         | [React App Life-cycle Walk through](react/react.md#react-app-life-cycle-walk-through)|
 |                         | [LifeCycle Methods in Class Component](react/react.md#lifecycle-methods-in-class-component)|
-| **React State**         | |
+|                         | <h3>React State</h3>         | |
 |                         | [Understanding React `setState`](react/react.md#understanding-react-setstate)|
 |                         | [Update a State Property](react/react.md#update-a-state-property)|
 |                         | [Passing a Function to `setState()`](react/react.md#passing-a-function-to-setstate)|
@@ -50,35 +50,47 @@ Hide/Show table of contents
 |                         | [What is useState Lazy Initialization?](react/react.md#what-is-usestate-lazy-initialization)|
 |                         | [When to Use Derived State?](react/react.md#when-to-use-derived-state)|
 |                         | [Alternative State Initialization](react/react.md#alternative-state-initialization)|
-| **Type of Components**  |
+|                         | <h3>**React Hooks**</h3> |
+| **useLayoutEffect**     |                      |
+|                         | [Which is preferred, `useLayoutEffect` or `useEffect`?](react/react.md#uselayouteffect---which-is-preferred-uselayouteffect-or-useeffect) |
+|                         | [useLayoutEffect vs useEffect](react/react.md#uselayouteffect-vs-useeffect) |
+|                         | [What would happen if a user clicks on a 'count button' on the UI?](react/react.md#what-would-happen-if-a-user-clicks-on-a-count-button-on-the-ui) |
+|                         | [When to use `useLayoutEffect` instead of `useEffect`?](react/react.md#when-to-use-uselayouteffect-instead-of-useeffect) |
+| **useImperativeHandle** | |
+|                         | [What is `useImperativeHandle` hook?](react/react.md#what-is-useimperativehandle-hook) |
+|                         | [Why use useImperativeHandle?](react/react.md#why-use-useimperativehandle) |
+|                         | [How useImperativeHandle works?](react/react.md#how-useimperativehandle-works) |
+|                         | [How can we focus a child component's input element using `useImperativeHandle`](react/react.md#how-can-we-focus-a-child-components-input-element-using-useimperativehandle) |
+|                         | [When to use `useImperativeHandle`](react/react.md#when-to-use-useimperativehandle) |
+|                         | <h3>Type of Components</h3>  |                      |
 |                         | [Stateless Functional Component, Stateless Component and Stateful Component](react/react.md#stateless-functional-component-stateless-component-and-stateful-component)|
 |                         | [Compound Component](react/react.md#compound-components)|
 |                         | [Uncontrolled Component](react/react.md#uncontrolled-components)|
 |                         | [Controlled Component](react/react.md#controlled-components)|
 |                         | [Higher Order Component](react/react.md#higher-order-components)|
-| **Fragment**            |
+|                         | <h3>Fragment<h3>            |
 |                         | [React Fragment](react/react.md#react-fragment)|
-| **Refs and the DOM**    |
+|                         | <h3>Refs and the DOM<h3>    |
 |                         | [Refs and the DOM](react/react.md#refs-and-the-dom)|
 |                         | [When to Use Refs](react/react.md#when-to-use-refs)|
 |                         | [Creating Refs](react/react.md#creating-refs)|
 |                         | [Accessing Refs](react/react.md#accessing-refs)|
 |                         | [Use Callback on Image Load with Ref](react/react.md#use-callback-on-image-load-with-ref)|
-| **React Portals**       |
+|                         | <h3>React Portals<h3>       |
 |                         | [React Portals](react/react.md#react-portals)|
 |                         | [Usage of Portals](react/react.md#usage-of-portals)|
-| **React Route**         |
+|                         | <h3>React Route<h3>         |
 |                         | [Familiar with Various React Router Libraries](react/react.md#familiar-with-various-react-router-libraries)|
 |                         | [How to Not Navigation with React Router](react/react.md#how-to-not-navigation-with-react-router)|
 |                         | [Three (3) Types of Router](react/react.md#3-types-of-router)|
-| **Context API**         |
+|                         | <h3>Context API<h3>         |
 |                         | [Understand Context API](react/react.md#understand-context-api)|
 |                         | [Referencing Context in Stateless Functional Components](react/react.md#referencing-context-in-stateless-functional-components)|
 |                         | [Redux vs Context API](react/react.md#redux-vs-context-api)|
-| **Performance**         | |
+|                         | <h3>Performance<h3>         | |
 |                         | [Use of react-addons-perf](react/react.md#use-of-react-addons-perf) |
 |                         | [What are the tricks we can use to optimize react app?](react/react.md#what-are-the-tricks-we-can-use-to-optimize-react-app) |
-| **Miscellaneous**       |
+|                         | <h3>Miscellaneous<h3>       |
 |                         | [React vs ReactDOM](react/react.md#react-vs-reactdom)|
 |                         | [How to Prevent from `re-rendering`?](react/react.md#how-to-prevent-components-from-re-rendering)|
 |                         | [When to Use Component Instead of `PureComponent`?](react/react.md#when-to-use-component-instead-of-purecomponent)|
@@ -88,7 +100,6 @@ Hide/Show table of contents
 |                         | [Migration from Class to Function Component](react/react.md#migration-from-class-to-function-component)|
 |
 </details>
-
 
 # [Git](git/git-cheatsheet.md)
 

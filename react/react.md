@@ -231,6 +231,21 @@ Derived state should be used sparingly. All problems with derived state that we 
 static getDerivedStateFromProps(props, state)
 ```
 
+### What is `flusSync`?
+
+**flushSync** lets you force React to flush any updates inside the provided callback synchronously. This ensures that the DOM is updated immediately.
+
+```js
+import { flushSync } from 'react-dom';
+
+flushSync(() => {
+  setSomething(123);
+});
+
+```
+
+React will immediately call this callback and flush any updates it contains synchronously. It may also flush any pending updates, or Effects, or updates inside of Effects. If an update suspends as a result of this flushSync call, the fallbacks may be re-shown.
+
 ### Alternative State Initialization
 
 we can initialize `state` directly in Class instead of inside constructor. [Babel](https://babeljs.io/repl) product the same output after processing.

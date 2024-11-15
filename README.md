@@ -30,7 +30,7 @@ This repository is a collection of useful commands, code snippets, and tutorials
 Hide/Show table of contents
 </summary>
 
-| Category                | Question                                                                                                               |
+| Topic                   | Question                                                                                                               |
 | ----------------------- |------------------------------------------------------------------------------------------------------------------------|
 |                         | <h3>Basic</h3>              |                                                                                          |
 |                         | [What is React](react/react.md#what-is-react)                                                       |
@@ -43,12 +43,17 @@ Hide/Show table of contents
 |                         | [React App Life-cycle Walk through](react/react.md#react-app-life-cycle-walk-through)|
 |                         | [LifeCycle Methods in Class Component](react/react.md#lifecycle-methods-in-class-component)|
 |                         | <h3>React State</h3>         | |
+| **SetState**            |          |
 |                         | [Understanding React `setState`](react/react.md#understanding-react-setstate)|
 |                         | [Update a State Property](react/react.md#update-a-state-property)|
 |                         | [Passing a Function to `setState()`](react/react.md#passing-a-function-to-setstate)|
 |                         | [Access Previous State using Updater](react/react.md#access-previous-state-using-updater)|
+| **Lazy Initialization** |
 |                         | [What is useState Lazy Initialization?](react/react.md#what-is-usestate-lazy-initialization)|
-|                         | [When to Use Derived State?](react/react.md#when-to-use-derived-state)|
+| **Derived State**       | |
+|                         | [When to Use Derived State?](react/react.md#when-to-use-derived-state) |
+| **flushSync**           |
+|                         | [What is `flusSync`?](react/react.md#what-is-flussync) |
 |                         | [Alternative State Initialization](react/react.md#alternative-state-initialization)|
 |                         | <h3>**React Hooks**</h3> |
 | **useLayoutEffect**     |                      |

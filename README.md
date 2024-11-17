@@ -12,18 +12,12 @@ This repository is a collection of useful commands, code snippets, and tutorials
 <img alt="star_me" width="250" src="./images/star_me.gif">
 
 ## Table of Contents
-- [React](#react)
-- [Git](#git)
-- [JavaScript](#javascript)
-  - [Vanilla JavaScript](#vanilla-javascript)
-  - [Vue](#vue)
-  - [Node](#node)
-  - [Angular](#angular)
-  - [Gulp](#gulp)
-  - [Unit Testing](#unit-testing)
-- [Docker](#docker)
 
-## [React](react/react.md)
+|                            |                                                      |                        |                          |                        |                              |                          |                                |                                          |
+| -------------------------- |----------------------------------------------------- | ---------------------- | ------------------------ | ---------------------- | ---------------------------- | ------------------------ |------------------------------- | ---------------------------------------- |
+| <h3>[React](#react-1)</h3> | <h3>[Vanilla JavaScript](#vanilla-javascript-1)</h3> | <h3>[Git](#git-1)</h3> | <h3>[Node](#node-1)</h3> | <h3>[Vue](#vue-1)</h3> | <h3>[Docker](#docker-1)</h3> | <h3>[Gulp](#gulp-1)</h3> | <h3>[Angular](#angular-1)</h3> | <h3>[Unit Testing](#unit-testing-1)</h3> |
+
+# [React](react/react.md)
 
 <details open>
 <summary>
@@ -35,7 +29,7 @@ Hide/Show table of contents
 |                         | <h3>Basic</h3>              |                                                                                          |
 |                         | [What is React](react/react.md#what-is-react)                                                       |
 |                         | [Installing](react/react.md#installing)                                              |
-|                         | <h3>React Props</h3>         |                                                                                                    |
+|                         | <h3>React Props</h3>         |
 |                         | [Use Default Props](react/react.md#use-default-props)|
 |                         | [Use PropTypes to Define the Props We Expect](react/react.md#use-proptypes-to-define-the-props-we-expect)|
 |                         | <h3>Life Cycle</h3>          |                                                                                                    |
@@ -103,8 +97,114 @@ Hide/Show table of contents
 |                         | [What is the `render props`?](react/react.md#what-is-the-render-props)|
 |                         | [React Unit Tests vs Integration Tests for Components?](react/react.md#react-unit-tests-vs-integration-tests-for-components)|
 |                         | [Migration from Class to Function Component](react/react.md#migration-from-class-to-function-component)|
-|
 </details>
+
+# [Vanilla JavaScript](javascript/javascript.md)
+
+<details open>
+<summary>
+Hide/Show Table of Contents
+</summary>
+
+| Topic        | Question |
+|--------------|----------|
+|  | <h3>Hoisting</h3>  |
+|  | [Explain `Hoisting` in JavaScript](javascript/hoisting.md#explain-hoisting-in-javascript) |
+|  | [Why `Hoisting` Important?](javascript/hoisting.md#why-hoisting-is-important) |
+|  | [First, memory is set aside for all necessary variables and declared functions](javascript/hoisting.md#first-memory-is-set-aside-for-all-necessary-variables-and-declared-functions) |
+|  | [Function Expressions are never hoisted! They are treated as assignments](javascript/hoisting.md#function-expressions-are-never-hoisted-they-are-treated-as-assignments) |
+|  | [Check if return statement is at the top](javascript/hoisting.md#check-if-return-statement-is-at-the-top) |
+|  | [Analyzing Hoisting Load Order I](javascript/hoisting.md#analyzing-hoisting-load-order-i) |
+|  | [Analyzing load order II](javascript/hoisting.md#analyzing-load-order-ii) |
+|  | [Analyzing Load Order III](javascript/hoisting.md#analyzing-load-order-iii) |
+|  | [The variables declared with `let` or `const` are hoisted but stay `uninitialised`](javascript/hoisting.md#the-variables-declared-with-let-or-const-are-hoisted-but-stay-uninitialised) |
+|  | <h3>Closure</h3> |  |
+|  | [Closures and References](javascript/closure.md) |
+|  | [Closures Help in Function `Construction Zones`](javascript/closure.md#closures-help-in-function-construction-zones) |
+|  | [Loops with Closure: A cautionary Tale](javascript/closure.md#loops-with-closure-a-cautionary-tale-be-a-closure-master) |
+|  | <h3>Prototypes and Inheritance</h3> |  |
+|  | [Prototypes!](javascript/prototypes.md#prototypes) |
+|  | [What is Constructor call?](javascript/prototypes.md#what-is-a-constructor-call) |
+|  | [What is `[[Prototype]]` and where does it come from?](javascript/prototypes.md#what-is-prototype-and-where-does-it-come-from) |
+|  | [How does `[[Prototype]]` affect the behavior of an object?](javascript/prototypes.md#how-does-prototype-affect-the-behavior-of-an-object) |
+|  | [What is the 3 different ways to find where an object`[[Prototype]]` linked to?](javascript/prototypes.md#what-is-the-3-different-ways-to-find-where-an-object-say-ob-prototype-is-linked-to) |
+|  | [Discuss: `__proto__`, `[[Prototype]]`, `prototype`](javascript/prototypes.md#discuss-__proto__-prototype-and-prototype) |
+|  | [Two mechanism always exists in JavaScirpt -- Lexical Scopes & Prototype Chain](javascript/prototypes.md#two-mechanism-always-exists-in-javascript-codes----lexical-scopes--prototype-chain) |
+|  | [Object Oriented in JavaScript](javascript/prototypes.md#object-oriented-in-javascript) |
+|  | [Explanation of Prototype](javascript/prototypes.md#explanation-of-prototype) |
+|  | [When an inherited function is executed, the value of `this` points to the inheriting object, not to the `prototype object` where the function is an own property](javascript/prototypes.md#when-an-inherited-function-is-executed-the-value-of-this-points-to-the-inheriting-object-not-to-the-prototype-object-where-the-function-is-an-own-property) |
+|  | [New object using Object.create() (ES5)](javascript/prototypes.md#new-object-using-objectcreate-es5) |
+|  | [New object using `class` syntactical sugar](javascript/prototypes.md#new-object-using-class-syntactical-sugar) |
+|  | [Similar in Object pattern](javascript/prototypes.md#similar-in-object-pattern) |
+|  | [Use `hasOwnProperty()` to know if the property exists as it's own property](javascript/prototypes.md#use-hasownproperty-to-know-if-the-property-exists-as-its-own-property) |
+|  | [Prototype shadowing](javascript/prototypes.md#prototype-shadowing) |
+|  | [Avoid Shadowing](javascript/prototypes.md#avoid-shadowing) |
+|  | [Object Linked](javascript/prototypes.md#object-linked) |
+|  | [`OLOO` (Object Linked to Other Object): delegated objects](javascript/prototypes.md#oloo-object-linked-to-other-object-delegated-objects) |
+|  | [Convert the above codes to OLOO](javascript/prototypes.md#convert-the-above-codes-to-oloo) |
+|  | [Class in ES6](javascript/prototypes.md#class-in-es6) |
+|  | [Different ways to create objects and the resulting prototype chain](javascript/prototypes.md#different-ways-to-create-objects-and-the-resulting-prototype-chain) |
+|  | [Dig into some examples from MDN](javascript/prototypes.md#dig-into-some-examples-from-mdn) |
+|  | [Notes](javascript/prototypes.md#notes) |
+|  | [We have to call `super` first in constructor](javascript/prototypes.md#we-have-to-call-super-first-in-constructor) |
+|  | <h3>Coercion</h3> |  |
+|  | [Explain `Coercion` in JavaScript with examples](javascript/coercion.md#q-explain-coercion-in-javascript) |
+|  | <h3>Class</h3> |  |
+|  | [Public class fields](javascript/class.md#public-class-fields) |
+|  | [Private class fields](javascript/class.md#private-class-fields) |
+|  | [Public and static properties](javascript/class.md#public-and-static-properties) |
+|  | <h3>JavaScript `this` keyword</h3> |  |
+|  | [How does `this` keyword change in different context?](javascript/this-keyword.md#q-how-does-this-keyword-change-in-different-context) |
+|  | [1. `this` in Global Context](javascript/this-keyword.md#1-this-in-a-global-context) |
+|  | [2. `this` in Object Constructor](javascript/this-keyword.md#2-this-in-object-constructor) |
+|  | [3. `this` in an Object Method](javascript/this-keyword.md#3-this-in-an-object-method) |
+|  | [4. `this` in a Simple function](javascript/this-keyword.md#4-this-in-a-simple-function) |
+|  | [5. `this` in a Arrow function](javascript/this-keyword.md#5-this-is-in-arrow-function) |
+|  | [6. `this` in Event listener](javascript/this-keyword.md#6-this-in-event-listeners) |
+|  | [Default Rules](javascript/this-keyword.md#default-rules) |
+|  | [Hard Binding of `this`](javascript/this-keyword.md#hard-binding) |
+|  | [Priority of `this` binding (top -> bottom: hight -> low)](javascript/this-keyword.md#priority-of-this-binding-top---bottom-high---low) |
+|  | <h3>Immediately Invoked Function Expression (IIFE)</h3> |  |
+|  | <h3>Event Loop</h3> |  |
+|  | [Underesting Asynchronous JavaScript --- Event Loop](javascript/event-loop.md#understanding-asynchronous-javascriptthe-event-loop) |
+|  | [Example 1](javascript/event-loop.md#example-1) |
+|  | [Example 2](javascript/event-loop.md#example-2) |
+|  | [Example 3: Callback Hell](javascript/event-loop.md#example-3-callback-hell) |
+|  | <h3>JavaScript Reactivity</h3> | 
+|  | [JavaScript Reactivity using 'Object.defineProperty()'](javascript/js-reactivity-visuality.js)  |
+|  | <h3>Miscellaneous</h3> |  |
+|  | [What is asynchronous programming and why is it important?](javascript/javascript-qa.md#what-is-asynchronous-programming-and-why-is-it-important-in-javascript) |
+|  | [Explain Event Delegation](javascript/javascript-qa.md#explain-event-delegation) |
+|  | [Describe Event Bubbling](javascript/javascript-qa.md#describe-event-bubbling-bubble-up) |
+|  | [What are benefits of `named` function over a `anonymous` function](javascript/javascript-qa.md#what-are-benefits-of-a-named-function-over-a-anonymous-function) |
+|  | [Difference between `target` vs `currentTarget`](javascript/javascript-qa.md#difference-between-target-and-currenttarget) |
+|  | [What is `Factory Function`?](javascript/javascript-qa.md#what-is-factory-function) |
+|  | [Difference: `null`, `undefined` and `undeclared`?](javascript/javascript-qa.md#difference-between-a-variable-that-is-null-undefined-or-undeclared) |
+|  | [What does JavaScript `get` and `getter` keyword do?](javascript/javascript-qa.md#what-does-javascript-get-or-getter-keyword-do) |
+|  | [Define a getter on new objects in object initializers](javascript/javascript-qa.md#defining-a-getter-on-new-objects-in-object-initializers) |
+|  | [Defining a getter on existing objects using `defineProperty`](javascript/javascript-qa.md#defining-a-getter-on-existing-objects-using-defineproperty) |
+|  | [Using a computed property](javascript/javascript-qa.md#using-a-computed-property-name) |
+|  | [Get vs defineProperty()](javascript/javascript-qa.md#get-vs-definepropery) |
+|  | [What is the `two` conditions of being `Module`?](javascript/javascript-qa.md#what-is-the-two-conditions-of-being-a-module) |
+|  | [How to get `Unique` values of an Array?](javascript/javascript-qa.md#how-to-get-unique-values-of-an-array) |
+|  | [How to remove all `falsy` values from an Array?](javascript/javascript-qa.md#how-can-remove-all-falsy-values-from-an-array) |
+|  | [How to create an `Empty` Object?](javascript/javascript-qa.md#how-to-create-an-empty-objects) |
+|  | [How to require function parameters by force?](javascript/javascript-qa.md#how-to-require-function-parameters-by-force) |
+|  | [How to get Query String Parameters?](javascript/javascript-qa.md#how-to-get-query-string-parameters) |
+|  | [What is `Debouncing` in JavaScript?](javascript/javascript-qa.md#what-is-debouncing-in-javascript) |
+|  | [How to determine what should be the `this` keyword value?](javascript/javascript-qa.md#how-to-determine-what-should-be-the-this-keyword-value) |
+|  | [Convert a string to `spinal` string](javascript/javascript-qa.md#convert-a-string-to-spinal-string-spinal-string-case-is-all-lowercase-words-joined-by-dashes) |
+|  | [What type of `Scoping Rule(s)` does JavaScript have?](javascript/javascript-qa.md#what-type-of-scoping-rules-does-javascript-have) |
+|  | [What are `3` different ways we can create a new Scoped variable?](javascript/javascript-qa.md#what-are-3-different-ways-we-can-create-a-new-scoped-variable) |
+|  | [What are the four things the new keyword actually does when we put in front of a function call?](javascript/javascript-qa.md#what-are-the-four-things-the-new-keyword-actually-does-when-we-put-in-front-of-a-function-call-aka-constructor-call) |
+|  | [What is the different between `undeclared` and `undefined`?](javascript/javascript-qa.md#what-is-the-different-between-undeclared-and-undefined) |
+|  | [What is the only value in JS that is not equal to itself!?](javascript/javascript-qa.md#what-is-the-only-value-in-js-that-is-not-equal-to-itself) |
+|  | [What does happen when we declare a variable with `var` and `let`?](javascript/javascript-qa.md#what-does-happen-when-we-declare-a-variable-with-var-and-let) |
+|  | [Compare: `null`, `undefiend`, `NaN`](javascript/javascript-qa.md#compare-null-undefined-nan) |
+|  | [Implement an Event Emitter that supports standard operations](javascript/javascript-qa.md#implement-an-event-emitter-that-supports-standard-operations) |
+|  | [How to Write Optimized JavaScript?](javascript/javascript-qa.md#how-to-write-optimized-javascript) |
+</details>
+
 
 # [Git](git/git-cheatsheet.md)
 
@@ -157,113 +257,7 @@ Hide/Show table of contents
   - The Seven Rules of a Great Git Commit Message
   - Difference between HEAD~ and HEAD^
 
-# [JavaScript](javascript/javascript.md)
-
-## [Vanilla JavaScript](javascript/javascript.md)
-
-- [**Hoisting**](javascript/hoisting.md)
-  - [Explain `Hoisting` in JavaScript](javascript/hoisting.md#explain-hoisting-in-javascript)
-  - [Why `Hoisting` Important?](javascript/hoisting.md#why-hoisting-is-important)
-  - [First, memory is set aside for all necessary variables and declared functions](javascript/hoisting.md#first-memory-is-set-aside-for-all-necessary-variables-and-declared-functions)
-  - [Function Expressions are never hoisted! They are treated as assignments](javascript/hoisting.md#function-expressions-are-never-hoisted-they-are-treated-as-assignments)
-  - [Check if return statement is at the top](javascript/hoisting.md#check-if-return-statement-is-at-the-top)
-  - [Analyzing Hoisting Load Order I](javascript/hoisting.md#analyzing-hoisting-load-order-i)
-  - [Analyzing load order II](javascript/hoisting.md#analyzing-load-order-ii)
-  - [Analyzing Load Order III](javascript/hoisting.md#analyzing-load-order-iii)
-  - [The variables declared with `let` or `const` are hoisted but stay `uninitialised`](javascript/hoisting.md#the-variables-declared-with-let-or-const-are-hoisted-but-stay-uninitialised)
-
-- [**Closure**](javascript/closure.md)
-  - [Closures and References](javascript/closure.md)
-  - [Closures Help in Function `Construction Zones`](javascript/closure.md#closures-help-in-function-construction-zones)
-  - [Loops with Closure: A cautionary Tale](javascript/closure.md#loops-with-closure-a-cautionary-tale-be-a-closure-master)
-
-- [**Prototypes and Inheritance**](javascript/prototypes.md)
-  - [Prototypes!](javascript/prototypes.md#prototypes)
-  - [What is Constructor call?](javascript/prototypes.md#what-is-a-constructor-call)
-  - [What is `[[Prototype]]` and where does it come from?](javascript/prototypes.md#what-is-prototype-and-where-does-it-come-from)
-  - [How does `[[Prototype]]` affect the behavior of an object?](javascript/prototypes.md#how-does-prototype-affect-the-behavior-of-an-object)
-  - [What is the 3 different ways to find where an object`[[Prototype]]` linked to?](javascript/prototypes.md#what-is-the-3-different-ways-to-find-where-an-object-say-ob-prototype-is-linked-to)
-  - [Discuss: `__proto__`, `[[Prototype]]`, `prototype`](javascript/prototypes.md#discuss-__proto__-prototype-and-prototype)
-  - [Two mechanism always exists in JavaScirpt -- Lexical Scopes & Prototype Chain](javascript/prototypes.md#two-mechanism-always-exists-in-javascript-codes----lexical-scopes--prototype-chain)
-  - [Object Oriented in JavaScript](javascript/prototypes.md#object-oriented-in-javascript)
-  - [Explanation of Prototype](javascript/prototypes.md#explanation-of-prototype)
-  - [When an inherited function is executed, the value of `this` points to the inheriting object, not to the `prototype object` where the function is an own property](javascript/prototypes.md#when-an-inherited-function-is-executed-the-value-of-this-points-to-the-inheriting-object-not-to-the-prototype-object-where-the-function-is-an-own-property)
-  - [New object using Object.create() (ES5)](javascript/prototypes.md#new-object-using-objectcreate-es5)
-  - [New object using `class` syntactical sugar](javascript/prototypes.md#new-object-using-class-syntactical-sugar)
-  - [Similar in Object pattern](javascript/prototypes.md#similar-in-object-pattern)
-  - [Use `hasOwnProperty()` to know if the property exists as it's own property](javascript/prototypes.md#use-hasownproperty-to-know-if-the-property-exists-as-its-own-property)
-  - [Prototype shadowing](javascript/prototypes.md#prototype-shadowing)
-  - [Avoid Shadowing](javascript/prototypes.md#avoid-shadowing)
-  - [Object Linked](javascript/prototypes.md#object-linked)
-  - [`OLOO` (Object Linked to Other Object): delegated objects](javascript/prototypes.md#oloo-object-linked-to-other-object-delegated-objects)
-  - [Convert the above codes to OLOO](javascript/prototypes.md#convert-the-above-codes-to-oloo)
-  - [Class in ES6](javascript/prototypes.md#class-in-es6)
-  - [Different ways to create objects and the resulting prototype chain](javascript/prototypes.md#different-ways-to-create-objects-and-the-resulting-prototype-chain)
-  - [Dig into some examples from MDN](javascript/prototypes.md#dig-into-some-examples-from-mdn)
-  - [Notes](javascript/prototypes.md#notes)
-  - [We have to call `super` first in constructor](javascript/prototypes.md#we-have-to-call-super-first-in-constructor)
-- [**Coercion**](javascript/coercion.md)
-  - [Explain `Coercion` in JavaScript with examples](javascript/coercion.md#q-explain-coercion-in-javascript)
-- [**Class**](javascript/class.md)
-  - [Public class fields](javascript/class.md#public-class-fields)
-  - [Private class fields](javascript/class.md#private-class-fields)
-  - [Public and static properties](javascript/class.md#public-and-static-properties)
-
-- [**JavaScript `this` keyword**](javascript/this-keyword.md)
-  - [How does `this` keyword change in different context?](javascript/this-keyword.md#q-how-does-this-keyword-change-in-different-context)
-  - [1. `this` in Global Context](javascript/this-keyword.md#1-this-in-a-global-context)
-  - [2. `this` in Object Constructor](javascript/this-keyword.md#2-this-in-object-constructor)
-  - [3. `this` in an Object Method](javascript/this-keyword.md#3-this-in-an-object-method)
-  - [4. `this` in a Simple function](javascript/this-keyword.md#4-this-in-a-simple-function)
-  - [5. `this` in a Arrow function](javascript/this-keyword.md#5-this-is-in-arrow-function)
-  - [6. `this` in Event listener](javascript/this-keyword.md#6-this-in-event-listeners)
-  - [Default Rules](javascript/this-keyword.md#default-rules)
-  - [Hard Binding of `this`](javascript/this-keyword.md#hard-binding)
-  - [Priority of `this` binding (top -> bottom: hight -> low)](javascript/this-keyword.md#priority-of-this-binding-top---bottom-high---low)
-
-- [**Immediately Invoked Function Expression (IIFE)**](javascript/IIFE.md)
-
-- [**Event Loop**](javascript/event-loop.md)
-  - [Underesting Asynchronous JavaScript --- Event Loop](javascript/event-loop.md#understanding-asynchronous-javascriptthe-event-loop)
-  - [Example 1](javascript/event-loop.md#example-1)
-  - [Example 2](javascript/event-loop.md#example-2)
-  - [Example 3: Callback Hell](javascript/event-loop.md#example-3-callback-hell)
-
-- [ JavaScript `Reactivity` Using `Object.defineProperty()`](javascript/js-reactivity-visuality.js)
-
-- [**JS Questions and Answers**](javascript/javascript-qa.md)
-  - [What is asynchronous programming and why is it important?](javascript/javascript-qa.md#what-is-asynchronous-programming-and-why-is-it-important-in-javascript)
-  - [Explain Event Delegation](javascript/javascript-qa.md#explain-event-delegation)
-  - [Describe Event Bubbling](javascript/javascript-qa.md#describe-event-bubbling-bubble-up)
-  - [What are benefits of `named` function over a `anonymous` function](javascript/javascript-qa.md#what-are-benefits-of-a-named-function-over-a-anonymous-function)
-  - [Difference between `target` vs `currentTarget`](javascript/javascript-qa.md#difference-between-target-and-currenttarget)
-  - [What is `Factory Function`?](javascript/javascript-qa.md#what-is-factory-function)
-  - [Difference: `null`, `undefined` and `undeclared`?](javascript/javascript-qa.md#difference-between-a-variable-that-is-null-undefined-or-undeclared)
-  - [What does JavaScript `get` and `getter` keyword do?](javascript/javascript-qa.md#what-does-javascript-get-or-getter-keyword-do)
-    - [Define a getter on new objects in object initializers](javascript/javascript-qa.md#defining-a-getter-on-new-objects-in-object-initializers)
-    - [Defining a getter on existing objects using `defineProperty`](javascript/javascript-qa.md#defining-a-getter-on-existing-objects-using-defineproperty)
-    - [Using a computed property](javascript/javascript-qa.md#using-a-computed-property-name)
-    - [Get vs defineProperty()](javascript/javascript-qa.md#get-vs-definepropery)
-  - [What is the `two` conditions of being `Module`?](javascript/javascript-qa.md#what-is-the-two-conditions-of-being-a-module)
-  - [How to get `Unique` values of an Array?](javascript/javascript-qa.md#how-to-get-unique-values-of-an-array)
-  - [How to remove all `falsy` values from an Array?](javascript/javascript-qa.md#how-can-remove-all-falsy-values-from-an-array)
-  - [How to create an `Empty` Object?](javascript/javascript-qa.md#how-to-create-an-empty-objects)
-  - [How to require function parameters by force?](javascript/javascript-qa.md#how-to-require-function-parameters-by-force)
-  - [How to get Query String Parameters?](javascript/javascript-qa.md#how-to-get-query-string-parameters)
-  - [What is `Debouncing` in JavaScript?](javascript/javascript-qa.md#what-is-debouncing-in-javascript)
-  - [How to determine what should be the `this` keyword value?](javascript/javascript-qa.md#how-to-determine-what-should-be-the-this-keyword-value)
-  - [Convert a string to `spinal` string](javascript/javascript-qa.md#convert-a-string-to-spinal-string-spinal-string-case-is-all-lowercase-words-joined-by-dashes)
-  - [What type of `Scoping Rule(s)` does JavaScript have?](javascript/javascript-qa.md#what-type-of-scoping-rules-does-javascript-have)
-  - [What are `3` different ways we can create a new Scoped variable?](javascript/javascript-qa.md#what-are-3-different-ways-we-can-create-a-new-scoped-variable)
-  - [What are the four things the new keyword actually does when we put in front of a function call?](javascript/javascript-qa.md#what-are-the-four-things-the-new-keyword-actually-does-when-we-put-in-front-of-a-function-call-aka-constructor-call)
-  - [What is the different between `undeclared` and `undefined`?](javascript/javascript-qa.md#what-is-the-different-between-undeclared-and-undefined)
-  - [What is the only value in JS that is not equal to itself!?](javascript/javascript-qa.md#what-is-the-only-value-in-js-that-is-not-equal-to-itself)
-  - [What does happen when we declare a variable with `var` and `let`?](javascript/javascript-qa.md#what-does-happen-when-we-declare-a-variable-with-var-and-let)
-  - [Compare: `null`, `undefiend`, `NaN`](javascript/javascript-qa.md#compare-null-undefined-nan)
-  - [Implement an Event Emitter that supports standard operations](javascript/javascript-qa.md#implement-an-event-emitter-that-supports-standard-operations)
-  - [How to Write Optimized JavaScript?](javascript/javascript-qa.md#how-to-write-optimized-javascript)
-
-## [Vue](vue/vuejs.md)
+# [Vue](vue/vuejs.md)
 
 - [What is Vue.js?](vue/vuejs.md#what-is-vuejs)
 - [Installing](vue/vuejs.md#installing)
@@ -324,13 +318,12 @@ Hide/Show table of contents
   - [Reactivity inside Computed Properties](vue/vuejs.md#reactivity-inside-computed-properties)
 - [Parent-child Communication](vue/vuejs.md#parent-child-communication)
 
+# [Node](nodejs/introduction.md)
+# [Angular](angular/angular.md)
+# [Gulp](gulp/gulp.md)
+# [Unit Testing](unit-testing/mocha.md)
 
-## [Node](nodejs/introduction.md)
-## [Angular](angular/angular.md)
-## [Gulp](gulp/gulp.md)
-## [Unit Testing](unit-testing/mocha.md)
-
-# Docker
+# [Docker](docker/docker-commands.md)
 
 * Docker Install (latest or a specific version)
 * Run docker as daemon

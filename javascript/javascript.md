@@ -1,4 +1,4 @@
-#### Notes
+## JavaScript History
 
 - JavaScript was created by `Brendan Eich` while he was working for Netscape back in May `1995`. He created the first version of JavaScript in only `10 days` and named it **Mocha**. It was renamed to **LiveScript** on `September` 1995. And then by `December` 1995, it was renamed again to **JavaScript**.
 
@@ -11,7 +11,7 @@
 - Every functions receives two additional parameters: `this`, `arguments`.
 - When a function is stored as a property of an object, we call it a `method`. When a method is invoked, `this` is bound to that object.
 - JavaScript has function scope only\*
-- V8 transtales JavaScript code into more efficient machine code instead of using and interpreter. V8 doesn't produce bytecode or any intermediate code.
+- V8 translates JavaScript code into more efficient machine code instead of using and interpreter. V8 doesn't produce bytecode or any intermediate code.
 - Objects are built by constructor call (a function is called by `new` keyword). A constructor makes an object **linked to** its own `prototype`.
 - JS MUST Know: `Scoping`, `Closures`, `Hoisting`, `This`, `Data Structures: Objects and Arrays`, `Design Patterns`, `Callbacks and Promises`.
 - Exciting features of ES6: destructuring, default parameter values, symbols, concise methods, computed properties, arrow functions, block scoping, promises, generators, iterators, modules, proxies, weakmaps, etc. etc.

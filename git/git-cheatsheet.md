@@ -92,6 +92,8 @@ $ git config --global alias.br branch        # git br -> git branch
 
 ## Branching
 
+#### Common references and terminology
+
 > - master -> default develop branch
 > - origin -> default remote address/url
 > - HEAD -> current branch
@@ -265,7 +267,10 @@ See list of branches ordered by most recent commit
 
     $ git branch -u <remote/branch>
 
-## Add, Commit, Amend, Pull, Push, Merge & Delete
+## Essential Git Commands
+
+### Git Add
+
 
 ```sh
 # Add
@@ -274,19 +279,28 @@ $ git add -A    # -A = --all, Stage Modified, New and Deleted files
 $ git add -p    # Stage a particular change
 $ git add -N    # --intend-to-add, An entry for the path is placed in the index with no content
 $ git add --all -- ':!path/to/file1' ':!path/to/file2' ':!path/to/folder1/*'    # Add all files to a commit except a file/folder
+```
 
+### Git Commit
+
+```sh
 # Commit
 $ git commit -am 'commit message'                   # Add & commit
 $ git commit --allow-empty -m k3;                   # Commit empty change
 $ git commit -m 'msg' --include file1.txt file2.txt # Commit specific files
+```
+### Git Amend
 
-# Amend
+```sh
 $ git add task2.txt                                 # Add any file
 $ git commit --amend --no-edit                      # Don't change commit message, merge staged changes with previous commit
 $ git commit --amend -m 'new message'               # Merge current change to previous commit and will also change the commit hash
 $ git commit --amend --date="<date>"                # Override the date
+```
 
-# Pull
+### Git Pull
+
+```sh
 $ git pull                                          # Fetch the latest changes from origin and merge
 $ git pull --rebase                                 # = fetch + rebase, fetch changes from the branch that the current branch is tracking
 $ git pull -p origin/master                         # -p = --preserve-merges, unlike git pull ?rebase, this doesn?t have a sensible default to work from. So, need to git branch name (origin/master)
@@ -297,8 +311,11 @@ $ git pull origin HEAD --quiet                      # --quiet = -q, run git comm
 $ git pull <repo url>                               # pull a repo with https/ssh URL
 $ git pull origin <bn> --allow-unrelated-histories  # resolve error in case when pulling branch has no common point with current branch
 $ git subtree add --prefix=other/ <repo-url> master # Pull master branch of a repo into a subdirectory named 'other/'
+```
 
-# Push
+### Git Push
+
+```sh
 $ git push origin <branch-name>                   # Push to remote branch
 $ git push -u origin <branch-name>                # -u = --set-upstream tells Git to remember the parameters, so that next time we can simply run `git push`
 $ git push origin HEAD:<branch-name>              # Push the current branch without thinking about its local name.
@@ -312,9 +329,11 @@ $ git subtree push --prefix src origin gh-pages   # Deploy source directory
 $ git subtree split --prefix dist/ master
 # will return a token
 $ git push origin <token> force                   # force push for subtree
+```
 
+### Git Merge
 
-# Merge
+```sh
 $ git merge origin <branch-1>                       # Merge remote 'branch-1' with current branch
 $ git merge-base HEAD origin/master                 # Find the base commit between two branches
 $ git mergetool
@@ -392,7 +411,7 @@ $ git checkout --theirs -- .                        # accept stashed changes
 $ git checkout <stash-name> -- <file-name>          # grab a single file from a stash
 ```
 
-## Logging:
+## Logging
 
 ```sh
 $ git log                                          # Show  all the change/commit history
@@ -693,7 +712,7 @@ $ git <branch-name> --tree-filter 'rm -f password.txt'  # Remove password.txt fi
 $ git filter-branch --index-filter 'git rm --cached --ignore-unmatch master_password.txt'
 ```
 
-#### Create a new **[WorkTree](https://git-scm.com/docs/git-worktree#_synopsis)** and work paralley in the same repo (diffeent branch)
+#### Create a new **[WorkTree](https://git-scm.com/docs/git-worktree#_synopsis)** and work in parallel in the same repo (different branch)
 
 ```sh
 $ git worktree add <second-path>

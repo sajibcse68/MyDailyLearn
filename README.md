@@ -13,9 +13,9 @@ This repository is a collection of useful commands, code snippets, and tutorials
 
 ## Table of Contents
 
-|                            |                                                      |                        |                          |                        |                              |                          |                                |                                          |
-| -------------------------- |----------------------------------------------------- | ---------------------- | ------------------------ | ---------------------- | ---------------------------- | ------------------------ |------------------------------- | ---------------------------------------- |
-| <h3>[React](#react-1)</h3> | <h3>[Vanilla JavaScript](#vanilla-javascript-1)</h3> | <h3>[Git](#git-1)</h3> | <h3>[Node](#node-1)</h3> | <h3>[Vue](#vue-1)</h3> | <h3>[Docker](#docker-1)</h3> | <h3>[Gulp](#gulp-1)</h3> | <h3>[Angular](#angular-1)</h3> | <h3>[Unit Testing](#unit-testing-1)</h3> |
+|                            |                                                      |                        |                          |                        |                              |                                |                                          |
+| -------------------------- |----------------------------------------------------- | ---------------------- | ------------------------ | ---------------------- | ---------------------------- |------------------------------- | ---------------------------------------- |
+| <h3>[React](#react-1)</h3> | <h3>[Vanilla JavaScript](#vanilla-javascript-1)</h3> | <h3>[Git](#git-1)</h3> | <h3>[Node](#node-1)</h3> | <h3>[Vue](#vue-1)</h3> | <h3>[Docker](#docker-1)</h3> | <h3>[Angular](#angular-1)</h3> | <h3>[Unit Testing](#unit-testing-1)</h3> |
 
 # [React](react/react.md)
 
@@ -208,54 +208,85 @@ Hide/Show Table of Contents
 
 # [Git](git/git-cheatsheet.md)
 
-- [Configure git](git/git-cheatsheet.md#configure-git)
-  - Config file locations
-  - Configure user's name & email
-  - Various important config commands
-- [Branching](https://github.com/sajibcse68/MyDailyLearn/blob/git/git/git-cheatsheet.md#branching)
-  - Create new branch
-  - Delete branch
-  - Quick switch back to previous branch/commit-sha/references etc.
-  - Branch listing
-  - Rename a branch
-  - Track new branch
-  - Checkout branch/commit-sha/references/etc. (go forward/backward)
-- [Add, Commit, Amend, Pull, Push, Merge & Delete](git/git-cheatsheet.md#add-commit-amend-pull-push-merge--delete)
-- [Checkout forward/backward](git/git-cheatsheet.md#add-commit-amend-pull-push-merge--delete)
-- [Cherry Pick](git/git-cheatsheet.md#add-commit-amend-pull-push-merge--delete)
-- [Stashing](git/git-cheatsheet.md#stashing)
-- [Logging](git/git-cheatsheet.md#logging)
-- [Show - more logging](git/git-cheatsheet.md#show-more-logging)
-- [Recovery or Reset](git/git-cheatsheet.md#recovery-or-reset)
-  - Reset using `reflog`
-- [Squash](git/git-cheatsheet.md#squash)
-- [Rebase](git/git-cheatsheet.md#rebase)
-  - Change the `author` of an earlier commit
-  - Change the `commit message` of an earlier commit
-  - Reordering commits using rebase
-  - Rebase options
-- [Working with remotes](git/git-cheatsheet.md#working-with-remotes)
-- [Conflicts](git/git-cheatsheet.md#conflicts)
-  - e.g. Merging `release` branch into `master` and we have 3 folders `foo/`, `bar/`, `js/`. Now want to resolve conflicts such as `foo/`, `bar/` should like `master` and `js/` should like `release` branch.
-- [Git Submodules](git/git-cheatsheet.md#submodules)
-- [Some important operations](git/git-cheatsheet.md#some-important-operations)
-  - Cleanup garbage in remote repository
-  - Prune empty commits
-  - Create a new **[WorkTree](https://git-scm.com/docs/git-worktree#_synopsis)** and work paralley in the same repo (different branch)
-  - Add a `signed-off-by` field in a commit
-  - How to tell git to ignore local changes (already tracked by git)?
-  - Generate a Git Hash (SHA1) for specific contents
-- [Tag and Releases](git/git-cheatsheet.md#tags-and-releases)
-- [Fancy Commands](git/git-cheatsheet.md#fancy-commands)
-- [Concepts](git/git-cheatsheet.md#concepts)
-  - Tracked vs Untrack file
-  - GitHub vs Git
-  - Commit Object
-  - Three areas where code lives
-  - Three types of git `References`
-  - Different types of HEAD
-  - The Seven Rules of a Great Git Commit Message
-  - Difference between HEAD~ and HEAD^
+<details open>
+<summary>
+Hide/Show Table of Contents
+</summary>
+
+| Topic                  | Question |
+|------------------------|----------|
+| Configure git          | |
+|                        | [Git config file locations](git/git-cheatsheet.md#git-config-file-locations) |
+|                        | [Configure user's name & email](git/git-cheatsheet.md#configure-users-name-and-email) |
+|                        | [Other `config` commands](git/git-cheatsheet.md#other-config-commands) |
+| Branching              | |
+|                        | [Common references and terminology](git/git-cheatsheet.md#common-references-and-terminology) |
+|                        | [Create new branch](git/git-cheatsheet.md#create-new-branch) |
+|                        | [Delete branch](git/git-cheatsheet.md#delete-branch) |
+|                        | [Quick switch back to previous branch/commit-sha/references etc.](git/git-cheatsheet.md#quick-switch-to-a-previous-branch-or-commit-sha-symbolic-references-etc) |
+|                        | [Branch listing](git/git-cheatsheet.md#branch-listing) |
+|                        | [Rename a branch](git/git-cheatsheet.md#rename-a-branch) |
+|                        | [Track a new branch](git/git-cheatsheet.md#track-a-new-branch) |
+| Essential Git Commands | | 
+|                        | [Git Add](git/git-cheatsheet.md#git-add)
+|                        | [Git Commit](git/git-cheatsheet.md#git-commit)
+|                        | [Git Amend](git/git-cheatsheet.md#git-amend)
+|                        | [Git Pull](git/git-cheatsheet.md#git-pull)
+|                        | [Git Push](git/git-cheatsheet.md#git-push)
+|                        | [Git Merge](git/git-cheatsheet.md#git-merge)
+| Checkout               | |
+|                        | [Checkout forward/backward](git/git-cheatsheet.md#checkout-go-forwardbackward) |
+| Cherry Pick            | |
+|                        | [Cherry Pick](git/git-cheatsheet.md#add-commit-amend-pull-push-merge--delete) |
+| Stashing               | |
+|                        | [Stashing](git/git-cheatsheet.md#stashing) |
+| Logging                | |
+|                        | [Logging](git/git-cheatsheet.md#logging) |
+| Show                   | |
+|                        | [Show - more logging](git/git-cheatsheet.md#show-more-logging) |
+| Recovery or Reset      | |
+|                        | [Recovery or Reset](git/git-cheatsheet.md#recovery-or-reset) |
+|                        | [Reset using `reflog`](git/git-cheatsheet.md#reset-using-reflog) |
+| Squash                 | |
+|                        | [Squash](git/git-cheatsheet.md#squash) |
+| Rebase                 | |
+|                        | [Rebase](git/git-cheatsheet.md#rebase) |
+|                        | [Change the `author` of an earlier commit](git/git-cheatsheet.md#change-the-author-of-an-earlier-commit) |
+|                        | [Change the `commit message` of an earlier commit](git/git-cheatsheet.md#change-the-commit-message-of-an-earlier-commit) |
+|                        | [Reordering commits using rebase](git/git-cheatsheet.md#reordering-commits-using-rebase) |
+|                        | [Rebase options](git/git-cheatsheet.md#rebase-options) |
+| Working with Remotes   | |
+|                        | [Working with remotes](git/git-cheatsheet.md#working-with-remotes) |
+| Conflicts              | |
+|                        | [Conflicts](git/git-cheatsheet.md#conflicts) |
+| Submodules             | | 
+|                        | [Git Submodules](git/git-cheatsheet.md#submodules) |
+| Important operations   | |
+|                        | [Some important operations](git/git-cheatsheet.md#some-important-operations) |
+|                        | [Cleanup garbage in remote repository](git/git-cheatsheet.md#cleanup-garbage-in-remote-repository) |
+|                        | [Remove Large Files from Git History with BFG](git/git-cheatsheet.md#remove-large-files-from-git-history-with-bfg)|
+|                        | [Search all of git history for a String](git/git-cheatsheet.md#search-all-of-git-history-for-a-string)|
+|                        ||
+|                        | [Prune empty commits](git/git-cheatsheet.md#prune-empty-commits) |
+|                        | [Create a new WorkTree and work in parallel in the same repo (different branch)](git/git-cheatsheet.md#create-a-new-worktree-and-work-in-parallel-in-the-same-repo-different-branch) |
+|                        | [Add a `signed-off-by` field in a commit](git/git-cheatsheet.md#add-a-signed-off-by-field-in-a-commit) |
+|                        | [How to tell git to ignore local changes (already tracked by git)?](git/git-cheatsheet.md#how-to-tell-git-to-ignore-local-changes-already-tracked-by-git) |
+|                        | [Generate a Git Hash (SHA1) for specific contents](git/git-cheatsheet.md#generate-a-git-hash-sha1-for-specific-contents) |
+| Tag and Releases       | |
+|                        | [Tag and Releases](git/git-cheatsheet.md#tags-and-releases) |
+| Fancy commands         | |
+|                        | [Fancy Commands](git/git-cheatsheet.md#fancy-commands) |
+|                        | [Quickly browse the history of files in any git repos](git/git-cheatsheet.md#quickly-browse-the-history-of-files-in-any-git-repos) |
+| Concepts               | |
+|                        | [Tracked vs Untrack file](git/git-cheatsheet.md#tracked-vs-untrack-file) |
+|                        | [GitHub vs Git](git/git-cheatsheet.md#github-vs-git) |
+|                        | [Commit Object](git/git-cheatsheet.md#commit-object) |
+|                        | [Three areas where code lives](git/git-cheatsheet.md#three-areas-where-code-lives)|
+|                        | [Three types of git `References`](git/git-cheatsheet.md#three-types-of-git-references)|
+|                        | [Different types of HEAD](git/git-cheatsheet.md#different-types-of-head)|
+|                        | [The Seven Rules of a Great Git Commit Message](git/git-cheatsheet.md#the-seven-rules-of-a-great-git-commit-message)|
+|                        | [Difference between HEAD~ and HEAD^](git/git-cheatsheet.md#difference-between-head-and-head)|
+
 
 # [Vue](vue/vuejs.md)
 
@@ -322,7 +353,6 @@ Hide/Show Table of Contents
 # [Angular](angular/angular.md)
 # [Gulp](gulp/gulp.md)
 # [Unit Testing](unit-testing/mocha.md)
-
 # [Docker](docker/docker-commands.md)
 
 * Docker Install (latest or a specific version)

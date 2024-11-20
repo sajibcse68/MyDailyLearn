@@ -165,6 +165,7 @@ Hide/Show Table of Contents
 |  | [Hard Binding of `this`](javascript/this-keyword.md#hard-binding) |
 |  | [Priority of `this` binding (top -> bottom: hight -> low)](javascript/this-keyword.md#priority-of-this-binding-top---bottom-high---low) |
 |  | <h3>Immediately Invoked Function Expression (IIFE)</h3> |  |
+|  | [Explain why the following doesn't work as an IIFE](javascript/IIFE.md#explain-why-the-following-doesnt-work-as-an-iife) |
 |  | <h3>Event Loop</h3> |  |
 |  | [Underesting Asynchronous JavaScript --- Event Loop](javascript/event-loop.md#understanding-asynchronous-javascriptthe-event-loop) |
 |  | [Example 1](javascript/event-loop.md#example-1) |

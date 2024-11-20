@@ -780,7 +780,7 @@ console.log(literalCircle.getArea());
 
 - Immediately Invoked Function Expression (`IIFE`)
 
-```
+```js
 (function () {
   console.log('This function will be invoked immediately');
 })();

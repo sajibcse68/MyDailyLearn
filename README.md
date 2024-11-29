@@ -47,7 +47,7 @@ Hide/Show table of contents
 | **Derived State**       | |
 |                         | [When to Use Derived State?](react/react.md#when-to-use-derived-state) |
 | **flushSync**           |
-|                         | [What is `flusSync`?](react/react.md#what-is-flussync) |
+|                         | [What is `flushSync`?](react/react.md#what-is-flushsync) |
 |                         | [Alternative State Initialization](react/react.md#alternative-state-initialization)|
 |                         | <h3>**React Hooks**</h3> |
 | **useLayoutEffect**     |                      |

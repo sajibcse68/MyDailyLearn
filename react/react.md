@@ -231,7 +231,7 @@ Derived state should be used sparingly. All problems with derived state that we 
 static getDerivedStateFromProps(props, state)
 ```
 
-### What is `flusSync`?
+### What is `flushSync`?
 
 **flushSync** lets you force React to flush any updates inside the provided callback synchronously. This ensures that the DOM is updated immediately.
 

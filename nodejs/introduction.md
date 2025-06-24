@@ -59,6 +59,8 @@ browser-sync start --server --directory --files "*"
 
     $ nvm use 4.3.2            # Use a specific version
 
+    # nvm alias default 20     # set the preferred version as default
+
 #### How to Install Multiple Versions of same package in NPM?
 
 ```sh

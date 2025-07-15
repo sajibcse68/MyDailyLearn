@@ -26,7 +26,7 @@ Another interesting case is what happens when we use the `-` operation since it 
 
 ```js
 [3] - [1]   // 2
-["foo", "bar"] + ["alice", "bob"]   // NaN
+["foo", "bar"] - ["alice", "bob"]   // NaN
 ```
 
 So once again, the useful JS language will cast the values to numbers (if possible) and then execute that operation on the resulting values.
